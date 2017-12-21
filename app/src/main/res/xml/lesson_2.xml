@@ -1,0 +1,35 @@
+<lesson>
+
+    <theory>
+        <text name="text">"cooking is also fun"</text>
+        <image name="imageSource">"srcExample"</image>
+    </theory>
+
+    <theory>
+        <text name="text">"cooking is still fun"</text>
+        <image name="imageSource">"srcExample"</image>
+    </theory>
+
+    <theory>
+        <text name="text">"how is cooking?"</text>
+        <image name="imageSource">"srcExample"</image>
+    </theory>
+
+    <theory>
+        <text name="text">"fun!"</text>
+        <image name="imageSource">"srcExample"</image>
+    </theory>
+
+
+    <exercise>
+        <text name="text">"lets practice!"</text>
+        <image name="imageSource">"srcExample"</image>
+    </exercise>
+
+
+    <exercise>
+        <text name="text">"practice practice YAY!"</text>
+        <image name="imageSource">"srcExample"</image>
+    </exercise>
+
+</lesson>

@@ -1,0 +1,25 @@
+<lesson>
+    <theory>
+        <text name="text">"coding is fun"</text>
+        <image name="image">"srcExample"</image>
+    </theory>
+
+    <theory>
+        <text name="text">"coding is still fun"</text>
+        <image name="image">"srcExample"</image>
+    </theory>
+
+    <theory>
+        <text name="text">"how is coding?"</text>
+        <image name="image">"srcExample"</image>
+    </theory>
+
+    <theory>
+        <text name="text">"fun!"</text>
+        <image name="image">"srcExample"</image>
+    </theory>
+
+    <exercise>
+
+    </exercise>
+</lesson>
