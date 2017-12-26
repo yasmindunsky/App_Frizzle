@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<font-family xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!-- regular -->
+    <font
+        android:font="@font/calibri_regular"
+        android:fontStyle="normal"
+        android:fontWeight="400"
+
+        app:font="@font/calibri_regular"
+        app:fontStyle="normal"
+        app:fontWeight="400" />
+
+    <!-- light -->
+    <font
+        android:font="@font/calibri_light"
+        android:fontStyle="normal"
+        android:fontWeight="200"
+
+        app:font="@font/calibri_light"
+        app:fontStyle="normal"
+        app:fontWeight="200" />
+
+</font-family>
