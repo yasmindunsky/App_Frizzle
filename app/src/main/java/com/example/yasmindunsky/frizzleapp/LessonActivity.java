@@ -1,9 +1,13 @@
 package com.example.yasmindunsky.frizzleapp;
 
 import android.content.Intent;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.widget.TextView;
+
 import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.IOException;
@@ -26,6 +30,10 @@ public class LessonActivity extends FragmentActivity {
         int id = Integer.parseInt(lesson_id);
         currentLesson = new Lesson(id);
 
+        // Set lesson title to current number
+        TextView lessonTitle = (TextView)findViewById(R.id.lessonTitle);
+        lessonTitle.setText(getString(R.string.lessonTitle) + " " + lesson_id);
+
         // parse xml file to insert content to the currentLesson
         LessonContentParser lessonContentParser = new LessonContentParser(this);
         try {
@@ -40,6 +48,11 @@ public class LessonActivity extends FragmentActivity {
         viewPager = findViewById(R.id.pager);
         swipeAdapter = new SwipeAdapter(getSupportFragmentManager());
         viewPager.setAdapter(swipeAdapter);
+
+        // Connecting TabLayout with ViewPager to show swipe position
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.dotsTabLayout);
+        tabLayout.setupWithViewPager(viewPager, true);
+
     }
 }
 

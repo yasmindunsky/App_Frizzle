@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 /**
@@ -14,6 +15,7 @@ import android.widget.TextView;
  */
 public class lessonFragment extends Fragment {
     TextView fragmentText;
+    ImageView fragmentImage;
 
     public lessonFragment() {
         // Required empty public constructor
@@ -24,13 +26,17 @@ public class lessonFragment extends Fragment {
 
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_blank, container, false);
-        fragmentText = view.findViewById(R.id.fragmentText);
-
+        fragmentText = view.findViewById(R.id.slideText);
+        fragmentImage = view.findViewById(R.id.slideImage);
         Bundle bundle = getArguments();
 
         if (LessonActivity.currentLesson.isInTheory()) {
-            String message = LessonActivity.currentLesson.getLessonTheory().get(bundle.getInt("index")).getLessonText();
+            Theory theory = LessonActivity.currentLesson.getLessonTheory().get(bundle.getInt("index"));
+            String message = theory.getLessonText();
             fragmentText.setText(message);
+            String imageSrc = theory.getImageSource();
+            int imageDrawable = getResources().getIdentifier(imageSrc , "drawable", getActivity().getPackageName());
+            fragmentImage.setImageResource(imageDrawable);
         } else {
             String message = LessonActivity.currentLesson.getLessonExercise().get(bundle.getInt("index")).getText();
             fragmentText.setText(message);
@@ -42,9 +48,9 @@ public class lessonFragment extends Fragment {
             }
         }
 
-        //for debugging: show current position in swipe
-        TextView showPosition = view.findViewById(R.id.position);
-        showPosition.setText("Page " + bundle.getInt("index") + "from " + LessonActivity.swipeAdapter.getCount());
+//        //for debugging: show current position in swipe
+//        TextView showPosition = view.findViewById(R.id.position);
+//        showPosition.setText("Page " + bundle.getInt("index") + "from " + LessonActivity.swipeAdapter.getCount());
 
         return view;
     }
