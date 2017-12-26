@@ -1,3 +1,11 @@
 <resources>
     <dimen name="fab_margin">16dp</dimen>
+
+    <!--Lesson-->
+    <dimen name="app_bar_height">53dp</dimen>
+    <dimen name="slide_height">550dp</dimen>
+    <dimen name="slide_illustration_height">410dp</dimen>
+    <dimen name="slide_illustration_width">387dp</dimen>
+    <dimen name="swipe_dots_area_height">60dp</dimen>
+    <dimen name="swipe_dot_max_width">20dp</dimen>
 </resources>

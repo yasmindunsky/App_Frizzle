@@ -1,25 +1,48 @@
 <lesson>
     <theory>
-        <text name="text">"coding is fun"</text>
-        <image name="image">"srcExample"</image>
+        <text name="text">"Everything you see on an app is the User Interface - UI."</text>
+        <image name="image">"lesson_illustration1"</image>
     </theory>
 
     <theory>
-        <text name="text">"coding is still fun"</text>
-        <image name="image">"srcExample"</image>
+        <text name="text">"The UI consists of elements called Views, for example:"</text>
+        <image name="image">"lesson_illustration2"</image>
     </theory>
 
     <theory>
-        <text name="text">"how is coding?"</text>
-        <image name="image">"srcExample"</image>
+        <text name="text">"The layout is the way all the Views are organized on screen"</text>
+        <image name="image">"lesson_illustration3"</image>
     </theory>
 
     <theory>
-        <text name="text">"fun!"</text>
-        <image name="image">"srcExample"</image>
+        <text name="text">"Most apps consist mainly of buttons, textViews and imageViews
+            as you can see in these examples"</text>
+        <image name="image">"lesson_illustration4"</image>
+    </theory>
+
+    <theory>
+        <text name="text">"Every View has a set of properties
+            Let’s look at this button View and see its properties"</text>
+        <image name="image">"lesson_illustration5"</image>
+    </theory>
+
+    <theory>
+        <text name="text">"You can control its properties"</text>
+        <image name="image">"lesson_illustration6"</image>
+    </theory>
+
+    <theory>
+        <text name="text">"When you create a new View you give it a unique name, an ID"</text>
+        <image name="image">"lesson_illustration7"</image>
+    </theory>
+
+    <theory>
+        <text name="text">"Just like the button View, every new View has a table that allows you to control its properties"</text>
+        <image name="image">"lesson_illustration8"</image>
     </theory>
 
     <exercise>
-
+        <text name="text">"lets practice!"</text>
+        <image name="imageSource">"srcExample"</image>
     </exercise>
 </lesson>
