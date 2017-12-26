@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/darker_gray"
+    android:background="@color/backgroundGrey"
     tools:context="com.example.yasmindunsky.frizzleapp.lessonFragment">
 
 
@@ -13,30 +13,24 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/position"
+            android:id="@+id/slideText"
+            style="@style/LessonText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView" />
-
-        <TextView
-            android:id="@+id/fragmentText"
-            android:layout_width="match_parent"
-            android:layout_height="167dp"
-            android:text="Example"
-            android:textAlignment="center"
-            android:textColor="@android:color/holo_blue_dark"
-            android:textSize="36sp"
-            android:textStyle="bold" />
+            android:text="@string/slideText"
+            android:textAppearance="@style/LessonText" />
 
         <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="match_parent"
-            android:layout_height="170dp" />
+            android:id="@+id/slideImage"
+            android:layout_width="@dimen/slide_illustration_width"
+            android:layout_height="@dimen/slide_illustration_height"
+            android:layout_gravity="center"
+            android:src="@drawable/lesson_illustration1" />
 
         <Button
             android:id="@+id/next"
             android:layout_width="match_parent"
-            android:layout_height="79dp"
+            android:layout_height="1dp"
             android:text="Button"
             android:visibility="invisible" />
 
