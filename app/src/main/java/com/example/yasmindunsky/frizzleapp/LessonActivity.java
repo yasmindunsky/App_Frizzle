@@ -6,6 +6,8 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import org.xmlpull.v1.XmlPullParserException;
@@ -31,7 +33,7 @@ public class LessonActivity extends FragmentActivity {
         currentLesson = new Lesson(id);
 
         // Set lesson title to current number
-        TextView lessonTitle = (TextView)findViewById(R.id.lessonTitle);
+        TextView lessonTitle = (TextView) findViewById(R.id.lessonTitle);
         lessonTitle.setText(getString(R.string.lessonTitle) + " " + lesson_id);
 
         // parse xml file to insert content to the currentLesson
@@ -53,6 +55,9 @@ public class LessonActivity extends FragmentActivity {
         TabLayout tabLayout = (TabLayout) findViewById(R.id.dotsTabLayout);
         tabLayout.setupWithViewPager(viewPager, true);
 
+        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+        int lastIndex = tabLayout.getTabCount() - 1;
+        ((LinearLayout) tabLayout.getChildAt(0)).getChildAt(lastIndex).setBackgroundResource(R.drawable.last_dot);
     }
 }
 

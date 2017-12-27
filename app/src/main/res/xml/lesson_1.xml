@@ -10,37 +10,36 @@
     </slide>
 
     <slide>
-        <text name="text">"The layout is the way all the Views are organized on screen"</text>
+        <text name="text">"The layout is the way all the Views are organized on screen."</text>
         <image name="image">"lesson_illustration3"</image>
     </slide>
 
     <slide>
-        <text name="text">"Most apps consist mainly of buttons, textViews and imageViews
-            as you can see in these examples"
+        <text name="text">"Most apps consist mainly of buttons, textViews and imageViews:"
         </text>
         <image name="image">"lesson_illustration4"</image>
     </slide>
 
     <slide>
-        <text name="text">"Every View has a set of properties
-            Let’s look at this button View and see its properties"
+        <text name="text">"Every View has a set of properties.
+            Let’s look at this button View and see its properties."
         </text>
         <image name="image">"lesson_illustration5"</image>
     </slide>
 
     <slide>
-        <text name="text">"You can control its properties"</text>
+        <text name="text">"You can control its properties:"</text>
         <image name="image">"lesson_illustration6"</image>
     </slide>
 
     <slide>
-        <text name="text">"When you create a new View you give it a unique name, an ID"</text>
+        <text name="text">"When you create a new View you give it a unique name, an ID."</text>
         <image name="image">"lesson_illustration7"</image>
     </slide>
 
     <slide>
         <text name="text">"Just like the button View, every new View has a table that allows you to
-            control its properties"
+            control its properties."
         </text>
         <image name="image">"lesson_illustration8"</image>
     </slide>
