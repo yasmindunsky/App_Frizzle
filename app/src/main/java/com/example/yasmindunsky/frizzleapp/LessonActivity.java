@@ -44,7 +44,7 @@ public class LessonActivity extends FragmentActivity {
             e.printStackTrace();
         }
 
-        // start swipe view of theoretical pages
+        // start swipe between pages
         viewPager = findViewById(R.id.pager);
         swipeAdapter = new SwipeAdapter(getSupportFragmentManager());
         viewPager.setAdapter(swipeAdapter);

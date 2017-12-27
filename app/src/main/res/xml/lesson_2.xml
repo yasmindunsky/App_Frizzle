@@ -1,35 +1,23 @@
 <lesson>
 
-    <theory>
+    <slide>
         <text name="text">"cooking is also fun"</text>
         <image name="imageSource">"srcExample"</image>
-    </theory>
+    </slide>
 
-    <theory>
+    <slide>
         <text name="text">"cooking is still fun"</text>
         <image name="imageSource">"srcExample"</image>
-    </theory>
+    </slide>
 
-    <theory>
+    <slide>
         <text name="text">"how is cooking?"</text>
         <image name="imageSource">"srcExample"</image>
-    </theory>
+    </slide>
 
-    <theory>
+    <slide>
         <text name="text">"fun!"</text>
         <image name="imageSource">"srcExample"</image>
-    </theory>
-
-
-    <exercise>
-        <text name="text">"lets practice!"</text>
-        <image name="imageSource">"srcExample"</image>
-    </exercise>
-
-
-    <exercise>
-        <text name="text">"practice practice YAY!"</text>
-        <image name="imageSource">"srcExample"</image>
-    </exercise>
+    </slide>
 
 </lesson>

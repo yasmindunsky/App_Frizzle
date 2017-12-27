@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/App_Frizzle.iml" filepath="$PROJECT_DIR$/App_Frizzle.iml" />
+      <module fileurl="file://$PROJECT_DIR$/FrizzleApp.iml" filepath="$PROJECT_DIR$/FrizzleApp.iml" />
       <module fileurl="file://C:\Users\Noga\AndroidStudioProjects\App_Frizzle\FrizzleApp.iml" filepath="C:\Users\Noga\AndroidStudioProjects\App_Frizzle\FrizzleApp.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://C:\Users\Noga\AndroidStudioProjects\App_Frizzle\app\app.iml" filepath="C:\Users\Noga\AndroidStudioProjects\App_Frizzle\app\app.iml" />
     </modules>
   </component>
 </project>

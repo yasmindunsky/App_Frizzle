@@ -9,49 +9,49 @@ import java.util.ArrayList;
 public class Lesson {
 
     private int lessonID;
-    private ArrayList<Theory> lessonTheory;
+    private ArrayList<Slide> lessonSlides;
     private ArrayList<Exercise> lessonExercise;
 
     //TODO enter to state object?
-    private boolean inTheory = true;
+    private boolean inSlides = true;
 
     public Lesson(int lessonID) {
         this.lessonID = lessonID;
     }
 
-    public int getLessonID() {
+    public int getID() {
         return lessonID;
     }
 
-    public boolean isInTheory() {
-        return inTheory;
+    public boolean isInSlides() {
+        return inSlides;
     }
 
-    public void setInTheory(boolean inTheory) {
-        this.inTheory = inTheory;
+    public void setInSlides(boolean inSlides) {
+        this.inSlides = inSlides;
     }
 
-    public ArrayList<Theory> getLessonTheory() {
-        return lessonTheory;
+    public ArrayList<Slide> getLessonSlides() {
+        return lessonSlides;
     }
 
-    public int getLessonTheoryPageNumber() {
-        return lessonTheory.size();
+    public int getSlidesNumber() {
+        return lessonSlides.size();
     }
 
-    public void setLessonTheory(ArrayList<Theory> lessonTheory) {
-        this.lessonTheory = lessonTheory;
+    public void setSlides(ArrayList<Slide> lessonSlides) {
+        this.lessonSlides = lessonSlides;
     }
 
-    public ArrayList<Exercise> getLessonExercise() {
+    public ArrayList<Exercise> getExercises() {
         return lessonExercise;
     }
 
-    public void setLessonExercise(ArrayList<Exercise> lessonExercise) {
+    public void setExercises(ArrayList<Exercise> lessonExercise) {
         this.lessonExercise = lessonExercise;
     }
 
-    public int getLessonExercisePageNumber() {
+    public int getExercisesNumber() {
         return lessonExercise.size();
     }
 }

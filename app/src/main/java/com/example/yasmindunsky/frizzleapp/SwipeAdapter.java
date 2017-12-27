@@ -18,22 +18,24 @@ public class SwipeAdapter extends FragmentStatePagerAdapter {
     @Override
     public Fragment getItem(int position) {
 
-        Fragment fragment = new lessonFragment();
+        Fragment fragment;
         Bundle bundle = new Bundle();
         bundle.getInt("position", position);
 
         // switch between theory state to exercise state by the current position
-        if (position + 1 > LessonActivity.currentLesson.getLessonTheoryPageNumber()) {
-            LessonActivity.currentLesson.setInTheory(false);
+        if (position + 1 > LessonActivity.currentLesson.getSlidesNumber()) {
+            fragment = new ExerciseFragment();
+            LessonActivity.currentLesson.setInSlides(false);
         } else {
-            LessonActivity.currentLesson.setInTheory(true);
+            fragment = new SlideFragment();
+            LessonActivity.currentLesson.setInSlides(true);
         }
 
         // set the index as argument of the new fragment
-        if (LessonActivity.currentLesson.isInTheory()) {
+        if (LessonActivity.currentLesson.isInSlides()) {
             bundle.putInt("index", position);
         } else {
-            bundle.putInt("index", position - LessonActivity.currentLesson.getLessonTheoryPageNumber());
+            bundle.putInt("index", position - LessonActivity.currentLesson.getSlidesNumber());
         }
 
         fragment.setArguments(bundle);
@@ -43,6 +45,6 @@ public class SwipeAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public int getCount() {
-        return LessonActivity.currentLesson.getLessonTheoryPageNumber() + LessonActivity.currentLesson.getLessonExercisePageNumber();
+        return LessonActivity.currentLesson.getSlidesNumber() + LessonActivity.currentLesson.getExercisesNumber();
     }
 }

@@ -1,48 +1,87 @@
 <lesson>
-    <theory>
+    <slide>
         <text name="text">"Everything you see on an app is the User Interface - UI."</text>
         <image name="image">"lesson_illustration1"</image>
-    </theory>
+    </slide>
 
-    <theory>
+    <slide>
         <text name="text">"The UI consists of elements called Views, for example:"</text>
         <image name="image">"lesson_illustration2"</image>
-    </theory>
+    </slide>
 
-    <theory>
+    <slide>
         <text name="text">"The layout is the way all the Views are organized on screen"</text>
         <image name="image">"lesson_illustration3"</image>
-    </theory>
+    </slide>
 
-    <theory>
+    <slide>
         <text name="text">"Most apps consist mainly of buttons, textViews and imageViews
-            as you can see in these examples"</text>
+            as you can see in these examples"
+        </text>
         <image name="image">"lesson_illustration4"</image>
-    </theory>
+    </slide>
 
-    <theory>
+    <slide>
         <text name="text">"Every View has a set of properties
-            Let’s look at this button View and see its properties"</text>
+            Let’s look at this button View and see its properties"
+        </text>
         <image name="image">"lesson_illustration5"</image>
-    </theory>
+    </slide>
 
-    <theory>
+    <slide>
         <text name="text">"You can control its properties"</text>
         <image name="image">"lesson_illustration6"</image>
-    </theory>
+    </slide>
 
-    <theory>
+    <slide>
         <text name="text">"When you create a new View you give it a unique name, an ID"</text>
         <image name="image">"lesson_illustration7"</image>
-    </theory>
+    </slide>
 
-    <theory>
-        <text name="text">"Just like the button View, every new View has a table that allows you to control its properties"</text>
+    <slide>
+        <text name="text">"Just like the button View, every new View has a table that allows you to
+            control its properties"
+        </text>
         <image name="image">"lesson_illustration8"</image>
-    </theory>
+    </slide>
 
     <exercise>
-        <text name="text">"lets practice!"</text>
-        <image name="imageSource">"srcExample"</image>
+        <type name="type">"Choice"</type>
+        <question name="question">"A button is an example for a View"</question>
+        <image name="image">"None"</image>
+        <possibilities name = "possibilities">
+            <possibility name = "possibility">"True"</possibility>
+            <possibility name = "possibility">"False"</possibility>
+        </possibilities>
+        <answers name="answers">
+            <answer name="answer">"True"</answer>
+        </answers>
     </exercise>
+
+    <exercise>
+        <type name="type">"Open"</type>
+        <question name="question">"The title NEWS FEED in this app is an example for the View:"</question>
+        <image name="image">"lesson_illustration1"</image>
+        <possibilities name = "possibilities"></possibilities>
+        <answers name="answers">
+            <answer name="answer">"textView"</answer>
+        </answers>
+    </exercise>
+
+    <exercise>
+        <type name="type">"Multiple"</type>
+        <question name="question">"With the properties table we are able to:"</question>
+        <image name="image">"None"</image>
+        <possibilities name = "possibilities">
+            <possibility name= "possibility">"this is an answer"</possibility>
+            <possibility name= "possibility">"this is an answer2"</possibility>
+            <possibility name= "possibility">"this is an answer3"</possibility>
+            <possibility name= "possibility">"this is an answer4"</possibility>
+        </possibilities>
+        <answers name="answers">
+            <answer name="answer">"this is an answer1"</answer>
+            <answer name="answer">"this is an answer4"</answer>
+        </answers>
+    </exercise>
+
 </lesson>

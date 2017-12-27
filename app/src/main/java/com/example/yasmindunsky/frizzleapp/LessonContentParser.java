@@ -19,29 +19,29 @@ public class LessonContentParser {
     private XmlResourceParser xmlResourceParser;
 
     public LessonContentParser(Context context) {
-        String lessonXmlName = "lesson_" + Integer.toString(LessonActivity.currentLesson.getLessonID());
+        String lessonXmlName = "lesson_" + Integer.toString(LessonActivity.currentLesson.getID());
         xmlResourceParser = context.getResources().getXml(getResId(lessonXmlName, R.xml.class));
     }
 
     public void parseLesson() throws XmlPullParserException, IOException {
 
-        ArrayList<Theory> theoreticalPages = new ArrayList<>();
-        ArrayList<Exercise> exercisePages = new ArrayList<>();
+        ArrayList<Slide> slides = new ArrayList<>();
+        ArrayList<Exercise> exercises = new ArrayList<>();
 
         try {
             int eventType = xmlResourceParser.getEventType();
             while (eventType != XmlPullParser.END_DOCUMENT) {
 
-                // theory pages parsing part
-                if (eventType == XmlPullParser.START_TAG && xmlResourceParser.getName().equals("theory")) {
-                    Theory newPage = parseTheoreticalPages();
-                    theoreticalPages.add(newPage);
+                // slides pages parsing part
+                if (eventType == XmlPullParser.START_TAG && xmlResourceParser.getName().equals("slide")) {
+                    Slide newPage = parseSlides();
+                    slides.add(newPage);
                 }
 
                 // TODO parse exercise and tasks
-                else if (eventType == XmlPullParser.START_TAG && xmlResourceParser.getName().equals("exercise")){
-                    Exercise newPage = parseExercisePages();
-                    exercisePages.add(newPage);
+                else if (eventType == XmlPullParser.START_TAG && xmlResourceParser.getName().equals("exercise")) {
+                    Exercise newPage = parseExercise();
+                    exercises.add(newPage);
                 }
 
                 eventType = xmlResourceParser.next();
@@ -52,13 +52,11 @@ public class LessonContentParser {
             e.printStackTrace();
         }
 
-        Theory lastTheoryPage = new Theory("GOOD JOB!", "fireworks");
-        theoreticalPages.add(lastTheoryPage);
-        LessonActivity.currentLesson.setLessonTheory(theoreticalPages);
+        Slide lastSlidePage = new Slide("GOOD JOB!", "fireworks");
+        slides.add(lastSlidePage);
+        LessonActivity.currentLesson.setSlides(slides);
 
-        Exercise lastExercisePage = new Exercise("GOOD JOB!");
-        exercisePages.add(lastExercisePage);
-        LessonActivity.currentLesson.setLessonExercise(exercisePages);
+        LessonActivity.currentLesson.setExercises(exercises);
     }
 
     public static int getResId(String resName, Class<?> c) {
@@ -72,66 +70,57 @@ public class LessonContentParser {
         }
     }
 
-    private Theory parseTheoreticalPages() throws XmlPullParserException, IOException {
-        String text = null;
-        String imgSrc = null;
+    private Slide parseSlides() throws XmlPullParserException, IOException {
+        String text = getValue("text");
+        String image = getValue("image");
 
         xmlResourceParser.next();
-        String name = xmlResourceParser.getName();
 
-        while(!name.equals("text")){
+        return new Slide(text, image);
+    }
+
+    private Exercise parseExercise() throws XmlPullParserException, IOException {
+        String type = getValue("type");
+        String question = getValue("question");
+        String image = getValue("image");
+
+        ArrayList<String> possibilities = new ArrayList<>();
+        addChildren(possibilities, "possibilities", "possibility");
+
+        ArrayList<String> answers = new ArrayList<>();
+        addChildren(answers, "answers", "answer");
+
+        return new Exercise(type, question, image, possibilities, answers);
+    }
+
+    private String getValue(String key) throws XmlPullParserException, IOException {
+        xmlResourceParser.next();
+
+        while (!xmlResourceParser.getName().equals(key)) {
             xmlResourceParser.next();
-            name = xmlResourceParser.getName();
         }
 
         xmlResourceParser.next();
-        text = xmlResourceParser.getText();
-
-        xmlResourceParser.next();
-        name = xmlResourceParser.getName();
-
-        while(!name.equals("image")){
-            xmlResourceParser.next();
-            name = xmlResourceParser.getName();
-        }
-
-        xmlResourceParser.next();
-        imgSrc = xmlResourceParser.getText();
-
-        xmlResourceParser.next();
-
-        return new Theory(text, imgSrc);
+        return xmlResourceParser.getText();
     }
 
 
-    private Exercise parseExercisePages() throws XmlPullParserException, IOException {
-        String text = null;
-        String imgSrc = null;
+    private void addChildren(ArrayList<String> possibilities, String root, String child) throws XmlPullParserException, IOException {
+        getValue(root);
 
-        xmlResourceParser.next();
-        String name = xmlResourceParser.getName();
+        while (!(xmlResourceParser.getEventType() == XmlPullParser.END_TAG && xmlResourceParser.getName().equals(root))) {
 
-        while(!name.equals("text")){
+            while (!xmlResourceParser.getName().equals(child)) {
+                xmlResourceParser.next();
+            }
             xmlResourceParser.next();
-            name = xmlResourceParser.getName();
-        }
+            possibilities.add(xmlResourceParser.getText());
 
-        xmlResourceParser.next();
-        text = xmlResourceParser.getText();
+            while (!(xmlResourceParser.getEventType() == XmlPullParser.END_TAG && xmlResourceParser.getName().equals(child))) {
+                xmlResourceParser.next();
+            }
 
-        xmlResourceParser.next();
-        name = xmlResourceParser.getName();
-
-        while(!name.equals("image")){
             xmlResourceParser.next();
-            name = xmlResourceParser.getName();
         }
-
-        xmlResourceParser.next();
-        imgSrc = xmlResourceParser.getText();
-
-        xmlResourceParser.next();
-
-        return new Exercise(text);
     }
 }
