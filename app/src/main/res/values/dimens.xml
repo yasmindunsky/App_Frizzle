@@ -3,9 +3,10 @@
 
     <!--Lesson-->
     <dimen name="app_bar_height">53dp</dimen>
-    <dimen name="slide_height">550dp</dimen>
-    <dimen name="slide_illustration_height">410dp</dimen>
-    <dimen name="slide_illustration_width">387dp</dimen>
+    <dimen name="slide_height">500dp</dimen>
+    <dimen name="slide_illustration_height">369dp</dimen>
+    <dimen name="slide_text_height">70dp</dimen>
+    <dimen name="slide_illustration_width">348dp</dimen>
     <dimen name="swipe_dots_area_height">60dp</dimen>
     <dimen name="swipe_dot_max_width">20dp</dimen>
 </resources>

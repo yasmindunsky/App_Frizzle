@@ -6,33 +6,40 @@
     android:background="@color/backgroundGrey"
     tools:context="com.example.yasmindunsky.frizzleapp.SlideFragment">
 
-
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
         <TextView
             android:id="@+id/slideText"
             style="@style/LessonText"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/slide_text_height"
             android:text="@string/slideText"
-            android:textAppearance="@style/LessonText" />
+            android:textAppearance="@style/LessonText"
+            android:layout_alignParentTop="true"/>
 
         <ImageView
             android:id="@+id/slideImage"
-            android:layout_width="@dimen/slide_illustration_width"
-            android:layout_height="@dimen/slide_illustration_height"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/slideText"
             android:layout_gravity="center"
-            android:src="@drawable/lesson_illustration1" />
+            android:src="@drawable/lesson_illustration4" />
 
         <Button
             android:id="@+id/next"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:text="Button"
-            android:visibility="invisible" />
+            android:visibility="invisible"
+            android:layout_below="@id/slideImage"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
     </LinearLayout>
 

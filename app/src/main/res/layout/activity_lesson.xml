@@ -7,41 +7,58 @@
     android:layout_height="match_parent"
     tools:context="com.example.yasmindunsky.frizzleapp.LessonActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+    <!--<RelativeLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="@dimen/app_bar_height"-->
+        <!--android:layout_gravity="top"-->
+        <!--android:background="@color/colorPrimary">-->
 
-        <LinearLayout
+        <!--<Button-->
+            <!--android:id="@+id/homeButton"-->
+            <!--style="@style/HomeButton"-->
+            <!--android:textAppearance="@style/HomeButton" />-->
+
+
+    <!--</RelativeLayout>-->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="@dimen/app_bar_height"
-            android:background="@color/colorPrimary"
-            android:orientation="horizontal">
+            android:layout_alignParentTop="true"
+            android:background="?attr/colorPrimary"
+            android:gravity="center"
+            android:theme="?attr/actionBarTheme"
+            app:navigationIcon="@drawable/ic_home"
+
+            >
 
             <android.support.v7.widget.AppCompatTextView
                 android:id="@+id/lessonTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
                 android:gravity="center"
                 android:text="@string/lessonTitle"
                 android:textAppearance="@style/ActivityTitle" />
-        </LinearLayout>
+
+        </android.support.v7.widget.Toolbar>
 
         <FrameLayout
             android:id="@+id/fragment"
             android:layout_width="match_parent"
             android:layout_height="@dimen/slide_height"
+            android:layout_above="@id/dotsTabLayout"
             android:layout_marginBottom="0dp"
             android:layout_marginEnd="0dp"
             android:layout_marginStart="0dp"
             android:layout_marginTop="0dp"
-            android:elevation="4dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/position"
-            app:layout_constraintVertical_bias="0.487">
+            android:elevation="4dp">
 
             <android.support.v4.view.ViewPager
                 android:id="@+id/pager"
@@ -54,10 +71,20 @@
             android:id="@+id/dotsTabLayout"
             android:layout_width="match_parent"
             android:layout_height="@dimen/swipe_dots_area_height"
+            android:layout_alignParentBottom="true"
             android:layout_gravity="bottom"
             app:tabBackground="@drawable/tab_selector"
             app:tabIndicatorHeight="0dp"
-            app:tabMaxWidth="15dp" />
-    </LinearLayout>
+            app:tabMaxWidth="@dimen/swipe_dot_max_width"/>
+    </RelativeLayout>
+
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:gravity="center"-->
+        <!--android:orientation="vertical">-->
+
+
+    <!--</LinearLayout>-->
 
 </android.support.constraint.ConstraintLayout>
