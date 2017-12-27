@@ -12,27 +12,33 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/question"
+            android:id="@+id/exerciseQuestion"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="wrap_content" />
+
+        <CheckedTextView
+            android:id="@+id/checkedTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="CheckedTextView" />
 
         <ImageView
             android:id="@+id/exerciseImage"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="50pt" />
 
-        <FrameLayout
+        <LinearLayout
             android:id="@+id/exerciseElementsLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-        </FrameLayout>
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"></LinearLayout>
 
         <Button
             android:id="@+id/checkButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Check" />
+
     </LinearLayout>
 
 </FrameLayout>

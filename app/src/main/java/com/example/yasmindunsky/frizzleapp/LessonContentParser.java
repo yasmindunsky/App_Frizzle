@@ -84,13 +84,16 @@ public class LessonContentParser {
         String question = getValue("question");
         String image = getValue("image");
 
+        ArrayList<String> content = new ArrayList<>();
+        addChildren(content, "content", "object");
+
         ArrayList<String> possibilities = new ArrayList<>();
         addChildren(possibilities, "possibilities", "possibility");
 
         ArrayList<String> answers = new ArrayList<>();
         addChildren(answers, "answers", "answer");
 
-        return new Exercise(type, question, image, possibilities, answers);
+        return new Exercise(type, question, image, content, possibilities, answers);
     }
 
     private String getValue(String key) throws XmlPullParserException, IOException {
