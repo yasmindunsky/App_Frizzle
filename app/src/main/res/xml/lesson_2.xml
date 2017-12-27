@@ -2,22 +2,22 @@
 
     <slide>
         <text name="text">"cooking is also fun"</text>
-        <image name="imageSource">"srcExample"</image>
+        <imageSource name="imageSource">"srcExample"</imageSource>
     </slide>
 
     <slide>
         <text name="text">"cooking is still fun"</text>
-        <image name="imageSource">"srcExample"</image>
+        <imageSource name="imageSource">"srcExample"</imageSource>
     </slide>
 
     <slide>
         <text name="text">"how is cooking?"</text>
-        <image name="imageSource">"srcExample"</image>
+        <imageSource name="imageSource">"srcExample"</imageSource>
     </slide>
 
     <slide>
         <text name="text">"fun!"</text>
-        <image name="imageSource">"srcExample"</image>
+        <imageSource name="imageSource">"srcExample"</imageSource>
     </slide>
 
 </lesson>

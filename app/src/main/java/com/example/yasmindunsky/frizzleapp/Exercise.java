@@ -10,14 +10,16 @@ public class Exercise {
 
     private String type;
     private String question;
-    private String image;
+    private String imageSource;
+    private ArrayList<String> content;
     private ArrayList<String> possibilities;
     private ArrayList<String> answers;
 
-    public Exercise(String type, String question, String image, ArrayList<String> possibilities, ArrayList<String> answers) {
+    public Exercise(String type, String question, String imageSource, ArrayList<String> content, ArrayList<String> possibilities, ArrayList<String> answers) {
         this.type = type;
         this.question = question;
-        this.image = image;
+        this.imageSource = imageSource;
+        this.content = content;
         this.possibilities = possibilities;
         this.answers = answers;
     }
@@ -30,8 +32,12 @@ public class Exercise {
         return question;
     }
 
-    public String getImage() {
-        return image;
+    public String getImageSource() {
+        return imageSource;
+    }
+
+    public ArrayList<String> getContent() {
+        return content;
     }
 
     public ArrayList<String> getPossibilities() {
