@@ -10,6 +10,8 @@ import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 
+import exercise.Exercise;
+
 /**
  * Created by yasmin.dunsky on 21-Dec-17.
  */
@@ -93,7 +95,7 @@ public class LessonContentParser {
         ArrayList<String> answers = new ArrayList<>();
         addChildren(answers, "answers", "answer");
 
-        return new Exercise(type, question, image, content, possibilities, answers);
+        return Exercise.createInstance(type, question, image, content, possibilities, answers);
     }
 
     private String getValue(String key) throws XmlPullParserException, IOException {

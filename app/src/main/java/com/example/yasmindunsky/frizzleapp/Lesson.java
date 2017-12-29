@@ -2,6 +2,8 @@ package com.example.yasmindunsky.frizzleapp;
 
 import java.util.ArrayList;
 
+import exercise.Exercise;
+
 /**
  * Created by yasmin.dunsky on 19-Nov-17.
  */
