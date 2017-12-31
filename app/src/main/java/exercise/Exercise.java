@@ -33,7 +33,7 @@ public abstract class Exercise {
                                    ArrayList<String> possibilities, ArrayList<String> answers){
         switch (type){
             case "FreeText":
-                return new FreeTextExercise(type, question, image, content, possibilities, answers);
+                return new FreeText(type, question, image, content, possibilities, answers);
             case "SingleResponse":
                 return new SingleResponse(type, question, image, content, possibilities, answers);
             case "MultipleResponse":

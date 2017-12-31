@@ -12,7 +12,7 @@ import java.util.ArrayList;
  */
 
 public class FillTheBlanks extends Exercise {
-    private int BLANK_ID_INIT_NUMBER = 2000;
+    protected int BLANK_ID_INIT_NUMBER = 2000;
 
     public FillTheBlanks(String type, String question, String imageSource, ArrayList<String> content, ArrayList<String> possibilities, ArrayList<String> answers) {
         super(type, question, imageSource, content, possibilities, answers);

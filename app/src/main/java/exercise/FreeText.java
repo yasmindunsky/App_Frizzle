@@ -14,8 +14,8 @@ import java.util.ArrayList;
  * Created by yasmin.dunsky on 29-Dec-17.
  */
 
-public class FreeTextExercise extends Exercise {
-    public FreeTextExercise(String type, String question, String imageSource, ArrayList<String> content, ArrayList<String> possibilities, ArrayList<String> answers) {
+public class FreeText extends Exercise {
+    public FreeText(String type, String question, String imageSource, ArrayList<String> content, ArrayList<String> possibilities, ArrayList<String> answers) {
         super(type, question, imageSource, content, possibilities, answers);
     }
 
