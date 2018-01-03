@@ -1,4 +1,4 @@
-package com.example.yasmindunsky.frizzleapp;
+package com.example.yasmindunsky.frizzleapp.lesson.exercise;
 
 import android.graphics.Color;
 import android.support.v4.app.Fragment;
@@ -11,7 +11,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import exercise.Exercise;
+import com.example.yasmindunsky.frizzleapp.lesson.LessonActivity;
+import com.example.yasmindunsky.frizzleapp.R;
 
 /**
  * A simple {@link Fragment} subclass.

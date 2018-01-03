@@ -1,4 +1,4 @@
-package com.example.yasmindunsky.frizzleapp;
+package com.example.yasmindunsky.frizzleapp.lesson;
 
 /**
  * Created by yasmin.dunsky on 19-Nov-17.

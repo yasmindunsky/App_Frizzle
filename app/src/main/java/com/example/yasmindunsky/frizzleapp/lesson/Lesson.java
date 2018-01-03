@@ -1,8 +1,8 @@
-package com.example.yasmindunsky.frizzleapp;
+package com.example.yasmindunsky.frizzleapp.lesson;
 
 import java.util.ArrayList;
 
-import exercise.Exercise;
+import com.example.yasmindunsky.frizzleapp.lesson.exercise.Exercise;
 
 /**
  * Created by yasmin.dunsky on 19-Nov-17.
