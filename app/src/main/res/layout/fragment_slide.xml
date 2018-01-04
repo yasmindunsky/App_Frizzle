@@ -2,7 +2,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="@dimen/slide_height"
     android:background="@color/backgroundGrey"
     tools:context="com.example.yasmindunsky.frizzleapp.SlideFragment">
 
@@ -13,11 +13,9 @@
         <TextView
             android:id="@+id/slideText"
             style="@style/LessonText"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/slide_text_height"
+            android:layout_alignParentTop="true"
             android:text="@string/slideText"
-            android:textAppearance="@style/LessonText"
-            android:layout_alignParentTop="true"/>
+            />
 
         <ImageView
             android:id="@+id/slideImage"
@@ -31,16 +29,9 @@
             android:id="@+id/next"
             android:layout_width="match_parent"
             android:layout_height="1dp"
+            android:layout_below="@id/slideImage"
             android:text="Button"
-            android:visibility="invisible"
-            android:layout_below="@id/slideImage"/>
+            android:visibility="invisible" />
     </RelativeLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-    </LinearLayout>
 
 </FrameLayout>

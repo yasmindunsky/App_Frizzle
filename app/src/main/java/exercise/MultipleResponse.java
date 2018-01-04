@@ -6,6 +6,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+
+import com.example.yasmindunsky.frizzleapp.R;
 
 import java.util.ArrayList;
 
@@ -20,12 +24,18 @@ public class MultipleResponse extends Exercise {
     }
 
     @Override
-    public void createLayout(LinearLayout view, Context context) {
+    public void createLayout(RelativeLayout layout, Context context) {
+        // Create a LinearLayout that will hold the buttons and place it correctly.
+        final LinearLayout linearLayout = new LinearLayout(context);
+        LayoutParams layoutParams = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        layoutParams.addRule(RelativeLayout.BELOW, R.id.exerciseImage);
+        linearLayout.setLayoutParams(layoutParams);
+        linearLayout.setOrientation(LinearLayout.HORIZONTAL);
+        layout.addView(linearLayout);
         for (final String possibility : this.getPossibilities()) {
             final Button button = new Button(context);
-            button.setLayoutParams(new ViewGroup.LayoutParams(250, ViewGroup.LayoutParams.WRAP_CONTENT));
             button.setText(possibility);
-
+            button.setLayoutParams(new LayoutParams(250, ViewGroup.LayoutParams.WRAP_CONTENT));
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -40,8 +50,7 @@ public class MultipleResponse extends Exercise {
                     }
                 }
             });
-
-            view.addView(button);
+            linearLayout.addView(button);
         }
     }
 

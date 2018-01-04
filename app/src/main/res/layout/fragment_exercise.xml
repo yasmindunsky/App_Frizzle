@@ -6,33 +6,32 @@
     tools:context="com.example.yasmindunsky.frizzleapp.ExerciseFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <LinearLayout
+    <RelativeLayout
+        android:id="@+id/exerciseElementsLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
         <TextView
             android:id="@+id/exerciseQuestion"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            style="@style/LessonText"
+            android:layout_alignParentTop="true"
+            android:text="@string/slideText" />
 
         <ImageView
             android:id="@+id/exerciseImage"
             android:layout_width="match_parent"
-            android:layout_height="50pt" />
-
-        <LinearLayout
-            android:id="@+id/exerciseElementsLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"></LinearLayout>
+            android:layout_height="50pt"
+            android:layout_below="@id/exerciseQuestion"
+            android:layout_gravity="center" />
 
         <Button
             android:id="@+id/checkButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="false"
             android:text="Check" />
 
-    </LinearLayout>
+    </RelativeLayout>
 
 </FrameLayout>

@@ -6,6 +6,8 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
 
 import com.example.yasmindunsky.frizzleapp.R;
 
@@ -21,18 +23,22 @@ public class SingleResponse extends Exercise {
     }
 
     @Override
-    public void createLayout(LinearLayout view, Context context) {
+    public void createLayout(RelativeLayout layout, Context context) {
         // add RadioGroup to layout
         RadioGroup possibilitiesButtons = new RadioGroup(context);
-        possibilitiesButtons.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+        LayoutParams layoutParams =
+                new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+        layoutParams.addRule(RelativeLayout.BELOW, R.id.exerciseImage);
+        possibilitiesButtons.setLayoutParams(layoutParams);
         possibilitiesButtons.setId(R.id.radioGroup);
-        view.addView(possibilitiesButtons);
+        layout.addView(possibilitiesButtons);
 
         // create each possibility as a radio button and add to RadioGroup
         for (final String possibility : this.getPossibilities()) {
             final RadioButton button = new RadioButton(context);
-            possibilitiesButtons.addView(button);
             button.setText(possibility);
+            possibilitiesButtons.addView(button);
+
         }
     }
 

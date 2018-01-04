@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import exercise.Exercise;
@@ -43,7 +44,7 @@ public class ExerciseFragment extends Fragment {
             fragmentImage.setImageResource(imageDrawable);
         }
 
-        exercise.createLayout(((LinearLayout) fragmentView.findViewById(R.id.exerciseElementsLayout)), fragmentView.getContext());
+        exercise.createLayout(((RelativeLayout) fragmentView.findViewById(R.id.exerciseElementsLayout)), fragmentView.getContext());
 
         setCheckButtonOnClick(fragmentView);
 

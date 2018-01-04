@@ -7,6 +7,7 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -24,6 +25,17 @@ public class LessonActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lesson);
+
+        // Set Toolbar home button.
+        android.support.v7.widget.Toolbar toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Go to map home screen
+                Intent mapIntent = new Intent(getBaseContext(), MapActivity.class);
+                startActivity(mapIntent);
+            }
+        });
 
         // TODO consider having a state with current lesson id
         // create new Lesson by the id received from intent
