@@ -1,4 +1,4 @@
-package exercise;
+package com.example.yasmindunsky.frizzleapp.lesson.exercise;
 
 import android.content.Context;
 import android.graphics.Color;

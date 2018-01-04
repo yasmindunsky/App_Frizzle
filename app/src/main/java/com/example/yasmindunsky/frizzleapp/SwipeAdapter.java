@@ -5,6 +5,10 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
+import com.example.yasmindunsky.frizzleapp.lesson.exercise.ExerciseFragment;
+import com.example.yasmindunsky.frizzleapp.lesson.LessonActivity;
+import com.example.yasmindunsky.frizzleapp.lesson.SlideFragment;
+
 /**
  * Created by yasmin.dunsky on 19-Nov-17.
  */
@@ -22,13 +26,15 @@ public class SwipeAdapter extends FragmentStatePagerAdapter {
         Bundle bundle = new Bundle();
         bundle.getInt("position", position);
 
-        // switch between theory state to exercise state by the current position
-        if (position + 1 > LessonActivity.currentLesson.getSlidesNumber()) {
+        // create the right type of fragment by the current position inside the lesson
+        if (position < LessonActivity.currentLesson.getSlidesNumber()) {
+            fragment = new SlideFragment();
+            LessonActivity.currentLesson.setInSlides(true);
+        } else if (position < getCount() - 1) {
             fragment = new ExerciseFragment();
             LessonActivity.currentLesson.setInSlides(false);
         } else {
-            fragment = new SlideFragment();
-            LessonActivity.currentLesson.setInSlides(true);
+            fragment = new NavigationFragment();
         }
 
         // set the index as argument of the new fragment
@@ -45,6 +51,7 @@ public class SwipeAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public int getCount() {
-        return LessonActivity.currentLesson.getSlidesNumber() + LessonActivity.currentLesson.getExercisesNumber();
+        //TODO added 1 for the last page in the lesson - consider this
+        return LessonActivity.currentLesson.getSlidesNumber() + LessonActivity.currentLesson.getExercisesNumber() + 1;
     }
 }

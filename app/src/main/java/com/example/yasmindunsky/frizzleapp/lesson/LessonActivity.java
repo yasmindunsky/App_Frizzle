@@ -1,15 +1,18 @@
-package com.example.yasmindunsky.frizzleapp;
+package com.example.yasmindunsky.frizzleapp.lesson;
 
 import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.example.yasmindunsky.frizzleapp.MapActivity;
+import com.example.yasmindunsky.frizzleapp.R;
+import com.example.yasmindunsky.frizzleapp.SwipeAdapter;
 
 import org.xmlpull.v1.XmlPullParserException;
 

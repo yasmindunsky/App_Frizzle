@@ -2,22 +2,35 @@
 
     <slide>
         <text name="text">"cooking is also fun"</text>
-        <imageSource name="imageSource">"srcExample"</imageSource>
+        <image name="imageSource">"srcExample"</image>
     </slide>
 
     <slide>
         <text name="text">"cooking is still fun"</text>
-        <imageSource name="imageSource">"srcExample"</imageSource>
+        <image name="imageSource">"srcExample"</image>
     </slide>
 
     <slide>
         <text name="text">"how is cooking?"</text>
-        <imageSource name="imageSource">"srcExample"</imageSource>
+        <image name="imageSource">"srcExample"</image>
     </slide>
 
     <slide>
         <text name="text">"fun!"</text>
-        <imageSource name="imageSource">"srcExample"</imageSource>
+        <image name="imageSource">"srcExample"</image>
     </slide>
 
+    <exercise>
+        <type name="type">"SingleResponse"</type>
+        <question name="question">"A button is an example for a View"</question>
+        <image name="image">"None"</image>
+        <content name="content"></content>
+        <possibilities name = "possibilities">
+            <possibility name = "possibility">"True"</possibility>
+            <possibility name = "possibility">"False"</possibility>
+        </possibilities>
+        <answers name="answers">
+            <answer name="answer">"True"</answer>
+        </answers>
+    </exercise>
 </lesson>

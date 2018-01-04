@@ -1,7 +1,9 @@
-package com.example.yasmindunsky.frizzleapp;
+package com.example.yasmindunsky.frizzleapp.lesson;
 
 import android.content.Context;
 import android.content.res.XmlResourceParser;
+
+import com.example.yasmindunsky.frizzleapp.R;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -10,12 +12,11 @@ import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 
-import exercise.Exercise;
+import com.example.yasmindunsky.frizzleapp.lesson.exercise.Exercise;
 
 /**
  * Created by yasmin.dunsky on 21-Dec-17.
  */
-
 public class LessonContentParser {
 
     private XmlResourceParser xmlResourceParser;
@@ -40,7 +41,6 @@ public class LessonContentParser {
                     slides.add(newPage);
                 }
 
-                // TODO parse exercise and tasks
                 else if (eventType == XmlPullParser.START_TAG && xmlResourceParser.getName().equals("exercise")) {
                     Exercise newPage = parseExercise();
                     exercises.add(newPage);
@@ -48,20 +48,18 @@ public class LessonContentParser {
 
                 eventType = xmlResourceParser.next();
             }
-        } catch (XmlPullParserException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
 
         Slide lastSlidePage = new Slide("GOOD JOB!", "fireworks");
         slides.add(lastSlidePage);
-        LessonActivity.currentLesson.setSlides(slides);
 
+        LessonActivity.currentLesson.setSlides(slides);
         LessonActivity.currentLesson.setExercises(exercises);
     }
 
-    public static int getResId(String resName, Class<?> c) {
+    private static int getResId(String resName, Class<?> c) {
 
         try {
             Field idField = c.getDeclaredField(resName);
