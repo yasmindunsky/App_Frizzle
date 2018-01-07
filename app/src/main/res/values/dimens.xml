@@ -9,4 +9,5 @@
     <dimen name="slide_illustration_width">348dp</dimen>
     <dimen name="swipe_dots_area_height">60dp</dimen>
     <dimen name="swipe_dot_max_width">20dp</dimen>
+    <dimen name="start_margin">10dp</dimen>
 </resources>

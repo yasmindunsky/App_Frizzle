@@ -6,4 +6,7 @@
     <color name="backgroundGrey">#fafafa</color>
     <color name="TextGrey">#535264</color>
     <color name="lightBlue">#c9d3e9</color>
+    <color name="white">#ffffff</color>
+    <color name="UnselectedButton">#e7ebea</color>
+    <color name="SelectedButton">#dfccd6</color>
 </resources>

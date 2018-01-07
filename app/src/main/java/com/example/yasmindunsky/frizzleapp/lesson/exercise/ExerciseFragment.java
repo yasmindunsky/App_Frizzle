@@ -56,7 +56,6 @@ public class ExerciseFragment extends Fragment {
         fragmentView.findViewById(R.id.checkButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 if (exercise.isCorrect(fragmentView)) {
                     view.setBackgroundColor(Color.GREEN);
                 } else {

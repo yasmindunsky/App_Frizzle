@@ -33,4 +33,41 @@
             <answer name="answer">"True"</answer>
         </answers>
     </exercise>
+
+    <exercise>
+        <type name="type">"FillTheBlanks"</type>
+        <question name="question">"Complete the command so the text on the button will change to Good Job:"</question>
+        <image name="image">"None"</image>
+        <content name="content">
+            <object name = "object">"buttonNameInCode.setText("</object>
+            <object name = "object">");"</object>
+            <object name = "object">"!"</object>
+
+        </content>
+        <possibilities name = "possibilities"></possibilities>
+        <answers name="answers">
+            <answer name="answer">"Good Job"</answer>
+            <answer name="answer">"bla"</answer>
+        </answers>
+    </exercise>
+
+    <exercise>
+        <type name="type">"WordBank"</type>
+        <question name="question">"Complete the command so the text on the button will change to Good Job:"</question>
+        <image name="image">"None"</image>
+        <content name="content">
+            <object name = "object">"buttonNameInCode.setText("</object>
+            <object name = "object">");"</object>
+            <object name = "object">"!"</object>
+
+        </content>
+        <possibilities name = "possibilities">
+            <possibility name="possibility">"bla"</possibility>
+            <possibility name="possibility">"GoodJob"</possibility>
+        </possibilities>
+        <answers name="answers">
+            <answer name="answer">"Good Job"</answer>
+            <answer name="answer">"bla"</answer>
+        </answers>
+    </exercise>
 </lesson>

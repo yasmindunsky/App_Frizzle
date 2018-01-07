@@ -24,7 +24,7 @@ public class FreeText extends Exercise {
     public void createLayout(RelativeLayout layout, Context context){
         EditText inputText = new EditText(context);
         LayoutParams layoutParams = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
-        layoutParams.addRule(RelativeLayout.BELOW, R.id.exerciseImage);
+        layoutParams.addRule(RelativeLayout.BELOW, R.id.exerciseQuestion);
         inputText.setLayoutParams(layoutParams);
         inputText.setId(R.id.userAnswerInput);
         layout.addView(inputText);
