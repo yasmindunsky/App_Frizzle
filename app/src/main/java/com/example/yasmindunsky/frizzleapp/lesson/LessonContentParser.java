@@ -21,7 +21,7 @@ public class LessonContentParser {
 
     private XmlResourceParser xmlResourceParser;
 
-    public LessonContentParser(Context context) {
+    public LessonContentParser(Context context) throws XmlPullParserException {
         String lessonXmlName = "lesson_" + Integer.toString(LessonActivity.currentLesson.getID());
         xmlResourceParser = context.getResources().getXml(getResId(lessonXmlName, R.xml.class));
     }

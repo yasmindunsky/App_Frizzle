@@ -19,6 +19,9 @@ public class AppBuilderActivity extends AppCompatActivity {
         TabLayout.Tab codingTab = tabLayout.newTab().setText("Code");
         TabLayout.Tab graphicEditTab = tabLayout.newTab().setText("Graphic Edit");
 
+        final Fragment codingFragment = new CodingFragment();
+        final Fragment graphicEditFragment = new GraphicEditFragment();
+
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             public void onTabReselected(TabLayout.Tab tab) {
 
@@ -28,9 +31,9 @@ public class AppBuilderActivity extends AppCompatActivity {
                 Fragment fragment = null;
 
                 if(tab.getPosition() == 0){
-                    fragment = new CodingFragment();
+                    fragment = codingFragment;
                 } else {
-                    fragment = new GraphicEditFragment();
+                    fragment = graphicEditFragment;
                 }
 
                 FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
