@@ -26,18 +26,6 @@
         <item name="android:fontFamily">@font/hero_regular</item>
     </style>
 
-    <style name="LessonText" parent="@android:style/TextAppearance.Medium">
-        <item name="android:textSize">20dp</item>
-        <item name="android:fontFamily">@font/calibri_light</item>
-        <item name="android:textColor">@color/TextGrey</item>
-        <item name="android:layout_gravity">left|top</item>
-        <item name="android:layout_marginTop">25dp</item>
-        <item name="android:layout_marginLeft">40dp</item>
-        <item name="android:layout_marginRight">40dp</item>
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">@dimen/slide_text_height</item>
-    </style>
-
     <style name="HomeButton" parent="@android:style/Widget.Button">
         <item name="android:background">@color/colorPrimary</item>
         <item name="android:drawableLeft">@drawable/ic_home</item>
@@ -46,23 +34,56 @@
         <item name="android:layout_marginStart">20dp</item>
     </style>
 
+    <!--Slides-->
+
+    <style name="SlideText" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textSize">22dp</item>
+        <item name="android:fontFamily">@font/calibri_regular</item>
+        <item name="android:textColor">@color/TextGrey</item>
+        <item name="android:letterSpacing">.02</item>
+        <item name="android:lineSpacingExtra">5dp</item>
+        <item name="android:layout_gravity">left|top</item>
+        <item name="android:layout_marginTop">25dp</item>
+        <item name="android:layout_marginStart">55dp</item>
+        <item name="android:layout_marginEnd">55dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/slide_text_height</item>
+    </style>
+
+    <!--Exercises -->
+
+    <style name="ExerciseImage" parent="Theme.AppCompat.Light">
+        <item name="android:layout_marginTop">40dp</item>
+    </style>
+
+    <style name="ExerciseText" parent="@style/SlideText">
+        <!--<item name="android:layout_marginBottom">10dp</item>-->
+    </style>
+
     <style name="exerciseOptionButton" parent="@android:style/Widget.Button">
         <item name="android:background">@drawable/exercise_option_button_background</item>
-        <item name="android:textColor">@drawable/exercise_option_button_text</item>
-        <item name="android:fontFamily">@font/calibri_bold</item>
-        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@drawable/exercise_option_button_text_color</item>
+        <item name="android:fontFamily">@font/hero_regular</item>
+        <item name="android:textSize">20sp</item>
         <item name="android:padding">10dp</item>
         <item name="android:paddingStart">18dp</item>
         <item name="android:paddingEnd">18dp</item>
+    </style>
+
+    <style name="exerciseTwoOptionButton" parent="@style/exerciseOptionButton">
+        <item name="android:padding">12dp</item>
+        <item name="android:paddingStart">32dp</item>
+        <item name="android:paddingEnd">32dp</item>
     </style>
 
     <style name="checkButton" parent="@android:style/Widget.Button">
         <item name="android:background">@drawable/check_button_background</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:fontFamily">@font/hero_regular</item>
-        <item name="android:textSize">18sp</item>
+        <item name="android:textSize">20sp</item>
         <item name="android:letterSpacing">.08</item>
         <item name="android:width">180dp</item>
+        <item name="android:layout_marginBottom">20dp</item>
         <item name="android:padding">10sp</item>
         <item name="android:paddingStart">20sp</item>
         <item name="android:paddingEnd">20sp</item>

@@ -13,27 +13,30 @@
         android:gravity="center">
 
         <ImageView
+            style="@style/ExerciseImage"
             android:id="@+id/exerciseImage"
             android:layout_width="match_parent"
             android:layout_height="50pt"
             android:layout_alignParentTop="true"
             android:layout_gravity="center" />
 
-        <TextView
+        <android.support.v7.widget.AppCompatTextView
             android:id="@+id/exerciseQuestion"
-            style="@style/LessonText"
+            style="@style/ExerciseText"
             android:layout_below="@id/exerciseImage"
-            android:text="@string/slideText" />
+            android:text="@string/slideText"
+            android:textAppearance="@style/ExerciseText" />
 
-        <Button
+        <android.support.v7.widget.AppCompatButton
             android:id="@+id/checkButton"
-            style="@style/checkButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="false"
             android:layout_centerInParent="true"
-            android:text="@string/check" />
+            android:text="@string/check"
+            style="@style/checkButton"
+            />
 
     </RelativeLayout>
 

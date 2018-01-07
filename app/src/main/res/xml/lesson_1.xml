@@ -46,8 +46,8 @@
 
     <exercise>
         <type name="type">"SingleResponse"</type>
-        <question name="question">"An app\\u0027ss title is an example of what kind of View?"</question>
-        <image name="image">"None"</image>
+        <question name="question">"An app\\u0027s title is an example of what kind of View?"</question>
+        <image name="image">"exercise_illustrations_1"</image>
         <content name="content"></content>
         <possibilities name = "possibilities">
             <possibility name = "possibility">"TextView"</possibility>
@@ -61,7 +61,7 @@
     <exercise>
         <type name="type">"SingleResponse"</type>
         <question name="question">"A Button is a kind of a View."</question>
-        <image name="image">"None"</image>
+        <image name="image">"exercise_illustrations_2"</image>
         <content name="content"></content>
         <possibilities name = "possibilities">
             <possibility name = "possibility">"True"</possibility>
@@ -75,7 +75,7 @@
     <exercise>
         <type name="type">"FreeText"</type>
         <question name="question">"Write the Java command to find a View by it's Id."</question>
-        <image name="image">"lesson_illustration1"</image>
+        <image name="image">"exercise_illustrations_3"</image>
         <content name="content"></content>
         <possibilities name = "possibilities"></possibilities>
         <answers name="answers">
@@ -86,7 +86,7 @@
     <exercise>
         <type name="type">"MultipleResponse"</type>
         <question name="question">"The properties table allows us to:"</question>
-        <image name="image">"None"</image>
+        <image name="image">"exercise_illustrations_4"</image>
         <content name="content"></content>
         <possibilities name = "possibilities">
             <possibility name= "possibility">"Set TextView\\u0027s font"</possibility>
@@ -106,7 +106,7 @@
         <type name="type">"SingleResponse"</type>
         <question name="question">"If we change the Button ID to \\u0027Send\\u0027, the text that will appear
             on the button will be \\u0027Send\\u0027."</question>
-        <image name="image">"None"</image>
+        <image name="image">"exercise_illustrations_5"</image>
         <content name="content"></content>
         <possibilities name = "possibilities">
             <possibility name = "possibility">"True"</possibility>
@@ -121,7 +121,7 @@
         <type name="type">"SingleResponse"</type>
         <question name="question">"If we change the Button Text to \\u0027Send\\u0027, the text that will appear
             on the button will be \\u0027Send\\u0027."</question>
-        <image name="image">"None"</image>
+        <image name="image">"exercise_illustrations_6"</image>
         <content name="content"></content>
         <possibilities name = "possibilities">
             <possibility name = "possibility">"True"</possibility>

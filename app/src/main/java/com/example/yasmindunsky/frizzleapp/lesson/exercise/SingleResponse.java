@@ -1,16 +1,15 @@
 package com.example.yasmindunsky.frizzleapp.lesson.exercise;
 
 import android.content.Context;
+import android.support.v7.widget.AppCompatRadioButton;
 import android.view.ContextThemeWrapper;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TableRow;
 
 import com.example.yasmindunsky.frizzleapp.R;
 
@@ -38,12 +37,13 @@ public class SingleResponse extends Exercise {
         possibilitiesButtons.setGravity(Gravity.CENTER);
         layout.addView(possibilitiesButtons);
 
-        // create each possibility as a radio button and add to RadioGroup
-        int buttonStyle = R.style.exerciseOptionButton;
+        // Create each possibility as a radio button and add to RadioGroup.
+        // TODO: choose style based on number of possible answers.
+        int buttonStyle = R.style.exerciseTwoOptionButton;
         for (final String possibility : this.getPossibilities()) {
-            final RadioButton button = new RadioButton(new ContextThemeWrapper(context, buttonStyle), null, buttonStyle);
+            final AppCompatRadioButton button = new AppCompatRadioButton(new ContextThemeWrapper(context, buttonStyle), null, buttonStyle);
             RadioGroup.LayoutParams buttonLayoutParams =
-                    new RadioGroup.LayoutParams(RadioGroup.LayoutParams.WRAP_CONTENT, RadioGroup.LayoutParams.WRAP_CONTENT);
+                    new RadioGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, RadioGroup.LayoutParams.WRAP_CONTENT);
             buttonLayoutParams.setMargins(16,20,16,16);
             button.setLayoutParams(buttonLayoutParams);
             button.setText(possibility);
@@ -55,7 +55,7 @@ public class SingleResponse extends Exercise {
     public boolean isCorrect(View view) {
         // get the text on the checked radio button
         RadioGroup radioGroup = view.findViewById(R.id.radioGroup);
-        RadioButton checkedButton = view.findViewById(radioGroup.getCheckedRadioButtonId());
+        AppCompatRadioButton checkedButton = view.findViewById(radioGroup.getCheckedRadioButtonId());
         String userSelectedAnswer = checkedButton.getText().toString();
 
         // compare the text on the checked button to the answer
