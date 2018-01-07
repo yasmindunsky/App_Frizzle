@@ -34,7 +34,6 @@
             android:gravity="center"
             android:theme="?attr/actionBarTheme"
             app:navigationIcon="@drawable/ic_home"
-
             >
 
             <android.support.v7.widget.AppCompatTextView

@@ -23,6 +23,7 @@
         <android.support.v7.widget.AppCompatTextView
             android:id="@+id/exerciseQuestion"
             style="@style/ExerciseText"
+            android:layout_height="wrap_content"
             android:layout_below="@id/exerciseImage"
             android:text="@string/slideText"
             android:textAppearance="@style/ExerciseText" />
