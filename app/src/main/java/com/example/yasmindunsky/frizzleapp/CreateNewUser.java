@@ -1,10 +1,7 @@
 package com.example.yasmindunsky.frizzleapp;
 
 import android.os.AsyncTask;
-
-import java.io.BufferedOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
@@ -15,33 +12,39 @@ import java.nio.charset.StandardCharsets;
 
 class CreateNewUser extends AsyncTask<String, Void, String> {
 
-
     @Override
     protected String doInBackground(String... strings) {
+
         HttpURLConnection client = null;
         try {
-            URL url = new URL("http://10.10.30.145:8000/users/register/");
 
+            URL url = new URL("http://10.10.30.145:8000/users/register/");
             client = (HttpURLConnection) url.openConnection();
             client.setRequestMethod("POST");
-
-            String charset = StandardCharsets.UTF_8.name();
-            client.setRequestProperty("Accept-Charset", charset);
-            client.setRequestProperty("Content-Type", "application/x-www-form-urlencoded;charset=" + charset);
+            client.setRequestProperty("USER-AGENT","Mozilla/5.0");
+            client.setRequestProperty("ACCEPT-LANGUAGE","en-US,en;0.5");
 
             client.setDoOutput(true);
-            client.setChunkedStreamingMode(0);
 
-//            OutputStream out = new BufferedOutputStream(client.getOutputStream());
+            String username = strings[0];
+            String email = strings[1];
+            String password = strings[2];
 
-            String username = "username";
-            String password = "password";
-            String query = String.format("username=%s&password=%s",URLEncoder.encode(username, charset), URLEncoder.encode(password, charset));
+            String query = String.format("username=%s&email=%s&password=%s",
+                    URLEncoder.encode(username, StandardCharsets.UTF_8.name()),
+                    URLEncoder.encode(email, StandardCharsets.UTF_8.name()),
+                    URLEncoder.encode(password, StandardCharsets.UTF_8.name()));
 
+            byte[] postData = query.getBytes(StandardCharsets.UTF_8);
+            int postDataLength = postData.length;
+
+            client.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+            client.setRequestProperty("charset", "utf-8");
+            client.setRequestProperty("Content-Length", Integer.toString(postDataLength));
+            client.setFixedLengthStreamingMode(postDataLength);
 
             try (OutputStream output = client.getOutputStream()) {
-                output.write(query.getBytes(charset));
-
+                output.write(query.getBytes(StandardCharsets.UTF_8));
                 output.flush();
                 output.close();
             }
@@ -54,6 +57,8 @@ class CreateNewUser extends AsyncTask<String, Void, String> {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
         } finally {
             if (client != null) // Make sure the connection is not null.
                 client.disconnect();
@@ -62,3 +67,13 @@ class CreateNewUser extends AsyncTask<String, Void, String> {
         return null;
     }
 }
+
+// default ip - 127.0.0.1
+// ip at Agur 192.168.1.8
+// ip at PICO 10.10.30.145
+// ip at Melchett 10.100.102.8
+// ip at Noga 192.168.14.159
+// ip at HUJI 172.29.105.213
+
+
+
