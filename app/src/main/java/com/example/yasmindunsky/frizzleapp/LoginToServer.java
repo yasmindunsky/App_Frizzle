@@ -1,6 +1,7 @@
 package com.example.yasmindunsky.frizzleapp;
 
 import android.os.AsyncTask;
+import android.widget.TextView;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
@@ -10,7 +11,13 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 
-class CreateNewUser extends AsyncTask<String, Void, String> {
+import android.app.Activity;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.provider.Settings.System;
+import android.view.View;
+
+class LoginToServer extends AsyncTask<String, Void, String> {
 
     @Override
     protected String doInBackground(String... strings) {
@@ -18,7 +25,7 @@ class CreateNewUser extends AsyncTask<String, Void, String> {
         HttpURLConnection client = null;
         try {
 
-            URL url = new URL("http://10.10.30.145:8000/users/register/");
+            URL url = new URL("http://10.10.30.145:8000/users/login/");
             client = (HttpURLConnection) url.openConnection();
             client.setRequestMethod("POST");
             client.setRequestProperty("USER-AGENT","Mozilla/5.0");
@@ -27,12 +34,10 @@ class CreateNewUser extends AsyncTask<String, Void, String> {
             client.setDoOutput(true);
 
             String username = strings[0];
-            String email = strings[1];
-            String password = strings[2];
+            String password = strings[1];
 
-            String query = String.format("username=%s&email=%s&password=%s",
+            String query = String.format("username=%s&password=%s",
                     URLEncoder.encode(username, StandardCharsets.UTF_8.name()),
-                    URLEncoder.encode(email, StandardCharsets.UTF_8.name()),
                     URLEncoder.encode(password, StandardCharsets.UTF_8.name()));
 
             byte[] postData = query.getBytes(StandardCharsets.UTF_8);
@@ -47,6 +52,10 @@ class CreateNewUser extends AsyncTask<String, Void, String> {
                 output.write(query.getBytes(StandardCharsets.UTF_8));
                 output.flush();
                 output.close();
+
+                if(client.getResponseCode() == 302){
+                    return "success";
+                }
             }
 
         } catch (MalformedURLException e) {
@@ -66,14 +75,12 @@ class CreateNewUser extends AsyncTask<String, Void, String> {
 
         return null;
     }
+
+    @Override
+    protected void onPostExecute(String result) {
+//        TextView txt = (TextView) findViewById();
+//        txt.setText("Executed"); // txt.setText(result);
+        super.onPostExecute(result);
+    }
 }
-
-// default ip - 127.0.0.1
-// ip at Agur 192.168.1.8
-// ip at PICO 10.10.30.145
-// ip at Melchett 10.100.102.8
-// ip at Noga 192.168.14.159
-// ip at HUJI 172.29.105.213
-
-
 

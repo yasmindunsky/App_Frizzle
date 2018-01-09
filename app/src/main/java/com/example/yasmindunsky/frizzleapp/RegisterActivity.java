@@ -1,11 +1,11 @@
 package com.example.yasmindunsky.frizzleapp;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -14,8 +14,17 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        Button createUserButton = findViewById(R.id.createUser);
+        Button createUserButton = findViewById(R.id.registerButton);
         createUserButton.setOnClickListener(createNewUser);
+
+        Button goToLogin = findViewById(R.id.goToLoginButton);
+        goToLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent loginIntent = new Intent(view.getContext(), LoginActivity.class);
+                startActivity(loginIntent);
+            }
+        });
     }
 
     View.OnClickListener createNewUser = new View.OnClickListener() {

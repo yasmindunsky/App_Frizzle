@@ -66,6 +66,13 @@ class CreateNewUser extends AsyncTask<String, Void, String> {
 
         return null;
     }
+
+    @Override
+    protected void onPostExecute(String result) {
+//        TextView txt = (TextView) findViewById();
+//        txt.setText("Executed"); // txt.setText(result);
+        super.onPostExecute(result);
+    }
 }
 
 // default ip - 127.0.0.1
