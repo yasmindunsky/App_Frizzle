@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.yasmindunsky.frizzleapp.lesson.LessonActivity;
@@ -44,7 +45,7 @@ public class ExerciseFragment extends Fragment {
             fragmentImage.setImageResource(imageDrawable);
         }
 
-        exercise.createLayout(((LinearLayout) fragmentView.findViewById(R.id.exerciseElementsLayout)), fragmentView.getContext());
+        exercise.createLayout(((RelativeLayout) fragmentView.findViewById(R.id.exerciseElementsLayout)), fragmentView.getContext());
 
         setCheckButtonOnClick(fragmentView);
 
@@ -55,7 +56,6 @@ public class ExerciseFragment extends Fragment {
         fragmentView.findViewById(R.id.checkButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 if (exercise.isCorrect(fragmentView)) {
                     view.setBackgroundColor(Color.GREEN);
                 } else {

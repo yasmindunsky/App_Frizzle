@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import java.util.ArrayList;
 
@@ -18,7 +19,7 @@ public class FillTheBlanks extends Exercise {
         super(type, question, imageSource, content, possibilities, answers);
     }
 
-    public void createLayout(LinearLayout view, Context context) {
+    public void createLayout(RelativeLayout view, Context context) {
         for (int i = 0; i < this.getContent().size(); i++) {
             String sentence = this.getContent().get(i);
 

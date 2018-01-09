@@ -3,6 +3,7 @@ package com.example.yasmindunsky.frizzleapp.lesson.exercise;
 import android.content.Context;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import java.util.ArrayList;
 
@@ -71,7 +72,7 @@ public abstract class Exercise {
         return answers;
     }
 
-    abstract public void createLayout(LinearLayout view, Context context);
+    abstract public void createLayout(RelativeLayout view, Context context);
 
     abstract public boolean isCorrect(View view);
 

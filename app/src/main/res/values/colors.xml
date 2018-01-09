@@ -5,5 +5,9 @@
     <color name="colorAccent">#e2d4d7</color>
     <color name="backgroundGrey">#fafafa</color>
     <color name="TextGrey">#535264</color>
+    <color name="TextLightGrey">#d5d5d5</color>
+    <color name="white">#ffffff</color>
+    <color name="UnselectedButton">#e7ebea</color>
+    <color name="SelectedButton">#dfccd6</color>
     <color name="lightBlue">#dee5f5</color>
 </resources>

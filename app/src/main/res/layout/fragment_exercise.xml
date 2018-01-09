@@ -6,33 +6,39 @@
     tools:context="com.example.yasmindunsky.frizzleapp.lesson.exercise.ExerciseFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <LinearLayout
+    <RelativeLayout
+        android:id="@+id/exerciseElementsLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/exerciseQuestion"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+        android:gravity="center">
 
         <ImageView
+            style="@style/ExerciseImage"
             android:id="@+id/exerciseImage"
             android:layout_width="match_parent"
-            android:layout_height="50pt" />
+            android:layout_height="50pt"
+            android:layout_alignParentTop="true"
+            android:layout_gravity="center" />
 
-        <LinearLayout
-            android:id="@+id/exerciseElementsLayout"
-            android:layout_width="match_parent"
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/exerciseQuestion"
+            style="@style/ExerciseText"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"></LinearLayout>
+            android:layout_below="@id/exerciseImage"
+            android:text="@string/slideText"
+            android:textAppearance="@style/ExerciseText" />
 
-        <Button
+        <android.support.v7.widget.AppCompatButton
             android:id="@+id/checkButton"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Check" />
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="false"
+            android:layout_centerInParent="true"
+            android:text="@string/check"
+            style="@style/checkButton"
+            />
 
-    </LinearLayout>
+    </RelativeLayout>
 
 </FrameLayout>

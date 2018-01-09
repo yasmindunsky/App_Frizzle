@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import java.util.ArrayList;
 
@@ -23,7 +24,7 @@ public class WordBank extends FillTheBlanks {
     }
 
     @Override
-    public void createLayout(final LinearLayout fragmentView, Context context) {
+    public void createLayout(final RelativeLayout fragmentView, Context context) {
         super.createLayout(fragmentView, context);
 
         for(int i = 0; i < this.getPossibilities().size(); i++){

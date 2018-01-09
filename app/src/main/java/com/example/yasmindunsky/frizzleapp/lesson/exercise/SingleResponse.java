@@ -1,11 +1,16 @@
 package com.example.yasmindunsky.frizzleapp.lesson.exercise;
 
 import android.content.Context;
+import android.graphics.Typeface;
+import android.support.v7.widget.AppCompatRadioButton;
+import android.view.ContextThemeWrapper;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
 
 import com.example.yasmindunsky.frizzleapp.R;
 
@@ -21,18 +26,29 @@ public class SingleResponse extends Exercise {
     }
 
     @Override
-    public void createLayout(LinearLayout view, Context context) {
+    public void createLayout(RelativeLayout layout, Context context) {
         // add RadioGroup to layout
         RadioGroup possibilitiesButtons = new RadioGroup(context);
-        possibilitiesButtons.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+        LayoutParams layoutParams =
+                new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
+        layoutParams.addRule(RelativeLayout.BELOW, R.id.exerciseQuestion);
+        possibilitiesButtons.setLayoutParams(layoutParams);
         possibilitiesButtons.setId(R.id.radioGroup);
-        view.addView(possibilitiesButtons);
+        possibilitiesButtons.setOrientation(LinearLayout.HORIZONTAL);
+        possibilitiesButtons.setGravity(Gravity.CENTER);
+        layout.addView(possibilitiesButtons);
 
-        // create each possibility as a radio button and add to RadioGroup
+        // Create each possibility as a radio button and add to RadioGroup.
+        // TODO: choose style based on number of possible answers.
+        int buttonStyle = R.style.exerciseTwoOptionButton;
         for (final String possibility : this.getPossibilities()) {
-            final RadioButton button = new RadioButton(context);
-            possibilitiesButtons.addView(button);
+            final AppCompatRadioButton button = new AppCompatRadioButton(new ContextThemeWrapper(context, buttonStyle), null, buttonStyle);
+            RadioGroup.LayoutParams buttonLayoutParams =
+                    new RadioGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, RadioGroup.LayoutParams.WRAP_CONTENT);
+            buttonLayoutParams.setMargins(16,20,16,16);
+            button.setLayoutParams(buttonLayoutParams);
             button.setText(possibility);
+            possibilitiesButtons.addView(button);
         }
     }
 
@@ -40,7 +56,7 @@ public class SingleResponse extends Exercise {
     public boolean isCorrect(View view) {
         // get the text on the checked radio button
         RadioGroup radioGroup = view.findViewById(R.id.radioGroup);
-        RadioButton checkedButton = view.findViewById(radioGroup.getCheckedRadioButtonId());
+        AppCompatRadioButton checkedButton = view.findViewById(radioGroup.getCheckedRadioButtonId());
         String userSelectedAnswer = checkedButton.getText().toString();
 
         // compare the text on the checked button to the answer

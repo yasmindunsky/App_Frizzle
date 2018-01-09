@@ -6,4 +6,5 @@
     <string name="title_activity_course">CourseActivity</string>
     <string name="lessonTitle">LESSON</string>
     <string name="slideText">Everything you see on an app is the user interface - UI</string>
+    <string name="check">CHECK</string>
 </resources>
