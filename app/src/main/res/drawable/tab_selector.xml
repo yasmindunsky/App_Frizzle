@@ -3,7 +3,7 @@
     <item android:drawable="@drawable/selected_dot"
         android:state_selected="true"/>
     <item android:drawable="@drawable/default_dot"/>
-    <item android:drawable="@drawable/last_dot"
+    <item android:drawable="@drawable/slides_last_dot"
         android:state_selected="false"
         android:state_last="true"/>
 </selector>

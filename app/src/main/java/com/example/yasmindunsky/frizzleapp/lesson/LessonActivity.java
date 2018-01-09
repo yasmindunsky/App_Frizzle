@@ -5,7 +5,6 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -19,10 +18,13 @@ import org.xmlpull.v1.XmlPullParserException;
 import java.io.IOException;
 
 public class LessonActivity extends FragmentActivity {
+    private static SwipeAdapter swipeAdapter;
+    private static Lesson currentLesson;
+    private ViewPager viewPager;
 
-    public static Lesson currentLesson;
-    public ViewPager viewPager;
-    public static SwipeAdapter swipeAdapter;
+    static public Lesson getCurrentLesson() {
+        return currentLesson;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +32,8 @@ public class LessonActivity extends FragmentActivity {
         setContentView(R.layout.activity_lesson);
 
         // Set Toolbar home button.
-        android.support.v7.widget.Toolbar toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar);
+        android.support.v7.widget.Toolbar toolbar =
+                (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -43,13 +46,13 @@ public class LessonActivity extends FragmentActivity {
         // TODO consider having a state with current lesson id
         // create new Lesson by the id received from intent
         Intent intent = getIntent();
-        String lesson_id = intent.getStringExtra(MapActivity.ID_KEY);
-        int id = Integer.parseInt(lesson_id);
+        String lessonId = intent.getStringExtra(MapActivity.ID_KEY);
+        int id = Integer.parseInt(lessonId);
         currentLesson = new Lesson(id);
 
-        // Set lesson title to current number
+        // Set lesson title to current number.
         TextView lessonTitle = (TextView) findViewById(R.id.lessonTitle);
-        lessonTitle.setText(getString(R.string.lessonTitle) + " " + lesson_id);
+        lessonTitle.setText(getString(R.string.lessonTitle) + " " + lessonId);
 
         // parse xml file to insert content to the currentLesson
         LessonContentParser lessonContentParser = null;
@@ -66,18 +69,73 @@ public class LessonActivity extends FragmentActivity {
             e.printStackTrace();
         }
 
-        // start swipe between pages
+        // Create SwipeAdapter.
         viewPager = findViewById(R.id.pager);
-        swipeAdapter = new SwipeAdapter(getSupportFragmentManager());
+        swipeAdapter = new SwipeAdapter(getSupportFragmentManager(), currentLesson);
         viewPager.setAdapter(swipeAdapter);
 
-        // Connecting TabLayout with ViewPager to show swipe position
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.dotsTabLayout);
+        // Connecting TabLayout with ViewPager to show swipe position in dots.
+        final TabLayout tabLayout = (TabLayout) findViewById(R.id.dotsTabLayout);
         tabLayout.setupWithViewPager(viewPager, true);
 
-        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-        int lastIndex = tabLayout.getTabCount() - 1;
-        ((LinearLayout) tabLayout.getChildAt(0)).getChildAt(lastIndex).setBackgroundResource(R.drawable.last_dot);
+        // Hide Exercise or Slides Tabs according to current fragment.
+        final int firstExerciseIndex = currentLesson.getSlidesNumber();
+        final int lastExerciseIndex = firstExerciseIndex + currentLesson.getExercisesNumber();
+        ChangeDotsVisibility(tabLayout, View.VISIBLE, firstExerciseIndex, lastExerciseIndex);
+        // TODO: Create a customized viewPager with these overridden methods and use it instead.
+        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout) {
+            @Override
+            public void onPageSelected(final int position){
+                if (position == firstExerciseIndex) {
+                    ChangeDotsVisibility(tabLayout, View.GONE, firstExerciseIndex, lastExerciseIndex);
+                }
+                if (position == firstExerciseIndex - 1) {
+                    ChangeDotsVisibility(tabLayout,  View.VISIBLE, firstExerciseIndex, lastExerciseIndex);
+                }
+            }
+
+//            // Disable swipe if exercise was not answered yet.
+//            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+//                // disable swipe
+//                if(!currentLesson.isSwipeEnabled()) {
+//                    if (viewPager.getAdapter().getCount()>1) {
+//                        viewPager.setCurrentItem(1);
+//                        viewPager.setCurrentItem(0);
+//                    }
+//                }
+//            }
+            });
+    }
+
+
+    /**
+     * Alternates visibility of dots before and after switchingIndex in TabLayout. Dots before
+     * switchingIndex will receive firstPartVisibility, and dots after will receive the opposite.
+     * Also alternates between the check-mark and back arrow icons.
+     * @param tabLayout
+     * @param firstPartVisibility
+     * @param switchingIndex
+     * @param lastIndex
+     */
+    private void ChangeDotsVisibility(
+            TabLayout tabLayout, int firstPartVisibility, int switchingIndex, int lastIndex) {
+        int secondPartVisibility = (firstPartVisibility == View.GONE) ? View.VISIBLE : View.GONE;
+        LinearLayout layout = (LinearLayout) tabLayout.getChildAt(0);
+        for (int i = 0; i <= lastIndex; i++)
+        {
+            int visibility = (i < switchingIndex) ? firstPartVisibility : secondPartVisibility;
+            layout.getChildAt(i).setVisibility(visibility);
+        }
+
+        // The icon dot should always be visible, and change it's icon according to visibility:
+        // if first part is visible, display slides_last_dot, otherwise display exercise_first_dot
+        View iconDot = layout.getChildAt(switchingIndex - 1);
+        iconDot.setVisibility(View.VISIBLE);
+        int icon =
+                (firstPartVisibility == View.VISIBLE) ?
+                R.drawable.slides_last_dot :
+                R.drawable.exercise_first_dot;
+        iconDot.setBackgroundResource(icon);
     }
 }
 

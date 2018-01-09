@@ -56,4 +56,5 @@ public class Lesson {
     public int getExercisesNumber() {
         return lessonExercise.size();
     }
+
 }
