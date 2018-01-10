@@ -20,9 +20,10 @@ import com.example.yasmindunsky.frizzleapp.lesson.exercise.Exercise;
 public class LessonContentParser {
 
     private XmlResourceParser xmlResourceParser;
+    Lesson currentLesson = LessonActivity.getCurrentLesson();
 
     public LessonContentParser(Context context) throws XmlPullParserException {
-        String lessonXmlName = "lesson_" + Integer.toString(LessonActivity.currentLesson.getID());
+        String lessonXmlName = "lesson_" + Integer.toString(currentLesson.getID());
         xmlResourceParser = context.getResources().getXml(getResId(lessonXmlName, R.xml.class));
     }
 
@@ -55,8 +56,8 @@ public class LessonContentParser {
         Slide lastSlidePage = new Slide("GOOD JOB!", "fireworks");
         slides.add(lastSlidePage);
 
-        LessonActivity.currentLesson.setSlides(slides);
-        LessonActivity.currentLesson.setExercises(exercises);
+        currentLesson.setSlides(slides);
+        currentLesson.setExercises(exercises);
     }
 
     private static int getResId(String resName, Class<?> c) {

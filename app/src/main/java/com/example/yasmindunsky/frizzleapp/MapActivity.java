@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.yasmindunsky.frizzleapp.appBuilder.AppBuilderActivity;
 import com.example.yasmindunsky.frizzleapp.lesson.LessonActivity;
 
 
@@ -29,6 +30,20 @@ public class MapActivity extends AppCompatActivity {
 
         // calling the lesson activity with lesson id
         Intent lessonIntent = new Intent(this, LessonActivity.class);
+        lessonIntent.putExtra(ID_KEY,lessonNumber);
+
+        startActivity(lessonIntent);
+    }
+
+    public void goToPlayground(View view){
+
+        // getting the lesson id by the text on the pressed button
+        int buttonID = view.getId();
+        Button button = view.findViewById(buttonID);
+        String lessonNumber = button.getText().toString();
+
+        // calling the lesson activity with lesson id
+        Intent lessonIntent = new Intent(this, AppBuilderActivity.class);
         lessonIntent.putExtra(ID_KEY,lessonNumber);
 
         startActivity(lessonIntent);

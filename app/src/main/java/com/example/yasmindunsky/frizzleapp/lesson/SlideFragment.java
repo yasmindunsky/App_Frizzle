@@ -31,7 +31,7 @@ public class SlideFragment extends Fragment {
         fragmentImage = view.findViewById(R.id.slideImage);
         Bundle bundle = getArguments();
 
-        Slide slide = LessonActivity.currentLesson.getLessonSlides().get(bundle.getInt("index"));
+        Slide slide = LessonActivity.getCurrentLesson().getLessonSlides().get(bundle.getInt("index"));
         String message = slide.getSlideText();
         fragmentText.setText(message);
         String imageSrc = slide.getImageSource();

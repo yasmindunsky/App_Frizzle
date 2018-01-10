@@ -36,7 +36,7 @@ public class ExerciseFragment extends Fragment {
         final ImageView fragmentImage = fragmentView.findViewById(R.id.exerciseImage);
         Bundle bundle = getArguments();
 
-        exercise = LessonActivity.currentLesson.getExercises().get(bundle.getInt("index"));
+        exercise = LessonActivity.getCurrentLesson().getExercises().get(bundle.getInt("index"));
 
         fragmentQuestion.setText(exercise.getQuestion());
         if (!exercise.getImageSource().equals("None")) {
