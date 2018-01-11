@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.ContextThemeWrapper;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
@@ -26,7 +27,7 @@ public class MultipleResponse extends Exercise {
     }
 
     @Override
-    public void createLayout(RelativeLayout layout, Context context) {
+    public void createLayout(RelativeLayout layout, Context context, final Button checkButton) {
         // Create a LinearLayout that will hold the buttons and place it correctly.
         final LinearLayout linearLayout = new LinearLayout(context);
         LayoutParams layoutParams = new LayoutParams(2000, 2000);
@@ -63,6 +64,7 @@ public class MultipleResponse extends Exercise {
             buttonlayoutParams.width = LayoutParams.WRAP_CONTENT;
             buttonlayoutParams.setMargins(16,16,16,16);
             button.setLayoutParams(buttonlayoutParams);
+
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -73,8 +75,16 @@ public class MultipleResponse extends Exercise {
                         // possibility wasn't selected - select it now
                         userAnswer.add(possibility);
                     }
+
+                    // disable the check button if none of the buttons is selected
+                    if(userAnswer.isEmpty()){
+                        checkButton.setEnabled(false);
+                    } else {
+                        checkButton.setEnabled(true);
+                    }
                 }
             });
+
             TableRow row = rows.get((int)i / COLS_NUM);
             row.addView(button);
         }

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -39,15 +40,17 @@ public class ExerciseFragment extends Fragment {
         exercise = LessonActivity.getCurrentLesson().getExercises().get(bundle.getInt("index"));
 
         fragmentQuestion.setText(exercise.getQuestion());
-        if (!exercise.getImageSource().equals("None")) {
+        if (!(exercise.getImageSource().equals("None"))) {
             String imageSrc = exercise.getImageSource();
             int imageDrawable = getResources().getIdentifier(imageSrc, "drawable", getActivity().getPackageName());
             fragmentImage.setImageResource(imageDrawable);
         }
 
-        exercise.createLayout(((RelativeLayout) fragmentView.findViewById(R.id.exerciseElementsLayout)), fragmentView.getContext());
-
+        (fragmentView.findViewById(R.id.checkButton)).setEnabled(false);
         setCheckButtonOnClick(fragmentView);
+
+        exercise.createLayout(((RelativeLayout) fragmentView.findViewById(R.id.exerciseElementsLayout)),
+                fragmentView.getContext(), (Button)fragmentView.findViewById(R.id.checkButton));
 
         return fragmentView;
     }
