@@ -2,17 +2,17 @@
 
     <slide>
         <text name="text">"A variable is like a box."</text>
-        <image name="imageSource">"srcExample"</image>
+        <image name="imageSource">"box_1"</image>
     </slide>
 
     <slide>
         <text name="text">"It can hold a value inside."</text>
-        <image name="imageSource">"srcExample"</image>
+        <image name="imageSource">"box_2"</image>
     </slide>
 
     <slide>
         <text name="text">"We use different types of boxes for different types of values."</text>
-        <image name="imageSource">"srcExample"</image>
+        <image name="imageSource">"box_3"</image>
     </slide>
 
     <exercise>

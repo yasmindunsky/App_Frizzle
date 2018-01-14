@@ -13,12 +13,13 @@
         android:gravity="center">
 
         <ImageView
-            style="@style/ExerciseImage"
             android:id="@+id/exerciseImage"
+            style="@style/ExerciseImage"
             android:layout_width="match_parent"
-            android:layout_height="50pt"
+            android:layout_height="135dp"
             android:layout_alignParentTop="true"
-            android:layout_gravity="center" />
+            android:layout_gravity="center"
+            android:src="@drawable/exercise_illustrations_3" />
 
         <android.support.v7.widget.AppCompatTextView
             android:id="@+id/exerciseQuestion"

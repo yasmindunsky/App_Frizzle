@@ -6,43 +6,74 @@
     android:layout_height="match_parent"
     tools:context="com.example.yasmindunsky.frizzleapp.appBuilder.AppBuilderActivity">
 
-    <FrameLayout
-        android:id="@+id/fragmentFrame"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Play"
-        app:layout_constraintVertical_bias="0.905">
-    </FrameLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/Play"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:layout_marginEnd="8dp"
-        android:text="RUN"
-        app:layout_constraintBottom_toTopOf="@+id/fragmentFrame"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tabLayout"
-        app:layout_constraintTop_toTopOf="parent" />
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/builderToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/app_bar_height"
+        android:layout_alignParentTop="true"
+        android:background="?attr/colorPrimaryDark"
+        android:gravity="center"
+        android:theme="?attr/actionBarTheme"
+        app:navigationIcon="@drawable/ic_home"
+        >
 
-    <android.support.design.widget.TabLayout
-        android:id="@+id/tabLayout"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="1dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginStart="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/Play"
-        app:layout_constraintEnd_toStartOf="@+id/Play"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:tabGravity="fill"
-        app:tabMode="fixed" />
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/builderTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="@string/appBuilderTitle"
+            android:textAppearance="@style/ActivityTitle" />
 
+    </android.support.v7.widget.Toolbar>
+
+
+        <Button
+            android:id="@+id/Play"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_below="@id/builderToolbar"
+            android:layout_marginBottom="5dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@id/tabLayout"
+            android:background="@drawable/run_button_background"
+            android:text=">" />
+        <!--app:layout_constraintBottom_toTopOf="@+id/fragmentFrame"-->
+        <!--app:layout_constraintEnd_toEndOf="parent"-->
+        <!--app:layout_constraintStart_toEndOf="@+id/tabLayout"-->
+        <!--app:layout_constraintTop_toTopOf="parent" />-->
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tabLayout"
+            android:layout_width="250dp"
+            android:layout_height="30dp"
+            android:layout_below="@id/builderToolbar"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="10dp"
+            app:tabGravity="fill"
+            app:tabMode="fixed" />
+        <!--android:layout_marginBottom="1dp"-->
+        <!--android:layout_marginEnd="4dp"-->
+        <!--android:layout_marginStart="8dp"-->
+        <!--app:layout_constraintBottom_toBottomOf="@+id/Play"-->
+        <!--app:layout_constraintEnd_toStartOf="@+id/Play"-->
+        <!--app:layout_constraintStart_toStartOf="parent"-->
+        <!--app:layout_constraintTop_toTopOf="parent"-->
+
+
+        <FrameLayout
+            android:id="@+id/fragmentFrame"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/tabLayout"
+            android:layout_marginTop="8dp" />
+
+    </RelativeLayout>
 </android.support.constraint.ConstraintLayout>

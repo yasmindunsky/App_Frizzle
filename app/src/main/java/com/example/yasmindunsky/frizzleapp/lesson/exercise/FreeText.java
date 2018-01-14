@@ -25,10 +25,11 @@ public class FreeText extends Exercise {
 
     public void createLayout(RelativeLayout layout, Context context){
         int style = R.style.editText;
-        EditText inputText = new EditText(new ContextThemeWrapper(context, style), null, style);
-        LayoutParams layoutParams = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+        android.support.v7.widget.AppCompatEditText inputText = new android.support.v7.widget.AppCompatEditText(new ContextThemeWrapper(context, style), null, style);
+        LayoutParams layoutParams = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
         layoutParams.addRule(RelativeLayout.BELOW, R.id.exerciseQuestion);
         layoutParams.addRule(RelativeLayout.CENTER_IN_PARENT);
+        inputText.setTextAppearance(context, R.style.editText);
         inputText.setLayoutParams(layoutParams);
         inputText.setHint("Type in your answer..");
         inputText.setId(R.id.userAnswerInput);

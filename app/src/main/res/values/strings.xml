@@ -5,6 +5,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_course">CourseActivity</string>
     <string name="lessonTitle">LESSON</string>
+    <string name="appBuilderTitle">BUILD</string>
     <string name="slideText">Everything you see on an app is the user interface - UI</string>
     <string name="check">CHECK</string>
 </resources>

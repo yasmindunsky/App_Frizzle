@@ -64,4 +64,5 @@ public class ExerciseFragment extends Fragment {
             }
         });
     }
+
 }

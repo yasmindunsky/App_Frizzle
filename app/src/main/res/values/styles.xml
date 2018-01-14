@@ -44,8 +44,6 @@
         <item name="android:lineSpacingExtra">5dp</item>
         <item name="android:layout_gravity">left|top</item>
         <item name="android:layout_marginTop">25dp</item>
-        <item name="android:layout_marginStart">@dimen/start_margin</item>
-        <item name="android:layout_marginEnd">@dimen/start_margin</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
@@ -60,43 +58,44 @@
         <item name="android:layout_marginBottom">20dp</item>
     </style>
 
-    <style name="exerciseOptionButton" parent="@android:style/Widget.Button">
+    <style name="exerciseMultipleOptionButton" parent="@android:style/Widget.Button">
         <item name="android:background">@drawable/exercise_option_button_background</item>
         <item name="android:textColor">@drawable/exercise_option_button_text_color</item>
-        <item name="android:fontFamily">@font/hero_regular</item>
+        <item name="android:fontFamily">@font/calibri_bold</item>
         <item name="android:textSize">14sp</item>
         <item name="android:padding">10dp</item>
         <item name="android:paddingStart">16dp</item>
         <item name="android:paddingEnd">16dp</item>
     </style>
 
-    <style name="exerciseTwoOptionButton" parent="@style/exerciseOptionButton">
-        <item name="android:padding">16dp</item>
-        <item name="android:paddingStart">40dp</item>
-        <item name="android:paddingEnd">40dp</item>
+    <style name="exerciseTwoOptionButton" parent="@style/exerciseMultipleOptionButton">
+        <item name="android:padding">12dp</item>
+        <item name="android:paddingStart">30dp</item>
+        <item name="android:paddingEnd">30dp</item>
         <item name="android:textSize">20sp</item>
     </style>
 
     <style name="editText" parent="@android:style/Widget.EditText">
         <item name="android:background">@drawable/exercise_text_edit_background</item>
-        <item name="android:textSize">16sp</item>
-        <item name="android:textColor">@color/TextLightGrey</item>
-        <item name="android:textStyle">italic</item>
-        <item name="android:letterSpacing">.08</item>
-        <item name="android:width">300dp</item>
         <item name="android:layout_marginBottom">20dp</item>
         <item name="android:padding">10sp</item>
         <item name="android:paddingStart">20sp</item>
         <item name="android:paddingEnd">20sp</item>
+
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">@font/calibri_italic</item>
+        <item name="android:textColor">@color/TextLightGrey</item>
+        <item name="android:letterSpacing">.08</item>
     </style>
 
     <style name="checkButton" parent="@android:style/Widget.Button">
         <item name="android:background">@drawable/check_button_background</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:fontFamily">@font/hero_regular</item>
-        <item name="android:textSize">20sp</item>
+        <item name="android:textSize">24sp</item>
         <item name="android:letterSpacing">.08</item>
-        <item name="android:width">180dp</item>
+        <item name="android:width">250dp</item>
+        <item name="android:height">60dp</item>
         <item name="android:layout_marginBottom">20dp</item>
         <item name="android:padding">10sp</item>
         <item name="android:paddingStart">20sp</item>

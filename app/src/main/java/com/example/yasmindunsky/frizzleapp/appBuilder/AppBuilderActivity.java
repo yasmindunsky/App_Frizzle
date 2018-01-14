@@ -1,11 +1,14 @@
 package com.example.yasmindunsky.frizzleapp.appBuilder;
 
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 
+import com.example.yasmindunsky.frizzleapp.MapActivity;
 import com.example.yasmindunsky.frizzleapp.R;
 
 public class AppBuilderActivity extends AppCompatActivity {
@@ -15,8 +18,21 @@ public class AppBuilderActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_app_builder);
 
+        // Set Toolbar home button.
+        android.support.v7.widget.Toolbar toolbar =
+                (android.support.v7.widget.Toolbar) findViewById(R.id.builderToolbar);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Go to map home screen
+                Intent mapIntent = new Intent(getBaseContext(), MapActivity.class);
+                startActivity(mapIntent);
+            }
+        });
+
+
         TabLayout tabLayout = findViewById(R.id.tabLayout); // get the reference of TabLayout
-        TabLayout.Tab codingTab = tabLayout.newTab().setText("Code");
+        TabLayout.Tab codingTab = tabLayout.newTab().setText("Code Task");
         TabLayout.Tab graphicEditTab = tabLayout.newTab().setText("Graphic Edit");
 
         final Fragment codingFragment = new CodingFragment();

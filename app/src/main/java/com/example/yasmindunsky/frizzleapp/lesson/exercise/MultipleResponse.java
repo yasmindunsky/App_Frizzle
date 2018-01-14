@@ -46,14 +46,14 @@ public class MultipleResponse extends Exercise {
             rowLayoutParams.width = LayoutParams.MATCH_PARENT;
             rowLayoutParams.height = LayoutParams.WRAP_CONTENT;
             rowLayoutParams.gravity = Gravity.CENTER;
-            rowLayoutParams.setMarginStart((int)context.getResources().getDimension(R.dimen.start_margin));
+//            rowLayoutParams.setMarginStart((int)context.getResources().getDimension(R.dimen.start_margin));
             row.setLayoutParams(rowLayoutParams);
             rows.add(row);
             linearLayout.addView(row);
         }
 
         // Create possibilities ToggleButtons
-        int buttonStyle = R.style.exerciseOptionButton;
+        int buttonStyle = R.style.exerciseMultipleOptionButton;
         for (int i = 0; i < possibilitiesNum; i++) {
             final String possibility = possibilities.get(i);
             final ToggleButton button = new ToggleButton(new ContextThemeWrapper(context, buttonStyle), null, buttonStyle);
@@ -63,6 +63,7 @@ public class MultipleResponse extends Exercise {
             buttonlayoutParams.width = LayoutParams.WRAP_CONTENT;
             buttonlayoutParams.setMargins(16,16,16,16);
             button.setLayoutParams(buttonlayoutParams);
+            button.setTextAppearance(buttonStyle);
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

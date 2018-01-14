@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.example.yasmindunsky.frizzleapp.MapActivity;
 import com.example.yasmindunsky.frizzleapp.R;
 import com.example.yasmindunsky.frizzleapp.SwipeAdapter;
+import com.example.yasmindunsky.frizzleapp.lesson.exercise.ExerciseFragment;
 
 import org.xmlpull.v1.XmlPullParserException;
 
@@ -93,17 +94,6 @@ public class LessonActivity extends FragmentActivity {
                     ChangeDotsVisibility(tabLayout,  View.VISIBLE, firstExerciseIndex, lastExerciseIndex);
                 }
             }
-
-//            // Disable swipe if exercise was not answered yet.
-//            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-//                // disable swipe
-//                if(!currentLesson.isSwipeEnabled()) {
-//                    if (viewPager.getAdapter().getCount()>1) {
-//                        viewPager.setCurrentItem(1);
-//                        viewPager.setCurrentItem(0);
-//                    }
-//                }
-//            }
             });
     }
 

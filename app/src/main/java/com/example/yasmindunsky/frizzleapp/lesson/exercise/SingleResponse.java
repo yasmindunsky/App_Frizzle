@@ -1,7 +1,6 @@
 package com.example.yasmindunsky.frizzleapp.lesson.exercise;
 
 import android.content.Context;
-import android.graphics.Typeface;
 import android.support.v7.widget.AppCompatRadioButton;
 import android.view.ContextThemeWrapper;
 import android.view.Gravity;
@@ -45,7 +44,8 @@ public class SingleResponse extends Exercise {
             final AppCompatRadioButton button = new AppCompatRadioButton(new ContextThemeWrapper(context, buttonStyle), null, buttonStyle);
             RadioGroup.LayoutParams buttonLayoutParams =
                     new RadioGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, RadioGroup.LayoutParams.WRAP_CONTENT);
-            buttonLayoutParams.setMargins(16,20,16,16);
+            buttonLayoutParams.setMargins(20,20,20,16);
+            button.setTextAppearance(buttonStyle);
             button.setLayoutParams(buttonLayoutParams);
             button.setText(possibility);
             possibilitiesButtons.addView(button);
