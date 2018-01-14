@@ -7,9 +7,12 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.text.Layout;
 
 import com.example.yasmindunsky.frizzleapp.MapActivity;
 import com.example.yasmindunsky.frizzleapp.R;
+
+import java.lang.reflect.Field;
 
 public class AppBuilderActivity extends AppCompatActivity {
 
@@ -37,6 +40,7 @@ public class AppBuilderActivity extends AppCompatActivity {
 
         final Fragment codingFragment = new CodingFragment();
         final Fragment graphicEditFragment = new GraphicEditFragment();
+
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             public void onTabReselected(TabLayout.Tab tab) {
@@ -66,5 +70,4 @@ public class AppBuilderActivity extends AppCompatActivity {
         tabLayout.addTab(codingTab, true);
         tabLayout.addTab(graphicEditTab);
     }
-
 }

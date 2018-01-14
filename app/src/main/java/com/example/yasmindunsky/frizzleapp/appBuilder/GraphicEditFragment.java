@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.GridLayout;
 import android.widget.TableLayout;
 import android.widget.TextView;
 
@@ -22,7 +23,7 @@ import com.example.yasmindunsky.frizzleapp.R;
  */
 public class GraphicEditFragment extends Fragment {
 
-    TableLayout tableLayout;
+    GridLayout gridLayout;
 
     public GraphicEditFragment() {
         // Required empty public constructor
@@ -33,7 +34,7 @@ public class GraphicEditFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_graphic_edit, container, false);
-        tableLayout = view.findViewById(R.id.tableLayout);
+        gridLayout = view.findViewById(R.id.gridLayout);
 
         Button addText = view.findViewById(R.id.addText);
         addText.setOnClickListener(newTextOnClick);
@@ -41,7 +42,7 @@ public class GraphicEditFragment extends Fragment {
         Button addButton = view.findViewById(R.id.addButton);
         addButton.setOnClickListener(newButtonOnClick);
 
-        tableLayout.setOnDragListener(dragListener);
+        gridLayout.setOnDragListener(dragListener);
 
         return view;
     }
@@ -53,7 +54,7 @@ public class GraphicEditFragment extends Fragment {
             newText.setText("NEW TEXT");
             newText.setBackgroundColor(Color.WHITE);
             newText.setOnLongClickListener(onLongClickListener);
-            tableLayout.addView(newText);
+            gridLayout.addView(newText);
         }
     };
 
@@ -85,8 +86,8 @@ public class GraphicEditFragment extends Fragment {
                     break;
 
                 case DragEvent.ACTION_DROP:
-                    tableLayout.removeView(view);
-                    tableLayout.addView(view);
+                    gridLayout.removeView(view);
+                    gridLayout.addView(view);
                     break;
             }
 
@@ -101,7 +102,7 @@ public class GraphicEditFragment extends Fragment {
             newButton.setText("NEW BUTTON");
             newButton.setOnLongClickListener(onLongClickListener);
 
-            tableLayout.addView(newButton);
+            gridLayout.addView(newButton);
         }
     };
 
