@@ -25,7 +25,7 @@ class LoginToServer extends AsyncTask<String, Void, String> {
         HttpURLConnection client = null;
         try {
 
-            URL url = new URL("http://10.10.30.145:8000/users/login/");
+            URL url = new URL("http://192.168.1.12:8000/users/login/");
             client = (HttpURLConnection) url.openConnection();
             client.setRequestMethod("POST");
             client.setRequestProperty("USER-AGENT","Mozilla/5.0");

@@ -42,7 +42,7 @@ public class SwipeAdapter extends FragmentStatePagerAdapter {
 //                fragment = new ExerciseFragment();
 //                break;
 //            default:
-//                fragment = new NavigationFragment();
+//                fragment = new goToAppBuilderFragment();
 //        }
 //        bundle.putInt("index", position);
 
@@ -55,7 +55,7 @@ public class SwipeAdapter extends FragmentStatePagerAdapter {
             fragment = new ExerciseFragment();
             currentLesson.setInSlides(false);
         } else {
-            fragment = new NavigationFragment();
+            fragment = new goToAppBuilderFragment();
         }
 
         // set the index as argument of the new fragment

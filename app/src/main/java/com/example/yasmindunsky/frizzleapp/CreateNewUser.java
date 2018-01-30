@@ -18,7 +18,7 @@ class CreateNewUser extends AsyncTask<String, Void, String> {
         HttpURLConnection client = null;
         try {
 
-            URL url = new URL("http://10.10.30.145:8000/users/register/");
+            URL url = new URL("http://192.168.1.12:8000/users/register/");
             client = (HttpURLConnection) url.openConnection();
             client.setRequestMethod("POST");
             client.setRequestProperty("USER-AGENT","Mozilla/5.0");
@@ -26,12 +26,10 @@ class CreateNewUser extends AsyncTask<String, Void, String> {
 
             client.setDoOutput(true);
 
-            String username = strings[0];
+            String password = strings[0];
             String email = strings[1];
-            String password = strings[2];
 
-            String query = String.format("username=%s&email=%s&password=%s",
-                    URLEncoder.encode(username, StandardCharsets.UTF_8.name()),
+            String query = String.format("username=%s&&password=%s",
                     URLEncoder.encode(email, StandardCharsets.UTF_8.name()),
                     URLEncoder.encode(password, StandardCharsets.UTF_8.name()));
 
@@ -76,7 +74,7 @@ class CreateNewUser extends AsyncTask<String, Void, String> {
 }
 
 // default ip - 127.0.0.1
-// ip at Agur 192.168.1.8
+// ip at Agur 192.168.1.12
 // ip at PICO 10.10.30.145
 // ip at Melchett 10.100.102.8
 // ip at Noga 192.168.14.159
