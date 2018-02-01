@@ -22,8 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/slideText"
-            android:layout_gravity="center"
-            android:src="@drawable/lesson_illustration4" />
+            android:layout_gravity="center" />
 
         <Button
             android:id="@+id/next"

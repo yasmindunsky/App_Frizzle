@@ -48,7 +48,6 @@ public class SlideFragment extends Fragment {
         int imageDrawable = getResources().getIdentifier(imageSrc , "drawable", getActivity().getPackageName());
 
         Class<? extends Drawable> drawableClass = getResources().getDrawable(imageDrawable).getClass();
-
         if (drawableClass.equals(BitmapDrawable.class)) {
             fragmentImage.setImageResource(imageDrawable);
             isAnimated = false;

@@ -22,26 +22,13 @@ import java.util.Locale;
 public class MapActivity extends AppCompatActivity {
 
     public static final String ID_KEY = "frizzle.id.key";
-    AnimationDrawable rocketAnimation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
 
-        ImageView rocketImage = (ImageView) findViewById(R.id.imageView);
-        rocketImage.setBackgroundResource(R.drawable.animation_test);
-        rocketAnimation = (AnimationDrawable) rocketImage.getBackground();
 
-
-    }
-
-    public boolean onTouchEvent(MotionEvent event) {
-        if (event.getAction() == MotionEvent.ACTION_DOWN) {
-            rocketAnimation.start();
-            return true;
-        }
-        return super.onTouchEvent(event);
     }
 
     public void goToLesson(View view){
