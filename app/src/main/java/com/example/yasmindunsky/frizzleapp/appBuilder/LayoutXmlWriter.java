@@ -43,8 +43,8 @@ class LayoutXmlWriter {
             xmlSerializer.attribute("", "android:layout_width", String.valueOf("match_parent"));
             xmlSerializer.attribute("", "android:layout_height", String.valueOf("match_parent"));
 
-            for (int i = 0; i< viewsToWrite.size(); i++) {
-                addElement(viewsToWrite.get(i), i);
+            for (View view : viewsToWrite.values()) {
+                    addElement(view);
             }
 
             xmlSerializer.endDocument();
@@ -55,7 +55,7 @@ class LayoutXmlWriter {
         return stringWriter.toString();
     }
 
-    private void addElement(View view, int i) {
+    private void addElement(View view) {
         String name = "";
         String text = "";
         String fontFamily = "serif";
