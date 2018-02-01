@@ -6,6 +6,7 @@ import android.view.ContextThemeWrapper;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
@@ -25,7 +26,7 @@ public class SingleResponse extends Exercise {
     }
 
     @Override
-    public void createLayout(RelativeLayout layout, Context context) {
+    public void createLayout(RelativeLayout layout, Context context, final Button checkButton) {
         // add RadioGroup to layout
         RadioGroup possibilitiesButtons = new RadioGroup(context);
         LayoutParams layoutParams =
@@ -50,6 +51,14 @@ public class SingleResponse extends Exercise {
             button.setText(possibility);
             possibilitiesButtons.addView(button);
         }
+
+        possibilitiesButtons.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
+        {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                checkButton.setEnabled(true);
+            }
+        });
     }
 
     @Override

@@ -2,7 +2,6 @@ package com.example.yasmindunsky.frizzleapp;
 
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -15,14 +14,14 @@ import com.example.yasmindunsky.frizzleapp.appBuilder.AppBuilderActivity;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link NavigationFragment.OnFragmentInteractionListener} interface
+ * {@link goToAppBuilderFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link NavigationFragment#newInstance} factory method to
+ * Use the {@link goToAppBuilderFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class NavigationFragment extends Fragment {
+public class goToAppBuilderFragment extends Fragment {
 
-    public NavigationFragment() {
+    public goToAppBuilderFragment() {
         // Required empty public constructor
     }
 

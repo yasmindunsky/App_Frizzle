@@ -14,21 +14,25 @@
         android:theme="@style/AppTheme.NoActionBar">
         <activity android:name=".MapActivity">
         android:theme="@style/AppTheme">
-        <activity android:name=".LoginActivity">
 
+
+        <activity android:name=".intro.RegisterActivity">
+        </activity>
+        <activity android:name=".intro.LoginActivity">
         </activity>
 
-        <activity android:name=".RegisterActivity">
+        <activity android:name=".MapActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MapActivity">
+
+        <activity android:name=".lesson.LessonActivity">
         </activity>
-        <activity android:name=".lesson.LessonActivity"></activity>
-        <activity android:name=".appBuilder.AppBuilderActivity"></activity>
+
+        <activity android:name=".appBuilder.AppBuilderActivity">
+        </activity>
 
         <meta-data
             android:name="preloaded_fonts"

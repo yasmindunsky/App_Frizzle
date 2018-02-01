@@ -24,8 +24,8 @@ public class WordBank extends FillTheBlanks {
     }
 
     @Override
-    public void createLayout(final RelativeLayout fragmentView, Context context) {
-        super.createLayout(fragmentView, context);
+    public void createLayout(final RelativeLayout fragmentView, Context context, Button checkButton) {
+        super.createLayout(fragmentView, context, checkButton);
 
         for(int i = 0; i < this.getPossibilities().size(); i++){
             final String possibility  = this.getPossibilities().get(i);

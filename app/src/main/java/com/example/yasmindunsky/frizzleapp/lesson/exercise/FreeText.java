@@ -1,10 +1,13 @@
 package com.example.yasmindunsky.frizzleapp.lesson.exercise;
 
 import android.content.Context;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.ContextThemeWrapper;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -23,8 +26,10 @@ public class FreeText extends Exercise {
         super(type, question, imageSource, content, possibilities, answers);
     }
 
-    public void createLayout(RelativeLayout layout, Context context){
+    public void createLayout(RelativeLayout layout, Context context, final Button checkButton){
         int style = R.style.editText;
+        final EditText inputText = new EditText(new ContextThemeWrapper(context, style), null, style);
+        LayoutParams layoutParams = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
         android.support.v7.widget.AppCompatEditText inputText = new android.support.v7.widget.AppCompatEditText(new ContextThemeWrapper(context, style), null, style);
         LayoutParams layoutParams = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
         layoutParams.addRule(RelativeLayout.BELOW, R.id.exerciseQuestion);
@@ -35,6 +40,22 @@ public class FreeText extends Exercise {
         inputText.setId(R.id.userAnswerInput);
         layout.setGravity(Gravity.CENTER);
         layout.addView(inputText);
+
+
+        inputText.addTextChangedListener(new TextWatcher() {
+
+            public void afterTextChanged(Editable s) {
+                if(inputText.getText().toString().equals("")){
+                    checkButton.setEnabled(false);
+                } else {
+                    checkButton.setEnabled(true);
+                }
+            }
+
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+        });
     }
 
     public boolean isCorrect(View view) {
