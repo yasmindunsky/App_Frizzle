@@ -15,15 +15,15 @@
 
 
         <activity android:name=".intro.RegisterActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".intro.LoginActivity">
         </activity>
 
         <activity android:name=".MapActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
         <activity android:name=".lesson.LessonActivity">

@@ -12,11 +12,11 @@ import javax.net.ssl.HttpsURLConnection;
 /**
  * Created by yasmin.dunsky on 31-Jan-18.
  */
-
 public class ConnectToServer {
-    final String SERVER_ADDRESS = "http://10.10.30.145:8000";
 
     public String postToServer(String path, String query) {
+        final String SERVER_ADDRESS = "http://10.10.30.145:8000";
+
         HttpURLConnection client = null;
         try {
 
@@ -25,7 +25,6 @@ public class ConnectToServer {
             client.setRequestMethod("POST");
             client.setRequestProperty("USER-AGENT", "Mozilla/5.0");
             client.setRequestProperty("ACCEPT-LANGUAGE", "en-US,en;0.5");
-
             client.setDoOutput(true);
 
             byte[] postData = query.getBytes(StandardCharsets.UTF_8);

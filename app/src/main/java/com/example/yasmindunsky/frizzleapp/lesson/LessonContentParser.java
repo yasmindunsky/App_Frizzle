@@ -2,12 +2,9 @@ package com.example.yasmindunsky.frizzleapp.lesson;
 
 import android.content.Context;
 import android.content.res.XmlResourceParser;
-
 import com.example.yasmindunsky.frizzleapp.R;
-
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
-
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -31,6 +28,7 @@ public class LessonContentParser {
 
         ArrayList<Slide> slides = new ArrayList<>();
         ArrayList<Exercise> exercises = new ArrayList<>();
+        Task task = null;
 
         try {
             int eventType = xmlResourceParser.getEventType();
@@ -47,6 +45,10 @@ public class LessonContentParser {
                     exercises.add(newPage);
                 }
 
+                else if (eventType == XmlPullParser.START_TAG && xmlResourceParser.getName().equals("task")) {
+                    task = parseTask();
+                }
+
                 eventType = xmlResourceParser.next();
             }
         } catch (IOException e) {
@@ -58,6 +60,7 @@ public class LessonContentParser {
 
         currentLesson.setSlides(slides);
         currentLesson.setExercises(exercises);
+        currentLesson.setTask(task);
     }
 
     private static int getResId(String resName, Class<?> c) {
@@ -95,6 +98,12 @@ public class LessonContentParser {
         addChildren(answers, "answers", "answer");
 
         return Exercise.createInstance(type, question, image, content, possibilities, answers);
+    }
+
+    private Task parseTask() throws IOException, XmlPullParserException {
+        String text = getValue("text");
+
+        return new Task(text);
     }
 
     private String getValue(String key) throws XmlPullParserException, IOException {

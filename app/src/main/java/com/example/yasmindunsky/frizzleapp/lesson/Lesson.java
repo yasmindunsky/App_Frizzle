@@ -13,8 +13,7 @@ public class Lesson {
     private int lessonID;
     private ArrayList<Slide> lessonSlides;
     private ArrayList<Exercise> lessonExercise;
-
-    //TODO enter to state object?
+    private Task task;
     private boolean inSlides = true;
 
     public Lesson(int lessonID) {
@@ -57,4 +56,11 @@ public class Lesson {
         return lessonExercise.size();
     }
 
+    public Task getTask() {
+        return task;
+    }
+
+    public void setTask(Task task) {
+        this.task = task;
+    }
 }

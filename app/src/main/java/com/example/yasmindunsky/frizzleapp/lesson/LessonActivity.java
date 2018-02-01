@@ -56,12 +56,9 @@ public class LessonActivity extends FragmentActivity {
 
         // parse xml file to insert content to the currentLesson
         LessonContentParser lessonContentParser = null;
+
         try {
             lessonContentParser = new LessonContentParser(this);
-        } catch (XmlPullParserException e) {
-            e.printStackTrace();
-        }
-        try {
             lessonContentParser.parseLesson();
         } catch (XmlPullParserException e) {
             e.printStackTrace();
