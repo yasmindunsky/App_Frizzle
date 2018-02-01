@@ -4,16 +4,16 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_course">CourseActivity</string>
-    <string name="lessonTitle">שיעור</string>
-    <string name="appBuilderTitle">בנייה</string>
+    <string name="lessonTitle">LESSON</string>
+    <string name="appBuilderTitle">BUILD</string>
     <string name="slideText">Everything you see on an app is the user interface - UI</string>
-    <string name="check">בדיקה</string>
+    <string name="check">CHECK</string>
 
     <string name="xmlFileName">activity_main.xml</string>
     <string name="javaFileName">MainActivity.java</string>
 
-    <string name="newButtonText">הוספת כפתור</string>
-    <string name="newTextViewText">הוספת טקסט</string>
+    <string name="newButtonText">NEW BUTTON</string>
+    <string name="newTextViewText">NEW TEXT</string>
     <string name="codeStart">package com.example.noga.myapplication;
         import android.support.v7.app.AppCompatActivity;
         import android.os.Bundle;
@@ -23,15 +23,15 @@
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);</string>
     <string name="codeEnd">}}</string>
-    <string name="playground">איזור בניית האפליקציה</string>
-    <string name="task_text">פירוט המשימה</string>
-    <string name="codeScreenTitle">קוד</string>
-    <string name="graphicEditScreenTitle">עיצוב</string>
-    <string name="propertiesTableTitle">מאפיינים</string>
-    <string name="propertiesTableId">מזהה:</string>
-    <string name="propertiesTableText">טקסט:</string>
-    <string name="propertiesTableFont">פונט:</string>
-    <string name="propertiesTableColor">צבע:</string>
+    <string name="playground">Playground</string>
+    <string name="task_text">task</string>
+    <string name="codeScreenTitle">Code Task</string>
+    <string name="graphicEditScreenTitle">Graphic Edit</string>
+    <string name="propertiesTableTitle">PROPERTIES</string>
+    <string name="propertiesTableId">ID:</string>
+    <string name="propertiesTableText">Text:</string>
+    <string name="propertiesTableFont">Font:</string>
+    <string name="propertiesTableColor">Color:</string>
 
     <string-array name="fonts">
         <item>sans-serif</item>

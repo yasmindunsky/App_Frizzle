@@ -18,19 +18,25 @@ import com.example.yasmindunsky.frizzleapp.R;
 import java.util.Arrays;
 import java.util.List;
 
+import java.io.File;
+
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class CodingFragment extends Fragment {
 
+    EditText editText;
+
     public CodingFragment() {
         // Required empty public constructor
     }
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_coding, container, false);
 
@@ -60,7 +66,11 @@ public class CodingFragment extends Fragment {
             }
         });
 
+        editText = (EditText) view.findViewById(R.id.code);
         return view;
     }
 
+    public String getCode() {
+        return editText.getText().toString();
+    }
 }

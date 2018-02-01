@@ -6,8 +6,13 @@
     <color name="backgroundGrey">#fafafa</color>
     <color name="TextGrey">#535264</color>
     <color name="TextLightGrey">#d5d5d5</color>
-    <color name="white">#ffffff</color>
     <color name="UnselectedButton">#e7ebea</color>
     <color name="SelectedButton">#dfccd6</color>
     <color name="lightBlue">#c9d3e9</color>
+
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="red">#ff0000</color>
+    <color name="green">#00ff00</color>
+    <color name="blue">#0000ff</color>
 </resources>

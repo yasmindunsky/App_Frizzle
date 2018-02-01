@@ -6,15 +6,23 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
-import android.text.Layout;
 
 import com.example.yasmindunsky.frizzleapp.MapActivity;
 import com.example.yasmindunsky.frizzleapp.R;
 
-import java.lang.reflect.Field;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 public class AppBuilderActivity extends AppCompatActivity {
+
+    File javaFile;
+    File xmlFile;
+    Fragment graphicEditFragment;
+    Fragment codingFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,11 +43,11 @@ public class AppBuilderActivity extends AppCompatActivity {
 
 
         TabLayout tabLayout = findViewById(R.id.tabLayout); // get the reference of TabLayout
-        TabLayout.Tab codingTab = tabLayout.newTab().setText("Code Task");
-        TabLayout.Tab graphicEditTab = tabLayout.newTab().setText("Graphic Edit");
+        TabLayout.Tab codingTab = tabLayout.newTab().setText(R.string.codeScreenTitle);
+        TabLayout.Tab graphicEditTab = tabLayout.newTab().setText(R.string.graphicEditScreenTitle);
 
-        final Fragment codingFragment = new CodingFragment();
-        final Fragment graphicEditFragment = new GraphicEditFragment();
+        codingFragment = new CodingFragment();
+        graphicEditFragment = new GraphicEditFragment();
 
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -69,5 +77,47 @@ public class AppBuilderActivity extends AppCompatActivity {
 
         tabLayout.addTab(codingTab, true);
         tabLayout.addTab(graphicEditTab);
+
+        // Open Java and XML files.
+        File path = getBaseContext().getFilesDir();
+        javaFile = new File(path, getString(R.string.javaFileName));
+        xmlFile = new File(path, getString(R.string.xmlFileName));
+    }
+
+    public void onPlay(View view) {
+        // Write code written in EditText to java file.
+        String codeWritten = ((CodingFragment)codingFragment).getCode();
+        String codeToSave = getApplicationContext().getResources().getString(R.string.codeStart) +
+        codeWritten + getApplicationContext().getResources().getString(R.string.codeEnd);
+        writeToFile(javaFile, codeWritten);
+
+        // Write xml to xml file.
+        String xmlWritten = ((GraphicEditFragment)graphicEditFragment).getXml();
+        writeToFile(xmlFile, xmlWritten);
+    }
+
+    private void writeToFile(File file, String data) {
+        try {
+            FileOutputStream stream = new FileOutputStream(file, false);
+            stream.write(data.getBytes());
+            stream.close();
+        } catch (IOException e) {
+            Log.e("Exception", "File " + file.toString() + " write failed: " + e.toString());
+        }
+    }
+
+    private String readFromFile(File file){
+        int length = (int) file.length();
+        byte[] bytes = new byte[length];
+        FileInputStream in = null;
+        try {
+            in = new FileInputStream(file);
+            in.read(bytes);
+            in.close();
+        }
+        catch (IOException e) {
+            Log.e("Exception", "File " + file.toString() + " read failed: " + e.toString());
+        }
+        return new String(bytes);
     }
 }

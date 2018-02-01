@@ -27,6 +27,10 @@ public class SlideFragment extends Fragment {
 
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_slide, container, false);
+
+        // Rotation for RTL swiping.
+        view.setRotationY(180);
+
         fragmentText = view.findViewById(R.id.slideText);
         fragmentImage = view.findViewById(R.id.slideImage);
         Bundle bundle = getArguments();

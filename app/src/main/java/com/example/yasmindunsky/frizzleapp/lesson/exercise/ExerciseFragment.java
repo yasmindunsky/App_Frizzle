@@ -33,6 +33,9 @@ public class ExerciseFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         final View fragmentView = inflater.inflate(R.layout.fragment_exercise, container, false);
+        // Rotation for RTL swiping.
+        fragmentView.setRotationY(180);
+
         TextView fragmentQuestion = fragmentView.findViewById(R.id.exerciseQuestion);
         final ImageView fragmentImage = fragmentView.findViewById(R.id.exerciseImage);
         Bundle bundle = getArguments();

@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="goToPlayground"
-            android:text="Playground" />
+            android:text="@string/playground" />
 
         <Button
             android:id="@+id/button"
