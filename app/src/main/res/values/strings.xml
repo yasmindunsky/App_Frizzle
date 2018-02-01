@@ -12,8 +12,8 @@
     <string name="xmlFileName">activity_main.xml</string>
     <string name="javaFileName">MainActivity.java</string>
 
-    <string name="newButtonText">הוספת כפתור</string>
-    <string name="newTextViewText">הוספת טקסט</string>
+    <string name="newButtonText">כפתור חדש</string>
+    <string name="newTextViewText">טקסט חדש</string>
     <string name="codeStart">package com.example.noga.myapplication;
         import android.support.v7.app.AppCompatActivity;
         import android.os.Bundle;
