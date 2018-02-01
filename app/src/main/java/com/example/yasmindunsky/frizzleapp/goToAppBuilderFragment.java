@@ -31,6 +31,9 @@ public class goToAppBuilderFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_navigation, container, false);
 
+        // Rotation for RTL swiping.
+        view.setRotationY(180);
+
         view.findViewById(R.id.continueButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
