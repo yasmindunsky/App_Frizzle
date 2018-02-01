@@ -1,4 +1,4 @@
-package com.example.yasmindunsky.frizzleapp;
+package com.example.yasmindunsky.frizzleapp.intro;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -8,7 +8,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.yasmindunsky.frizzleapp.AsyncResponse;
+import com.example.yasmindunsky.frizzleapp.R;
+
 public class RegisterActivity extends AppCompatActivity {
+
+    TextView messagePlaceholder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,42 +31,43 @@ public class RegisterActivity extends AppCompatActivity {
                 startActivity(loginIntent);
             }
         });
+
+        messagePlaceholder = findViewById(R.id.registerMessagePlaceholder);
     }
 
     View.OnClickListener createNewUser = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
 
-            String password = ((EditText)findViewById(R.id.password)).getText().toString();
-            String email = ((EditText)findViewById(R.id.email)).getText().toString();
+            String password = ((EditText) findViewById(R.id.password)).getText().toString();
+            String email = ((EditText) findViewById(R.id.email)).getText().toString();
+            //TODO set to real nickname
+            String nickName = "mini";
 
-            if(!inputIsValid(password, email)){
+            if (!inputIsValid(password, email)) {
                 return;
             }
 
-            //TODO just for debugging, delete after adding a response check from the server
-            TextView errorMessagePlaceHolder = findViewById(R.id.errorMessagePlaceHolder);
-            errorMessagePlaceHolder.setText("Values has been validated");
-
-            new CreateNewUser().execute(password, email);
+            new RegisterToServer(new AsyncResponse() {
+                @Override
+                public void processFinish(String output) {
+                    messagePlaceholder.setText(output);
+                }
+            }).execute(password, email, nickName);
         }
     };
 
-    private boolean inputIsValid(String password, String email){
-        TextView errorMessagePlaceHolder = findViewById(R.id.errorMessagePlaceHolder);
+    private boolean inputIsValid(String password, String email) {
 
-        if(password.equals("")){
-            errorMessagePlaceHolder.setText("You forgot to choose a password");
+        if (password.equals("")) {
+            messagePlaceholder.setText("You forgot to choose a password");
             return false;
         }
 
-        if(email.equals("")){
-            errorMessagePlaceHolder.setText("You forgot to fill out your email address");
+        if (email.equals("")) {
+            messagePlaceholder.setText("You forgot to fill out your email address");
             return false;
         }
-
-        //TODO check if mail already exists?
-        //TODO check that mail is valid? before or after server response
 
         return true;
     }

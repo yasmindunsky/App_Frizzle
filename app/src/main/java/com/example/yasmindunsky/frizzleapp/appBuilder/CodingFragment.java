@@ -15,11 +15,8 @@ import android.widget.EditText;
 
 import com.example.yasmindunsky.frizzleapp.R;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
-import io.github.kbiakov.codeview.CodeView;
 
 
 /**
