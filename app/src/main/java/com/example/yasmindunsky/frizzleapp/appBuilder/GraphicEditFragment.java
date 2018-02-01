@@ -1,6 +1,5 @@
 package com.example.yasmindunsky.frizzleapp.appBuilder;
 
-import android.content.ClipData;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
@@ -9,8 +8,8 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.ContextThemeWrapper;
-import android.view.DragEvent;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,8 +25,9 @@ import android.widget.TextView;
 
 import com.example.yasmindunsky.frizzleapp.R;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.BitSet;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -37,9 +37,11 @@ public class GraphicEditFragment extends Fragment {
     private GridLayout gridLayout;
     private int numOfButtons;
     private int numOfTextViews;
+    private int nextViewIndex;
     private PopupWindow popupWindow;
-    List<View> views;
+    Map<Integer, View> views;
     LayoutXmlWriter layoutXmlWriter;
+    enum viewTypes {Button, TextView};
 
     public GraphicEditFragment() {
         // Required empty public constructor
@@ -58,11 +60,10 @@ public class GraphicEditFragment extends Fragment {
         Button addButton = view.findViewById(R.id.addButton);
         addButton.setOnClickListener(newButtonOnClick);
 
-        gridLayout.setOnDragListener(dragListener);
-
-        views = new ArrayList<>();
+        views = new HashMap<>();
         numOfButtons = 0;
         numOfTextViews = 0;
+        nextViewIndex = 0;
 
         return view;
     }
@@ -74,7 +75,7 @@ public class GraphicEditFragment extends Fragment {
                 String text = String.valueOf(((EditText)v).getText());
 
                 int editedViewIndex = (int) v.getTag();
-                View editedView = ((View)views.get(editedViewIndex));
+                View editedView = views.get(editedViewIndex);
 
                 if (editedView.getClass().equals(TextView.class)) {
                     TextView tv = (TextView)editedView;
@@ -95,7 +96,7 @@ public class GraphicEditFragment extends Fragment {
                 String id = String.valueOf(((EditText)v).getText());
 
                 int editedViewIndex = (int) v.getTag();
-                View editedView = ((View)views.get(editedViewIndex));
+                View editedView = views.get(editedViewIndex);
 
                 if (editedView.getClass().equals(TextView.class)) {
                     TextView tv = (TextView)editedView;
@@ -113,24 +114,41 @@ public class GraphicEditFragment extends Fragment {
     View.OnClickListener newTextOnClick = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            TextView newText = new TextView(view.getContext());
+            int textViewStyle = R.style.usersTextView;
+            TextView newText = new TextView(getContext(), null, 0, textViewStyle);
+            newText.setText(R.string.newTextViewText);
+
+            // Set Position in GridLayout and Margins.
+            int row = nextViewIndex / 2;
+            int col = nextViewIndex % 2;
+            GridLayout.LayoutParams layoutParams = new GridLayout.LayoutParams(GridLayout.spec(row),
+                    GridLayout.spec(col));
+            layoutParams.setMargins(10,10,10,10);
+            newText.setLayoutParams(layoutParams);
+
+            // Set properties.
+            newText.setBackgroundColor(Color.WHITE);
+            newText.setTag(nextViewIndex);
+
+            // Set properties as tags.
+            newText.setTag(R.id.viewType, viewTypes.TextView);
             newText.setTag(R.id.usersViewId, "TextView" + numOfTextViews);
             newText.setTag(R.id.usersViewFontFamily, "serif");
-            newText.setText(R.string.newTextViewText);
-            int numOfViews = numOfTextViews + numOfButtons;
-            newText.setLayoutParams(new GridLayout.LayoutParams(GridLayout.spec(numOfViews/2),
-                    GridLayout.spec(numOfViews%2)));
-            newText.setBackgroundColor(Color.WHITE);
+            newText.setTag(R.id.usersViewRow, row);
+            newText.setTag(R.id.usersViewCol, col);
+            newText.setTag(R.id.usersViewBgColor, "white");
+
             newText.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     displayPropertiesTable(v);
                 }
             });
-            newText.setOnLongClickListener(onLongClickListener);
-            newText.setTag(numOfViews);
+
+            // Add to GridLayout and to views map.
             gridLayout.addView(newText);
-            views.add(newText);
+            views.put(nextViewIndex, newText);
+            nextViewIndex++;
             numOfTextViews++;
         }
     };
@@ -140,60 +158,39 @@ public class GraphicEditFragment extends Fragment {
         public void onClick(View view) {
             int buttonStyle = R.style.usersButton;
             Button newButton = new Button(new ContextThemeWrapper(getContext(), buttonStyle), null, buttonStyle);
+
+            // Set Position in GridLayout and Margins.
+            int row = nextViewIndex / 2;
+            int col = nextViewIndex % 2;
+            GridLayout.LayoutParams layoutParams = new GridLayout.LayoutParams(GridLayout.spec(row),
+                    GridLayout.spec(col));
+            layoutParams.setMargins(10,10,10,10);
+            newButton.setLayoutParams(layoutParams);
+
+            // Set properties.
+             newButton.setText(R.string.newButtonText);
+
+            // Set properties as tags.
+            newButton.setTag(nextViewIndex);
+            newButton.setTag(R.id.viewType, viewTypes.Button);
             newButton.setTag(R.id.usersViewId, "Button" + numOfButtons);
             newButton.setTag(R.id.usersViewFontFamily, "serif");
-            int numOfViews = numOfTextViews + numOfButtons;
-            newButton.setLayoutParams(new GridLayout.LayoutParams(GridLayout.spec(numOfViews/2),
-                    GridLayout.spec(numOfViews%2)));
-            newButton.setText(R.string.newButtonText);
-            newButton.setOnLongClickListener(onLongClickListener);
+            newButton.setTag(R.id.usersViewRow, row);
+            newButton.setTag(R.id.usersViewCol, col);
+            newButton.setTag(R.id.usersViewBgColor, "white");
+
             newButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     displayPropertiesTable(v);
                 }
             });
-            newButton.setTag(numOfViews);
+
+            // Add to GridLayout and to views map.
             gridLayout.addView(newButton);
-            views.add(newButton);
+            views.put(nextViewIndex, newButton);
+            nextViewIndex++;
             numOfButtons++;
-        }
-    };
-
-    View.OnLongClickListener onLongClickListener = new View.OnLongClickListener() {
-        @Override
-        public boolean onLongClick(View v) {
-            ClipData data = ClipData.newPlainText("", "");
-            View.DragShadowBuilder myShadowBuilder = new View.DragShadowBuilder(v);
-            v.startDrag(data, myShadowBuilder, v, 0);
-            return true;
-        }
-    };
-
-    View.OnDragListener dragListener = new View.OnDragListener() {
-
-        @Override
-        public boolean onDrag(View v, DragEvent event) {
-
-            int dragEvent = event.getAction();
-
-            final View view = (View) event.getLocalState();
-
-            switch (dragEvent) {
-
-                case DragEvent.ACTION_DRAG_ENTERED:
-                    break;
-
-                case DragEvent.ACTION_DRAG_EXITED:
-                    break;
-
-                case DragEvent.ACTION_DROP:
-                    gridLayout.removeView(view);
-                    gridLayout.addView(view);
-                    break;
-            }
-
-            return true;
         }
     };
 
@@ -261,7 +258,30 @@ public class GraphicEditFragment extends Fragment {
         colorSpinner.setTag(v.getTag());
         colorSpinner.setOnItemSelectedListener(onColorPicked);
 
+        //DELETE
+        Button deleteButton = (Button)popupView.findViewById(R.id.deleteButton);
+        deleteButton.setTag(v.getTag());
+        deleteButton.setOnClickListener(deleteView);
     }
+
+    View.OnClickListener deleteView = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            popupWindow.dismiss();
+            int viewToDeleteIndex = (int) v.getTag();
+            View viewToDelete = views.get(viewToDeleteIndex);
+
+            if (viewToDelete.getClass().equals(TextView.class)) {
+                numOfTextViews--;
+            }
+            else if (viewToDelete.getClass().equals(Button.class)) {
+                numOfButtons--;
+            }
+
+            gridLayout.removeView(viewToDelete);
+            views.remove(viewToDeleteIndex);
+        }
+    };
 
     AdapterView.OnItemSelectedListener onFontPicked = new AdapterView.OnItemSelectedListener() {
         @Override
@@ -303,10 +323,24 @@ public class GraphicEditFragment extends Fragment {
             int editedViewIndex = (int)tag;
             View editedView = views.get(editedViewIndex);
             String color = parent.getItemAtPosition(position).toString();
-            int colorIdentifier = getResources().getColor(getResources().getIdentifier(color, "color", getActivity().getPackageName()));
-            Drawable drawable = ContextCompat.getDrawable(getActivity(), R.drawable.user_button_background);
+            String fullColorName = getColorFromString(color);
+            int colorIdentifier = getResources().getColor(getResources().getIdentifier(fullColorName, "color", getActivity().getPackageName()));
+            viewTypes viewType = (viewTypes) editedView.getTag(R.id.viewType);
+            int originalDrawable = 0;
+            switch (viewType) {
+                case Button:
+                    originalDrawable = R.drawable.user_button_background;
+                    break;
+                case TextView:
+                    originalDrawable = R.drawable.user_text_view_background;
+                    break;
+                default:
+                    Log.e("Error", "Wrong viewType: " + viewType);
+            }
+            Drawable drawable = ContextCompat.getDrawable(getActivity(), originalDrawable);
             drawable.setColorFilter(colorIdentifier, PorterDuff.Mode.DARKEN);
             editedView.setBackground(drawable);
+            editedView.setTag(R.id.usersViewBgColor, fullColorName);
         }
 
         @Override
@@ -314,6 +348,18 @@ public class GraphicEditFragment extends Fragment {
 
         }
     };
+
+    private String getColorFromString(String color) {
+        Map<String, String> colorNamesMap =  new HashMap<>();
+        colorNamesMap.put("white", "white");
+        colorNamesMap.put("red", "holo_red_light");
+        colorNamesMap.put("blue", "holo_blue_light");
+        colorNamesMap.put("orange", "holo_orange_light");
+        colorNamesMap.put("green", "holo_green_light");
+
+        return colorNamesMap.get(color);
+
+    }
 
     public String getXml(){
         layoutXmlWriter = new LayoutXmlWriter();

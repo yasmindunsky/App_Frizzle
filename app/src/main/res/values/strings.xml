@@ -32,6 +32,7 @@
     <string name="propertiesTableText">טקסט:</string>
     <string name="propertiesTableFont">פונט:</string>
     <string name="propertiesTableColor">צבע:</string>
+    <string name="delete">מחיקה</string>
 
     <string-array name="fonts">
         <item>sans-serif</item>
@@ -43,6 +44,7 @@
         <item>white</item>
         <item>red</item>
         <item>blue</item>
+        <item>orange</item>
         <item>green</item>
     </string-array>
 </resources>

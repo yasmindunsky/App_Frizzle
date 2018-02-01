@@ -89,7 +89,7 @@ public class AppBuilderActivity extends AppCompatActivity {
         String codeWritten = ((CodingFragment)codingFragment).getCode();
         String codeToSave = getApplicationContext().getResources().getString(R.string.codeStart) +
         codeWritten + getApplicationContext().getResources().getString(R.string.codeEnd);
-        writeToFile(javaFile, codeWritten);
+        writeToFile(javaFile, codeToSave);
 
         // Write xml to xml file.
         String xmlWritten = ((GraphicEditFragment)graphicEditFragment).getXml();
