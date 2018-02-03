@@ -1,18 +1,24 @@
-package com.example.yasmindunsky.frizzleapp.intro;
+package com.example.yasmindunsky.frizzleapp.appBuilder;
 
 import android.os.AsyncTask;
 
 import com.example.yasmindunsky.frizzleapp.AsyncResponse;
 import com.example.yasmindunsky.frizzleapp.ConnectToServer;
 
+import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 
-class LoginToServer extends AsyncTask<String, Void, String> {
+
+/**
+ * Created by yasmin.dunsky on 01-Feb-18.
+ */
+
+public class SendFilesToServer extends AsyncTask<String, Void, String> {
     public AsyncResponse delegate = null;
 
-    public LoginToServer(AsyncResponse delegate) {
+    public SendFilesToServer(AsyncResponse delegate) {
         this.delegate = delegate;
     }
 
@@ -20,19 +26,18 @@ class LoginToServer extends AsyncTask<String, Void, String> {
     protected String doInBackground(String... strings) {
         ConnectToServer connectToServer = new ConnectToServer();
 
-        String username = strings[0];
-        String password = strings[1];
+        String xmlFile = strings[0];
+        String javaFile = strings[1];
 
+        String query = null;
         try {
-            String body = String.format("username=%s&password=%s&remember-me='false'",
-                    URLEncoder.encode(username, StandardCharsets.UTF_8.name()),
-                    URLEncoder.encode(password, StandardCharsets.UTF_8.name()));
-
-            return connectToServer.postToServer("/login/authenticate", body, "POST");
+            query = String.format("java=%s&xml=%s", URLEncoder.encode(javaFile, StandardCharsets.UTF_8.name()),
+                    URLEncoder.encode(xmlFile, StandardCharsets.UTF_8.name()));
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
-        return null;
+
+        return connectToServer.postToServer("/users/login/", query, "POST");
     }
 
     @Override
@@ -40,4 +45,3 @@ class LoginToServer extends AsyncTask<String, Void, String> {
         delegate.processFinish(result);
     }
 }
-

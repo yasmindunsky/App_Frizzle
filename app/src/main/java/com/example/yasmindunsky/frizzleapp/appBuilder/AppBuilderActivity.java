@@ -8,7 +8,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 
+import com.example.yasmindunsky.frizzleapp.AsyncResponse;
 import com.example.yasmindunsky.frizzleapp.MapActivity;
 import com.example.yasmindunsky.frizzleapp.R;
 
@@ -58,7 +60,7 @@ public class AppBuilderActivity extends AppCompatActivity {
             public void onTabSelected(TabLayout.Tab tab) {
                 Fragment fragment = null;
 
-                if(tab.getPosition() == 0){
+                if (tab.getPosition() == 0) {
                     fragment = codingFragment;
                 } else {
                     fragment = graphicEditFragment;
@@ -86,14 +88,21 @@ public class AppBuilderActivity extends AppCompatActivity {
 
     public void onPlay(View view) {
         // Write code written in EditText to java file.
-        String codeWritten = ((CodingFragment)codingFragment).getCode();
+        String codeWritten = ((CodingFragment) codingFragment).getCode();
         String codeToSave = getApplicationContext().getResources().getString(R.string.codeStart) +
-        codeWritten + getApplicationContext().getResources().getString(R.string.codeEnd);
+                codeWritten + getApplicationContext().getResources().getString(R.string.codeEnd);
         writeToFile(javaFile, codeWritten);
 
         // Write xml to xml file.
-        String xmlWritten = ((GraphicEditFragment)graphicEditFragment).getXml();
+        String xmlWritten = ((GraphicEditFragment) graphicEditFragment).getXml();
         writeToFile(xmlFile, xmlWritten);
+
+        new SendFilesToServer(new AsyncResponse() {
+            @Override
+            public void processFinish(String output) {
+                //TODO get server response
+            }
+        }).execute(xmlFile.toString(), javaFile.toString());
     }
 
     private void writeToFile(File file, String data) {
@@ -106,7 +115,7 @@ public class AppBuilderActivity extends AppCompatActivity {
         }
     }
 
-    private String readFromFile(File file){
+    private String readFromFile(File file) {
         int length = (int) file.length();
         byte[] bytes = new byte[length];
         FileInputStream in = null;
@@ -114,8 +123,7 @@ public class AppBuilderActivity extends AppCompatActivity {
             in = new FileInputStream(file);
             in.read(bytes);
             in.close();
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             Log.e("Exception", "File " + file.toString() + " read failed: " + e.toString());
         }
         return new String(bytes);

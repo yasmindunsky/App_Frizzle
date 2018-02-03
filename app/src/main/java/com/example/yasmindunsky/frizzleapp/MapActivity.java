@@ -1,24 +1,16 @@
 package com.example.yasmindunsky.frizzleapp;
 
 import android.content.Intent;
-import android.content.res.Configuration;
-import android.content.res.Resources;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
-import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Button;
 
 import com.example.yasmindunsky.frizzleapp.appBuilder.AppBuilderActivity;
 import com.example.yasmindunsky.frizzleapp.lesson.LessonActivity;
 
-import java.util.Locale;
-
 
 public class MapActivity extends AppCompatActivity {
-
-    public static final String ID_KEY = "frizzle.id.key";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,31 +18,38 @@ public class MapActivity extends AppCompatActivity {
         setContentView(R.layout.activity_map);
     }
 
-    public void goToLesson(View view){
+    public void goToLesson(View view) {
 
-        // getting the lesson id by the text on the pressed button
+        // get the lesson id by the text on the pressed button
         int buttonID = view.getId();
         Button button = view.findViewById(buttonID);
         String lessonNumber = button.getText().toString();
 
-        // calling the lesson activity with lesson id
-        Intent lessonIntent = new Intent(this, LessonActivity.class);
-        lessonIntent.putExtra(ID_KEY,lessonNumber);
+        // update current position and top position if needed
+        updatePositions(Integer.parseInt(lessonNumber));
 
+        // start lesson activity
+        Intent lessonIntent = new Intent(this, LessonActivity.class);
         startActivity(lessonIntent);
     }
 
-    public void goToPlayground(View view){
+    private void updatePositions(int lessonNumber) {
 
-        // getting the lesson id by the text on the pressed button
-        int buttonID = view.getId();
-        Button button = view.findViewById(buttonID);
-        String lessonNumber = button.getText().toString();
+        // update positions in userProfile
+        if (lessonNumber > UserProfile.user.getTopLessonID()) {
+            UserProfile.user.setTopLessonID(lessonNumber);
+            UserProfile.user.setTopCourseID(1);
+        }
+        UserProfile.user.setCurrentLessonID(lessonNumber);
+        UserProfile.user.setCurrentCourseID(1);
 
-        // calling the lesson activity with lesson id
-        Intent lessonIntent = new Intent(this, AppBuilderActivity.class);
-        lessonIntent.putExtra(ID_KEY,lessonNumber);
+        // update positions in server
+        new UpdatePositionInServer().execute();
+    }
 
-        startActivity(lessonIntent);
+    public void goToPlayground(View view) {
+        // calling the app builder activity with lesson id
+        Intent appBuilderIntent = new Intent(this, AppBuilderActivity.class);
+        startActivity(appBuilderIntent);
     }
 }

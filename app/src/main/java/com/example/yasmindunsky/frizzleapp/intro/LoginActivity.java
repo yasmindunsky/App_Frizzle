@@ -18,30 +18,18 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         messagePlaceholder = findViewById(R.id.loginMessagePlaceholder);
-
-        View loginButton = findViewById(R.id.loginButton);
-        loginButton.setOnClickListener(loginOnClick);
-
     }
 
-    View.OnClickListener loginOnClick = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            String email = ((EditText) findViewById(R.id.email)).getText().toString();
-            String password = ((EditText) findViewById(R.id.password)).getText().toString();
+    public void loginUser(View view) {
+        String email = ((EditText) findViewById(R.id.email)).getText().toString();
+        String password = ((EditText) findViewById(R.id.password)).getText().toString();
 
-            if (!inputIsValid(email, password)) {
-                return;
-            }
-
-            new LoginToServer(new AsyncResponse() {
-                @Override
-                public void processFinish(String output) {
-                    messagePlaceholder.setText(output);
-                }
-            }).execute(email, password);
+        if (!inputIsValid(email, password)) {
+            return;
         }
-    };
+
+        loginToServer(email, password);
+    }
 
     private boolean inputIsValid(String email, String password) {
 
@@ -56,5 +44,15 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         return true;
+    }
+
+    private void loginToServer(String email, String password) {
+        new LoginToServer(new AsyncResponse() {
+            @Override
+            public void processFinish(String output) {
+                messagePlaceholder.setText(output);
+                //TODO if login was successful, take data from server and save to profile
+            }
+        }).execute(email, password);
     }
 }
