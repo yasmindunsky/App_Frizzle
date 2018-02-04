@@ -32,6 +32,7 @@
     <string name="propertiesTableText">Text:</string>
     <string name="propertiesTableFont">Font:</string>
     <string name="propertiesTableColor">Color:</string>
+    <string name="delete">delete</string>
 
     <string-array name="fonts">
         <item>sans-serif</item>

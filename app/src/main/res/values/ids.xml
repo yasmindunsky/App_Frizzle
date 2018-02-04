@@ -7,5 +7,9 @@
 
     <item type="id" name="usersViewFontFamily" />
     <item type="id" name="usersViewId" />
+    <item name="viewType" type="id" />
+    <item name="usersViewCol" type="id" />
+    <item name="usersViewRow" type="id" />
+    <item name="usersViewBgColor" type="id" />
 
 </resources>
