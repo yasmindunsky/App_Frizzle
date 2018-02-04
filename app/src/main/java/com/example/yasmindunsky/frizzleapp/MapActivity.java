@@ -25,8 +25,10 @@ public class MapActivity extends AppCompatActivity {
         Button button = view.findViewById(buttonID);
         String lessonNumber = button.getText().toString();
 
+        UserProfile.user.setCurrentLessonID(Integer.parseInt(lessonNumber));
+
         // update current position and top position if needed
-        updatePositions(Integer.parseInt(lessonNumber));
+//        updatePositions(Integer.parseInt(lessonNumber));
 
         // start lesson activity
         Intent lessonIntent = new Intent(this, LessonActivity.class);

@@ -34,6 +34,8 @@ public class goToAppBuilderFragment extends Fragment {
         // Rotation for RTL swiping.
         view.setRotationY(180);
 
+        // user finished lesson - update the top position of the user
+
         view.findViewById(R.id.continueButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

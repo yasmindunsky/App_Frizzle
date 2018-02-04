@@ -12,7 +12,6 @@ import com.example.yasmindunsky.frizzleapp.MapActivity;
 import com.example.yasmindunsky.frizzleapp.R;
 import com.example.yasmindunsky.frizzleapp.UserProfile;
 
-import java.net.HttpURLConnection;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -41,7 +40,6 @@ public class RegisterActivity extends AppCompatActivity {
         // take the parameters of the new user
         String password = ((EditText) findViewById(R.id.password)).getText().toString();
         final String email = ((EditText) findViewById(R.id.email)).getText().toString();
-        //TODO set to real nickname
         final String nickName = "mini";
 
         // validate the parameters
@@ -73,22 +71,15 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void processFinish(String output) {
 
-                    // case of success
-                if (output.equals(Integer.toString(HttpURLConnection.HTTP_OK))) {
-                    messagePlaceholder.setText("Registration Succeeded");
-
+                // in case of success, create new user instance
+                if (output.equals("Registration Succeeded")) {
                     // after successful registration, save username and nickname of current user
                     UserProfile.user.setUsername(email);
                     UserProfile.user.setNickName(nickName);
-
-                    // case that email is already exists in the DB
-                } else if (output.equals(Integer.toString(HttpURLConnection.HTTP_CONFLICT))) {
-                    messagePlaceholder.setText("email already exists");
-
-                    // case of any other error
-                } else {
-                    messagePlaceholder.setText("Something went wrong. Status: " + output);
                 }
+
+                // print registration output message
+                messagePlaceholder.setText(output);
             }
         }).execute(password, email, nickName);
     }

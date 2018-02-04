@@ -6,6 +6,7 @@ import com.example.yasmindunsky.frizzleapp.AsyncResponse;
 import com.example.yasmindunsky.frizzleapp.ConnectToServer;
 
 import java.io.UnsupportedEncodingException;
+import java.net.HttpURLConnection;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 
@@ -39,7 +40,18 @@ class RegisterToServer extends AsyncTask<String, Void, String> {
 
     @Override
     protected void onPostExecute(String result) {
-        delegate.processFinish(result);
+        // case of success
+        if (result.equals(Integer.toString(HttpURLConnection.HTTP_OK))) {
+            delegate.processFinish("Registration Succeeded");
+
+            // case that email is already exists in the DB
+        } else if (result.equals(Integer.toString(HttpURLConnection.HTTP_CONFLICT))) {
+            delegate.processFinish("email already exists");
+
+            // case of any other error
+        } else {
+            delegate.processFinish("Something went wrong. Status: " + result);
+        }
     }
 }
 

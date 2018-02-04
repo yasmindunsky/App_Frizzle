@@ -23,30 +23,44 @@ public class ConnectToServer {
         HttpURLConnection client = null;
         try {
 
-            URL url = new URL(SERVER_ADDRESS + path);
-            client = (HttpURLConnection) url.openConnection();
-            client.setRequestMethod(method);
-            client.setRequestProperty("USER-AGENT", "Mozilla/5.0");
-            client.setRequestProperty("ACCEPT-LANGUAGE", "en-US,en;0.5");
-            client.setDoOutput(true);
+            return "No connection";
 
-            byte[] postData = body.getBytes(StandardCharsets.UTF_8);
-            int postDataLength = postData.length;
-
-            client.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
-            client.setRequestProperty("charset", "utf-8");
-            client.setRequestProperty("Content-Length", Integer.toString(postDataLength));
-
-            client.setFixedLengthStreamingMode(postDataLength);
-
-            try (OutputStream output = client.getOutputStream()) {
-                output.write(body.getBytes(StandardCharsets.UTF_8));
-                output.flush();
-                output.close();
-            }
-
-            int responseCode = client.getResponseCode();
-            return Integer.toString(responseCode);
+//            // open connection to server
+//            URL url = new URL(SERVER_ADDRESS + path);
+//            client = (HttpURLConnection) url.openConnection();
+//
+//            // set the request properties
+//            client.setRequestMethod(method);
+//            client.setRequestProperty("USER-AGENT", "Mozilla/5.0");
+//            client.setRequestProperty("ACCEPT-LANGUAGE", "en-US,en;0.5");
+//            client.setDoOutput(true);
+//
+//            // build the request body as bites
+//            byte[] postData = body.getBytes(StandardCharsets.UTF_8);
+//            int postDataLength = postData.length;
+//
+//            client.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+//            client.setRequestProperty("charset", "utf-8");
+//            client.setRequestProperty("Content-Length", Integer.toString(postDataLength));
+//            client.setFixedLengthStreamingMode(postDataLength);
+//
+//            // send the data to the server
+//            try (OutputStream output = client.getOutputStream()) {
+//                output.write(body.getBytes(StandardCharsets.UTF_8));
+//                output.flush();
+//                output.close();
+//            } catch (Exception e) {
+//                return "Connection to server failed";
+//            }
+//
+//            // in case of GET method, parse response from server
+//            if(method.equals("GET")){
+//                return getServerResponseText(client);
+//            }
+//
+//            // in case of POST method, return the response code
+//            int responseCode = client.getResponseCode();
+//            return Integer.toString(responseCode);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

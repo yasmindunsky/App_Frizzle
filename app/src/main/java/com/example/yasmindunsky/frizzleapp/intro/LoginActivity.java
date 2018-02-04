@@ -21,13 +21,16 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void loginUser(View view) {
+        // take the parameters of the user
         String email = ((EditText) findViewById(R.id.email)).getText().toString();
         String password = ((EditText) findViewById(R.id.password)).getText().toString();
 
+        // validate the parameters
         if (!inputIsValid(email, password)) {
             return;
         }
 
+        // register the user to the server and print status message
         loginToServer(email, password);
     }
 
@@ -51,7 +54,6 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void processFinish(String output) {
                 messagePlaceholder.setText(output);
-                //TODO if login was successful, take data from server and save to profile
             }
         }).execute(email, password);
     }
