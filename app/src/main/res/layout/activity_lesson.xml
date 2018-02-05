@@ -31,7 +31,6 @@
                 android:gravity="center"
                 android:text="@string/lessonTitle"
                 android:textAppearance="@style/ActivityTitle" />
-
         </android.support.v7.widget.Toolbar>
 
         <FrameLayout

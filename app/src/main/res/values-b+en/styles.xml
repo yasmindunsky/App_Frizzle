@@ -23,7 +23,7 @@
         <item name="android:textSize">23sp</item>
         <item name="android:letterSpacing">.08</item>
         <item name="android:gravity">center</item>
-        <item name="android:fontFamily">@font/rubik_medium</item>
+        <item name="android:fontFamily">@font/hero_regular</item>
     </style>
 
     <style name="HomeButton" parent="@android:style/Widget.Button">
@@ -38,7 +38,7 @@
 
     <style name="SlideText" parent="@android:style/TextAppearance.Medium">
         <item name="android:textSize">24sp</item>
-        <item name="android:fontFamily">@font/alef</item>
+        <item name="android:fontFamily">@font/calibri_regular</item>
         <item name="android:textColor">@color/TextGrey</item>
         <item name="android:letterSpacing">.02</item>
         <item name="android:lineSpacingExtra">5dp</item>
@@ -61,7 +61,7 @@
     <style name="exerciseMultipleOptionButton" parent="@android:style/Widget.Button">
         <item name="android:background">@drawable/exercise_option_button_background</item>
         <item name="android:textColor">@drawable/exercise_option_button_text_color</item>
-        <item name="android:fontFamily">@font/alef</item>
+        <item name="android:fontFamily">@font/calibri_bold</item>
         <item name="android:textSize">14sp</item>
         <item name="android:padding">10dp</item>
         <item name="android:paddingStart">16dp</item>
@@ -71,7 +71,7 @@
     <style name="usersButton" parent="@android:style/Widget.Button">
         <item name="android:background">@drawable/user_button_background</item>
         <item name="android:textColor">@color/TextGrey</item>
-        <item name="android:fontFamily">@font/alef</item>
+        <item name="android:fontFamily">@font/calibri_bold</item>
         <item name="android:textSize">14sp</item>
         <item name="android:padding">10dp</item>
         <item name="android:paddingStart">16dp</item>
@@ -82,7 +82,7 @@
     <style name="usersTextView" parent="@android:style/TextAppearance.DeviceDefault.Medium">
         <item name="android:background">@drawable/user_text_view_background</item>
         <item name="android:textColor">@color/TextGrey</item>
-        <item name="android:fontFamily">@font/alef</item>
+        <item name="android:fontFamily">@font/calibri_bold</item>
         <item name="android:textSize">14sp</item>
         <item name="android:padding">10dp</item>
         <item name="android:paddingStart">16dp</item>
@@ -93,13 +93,13 @@
     <style name="propertiesTableKey" parent="@android:style/TextAppearance.Medium">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:fontFamily">@font/alef</item>
+        <item name="android:fontFamily">@font/calibri_bold</item>
         <item name="android:padding">10dp</item>
         <item name="android:textSize">18sp</item>
     </style>
 
     <style name="propertiesTableValue" parent="@style/propertiesTableKey">
-        <item name="android:fontFamily">@font/alef</item>
+        <item name="android:fontFamily">@font/calibri_light</item>
         <item name="android:textSize">16sp</item>
 
     </style>
@@ -124,7 +124,7 @@
         <item name="android:paddingEnd">20sp</item>
 
         <item name="android:textSize">16sp</item>
-        <item name="android:fontFamily">@font/alef</item>
+        <item name="android:fontFamily">@font/calibri_italic</item>
         <item name="android:textColor">@color/TextLightGrey</item>
         <item name="android:letterSpacing">.08</item>
     </style>
@@ -132,7 +132,7 @@
     <style name="checkButton" parent="@android:style/Widget.Button">
         <item name="android:background">@drawable/check_button_background</item>
         <item name="android:textColor">@color/white</item>
-        <item name="android:fontFamily">@font/rubik_medium</item>
+        <item name="android:fontFamily">@font/hero_regular</item>
         <item name="android:textSize">24sp</item>
         <item name="android:letterSpacing">.08</item>
         <item name="android:width">250dp</item>

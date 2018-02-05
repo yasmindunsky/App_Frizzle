@@ -7,8 +7,12 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.yasmindunsky.frizzleapp.appBuilder.AppBuilderActivity;
+import com.example.yasmindunsky.frizzleapp.lesson.LessonActivity;
+import com.example.yasmindunsky.frizzleapp.lesson.Slide;
+import com.example.yasmindunsky.frizzleapp.lesson.Task;
 
 
 /**
@@ -44,6 +48,10 @@ public class goToAppBuilderFragment extends Fragment {
                 startActivity(appBuilderActivity);
             }
         });
+
+        Task task = LessonActivity.getCurrentLesson().getTask();
+        TextView taskTextView = (TextView)view.findViewById(R.id.task);
+        taskTextView.setText(task.getText());
 
         return view;
     }

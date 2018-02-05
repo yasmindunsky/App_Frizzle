@@ -14,8 +14,7 @@
             android:id="@+id/slideText"
             style="@style/SlideText"
             android:layout_alignParentTop="true"
-            android:text="@string/slideText"
-            />
+            android:text="@string/slideText" />
 
         <ImageView
             android:id="@+id/slideImage"
