@@ -9,10 +9,14 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.yasmindunsky.frizzleapp.AsyncResponse;
 import com.example.yasmindunsky.frizzleapp.MapActivity;
 import com.example.yasmindunsky.frizzleapp.R;
+import com.example.yasmindunsky.frizzleapp.lesson.Lesson;
+import com.example.yasmindunsky.frizzleapp.lesson.LessonActivity;
+import com.example.yasmindunsky.frizzleapp.lesson.Task;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -25,11 +29,13 @@ public class AppBuilderActivity extends AppCompatActivity {
     File xmlFile;
     Fragment graphicEditFragment;
     Fragment codingFragment;
+    String currentTask;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_app_builder);
+
 
         // Set Toolbar home button.
         android.support.v7.widget.Toolbar toolbar =
@@ -43,6 +49,10 @@ public class AppBuilderActivity extends AppCompatActivity {
             }
         });
 
+        // Set Task text.
+        Task task = LessonActivity.getCurrentLesson().getTask();
+        TextView taskTextView = (TextView)findViewById(R.id.task);
+        taskTextView.setText(task.getText());
 
         TabLayout tabLayout = findViewById(R.id.tabLayout); // get the reference of TabLayout
         TabLayout.Tab codingTab = tabLayout.newTab().setText(R.string.codeScreenTitle);

@@ -132,4 +132,8 @@
         </answers>
     </exercise>
 
+    <task>
+        <text name = "text"> "Create a button in the Graphic Edit screen and change its properties as you wish" </text>
+    </task>
+
 </lesson>
