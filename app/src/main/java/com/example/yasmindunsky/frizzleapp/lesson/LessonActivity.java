@@ -12,7 +12,7 @@ import android.widget.TextView;
 import com.example.yasmindunsky.frizzleapp.MapActivity;
 import com.example.yasmindunsky.frizzleapp.R;
 import com.example.yasmindunsky.frizzleapp.SwipeAdapter;
-import com.example.yasmindunsky.frizzleapp.lesson.exercise.ExerciseFragment;
+import com.example.yasmindunsky.frizzleapp.UserProfile;
 
 import org.xmlpull.v1.XmlPullParserException;
 
@@ -44,20 +44,15 @@ public class LessonActivity extends FragmentActivity {
             }
         });
 
-        // TODO consider having a state with current lesson id
-        // create new Lesson by the id received from intent
-        Intent intent = getIntent();
-        String lessonId = intent.getStringExtra(MapActivity.ID_KEY);
-        int id = Integer.parseInt(lessonId);
-        currentLesson = new Lesson(id);
+        // create new Lesson by the current lesson id
+        currentLesson = new Lesson(UserProfile.user.getCurrentLessonID());
 
         // Set lesson title to current number.
         TextView lessonTitle = (TextView) findViewById(R.id.lessonTitle);
-        lessonTitle.setText(getString(R.string.lessonTitle) + " " + lessonId);
+        lessonTitle.setText(getString(R.string.lessonTitle) + " " + Integer.toString(UserProfile.user.getCurrentLessonID()));
 
         // parse xml file to insert content to the currentLesson
         LessonContentParser lessonContentParser = null;
-
         try {
             lessonContentParser = new LessonContentParser(this);
             lessonContentParser.parseLesson();
@@ -85,15 +80,15 @@ public class LessonActivity extends FragmentActivity {
         // TODO: Create a customized viewPager with these overridden methods and use it instead.
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout) {
             @Override
-            public void onPageSelected(final int position){
+            public void onPageSelected(final int position) {
                 if (position == firstExerciseIndex) {
                     ChangeDotsVisibility(tabLayout, View.GONE, firstExerciseIndex, lastExerciseIndex);
                 }
                 if (position == firstExerciseIndex - 1) {
-                    ChangeDotsVisibility(tabLayout,  View.VISIBLE, firstExerciseIndex, lastExerciseIndex);
+                    ChangeDotsVisibility(tabLayout, View.VISIBLE, firstExerciseIndex, lastExerciseIndex);
                 }
             }
-            });
+        });
     }
 
 
@@ -101,6 +96,7 @@ public class LessonActivity extends FragmentActivity {
      * Alternates visibility of dots before and after switchingIndex in TabLayout. Dots before
      * switchingIndex will receive firstPartVisibility, and dots after will receive the opposite.
      * Also alternates between the check-mark and back arrow icons.
+     *
      * @param tabLayout
      * @param firstPartVisibility
      * @param switchingIndex
@@ -110,8 +106,7 @@ public class LessonActivity extends FragmentActivity {
             TabLayout tabLayout, int firstPartVisibility, int switchingIndex, int lastIndex) {
         int secondPartVisibility = (firstPartVisibility == View.GONE) ? View.VISIBLE : View.GONE;
         LinearLayout layout = (LinearLayout) tabLayout.getChildAt(0);
-        for (int i = 0; i <= lastIndex; i++)
-        {
+        for (int i = 0; i <= lastIndex; i++) {
             int visibility = (i < switchingIndex) ? firstPartVisibility : secondPartVisibility;
             layout.getChildAt(i).setVisibility(visibility);
         }
@@ -122,8 +117,8 @@ public class LessonActivity extends FragmentActivity {
         iconDot.setVisibility(View.VISIBLE);
         int icon =
                 (firstPartVisibility == View.VISIBLE) ?
-                R.drawable.slides_last_dot :
-                R.drawable.exercise_first_dot;
+                        R.drawable.slides_last_dot :
+                        R.drawable.exercise_first_dot;
         iconDot.setBackgroundResource(icon);
     }
 }

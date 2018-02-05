@@ -4,12 +4,14 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.yasmindunsky.frizzleapp.AsyncResponse;
+import com.example.yasmindunsky.frizzleapp.MapActivity;
 import com.example.yasmindunsky.frizzleapp.R;
+import com.example.yasmindunsky.frizzleapp.UserProfile;
+
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -20,42 +22,34 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        Button createUserButton = findViewById(R.id.registerButton);
-        createUserButton.setOnClickListener(createNewUser);
-
-        Button goToLogin = findViewById(R.id.goToLoginButton);
-        goToLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent loginIntent = new Intent(view.getContext(), LoginActivity.class);
-                startActivity(loginIntent);
-            }
-        });
-
         messagePlaceholder = findViewById(R.id.registerMessagePlaceholder);
     }
 
-    View.OnClickListener createNewUser = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
+    public void goToLogin(View view) {
+        Intent loginIntent = new Intent(view.getContext(), LoginActivity.class);
+        startActivity(loginIntent);
+    }
 
-            String password = ((EditText) findViewById(R.id.password)).getText().toString();
-            String email = ((EditText) findViewById(R.id.email)).getText().toString();
-            //TODO set to real nickname
-            String nickName = "mini";
+    public void goToMap(View view) {
+        Intent mapIntent = new Intent(view.getContext(), MapActivity.class);
+        startActivity(mapIntent);
+    }
 
-            if (!inputIsValid(password, email)) {
-                return;
-            }
+    public void registerNewUser(View view) {
 
-            new RegisterToServer(new AsyncResponse() {
-                @Override
-                public void processFinish(String output) {
-                    messagePlaceholder.setText(output);
-                }
-            }).execute(password, email, nickName);
+        // take the parameters of the new user
+        String password = ((EditText) findViewById(R.id.password)).getText().toString();
+        final String email = ((EditText) findViewById(R.id.email)).getText().toString();
+        final String nickName = "mini";
+
+        // validate the parameters
+        if (!inputIsValid(password, email)) {
+            return;
         }
-    };
+
+        // register the user to the server and print status message
+        registerToServer(password, email, nickName);
+    }
 
     private boolean inputIsValid(String password, String email) {
 
@@ -72,4 +66,21 @@ public class RegisterActivity extends AppCompatActivity {
         return true;
     }
 
+    private void registerToServer(String password, final String email, final String nickName) {
+        new RegisterToServer(new AsyncResponse() {
+            @Override
+            public void processFinish(String output) {
+
+                // in case of success, create new user instance
+                if (output.equals("Registration Succeeded")) {
+                    // after successful registration, save username and nickname of current user
+                    UserProfile.user.setUsername(email);
+                    UserProfile.user.setNickName(nickName);
+                }
+
+                // print registration output message
+                messagePlaceholder.setText(output);
+            }
+        }).execute(password, email, nickName);
+    }
 }
