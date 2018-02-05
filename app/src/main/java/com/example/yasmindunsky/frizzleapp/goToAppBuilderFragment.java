@@ -34,7 +34,8 @@ public class goToAppBuilderFragment extends Fragment {
         // Rotation for RTL swiping.
         view.setRotationY(180);
 
-        // user finished lesson - update the top position of the user
+        // Update the top position of the user if needed
+        updateTopPosition();
 
         view.findViewById(R.id.continueButton).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,5 +46,16 @@ public class goToAppBuilderFragment extends Fragment {
         });
 
         return view;
+    }
+
+    private void updateTopPosition() {
+        int lessonNumber = UserProfile.user.getCurrentLessonID();
+        if (lessonNumber + 1 > UserProfile.user.getTopLessonID()) {
+            UserProfile.user.setTopLessonID(lessonNumber + 1);
+            UserProfile.user.setTopCourseID(1);
+
+            // update position in server
+            new UpdatePositionInServer().execute();
+        }
     }
 }

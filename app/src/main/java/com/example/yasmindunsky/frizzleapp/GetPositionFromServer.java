@@ -28,26 +28,21 @@ public class GetPositionFromServer extends AsyncTask<String, Void, String> {
             e.printStackTrace();
         }
 
-        connectToServer.postToServer("/user/getPosition", body, "GET");
-        return null;
+        return connectToServer.postToServer("/user/getPosition", body, "GET");
     }
 
 
     protected void onPostExecute(String result) {
-//        JSONArray jArray = null;
-//        try {
-//            jArray = new JSONArray(result);
-//
-//
-//            for (int i = 0; i < jArray.length(); i++) {
-//                JSONObject jObject = jArray.getJSONObject(i);
-//                String name = jObject.getString("name");
-//                String tab1_text = jObject.getString("tab1_text");
-//                int active = jObject.getInt("active");
-//            }
-//
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//        }
+        try {
+            JSONObject reader = new JSONObject(result);
+            String topLessonId = String.valueOf(reader.get("topLessonId"));
+            String currentLessonId = String.valueOf(reader.get("currentLessonId"));
+
+            UserProfile.user.setCurrentLessonID(Integer.parseInt(currentLessonId));
+            UserProfile.user.setTopLessonID(Integer.parseInt(topLessonId));
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 }

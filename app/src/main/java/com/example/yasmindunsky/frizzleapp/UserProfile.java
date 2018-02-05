@@ -9,10 +9,10 @@ public class UserProfile {
     private String username = "";
     private String nickName = "";
 
-    private int currentLessonID = 0;
-    private int topLessonID = 0;
-    private int currentCourseID = 0;
-    private int topCourseID = 0;
+    private int currentLessonID = 1;
+    private int topLessonID = 1;
+    private int currentCourseID = 1;
+    private int topCourseID = 1;
 
     private String xml = "";
     private String java = "";

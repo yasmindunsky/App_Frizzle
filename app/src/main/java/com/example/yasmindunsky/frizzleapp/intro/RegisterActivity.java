@@ -47,8 +47,8 @@ public class RegisterActivity extends AppCompatActivity {
             return;
         }
 
-        // register the user to the server and print status message
-        registerToServer(password, email, nickName);
+        // register the user and go to map activity
+        registerToServer(password, email, nickName, view);
     }
 
     private boolean inputIsValid(String password, String email) {
@@ -66,20 +66,27 @@ public class RegisterActivity extends AppCompatActivity {
         return true;
     }
 
-    private void registerToServer(String password, final String email, final String nickName) {
+    private void registerToServer(String password, final String email, final String nickName, final View view) {
         new RegisterToServer(new AsyncResponse() {
             @Override
             public void processFinish(String output) {
 
-                // in case of success, create new user instance
+                // in case of success, create new user instance and go to map
                 if (output.equals("Registration Succeeded")) {
+
                     // after successful registration, save username and nickname of current user
                     UserProfile.user.setUsername(email);
                     UserProfile.user.setNickName(nickName);
-                }
 
-                // print registration output message
-                messagePlaceholder.setText(output);
+                    // go to map
+//                    Intent mapIntent = new Intent(view.getContext(), MapActivity.class);
+//                    startActivity(mapIntent);
+//
+                } else {
+
+                    // print failed registration output message
+                    messagePlaceholder.setText(output);
+                }
             }
         }).execute(password, email, nickName);
     }
