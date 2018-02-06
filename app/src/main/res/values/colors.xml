@@ -16,4 +16,18 @@
     <color name="holo_green_light">#ff99cc00</color>
     <color name="holo_blue_light">#ff33b5e5</color>
 
+    <!--Frizzle Colors-->
+    <color name="frizzle_orange">#f07a00</color>
+    <color name="frizzle_pink">#b93660</color>
+    <color name="frizzle_yellow">#f8b119</color>
+    <color name="frizzle_green">#39a085</color>
+    <color name="frizzle_purple">#772c87</color>
+    <color name="frizzle_blue">#3550a2</color>
+    <color name="frizzle_yellow_orange">#f59713</color>
+    <color name="frizzle_orange_pink">#d55830</color>
+    <color name="frizzle_pink_yellow">#d9743c</color>
+    <color name="frizzle_yellow_green">#99a94f</color>
+    <color name="frizzle_green_purple">#586686</color>
+    <color name="frizzle_purple_blue">#563e94</color>
+    <color name="frizzle_blue_green">#377793</color>
 </resources>

@@ -48,4 +48,22 @@
         <item>green</item>
     </string-array>
 
+    <string-array name="frizzleColors">
+        <item>frizzle_orange</item>
+        <item>frizzle_pink</item>
+        <item>frizzle_yellow</item>
+        <item>frizzle_green</item>
+        <item>frizzle_purple</item>
+        <item>frizzle_blue</item>
+    </string-array>
+
+    <string-array name="frizzleBetweenColors">
+        <item>frizzle_yellow_orange</item>
+        <item>frizzle_orange_pink</item>
+        <item>frizzle_pink_yellow</item>
+        <item>frizzle_yellow_green</item>
+        <item>frizzle_green_purple</item>
+        <item>frizzle_purple_blue</item>
+        <item>frizzle_blue_green</item>
+    </string-array>
 </resources>
