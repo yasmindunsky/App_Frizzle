@@ -1,5 +1,6 @@
 package com.example.yasmindunsky.frizzleapp.intro;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -7,7 +8,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.yasmindunsky.frizzleapp.AsyncResponse;
+import com.example.yasmindunsky.frizzleapp.GetPositionFromServer;
+import com.example.yasmindunsky.frizzleapp.MapActivity;
 import com.example.yasmindunsky.frizzleapp.R;
+import com.example.yasmindunsky.frizzleapp.UserProfile;
 
 public class LoginActivity extends AppCompatActivity {
     TextView messagePlaceholder;
@@ -31,7 +35,7 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         // register the user to the server and print status message
-        loginToServer(email, password);
+        loginToServer(email, password, view);
     }
 
     private boolean inputIsValid(String email, String password) {
@@ -49,11 +53,28 @@ public class LoginActivity extends AppCompatActivity {
         return true;
     }
 
-    private void loginToServer(String email, String password) {
+    private void loginToServer(final String email, String password, final View view) {
         new LoginToServer(new AsyncResponse() {
             @Override
             public void processFinish(String output) {
                 messagePlaceholder.setText(output);
+                // in case of success, create new user instance, restore users data and go to map
+                if (output.equals("Login Succeeded")) {
+
+                    // after successful login, update username of current user
+                    UserProfile.user.setUsername(email);
+
+                    // update user data from server
+                    new GetPositionFromServer().execute(email);
+
+                    // go to map
+                    Intent mapIntent = new Intent(view.getContext(), MapActivity.class);
+                    startActivity(mapIntent);
+                } else {
+
+                    // print failed login output message
+                    messagePlaceholder.setText(output);
+                }
             }
         }).execute(email, password);
     }

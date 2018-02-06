@@ -54,10 +54,3 @@ class RegisterToServer extends AsyncTask<String, Void, String> {
         }
     }
 }
-
-// default ip - 127.0.0.1
-// ip at Agur 192.168.1.12
-// ip at PICO 10.10.30.145
-// ip at Melchett 10.100.102.8
-// ip at Noga 192.168.14.159
-// ip at HUJI 172.29.105.213

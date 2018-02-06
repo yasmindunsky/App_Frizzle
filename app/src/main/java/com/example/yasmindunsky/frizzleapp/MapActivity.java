@@ -117,25 +117,20 @@ public class MapActivity extends AppCompatActivity {
 
         UserProfile.user.setCurrentLessonID(Integer.parseInt(lessonNumber));
 
-        // update current position and top position if needed
-//        updatePositions(Integer.parseInt(lessonNumber));
+        // update current position of the user inside the lessons
+        updateCurrentPosition(Integer.parseInt(lessonNumber));
 
         // start lesson activity
         Intent lessonIntent = new Intent(this, LessonActivity.class);
         startActivity(lessonIntent);
     }
 
-    private void updatePositions(int lessonNumber) {
+    private void updateCurrentPosition(int lessonNumber) {
 
-        // update positions in userProfile
-        if (lessonNumber > UserProfile.user.getTopLessonID()) {
-            UserProfile.user.setTopLessonID(lessonNumber);
-            UserProfile.user.setTopCourseID(1);
-        }
         UserProfile.user.setCurrentLessonID(lessonNumber);
         UserProfile.user.setCurrentCourseID(1);
 
-        // update positions in server
+        // update position in server
         new UpdatePositionInServer().execute();
     }
 
