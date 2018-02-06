@@ -1,6 +1,8 @@
 package com.example.yasmindunsky.frizzleapp.lesson;
 
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -45,11 +47,18 @@ public class SlideFragment extends Fragment {
         String message = slide.getSlideText();
         fragmentText.setText(message);
         String imageSrc = slide.getImageSource();
+
+//        BitmapFactory.Options options = new BitmapFactory.Options();
+//        options.inSampleSize = 8;
+//        Bitmap bitmap = BitmapFactory.decodeFile(imageSrc, options);
+
         int imageDrawable = getResources().getIdentifier(imageSrc , "drawable", getActivity().getPackageName());
+//        getResources().getDrawable(imageDrawable).
 
         Class<? extends Drawable> drawableClass = getResources().getDrawable(imageDrawable).getClass();
         if (drawableClass.equals(BitmapDrawable.class)) {
             fragmentImage.setImageResource(imageDrawable);
+//            fragmentImage.setImageBitmap(bitmap);
             isAnimated = false;
         } else if (drawableClass.equals(AnimationDrawable.class)) {
             fragmentImage.setBackgroundResource(imageDrawable);

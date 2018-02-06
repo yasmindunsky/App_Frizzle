@@ -1,51 +1,47 @@
 <lesson>
     <slide>
         <text name="text">"מחשב הוא מכשיר אלקטרוני שיודע לבצע פעולות שהוגדרו מראש, בהתאם לפעולות המשתמש עליו. גם הטלפון שלך הוא מחשב."</text>
-        <image name="image">"slide_1_1"</image>
+        <image name="image">"lesson_illustration1"</image>
     </slide>
 
     <slide>
-        <text name="text">"המחשב לא מחליט בעצמו איך להתנהג, המתכנתת היא זו שקובעת וצריכה להגדיר למחשב מראש איך להגיב לפעולות של המשתמש."</text>
-        <image name="image">"slide_1_2"</image>
+        <text name="text">"The UI consists of elements\n called Views, for example:"</text>
+        <image name="image">"lesson_illustration2"</image>
     </slide>
 
     <slide>
-        <text name="text">"המחשב מבין רק פקודות בשפה שלו."</text>
-        <image name="image">"slide_1_3"</image>
+        <text name="text">"The layout is the way all the\n Views are organized on screen."</text>
+        <image name="image">"lesson_illustration3"</image>
     </slide>
 
     <slide>
-        <text name="text">"המתכנתת מגדירה למחשב את ההתנהגות באמצעות שפת קוד, המגשרת בין השפה של המחשב לשפה של בני אדם."
+        <text name="text">"Most apps consist mainly of\n buttons, textViews \\u0026 imageViews:"
         </text>
-        <image name="image">"slide_1_4"</image>
+        <image name="image">"lesson_illustration4"</image>
     </slide>
 
     <slide>
-        <text name="text">"כמו שלבני האדם יש כל מיני שפות, יש גם כל מיני שפות קוד שמגשרות בין שפת מחשב לשפת בני האדם. "
+        <text name="text">"Every View has a set of properties.
+            Let’s look at this button View and see its properties."
         </text>
-        <image name="image">"slide_1_5"</image>
+        <image name="image">"lesson_illustration7"</image>
     </slide>
 
     <slide>
-        <text name="text">"אנחנו נלמד את שפת Java ונשתמש בה כדי ליצור אפליקציות."</text>
-        <image name="image">"slide_1_6"</image>
+        <text name="text">"You can control its properties:"</text>
+        <image name="image">"lesson_illustration13"</image>
     </slide>
 
     <slide>
-        <text name="text">"\\u0027קטע קוד\\u0027 הוא אוסף של פקודות. כשאנחנו אומרים שהמחשב \\u0027מריץ\\u0027 קטע קוד, אנחנו מתכוונים שהוא מבצע רצף של פקודות, אחת אחרי השנייה."</text>
-        <image name="image">"slide_1_7"</image>
+        <text name="text">"When you create a new View\n you give it a unique name, an ID."</text>
+        <image name="image">"lesson_illustration14"</image>
     </slide>
 
     <slide>
-        <text name="text">"כל אפליקציה מורכבת משני חלקים - העיצוב שמגדיר איך היא נראית והקוד שמגדיר איך היא מתנהגת. "
+        <text name="text">"Just like the button View, every\n new View has a table that allows\n you to
+            control its properties."
         </text>
-        <image name="image">"slide_1_8"</image>
-    </slide>
-
-    <slide>
-        <text name="text">"בפריזל נתחיל בלהגדיר איך האפליקציה תיראה, את זה נעשה במסך העריכה הגרפית, ואז נמשיך לתכנות שלה, במסך הקוד. "
-        </text>
-        <image name="image">"slide_1_9"</image>
+        <image name="image">"lesson_illustration15"</image>
     </slide>
 
     <exercise>

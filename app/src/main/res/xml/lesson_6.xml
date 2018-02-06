@@ -1,43 +1,28 @@
 <lesson>
 
     <slide>
-        <text name="text">"כל מה שאנחנו רואים באפליקציה נקרא ממשק המשתמש - UI."</text>
-        <image name="imageSource">"slide_2_1"</image>
+        <text name="text">"כתבנו קטע קוד, שהוא בעצם רצף של כמה פקודות, שמשנה את הטקסט שמופיע על הכפתור."</text>
+        <image name="imageSource">"slide_6_1"</image>
     </slide>
 
     <slide>
-        <text name="text">"הממשק מורכב מאלמנטים שנקראים Views למשל כפתור, טקסט או תמונה."</text>
-        <image name="imageSource">"slide_2_2"</image>
+        <text name="text">"אבל נרצה שהטקסט ישתנה רק אחרי שהמשתמש לוחץ על הכפתור."</text>
+        <image name="imageSource">"slide_6_2"</image>
     </slide>
 
     <slide>
-        <text name="text">"הפריסה היא הדרך שבה כל ה-Views מסודרים על המסך."</text>
-        <image name="imageSource">"slide_2_3"</image>
+        <text name="text">"כדי לעשות זו, קודם כל ניתן לקטע הקוד שכתבנו שם. קטע קוד שיש לו שם נקרא פונקציה."</text>
+        <image name="imageSource">"slide_6_3"</image>
     </slide>
 
     <slide>
-        <text name="text">"רב האפליקציות מורכבות בעיקר מכפתורים, טקסטים ותמונות, כמו שאפשר לראות בדוגמאות האלו."</text>
-        <image name="imageSource">"slide_2_4"</image>
+        <text name="text">"עכשיו נוכל להגדיר שלחיצה על הכפתור קוראת לפונקציה ומריצה את קטע הקוד שיש בה."</text>
+        <image name="imageSource">"slide_6_4"</image>
     </slide>
 
     <slide>
-        <text name="text">"לכל View יש סט של תכונות. בואי נסתכל על View מסוג כפתור ונראה מה התכונות שלו."</text>
-        <image name="imageSource">"slide_2_5"</image>
-    </slide>
-
-    <slide>
-        <text name="text">"אפשר לשלוט בתכונות של הכפתור."</text>
-        <image name="imageSource">"slide_2_6"</image>
-    </slide>
-
-    <slide>
-        <text name="text">"כשניצור View חדש ניתן לו שם מזהה ייחודי, ID."</text>
-        <image name="imageSource">"slide_2_7"</image>
-    </slide>
-
-    <slide>
-        <text name="text">"בדיוק כמו הכפתור, גם לכל View אחר יש טבלת מאפיינים שמאפשרת לנו לשלוט בתכונות שלו."</text>
-        <image name="imageSource">"slide_2_8"</image>
+        <text name="text">"בדיוק כמו צבע רקע או פונט, גם OnClick היא תכונה שיש לכפתור. זוהי תכונה מיוחדת שמאפשרת לנו לבחור איזו פונקציה תיקרא כשלוחצים על הכפתור."</text>
+        <image name="imageSource">"slide_6_5"</image>
     </slide>
 
     <exercise>

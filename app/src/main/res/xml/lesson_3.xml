@@ -1,18 +1,23 @@
 <lesson>
 
     <slide>
-        <text name="text">"A variable is like a box."</text>
-        <image name="imageSource">"box_1"</image>
+        <text name="text">"עד עכשיו יצרנו את המממשק, ה-UI של האפליקציה, אבל כשאנחנו מריצות את האפליקציה ולוחצות על הכפתור כלום לא קורה."</text>
+        <image name="imageSource">"slide_3_1"</image>
     </slide>
 
     <slide>
-        <text name="text">"It can hold a value inside."</text>
-        <image name="imageSource">"box_2"</image>
+        <text name="text">"אנחנו רוצות שהאפליקציה תעשה דברים שונים בהתאם לפעולה של המשתמש."</text>
+        <image name="imageSource">"slide_3_2"</image>
     </slide>
 
     <slide>
-        <text name="text">"We use different types of boxes for different types of values."</text>
-        <image name="imageSource">"box_3"</image>
+        <text name="text">"למשל באפליקציה הזו, כשהמשתמש לוחץ על כפתור הלייק, נרצה שמספר הלייקים יגדל."</text>
+        <image name="imageSource">"slide_3_3"</image>
+    </slide>
+
+    <slide>
+        <text name="text">"על מנת לגרום לאפליקציה לעשות את זה, נשתמש בשפת Java ונגדיר למחשב בדיוק מה לעשות כשהמשתמש לוחץ על הכפתור."</text>
+        <image name="imageSource">"slide_3_4"</image>
     </slide>
 
     <exercise>
@@ -65,4 +70,8 @@
             <answer name="answer">"bla"</answer>
         </answers>
     </exercise>
+
+    <task>
+        <text name = "text"> "Create a button in the Graphic Edit screen and change its properties as you wish" </text>
+    </task>
 </lesson>
