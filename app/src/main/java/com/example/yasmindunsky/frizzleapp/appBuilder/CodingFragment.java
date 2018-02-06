@@ -18,8 +18,6 @@ import com.example.yasmindunsky.frizzleapp.R;
 import java.util.Arrays;
 import java.util.List;
 
-import java.io.File;
-
 
 /**
  * A simple {@link Fragment} subclass.
@@ -43,7 +41,17 @@ public class CodingFragment extends Fragment {
         EditText codeEditor = view.findViewById(R.id.code);
 
         codeEditor.addTextChangedListener(new TextWatcher() {
-            final List<String> blueWords = Arrays.asList("public", "void", "int");
+            final List<String> savedWords = Arrays.asList("public", "void", "Button", "TextView");
+            final List<String> importantCommands = Arrays.asList("findViewById", "setText");
+
+            // for quotation mark search
+            int firstQuotationMark = -1;
+            int secondQuotationMark = -1;
+            int startPosition = 0;
+
+            // for words
+            int startIndex = 0;
+
 
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -55,13 +63,55 @@ public class CodingFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable s) {
-                for (String word : blueWords) {
-                    int index = s.toString().indexOf(word);
+                // mark saved words such as 'public', 'return', 'Button'
+                markSavedWords(s);
+
+                // mark commands such as 'setText'
+                markCommands(s);
+
+                // mark any String in quotes
+                markQuotationMarks(s);
+            }
+
+            private void markSavedWords(Editable s) {
+                for (String word : savedWords) {
+                    int index = s.toString().indexOf(word, startPosition);
 
                     if (index >= 0) {
                         s.setSpan(new ForegroundColorSpan(Color.BLUE), index, index + word.length(),
                                 Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+                        startPosition = index + word.length();
                     }
+                }
+            }
+
+            private void markCommands(Editable s) {
+                for (String word : importantCommands) {
+                    int index = s.toString().indexOf(word, startPosition);
+
+                    if (index >= 0) {
+                        s.setSpan(new ForegroundColorSpan(Color.RED), index, index + word.length(),
+                                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+                        startPosition = index + word.length();
+                    }
+                }
+            }
+
+            private void markQuotationMarks(Editable s) {
+                //quotation marks
+                firstQuotationMark = (s.toString()).indexOf("\"", startPosition);
+                if(firstQuotationMark >= 0){
+                    secondQuotationMark = (s.toString()).indexOf("\"", firstQuotationMark + 1);
+                }
+
+                if(secondQuotationMark > 0){
+                    s.setSpan(new ForegroundColorSpan(Color.GREEN), firstQuotationMark, secondQuotationMark + 1,
+                            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+                    startPosition = secondQuotationMark + 1;
+                    secondQuotationMark = -1;
                 }
             }
         });

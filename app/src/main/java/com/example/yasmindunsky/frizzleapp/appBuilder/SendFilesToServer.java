@@ -4,6 +4,7 @@ import android.os.AsyncTask;
 
 import com.example.yasmindunsky.frizzleapp.AsyncResponse;
 import com.example.yasmindunsky.frizzleapp.ConnectToServer;
+import com.example.yasmindunsky.frizzleapp.UserProfile;
 
 import java.io.File;
 import java.io.UnsupportedEncodingException;
@@ -27,17 +28,23 @@ public class SendFilesToServer extends AsyncTask<String, Void, String> {
         ConnectToServer connectToServer = new ConnectToServer();
 
         String xmlFile = strings[0];
-        String javaFile = strings[1];
+        String code = strings[1];
+        String username = UserProfile.user.getUsername();
+        String courseId = String.valueOf(UserProfile.user.getCurrentCourseID());
+
 
         String query = null;
         try {
-            query = String.format("java=%s&xml=%s", URLEncoder.encode(javaFile, StandardCharsets.UTF_8.name()),
+            query = String.format("username=%&courseId=%s&code=%s&xml=%s",
+                    URLEncoder.encode(username, StandardCharsets.UTF_8.name()),
+                    URLEncoder.encode(courseId, StandardCharsets.UTF_8.name()),
+                    URLEncoder.encode(code, StandardCharsets.UTF_8.name()),
                     URLEncoder.encode(xmlFile, StandardCharsets.UTF_8.name()));
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
 
-        return connectToServer.postToServer("/users/login/", query, "POST");
+        return connectToServer.postToServer(" /project/save", query, "POST");
     }
 
     @Override

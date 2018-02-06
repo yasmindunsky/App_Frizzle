@@ -79,9 +79,9 @@ public class RegisterActivity extends AppCompatActivity {
                     UserProfile.user.setNickName(nickName);
 
                     // go to map
-//                    Intent mapIntent = new Intent(view.getContext(), MapActivity.class);
-//                    startActivity(mapIntent);
-//
+                    Intent mapIntent = new Intent(view.getContext(), MapActivity.class);
+                    startActivity(mapIntent);
+
                 } else {
 
                     // print failed registration output message

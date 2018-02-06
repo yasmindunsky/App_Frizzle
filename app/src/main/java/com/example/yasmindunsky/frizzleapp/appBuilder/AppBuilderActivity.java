@@ -107,12 +107,12 @@ public class AppBuilderActivity extends AppCompatActivity {
         String xmlWritten = ((GraphicEditFragment) graphicEditFragment).getXml();
         writeToFile(xmlFile, xmlWritten);
 
-        new SendFilesToServer(new AsyncResponse() {
-            @Override
-            public void processFinish(String output) {
-                //TODO get server response
-            }
-        }).execute(xmlFile.toString(), javaFile.toString());
+//        new SendFilesToServer(new AsyncResponse() {
+//            @Override
+//            public void processFinish(String output) {
+//                //TODO get server response
+//            }
+//        }).execute(xmlFile.toString(), javaFile.toString());
     }
 
     private void writeToFile(File file, String data) {
