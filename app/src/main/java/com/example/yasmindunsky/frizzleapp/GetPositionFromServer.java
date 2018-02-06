@@ -38,8 +38,13 @@ public class GetPositionFromServer extends AsyncTask<String, Void, String> {
             String topLessonId = String.valueOf(reader.get("topLessonId"));
             String currentLessonId = String.valueOf(reader.get("currentLessonId"));
 
-            UserProfile.user.setCurrentLessonID(Integer.parseInt(currentLessonId));
-            UserProfile.user.setTopLessonID(Integer.parseInt(topLessonId));
+            if (currentLessonId.equals("null")) {
+                UserProfile.user.setCurrentLessonID(1);
+                UserProfile.user.setTopLessonID(1);
+            } else {
+                UserProfile.user.setCurrentLessonID(Integer.parseInt(currentLessonId));
+                UserProfile.user.setTopLessonID(Integer.parseInt(topLessonId));
+            }
 
         } catch (JSONException e) {
             e.printStackTrace();
