@@ -11,7 +11,9 @@
     </slide>
 
     <slide>
-        <text name="text">"כדי לעשות זו, קודם כל ניתן לקטע הקוד שכתבנו שם. קטע קוד שיש לו שם נקרא פונקציה."</text>
+        <text name="text">"כדי לעשות זו, קודם כל ניתן לקטע
+            \\u000A
+            הקוד שכתבנו שם. קטע קוד שיש לו שם נקרא פונקציה."</text>
         <image name="imageSource">"slide_6_3"</image>
     </slide>
 
@@ -21,18 +23,48 @@
     </slide>
 
     <slide>
-        <text name="text">"בדיוק כמו צבע רקע או פונט, גם OnClick היא תכונה שיש לכפתור. זוהי תכונה מיוחדת שמאפשרת לנו לבחור איזו פונקציה תיקרא כשלוחצים על הכפתור."</text>
+        <text name="text">"בדיוק כמו צבע רקע או פונט, גם OnClick היא תכונה שיש לכפתור.
+            \\u000A
+            זוהי תכונה מיוחדת שמאפשרת לנו לבחור איזו פונקציה תיקרא כשלוחצים על הכפתור."</text>
         <image name="imageSource">"slide_6_5"</image>
     </slide>
 
     <exercise>
+    <type name="type">"SingleResponse"</type>
+    <question name="question">"איזה פונקציה תרוץ כשהכפתור ילחץ?"</question>
+    <image name="image">"exercise_illustrations_missing"</image>
+    <content name="content"></content>
+    <possibilities name = "possibilities">
+        <possibility name = "possibility">"foo"</possibility>
+        <possibility name = "possibility">"bar"</possibility>
+    </possibilities>
+    <answers name="answers">
+        <answer name="answer">"bar"</answer>
+    </answers>
+</exercise>
+
+    <exercise>
         <type name="type">"SingleResponse"</type>
-        <question name="question">"A button is an example for a View"</question>
-        <image name="image">"None"</image>
+        <question name="question">"מה יהיה הטקסט על הכפתור בלחיצה?"</question>
+        <image name="image">"exercise_illustrations_missing"</image>
         <content name="content"></content>
         <possibilities name = "possibilities">
-            <possibility name = "possibility">"True"</possibility>
-            <possibility name = "possibility">"False"</possibility>
+            <possibility name = "possibility">"Hi"</possibility>
+            <possibility name = "possibility">"Bye"</possibility>
+        </possibilities>
+        <answers name="answers">
+            <answer name="answer">"Bye"</answer>
+        </answers>
+    </exercise>
+
+    <exercise>
+        <type name="type">"SingleResponse"</type>
+        <question name="question">"על איזה כפתור יופיע טקסט בלחיצה?"</question>
+        <image name="image">"exercise_illustrations_missing"</image>
+        <content name="content"></content>
+        <possibilities name = "possibilities">
+            <possibility name = "possibility">"foo"</possibility>
+            <possibility name = "possibility">"bar"</possibility>
         </possibilities>
         <answers name="answers">
             <answer name="answer">"True"</answer>
@@ -40,42 +72,15 @@
     </exercise>
 
     <exercise>
-        <type name="type">"FillTheBlanks"</type>
-        <question name="question">"Complete the command so the text on the button will change to Good Job:"</question>
-        <image name="image">"None"</image>
-        <content name="content">
-            <object name = "object">"buttonNameInCode.setText("</object>
-            <object name = "object">");"</object>
-            <object name = "object">"!"</object>
-
-        </content>
+        <type name="type">"FreeText"</type>
+        <question name="question">"מה יהיה הטקסט על הכפתור בלחיצה?"</question>
+        <image name="image">"exercise_illustrations_missing"</image>
+        <content name="content"></content>
         <possibilities name = "possibilities"></possibilities>
         <answers name="answers">
-            <answer name="answer">"Good Job"</answer>
-            <answer name="answer">"bla"</answer>
+            <answer name="answer">"let's foo!"</answer>
         </answers>
     </exercise>
-
-    <exercise>
-        <type name="type">"WordBank"</type>
-        <question name="question">"Complete the command so the text on the button will change to Good Job:"</question>
-        <image name="image">"None"</image>
-        <content name="content">
-            <object name = "object">"buttonNameInCode.setText("</object>
-            <object name = "object">");"</object>
-            <object name = "object">"!"</object>
-
-        </content>
-        <possibilities name = "possibilities">
-            <possibility name="possibility">"bla"</possibility>
-            <possibility name="possibility">"GoodJob"</possibility>
-        </possibilities>
-        <answers name="answers">
-            <answer name="answer">"Good Job"</answer>
-            <answer name="answer">"bla"</answer>
-        </answers>
-    </exercise>
-
 
     <task>
         <text name = "text"> "Create a button in the Graphic Edit screen and change its properties as you wish" </text>

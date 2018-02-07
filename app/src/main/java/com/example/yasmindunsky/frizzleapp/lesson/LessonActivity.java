@@ -41,6 +41,7 @@ public class LessonActivity extends FragmentActivity {
                 // Go to map home screen
                 Intent mapIntent = new Intent(getBaseContext(), MapActivity.class);
                 startActivity(mapIntent);
+                finish();
             }
         });
 

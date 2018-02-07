@@ -6,14 +6,68 @@
     </slide>
 
     <slide>
-        <text name="text">"התכונה שנרצה לשנות היא הטקסט שכתוב על הכפתור. לשם כך נשתמש בפקודה setText, נפעיל אותה על הכפתור שלנו ונקבע מה הטקסט החדש שיופיע."</text>
+        <text name="text">"התכונה שנרצה לשנות היא הטקסט שכתוב על הכפתור. לשם כך נשתמש בפקודה setText, נפעיל אותה על הכפתור שלנו ונקבע מה הטקסט
+            \\u000A
+            החדש שיופיע."</text>
         <image name="imageSource">"slide_5_2"</image>
     </slide>
 
     <exercise>
+        <type name="type">"MultipleResponse"</type>
+        <question name="question">"מה נכון?"</question>
+        <image name="image">"exercise_illustrations_missing"</image>
+        <content name="content"></content>
+        <possibilities name = "possibilities">
+            <possibility name= "possibility">"ה-ID של הכפתור הוא likeButton"</possibility>
+            <possibility name= "possibility">"-ID של הכפתור הוא myButton"</possibility>
+            <possibility name= "possibility">"רצף הפקודות יגרום לכך שעל הכפתור יופיע הטקסט like"</possibility>
+            <possibility name= "possibility">"רצף הפקודות ייצור כפתור חדש בשם like"</possibility>
+            <possibility name= "possibility">"הפקודה השניה משנה את שם הכפתור בקוד ל- like"</possibility>
+        </possibilities>
+        <answers name="answers">
+            <answer name="answer">"ה-ID של הכפתור הוא likeButton"</answer>
+            <answer name="answer">"רצף הפקודות יגרום לכך שעל הכפתור יופיע הטקסט like"</answer>
+            <answer name="answer">"רצף הפקודות ייצור כפתור חדש בשם like"</answer>
+        </answers>
+    </exercise>
+
+    <exercise>
+        <type name="type">"FreeText"</type>
+        <question name="question">"איך יקרא הכפתור בקוד?"</question>
+        <image name="image">"exercise_illustrations_missing"</image>
+        <content name="content"></content>
+        <possibilities name = "possibilities"></possibilities>
+        <answers name="answers">
+            <answer name="answer">"main"</answer>
+        </answers>
+    </exercise>
+
+    <exercise>
+        <type name="type">"FreeText"</type>
+        <question name="question">"מה יהיה כתוב על הכפתור?"</question>
+        <image name="image">"exercise_illustrations_missing"</image>
+        <content name="content"></content>
+        <possibilities name = "possibilities"></possibilities>
+        <answers name="answers">
+            <answer name="answer">"yes"</answer>
+        </answers>
+    </exercise>
+
+    <exercise>
+        <type name="type">"FreeText"</type>
+        <question name="question">"מה ה-ID של הכפתור?"</question>
+        <image name="image">"exercise_illustrations_missing"</image>
+        <content name="content"></content>
+        <possibilities name = "possibilities"></possibilities>
+        <answers name="answers">
+            <answer name="answer">"button1"</answer>
+        </answers>
+    </exercise>
+
+    <exercise>
         <type name="type">"SingleResponse"</type>
-        <question name="question">"A button is an example for a View"</question>
-        <image name="image">"None"</image>
+        <question name="question">"איך יראו הכפתורים באפליקציה?"</question>
+        <image name="image">"exercise_illustrations_missing"</image>
         <content name="content"></content>
         <possibilities name = "possibilities">
             <possibility name = "possibility">"True"</possibility>
@@ -25,39 +79,16 @@
     </exercise>
 
     <exercise>
-        <type name="type">"FillTheBlanks"</type>
-        <question name="question">"Complete the command so the text on the button will change to Good Job:"</question>
-        <image name="image">"None"</image>
-        <content name="content">
-            <object name = "object">"buttonNameInCode.setText("</object>
-            <object name = "object">");"</object>
-            <object name = "object">"!"</object>
-
-        </content>
-        <possibilities name = "possibilities"></possibilities>
-        <answers name="answers">
-            <answer name="answer">"Good Job"</answer>
-            <answer name="answer">"bla"</answer>
-        </answers>
-    </exercise>
-
-    <exercise>
-        <type name="type">"WordBank"</type>
-        <question name="question">"Complete the command so the text on the button will change to Good Job:"</question>
-        <image name="image">"None"</image>
-        <content name="content">
-            <object name = "object">"buttonNameInCode.setText("</object>
-            <object name = "object">");"</object>
-            <object name = "object">"!"</object>
-
-        </content>
+        <type name="type">"SingleResponse"</type>
+        <question name="question">"הקוד הזה לא יצליח לרוץ. למה?"</question>
+        <image name="image">"exercise_illustrations_missing"</image>
+        <content name="content"></content>
         <possibilities name = "possibilities">
-            <possibility name="possibility">"bla"</possibility>
-            <possibility name="possibility">"GoodJob"</possibility>
+            <possibility name = "possibility">"השם של הכפתור לא מתאים ל-ID שלו"</possibility>
+            <possibility name = "possibility">"greenButton הוא לא השם של הכפתור בקוד"</possibility>
         </possibilities>
         <answers name="answers">
-            <answer name="answer">"Good Job"</answer>
-            <answer name="answer">"bla"</answer>
+            <answer name="answer">"greenButton הוא לא השם של הכפתור בקוד"</answer>
         </answers>
     </exercise>
 

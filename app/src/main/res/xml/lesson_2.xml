@@ -1,7 +1,9 @@
 <lesson>
 
     <slide>
-        <text name="text">"כל מה שאנחנו רואים באפליקציה נקרא ממשק המשתמש - UI."</text>
+        <text name="text">"כל מה שאנחנו רואים באפליקציה
+            \\u000A
+            נקרא ממשק המשתמש - UI."</text>
         <image name="imageSource">"slide_2_1"</image>
     </slide>
 
@@ -11,7 +13,9 @@
     </slide>
 
     <slide>
-        <text name="text">"הפריסה היא הדרך שבה כל ה-Views מסודרים על המסך."</text>
+        <text name="text">"הפריסה היא הדרך שבה כל
+            \\u000A
+            ה-Views מסודרים על המסך."</text>
         <image name="imageSource">"slide_2_3"</image>
     </slide>
 
@@ -21,7 +25,9 @@
     </slide>
 
     <slide>
-        <text name="text">"לכל View יש סט של תכונות. בואי נסתכל על View מסוג כפתור ונראה מה התכונות שלו."</text>
+        <text name="text">"לכל View יש סט של תכונות. בואי נסתכל על View מסוג כפתור ונראה
+            \\u000A
+            מה התכונות שלו."</text>
         <image name="imageSource">"slide_2_5"</image>
     </slide>
 
@@ -31,66 +37,104 @@
     </slide>
 
     <slide>
-        <text name="text">"כשניצור View חדש ניתן לו שם מזהה ייחודי, ID."</text>
+        <text name="text">"כשניצור View חדש ניתן לו שם
+            \\u000A
+            מזהה ייחודי, ID."</text>
         <image name="imageSource">"slide_2_7"</image>
     </slide>
 
     <slide>
-        <text name="text">"בדיוק כמו הכפתור, גם לכל View אחר יש טבלת מאפיינים שמאפשרת לנו לשלוט בתכונות שלו."</text>
+        <text name="text">"בדיוק כמו הכפתור, גם לכל View
+            \\u000A
+            אחר יש טבלת מאפיינים שמאפשרת לנו לשלוט בתכונות שלו."</text>
         <image name="imageSource">"slide_2_8"</image>
     </slide>
 
     <exercise>
         <type name="type">"SingleResponse"</type>
-        <question name="question">"A button is an example for a View"</question>
-        <image name="image">"None"</image>
+        <question name="question">"כפתור הוא סוג של View."</question>
+        <image name="image">"exercise_illustrations_2"</image>
         <content name="content"></content>
         <possibilities name = "possibilities">
-            <possibility name = "possibility">"True"</possibility>
-            <possibility name = "possibility">"False"</possibility>
+            <possibility name = "possibility">"נכון"</possibility>
+            <possibility name = "possibility">"לא נכון"</possibility>
         </possibilities>
         <answers name="answers">
-            <answer name="answer">"True"</answer>
+            <answer name="answer">"נכון"</answer>
         </answers>
     </exercise>
 
     <exercise>
-        <type name="type">"FillTheBlanks"</type>
-        <question name="question">"Complete the command so the text on the button will change to Good Job:"</question>
-        <image name="image">"None"</image>
-        <content name="content">
-            <object name = "object">"buttonNameInCode.setText("</object>
-            <object name = "object">");"</object>
-            <object name = "object">"!"</object>
+        <type name="type">"SingleResponse"</type>
+        <question name="question">"כותרת של אפליקציה היא דוגמה ל-View מסוג:"</question>
+        <image name="image">"exercise_illustrations_1"</image>
+        <content name="content"></content>
+        <possibilities name = "possibilities">
+            <possibility name = "possibility">"TextView"</possibility>
+            <possibility name = "possibility">"ImageView"</possibility>
+        </possibilities>
+        <answers name="answers">
+            <answer name="answer">"TextView"</answer>
+        </answers>
+    </exercise>
 
-        </content>
+    <exercise>
+        <type name="type">"FreeText"</type>
+        <question name="question">"כתבו את מה שצריך לכתוב בשדה Text אם נרצה שעל הכפתור יהיה כתוב Send."</question>
+        <image name="image">"exercise_illustrations_3"</image>
+        <content name="content"></content>
         <possibilities name = "possibilities"></possibilities>
         <answers name="answers">
-            <answer name="answer">"Good Job"</answer>
-            <answer name="answer">"bla"</answer>
+            <answer name="answer">"Send"</answer>
         </answers>
     </exercise>
 
     <exercise>
-        <type name="type">"WordBank"</type>
-        <question name="question">"Complete the command so the text on the button will change to Good Job:"</question>
-        <image name="image">"None"</image>
-        <content name="content">
-            <object name = "object">"buttonNameInCode.setText("</object>
-            <object name = "object">");"</object>
-            <object name = "object">"!"</object>
-
-        </content>
+        <type name="type">"MultipleResponse"</type>
+        <question name="question">"מה מהבאים נוכל להגדיר באמצעות טבלת המאפיינים?"</question>
+        <image name="image">"exercise_illustrations_4"</image>
+        <content name="content"></content>
         <possibilities name = "possibilities">
-            <possibility name="possibility">"bla"</possibility>
-            <possibility name="possibility">"GoodJob"</possibility>
+            <possibility name= "possibility">"פונט של TextView"</possibility>
+            <possibility name= "possibility">"כפתור חדש"</possibility>
+            <possibility name= "possibility">"ID של ImageView"</possibility>
+            <possibility name= "possibility">"שם לאפליקציה"</possibility>
+            <possibility name= "possibility">"צבע של כפתור"</possibility>
         </possibilities>
         <answers name="answers">
-            <answer name="answer">"Good Job"</answer>
-            <answer name="answer">"bla"</answer>
+            <answer name="answer">"פונט של TextView"</answer>
+            <answer name="answer">"ID של ImageView"</answer>
+            <answer name="answer">"צבע של כפתור"</answer>
         </answers>
     </exercise>
 
+    <exercise>
+        <type name="type">"SingleResponse"</type>
+        <question name="question">"אם נשנה את מאפיין ה-ID של הכפתור ל-"Send", יופיע עליו הטקסט Send."</question>
+        <image name="image">"exercise_illustrations_5"</image>
+        <content name="content"></content>
+        <possibilities name = "possibilities">
+            <possibility name = "possibility">"נכון"</possibility>
+            <possibility name = "possibility">"לא נכון"</possibility>
+        </possibilities>
+        <answers name="answers">
+            <answer name="answer">"לא נכון"</answer>
+        </answers>
+    </exercise>
+
+    <exercise>
+        <type name="type">"SingleResponse"</type>
+        <question name="question">"אם נשנה את מאפיין הטקסט של הכפתור ל-"Send", יופיע עליו הטקסט Send."</question>
+        <image name="image">"exercise_illustrations_6"</image>
+        <content name="content"></content>
+        <possibilities name = "possibilities">
+            <possibility name = "possibility">"נכון"</possibility>
+            <possibility name = "possibility">"לא נכון"</possibility>
+        </possibilities>
+        <answers name="answers">
+            <answer name="answer">"נכון"</answer>
+        </answers>
+    </exercise>
 
     <task>
         <text name = "text"> "Create a button in the Graphic Edit screen and change its properties as you wish" </text>

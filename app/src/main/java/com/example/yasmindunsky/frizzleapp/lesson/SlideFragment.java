@@ -12,9 +12,11 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+//import com.bumptech.glide.Glide;
 import com.example.yasmindunsky.frizzleapp.R;
 
 /**
@@ -48,34 +50,36 @@ public class SlideFragment extends Fragment {
         fragmentText.setText(message);
         String imageSrc = slide.getImageSource();
 
-//        BitmapFactory.Options options = new BitmapFactory.Options();
-//        options.inSampleSize = 8;
-//        Bitmap bitmap = BitmapFactory.decodeFile(imageSrc, options);
+        int imageIdentifier = getResources().getIdentifier(imageSrc , "drawable", getActivity().getPackageName());
+        Drawable drawable = getResources().getDrawable(imageIdentifier);
+        fragmentImage.setImageDrawable( drawable);
 
-        int imageDrawable = getResources().getIdentifier(imageSrc , "drawable", getActivity().getPackageName());
-//        getResources().getDrawable(imageDrawable).
-
-        Class<? extends Drawable> drawableClass = getResources().getDrawable(imageDrawable).getClass();
+        Class<? extends Drawable> drawableClass = drawable.getClass();
         if (drawableClass.equals(BitmapDrawable.class)) {
-            fragmentImage.setImageResource(imageDrawable);
-//            fragmentImage.setImageBitmap(bitmap);
             isAnimated = false;
         } else if (drawableClass.equals(AnimationDrawable.class)) {
-            fragmentImage.setBackgroundResource(imageDrawable);
-            animationDrawable = (AnimationDrawable) fragmentImage.getBackground();
+            animationDrawable = (AnimationDrawable)drawable;
             isAnimated = true;
         }
 
-        view.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN && isAnimated) {
-                    animationDrawable.start();
-                    return true;
-                }
-                return true;
-            }
-        });
+        view.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+                                                                 @Override
+                                                                 public void onGlobalLayout() {
+                                                                     if (isAnimated) {
+                                                                         animationDrawable.start();
+                                                                     }
+                                                                 }
+                                                             });
+//                view.setOnTouchListener(new View.OnTouchListener() {
+//                    @Override
+//                    public boolean onTouch(View v, MotionEvent event) {
+//                        if (event.getAction() == MotionEvent.ACTION_DOWN && isAnimated) {
+//                            animationDrawable.start();
+//                            return true;
+//                        }
+//                        return true;
+//                    }
+//                });
 
         return view;
     }

@@ -34,7 +34,7 @@ public class FreeText extends Exercise {
         layoutParams.addRule(RelativeLayout.CENTER_IN_PARENT);
         inputText.setTextAppearance(context, R.style.editText);
         inputText.setLayoutParams(layoutParams);
-        inputText.setHint("Type in your answer..");
+        inputText.setHint(R.string.EditTextHint);
         inputText.setId(R.id.userAnswerInput);
         layout.setGravity(Gravity.CENTER);
         layout.addView(inputText);

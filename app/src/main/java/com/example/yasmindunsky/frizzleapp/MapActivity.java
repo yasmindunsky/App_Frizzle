@@ -44,20 +44,22 @@ public class MapActivity extends AppCompatActivity {
     }
 
     private void setMapDesign() {
-        Bitmap bitmap = Bitmap.createBitmap((int) getWindowManager()
-                .getDefaultDisplay().getWidth(), (int) getWindowManager()
-                .getDefaultDisplay().getHeight(), Bitmap.Config.ARGB_8888);
-        Canvas canvas = new Canvas(bitmap);
-        ImageView image = findViewById(R.id.imageView);
-        image.setImageBitmap(bitmap);
-        Paint paint = new Paint();
+//        Bitmap bitmap = Bitmap.createBitmap((int) getWindowManager()
+//                .getDefaultDisplay().getWidth(), (int) getWindowManager()
+//                .getDefaultDisplay().getHeight(), Bitmap.Config.ARGB_8888);
+//        Canvas canvas = new Canvas(bitmap);
+//        ImageView image = findViewById(R.id.imageView);
+//        image.setImageBitmap(bitmap);
+//        Paint paint = new Paint();
 
         String[] colors = getResources().getStringArray(R.array.frizzleColors);
         String[] betweenColors = getResources().getStringArray(R.array.frizzleBetweenColors);
 
         Button nextButton = findViewById(R.id.lesson1);
 
-        for (int i = 2; i <= 7; i++) {
+        // TODO change to 7
+        int numOfLessons = 6;
+        for (int i = 2; i <= numOfLessons; i++) {
             Button currentButton = nextButton;
 
             String id = "lesson" + String.valueOf(i);
@@ -68,36 +70,37 @@ public class MapActivity extends AppCompatActivity {
             setLessonCircleColor(currentButton, betweenColors, i);
 
             // Draw line to next button.
-            paint = new Paint();
-            int lineColor = getResources().getIdentifier(colors[i-2], "color", this.getPackageName());
-            paint.setColor(getResources().getColor(lineColor));
-            paint.setStrokeWidth(currentButton.getLayoutParams().width);
-
-
-            float startX =
-                    (currentButton.getLeft() + (currentButton.getWidth()/2));
-//                    (currentButton.getLeft() + currentButton.getRight())/2;
-            float startY =
-                     (currentButton.getTop() + (currentButton.getHeight()/2));
-//                     ((currentButton.getBottom() + currentButton.getTop())/2) + 15;
-            float endX = (nextButton.getLeft() + nextButton.getRight())/2;
-            float endY = ((nextButton.getBottom() + nextButton.getTop())/2) - 10;
-
-            Rect currentButtonRect = new Rect();
-            currentButton.getGlobalVisibleRect(currentButtonRect);
-            Rect nextButtonRect = new Rect();
-            nextButton.getGlobalVisibleRect(nextButtonRect);
-//            canvas.drawRect(currentButtonRect, paint);
-
-            canvas.drawLine(currentButtonRect.centerX(), currentButtonRect.centerY(),
-                    nextButtonRect.centerX(), nextButtonRect.centerY(), paint);
-
-//            canvas.drawPoint(currentButtonRect.centerX(), currentButtonRect.centerY(), paint);
-
+//            paint = new Paint();
+//            int lineColor = getResources().getIdentifier(colors[i-2], "color", this.getPackageName());
+//            paint.setColor(getResources().getColor(lineColor));
+//            paint.setStrokeWidth(currentButton.getLayoutParams().width);
+//
+//
+//            float startX =
+//                    (currentButton.getLeft() + (currentButton.getWidth()/2));
+////                    (currentButton.getLeft() + currentButton.getRight())/2;
+//            float startY =
+//                     (currentButton.getTop() + (currentButton.getHeight()/2));
+////                     ((currentButton.getBottom() + currentButton.getTop())/2) + 15;
+//            float endX = (nextButton.getLeft() + nextButton.getRight())/2;
+//            float endY = ((nextButton.getBottom() + nextButton.getTop())/2) - 10;
+//
+//            Rect currentButtonRect = new Rect();
+//            currentButton.getGlobalVisibleRect(currentButtonRect);
+//            Rect nextButtonRect = new Rect();
+//            nextButton.getGlobalVisibleRect(nextButtonRect);
+////            canvas.drawRect(currentButtonRect, paint);
+//
+//            canvas.drawLine(currentButtonRect.centerX(), currentButtonRect.centerY(),
+//                    nextButtonRect.centerX(), nextButtonRect.centerY(), paint);
+//
+////            canvas.drawPoint(currentButtonRect.centerX(), currentButtonRect.centerY(), paint);
+//
 
         }
 
-        setLessonCircleColor(nextButton, betweenColors, betweenColors.length-1);
+
+        setLessonCircleColor(nextButton, betweenColors, numOfLessons+1);
     }
 
     private void setLessonCircleColor(Button button, String[] betweenColors, int i) {

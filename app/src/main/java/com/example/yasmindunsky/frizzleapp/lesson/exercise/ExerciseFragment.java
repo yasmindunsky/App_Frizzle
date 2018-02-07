@@ -1,6 +1,8 @@
 package com.example.yasmindunsky.frizzleapp.lesson.exercise;
 
 import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.support.v4.app.Fragment;
 
 import android.os.Bundle;
@@ -63,9 +65,9 @@ public class ExerciseFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (exercise.isCorrect(fragmentView)) {
-                    view.setBackgroundColor(Color.GREEN);
+                    view.setBackgroundResource(R.drawable.check_button_background_correct);
                 } else {
-                    view.setBackgroundColor(Color.RED);
+                    view.setBackgroundResource(R.drawable.check_button_background_wrong);
                 }
             }
         });
