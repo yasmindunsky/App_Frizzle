@@ -48,6 +48,7 @@ public class CodingFragment extends Fragment {
             int firstQuotationMark = -1;
             int secondQuotationMark = -1;
             int startPosition = 0;
+            int currentPosition = 0;
 
             // for words
             int startIndex = 0;
@@ -104,6 +105,11 @@ public class CodingFragment extends Fragment {
                 firstQuotationMark = (s.toString()).indexOf("\"", startPosition);
                 if(firstQuotationMark >= 0){
                     secondQuotationMark = (s.toString()).indexOf("\"", firstQuotationMark + 1);
+
+                    s.setSpan(new ForegroundColorSpan(Color.GREEN), firstQuotationMark, firstQuotationMark + currentPosition + 1,
+                            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+                    currentPosition++;
                 }
 
                 if(secondQuotationMark > 0){
@@ -112,6 +118,7 @@ public class CodingFragment extends Fragment {
 
                     startPosition = secondQuotationMark + 1;
                     secondQuotationMark = -1;
+                    currentPosition = 0;
                 }
             }
         });

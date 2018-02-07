@@ -12,6 +12,7 @@ import com.example.yasmindunsky.frizzleapp.GetPositionFromServer;
 import com.example.yasmindunsky.frizzleapp.MapActivity;
 import com.example.yasmindunsky.frizzleapp.R;
 import com.example.yasmindunsky.frizzleapp.UserProfile;
+import com.example.yasmindunsky.frizzleapp.appBuilder.AppBuilderActivity;
 
 public class LoginActivity extends AppCompatActivity {
     TextView messagePlaceholder;
@@ -68,7 +69,7 @@ public class LoginActivity extends AppCompatActivity {
                     new GetPositionFromServer().execute(email);
 
                     // go to map
-                    Intent mapIntent = new Intent(view.getContext(), MapActivity.class);
+                    Intent mapIntent = new Intent(view.getContext(), AppBuilderActivity.class);
                     startActivity(mapIntent);
                 } else {
 

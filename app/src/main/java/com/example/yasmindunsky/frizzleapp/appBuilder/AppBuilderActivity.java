@@ -50,9 +50,9 @@ public class AppBuilderActivity extends AppCompatActivity {
         });
 
         // Set Task text.
-        Task task = LessonActivity.getCurrentLesson().getTask();
-        TextView taskTextView = (TextView)findViewById(R.id.task);
-        taskTextView.setText(task.getText());
+//        Task task = LessonActivity.getCurrentLesson().getTask();
+//        TextView taskTextView = (TextView)findViewById(R.id.task);
+//        taskTextView.setText(task.getText());
 
         TabLayout tabLayout = findViewById(R.id.tabLayout); // get the reference of TabLayout
         TabLayout.Tab codingTab = tabLayout.newTab().setText(R.string.codeScreenTitle);
@@ -107,12 +107,12 @@ public class AppBuilderActivity extends AppCompatActivity {
         String xmlWritten = ((GraphicEditFragment) graphicEditFragment).getXml();
         writeToFile(xmlFile, xmlWritten);
 
-//        new SendFilesToServer(new AsyncResponse() {
-//            @Override
-//            public void processFinish(String output) {
-//                //TODO get server response
-//            }
-//        }).execute(xmlFile.toString(), javaFile.toString());
+        new SendFilesToServer(new AsyncResponse() {
+            @Override
+            public void processFinish(String output) {
+                //TODO get server response
+            }
+        }).execute(((GraphicEditFragment) graphicEditFragment).getXml(), codeToSave);
     }
 
     private void writeToFile(File file, String data) {
