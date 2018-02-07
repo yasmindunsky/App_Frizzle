@@ -50,9 +50,12 @@ public class AppBuilderActivity extends AppCompatActivity {
         });
 
         // Set Task text.
-//        Task task = LessonActivity.getCurrentLesson().getTask();
-//        TextView taskTextView = (TextView)findViewById(R.id.task);
-//        taskTextView.setText(task.getText());
+        Task task = new Task("");
+        if (LessonActivity.getCurrentLesson() != null) {
+            task = LessonActivity.getCurrentLesson().getTask();
+        }
+        TextView taskTextView = (TextView)findViewById(R.id.task);
+        taskTextView.setText(task.getText());
 
         TabLayout tabLayout = findViewById(R.id.tabLayout); // get the reference of TabLayout
         TabLayout.Tab codingTab = tabLayout.newTab().setText(R.string.codeScreenTitle);

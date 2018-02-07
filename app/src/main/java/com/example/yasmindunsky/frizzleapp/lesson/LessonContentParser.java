@@ -55,7 +55,7 @@ public class LessonContentParser {
             e.printStackTrace();
         }
 
-        Slide lastSlidePage = new Slide("GOOD JOB!", "slide_1_1");
+        Slide lastSlidePage = new Slide("", "good_job");
         slides.add(lastSlidePage);
 
         currentLesson.setSlides(slides);

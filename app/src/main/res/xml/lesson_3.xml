@@ -1,7 +1,13 @@
 <lesson>
 
     <slide>
-        <text name="text">"עד עכשיו יצרנו את המממשק, ה-UI של האפליקציה, אבל כשאנחנו מריצות את האפליקציה ולוחצות על הכפתור כלום לא קורה."</text>
+        <text name="text">"עד עכשיו יצרנו את המממשק, ה-UI
+            \\u000A
+            של האפליקציה, אבל כשאנחנו מריצות
+            \\u000A
+            את האפליקציה ולוחצות על הכפתור
+            \\u000A
+            כלום לא קורה."</text>
         <image name="imageSource">"slide_3_1"</image>
     </slide>
 
@@ -16,58 +22,49 @@
     </slide>
 
     <slide>
-        <text name="text">"על מנת לגרום לאפליקציה לעשות את זה, נשתמש בשפת Java ונגדיר למחשב בדיוק מה לעשות כשהמשתמש לוחץ על הכפתור."</text>
+        <text name="text">"על מנת לגרום לאפליקציה לעשות זאת, נשתמש בשפת Java ונגדיר למחשב בדיוק מה לעשות כשהמשתמש לוחץ על הכפתור."</text>
         <image name="imageSource">"slide_3_4"</image>
     </slide>
 
     <exercise>
         <type name="type">"SingleResponse"</type>
-        <question name="question">"A button is an example for a View"</question>
-        <image name="image">"None"</image>
+        <question name="question">"באיזה מסך נשתמש אם נרצה להוסיף כותרת לאפליקציה ולהגדיר שתהיה בצבע סגול?"</question>
+        <image name="image">"exercise_illustrations_missing"</image>
         <content name="content"></content>
         <possibilities name = "possibilities">
-            <possibility name = "possibility">"True"</possibility>
-            <possibility name = "possibility">"False"</possibility>
+            <possibility name = "possibility">"מסך העריכה הגרפית"</possibility>
+            <possibility name = "possibility">"מסך הקוד"</possibility>
         </possibilities>
         <answers name="answers">
-            <answer name="answer">"True"</answer>
+            <answer name="answer">"מסך העריכה הגרפית"</answer>
         </answers>
     </exercise>
 
     <exercise>
-        <type name="type">"FillTheBlanks"</type>
-        <question name="question">"Complete the command so the text on the button will change to Good Job:"</question>
-        <image name="image">"None"</image>
-        <content name="content">
-            <object name = "object">"buttonNameInCode.setText("</object>
-            <object name = "object">");"</object>
-            <object name = "object">"!"</object>
-
-        </content>
-        <possibilities name = "possibilities"></possibilities>
-        <answers name="answers">
-            <answer name="answer">"Good Job"</answer>
-            <answer name="answer">"bla"</answer>
-        </answers>
-    </exercise>
-
-    <exercise>
-        <type name="type">"WordBank"</type>
-        <question name="question">"Complete the command so the text on the button will change to Good Job:"</question>
-        <image name="image">"None"</image>
-        <content name="content">
-            <object name = "object">"buttonNameInCode.setText("</object>
-            <object name = "object">");"</object>
-            <object name = "object">"!"</object>
-
-        </content>
+        <type name="type">"SingleResponse"</type>
+        <question name="question">"באיזה מסך נשתמש אם נרצה להגדיר שהצבע של הכותרת הופך מסגול לירוק בלחיצה על כפתור "שנה צבע"?"</question>
+        <image name="image">"exercise_illustrations_missing"</image>
+        <content name="content"></content>
         <possibilities name = "possibilities">
-            <possibility name="possibility">"bla"</possibility>
-            <possibility name="possibility">"GoodJob"</possibility>
+            <possibility name = "possibility">"מסך העריכה הגרפית"</possibility>
+            <possibility name = "possibility">"מסך הקוד"</possibility>
         </possibilities>
         <answers name="answers">
-            <answer name="answer">"Good Job"</answer>
-            <answer name="answer">"bla"</answer>
+            <answer name="answer">"מסך הקוד"</answer>
+        </answers>
+    </exercise>
+
+    <exercise>
+        <type name="type">"SingleResponse"</type>
+        <question name="question">"באיזה מסך נשתמש אם יש כפתור Play באפליקציה, ונרצה להגדיר שבלחיצה עליו יתחיל להתנגן שיר?"</question>
+        <image name="image">"exercise_illustrations_missing"</image>
+        <content name="content"></content>
+        <possibilities name = "possibilities">
+            <possibility name = "possibility">"מסך העריכה הגרפית"</possibility>
+            <possibility name = "possibility">"מסך הקוד"</possibility>
+        </possibilities>
+        <answers name="answers">
+            <answer name="answer">"מסך הקוד"</answer>
         </answers>
     </exercise>
 

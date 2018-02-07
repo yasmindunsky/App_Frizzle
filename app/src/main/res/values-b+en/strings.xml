@@ -33,6 +33,7 @@
     <string name="propertiesTableFont">Font:</string>
     <string name="propertiesTableColor">Color:</string>
     <string name="delete">delete</string>
+    <string name="EditTextHint">Type in your answer..</string>
 
     <string-array name="fonts">
         <item>sans-serif</item>

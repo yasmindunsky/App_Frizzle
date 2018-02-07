@@ -19,7 +19,11 @@
     </slide>
 
     <slide>
-        <text name="text">"ניתן לכפתור שם חדש במסך הקוד ונחבר אותו באמצעות פקודת Java לשם המזהה הייחודי של הכפתור ממסך העריכה הגרפית."</text>
+        <text name="text">"ניתן לכפתור שם חדש במסך הקוד
+            \\u000A
+            ונחבר אותו באמצעות פקודת Java
+            \\u000A
+            לשם המזהה הייחודי של הכפתור ממסך העריכה הגרפית."</text>
         <image name="imageSource">"slide_4_4"</image>
     </slide>
 
@@ -36,52 +40,53 @@
 
     <exercise>
         <type name="type">"SingleResponse"</type>
-        <question name="question">"A button is an example for a View"</question>
-        <image name="image">"None"</image>
+        <question name="question">"שורת הקוד תוסיף לאפליקציה
+            \\u000A
+            כפתור שלישי."</question>
+        <image name="image">"exercise_illustrations_missing"</image>
         <content name="content"></content>
         <possibilities name = "possibilities">
-            <possibility name = "possibility">"True"</possibility>
-            <possibility name = "possibility">"False"</possibility>
+            <possibility name = "possibility">"נכון"</possibility>
+            <possibility name = "possibility">"לא נכון"</possibility>
         </possibilities>
         <answers name="answers">
-            <answer name="answer">"True"</answer>
+            <answer name="answer">"נכון"</answer>
         </answers>
     </exercise>
 
     <exercise>
-        <type name="type">"FillTheBlanks"</type>
-        <question name="question">"Complete the command so the text on the button will change to Good Job:"</question>
-        <image name="image">"None"</image>
-        <content name="content">
-            <object name = "object">"buttonNameInCode.setText("</object>
-            <object name = "object">");"</object>
-            <object name = "object">"!"</object>
+        <type name="type">"SingleResponse"</type>
+        <question name="question">"איזה כפתור יקרא בקוד myButton?"</question>
+        <image name="image">"exercise_illustrations_missing"</image>
+        <content name="content"></content>
+        <possibilities name = "possibilities">
+            <possibility name = "possibility">"הירוק"</possibility>
+            <possibility name = "possibility">"הכחול"</possibility>
+        </possibilities>
+        <answers name="answers">
+            <answer name="answer">"הכחול"</answer>
+        </answers>
+    </exercise>
 
-        </content>
+    <exercise>
+        <type name="type">"FreeText"</type>
+        <question name="question">"איך יקרא הכפתור בקוד?"</question>
+        <image name="image">"exercise_illustrations_missing"</image>
+        <content name="content"></content>
         <possibilities name = "possibilities"></possibilities>
         <answers name="answers">
-            <answer name="answer">"Good Job"</answer>
-            <answer name="answer">"bla"</answer>
+            <answer name="answer">"best"</answer>
         </answers>
     </exercise>
 
     <exercise>
-        <type name="type">"WordBank"</type>
-        <question name="question">"Complete the command so the text on the button will change to Good Job:"</question>
-        <image name="image">"None"</image>
-        <content name="content">
-            <object name = "object">"buttonNameInCode.setText("</object>
-            <object name = "object">");"</object>
-            <object name = "object">"!"</object>
-
-        </content>
-        <possibilities name = "possibilities">
-            <possibility name="possibility">"bla"</possibility>
-            <possibility name="possibility">"GoodJob"</possibility>
-        </possibilities>
+        <type name="type">"FreeText"</type>
+        <question name="question">"איך יקרא הכפתור בקוד?"</question>
+        <image name="image">"exercise_illustrations_missing"</image>
+        <content name="content"></content>
+        <possibilities name = "possibilities"></possibilities>
         <answers name="answers">
-            <answer name="answer">"Good Job"</answer>
-            <answer name="answer">"bla"</answer>
+            <answer name="answer">"like"</answer>
         </answers>
     </exercise>
 
