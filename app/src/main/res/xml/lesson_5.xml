@@ -1,12 +1,19 @@
 <lesson>
 
     <slide>
-        <text name="text">"עכשיו כשאנחנו יכולות לגשת לכפתור ממסך הקוד, נוכל להשתמש בפקודת Java על מנת לשנות את התכונות שלו, בהתאם לפעולות של המשתמש."</text>
+        <text name="text">"עכשיו כשאנחנו יכולות לגשת לכפתור ממסך הקוד, נוכל להשתמש בפקודת Java על מנת לשנות את התכונות שלו."</text>
         <image name="imageSource">"slide_5_1"</image>
     </slide>
 
     <slide>
-        <text name="text">"התכונה שנרצה לשנות היא הטקסט שכתוב על הכפתור. לשם כך נשתמש בפקודה setText, נפעיל אותה על הכפתור שלנו ונקבע מה הטקסט
+        <text name="text">"התכונה שנרצה לשנות היא הטקסט שכתוב על הכפתור. לשם כך נשתמש בפקודת Java בשם setText ונקבע מה הטקסט
+            \\u000A
+            החדש שיופיע."</text>
+        <image name="imageSource">"slide_5_2"</image>
+    </slide>
+
+    <slide>
+        <text name="text">" נפעיל אותה על הכפתור שלנו ונקבע מה הטקסט
             \\u000A
             החדש שיופיע."</text>
         <image name="imageSource">"slide_5_2"</image>

@@ -2,8 +2,7 @@
 
     <slide>
         <text name="text">"כל מה שאנחנו רואים באפליקציה
-            \\u000A
-            נקרא ממשק המשתמש - UI."</text>
+            \\u000Aנקרא ממשק המשתמש - UI."</text>
         <image name="imageSource">"slide_2_1"</image>
     </slide>
 
@@ -14,8 +13,7 @@
 
     <slide>
         <text name="text">"הפריסה היא הדרך שבה כל
-            \\u000A
-            ה-Views מסודרים על המסך."</text>
+            \\u000Aה-Views מסודרים על המסך."</text>
         <image name="imageSource">"slide_2_3"</image>
     </slide>
 
@@ -26,8 +24,7 @@
 
     <slide>
         <text name="text">"לכל View יש סט של תכונות. בואי נסתכל על View מסוג כפתור ונראה
-            \\u000A
-            מה התכונות שלו."</text>
+            \\u000Aמה התכונות שלו."</text>
         <image name="imageSource">"slide_2_5"</image>
     </slide>
 
@@ -38,15 +35,13 @@
 
     <slide>
         <text name="text">"כשניצור View חדש ניתן לו שם
-            \\u000A
-            מזהה ייחודי, ID."</text>
+            \\u000Aמזהה ייחודי, ID."</text>
         <image name="imageSource">"slide_2_7"</image>
     </slide>
 
     <slide>
         <text name="text">"בדיוק כמו הכפתור, גם לכל View
-            \\u000A
-            אחר יש טבלת מאפיינים שמאפשרת לנו לשלוט בתכונות שלו."</text>
+            \\u000Aאחר יש טבלת מאפיינים שמאפשרת לנו לשלוט בתכונות שלו."</text>
         <image name="imageSource">"slide_2_8"</image>
     </slide>
 
