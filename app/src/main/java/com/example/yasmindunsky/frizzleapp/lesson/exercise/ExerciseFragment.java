@@ -64,10 +64,17 @@ public class ExerciseFragment extends Fragment {
         fragmentView.findViewById(R.id.checkButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Button button = (Button) view;
+                ViewGroup.LayoutParams layoutParams = button.getLayoutParams();
+                layoutParams.height = 85*3;
+                layoutParams.width = 270*3;
+                button.setLayoutParams(layoutParams);
+                ((Button) view).setText("");
                 if (exercise.isCorrect(fragmentView)) {
-                    view.setBackgroundResource(R.drawable.check_button_background_correct);
+                    view.setBackgroundResource(R.drawable.correct_hebrew);
                 } else {
-                    view.setBackgroundResource(R.drawable.check_button_background_wrong);
+                    view.setBackgroundResource(R.drawable.incorrect_hebrew);
+
                 }
             }
         });
