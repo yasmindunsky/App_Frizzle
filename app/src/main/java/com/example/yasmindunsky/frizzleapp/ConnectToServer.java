@@ -10,15 +10,13 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 
-import javax.net.ssl.HttpsURLConnection;
-
 /**
  * Created by yasmin.dunsky on 31-Jan-18.
  */
 public class ConnectToServer {
 
     public String postToServer(String path, String body, String method) {
-        final String SERVER_ADDRESS = "http://18.219.63.179:8080/frizzleserver";
+        final String SERVER_ADDRESS = "http://13.59.192.83:8080/frizzleserver";
 
         HttpURLConnection client = null;
         try {
@@ -52,8 +50,8 @@ public class ConnectToServer {
             }
 
             // in case of GET method, parse response from server
-            if(method.equals("GET")){
-                return getServerResponseText(client);
+            if(method.equals("GET") || method.equals("PUT")){
+                return getTextResponse(client);
             }
 
             // in case of POST method, return the response code
@@ -69,7 +67,7 @@ public class ConnectToServer {
     }
 
     @NonNull
-    private String getServerResponseText(HttpURLConnection client) throws IOException {
+    private String getTextResponse(HttpURLConnection client) throws IOException {
         BufferedReader in = new BufferedReader(new InputStreamReader(client.getInputStream()));
         StringBuffer sb = new StringBuffer("");
         String line = "";

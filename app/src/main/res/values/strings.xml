@@ -14,14 +14,20 @@
 
     <string name="newButtonText">כפתור חדש</string>
     <string name="newTextViewText">טקסט חדש</string>
-    <string name="codeStart">package com.example.noga.myapplication;
+    <string name="codeStart">
+        package co.frizzle.frizzleproject1;
+
         import android.support.v7.app.AppCompatActivity;
         import android.os.Bundle;
+        import android.widget.Button;
         import android.widget.TextView;
+
         public class MainActivity extends AppCompatActivity {
         @Override     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);</string>
+        setContentView(R.layout.activity_main);
+
+    </string>
     <string name="codeEnd">}}</string>
     <string name="playground">איזור בניית האפליקציה</string>
     <string name="task_text">פירוט המשימה</string>

@@ -69,7 +69,7 @@ public class LoginActivity extends AppCompatActivity {
                     new GetPositionFromServer().execute(email);
 
                     // go to map
-                    Intent mapIntent = new Intent(view.getContext(), MapActivity.class);
+                    Intent mapIntent = new Intent(view.getContext(), AppBuilderActivity.class);
                     startActivity(mapIntent);
                 } else {
 

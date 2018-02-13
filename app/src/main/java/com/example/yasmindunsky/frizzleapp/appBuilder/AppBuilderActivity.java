@@ -8,7 +8,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.yasmindunsky.frizzleapp.AsyncResponse;
@@ -64,7 +63,6 @@ public class AppBuilderActivity extends AppCompatActivity {
         codingFragment = new CodingFragment();
         graphicEditFragment = new GraphicEditFragment();
 
-
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             public void onTabReselected(TabLayout.Tab tab) {
 
@@ -104,16 +102,17 @@ public class AppBuilderActivity extends AppCompatActivity {
         String codeWritten = ((CodingFragment) codingFragment).getCode();
         String codeToSave = getApplicationContext().getResources().getString(R.string.codeStart) +
                 codeWritten + getApplicationContext().getResources().getString(R.string.codeEnd);
-        writeToFile(javaFile, codeWritten);
+
+//        writeToFile(javaFile, codeWritten);
 
         // Write xml to xml file.
-        String xmlWritten = ((GraphicEditFragment) graphicEditFragment).getXml();
-        writeToFile(xmlFile, xmlWritten);
+//        String xmlWritten = ((GraphicEditFragment) graphicEditFragment).getXml();
+//        writeToFile(xmlFile, xmlWritten);
 
         new SendFilesToServer(new AsyncResponse() {
             @Override
             public void processFinish(String output) {
-                //TODO get server response
+
             }
         }).execute(((GraphicEditFragment) graphicEditFragment).getXml(), codeToSave);
     }

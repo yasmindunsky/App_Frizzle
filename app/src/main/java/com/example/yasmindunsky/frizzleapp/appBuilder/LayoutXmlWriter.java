@@ -12,7 +12,6 @@ import org.xmlpull.v1.XmlSerializer;
 
 import java.io.IOException;
 import java.io.StringWriter;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -23,7 +22,7 @@ class LayoutXmlWriter {
     private XmlSerializer xmlSerializer;
     private StringWriter stringWriter;
 
-    String writeXml(Map<Integer, View> viewsToWrite){
+    String writeXml(Map<Integer, View> viewsToWrite) {
         xmlSerializer = Xml.newSerializer();
         stringWriter = new StringWriter();
         try {
@@ -34,20 +33,27 @@ class LayoutXmlWriter {
             // open tag: <android.support.constraint.ConstraintLayout>
             xmlSerializer.startTag("", "android.support.constraint.ConstraintLayout");
             xmlSerializer.attribute("", "xmlns:android", "http://schemas.android.com/apk/res/android");
+            xmlSerializer.attribute("", "xmlns:app", "http://schemas.android.com/apk/res-auto");
+            xmlSerializer.attribute("", "xmlns:tools", "http://schemas.android.com/tools");
             xmlSerializer.attribute("", "android:layout_width", String.valueOf("match_parent"));
             xmlSerializer.attribute("", "android:layout_height", String.valueOf("match_parent"));
+            xmlSerializer.attribute("", "tools:context", "co.frizzle.frizzleproject1.MainActivity");
 
-            // open tag: <GridLayout>
-            xmlSerializer.startTag("", "GridLayout");
-            xmlSerializer.attribute("", "android:id", String.valueOf("@+id/gridLayout"));
-            xmlSerializer.attribute("", "android:layout_width", String.valueOf("match_parent"));
-            xmlSerializer.attribute("", "android:layout_height", String.valueOf("match_parent"));
 
-            for (View view : viewsToWrite.values()) {
+            if(!viewsToWrite.values().isEmpty()) {
+                // open tag: <GridLayout>
+                xmlSerializer.startTag("", "GridLayout");
+                xmlSerializer.attribute("", "android:id", String.valueOf("@+id/gridLayout"));
+                xmlSerializer.attribute("", "android:layout_width", String.valueOf("match_parent"));
+                xmlSerializer.attribute("", "android:layout_height", String.valueOf("match_parent"));
+
+                for (View view : viewsToWrite.values()) {
                     addElement(view);
+                }
             }
 
             xmlSerializer.endDocument();
+
         } catch (IOException e) {
             Log.e("Exception", "xmlSerializer " + xmlSerializer.toString() + " failed: " + e.toString());
         }
@@ -61,14 +67,13 @@ class LayoutXmlWriter {
         String fontFamily = "serif";
         String background = "";
         if (view.getClass().equals(TextView.class)) {
-            TextView tv = (TextView)view;
+            TextView tv = (TextView) view;
             name = "TextView";
             text = (String) tv.getText();
             fontFamily = (String) tv.getTag(R.id.usersViewFontFamily);
             background = "@drawable/user_text_view_background";
-        }
-        else if (view.getClass().equals(Button.class)) {
-            Button b = (Button)view;
+        } else if (view.getClass().equals(Button.class)) {
+            Button b = (Button) view;
             name = "Button";
             text = (String) b.getText();
             fontFamily = (String) b.getTag(R.id.usersViewFontFamily);

@@ -59,7 +59,16 @@ public class FreeText extends Exercise {
     public boolean isCorrect(View view) {
         EditText freeTextAnswer = view.findViewById(R.id.userAnswerInput);
         String userFreeTextAnswer = freeTextAnswer.getText().toString();
-        return this.getAnswers().contains(userFreeTextAnswer);
+        return containsCaseInsensitive(userFreeTextAnswer);
+    }
+
+    private boolean containsCaseInsensitive(String answer){
+        for (String currentAns : this.getAnswers()){
+            if (currentAns.equalsIgnoreCase(answer)){
+                return true;
+            }
+        }
+        return false;
     }
 
 
