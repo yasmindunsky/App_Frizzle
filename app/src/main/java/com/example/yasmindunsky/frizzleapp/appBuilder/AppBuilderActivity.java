@@ -36,7 +36,6 @@ public class AppBuilderActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_app_builder);
 
-
         // Set Toolbar home button.
         android.support.v7.widget.Toolbar toolbar =
                 (android.support.v7.widget.Toolbar) findViewById(R.id.builderToolbar);

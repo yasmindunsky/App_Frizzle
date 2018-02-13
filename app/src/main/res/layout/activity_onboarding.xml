@@ -12,35 +12,19 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
+        <ImageView
+            android:id="@+id/colors"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/app_bar_height"
+            android:layout_height="320dp"
             android:layout_alignParentTop="true"
-            android:background="?attr/colorPrimary"
-            android:gravity="center"
-            android:theme="?attr/actionBarTheme"
-            app:navigationIcon="@drawable/ic_home"
-            >
-
-            <android.support.v7.widget.AppCompatTextView
-                android:id="@+id/lessonTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_centerInParent="true"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:text="@string/lessonTitle"
-                android:textAppearance="@style/ActivityTitle" />
-        </android.support.v7.widget.Toolbar>
+            android:src="@drawable/bg_color_1" />
 
         <FrameLayout
             android:id="@+id/fragment"
             android:layout_width="match_parent"
             android:layout_height="@dimen/slide_height"
             android:layout_above="@id/dotsTabLayout"
-            android:layout_alignEnd="@+id/toolbar"
-            android:layout_below="@+id/toolbar"
+            android:layout_below="@+id/colors"
             android:layout_marginBottom="0dp"
             android:layout_marginTop="0dp"
             android:elevation="4dp">

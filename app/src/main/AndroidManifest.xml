@@ -21,13 +21,18 @@
 
         <activity android:name=".MapActivity"
                   android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity android:name=".intro.OnboardingActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".lesson.LessonActivity"/>
-        <activity android:name=".appBuilder.AppBuilderActivity"/>
+        <activity android:name=".appBuilder.AppBuilderActivity">
+
+        </activity>
 
         <meta-data
             android:name="preloaded_fonts"
