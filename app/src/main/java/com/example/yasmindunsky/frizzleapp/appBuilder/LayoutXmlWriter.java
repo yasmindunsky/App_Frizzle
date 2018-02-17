@@ -80,6 +80,7 @@ class LayoutXmlWriter {
             xmlSerializer.attribute("", "android:id", "@+id/" + view.getTag(R.id.usersViewId).toString());
             xmlSerializer.attribute("", "android:layout_width", "wrap_content");
             xmlSerializer.attribute("", "android:layout_height", "wrap_content");
+            xmlSerializer.attribute("", "android:margins", "10");
             xmlSerializer.attribute("", "android:text", text);
             xmlSerializer.attribute("", "android:fontFamily", fontFamily);
             xmlSerializer.attribute("", "android:background", background);
