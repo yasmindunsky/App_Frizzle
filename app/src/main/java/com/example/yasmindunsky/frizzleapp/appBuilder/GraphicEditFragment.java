@@ -6,6 +6,7 @@ import android.graphics.PorterDuff;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
@@ -19,11 +20,14 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridLayout;
+import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.yasmindunsky.frizzleapp.R;
+
+import net.cachapa.expandablelayout.ExpandableLayout;
 
 import java.util.BitSet;
 import java.util.HashMap;
@@ -43,6 +47,9 @@ public class GraphicEditFragment extends Fragment {
     LayoutXmlWriter layoutXmlWriter;
     enum viewTypes {Button, TextView};
 
+    private ExpandableLayout expandableLayout;
+    private FloatingActionButton expandButton;
+
     public GraphicEditFragment() {
         // Required empty public constructor
     }
@@ -54,16 +61,33 @@ public class GraphicEditFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_graphic_edit, container, false);
         gridLayout = view.findViewById(R.id.gridLayout);
 
-        Button addText = view.findViewById(R.id.addText);
+        TextView addText = view.findViewById(R.id.addText);
         addText.setOnClickListener(newTextOnClick);
 
-        Button addButton = view.findViewById(R.id.addButton);
+        TextView addButton = view.findViewById(R.id.addButton);
         addButton.setOnClickListener(newButtonOnClick);
 
         views = new HashMap<>();
         numOfButtons = 0;
         numOfTextViews = 0;
         nextViewIndex = 0;
+
+        expandableLayout = view.findViewById(R.id.expandable_layout);
+        expandButton = view.findViewById(R.id.addView);
+
+        expandableLayout.setOnExpansionUpdateListener(new ExpandableLayout.OnExpansionUpdateListener() {
+            @Override
+            public void onExpansionUpdate(float expansionFraction, int state) {
+                Log.d("ExpandableLayout", "State: " + state);
+                expandButton.setRotation(expansionFraction * 180);
+            }
+        });
+        expandButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                expandableLayout.toggle();
+            }
+        });
 
         return view;
     }
@@ -374,4 +398,6 @@ public class GraphicEditFragment extends Fragment {
             popupWindow.dismiss();
         }
     }
+
+
 }

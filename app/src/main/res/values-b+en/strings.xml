@@ -34,6 +34,11 @@
     <string name="propertiesTableColor">Color:</string>
     <string name="delete">delete</string>
     <string name="EditTextHint">Type in your answer..</string>
+    <string name="onboardingMentorText2" />
+    <string name="already_have_an_account">already have an account?</string>
+    <string name="register">Register</string>
+    <string name="noPassword">You forgot to choose a password</string>
+    <string name="noEmail">You forgot to fill out your email address</string>
 
     <string-array name="fonts">
         <item>sans-serif</item>

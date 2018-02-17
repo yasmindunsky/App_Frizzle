@@ -15,7 +15,7 @@
     <exercise>
         <type name="type">"MultipleResponse"</type>
         <question name="question">"מה נכון?"</question>
-        <image name="image">"exercise_illustrations_missing"</image>
+        <image name="image">"exercise_5_1"</image>
         <content name="content"></content>
         <possibilities name = "possibilities">
             <possibility name= "possibility">"ה-ID של הכפתור הוא likeButton"</possibility>
@@ -34,7 +34,7 @@
     <exercise>
         <type name="type">"FreeText"</type>
         <question name="question">"איך יקרא הכפתור בקוד?"</question>
-        <image name="image">"exercise_illustrations_missing"</image>
+        <image name="image">"exercise_5_2"</image>
         <content name="content"></content>
         <possibilities name = "possibilities"></possibilities>
         <answers name="answers">
@@ -45,7 +45,7 @@
     <exercise>
         <type name="type">"FreeText"</type>
         <question name="question">"מה יהיה כתוב על הכפתור?"</question>
-        <image name="image">"exercise_illustrations_missing"</image>
+        <image name="image">"exercise_5_2"</image>
         <content name="content"></content>
         <possibilities name = "possibilities"></possibilities>
         <answers name="answers">
@@ -56,7 +56,7 @@
     <exercise>
         <type name="type">"FreeText"</type>
         <question name="question">"מה ה-ID של הכפתור?"</question>
-        <image name="image">"exercise_illustrations_missing"</image>
+        <image name="image">"exercise_5_2"</image>
         <content name="content"></content>
         <possibilities name = "possibilities"></possibilities>
         <answers name="answers">
@@ -67,7 +67,7 @@
     <exercise>
         <type name="type">"SingleResponse"</type>
         <question name="question">"איך יראו הכפתורים באפליקציה?"</question>
-        <image name="image">"exercise_illustrations_missing"</image>
+        <image name="image">"exercise_5_5"</image>
         <content name="content"></content>
         <possibilities name = "possibilities">
             <possibility name = "possibility">"True"</possibility>
@@ -81,7 +81,7 @@
     <exercise>
         <type name="type">"SingleResponse"</type>
         <question name="question">"הקוד הזה לא יצליח לרוץ. למה?"</question>
-        <image name="image">"exercise_illustrations_missing"</image>
+        <image name="image">"exercise_5_6"</image>
         <content name="content"></content>
         <possibilities name = "possibilities">
             <possibility name = "possibility">"השם של הכפתור לא מתאים ל-ID שלו"</possibility>

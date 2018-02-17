@@ -22,16 +22,21 @@ public class OnboardingSwipeAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        OnboardingFragment onboardingFragment = new OnboardingFragment();
+        if (3 == position) {
+            RegisterFragment registerFragment = new RegisterFragment();
+            return registerFragment;
+        }
+        OnboardingFragment fragment = new OnboardingFragment();
         Bundle bundle = new Bundle();
-        bundle.putInt("position", position);
-        onboardingFragment.setArguments(bundle);
-        return onboardingFragment;
+        bundle.putInt(OnboardingFragment.POISITION, position);
+        fragment.setArguments(bundle);
+        return fragment;
     }
 
     @Override
     public int getCount() {
         return numOfFragments;
     }
+
 }
 

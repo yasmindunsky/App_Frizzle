@@ -53,7 +53,7 @@
     <exercise>
         <type name="type">"SingleResponse"</type>
         <question name="question">"כפתור הוא סוג של View."</question>
-        <image name="image">"exercise_illustrations_2"</image>
+        <image name="image">"exercise_2_2"</image>
         <content name="content"></content>
         <possibilities name = "possibilities">
             <possibility name = "possibility">"נכון"</possibility>
@@ -67,7 +67,7 @@
     <exercise>
         <type name="type">"SingleResponse"</type>
         <question name="question">"כותרת של אפליקציה היא דוגמה ל-View מסוג:"</question>
-        <image name="image">"exercise_illustrations_1"</image>
+        <image name="image">"exercise_2_1"</image>
         <content name="content"></content>
         <possibilities name = "possibilities">
             <possibility name = "possibility">"TextView"</possibility>
@@ -81,7 +81,7 @@
     <exercise>
         <type name="type">"FreeText"</type>
         <question name="question">"כתבו את מה שצריך לכתוב בשדה Text אם נרצה שעל הכפתור יהיה כתוב Send."</question>
-        <image name="image">"exercise_illustrations_3"</image>
+        <image name="image">"exercise_2_3"</image>
         <content name="content"></content>
         <possibilities name = "possibilities"></possibilities>
         <answers name="answers">
@@ -92,7 +92,7 @@
     <exercise>
         <type name="type">"MultipleResponse"</type>
         <question name="question">"מה מהבאים נוכל להגדיר באמצעות טבלת המאפיינים?"</question>
-        <image name="image">"exercise_illustrations_4"</image>
+        <image name="image">"exercise_2_4"</image>
         <content name="content"></content>
         <possibilities name = "possibilities">
             <possibility name= "possibility">"פונט של TextView"</possibility>
@@ -111,7 +111,7 @@
     <exercise>
         <type name="type">"SingleResponse"</type>
         <question name="question">"אם נשנה את מאפיין ה-ID של הכפתור ל-"Send", יופיע עליו הטקסט Send."</question>
-        <image name="image">"exercise_illustrations_5"</image>
+        <image name="image">"exercise_2_5"</image>
         <content name="content"></content>
         <possibilities name = "possibilities">
             <possibility name = "possibility">"נכון"</possibility>
@@ -125,7 +125,7 @@
     <exercise>
         <type name="type">"SingleResponse"</type>
         <question name="question">"אם נשנה את מאפיין הטקסט של הכפתור ל-"Send", יופיע עליו הטקסט Send."</question>
-        <image name="image">"exercise_illustrations_6"</image>
+        <image name="image">"exercise_2_6"</image>
         <content name="content"></content>
         <possibilities name = "possibilities">
             <possibility name = "possibility">"נכון"</possibility>

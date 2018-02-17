@@ -20,7 +20,7 @@
             android:src="@drawable/lets_build" />
 
         <TextView
-            android:id="@+id/task"
+            android:id="@+id/clickToExpand"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/imageView2"
@@ -48,7 +48,7 @@
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/task"
+            android:layout_below="@+id/clickToExpand"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="36dp"

@@ -34,6 +34,14 @@
     <string name="propertiesTableColor">צבע:</string>
     <string name="delete">מחיקה</string>
     <string name="EditTextHint">הקלידי את תשובתך...</string>
+    <string name="onboardingMentorText0">כאן תוכלי לבנות\nאפליקציה משלך\nבה תוכלי להשתמש\nולשתף חברים.</string>
+    <string name="onboardingMentorText1">גם אם לא יצא לך\nלתכנת אף פעם,\nאנחנו נדריך\nאותך בכל שלב</string>
+    <string name="onboardingMentorText2">אחרי כל שיעור קצר\nתוכלי להשלים עוד חלק\nבבניית האפליקציה שלך</string>
+    <string name="onboardingMentorText3">יאללה, בואי נצא לדרך!</string>
+    <string name="already_have_an_account">כבר יש לי חשבון</string>
+    <string name="register">הרשמה</string>
+    <string name="noPassword">שכחת לכתוב סיסמה!</string>
+    <string name="noEmail">כתובת האימייל לא תקינה</string>
 
     <string-array name="fonts">
         <item>sans-serif</item>

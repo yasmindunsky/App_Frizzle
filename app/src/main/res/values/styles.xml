@@ -34,6 +34,55 @@
         <item name="android:layout_marginStart">20dp</item>
     </style>
 
+    <!--Intro-->
+
+    <style name="registerEditText" parent="@android:style/Widget.EditText">
+        <item name="android:background">@drawable/exercise_text_edit_background</item>
+        <item name="android:padding">10sp</item>
+        <item name="android:paddingStart">20sp</item>
+        <item name="android:paddingEnd">20sp</item>
+        <item name="android:layout_marginBottom">10dp</item>
+
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">@font/alef</item>
+        <item name="android:textColor">@color/TextLightGrey</item>
+        <item name="android:letterSpacing">.08</item>
+
+        <item name="android:singleLine">true</item>
+    </style>
+
+    <style name="registerButton" parent="@android:style/Widget.Button">
+        <item name="android:background">@drawable/register_button_background</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/hero_regular</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:letterSpacing">.08</item>
+        <item name="android:width">200dp</item>
+        <item name="android:height">50dp</item>
+        <item name="android:layout_marginBottom">10dp</item>
+        <item name="android:padding">10sp</item>
+        <item name="android:paddingStart">20sp</item>
+        <item name="android:paddingEnd">20sp</item>
+    </style>
+
+    <style name="userNameEditText" parent="@android:style/Widget.EditText">
+        <item name="android:background">@drawable/user_name_text_edit_background</item>
+        <item name="android:padding">10sp</item>
+        <item name="android:paddingStart">20sp</item>
+        <item name="android:paddingEnd">40sp</item>
+        <item name="android:layout_marginTop">5dp</item>
+        <item name="android:layout_marginBottom">5dp</item>
+
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">@font/alef</item>
+        <item name="android:textColor">@color/TextLightGrey</item>
+        <item name="android:letterSpacing">.08</item>
+
+        <item name="android:singleLine">true</item>
+    </style>
+
+
     <!--Slides-->
 
     <style name="SlideText" parent="@android:style/TextAppearance.Medium">
@@ -112,7 +161,32 @@
 
 
     <!--App Builder-->
+        <!--General-->
+    <style name="AppBuilderTabLayout" parent="Widget.Design.TabLayout">
+        <item name="android:layout_marginTop">15dp</item>
+        <item name="android:layout_height">35dp</item>
+        <item name="android:layout_width">match_parent</item>
 
+        <item name="tabMaxWidth">200dp</item>
+        <item name="tabPaddingStart">40dp</item>
+        <item name="tabPaddingEnd">40dp</item>
+
+        <item name="tabIndicatorHeight">0dp</item>
+        <item name="tabBackground">@drawable/app_builder_tab_selector</item>
+        <item name="tabTextAppearance">@style/AppBuilderTabTextAppearance</item>
+        <item name="tabSelectedTextColor">@color/white</item>
+    </style>
+
+    <style name="AppBuilderTabTextAppearance" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/TextLightGrey</item>
+    </style>
+
+    <style name="taskText" parent="@style/SlideText">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+        <!--Graphic Edit-->
     <style name="usersButton" parent="@android:style/Widget.Button">
         <item name="android:background">@drawable/user_button_background</item>
         <item name="android:textColor">@color/TextGrey</item>
@@ -146,6 +220,11 @@
     <style name="propertiesTableValue" parent="@style/propertiesTableKey">
         <item name="android:fontFamily">@font/alef</item>
         <item name="android:textSize">16sp</item>
+    </style>
+
+        <!--Code-->
+    <style name="CodeText" parent="@style/SlideText">
+        <item name="android:textColor">@color/white</item>
     </style>
 
     <!--Map-->

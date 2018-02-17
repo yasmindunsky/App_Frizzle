@@ -29,7 +29,7 @@
     <exercise>
         <type name="type">"SingleResponse"</type>
         <question name="question">"באיזה מסך נשתמש אם נרצה להוסיף כותרת לאפליקציה ולהגדיר שתהיה בצבע סגול?"</question>
-        <image name="image">"exercise_illustrations_missing"</image>
+        <image name="image">"exercise_3_1"</image>
         <content name="content"></content>
         <possibilities name = "possibilities">
             <possibility name = "possibility">"מסך העריכה הגרפית"</possibility>
@@ -43,7 +43,7 @@
     <exercise>
         <type name="type">"SingleResponse"</type>
         <question name="question">"באיזה מסך נשתמש אם נרצה להגדיר שהצבע של הכותרת הופך מסגול לירוק בלחיצה על כפתור "שנה צבע"?"</question>
-        <image name="image">"exercise_illustrations_missing"</image>
+        <image name="image">"exercise_3_2"</image>
         <content name="content"></content>
         <possibilities name = "possibilities">
             <possibility name = "possibility">"מסך העריכה הגרפית"</possibility>
@@ -57,7 +57,7 @@
     <exercise>
         <type name="type">"SingleResponse"</type>
         <question name="question">"באיזה מסך נשתמש אם יש כפתור Play באפליקציה, ונרצה להגדיר שבלחיצה עליו יתחיל להתנגן שיר?"</question>
-        <image name="image">"exercise_illustrations_missing"</image>
+        <image name="image">"exercise_3_3"</image>
         <content name="content"></content>
         <possibilities name = "possibilities">
             <possibility name = "possibility">"מסך העריכה הגרפית"</possibility>

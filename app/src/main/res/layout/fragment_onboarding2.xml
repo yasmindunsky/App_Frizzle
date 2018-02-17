@@ -3,56 +3,40 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layoutDirection="ltr"
-        android:orientation="horizontal">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/colors"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerInParent="true"
+            android:background="@drawable/bg_color_1" />
 
         <ImageView
             android:id="@+id/mentor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
-            android:layout_marginTop="30dp"
-            android:layout_weight="1"
+            android:layout_marginBottom="30dp"
+            android:layout_marginLeft="57dp"
             android:background="@drawable/ic_mentor" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/mentorText"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_alignTop="@+id/mentor"
+            android:layout_marginStart="9dp"
+            android:layout_toRightOf="@+id/mentor"
             android:background="@drawable/bubble"
-            android:orientation="vertical">
-
-            <android.support.v7.widget.AppCompatTextView
-                android:id="@+id/usersName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/mentor"
-                android:layout_weight="1"
-                android:textAppearance="@style/SlideText" />
-
-            <android.support.v7.widget.AppCompatTextView
-                android:id="@+id/mentorText2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="30dp"
-                android:layout_marginLeft="30dp"
-                android:layout_toRightOf="@+id/mentor"
-                android:layout_weight="1"
-                android:text="גם אם לא יצא לך\nלתכנת אף פעם,\nאנחנו נדריך\nאותך בכל שלב"
-                android:textAppearance="@style/SlideText" />
-        </LinearLayout>
-
-    </LinearLayout>
-
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+            android:text="@string/onboardingMentorText2"
+            android:textAppearance="@style/SlideText" />
 
     </RelativeLayout>
+
 
 </FrameLayout>

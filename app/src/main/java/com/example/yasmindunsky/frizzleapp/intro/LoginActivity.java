@@ -21,7 +21,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        messagePlaceholder = findViewById(R.id.loginMessagePlaceholder);
+        messagePlaceholder = findViewById(R.id.mentorText);
     }
 
     public void loginUser(View view) {
@@ -41,12 +41,12 @@ public class LoginActivity extends AppCompatActivity {
     private boolean inputIsValid(String email, String password) {
 
         if (email.equals("")) {
-            messagePlaceholder.setText("You forgot to enter you email address");
+            messagePlaceholder.setText(R.string.noEmail);
             return false;
         }
 
         if (password.equals("")) {
-            messagePlaceholder.setText("You forgot to enter your password");
+            messagePlaceholder.setText(R.string.noPassword);
             return false;
         }
 

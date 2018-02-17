@@ -11,7 +11,6 @@ import android.widget.TextView;
 
 import com.example.yasmindunsky.frizzleapp.appBuilder.AppBuilderActivity;
 import com.example.yasmindunsky.frizzleapp.lesson.LessonActivity;
-import com.example.yasmindunsky.frizzleapp.lesson.Slide;
 import com.example.yasmindunsky.frizzleapp.lesson.Task;
 
 
@@ -52,7 +51,7 @@ public class goToAppBuilderFragment extends Fragment {
         });
 
         Task task = LessonActivity.getCurrentLesson().getTask();
-        TextView taskTextView = (TextView)view.findViewById(R.id.task);
+        TextView taskTextView = (TextView)view.findViewById(R.id.clickToExpand);
         taskTextView.setText(task.getText());
 
         return view;

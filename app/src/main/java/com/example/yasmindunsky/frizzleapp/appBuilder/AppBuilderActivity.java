@@ -11,12 +11,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.yasmindunsky.frizzleapp.AsyncResponse;
 import com.example.yasmindunsky.frizzleapp.MapActivity;
 import com.example.yasmindunsky.frizzleapp.R;
-import com.example.yasmindunsky.frizzleapp.lesson.Lesson;
 import com.example.yasmindunsky.frizzleapp.lesson.LessonActivity;
 import com.example.yasmindunsky.frizzleapp.lesson.Task;
+
+import net.cachapa.expandablelayout.ExpandableLayout;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -53,16 +53,16 @@ public class AppBuilderActivity extends AppCompatActivity {
         if (LessonActivity.getCurrentLesson() != null) {
             task = LessonActivity.getCurrentLesson().getTask();
         }
+
         TextView taskTextView = (TextView)findViewById(R.id.task);
-        taskTextView.setText(task.getText());
+//        taskTextView.setText(task.getText());
 
-        TabLayout tabLayout = findViewById(R.id.tabLayout); // get the reference of TabLayout
-        TabLayout.Tab codingTab = tabLayout.newTab().setText(R.string.codeScreenTitle);
+        final TabLayout tabLayout = findViewById(R.id.tabLayout); // get the reference of TabLayout
         TabLayout.Tab graphicEditTab = tabLayout.newTab().setText(R.string.graphicEditScreenTitle);
+        TabLayout.Tab codingTab = tabLayout.newTab().setText(R.string.codeScreenTitle);
 
-        codingFragment = new CodingFragment();
         graphicEditFragment = new GraphicEditFragment();
-
+        codingFragment = new CodingFragment();
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             public void onTabReselected(TabLayout.Tab tab) {
@@ -73,9 +73,9 @@ public class AppBuilderActivity extends AppCompatActivity {
                 Fragment fragment = null;
 
                 if (tab.getPosition() == 0) {
-                    fragment = codingFragment;
-                } else {
                     fragment = graphicEditFragment;
+                } else {
+                    fragment = codingFragment;
                 }
 
                 FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
@@ -89,8 +89,23 @@ public class AppBuilderActivity extends AppCompatActivity {
             }
         });
 
-        tabLayout.addTab(codingTab, true);
-        tabLayout.addTab(graphicEditTab);
+        tabLayout.addTab(graphicEditTab,true);
+        tabLayout.addTab(codingTab);
+        graphicEditTab.select();
+
+        // ExpandableLayout
+        Button clickToExpand = findViewById(R.id.clickToExpand);
+        clickToExpand.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ExpandableLayout expandableLayout = findViewById(R.id.expandable_layout);
+                if (expandableLayout.isExpanded()) {
+                    expandableLayout.collapse();
+                } else {
+                    expandableLayout.expand();
+                }
+            }
+        });
 
         // Open Java and XML files.
         File path = getBaseContext().getFilesDir();

@@ -3,7 +3,7 @@
     android:viewportWidth="60.0" android:width="61dp"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <group
-        android:scaleX=".8"
+        android:scaleX="-.8"
         android:scaleY="0.4"
         android:pivotX="20"
         android:pivotY="20">
