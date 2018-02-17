@@ -60,7 +60,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/tabLayout"
             app:el_duration="1000"
-            app:el_expanded="false"
+            app:el_expanded="true"
             app:el_parallax="0.5">
 
             <TextView

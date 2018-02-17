@@ -39,6 +39,7 @@ public class goToAppBuilderFragment extends Fragment {
             view.setRotationY(180);
         }
 
+
         // Update the top position of the user if needed
         updateTopPosition();
 
@@ -51,8 +52,8 @@ public class goToAppBuilderFragment extends Fragment {
         });
 
         Task task = LessonActivity.getCurrentLesson().getTask();
-        TextView taskTextView = (TextView)view.findViewById(R.id.clickToExpand);
-        taskTextView.setText(task.getText());
+        TextView taskTextView = (TextView)view.findViewById(R.id.mentorText);
+        taskTextView.setText("עבודה טובה, עכשיו עברי למסך בניית האפליקציה,\n" + task.getText());
 
         return view;
     }

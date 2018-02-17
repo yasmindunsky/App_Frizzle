@@ -6,7 +6,11 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TableLayout;
 import android.widget.TextView;
 
 import com.example.yasmindunsky.frizzleapp.MapActivity;
@@ -23,6 +27,7 @@ public class LessonActivity extends FragmentActivity {
     private static SwipeAdapter swipeAdapter;
     private static Lesson currentLesson;
     private ViewPager viewPager;
+    private boolean isAroundFragmentVisible;
 
     static public Lesson getCurrentLesson() {
         return currentLesson;
@@ -45,6 +50,8 @@ public class LessonActivity extends FragmentActivity {
                 finish();
             }
         });
+
+        isAroundFragmentVisible = true;
 
         // create new Lesson by the current lesson id
         currentLesson = new Lesson(UserProfile.user.getCurrentLessonID());
@@ -91,8 +98,35 @@ public class LessonActivity extends FragmentActivity {
                 if (position == firstExerciseIndex - 1) {
                     ChangeDotsVisibility(tabLayout, View.VISIBLE, firstExerciseIndex, lastExerciseIndex);
                 }
+                if (position == lastExerciseIndex || !isAroundFragmentVisible) {
+                    switchAroundFragmentVisibilty();
+                }
             }
         });
+    }
+
+    private void switchAroundFragmentVisibilty() {
+        int newVisibility = isAroundFragmentVisible ? View.INVISIBLE : View.VISIBLE;
+
+        android.support.v7.widget.Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar.setVisibility(newVisibility);
+        TabLayout dotsTabLayout = findViewById(R.id.dotsTabLayout);
+        dotsTabLayout.setVisibility(newVisibility);
+
+        FrameLayout frameLayout = findViewById(R.id.fragment);
+        RelativeLayout.LayoutParams layoutParams = null;
+        if (isAroundFragmentVisible) {
+            layoutParams = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+            layoutParams.addRule(RelativeLayout.ALIGN_PARENT_TOP);
+        } else {
+            layoutParams = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, R.dimen.slide_height);
+            layoutParams.addRule(RelativeLayout.ABOVE, R.id.dotsTabLayout);
+            layoutParams.addRule(RelativeLayout.BELOW, R.id.toolbar);
+            layoutParams.addRule(RelativeLayout.ALIGN_END, R.id.toolbar);
+        }
+        frameLayout.setLayoutParams(layoutParams);
+
+        isAroundFragmentVisible = !isAroundFragmentVisible;
     }
 
 

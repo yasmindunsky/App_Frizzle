@@ -55,7 +55,7 @@ public class AppBuilderActivity extends AppCompatActivity {
         }
 
         TextView taskTextView = (TextView)findViewById(R.id.task);
-//        taskTextView.setText(task.getText());
+        taskTextView.setText(task.getText());
 
         final TabLayout tabLayout = findViewById(R.id.tabLayout); // get the reference of TabLayout
         TabLayout.Tab graphicEditTab = tabLayout.newTab().setText(R.string.graphicEditScreenTitle);
