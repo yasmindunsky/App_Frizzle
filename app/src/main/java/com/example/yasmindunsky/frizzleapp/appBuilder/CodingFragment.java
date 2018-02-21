@@ -121,6 +121,10 @@ public class CodingFragment extends Fragment {
     }
 
     public String getCode() {
-        return editText.getText().toString();
+        if (editText != null) {
+            return editText.getText().toString();
+        } else {
+            return "";
+        }
     }
 }

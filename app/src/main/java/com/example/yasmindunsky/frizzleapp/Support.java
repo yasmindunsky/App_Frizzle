@@ -1,5 +1,6 @@
 package com.example.yasmindunsky.frizzleapp;
 
+import java.util.ArrayList;
 import java.util.Locale;
 
 /**
@@ -16,4 +17,14 @@ public class Support {
         return directionality == Character.DIRECTIONALITY_RIGHT_TO_LEFT ||
                 directionality == Character.DIRECTIONALITY_RIGHT_TO_LEFT_ARABIC;
     }
+
+    public static ArrayList<String> colorsHexList = new ArrayList<String>() {{
+        add("#39a085");
+        add("#f07a00");
+        add("#b93660");
+        add("#535264");
+        add("#f8b119");
+    }};
+
+
 }

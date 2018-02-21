@@ -94,6 +94,6 @@
 
 
     <task>
-        <text name = "text"> "Create a button in the Graphic Edit screen and change its properties as you wish" </text>
+        <text name = "text"> "הפעילי במסך הקוד את פקודת setText על הכפתור כך שהטקסט עליו ישתנה לתשובה לשאלה שכתבת." </text>
     </task>
 </lesson>

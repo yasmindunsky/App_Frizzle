@@ -24,7 +24,6 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/colors"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="30dp"
             android:text="כל הכבוד!"
             android:textAppearance="@style/GoodJobTitle" />
 
@@ -35,15 +34,15 @@
             android:layout_alignBottom="@+id/continueButton"
             android:layout_alignParentLeft="true"
             android:layout_marginBottom="100dp"
-            android:layout_marginLeft="40dp"
+            android:layout_marginLeft="20dp"
             android:background="@drawable/ic_mentor" />
 
         <android.support.v7.widget.AppCompatTextView
             android:id="@+id/mentorText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/mentor"
-            android:layout_marginRight="40dp"
+            android:layout_alignBottom="@+id/mentor"
+            android:layout_marginRight="20dp"
             android:layout_toRightOf="@+id/mentor"
             android:background="@drawable/bubble"
             android:text="@string/task_text"
@@ -56,7 +55,6 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="30dp"
             android:text="Let's Build" />
 
     </RelativeLayout>

@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/table_background">
+
+    <TextView
+        android:id="@+id/properties"
+        style="@style/propertiesTableTitle"
+        android:layout_width="match_parent"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/table_title_background"
+        android:gravity="center" />
+
+    <ImageButton
+        android:id="@+id/close"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/app_bar_height"
+        android:layout_alignParentEnd="true"
+        android:backgroundTint="@android:color/transparent"
+        android:padding="18dp"
+        android:scaleType="fitCenter"
+        app:srcCompat="@drawable/ic_x" />
+
+    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/tableLayout"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/properties"
+        android:background="@drawable/table_background">
+
+
+        <TableRow style="@style/propertiesTableRow">
+
+            <TextView
+                android:id="@+id/viewIdKey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/propertiesTableId"
+                android:textAppearance="@style/propertiesTableKey" />
+
+            <EditText
+                android:id="@+id/viewIdValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text=""
+                android:textAppearance="@style/propertiesTableValue" />
+        </TableRow>
+
+        <TableRow style="@style/propertiesTableRow">
+
+            <TextView
+                android:id="@+id/viewTextKey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/viewIdValue"
+                android:text="@string/propertiesTableText"
+                android:textAppearance="@style/propertiesTableKey" />
+
+            <EditText
+                android:id="@+id/viewTextValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:textAppearance="@style/propertiesTableValue" />
+
+        </TableRow>
+
+        <TableRow style="@style/propertiesTableRow">
+
+            <TextView
+                android:id="@+id/viewFontKey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/propertiesTableFont"
+                android:textAppearance="@style/propertiesTableKey" />
+
+            <Spinner
+                android:id="@+id/viewFontValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:spinnerMode="dialog" />
+        </TableRow>
+
+
+        <TableRow style="@style/propertiesTableRow">
+
+            <TextView
+                android:id="@+id/viewBgColorKey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/propertiesTableBgColor"
+                android:textAppearance="@style/propertiesTableKey" />
+
+            <Button
+                android:id="@+id/viewBgColorValue"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_weight="1"
+                android:background="@color/UnselectedLightGrey" />
+
+
+        </TableRow>
+
+        <TableRow style="@style/propertiesTableRow">
+
+            <TextView
+                android:id="@+id/viewFontColorKey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/propertiesTableFontColor"
+                android:textAppearance="@style/propertiesTableKey" />
+
+            <Button
+                android:id="@+id/viewFontColorValue"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_weight="1"
+                android:background="@color/UnselectedLightGrey" />
+
+
+        </TableRow>
+
+        <TableRow style="@style/propertiesTableRow">
+
+            <TextView
+                android:id="@+id/viewOnClickKey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/viewIdValue"
+                android:text="@string/propertiesTableOnClick"
+                android:textAppearance="@style/propertiesTableKey" />
+
+            <EditText
+                android:id="@+id/viewOnClickValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:textAppearance="@style/propertiesTableValue" />
+
+        </TableRow>
+
+        <Button
+            android:id="@+id/deleteButton"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:text="@string/delete" />
+
+    </TableLayout>
+</RelativeLayout>

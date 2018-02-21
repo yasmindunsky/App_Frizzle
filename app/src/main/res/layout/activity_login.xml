@@ -20,22 +20,21 @@
 
         <ImageView
             android:id="@+id/mentor"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/MentorImage"
             android:layout_alignParentLeft="true"
             android:layout_below="@+id/colors"
-            android:layout_marginLeft="57dp"
-            android:layout_marginTop="30dp"
-            android:background="@drawable/ic_mentor" />
+            android:layout_marginLeft="45dp" />
 
         <android.support.v7.widget.AppCompatTextView
             android:id="@+id/mentorText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
+            android:layout_below="@+id/colors"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="9dp"
             android:layout_toRightOf="@+id/mentor"
             android:background="@drawable/bubble"
-            android:text="את כבר רשומה? מעולה.\nהכניסי את כתובת\nהאימייל והסיסמה שלך."
+            android:text="את כבר רשומה? מעולה. הכניסי את כתובת האימייל והסיסמה שלך."
             android:textAppearance="@style/SlideText" />
 
         <EditText
@@ -85,6 +84,17 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/password" />
+
+        <Button
+            android:id="@+id/goToRegisterButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/loginButton"
+            android:layout_centerHorizontal="true"
+            android:background="@android:color/transparent"
+            android:text="@string/dont_have_an_account"
+            android:textAppearance="@style/SlideText"
+            android:textSize="16sp" />
 
     </RelativeLayout>
 

@@ -32,6 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/mentor"
             android:layout_marginBottom="30dp"
+            android:layout_marginRight="20dp"
             android:layout_toRightOf="@+id/mentor"
             android:background="@drawable/bubble"
             android:gravity="start"
@@ -53,8 +54,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
                 android:layout_weight="1"
-                android:inputType="textPersonName"
-                android:hint="מה שמך?" />
+                android:hint="מה שמך?"
+                android:inputType="textPersonName" />
 
             <android.support.v7.widget.AppCompatTextView
                 android:id="@+id/mentorText2"

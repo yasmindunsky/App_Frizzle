@@ -14,11 +14,11 @@
 
         <GridLayout
             android:id="@+id/gridLayout"
-            android:layout_width="match_parent"
-            android:layout_height="406dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_margin="16dp"
-            android:background="@color/lightBlue"
+            android:background="@drawable/grid"
             android:columnCount="2"
             android:padding="15dp"
             android:rowCount="15">
@@ -83,7 +83,7 @@
             android:layout_marginBottom="16dp"
             android:layout_marginRight="16dp"
             android:clickable="true"
-            android:src="@android:drawable/ic_menu_close_clear_cancel"
+            android:src="@drawable/ic_plus_add_icon"
             app:backgroundTint="@color/frizzle_yellow" />
 
     </RelativeLayout>

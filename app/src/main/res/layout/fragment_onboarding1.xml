@@ -30,6 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/mentor"
             android:layout_marginBottom="30dp"
+            android:layout_marginRight="20dp"
             android:layout_toRightOf="@+id/mentor"
             android:background="@drawable/bubble"
             android:gravity="start"

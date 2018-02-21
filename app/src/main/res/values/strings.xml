@@ -28,20 +28,24 @@
     <string name="codeScreenTitle">קוד</string>
     <string name="graphicEditScreenTitle">עיצוב</string>
     <string name="propertiesTableTitle">מאפיינים</string>
-    <string name="propertiesTableId">מזהה:</string>
-    <string name="propertiesTableText">טקסט:</string>
-    <string name="propertiesTableFont">פונט:</string>
-    <string name="propertiesTableColor">צבע:</string>
+    <string name="propertiesTableId">מזהה</string>
+    <string name="propertiesTableText">טקסט</string>
+    <string name="propertiesTableFont">פונט</string>
+    <string name="propertiesTableBgColor">צבע רקע</string>
+    <string name="propertiesTableFontColor" >צבע פונט</string>
+    <string name="propertiesTableOnClick">OnClick</string>
     <string name="delete">מחיקה</string>
     <string name="EditTextHint">הקלידי את תשובתך...</string>
-    <string name="onboardingMentorText0">כאן תוכלי לבנות\nאפליקציה משלך\nבה תוכלי להשתמש\nולשתף חברים.</string>
-    <string name="onboardingMentorText1">גם אם לא יצא לך\nלתכנת אף פעם,\nאנחנו נדריך\nאותך בכל שלב</string>
-    <string name="onboardingMentorText2">אחרי כל שיעור קצר\nתוכלי להשלים עוד חלק\nבבניית האפליקציה שלך</string>
+    <string name="onboardingMentorText0">כאן תוכלי לבנות אפליקציה משלך בה תוכלי להשתמש ולשתף חברים.</string>
+    <string name="onboardingMentorText1">גם אם לא יצא לך לתכנת אף פעם, אנחנו נדריך אותך בכל שלב</string>
+    <string name="onboardingMentorText2">אחרי כל שיעור קצר תוכלי להשלים עוד חלק בבניית האפליקציה שלך</string>
     <string name="onboardingMentorText3">יאללה, בואי נצא לדרך!</string>
     <string name="already_have_an_account">כבר יש לי חשבון</string>
+    <string name="dont_have_an_account">אין לי עדיין חשבון</string>
     <string name="register">הרשמה</string>
     <string name="noPassword">שכחת לכתוב סיסמה!</string>
     <string name="noEmail">כתובת האימייל לא תקינה</string>
+    <string name="propertiesTableTextAlign">יישור</string>
 
     <string-array name="fonts">
         <item>sans-serif</item>
@@ -50,8 +54,8 @@
     </string-array>
 
     <string-array name="colors">
-        <item>white</item>
         <item>red</item>
+        <item>white</item>
         <item>blue</item>
         <item>orange</item>
         <item>green</item>

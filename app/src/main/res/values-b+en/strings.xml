@@ -31,7 +31,7 @@
     <string name="propertiesTableId">ID:</string>
     <string name="propertiesTableText">Text:</string>
     <string name="propertiesTableFont">Font:</string>
-    <string name="propertiesTableColor">Color:</string>
+    <string name="propertiesTableBgColor">Color:</string>
     <string name="delete">delete</string>
     <string name="EditTextHint">Type in your answer..</string>
     <string name="onboardingMentorText2" />

@@ -34,17 +34,22 @@
         </android.support.v7.widget.Toolbar>
 
 
-        <Button
+        <ImageButton
             android:id="@+id/Play"
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_below="@id/builderToolbar"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="15dp"
+            android:adjustViewBounds="false"
             android:background="@drawable/run_button_background"
+            android:cropToPadding="false"
             android:elevation="10dp"
             android:onClick="onPlay"
-            android:text=">" />
+            android:paddingLeft="12dp"
+            android:paddingRight="8dp"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/ic_play_run_icon" />
 
         <android.support.design.widget.TabLayout
             android:id="@+id/tabLayout"
@@ -67,23 +72,28 @@
                 android:id="@+id/task"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="16dp"
+                android:paddingEnd="16dp"
+                android:paddingStart="16dp"
+                android:paddingTop="5dp"
                 android:text="Fixed height"
                 android:textAppearance="@style/taskText" />
 
         </net.cachapa.expandablelayout.ExpandableLayout>
 
-        <Button
+        <ImageButton
             android:id="@+id/clickToExpand"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:layout_below="@+id/expandable_layout"
             android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
             android:background="@android:color/transparent"
             android:gravity="center_horizontal|center"
+            android:scaleType="fitCenter"
             android:text="="
             android:textColor="@color/TextLightGrey"
-            android:textSize="30sp" />
+            android:textSize="30sp"
+            app:srcCompat="@drawable/ic_expand_grab_icon" />
 
         <FrameLayout
             android:id="@+id/fragmentFrame"
@@ -99,9 +109,11 @@
                 android:layout_gravity="bottom"
                 android:layout_marginBottom="15dp"
                 android:clickable="true"
+                android:onClick="goToLesson"
                 app:backgroundTint="@color/frizzle_green"
                 app:fabSize="normal"
-                app:srcCompat="@drawable/ic_sign_out" />
+                app:srcCompat="@drawable/ic_book_lessons_icon" />
+
         </FrameLayout>
 
     </RelativeLayout>

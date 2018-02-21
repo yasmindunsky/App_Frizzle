@@ -83,6 +83,6 @@
     </exercise>
 
     <task>
-        <text name = "text"> "Create a button in the Graphic Edit screen and change its properties as you wish" </text>
+        <text name = "text"> "במסך הקוד, עטפי את הפקודות שכתבת בפונקציה ותני לה שם. במסך העיצוב, הגדירי את מאפיין ה-OnClick של הכפתור להיות הפונקציה שיצרת." </text>
     </task>
 </lesson>

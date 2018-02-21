@@ -23,7 +23,7 @@ class LayoutXmlWriter {
     private XmlSerializer xmlSerializer;
     private StringWriter stringWriter;
 
-    String writeXml(Map<Integer, View> viewsToWrite){
+    String writeXml(Map<Integer, UserCreatedView> viewsToWrite){
         xmlSerializer = Xml.newSerializer();
         stringWriter = new StringWriter();
         try {
@@ -43,8 +43,9 @@ class LayoutXmlWriter {
             xmlSerializer.attribute("", "android:layout_width", String.valueOf("match_parent"));
             xmlSerializer.attribute("", "android:layout_height", String.valueOf("match_parent"));
 
-            for (View view : viewsToWrite.values()) {
-                    addElement(view);
+            for (UserCreatedView view : viewsToWrite.values()) {
+                  view.createXmlString(xmlSerializer);
+//                addElement(view);
             }
 
             xmlSerializer.endDocument();
@@ -65,7 +66,7 @@ class LayoutXmlWriter {
             name = "TextView";
             text = (String) tv.getText();
             fontFamily = (String) tv.getTag(R.id.usersViewFontFamily);
-            background = "@drawable/user_text_view_background";
+            background = "@android:color/transparent";
         }
         else if (view.getClass().equals(Button.class)) {
             Button b = (Button)view;
