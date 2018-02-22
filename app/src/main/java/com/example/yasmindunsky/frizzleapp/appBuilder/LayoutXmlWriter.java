@@ -40,19 +40,20 @@ class LayoutXmlWriter {
             xmlSerializer.attribute("", "android:layout_height", String.valueOf("match_parent"));
             xmlSerializer.attribute("", "tools:context", "co.frizzle.frizzleproject1.MainActivity");
 
+            // open tag: <GridLayout>
+            xmlSerializer.startTag("", "GridLayout");
+            xmlSerializer.attribute("", "android:id", String.valueOf("@+id/gridLayout"));
+            xmlSerializer.attribute("", "android:layout_width", String.valueOf("match_parent"));
+            xmlSerializer.attribute("", "android:layout_height", String.valueOf("match_parent"));
 
-            if(!viewsToWrite.values().isEmpty()) {
-                // open tag: <GridLayout>
-                xmlSerializer.startTag("", "GridLayout");
-                xmlSerializer.attribute("", "android:id", String.valueOf("@+id/gridLayout"));
-                xmlSerializer.attribute("", "android:layout_width", String.valueOf("match_parent"));
-                xmlSerializer.attribute("", "android:layout_height", String.valueOf("match_parent"));
-
+            if (viewsToWrite != null ) {
                 for (UserCreatedView view : viewsToWrite.values()) {
                     view.createXmlString(xmlSerializer);
 //                addElement(view);
                 }
             }
+
+            xmlSerializer.endTag("", "GridLayout");
 
             xmlSerializer.endDocument();
 
@@ -69,14 +70,13 @@ class LayoutXmlWriter {
         String fontFamily = "serif";
         String background = "";
         if (view.getClass().equals(TextView.class)) {
-            TextView tv = (TextView)view;
+            TextView tv = (TextView) view;
             name = "TextView";
             text = (String) tv.getText();
             fontFamily = (String) tv.getTag(R.id.usersViewFontFamily);
             background = "@android:color/transparent";
-        }
-        else if (view.getClass().equals(Button.class)) {
-            Button b = (Button)view;
+        } else if (view.getClass().equals(Button.class)) {
+            Button b = (Button) view;
             name = "Button";
             text = (String) b.getText();
             fontFamily = (String) b.getTag(R.id.usersViewFontFamily);

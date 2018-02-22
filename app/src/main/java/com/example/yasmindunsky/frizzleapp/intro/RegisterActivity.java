@@ -30,11 +30,6 @@ public class RegisterActivity extends AppCompatActivity {
         startActivity(loginIntent);
     }
 
-    public void goToMap(View view) {
-        Intent mapIntent = new Intent(view.getContext(), MapActivity.class);
-        startActivity(mapIntent);
-    }
-
     public void registerNewUser(View view) {
 
         // take the parameters of the new user
@@ -48,7 +43,7 @@ public class RegisterActivity extends AppCompatActivity {
         }
 
         // register the user and go to map activity
-        registerToServer(password, email, nickName, view);
+        registerAndHandleResponse(password, email, nickName, view);
     }
 
     private boolean inputIsValid(String password, String email) {
@@ -66,13 +61,13 @@ public class RegisterActivity extends AppCompatActivity {
         return true;
     }
 
-    private void registerToServer(String password, final String email, final String nickName, final View view) {
+    private void registerAndHandleResponse(String password, final String email, final String nickName, final View view) {
         new RegisterToServer(new AsyncResponse() {
             @Override
             public void processFinish(String output) {
 
                 // in case of success, create new user instance and go to map
-                if (output.equals("Registration Succeeded")) {
+                if (output.equals("Registration succeeded")) {
 
                     // after successful registration, save username and nickname of current user
                     UserProfile.user.setUsername(email);

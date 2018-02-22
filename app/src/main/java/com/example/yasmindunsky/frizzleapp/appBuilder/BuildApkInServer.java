@@ -16,10 +16,10 @@ import java.nio.charset.StandardCharsets;
  * Created by yasmin.dunsky on 01-Feb-18.
  */
 
-public class SendFilesToServer extends AsyncTask<String, Void, String> {
+public class BuildApkInServer extends AsyncTask<String, Void, String> {
     public AsyncResponse delegate = null;
 
-    public SendFilesToServer(AsyncResponse delegate) {
+    public BuildApkInServer(AsyncResponse delegate) {
         this.delegate = delegate;
     }
 
