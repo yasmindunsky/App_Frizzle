@@ -11,5 +11,6 @@
     <item name="usersViewCol" type="id" />
     <item name="usersViewRow" type="id" />
     <item name="usersViewBgColor" type="id" />
+    <item name="viewToDelete" type="id" />
 
 </resources>

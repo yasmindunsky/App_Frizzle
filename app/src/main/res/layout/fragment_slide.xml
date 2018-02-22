@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="@dimen/slide_height"
-    android:background="@color/backgroundGrey"
+    android:background="@color/backgroundLightGrey"
     tools:context="com.example.yasmindunsky.frizzleapp.lesson.SlideFragment">
 
     <RelativeLayout

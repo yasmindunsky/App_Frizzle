@@ -11,7 +11,6 @@ import android.widget.TextView;
 
 import com.example.yasmindunsky.frizzleapp.appBuilder.AppBuilderActivity;
 import com.example.yasmindunsky.frizzleapp.lesson.LessonActivity;
-import com.example.yasmindunsky.frizzleapp.lesson.Slide;
 import com.example.yasmindunsky.frizzleapp.lesson.Task;
 
 
@@ -40,6 +39,7 @@ public class goToAppBuilderFragment extends Fragment {
             view.setRotationY(180);
         }
 
+
         // Update the top position of the user if needed
         updateTopPosition();
 
@@ -52,8 +52,8 @@ public class goToAppBuilderFragment extends Fragment {
         });
 
         Task task = LessonActivity.getCurrentLesson().getTask();
-        TextView taskTextView = (TextView)view.findViewById(R.id.task);
-        taskTextView.setText(task.getText());
+        TextView taskTextView = (TextView)view.findViewById(R.id.mentorText);
+        taskTextView.setText("עברי למסך בניית האפליקציה, " + task.getText());
 
         return view;
     }

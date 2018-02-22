@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.example.yasmindunsky.frizzleapp.appBuilder.AppBuilderActivity;
+import com.example.yasmindunsky.frizzleapp.intro.LoginActivity;
 import com.example.yasmindunsky.frizzleapp.intro.RegisterActivity;
 import com.example.yasmindunsky.frizzleapp.lesson.LessonActivity;
 
@@ -31,7 +32,7 @@ public class MapActivity extends AppCompatActivity {
         setContentView(mainLayout);
 
         // TODO change
-        topCourseId = 5;
+        topCourseId = 7;
         currentCourseId = 4;
 //        topCourseId = UserProfile.user.getTopCourseID();
 
@@ -42,7 +43,7 @@ public class MapActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Go to sign-out screen
-                Intent signOutIntent = new Intent(getBaseContext(), RegisterActivity.class);
+                Intent signOutIntent = new Intent(getBaseContext(), LoginActivity.class);
                 startActivity(signOutIntent);
             }
         });

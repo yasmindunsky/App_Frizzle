@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/backgroundGrey"
+    android:background="@color/backgroundLightGrey"
     tools:context="com.example.yasmindunsky.frizzleapp.lesson.exercise.ExerciseFragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -22,7 +22,7 @@
             android:layout_gravity="center"
             android:layout_marginEnd="@dimen/start_margin"
             android:layout_marginStart="@dimen/start_margin"
-            android:src="@drawable/exercise_illustrations_3" />
+            android:src="@drawable/exercise_2_3" />
 
         <android.support.v7.widget.AppCompatTextView
             android:id="@+id/exerciseQuestion"

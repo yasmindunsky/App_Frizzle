@@ -3,13 +3,16 @@
     <color name="colorPrimary">#aa214b</color>
     <color name="colorPrimaryDark">#544994</color>
     <color name="colorAccent">#e4c5cd</color>
-    <color name="backgroundGrey">#f4f4f4</color>
+    <color name="backgroundLightGrey">#f4f4f4</color>
     <color name="TextGrey">#535264</color>
     <color name="TextLightGrey">#d5d5d5</color>
     <color name="unselectedDarkGrey">#c9c9c9</color>
     <color name="UnselectedLightGrey">#e7ebea</color>
     <color name="SelectedButton">#dfccd6</color>
     <color name="lightBlue">#c9d3e9</color>
+    <color name="black">#33333f</color>
+    <color name="backgroundDarkGrey">#525163</color>
+
 
     <color name="white">#ffffff</color>
     <color name="holo_orange_light">#ffffbb33</color>

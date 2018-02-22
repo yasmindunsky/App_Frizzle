@@ -12,6 +12,7 @@ import org.xmlpull.v1.XmlSerializer;
 
 import java.io.IOException;
 import java.io.StringWriter;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -22,7 +23,7 @@ class LayoutXmlWriter {
     private XmlSerializer xmlSerializer;
     private StringWriter stringWriter;
 
-    String writeXml(Map<Integer, View> viewsToWrite) {
+    String writeXml(Map<Integer, UserCreatedView> viewsToWrite) {
         xmlSerializer = Xml.newSerializer();
         stringWriter = new StringWriter();
         try {
@@ -47,8 +48,9 @@ class LayoutXmlWriter {
                 xmlSerializer.attribute("", "android:layout_width", String.valueOf("match_parent"));
                 xmlSerializer.attribute("", "android:layout_height", String.valueOf("match_parent"));
 
-                for (View view : viewsToWrite.values()) {
-                    addElement(view);
+                for (UserCreatedView view : viewsToWrite.values()) {
+                    view.createXmlString(xmlSerializer);
+//                addElement(view);
                 }
             }
 
@@ -67,13 +69,14 @@ class LayoutXmlWriter {
         String fontFamily = "serif";
         String background = "";
         if (view.getClass().equals(TextView.class)) {
-            TextView tv = (TextView) view;
+            TextView tv = (TextView)view;
             name = "TextView";
             text = (String) tv.getText();
             fontFamily = (String) tv.getTag(R.id.usersViewFontFamily);
-            background = "@drawable/user_text_view_background";
-        } else if (view.getClass().equals(Button.class)) {
-            Button b = (Button) view;
+            background = "@android:color/transparent";
+        }
+        else if (view.getClass().equals(Button.class)) {
+            Button b = (Button)view;
             name = "Button";
             text = (String) b.getText();
             fontFamily = (String) b.getTag(R.id.usersViewFontFamily);
@@ -85,6 +88,7 @@ class LayoutXmlWriter {
             xmlSerializer.attribute("", "android:id", "@+id/" + view.getTag(R.id.usersViewId).toString());
             xmlSerializer.attribute("", "android:layout_width", "wrap_content");
             xmlSerializer.attribute("", "android:layout_height", "wrap_content");
+            xmlSerializer.attribute("", "android:margins", "10");
             xmlSerializer.attribute("", "android:text", text);
             xmlSerializer.attribute("", "android:fontFamily", fontFamily);
             xmlSerializer.attribute("", "android:background", background);

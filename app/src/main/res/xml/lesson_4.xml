@@ -48,7 +48,7 @@
         <question name="question">"שורת הקוד תוסיף לאפליקציה
             \\u000A
             כפתור שלישי."</question>
-        <image name="image">"exercise_illustrations_missing"</image>
+        <image name="image">"exercise_4_1"</image>
         <content name="content"></content>
         <possibilities name = "possibilities">
             <possibility name = "possibility">"נכון"</possibility>
@@ -62,7 +62,7 @@
     <exercise>
         <type name="type">"SingleResponse"</type>
         <question name="question">"איזה כפתור יקרא בקוד myButton?"</question>
-        <image name="image">"exercise_illustrations_missing"</image>
+        <image name="image">"exercise_4_1"</image>
         <content name="content"></content>
         <possibilities name = "possibilities">
             <possibility name = "possibility">"הירוק"</possibility>
@@ -76,7 +76,7 @@
     <exercise>
         <type name="type">"FreeText"</type>
         <question name="question">"איך יקרא הכפתור בקוד?"</question>
-        <image name="image">"exercise_illustrations_missing"</image>
+        <image name="image">"exercise_4_3"</image>
         <content name="content"></content>
         <possibilities name = "possibilities"></possibilities>
         <answers name="answers">
@@ -87,7 +87,7 @@
     <exercise>
         <type name="type">"FreeText"</type>
         <question name="question">"איך יקרא הכפתור בקוד?"</question>
-        <image name="image">"exercise_illustrations_missing"</image>
+        <image name="image">"exercise_4_4"</image>
         <content name="content"></content>
         <possibilities name = "possibilities"></possibilities>
         <answers name="answers">
@@ -97,6 +97,6 @@
 
 
     <task>
-        <text name = "text"> "Create a button in the Graphic Edit screen and change its properties as you wish" </text>
+        <text name = "text"> "תני לכפתור שלך שם במסך הקוד באמצעות פקודת findViewById." </text>
     </task>
 </lesson>

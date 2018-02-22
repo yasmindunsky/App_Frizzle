@@ -8,69 +8,113 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/backgroundDarkGrey">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/builderToolbar"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/app_bar_height"
-        android:layout_alignParentTop="true"
-        android:background="?attr/colorPrimaryDark"
-        android:gravity="center"
-        android:theme="?attr/actionBarTheme"
-        app:navigationIcon="@drawable/ic_home"
-        >
-
-        <android.support.v7.widget.AppCompatTextView
-            android:id="@+id/builderTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_centerInParent="true"
-            android:layout_gravity="center"
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/builderToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/app_bar_height"
+            android:layout_alignParentTop="true"
+            android:background="@color/black"
             android:gravity="center"
-            android:text="@string/appBuilderTitle"
-            android:textAppearance="@style/ActivityTitle" />
+            android:theme="?attr/actionBarTheme"
+            app:navigationIcon="@drawable/ic_home">
 
-    </android.support.v7.widget.Toolbar>
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/builderTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="@string/appBuilderTitle"
+                android:textAppearance="@style/ActivityTitle" />
+
+        </android.support.v7.widget.Toolbar>
 
 
-        <Button
+        <ImageButton
             android:id="@+id/Play"
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_below="@id/builderToolbar"
-            android:layout_marginBottom="5dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginTop="10dp"
-            android:layout_toEndOf="@id/tabLayout"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:adjustViewBounds="false"
             android:background="@drawable/run_button_background"
+            android:cropToPadding="false"
+            android:elevation="10dp"
             android:onClick="onPlay"
-            android:text=">" />
+            android:paddingLeft="12dp"
+            android:paddingRight="8dp"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/ic_play_run_icon" />
 
         <android.support.design.widget.TabLayout
             android:id="@+id/tabLayout"
-            android:layout_width="250dp"
-            android:layout_height="30dp"
+            style="@style/AppBuilderTabLayout"
             android:layout_below="@id/builderToolbar"
             android:layout_centerInParent="true"
-            android:layout_marginTop="10dp"
-            app:tabGravity="fill"
+            app:tabGravity="center"
             app:tabMode="fixed" />
 
-        <TextView
-            android:id="@+id/task"
+        <net.cachapa.expandablelayout.ExpandableLayout
+            android:id="@+id/expandable_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tabLayout"
-            android:gravity="center_horizontal"
-            android:text="@string/task_text" />
+            app:el_duration="1000"
+            app:el_expanded="true"
+            app:el_parallax="0.5">
+
+            <TextView
+                android:id="@+id/task"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingEnd="16dp"
+                android:paddingStart="16dp"
+                android:paddingTop="5dp"
+                android:text="Fixed height"
+                android:textAppearance="@style/taskText" />
+
+        </net.cachapa.expandablelayout.ExpandableLayout>
+
+        <ImageButton
+            android:id="@+id/clickToExpand"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_below="@+id/expandable_layout"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:background="@android:color/transparent"
+            android:gravity="center_horizontal|center"
+            android:scaleType="fitCenter"
+            android:text="="
+            android:textColor="@color/TextLightGrey"
+            android:textSize="30sp"
+            app:srcCompat="@drawable/ic_expand_grab_icon" />
 
         <FrameLayout
             android:id="@+id/fragmentFrame"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/task"
-            android:layout_marginTop="8dp" />
+            android:layout_below="@+id/clickToExpand"
+            android:layout_marginTop="8dp">
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/goToLesson"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="15dp"
+                android:clickable="true"
+                android:onClick="goToLesson"
+                app:backgroundTint="@color/frizzle_green"
+                app:fabSize="normal"
+                app:srcCompat="@drawable/ic_book_lessons_icon" />
+
+        </FrameLayout>
 
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>

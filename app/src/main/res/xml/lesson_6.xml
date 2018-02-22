@@ -32,7 +32,7 @@
     <exercise>
     <type name="type">"SingleResponse"</type>
     <question name="question">"איזה פונקציה תרוץ כשהכפתור ילחץ?"</question>
-    <image name="image">"exercise_illustrations_missing"</image>
+    <image name="image">"exercise_6_1"</image>
     <content name="content"></content>
     <possibilities name = "possibilities">
         <possibility name = "possibility">"foo"</possibility>
@@ -46,7 +46,7 @@
     <exercise>
         <type name="type">"SingleResponse"</type>
         <question name="question">"מה יהיה הטקסט על הכפתור בלחיצה?"</question>
-        <image name="image">"exercise_illustrations_missing"</image>
+        <image name="image">"exercise_6_2"</image>
         <content name="content"></content>
         <possibilities name = "possibilities">
             <possibility name = "possibility">"Hi"</possibility>
@@ -83,6 +83,6 @@
     </exercise>
 
     <task>
-        <text name = "text"> "Create a button in the Graphic Edit screen and change its properties as you wish" </text>
+        <text name = "text"> "במסך הקוד, עטפי את הפקודות שכתבת בפונקציה ותני לה שם. במסך העיצוב, הגדירי את מאפיין ה-OnClick של הכפתור להיות הפונקציה שיצרת." </text>
     </task>
 </lesson>

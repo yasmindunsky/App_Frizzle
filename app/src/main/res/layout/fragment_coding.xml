@@ -9,7 +9,8 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/black">
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
@@ -25,7 +26,7 @@
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
                 android:text="public static void main( ) {"
-                android:textSize="24sp"
+                android:textAppearance="@style/CodeText"
                 app:layout_constraintBottom_toTopOf="@+id/code"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.086"
@@ -40,6 +41,7 @@
                 android:layout_marginTop="64dp"
                 android:ems="10"
                 android:inputType="textMultiLine"
+                android:textAppearance="@style/CodeText"
                 android:textDirection="ltr"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.104"
@@ -54,7 +56,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="28dp"
                 android:text="}"
-                android:textSize="24sp"
+                android:textAppearance="@style/CodeText"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.044"
                 app:layout_constraintStart_toStartOf="parent"

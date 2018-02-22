@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/tableLayout"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    android:background="@drawable/table_background">
+
+        <TextView
+            android:id="@+id/properties"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/propertiesTableTitle"
+            android:background="@drawable/table_title_background"
+            />
+
+    <TableRow
+        style="@style/propertiesTableRow">
+
+        <TextView
+            android:id="@+id/viewIdKey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/propertiesTableKey"
+            android:text="@string/propertiesTableId" />
+
+        <EditText
+            android:id="@+id/viewIdValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textAppearance="@style/propertiesTableValue" />
+    </TableRow>
+
+    <TableRow
+        style="@style/propertiesTableRow">
+
+        <TextView
+            android:id="@+id/viewTextKey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/viewIdValue"
+            android:text="@string/propertiesTableText"
+            android:textAppearance="@style/propertiesTableKey" />
+
+        <EditText
+            android:id="@+id/viewTextValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:textAppearance="@style/propertiesTableValue" />
+
+    </TableRow>
+
+    <TableRow
+        style="@style/propertiesTableRow">
+
+        <TextView
+            android:id="@+id/viewFontKey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/propertiesTableFont"
+            android:textAppearance="@style/propertiesTableKey" />
+
+        <Spinner
+            android:id="@+id/viewFontValue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:spinnerMode="dialog" />
+    </TableRow>
+
+
+    <TableRow
+        style="@style/propertiesTableRow">
+
+        <TextView
+            android:id="@+id/viewFontColorKey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/propertiesTableFontColor"
+            android:textAppearance="@style/propertiesTableKey" />
+
+        <Button
+            android:id="@+id/viewFontColorValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Button" />
+
+
+    </TableRow>
+
+    <TableRow
+        style="@style/propertiesTableRow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/viewTextAlignKey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/propertiesTableTextAlign"
+            android:textAppearance="@style/propertiesTableKey" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/viewTextAlignValueLeft"
+                android:layout_width="70dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Button"
+                tools:text="left" />
+
+            <Button
+                android:id="@+id/viewTextAlignValueCenter"
+                android:layout_width="70dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Button"
+                tools:text="center" />
+
+            <Button
+                android:id="@+id/viewTextAlignValueRight"
+                android:layout_width="70dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Button"
+                tools:text="right" />
+        </LinearLayout>
+
+
+    </TableRow>
+    <Button
+        android:id="@+id/deleteButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/delete" />
+
+</TableLayout>

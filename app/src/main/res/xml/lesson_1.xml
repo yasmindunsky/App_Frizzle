@@ -67,7 +67,7 @@
     <exercise>
         <type name="type">"SingleResponse"</type>
         <question name="question">"פלאפון הוא סוג של מחשב."</question>
-        <image name="image">"exercise_illustrations_missing"</image>
+        <image name="image">"exercise_1_1"</image>
         <content name="content"></content>
         <possibilities name = "possibilities">
             <possibility name = "possibility">"נכון"</possibility>
@@ -81,7 +81,7 @@
     <exercise>
         <type name="type">"SingleResponse"</type>
         <question name="question">"יש שפות תכנות שונות שנועדו לקשר בין שפת המחשב לשפה שלנו."</question>
-        <image name="image">"exercise_illustrations_missing"</image>
+        <image name="image">"exercise_1_2"</image>
         <content name="content"></content>
         <possibilities name = "possibilities">
             <possibility name = "possibility">"נכון"</possibility>
@@ -95,7 +95,7 @@
     <exercise>
         <type name="type">"FreeText"</type>
         <question name="question">"אנחנו נלמד תכנות בשפת:"</question>
-        <image name="image">"exercise_illustrations_missing"</image>
+        <image name="image">"exercise_1_3"</image>
         <content name="content"></content>
         <possibilities name = "possibilities"></possibilities>
         <answers name="answers">
@@ -106,7 +106,7 @@
     <exercise>
         <type name="type">"SingleResponse"</type>
         <question name="question">"נשתמש במסך הקוד כדי להחליט איך תראה האפליקציה."</question>
-        <image name="image">"exercise_illustrations_missing"</image>
+        <image name="image">"exercise_1_4"</image>
         <content name="content"></content>
         <possibilities name = "possibilities">
             <possibility name = "possibility">"נכון"</possibility>
@@ -132,7 +132,7 @@
     </exercise>
 
     <task>
-        <text name = "text"> "Create a button in the Graphic Edit screen and change its properties as you wish" </text>
+        <text name = "text"> "נווטי בין מסך העיצוב ומסך הקוד. במסך העיצוב הוסיפי כפתור ומחקי אותו."</text>
     </task>
 
 </lesson>

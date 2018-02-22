@@ -5,26 +5,19 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/backgroundGrey"
+    android:background="@color/backgroundLightGrey"
     tools:context="com.example.yasmindunsky.frizzleapp.lesson.LessonActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/colors"
-            android:layout_width="match_parent"
-            android:layout_height="320dp"
-            android:layout_alignParentTop="true"
-            android:src="@drawable/bg_color_1" />
-
         <FrameLayout
             android:id="@+id/fragment"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/slide_height"
+            android:layout_height="600dp"
             android:layout_above="@id/dotsTabLayout"
-            android:layout_below="@+id/colors"
+            android:layout_alignParentTop="true"
             android:layout_marginBottom="0dp"
             android:layout_marginTop="0dp"
             android:elevation="4dp">
@@ -45,7 +38,7 @@
             android:layout_alignParentBottom="true"
             android:layout_gravity="bottom"
             android:layout_marginBottom="15dp"
-            app:tabBackground="@drawable/tab_selector"
+            app:tabBackground="@drawable/swipe_dots_tab_selector"
             app:tabIndicatorHeight="0dp"
             app:tabMaxWidth="@dimen/swipe_dot_max_width" />
 

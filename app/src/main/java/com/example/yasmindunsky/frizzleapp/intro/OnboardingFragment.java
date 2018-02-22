@@ -1,12 +1,13 @@
 package com.example.yasmindunsky.frizzleapp.intro;
 
-import android.content.Context;
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.view.GestureDetector;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
@@ -22,6 +23,8 @@ import com.example.yasmindunsky.frizzleapp.UserProfile;
  */
 
 public class OnboardingFragment extends Fragment {
+    public static final String POISITION = "position";
+
     private int layout;
     private int position;
     private View view;
@@ -29,9 +32,9 @@ public class OnboardingFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         Bundle bundle = getArguments();
-        position = bundle.getInt("position");
+        position = bundle.getInt(OnboardingFragment.POISITION);
 
-        layout = getResources().getIdentifier("fragment_onboarding" + String.valueOf(position+1), "layout", getContext().getPackageName());
+        layout = getResources().getIdentifier("fragment_onboarding" + String.valueOf(position), "layout", getContext().getPackageName());
 
         view = inflater.inflate(layout, container, false);
 
@@ -40,35 +43,44 @@ public class OnboardingFragment extends Fragment {
         }
 
         if (position == 0) {
-            EditText usersNameInput = view.findViewById(R.id.usersNameInput);
-            usersNameInput.setOnFocusChangeListener(new EditText.OnFocusChangeListener() {
+            final EditText usersNameInput = view.findViewById(R.id.usersNameInput);
+            usersNameInput.addTextChangedListener(new TextWatcher() {
 
                 @Override
-                public void onFocusChange(View v, boolean hasFocus) {
-                    EditText editText = (EditText) v;
-                    UserProfile.user.setNickName(String.valueOf(editText.getText()));
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {}
+
+                public void afterTextChanged(Editable s) {
+                    if(usersNameInput.getText().toString().equals("")){
+                        usersNameInput.setTextColor(getResources().getColor(R.color.TextLightGrey));
+                    } else {
+                        usersNameInput.setTextColor(getResources().getColor(R.color.TextGrey));
+                        String nickname = String.valueOf(usersNameInput.getText());
+                        UserProfile.user.setNickName(nickname);
+                    }
                 }
             });
         }
-
-        view.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                String nickName = UserProfile.user.getNickName();
-                if (position == 1) {
-                    if (nickName != "") {
-                        TextView usersName = v.findViewById(R.id.usersName);
-                        usersName.setText(nickName + ",");
-                    }
-                }
-                else if (position == 3) {
-                    TextView usersName = v.findViewById(R.id.mentorText);
-                    usersName.setText(" יאללה" + nickName + ",\nבואי נצא לדרך!");
-                }
-                return true;
-            }
-        });
-
         return view;
     }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        String nickName = UserProfile.user.getNickName();
+        if (position == 1) {
+            if (nickName != "") {
+                TextView mentorText = view.findViewById(R.id.mentorText);
+                mentorText.setText(nickName + ",\n" + getResources().getString(R.string.onboardingMentorText1));
+            }
+        }
+        else if (position == 3) {
+            TextView usersName = view.findViewById(R.id.mentorText);
+            usersName.setText("יאללה " + nickName + ", בואי נצא לדרך!");
+        }
+    }
+
+
 }

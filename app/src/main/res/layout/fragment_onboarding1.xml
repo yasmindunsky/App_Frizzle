@@ -3,27 +3,37 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layoutDirection="ltr"
-        android:orientation="horizontal">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/colors"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerInParent="true"
+            android:background="@drawable/bg_color_1" />
 
         <ImageView
             android:id="@+id/mentor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
-            android:layout_marginTop="30dp"
-            android:layout_weight="1"
+            android:layout_marginBottom="30dp"
+            android:layout_marginLeft="57dp"
             android:background="@drawable/ic_mentor" />
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_alignBottom="@+id/mentor"
+            android:layout_marginBottom="30dp"
+            android:layout_marginRight="20dp"
+            android:layout_toRightOf="@+id/mentor"
             android:background="@drawable/bubble"
+            android:gravity="start"
             android:orientation="vertical">
 
             <android.support.v7.widget.AppCompatTextView
@@ -32,37 +42,11 @@
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@+id/mentor"
                 android:layout_weight="1"
-                android:text="היי, אני אלה,"
-                android:textAppearance="@style/SlideText" />
-
-            <EditText
-                android:id="@+id/usersNameInput"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:text="מה שמך?" />
-
-            <android.support.v7.widget.AppCompatTextView
-                android:id="@+id/mentorText2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="30dp"
-                android:layout_marginLeft="30dp"
-                android:layout_toRightOf="@+id/mentor"
-                android:layout_weight="1"
-                android:text="כאן תוכלי לבנות\nאפליקציה משלך\nבה תוכלי להשתמש\nולשתף חברים."
+                android:text="@string/onboardingMentorText1"
                 android:textAppearance="@style/SlideText" />
         </LinearLayout>
 
-    </LinearLayout>
-
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
     </RelativeLayout>
+
 
 </FrameLayout>
