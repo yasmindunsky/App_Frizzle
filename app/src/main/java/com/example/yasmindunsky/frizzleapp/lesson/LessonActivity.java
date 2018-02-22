@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.yasmindunsky.frizzleapp.MapActivity;
 import com.example.yasmindunsky.frizzleapp.R;
+import com.example.yasmindunsky.frizzleapp.Support;
 import com.example.yasmindunsky.frizzleapp.SwipeAdapter;
 import com.example.yasmindunsky.frizzleapp.UserProfile;
 
@@ -68,7 +69,9 @@ public class LessonActivity extends FragmentActivity {
         swipeAdapter = new SwipeAdapter(getSupportFragmentManager(), currentLesson);
         viewPager.setAdapter(swipeAdapter);
         // Rotation for RTL swiping.
-        viewPager.setRotationY(180);
+        if (Support.isRTL()) {
+            viewPager.setRotationY(180);
+        }
 
         // Connecting TabLayout with ViewPager to show swipe position in dots.
         final TabLayout tabLayout = (TabLayout) findViewById(R.id.dotsTabLayout);

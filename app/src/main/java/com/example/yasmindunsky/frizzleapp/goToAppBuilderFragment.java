@@ -36,7 +36,9 @@ public class goToAppBuilderFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_navigation, container, false);
 
         // Rotation for RTL swiping.
-        view.setRotationY(180);
+        if (Support.isRTL()) {
+            view.setRotationY(180);
+        }
 
         // Update the top position of the user if needed
         updateTopPosition();

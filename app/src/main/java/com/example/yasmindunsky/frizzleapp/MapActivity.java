@@ -21,11 +21,19 @@ import com.example.yasmindunsky.frizzleapp.lesson.LessonActivity;
 
 public class MapActivity extends AppCompatActivity {
 
+    private int topCourseId;
+    private int currentCourseId;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ConstraintLayout mainLayout = (ConstraintLayout ) this.getLayoutInflater().inflate(R.layout.activity_map, null);
         setContentView(mainLayout);
+
+        // TODO change
+        topCourseId = 5;
+        currentCourseId = 4;
+//        topCourseId = UserProfile.user.getTopCourseID();
 
         // Set Toolbar sign-out button.
         android.support.v7.widget.Toolbar toolbar =
@@ -82,8 +90,15 @@ public class MapActivity extends AppCompatActivity {
 
     private void drawLessonsLine(Canvas canvas, Button currentButton, Button nextButton, String[] colors, int i) {
         Paint paint = new Paint();
-        int lineColor = getResources().getIdentifier(colors[i-2], "color", this.getPackageName());
-        paint.setColor(getResources().getColor(lineColor));
+
+        if (i <= topCourseId) {
+            int lineColor = getResources().getIdentifier(colors[i-2], "color", this.getPackageName());
+            paint.setColor(getResources().getColor(lineColor));
+        }
+        else {
+            paint.setColor(getResources().getColor(R.color.UnselectedLightGrey));
+        }
+
         paint.setStrokeWidth(currentButton.getLayoutParams().width);
 
         Rect currentButtonRect = new Rect();
@@ -97,32 +112,51 @@ public class MapActivity extends AppCompatActivity {
 
     private void drawLessonCircle(Canvas canvas, Button button, String[] betweenColors, int i) {
         Paint paint = new Paint();
-        paint.setColor(getResources().getColor(getResources().getIdentifier(betweenColors[i-2], "color", this.getPackageName())));
+        if (i <= topCourseId + 1) {
+            paint.setColor(getResources().getColor(getResources().getIdentifier(betweenColors[i-2], "color", this.getPackageName())));        }
+        else {
+            paint.setColor(getResources().getColor(R.color.unselectedDarkGrey));
+        }
+
         float circleX = button.getX() + (button.getWidth()/2);
         float circleY = button.getY() + (button.getHeight());
-        canvas.drawCircle(circleX,circleY,button.getLayoutParams().width/2,paint);
+        int radius = button.getLayoutParams().width / 2;
+        canvas.drawCircle(circleX,circleY, radius,paint);
+
         paint.setColor(getResources().getColor(android.R.color.white));
-        paint.setTextSize(R.dimen.mapButtontextSize * getResources().getDisplayMetrics().density);
+        paint.setStrokeWidth(10);
+        paint.setStyle(Paint.Style.STROKE);
+        if (i == currentCourseId) {
+            canvas.drawCircle(circleX, circleY, radius, paint);
+            canvas.drawCircle(circleX, circleY, radius+20, paint);
+        }
+        paint.setStyle(Paint.Style.FILL);
+        paint.setTextSize(20 * getResources().getDisplayMetrics().density);
         paint.setTextAlign(Paint.Align.CENTER);
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
             Typeface typeface = getResources().getFont(R.font.calibri_regular);
             paint.setTypeface(typeface);
         }
-        canvas.drawText(String.valueOf(i-1), circleX, circleY, paint);
+        canvas.drawText(String.valueOf(i-1), circleX, circleY+20, paint);
     }
 
     public void goToLesson(View view) {
-        // get the lesson id by the text on the pressed button
+        // Get the lesson id from the text on the clicked button.
         int buttonID = view.getId();
         Button button = view.findViewById(buttonID);
         String lessonNumber = button.getText().toString();
 
+        // Not allowed to access this lesson yet.
+        if (Integer.parseInt(lessonNumber) > topCourseId) {
+            return;
+        }
+
         UserProfile.user.setCurrentLessonID(Integer.parseInt(lessonNumber));
 
-        // update current position of the user inside the lessons
+        // Update current position of the user inside the lessons.
         updateCurrentPosition(Integer.parseInt(lessonNumber));
 
-        // start lesson activity
+        // Start lesson activity.
         Intent lessonIntent = new Intent(this, LessonActivity.class);
         startActivity(lessonIntent);
     }

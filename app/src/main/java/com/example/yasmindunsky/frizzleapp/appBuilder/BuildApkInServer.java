@@ -44,7 +44,7 @@ public class SendFilesToServer extends AsyncTask<String, Void, String> {
             e.printStackTrace();
         }
 
-        return connectToServer.postToServer("/project/save", query, "PUT");
+        return connectToServer.postToServer("/project/save", query, "POST");
     }
 
     @Override
