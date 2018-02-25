@@ -32,6 +32,8 @@ import com.example.yasmindunsky.frizzleapp.UserProfile;
 import com.example.yasmindunsky.frizzleapp.lesson.LessonActivity;
 import com.example.yasmindunsky.frizzleapp.lesson.Task;
 
+import net.cachapa.expandablelayout.ExpandableLayout;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;

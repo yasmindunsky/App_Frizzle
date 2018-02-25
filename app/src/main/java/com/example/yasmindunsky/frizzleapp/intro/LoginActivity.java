@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -21,10 +22,20 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        messagePlaceholder = findViewById(R.id.loginMessagePlaceholder);
+        messagePlaceholder = findViewById(R.id.mentorText);
+
+        // Go to login.
+        Button registerButton = findViewById(R.id.goToRegisterButton);
+        registerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent registerIntent = new Intent(v.getContext(), RegisterFragment.class);
+                startActivity(registerIntent);
+            }
+        });
     }
 
-    public void loginUserToServer(View view) {
+    public void loginUser(View view) {
         // take the parameters of the user
         String email = ((EditText) findViewById(R.id.email)).getText().toString();
         String password = ((EditText) findViewById(R.id.password)).getText().toString();
@@ -34,32 +45,32 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
 
-        // try login the user to the server and print status message
-        loginAndHandleResponse(email, password, view);
+        // register the user to the server and print status message
+        loginToServer(email, password, view);
     }
 
     private boolean inputIsValid(String email, String password) {
 
         if (email.equals("")) {
-            messagePlaceholder.setText("You forgot to enter you email address");
+            messagePlaceholder.setText(R.string.noEmail);
             return false;
         }
 
         if (password.equals("")) {
-            messagePlaceholder.setText("You forgot to enter your password");
+            messagePlaceholder.setText(R.string.noPassword);
             return false;
         }
 
         return true;
     }
 
-    private void loginAndHandleResponse(final String email, String password, final View view) {
+    private void loginToServer(final String email, String password, final View view) {
         new LoginToServer(new AsyncResponse() {
             @Override
             public void processFinish(String output) {
                 messagePlaceholder.setText(output);
                 // in case of success, create new user instance, restore users data and go to map
-                if (output.equals("Authentication succeeded")) {
+                if (output.equals("Login Succeeded")) {
 
                     // after successful login, update username of current user
                     UserProfile.user.setUsername(email);
@@ -71,6 +82,7 @@ public class LoginActivity extends AppCompatActivity {
                     Intent mapIntent = new Intent(view.getContext(), MapActivity.class);
                     startActivity(mapIntent);
                 } else {
+
                     // print failed login output message
                     messagePlaceholder.setText(output);
                 }

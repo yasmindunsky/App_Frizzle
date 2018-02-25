@@ -58,13 +58,8 @@ public class UserCreatedButton extends UserCreatedView {
                 GridLayout.spec(col));
         layoutParams.width = 400;
         layoutParams.setMargins(10,10,10,10);
+
         thisView.setLayoutParams(layoutParams);
-
-//        // Set properties.
-//        newText.setTag(nextViewIndex);
-
-        // Set properties as tags.
-//        newText.setTag(R.id.viewType, GraphicEditFragment.viewTypes.TextView);
 
         this.properties = new HashMap<>();
         properties.put("android:id",  "Button" + numOfButtons);
