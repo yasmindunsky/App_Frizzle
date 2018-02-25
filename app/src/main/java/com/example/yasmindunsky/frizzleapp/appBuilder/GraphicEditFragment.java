@@ -1,5 +1,6 @@
 package com.example.yasmindunsky.frizzleapp.appBuilder;
 
+import android.content.ClipData;
 import android.content.Context;
 import android.graphics.PorterDuff;
 import android.graphics.Typeface;
@@ -10,6 +11,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.ContextThemeWrapper;
+import android.view.DragEvent;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,11 +21,14 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridLayout;
+import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toolbar;
 
 import com.example.yasmindunsky.frizzleapp.R;
+import com.example.yasmindunsky.frizzleapp.UserProfile;
 
 import net.cachapa.expandablelayout.ExpandableLayout;
 
@@ -60,6 +65,7 @@ public class GraphicEditFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_graphic_edit, container, false);
 
         gridLayout = view.findViewById(R.id.gridLayout);
+//        gridLayout.setOnDragListener(new DragListener());
 
         if (views == null) {
             views = new HashMap<>();
@@ -101,6 +107,7 @@ public class GraphicEditFragment extends Fragment {
 
         return view;
     }
+
 
 //    EditText.OnFocusChangeListener finishedEditingText = new View.OnFocusChangeListener() {
 //        @Override
@@ -177,9 +184,12 @@ public class GraphicEditFragment extends Fragment {
         @Override
         public void onClick(View view) {
             final UserCreatedButton userCreatedButton = new UserCreatedButton(getContext(), nextViewIndex, numOfButtons);
-            Button newText = userCreatedButton.getThisView();
+            Button newButton = userCreatedButton.getThisView();
 
-            newText.setOnClickListener(new View.OnClickListener() {
+//            newButton.setOnLongClickListener(new LongPressListener());
+
+
+            newButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     // show the popup window
@@ -194,7 +204,7 @@ public class GraphicEditFragment extends Fragment {
             });
 
             // Add to GridLayout and to views map.
-            gridLayout.addView(newText);
+            gridLayout.addView(newButton);
             views.put(nextViewIndex, userCreatedButton);
             nextViewIndex++;
             numOfButtons++;
@@ -425,4 +435,90 @@ public class GraphicEditFragment extends Fragment {
             popupWindow.dismiss();
         }
     }
+
+//    class LongPressListener implements View.OnLongClickListener {
+//        @Override
+//        public boolean onLongClick(View view) {
+//            final ClipData data = ClipData.newPlainText("", "");
+//            View.DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(view);
+//            view.startDrag(data, shadowBuilder, view, 0);
+//            view.setVisibility(View.INVISIBLE);
+//            return true;
+//        }
+//    }
+
+//    class DragListener implements View.OnDragListener {
+//        @Override
+//        public boolean onDrag(View v, DragEvent event) {
+//            final View view = (View) event.getLocalState();
+//            switch (event.getAction()) {
+//                case DragEvent.ACTION_DRAG_LOCATION:
+//                    // do nothing if hovering above own position
+//                    if (view == v) return true;
+//                    // get the new list index
+////                    final int index = calculateNewIndex(event.getX(), event.getY());
+//                    break;
+//                case DragEvent.ACTION_DROP:
+//                    // remove the view from the old position
+//                    gridLayout.removeView(view);
+//                    // and push to the new
+//                    GridLayout.LayoutParams layoutParams = getLayoutParams(event.getX(), event.getY(), view);
+//
+//                    view.setLayoutParams(layoutParams);
+//                    gridLayout.addView(view);
+//                    view.setVisibility(View.VISIBLE);
+//                    break;
+//                case DragEvent.ACTION_DRAG_ENDED:
+//                    if (!event.getResult()) {
+//                        view.setVisibility(View.VISIBLE);
+//                    }
+//                    break;
+//            }
+//            return true;
+//        }
+
+//        private int calculateNewIndex(float x, float y) {
+//            // calculate which column to move to
+//            final float cellWidth = gridLayout.getWidth() / gridLayout.getColumnCount();
+//            final int column = (int)(x / cellWidth);
+//
+//            // calculate which row to move to
+//            final float cellHeight = gridLayout.getHeight() / gridLayout.getRowCount();
+//            final int row = (int)Math.floor(y / cellHeight);
+//
+//            // the items in the GridLayout is organized as a wrapping list
+//            // and not as an actual grid, so this is how to get the new index
+//            int index = row * gridLayout.getColumnCount() + column;
+//            if (index >= gridLayout.getChildCount()) {
+//                index = gridLayout.getChildCount() - 1;
+//            }
+//
+//            return index;
+//        }
+//    }
+
+//    private GridLayout.LayoutParams getLayoutParams(float x, float y, View view) {
+//        // calculate which column to move to
+//        final float cellWidth = gridLayout.getWidth() / gridLayout.getColumnCount();
+//        final int column = (int)(x / cellWidth);
+//
+//        // calculate which row to move to
+//        final float cellHeight = gridLayout.getHeight() / gridLayout.getRowCount();
+//        final int row = (int)Math.floor(y / cellHeight);
+//
+//        // the items in the GridLayout is organized as a wrapping list
+//        // and not as an actual grid, so this is how to get the new index
+////        int index = row * gridLayout.getColumnCount() + column;
+////        if (index >= gridLayout.getChildCount()) {
+////            index = gridLayout.getChildCount() - 1;
+////        }
+//
+//        ((Button)view).setText("x: " + (int)x + " y: " + (int)y);
+//
+//        GridLayout.LayoutParams layoutParams = new GridLayout.LayoutParams(GridLayout.spec(row),
+//                GridLayout.spec(column));
+//        layoutParams.setMargins(10,10,10,10);
+//        return layoutParams;
+//    }
+
 }

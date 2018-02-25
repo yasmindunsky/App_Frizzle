@@ -6,7 +6,6 @@
     android:background="@color/backgroundLightGrey"
     tools:context="com.example.yasmindunsky.frizzleapp.lesson.exercise.ExerciseFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <RelativeLayout
         android:id="@+id/exerciseElementsLayout"
         android:layout_width="match_parent"
