@@ -15,6 +15,12 @@ import java.nio.charset.StandardCharsets;
  */
 
 public class DownloadApkFromServer extends AsyncTask<String, Void, String> {
+    public AsyncResponse delegate = null;
+
+    public DownloadApkFromServer(AsyncResponse delegate) {
+        this.delegate = delegate;
+    }
+
     @Override
     protected String doInBackground(String... strings) {
         ConnectToServer connectToServer = new ConnectToServer();
@@ -41,5 +47,8 @@ public class DownloadApkFromServer extends AsyncTask<String, Void, String> {
 
     @Override
     protected void onPostExecute(String result) {
+        delegate.processFinish(result);
     }
+
+
 }

@@ -1,13 +1,23 @@
 package com.example.yasmindunsky.frizzleapp.appBuilder;
 
 import android.Manifest;
+import android.app.Activity;
+import android.app.DownloadManager;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
+import android.net.Uri;
+import android.os.AsyncTask;
+import android.os.Environment;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.app.ShareCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -38,11 +48,16 @@ public class AppBuilderActivity extends AppCompatActivity {
     String javaCode;
     String xml;
 
+    View globalView;
+
+    public static String PACKAGE_NAME;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_app_builder);
+
 
         // Set Toolbar home button.
         android.support.v7.widget.Toolbar toolbar =
@@ -103,6 +118,8 @@ public class AppBuilderActivity extends AppCompatActivity {
         File path = getBaseContext().getFilesDir();
         javaFile = new File(path, getString(R.string.javaFileName));
         xmlFile = new File(path, getString(R.string.xmlFileName));
+
+        PACKAGE_NAME = getApplicationContext().getPackageName();
     }
 
     public void onPlay(final View view) {
@@ -120,22 +137,23 @@ public class AppBuilderActivity extends AppCompatActivity {
             @Override
             public void processFinish(String output) {
                 if (output.contains("BUILD SUCCESSFUL")) {
-                    getWritePermission();
+                    getWritePermission(view);
                 }
             }
         }).execute(xml, javaCode);
     }
 
-    private void getWritePermission() {
+    private void getWritePermission(View view) {
         if (ContextCompat.checkSelfPermission(this,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
 
+            globalView = view;
             // permission from user still isn't granted, ask for permission
             ActivityCompat.requestPermissions(this,
                     new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, WRITE_PERMISSION);
         } else {
             // permission was already granted, download apk
-            new DownloadApkFromServer().execute(xml, javaCode);
+            downloadApk(view);
         }
     }
 
@@ -147,7 +165,7 @@ public class AppBuilderActivity extends AppCompatActivity {
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     // permission granted, download apk from server
-                    new DownloadApkFromServer().execute(xml, javaCode);
+                    downloadApk(globalView);
 
                 } else {
                     // permission denied
@@ -156,6 +174,31 @@ public class AppBuilderActivity extends AppCompatActivity {
                 return;
             }
         }
+    }
+
+    public void downloadApk(final View view) {
+        new DownloadApkFromServer(new AsyncResponse() {
+            @Override
+            public void processFinish(String output) {
+                startApk(view);
+            }
+        }).execute(xml, javaCode);
+
+    }
+
+    public void startApk(View view) {
+        //get destination
+        String destination = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/" + "frizzle_project1.apk";
+        File apkFile = new File(destination);
+        Context context = view.getContext();
+        Uri contentUri = FileProvider.getUriForFile(context, "com.example.yasmindunsky.frizzleapp.fileprovider", apkFile);
+//        Uri contentUri = Uri.parse(destination);
+
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setDataAndType(contentUri, "application/vnd.android.package-archive");
+//        intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
     }
 
 }

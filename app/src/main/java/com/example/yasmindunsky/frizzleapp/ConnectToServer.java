@@ -104,7 +104,7 @@ public class ConnectToServer {
     }
 
     private void downloadApk(HttpURLConnection client) throws FileNotFoundException {
-        String PATH = Environment.getExternalStorageDirectory() + "/Download/";
+        String PATH = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/";
         File file = new File(PATH);
         file.mkdirs();
 
