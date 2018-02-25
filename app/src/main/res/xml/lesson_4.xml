@@ -12,8 +12,8 @@
 
     <slide>
         <text name="text">"
-          במטרה להשתמש בפקודות Java על אלמנט, כמו כפתור, נצטרך לתת לאלמנט הזה שם במסך הקוד.
-            כמו שאת זוכרת, כשיצרנו את הכפתור במסך העריכה הגרפית נתנו לו שם מזהה ייחודי.
+          כדי להשתמש בפקודות Java על אלמנט, כמו כפתור, נצטרך לתת לאלמנט הזה שם במסך הקוד.\\u000A
+            כשיצרנו את הכפתור במסך העריכה הגרפית נתנו לו מזהה ייחודי, ID.
         "</text>
         <image name="imageSource">"slide_4_3"</image>
     </slide>
@@ -23,7 +23,7 @@
             \\u000A
             ונחבר אותו באמצעות פקודת Java
             \\u000A
-            לשם המזהה הייחודי של הכפתור ממסך העריכה הגרפית."</text>
+            למזהה הייחודי, ה-ID, של הכפתור ממסך העריכה הגרפית."</text>
         <image name="imageSource">"slide_4_4"</image>
     </slide>
 
@@ -33,8 +33,13 @@
     </slide>
 
     <slide>
-        <text name="text">"עכשיו ButtonNameInCode הוא השם של הכפתור במסך הקוד, ונוכל להשתמש בפקודות Java נוספות כדי להגדיר מה יקרה לו."</text>
-        <image name="imageSource">"slide_4_6"</image>
+        <text name="text">"פקודת ה-Java בה נשתמש נקראת findViewById."</text>
+        <image name="imageSource">"slide_4_5"</image>
+    </slide>
+
+    <slide>
+        <text name="text">"עכשיו ButtonNameInCode הוא השם של הכפתור במסך הקוד, ונוכל להשתמש בפקודות Java נוספות כדי לשנות את הטקסט עליו."</text>
+        <image name="imageSource">"slide_4_1"</image>
     </slide>
 
 

@@ -1,13 +1,10 @@
 <lesson>
 
     <slide>
-        <text name="text">"עד עכשיו יצרנו את המממשק, ה-UI
-            \\u000A
-            של האפליקציה, אבל כשאנחנו מריצות
-            \\u000A
-            את האפליקציה ולוחצות על הכפתור
-            \\u000A
-            כלום לא קורה."</text>
+        <text name="text">"עד עכשיו יצרנו את הממשק, ה-UI
+            \\u000Aשל האפליקציה, אבל כשאנחנו מריצות
+            \\u000Aאת האפליקציה ולוחצות על הכפתור
+            \\u000Aכלום לא קורה."</text>
         <image name="imageSource">"slide_3_1"</image>
     </slide>
 
@@ -22,7 +19,7 @@
     </slide>
 
     <slide>
-        <text name="text">"על מנת לגרום לאפליקציה לעשות זאת, נשתמש בשפת Java ונגדיר למחשב בדיוק מה לעשות כשהמשתמש לוחץ על הכפתור."</text>
+        <text name="text">"על מנת לגרום לאפליקציה לעשות זאת, נשתמש בשפת Java ונגדיר למחשב בדיוק מה לעשות כשהמשתמש \\u000Aלוחץ על הכפתור."</text>
         <image name="imageSource">"slide_3_4"</image>
     </slide>
 
@@ -32,11 +29,11 @@
         <image name="image">"exercise_3_1"</image>
         <content name="content"></content>
         <possibilities name = "possibilities">
-            <possibility name = "possibility">"מסך העריכה הגרפית"</possibility>
-            <possibility name = "possibility">"מסך הקוד"</possibility>
+            <possibility name = "possibility">"העריכה הגרפית"</possibility>
+            <possibility name = "possibility">"הקוד"</possibility>
         </possibilities>
         <answers name="answers">
-            <answer name="answer">"מסך העריכה הגרפית"</answer>
+            <answer name="answer">"העריכה הגרפית"</answer>
         </answers>
     </exercise>
 
@@ -46,11 +43,11 @@
         <image name="image">"exercise_3_2"</image>
         <content name="content"></content>
         <possibilities name = "possibilities">
-            <possibility name = "possibility">"מסך העריכה הגרפית"</possibility>
-            <possibility name = "possibility">"מסך הקוד"</possibility>
+            <possibility name = "possibility">"העריכה הגרפית"</possibility>
+            <possibility name = "possibility">"הקוד"</possibility>
         </possibilities>
         <answers name="answers">
-            <answer name="answer">"מסך הקוד"</answer>
+            <answer name="answer">"הקוד"</answer>
         </answers>
     </exercise>
 
@@ -60,11 +57,11 @@
         <image name="image">"exercise_3_3"</image>
         <content name="content"></content>
         <possibilities name = "possibilities">
-            <possibility name = "possibility">"מסך העריכה הגרפית"</possibility>
-            <possibility name = "possibility">"מסך הקוד"</possibility>
+            <possibility name = "possibility">"העריכה הגרפית"</possibility>
+            <possibility name = "possibility">"הקוד"</possibility>
         </possibilities>
         <answers name="answers">
-            <answer name="answer">"מסך הקוד"</answer>
+            <answer name="answer">"הקוד"</answer>
         </answers>
     </exercise>
 

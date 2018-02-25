@@ -23,7 +23,7 @@ class LayoutXmlWriter {
     private XmlSerializer xmlSerializer;
     private StringWriter stringWriter;
 
-    String writeXml(Map<Integer, UserCreatedView> viewsToWrite){
+    String writeXml(Map<Integer, UserCreatedView> viewsToWrite) {
         xmlSerializer = Xml.newSerializer();
         stringWriter = new StringWriter();
         try {
@@ -34,8 +34,11 @@ class LayoutXmlWriter {
             // open tag: <android.support.constraint.ConstraintLayout>
             xmlSerializer.startTag("", "android.support.constraint.ConstraintLayout");
             xmlSerializer.attribute("", "xmlns:android", "http://schemas.android.com/apk/res/android");
+            xmlSerializer.attribute("", "xmlns:app", "http://schemas.android.com/apk/res-auto");
+            xmlSerializer.attribute("", "xmlns:tools", "http://schemas.android.com/tools");
             xmlSerializer.attribute("", "android:layout_width", String.valueOf("match_parent"));
             xmlSerializer.attribute("", "android:layout_height", String.valueOf("match_parent"));
+            xmlSerializer.attribute("", "tools:context", "co.frizzle.frizzleproject1.MainActivity");
 
             // open tag: <GridLayout>
             xmlSerializer.startTag("", "GridLayout");
@@ -43,12 +46,17 @@ class LayoutXmlWriter {
             xmlSerializer.attribute("", "android:layout_width", String.valueOf("match_parent"));
             xmlSerializer.attribute("", "android:layout_height", String.valueOf("match_parent"));
 
-            for (UserCreatedView view : viewsToWrite.values()) {
-                  view.createXmlString(xmlSerializer);
+            if (viewsToWrite != null ) {
+                for (UserCreatedView view : viewsToWrite.values()) {
+                    view.createXmlString(xmlSerializer);
 //                addElement(view);
+                }
             }
 
+            xmlSerializer.endTag("", "GridLayout");
+
             xmlSerializer.endDocument();
+
         } catch (IOException e) {
             Log.e("Exception", "xmlSerializer " + xmlSerializer.toString() + " failed: " + e.toString());
         }
@@ -62,14 +70,13 @@ class LayoutXmlWriter {
         String fontFamily = "serif";
         String background = "";
         if (view.getClass().equals(TextView.class)) {
-            TextView tv = (TextView)view;
+            TextView tv = (TextView) view;
             name = "TextView";
             text = (String) tv.getText();
             fontFamily = (String) tv.getTag(R.id.usersViewFontFamily);
             background = "@android:color/transparent";
-        }
-        else if (view.getClass().equals(Button.class)) {
-            Button b = (Button)view;
+        } else if (view.getClass().equals(Button.class)) {
+            Button b = (Button) view;
             name = "Button";
             text = (String) b.getText();
             fontFamily = (String) b.getTag(R.id.usersViewFontFamily);

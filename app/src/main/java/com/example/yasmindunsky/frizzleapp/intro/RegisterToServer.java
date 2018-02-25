@@ -40,17 +40,6 @@ class RegisterToServer extends AsyncTask<String, Void, String> {
 
     @Override
     protected void onPostExecute(String result) {
-        // case of success
-        if (result.equals(Integer.toString(HttpURLConnection.HTTP_OK))) {
-            delegate.processFinish("Registration Succeeded");
-
-            // case that email is already exists in the DB
-        } else if (result.equals(Integer.toString(HttpURLConnection.HTTP_CONFLICT))) {
-            delegate.processFinish("email already exists");
-
-            // case of any other error
-        } else {
-            delegate.processFinish("Something went wrong. Status: " + result);
-        }
+        delegate.processFinish(result);
     }
 }

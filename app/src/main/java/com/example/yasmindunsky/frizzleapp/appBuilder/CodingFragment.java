@@ -48,10 +48,7 @@ public class CodingFragment extends Fragment {
             int firstQuotationMark = -1;
             int secondQuotationMark = -1;
             int startPosition = 0;
-
-            // for words
-            int startIndex = 0;
-
+            int currentPosition = 0;
 
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -60,6 +57,7 @@ public class CodingFragment extends Fragment {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
             }
+
 
             @Override
             public void afterTextChanged(Editable s) {
@@ -102,16 +100,22 @@ public class CodingFragment extends Fragment {
             private void markQuotationMarks(Editable s) {
                 //quotation marks
                 firstQuotationMark = (s.toString()).indexOf("\"", startPosition);
-                if(firstQuotationMark >= 0){
+                if (firstQuotationMark >= 0) {
                     secondQuotationMark = (s.toString()).indexOf("\"", firstQuotationMark + 1);
+
+                    s.setSpan(new ForegroundColorSpan(Color.GREEN), firstQuotationMark, firstQuotationMark + currentPosition + 1,
+                            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+                    currentPosition++;
                 }
 
-                if(secondQuotationMark > 0){
+                if (secondQuotationMark > 0) {
                     s.setSpan(new ForegroundColorSpan(Color.GREEN), firstQuotationMark, secondQuotationMark + 1,
                             Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 
                     startPosition = secondQuotationMark + 1;
                     secondQuotationMark = -1;
+                    currentPosition = 0;
                 }
             }
         });

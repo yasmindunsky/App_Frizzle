@@ -1,11 +1,15 @@
 package com.example.yasmindunsky.frizzleapp.appBuilder;
 
 import android.content.Context;
+import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
+import android.content.pm.PackageManager;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Gravity;
@@ -20,6 +24,7 @@ import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.example.yasmindunsky.frizzleapp.AsyncResponse;
 import com.example.yasmindunsky.frizzleapp.MapActivity;
 import com.example.yasmindunsky.frizzleapp.R;
 import com.example.yasmindunsky.frizzleapp.UpdatePositionInServer;
@@ -27,18 +32,24 @@ import com.example.yasmindunsky.frizzleapp.UserProfile;
 import com.example.yasmindunsky.frizzleapp.lesson.LessonActivity;
 import com.example.yasmindunsky.frizzleapp.lesson.Task;
 
-import net.cachapa.expandablelayout.ExpandableLayout;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class AppBuilderActivity extends AppCompatActivity {
+
+    final private static int WRITE_PERMISSION = 1;
+
     File javaFile;
     File xmlFile;
     Fragment graphicEditFragment;
     Fragment codingFragment;
+    String currentTask;
+
+    String javaCode;
+    String xml;
+
     android.support.v7.widget.Toolbar toolbar;
 
     @Override
@@ -220,22 +231,24 @@ public class AppBuilderActivity extends AppCompatActivity {
     }
 
     public void onPlay(View view) {
-        // Write code written in EditText to java file.
+        // update java code String
         String codeWritten = ((CodingFragment) codingFragment).getCode();
-        String codeToSave = getApplicationContext().getResources().getString(R.string.codeStart) +
+        javaCode = getApplicationContext().getResources().getString(R.string.codeStart) +
                 codeWritten + getApplicationContext().getResources().getString(R.string.codeEnd);
-        writeToFile(javaFile, codeWritten);
 
-        // Write xml to xml file.
-        String xmlWritten = ((GraphicEditFragment) graphicEditFragment).getXml();
-        writeToFile(xmlFile, xmlWritten);
+        // update xml String
+        xml = ((GraphicEditFragment) graphicEditFragment).getXml();
 
-//        new SendFilesToServer(new AsyncResponse() {
-//            @Override
-//            public void processFinish(String output) {
-//                //TODO get server response
-//            }
-//        }).execute(xmlFile.toString(), javaFile.toString());
+        // send java and xml to server for build
+        // if succeeded ask user for writing permission and download the apk
+        new BuildApkInServer(new AsyncResponse() {
+            @Override
+            public void processFinish(String output) {
+                if (output.contains("BUILD SUCCESSFUL")) {
+                    getWritePermission();
+                }
+            }
+        }).execute(xml, javaCode);
     }
 
     private void writeToFile(File file, String data) {
@@ -266,4 +279,37 @@ public class AppBuilderActivity extends AppCompatActivity {
         Intent lessonIntent = new Intent(this, LessonActivity.class);
         startActivity(lessonIntent);
     }
+
+    private void getWritePermission() {
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+
+            // permission from user still isn't granted, ask for permission
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, WRITE_PERMISSION);
+        } else {
+            // permission was already granted, download apk
+            new DownloadApkFromServer().execute(xml, javaCode);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case WRITE_PERMISSION: {
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    // permission granted, download apk from server
+                    new DownloadApkFromServer().execute(xml, javaCode);
+
+                } else {
+                    // permission denied
+
+                }
+                return;
+            }
+        }
+    }
+
 }

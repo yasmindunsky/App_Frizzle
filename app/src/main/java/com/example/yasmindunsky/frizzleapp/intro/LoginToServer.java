@@ -36,7 +36,7 @@ class LoginToServer extends AsyncTask<String, Void, String> {
             String response = connectToServer.postToServer("/user/authenticate", body, "POST");
 
             // if login was successful, get user's data
-            if (response.equals(Integer.toString(HttpURLConnection.HTTP_OK))) {
+            if (response.equals("Authentication succeeded")) {
                 new GetPositionFromServer().execute(username);
             }
 
@@ -50,11 +50,7 @@ class LoginToServer extends AsyncTask<String, Void, String> {
 
     @Override
     protected void onPostExecute(String result) {
-        if (result.equals(Integer.toString(HttpURLConnection.HTTP_OK))) {
-            delegate.processFinish("Login Succeeded");
-        } else {
-            delegate.processFinish("Something Went Wrong");
-        }
+        delegate.processFinish(result);
     }
 }
 
