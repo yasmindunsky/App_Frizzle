@@ -24,6 +24,8 @@ public class MapActivity extends AppCompatActivity {
 
     private int topCourseId;
     private int currentCourseId;
+    private int topLessonId;
+    private int currentLessonId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,9 +34,13 @@ public class MapActivity extends AppCompatActivity {
         setContentView(mainLayout);
 
         // TODO change
-        topCourseId = 7;
-        currentCourseId = 4;
-//        topCourseId = UserProfile.user.getTopCourseID();
+        currentCourseId = UserProfile.user.getCurrentCourseID();
+        topCourseId = UserProfile.user.getTopCourseID();
+        currentLessonId = UserProfile.user.getCurrentLessonID();
+        topLessonId = UserProfile.user.getTopLessonID();
+
+//        currentLessonId = 3;
+//        topLessonId = 5;
 
         // Set Toolbar sign-out button.
         android.support.v7.widget.Toolbar toolbar =
@@ -92,7 +98,7 @@ public class MapActivity extends AppCompatActivity {
     private void drawLessonsLine(Canvas canvas, Button currentButton, Button nextButton, String[] colors, int i) {
         Paint paint = new Paint();
 
-        if (i <= topCourseId) {
+        if (i <= topLessonId) {
             int lineColor = getResources().getIdentifier(colors[i-2], "color", this.getPackageName());
             paint.setColor(getResources().getColor(lineColor));
         }
@@ -113,7 +119,7 @@ public class MapActivity extends AppCompatActivity {
 
     private void drawLessonCircle(Canvas canvas, Button button, String[] betweenColors, int i) {
         Paint paint = new Paint();
-        if (i <= topCourseId + 1) {
+        if (i <= topLessonId + 1) {
             paint.setColor(getResources().getColor(getResources().getIdentifier(betweenColors[i-2], "color", this.getPackageName())));        }
         else {
             paint.setColor(getResources().getColor(R.color.unselectedDarkGrey));
@@ -127,7 +133,7 @@ public class MapActivity extends AppCompatActivity {
         paint.setColor(getResources().getColor(android.R.color.white));
         paint.setStrokeWidth(10);
         paint.setStyle(Paint.Style.STROKE);
-        if (i == currentCourseId) {
+        if (i == currentLessonId + 1) {
             canvas.drawCircle(circleX, circleY, radius, paint);
             canvas.drawCircle(circleX, circleY, radius+20, paint);
         }
@@ -148,7 +154,7 @@ public class MapActivity extends AppCompatActivity {
         String lessonNumber = button.getText().toString();
 
         // Not allowed to access this lesson yet.
-        if (Integer.parseInt(lessonNumber) > topCourseId) {
+        if (Integer.parseInt(lessonNumber) > topLessonId) {
             return;
         }
 

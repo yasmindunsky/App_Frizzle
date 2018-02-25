@@ -56,6 +56,7 @@ public class UserCreatedButton extends UserCreatedView {
         int col = nextViewIndex % 2;
         GridLayout.LayoutParams layoutParams = new GridLayout.LayoutParams(GridLayout.spec(row),
                 GridLayout.spec(col));
+        layoutParams.width = 400;
         layoutParams.setMargins(10,10,10,10);
         thisView.setLayoutParams(layoutParams);
 

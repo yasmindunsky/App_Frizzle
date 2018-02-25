@@ -10,6 +10,7 @@ import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Bundle;
 import android.os.Environment;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.ActivityCompat;
@@ -19,14 +20,24 @@ import android.support.v4.app.ShareCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.FrameLayout;
+import android.widget.GridLayout;
+import android.widget.ImageButton;
+import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.yasmindunsky.frizzleapp.AsyncResponse;
 import com.example.yasmindunsky.frizzleapp.MapActivity;
 import com.example.yasmindunsky.frizzleapp.R;
+import com.example.yasmindunsky.frizzleapp.UpdatePositionInServer;
+import com.example.yasmindunsky.frizzleapp.UserProfile;
 import com.example.yasmindunsky.frizzleapp.lesson.LessonActivity;
 import com.example.yasmindunsky.frizzleapp.lesson.Task;
 
@@ -49,18 +60,18 @@ public class AppBuilderActivity extends AppCompatActivity {
     String xml;
 
     View globalView;
-
-    public static String PACKAGE_NAME;
-
+    android.support.v7.widget.Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_app_builder);
 
+        graphicEditFragment = new GraphicEditFragment();
+        codingFragment = new CodingFragment();
 
         // Set Toolbar home button.
-        android.support.v7.widget.Toolbar toolbar =
+        toolbar =
                 (android.support.v7.widget.Toolbar) findViewById(R.id.builderToolbar);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,21 +81,51 @@ public class AppBuilderActivity extends AppCompatActivity {
                 startActivity(mapIntent);
             }
         });
+        toolbar.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                openInstructorPopup();
+                return false;
+            }
+        });
+
+        // ExpandableLayout
+        ImageButton clickToExpand = findViewById(R.id.clickToExpand);
+        final ExpandableLayout expandableLayout = findViewById(R.id.expandable_layout);
+        clickToExpand.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (expandableLayout.isExpanded()) {
+                    expandableLayout.collapse();
+                } else {
+                    expandableLayout.expand();
+                }
+            }
+        });
 
         // Set Task text.
         Task task = new Task("");
         if (LessonActivity.getCurrentLesson() != null) {
             task = LessonActivity.getCurrentLesson().getTask();
         }
-        TextView taskTextView = (TextView) findViewById(R.id.task);
+        // Hide if there's no task, for example when arriving straight from the map.
+        else {
+            clickToExpand.setVisibility(View.INVISIBLE);
+            expandableLayout.setVisibility(View.INVISIBLE);
+            FrameLayout frame = findViewById(R.id.fragmentFrame);
+            RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams)frame.getLayoutParams();
+            layoutParams.addRule(RelativeLayout.BELOW, R.id.tabLayout);
+            frame.setLayoutParams(layoutParams);
+        }
+
+        TextView taskTextView = (TextView)findViewById(R.id.task);
         taskTextView.setText(task.getText());
 
-        TabLayout tabLayout = findViewById(R.id.tabLayout); // get the reference of TabLayout
+        final TabLayout tabLayout = findViewById(R.id.tabLayout); // get the reference of TabLayout
+        final TabLayout.Tab graphicEditTab = tabLayout.newTab().setText(R.string.graphicEditScreenTitle);
         TabLayout.Tab codingTab = tabLayout.newTab().setText(R.string.codeScreenTitle);
-        TabLayout.Tab graphicEditTab = tabLayout.newTab().setText(R.string.graphicEditScreenTitle);
 
-        codingFragment = new CodingFragment();
-        graphicEditFragment = new GraphicEditFragment();
+
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             public void onTabReselected(TabLayout.Tab tab) {
@@ -95,9 +136,9 @@ public class AppBuilderActivity extends AppCompatActivity {
                 Fragment fragment = null;
 
                 if (tab.getPosition() == 0) {
-                    fragment = codingFragment;
-                } else {
                     fragment = graphicEditFragment;
+                } else {
+                    fragment = codingFragment;
                 }
 
                 FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
@@ -111,18 +152,95 @@ public class AppBuilderActivity extends AppCompatActivity {
             }
         });
 
-        tabLayout.addTab(codingTab, true);
-        tabLayout.addTab(graphicEditTab);
+        tabLayout.addTab(graphicEditTab,true);
+        tabLayout.addTab(codingTab);
+        graphicEditTab.select();
+
 
         // Open Java and XML files.
         File path = getBaseContext().getFilesDir();
         javaFile = new File(path, getString(R.string.javaFileName));
         xmlFile = new File(path, getString(R.string.xmlFileName));
-
-        PACKAGE_NAME = getApplicationContext().getPackageName();
     }
 
-    public void onPlay(final View view) {
+    private void openInstructorPopup() {
+        // inflate the layout of the popup window
+        LayoutInflater inflater = (LayoutInflater)
+                getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        final View popupView = inflater.inflate(R.layout.popup_instructor, null);
+
+        // create the popup window
+        int width = GridLayout.LayoutParams.WRAP_CONTENT;
+        int height = GridLayout.LayoutParams.WRAP_CONTENT;
+        boolean focusable = true; // lets taps outside the popup also dismiss it
+        PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
+        popupWindow.setOutsideTouchable(true);
+        popupWindow.setFocusable(true);
+        popupWindow.showAtLocation(toolbar, Gravity.CENTER, 0, 0);
+
+        Button confirmButton = popupView.findViewById(R.id.confirmButton);
+        confirmButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EditText code = popupView.findViewById(R.id.codeValue);
+                if ("beyonce".equals(code.getText().toString().toLowerCase())) {
+                    openSuccessPopup();
+                }
+                else {
+                    TextView error = popupView.findViewById(R.id.errorPlaceholder);
+                    error.setText("קוד לא נכון, נסי שוב");
+                }
+            }
+        });
+
+    }
+
+    private void openSuccessPopup() {
+// inflate the layout of the popup window
+        LayoutInflater inflater = (LayoutInflater)
+                getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        final View popupView = inflater.inflate(R.layout.popup_task_success, null);
+
+        // create the popup window
+        int width = GridLayout.LayoutParams.MATCH_PARENT;
+        int height = GridLayout.LayoutParams.MATCH_PARENT;
+        boolean focusable = true; // lets taps outside the popup also dismiss it
+        PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
+        popupWindow.setOutsideTouchable(true);
+        popupWindow.setFocusable(true);
+        popupWindow.showAtLocation(toolbar, Gravity.CENTER, 0, 0);
+
+        Button continueButton = popupView.findViewById(R.id.continueButton);
+        continueButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                updateCurrentAndTopPosition();
+                goToMap();
+            }
+        });
+
+
+    }
+
+    private void goToMap() {
+        Intent mapIntent = new Intent(this, MapActivity.class);
+        startActivity(mapIntent);
+    }
+
+    private void updateCurrentAndTopPosition() {
+        int nextLesson = UserProfile.user.getCurrentLessonID() + 1;
+        if (nextLesson <= 7) {
+            UserProfile.user.setCurrentLessonID(nextLesson);
+            if (nextLesson  > UserProfile.user.getTopLessonID()) {
+                UserProfile.user.setTopLessonID(nextLesson);
+
+                // update position in server
+                new UpdatePositionInServer().execute();
+            }
+        }
+    }
+
+    public void onPlay(View view) {
         // update java code String
         String codeWritten = ((CodingFragment) codingFragment).getCode();
         javaCode = getApplicationContext().getResources().getString(R.string.codeStart) +
@@ -141,6 +259,12 @@ public class AppBuilderActivity extends AppCompatActivity {
                 }
             }
         }).execute(xml, javaCode);
+    }
+
+
+    public void goToLesson(View view) {
+        Intent lessonIntent = new Intent(this, LessonActivity.class);
+        startActivity(lessonIntent);
     }
 
     private void getWritePermission(View view) {

@@ -1,7 +1,9 @@
 package com.example.yasmindunsky.frizzleapp.appBuilder;
 
+import android.content.ClipData;
 import android.content.Context;
 import android.util.Log;
+import android.view.DragEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -55,4 +57,6 @@ public abstract class UserCreatedView {
     public abstract View getThisView();
 
     public abstract PopupWindow displayPropertiesTable(Context context);
+
+
 }
