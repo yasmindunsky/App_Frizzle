@@ -24,32 +24,41 @@
         android:scaleType="fitCenter"
         app:srcCompat="@drawable/ic_x" />
 
+    <ImageButton
+        android:id="@+id/delete"
+        android:layout_width="@dimen/app_bar_height"
+        android:layout_height="@dimen/app_bar_height"
+        android:layout_alignParentStart="true"
+        android:backgroundTint="@android:color/transparent"
+        android:padding="15dp"
+        android:scaleType="fitCenter"
+        app:srcCompat="@drawable/ic_trash" />
+
     <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/tableLayout"
-        android:layout_width="300dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/properties"
-        android:background="@drawable/table_background">
+        android:layout_marginTop="20dp">
 
 
         <TableRow style="@style/propertiesTableRow">
 
             <TextView
                 android:id="@+id/viewIdKey"
+                style="@style/propertiesTableKey"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/propertiesTableId"
-                android:textAppearance="@style/propertiesTableKey" />
+                android:text="@string/propertiesTableId" />
 
             <EditText
                 android:id="@+id/viewIdValue"
+                style="@style/propertiesTableValue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:ems="10"
                 android:inputType="textPersonName"
-                android:text=""
-                android:textAppearance="@style/propertiesTableValue" />
+                android:text="" />
         </TableRow>
 
         <TableRow style="@style/propertiesTableRow">
@@ -102,9 +111,8 @@
                 android:id="@+id/viewBgColorValue"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginStart="10dp"
-                android:layout_weight="1"
+                android:layout_marginEnd="70dp"
+                android:layout_marginStart="50dp"
                 android:background="@color/UnselectedLightGrey" />
 
 
@@ -123,10 +131,9 @@
                 android:id="@+id/viewFontColorValue"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginStart="10dp"
-                android:layout_weight="1"
-                android:background="@color/UnselectedLightGrey" />
+                android:layout_marginEnd="70dp"
+                android:layout_marginStart="50dp"
+                android:background="@color/TextGrey" />
 
 
         </TableRow>
@@ -150,13 +157,6 @@
                 android:textAppearance="@style/propertiesTableValue" />
 
         </TableRow>
-
-        <Button
-            android:id="@+id/deleteButton"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
-            android:text="@string/delete" />
 
     </TableLayout>
 </RelativeLayout>

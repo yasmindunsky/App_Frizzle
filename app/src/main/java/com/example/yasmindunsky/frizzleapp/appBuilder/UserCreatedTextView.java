@@ -7,7 +7,6 @@ import android.graphics.PorterDuff;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.support.v4.content.ContextCompat;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +15,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridLayout;
+import android.widget.ImageButton;
 import android.widget.PopupWindow;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -23,12 +23,7 @@ import android.widget.TextView;
 import com.example.yasmindunsky.frizzleapp.R;
 import com.example.yasmindunsky.frizzleapp.Support;
 
-import org.xmlpull.v1.XmlSerializer;
-
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 
 import petrov.kristiyan.colorpicker.ColorPicker;
 
@@ -45,6 +40,7 @@ public class UserCreatedTextView extends UserCreatedView {
         int textViewStyle = R.style.usersTextView;
         this.thisView = new TextView(context, null, 0, textViewStyle);
         thisView.setText(R.string.newTextViewText);
+        this.viewType = ViewType.TextView;
 
         // index in views map in GraphicEditFragment.
         this.index = nextViewIndex;
@@ -52,9 +48,9 @@ public class UserCreatedTextView extends UserCreatedView {
 
         // Set Position in GridLayout and Margins.
         int row = nextViewIndex / 2;
-        int col = nextViewIndex % 2;
+        int column = nextViewIndex % 2;
         GridLayout.LayoutParams layoutParams = new GridLayout.LayoutParams(GridLayout.spec(row),
-                GridLayout.spec(col));
+                GridLayout.spec(column));
         layoutParams.width = 400;
         layoutParams.setMargins(10,10,10,10);
         thisView.setLayoutParams(layoutParams);
@@ -67,17 +63,20 @@ public class UserCreatedTextView extends UserCreatedView {
 
         this.properties = new HashMap<>();
         properties.put("android:id",  "TextView" + numOfTextViews);
-        properties.put("android:layout_width", "wrap_content");
+        properties.put("android:layout_width", "150dp");
         properties.put("android:layout_height", "wrap_content");
         properties.put("android:layout_margin", "10dp");
         properties.put("android:text", (String) thisView.getText());
         properties.put("android:fontFamily", "serif");
         properties.put("android:textColor", "#535264");
-        properties.put("android:background", "@android:color/transparent");
-        properties.put("android:layout_column", String.valueOf(col));
-        properties.put("android:layout_row", String.valueOf(row));
+        properties.put("android:background", "@drawable/user_text_view_background");
+        properties.put("android:padding", "10dp");
+        properties.put("android:paddingStart", "16dp");
+        properties.put("android:paddingEnd", "16dp");
 
-
+        // These will be inserted to the properties table right before XML creation.
+        thisView.setTag(R.id.usersViewRow, row);
+        thisView.setTag(R.id.usersViewCol, column);
     }
 
     public PopupWindow displayPropertiesTable(final Context context) {
@@ -90,9 +89,19 @@ public class UserCreatedTextView extends UserCreatedView {
         int width = GridLayout.LayoutParams.WRAP_CONTENT;
         int height = GridLayout.LayoutParams.WRAP_CONTENT;
         boolean focusable = true; // lets taps outside the popup also dismiss it
-        PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
+        final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
         popupWindow.setOutsideTouchable(true);
         popupWindow.setFocusable(true);
+
+        // Set closing button.
+        ImageButton closeButton = popupView.findViewById(R.id.close);
+        closeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                popupWindow.dismiss();
+            }
+        });
+
 
         // ID
         EditText viewId = popupView.findViewById(R.id.viewIdValue);
@@ -144,14 +153,14 @@ public class UserCreatedTextView extends UserCreatedView {
                 });
             }
         });
-
-        // ALIGNMENT
-        popupView.findViewById(R.id.viewTextAlignValueLeft).setOnClickListener(onAlignmentClicked);
-        popupView.findViewById(R.id.viewTextAlignValueCenter).setOnClickListener(onAlignmentClicked);
-        popupView.findViewById(R.id.viewTextAlignValueRight).setOnClickListener(onAlignmentClicked);
+//
+//        // ALIGNMENT
+//        popupView.findViewById(R.id.viewTextAlignValueLeft).setOnClickListener(onAlignmentClicked);
+//        popupView.findViewById(R.id.viewTextAlignValueCenter).setOnClickListener(onAlignmentClicked);
+//        popupView.findViewById(R.id.viewTextAlignValueRight).setOnClickListener(onAlignmentClicked);
 
         //DELETE
-        Button deleteButton = popupView.findViewById(R.id.deleteButton);
+        ImageButton deleteButton = popupView.findViewById(R.id.delete);
         deleteButton.setTag(index);
 //        deleteButton.setOnClickListener(deleteView);
 
