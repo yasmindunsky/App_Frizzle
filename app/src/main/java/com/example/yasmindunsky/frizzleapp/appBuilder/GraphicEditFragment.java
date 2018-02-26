@@ -8,10 +8,12 @@ import android.util.Log;
 import android.view.DragEvent;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.GridLayout;
+import android.widget.ImageButton;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
@@ -152,7 +154,7 @@ public class GraphicEditFragment extends Fragment {
                     // show the popup window
                     popupWindow = userCreatedTextView.displayPropertiesTable(getContext());
 
-                    Button deleteButton = popupWindow.getContentView().findViewById(R.id.deleteButton);
+                    ImageButton deleteButton = popupWindow.getContentView().findViewById(R.id.delete);
                     // To know what view to delete
                     deleteButton.setTag(R.id.viewToDelete, v.getId());
                     deleteButton.setOnClickListener(deleteView);
@@ -183,7 +185,7 @@ public class GraphicEditFragment extends Fragment {
                     // show the popup window
                     popupWindow = userCreatedButton.displayPropertiesTable(getContext());
 
-                    Button deleteButton = popupWindow.getContentView().findViewById(R.id.deleteButton);
+                    ImageButton deleteButton = popupWindow.getContentView().findViewById(R.id.delete);
                     // To know what view to delete
                     deleteButton.setTag(R.id.viewToDelete, v.getTag(R.id.usersViewId));
                     deleteButton.setOnClickListener(deleteView);
@@ -502,6 +504,9 @@ public class GraphicEditFragment extends Fragment {
             GridLayout.LayoutParams layoutParams = new GridLayout.LayoutParams(GridLayout.spec(row),  GridLayout.spec(column));
             layoutParams.setMargins(10, 10, 10, 10);
             layoutParams.width = 400;
+
+            view.setTag(R.id.usersViewRow, row);
+            view.setTag(R.id.usersViewCol, column);
             return layoutParams;
         }
     }

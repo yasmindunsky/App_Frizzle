@@ -129,13 +129,8 @@
 
                 <TextView
                     android:id="@+id/error"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingEnd="16dp"
-                    android:paddingStart="16dp"
-                    android:paddingTop="5dp"
-                    android:text="Fixed height"
-                    android:textAppearance="@style/taskText" />
+                    style="@style/errorText"
+                    android:text="Error text" />
 
             </net.cachapa.expandablelayout.ExpandableLayout>
         </LinearLayout>

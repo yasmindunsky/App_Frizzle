@@ -1,20 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/table_background">
+<TextView
+    android:id="@+id/properties"
+    style="@style/propertiesTableTitle"
+    android:layout_width="match_parent"
+    android:layout_alignParentTop="true"
+    android:background="@drawable/table_title_background"
+    android:gravity="center" />
+
+<ImageButton
+android:id="@+id/close"
+android:layout_width="wrap_content"
+android:layout_height="@dimen/app_bar_height"
+android:layout_alignParentEnd="true"
+android:backgroundTint="@android:color/transparent"
+android:padding="18dp"
+android:scaleType="fitCenter"
+app:srcCompat="@drawable/ic_x" />
+
+<ImageButton
+android:id="@+id/delete"
+android:layout_width="@dimen/app_bar_height"
+android:layout_height="@dimen/app_bar_height"
+android:layout_alignParentStart="true"
+android:backgroundTint="@android:color/transparent"
+android:padding="15dp"
+android:scaleType="fitCenter"
+app:srcCompat="@drawable/ic_trash" />
+
 
 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/tableLayout"
-    android:layout_width="300dp"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_below="@+id/properties"
+    android:layout_marginTop="20dp"
     android:background="@drawable/table_background">
-
-        <TextView
-            android:id="@+id/properties"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAppearance="@style/propertiesTableTitle"
-            android:background="@drawable/table_title_background"
-            />
 
     <TableRow
         style="@style/propertiesTableRow">
@@ -87,61 +114,56 @@
 
         <Button
             android:id="@+id/viewFontColorValue"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Button" />
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginEnd="70dp"
+            android:layout_marginStart="50dp"
+            android:background="@color/TextGrey"  />
 
 
     </TableRow>
 
-    <TableRow
-        style="@style/propertiesTableRow"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+    <!--<TableRow-->
+        <!--style="@style/propertiesTableRow"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content">-->
 
-        <TextView
-            android:id="@+id/viewTextAlignKey"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/propertiesTableTextAlign"
-            android:textAppearance="@style/propertiesTableKey" />
+        <!--<TextView-->
+            <!--android:id="@+id/viewTextAlignKey"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="@string/propertiesTableTextAlign"-->
+            <!--android:textAppearance="@style/propertiesTableKey" />-->
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:orientation="horizontal">-->
 
-            <Button
-                android:id="@+id/viewTextAlignValueLeft"
-                android:layout_width="70dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="Button"
-                tools:text="left" />
+            <!--<Button-->
+                <!--android:id="@+id/viewTextAlignValueLeft"-->
+                <!--android:layout_width="70dp"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:layout_weight="1"-->
+                <!--android:text="שמאל" />-->
 
-            <Button
-                android:id="@+id/viewTextAlignValueCenter"
-                android:layout_width="70dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="Button"
-                tools:text="center" />
+            <!--<Button-->
+                <!--android:id="@+id/viewTextAlignValueCenter"-->
+                <!--android:layout_width="70dp"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:layout_weight="1"-->
+                <!--android:text="מרכז" />-->
 
-            <Button
-                android:id="@+id/viewTextAlignValueRight"
-                android:layout_width="70dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="Button"
-                tools:text="right" />
-        </LinearLayout>
+            <!--<Button-->
+                <!--android:id="@+id/viewTextAlignValueRight"-->
+                <!--android:layout_width="70dp"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:layout_weight="1"-->
+                <!--android:text="ימין" />-->
+        <!--</LinearLayout>-->
 
 
-    </TableRow>
-    <Button
-        android:id="@+id/deleteButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/delete" />
+    <!--</TableRow>-->
 
 </TableLayout>
+</RelativeLayout>

@@ -10,6 +10,8 @@ import android.widget.EditText;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
+import com.example.yasmindunsky.frizzleapp.R;
+
 import org.xmlpull.v1.XmlSerializer;
 
 import java.io.IOException;
@@ -38,8 +40,9 @@ public abstract class UserCreatedView {
 
     public String createXmlString(XmlSerializer xmlSerializer) {
         String name = viewType.toString();
+        updateLatestPosition();
         properties.put("android:id", "@+id/" + properties.get("android:id"));
-        properties.put("android:textColor", "@color/" + properties.get("android:textColor"));
+        properties.put("android:textColor", properties.get("android:textColor"));
         try {
             xmlSerializer.startTag("", name);
             for (String key: properties.keySet()) {
@@ -50,6 +53,14 @@ public abstract class UserCreatedView {
             Log.e("Exception", "xmlSerializer " + xmlSerializer.toString() + " failed: " + e.toString());
         }
         return null;
+    }
+
+    private void updateLatestPosition() {
+        View view = getThisView();
+        String updatedColumn = view.getTag(R.id.usersViewCol).toString();
+        String updatedRow = view.getTag(R.id.usersViewRow).toString();
+        properties.put("android:layout_column", updatedColumn);
+        properties.put("android:layout_row", updatedRow);
     }
 
     public abstract void updateProperties();

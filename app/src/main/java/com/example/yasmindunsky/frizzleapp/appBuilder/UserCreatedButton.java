@@ -46,6 +46,7 @@ public class UserCreatedButton extends UserCreatedView {
         int buttonStyle = R.style.usersButton;
         this.thisView = new Button(new ContextThemeWrapper(context, buttonStyle), null, buttonStyle);
         thisView.setText(R.string.newButtonText);
+        this.viewType = ViewType.Button;
 
         // index in views map in GraphicEditFragment.
         this.index = nextViewIndex;
@@ -53,9 +54,9 @@ public class UserCreatedButton extends UserCreatedView {
 
         // Set Position in GridLayout and Margins.
         int row = nextViewIndex / 2;
-        int col = nextViewIndex % 2;
+        int column = nextViewIndex % 2;
         GridLayout.LayoutParams layoutParams = new GridLayout.LayoutParams(GridLayout.spec(row),
-                GridLayout.spec(col));
+                GridLayout.spec(column));
         layoutParams.width = 400;
         layoutParams.setMargins(10,10,10,10);
 
@@ -63,16 +64,21 @@ public class UserCreatedButton extends UserCreatedView {
 
         this.properties = new HashMap<>();
         properties.put("android:id",  "Button" + numOfButtons);
-        properties.put("android:layout_width", "wrap_content");
+        properties.put("android:layout_width", "150dp");
         properties.put("android:layout_height", "wrap_content");
         properties.put("android:layout_margin", "10dp");
         properties.put("android:text", (String) thisView.getText());
         properties.put("android:fontFamily", "serif");
         properties.put("android:textColor", "#535264");
-        properties.put("android:background", "@android:color/transparent"); // TODO change
-        properties.put("android:backgroundTint", "#ffffff"); // TODO change
-        properties.put("android:layout_column", String.valueOf(col));
-        properties.put("android:layout_row", String.valueOf(row));
+        properties.put("android:background", "@drawable/user_button_background");
+        properties.put("android:backgroundTint", "#f4f4f4");
+        properties.put("android:padding", "10dp");
+        properties.put("android:paddingStart", "16dp");
+        properties.put("android:paddingEnd", "16dp");
+
+        // These will be inserted to the properties table right before XML creation.
+        thisView.setTag(R.id.usersViewRow, row);
+        thisView.setTag(R.id.usersViewCol, column);
     }
 
     public PopupWindow displayPropertiesTable(final Context context) {
@@ -184,7 +190,7 @@ public class UserCreatedButton extends UserCreatedView {
         });
 
         //DELETE
-        Button deleteButton = popupView.findViewById(R.id.deleteButton);
+        ImageButton deleteButton = popupView.findViewById(R.id.delete);
         deleteButton.setTag(index);
 //        deleteButton.setOnClickListener(deleteView);
 
