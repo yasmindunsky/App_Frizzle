@@ -120,17 +120,18 @@ public class AppBuilderActivity extends AppCompatActivity {
             clickToExpandTask.setVisibility(View.INVISIBLE);
             taskExpandableLayout.setVisibility(View.INVISIBLE);
             FrameLayout frame = findViewById(R.id.fragmentFrame);
-            RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams)frame.getLayoutParams();
+            RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) frame.getLayoutParams();
             layoutParams.addRule(RelativeLayout.BELOW, R.id.tabLayout);
             frame.setLayoutParams(layoutParams);
         }
 
-        TextView taskTextView = (TextView)findViewById(R.id.task);
+        TextView taskTextView = (TextView) findViewById(R.id.task);
         taskTextView.setText(task.getText());
 
         final TabLayout tabLayout = findViewById(R.id.tabLayout); // get the reference of TabLayout
         final TabLayout.Tab graphicEditTab = tabLayout.newTab().setText(R.string.graphicEditScreenTitle);
         TabLayout.Tab codingTab = tabLayout.newTab().setText(R.string.codeScreenTitle);
+
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             public void onTabReselected(TabLayout.Tab tab) {
@@ -157,7 +158,7 @@ public class AppBuilderActivity extends AppCompatActivity {
             }
         });
 
-        tabLayout.addTab(graphicEditTab,true);
+        tabLayout.addTab(graphicEditTab, true);
         tabLayout.addTab(codingTab);
         graphicEditTab.select();
 
@@ -234,7 +235,7 @@ public class AppBuilderActivity extends AppCompatActivity {
         int nextLesson = UserProfile.user.getCurrentLessonID() + 1;
         if (nextLesson <= 7) {
             UserProfile.user.setCurrentLessonID(nextLesson);
-            if (nextLesson  > UserProfile.user.getTopLessonID()) {
+            if (nextLesson > UserProfile.user.getTopLessonID()) {
                 UserProfile.user.setTopLessonID(nextLesson);
 
                 // update position in server

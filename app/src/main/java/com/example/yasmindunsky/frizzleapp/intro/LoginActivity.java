@@ -68,9 +68,8 @@ public class LoginActivity extends AppCompatActivity {
         new LoginToServer(new AsyncResponse() {
             @Override
             public void processFinish(String output) {
-                messagePlaceholder.setText(output);
                 // in case of success, create new user instance, restore users data and go to map
-                if (output.equals("Login Succeeded")) {
+                if (output.equals("Authentication succeeded")) {
 
                     // after successful login, update username of current user
                     UserProfile.user.setUsername(email);
