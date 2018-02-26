@@ -52,7 +52,7 @@ public class AppBuilderActivity extends AppCompatActivity {
     String javaCode;
     String xml;
 
-    View globalView;
+//    View globalView;
     android.support.v7.widget.Toolbar toolbar;
 
     @Override
@@ -285,13 +285,13 @@ public class AppBuilderActivity extends AppCompatActivity {
         if (ContextCompat.checkSelfPermission(this,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
 
-            globalView = view;
+//            globalView = view;
             // permission from user still isn't granted, ask for permission
             ActivityCompat.requestPermissions(this,
                     new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, WRITE_PERMISSION);
         } else {
             // permission was already granted, download apk
-            downloadApk(view);
+            downloadApk();
         }
     }
 
@@ -303,7 +303,7 @@ public class AppBuilderActivity extends AppCompatActivity {
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     // permission granted, download apk from server
-                    downloadApk(globalView);
+                    downloadApk();
 
                 } else {
                     // permission denied
@@ -314,11 +314,11 @@ public class AppBuilderActivity extends AppCompatActivity {
         }
     }
 
-    public void downloadApk(final View view) {
+    public void downloadApk() {
         new DownloadApkFromServer(new AsyncResponse() {
             @Override
             public void processFinish(String output) {
-                startApk(view);
+//                startApk(view);
             }
         }).execute(xml, javaCode);
 
