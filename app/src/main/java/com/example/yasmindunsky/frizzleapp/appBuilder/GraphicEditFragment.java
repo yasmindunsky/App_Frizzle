@@ -1,42 +1,27 @@
 package com.example.yasmindunsky.frizzleapp.appBuilder;
 
 import android.content.ClipData;
-import android.content.Context;
-import android.graphics.PorterDuff;
-import android.graphics.Typeface;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
 import android.util.Log;
-import android.view.ContextThemeWrapper;
 import android.view.DragEvent;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.GridLayout;
-import android.widget.LinearLayout;
 import android.widget.PopupWindow;
-import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toolbar;
 
 import com.example.yasmindunsky.frizzleapp.R;
 import com.example.yasmindunsky.frizzleapp.Support;
-import com.example.yasmindunsky.frizzleapp.UserProfile;
 
 import net.cachapa.expandablelayout.ExpandableLayout;
 
 import java.util.HashMap;
 import java.util.Map;
-
-import petrov.kristiyan.colorpicker.ColorPicker;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -89,7 +74,7 @@ public class GraphicEditFragment extends Fragment {
         TextView addButton = view.findViewById(R.id.addButton);
         addButton.setOnClickListener(newButtonOnClick);
 
-        expandableLayout = view.findViewById(R.id.expandable_layout);
+        expandableLayout = view.findViewById(R.id.taskExpandableLayout);
         expandButton = view.findViewById(R.id.addView);
 
         expandableLayout.setOnExpansionUpdateListener(new ExpandableLayout.OnExpansionUpdateListener() {

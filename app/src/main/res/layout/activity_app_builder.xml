@@ -60,7 +60,7 @@
             app:tabMode="fixed" />
 
         <net.cachapa.expandablelayout.ExpandableLayout
-            android:id="@+id/expandable_layout"
+            android:id="@+id/taskExpandableLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tabLayout"
@@ -81,10 +81,10 @@
         </net.cachapa.expandablelayout.ExpandableLayout>
 
         <ImageButton
-            android:id="@+id/clickToExpand"
+            android:id="@+id/clickToExpandTask"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:layout_below="@+id/expandable_layout"
+            android:layout_below="@+id/taskExpandableLayout"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="5dp"
             android:background="@android:color/transparent"
@@ -95,12 +95,58 @@
             android:textSize="30sp"
             app:srcCompat="@drawable/ic_expand_grab_icon" />
 
+        <LinearLayout
+            android:id="@+id/errorDisplay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@color/backgroundDarkGrey"
+            android:elevation="10dp"
+            android:orientation="vertical"
+            android:visibility="invisible">
+
+            <ImageButton
+                android:id="@+id/clickToExpandError"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_marginTop="5dp"
+                android:background="@android:color/transparent"
+                android:gravity="center_horizontal|center"
+                android:scaleType="fitCenter"
+                android:text="="
+                android:textColor="@color/TextLightGrey"
+                android:textSize="30sp"
+                app:srcCompat="@drawable/ic_expand_grab_icon" />
+
+            <net.cachapa.expandablelayout.ExpandableLayout
+                android:id="@+id/errorExpandableLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:elevation="10dp"
+                app:el_duration="1000"
+                app:el_expanded="true"
+                app:el_parallax="0.5">
+
+                <TextView
+                    android:id="@+id/error"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingEnd="16dp"
+                    android:paddingStart="16dp"
+                    android:paddingTop="5dp"
+                    android:text="Fixed height"
+                    android:textAppearance="@style/taskText" />
+
+            </net.cachapa.expandablelayout.ExpandableLayout>
+        </LinearLayout>
+
         <FrameLayout
             android:id="@+id/fragmentFrame"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/clickToExpand"
-            android:layout_marginTop="8dp">
+            android:layout_below="@+id/clickToExpandTask"
+            android:layout_marginTop="8dp"
+            android:elevation="0dp">
 
             <android.support.design.widget.FloatingActionButton
                 android:id="@+id/goToLesson"

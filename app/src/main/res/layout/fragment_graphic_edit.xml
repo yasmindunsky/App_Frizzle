@@ -147,7 +147,7 @@
             android:orientation="horizontal">
 
             <net.cachapa.expandablelayout.ExpandableLayout
-                android:id="@+id/expandable_layout"
+                android:id="@+id/taskExpandableLayout"
                 android:layout_width="0dp"
                 android:layout_height="45dp"
                 android:layout_weight="1"

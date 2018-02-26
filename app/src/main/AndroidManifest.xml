@@ -19,10 +19,6 @@
         <activity android:name=".intro.RegisterActivity">
         </activity>
         <activity android:name=".intro.LoginActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <activity android:name=".MapActivity"
@@ -33,6 +29,10 @@
         </activity>
         <activity android:name=".lesson.LessonActivity"/>
         <activity android:name=".appBuilder.AppBuilderActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 
         </activity>
 

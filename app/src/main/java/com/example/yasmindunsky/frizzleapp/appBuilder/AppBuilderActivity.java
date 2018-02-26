@@ -1,26 +1,19 @@
 package com.example.yasmindunsky.frizzleapp.appBuilder;
 
 import android.Manifest;
-import android.app.Activity;
-import android.app.DownloadManager;
-import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.app.ShareCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,6 +22,7 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.GridLayout;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -44,9 +38,6 @@ import com.example.yasmindunsky.frizzleapp.lesson.Task;
 import net.cachapa.expandablelayout.ExpandableLayout;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
 
 public class AppBuilderActivity extends AppCompatActivity {
 
@@ -91,16 +82,30 @@ public class AppBuilderActivity extends AppCompatActivity {
             }
         });
 
-        // ExpandableLayout
-        ImageButton clickToExpand = findViewById(R.id.clickToExpand);
-        final ExpandableLayout expandableLayout = findViewById(R.id.expandable_layout);
-        clickToExpand.setOnClickListener(new View.OnClickListener() {
+        // Error ExpandableLayout
+        ImageButton clickToExpandError = findViewById(R.id.clickToExpandError);
+        final ExpandableLayout errorExpandableLayout = findViewById(R.id.errorExpandableLayout);
+        clickToExpandError.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (expandableLayout.isExpanded()) {
-                    expandableLayout.collapse();
+                if (errorExpandableLayout.isExpanded()) {
+                    errorExpandableLayout.collapse();
                 } else {
-                    expandableLayout.expand();
+                    errorExpandableLayout.expand();
+                }
+            }
+        });
+
+        // Task ExpandableLayout
+        ImageButton clickToExpandTask = findViewById(R.id.clickToExpandTask);
+        final ExpandableLayout taskExpandableLayout = findViewById(R.id.taskExpandableLayout);
+        clickToExpandTask.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (taskExpandableLayout.isExpanded()) {
+                    taskExpandableLayout.collapse();
+                } else {
+                    taskExpandableLayout.expand();
                 }
             }
         });
@@ -112,8 +117,8 @@ public class AppBuilderActivity extends AppCompatActivity {
         }
         // Hide if there's no task, for example when arriving straight from the map.
         else {
-            clickToExpand.setVisibility(View.INVISIBLE);
-            expandableLayout.setVisibility(View.INVISIBLE);
+            clickToExpandTask.setVisibility(View.INVISIBLE);
+            taskExpandableLayout.setVisibility(View.INVISIBLE);
             FrameLayout frame = findViewById(R.id.fragmentFrame);
             RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams)frame.getLayoutParams();
             layoutParams.addRule(RelativeLayout.BELOW, R.id.tabLayout);
@@ -126,8 +131,6 @@ public class AppBuilderActivity extends AppCompatActivity {
         final TabLayout tabLayout = findViewById(R.id.tabLayout); // get the reference of TabLayout
         final TabLayout.Tab graphicEditTab = tabLayout.newTab().setText(R.string.graphicEditScreenTitle);
         TabLayout.Tab codingTab = tabLayout.newTab().setText(R.string.codeScreenTitle);
-
-
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             public void onTabReselected(TabLayout.Tab tab) {
@@ -198,12 +201,10 @@ public class AppBuilderActivity extends AppCompatActivity {
     }
 
     private void openSuccessPopup() {
-// inflate the layout of the popup window
         LayoutInflater inflater = (LayoutInflater)
                 getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         final View popupView = inflater.inflate(R.layout.popup_task_success, null);
 
-        // create the popup window
         int width = GridLayout.LayoutParams.MATCH_PARENT;
         int height = GridLayout.LayoutParams.MATCH_PARENT;
         boolean focusable = true; // lets taps outside the popup also dismiss it
@@ -242,7 +243,7 @@ public class AppBuilderActivity extends AppCompatActivity {
         }
     }
 
-    public void onPlay(View view) {
+    public void onPlay(final View view) {
         // update java code String
         String codeWritten = ((CodingFragment) codingFragment).getCode();
         javaCode = getApplicationContext().getResources().getString(R.string.codeStart) +
@@ -259,10 +260,20 @@ public class AppBuilderActivity extends AppCompatActivity {
                 if (output.contains("BUILD SUCCESSFUL")) {
                     getWritePermission(view);
                 }
+                else {
+                    // Build didn't work.
+                    displayError(output);
+                }
             }
         }).execute(xml, javaCode);
     }
 
+    private void displayError(String output) {
+        TextView error = findViewById(R.id.error);
+        error.setText(output);
+        LinearLayout errorLayout = findViewById(R.id.errorDisplay);
+        errorLayout.setVisibility(View.VISIBLE);
+    }
 
     public void goToLesson(View view) {
         Intent lessonIntent = new Intent(this, LessonActivity.class);
