@@ -93,7 +93,7 @@ public class RegisterFragment extends Fragment {
             public void processFinish(String output) {
 
                 // in case of success, create new user instance and go to map
-                if (output.equals("Registration Succeeded")) {
+                if (output.equals("Registration succeeded")) {
 
                     // after successful registration, save username and nickname of current user
                     UserProfile.user.setUsername(email);
