@@ -29,11 +29,11 @@
         <image name="image">"exercise_3_1"</image>
         <content name="content"></content>
         <possibilities name = "possibilities">
-            <possibility name = "possibility">"העריכה הגרפית"</possibility>
+            <possibility name = "possibility">"העיצוב"</possibility>
             <possibility name = "possibility">"הקוד"</possibility>
         </possibilities>
         <answers name="answers">
-            <answer name="answer">"העריכה הגרפית"</answer>
+            <answer name="answer">"העיצוב"</answer>
         </answers>
     </exercise>
 
@@ -43,7 +43,7 @@
         <image name="image">"exercise_3_2"</image>
         <content name="content"></content>
         <possibilities name = "possibilities">
-            <possibility name = "possibility">"העריכה הגרפית"</possibility>
+            <possibility name = "possibility">"העיצוב"</possibility>
             <possibility name = "possibility">"הקוד"</possibility>
         </possibilities>
         <answers name="answers">
@@ -57,7 +57,7 @@
         <image name="image">"exercise_3_3"</image>
         <content name="content"></content>
         <possibilities name = "possibilities">
-            <possibility name = "possibility">"העריכה הגרפית"</possibility>
+            <possibility name = "possibility">"העיצוב"</possibility>
             <possibility name = "possibility">"הקוד"</possibility>
         </possibilities>
         <answers name="answers">

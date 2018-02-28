@@ -40,12 +40,12 @@
 
     <slide>
         <text name="text">"באמצעות שפת Java אפשר לתכנת: לתת למחשב פקודה, שהיא הוראה לביצוע פעולה מסוימת, למשל לנגן שיר."</text>
-        <image name="image">"slide_1_7d"</image>
+        <image name="image">"slide_1_7"</image>
     </slide>
 
     <slide>
         <text name="text">"\\u0027קטע קוד\\u0027 הוא אוסף של פקודות. כשאנחנו אומרים שהמחשב \\u0027מריץ\\u0027 קטע קוד, אנחנו מתכוונים שהוא מבצע רצף של פקודות, אחת אחרי השנייה."</text>
-        <image name="image">"slide_1_7"</image>
+        <image name="image">"slide_1_8"</image>
     </slide>
 
     <slide>
@@ -53,7 +53,7 @@
             \\u000A
             והקוד שמגדיר איך היא מתנהגת. "
         </text>
-        <image name="image">"slide_1_8"</image>
+        <image name="image">"slide_1_9"</image>
     </slide>
 
     <slide>
@@ -61,7 +61,7 @@
             \\u000A
             במסך הקוד. "
         </text>
-        <image name="image">"slide_1_9"</image>
+        <image name="image">"slide_1_10"</image>
     </slide>
 
     <exercise>

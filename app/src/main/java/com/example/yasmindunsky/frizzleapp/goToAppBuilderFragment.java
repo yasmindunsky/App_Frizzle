@@ -41,7 +41,7 @@ public class goToAppBuilderFragment extends Fragment {
 
 
         // Update the top position of the user if needed
-        updateTopPosition();
+//        updateTopPosition();
 
         view.findViewById(R.id.continueButton).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,7 +53,7 @@ public class goToAppBuilderFragment extends Fragment {
 
         Task task = LessonActivity.getCurrentLesson().getTask();
         TextView taskTextView = (TextView)view.findViewById(R.id.mentorText);
-        taskTextView.setText("עברי למסך בניית האפליקציה, " + task.getText());
+        taskTextView.setText("עברי למסך הבנייה.\n" + task.getText());
 
         return view;
     }

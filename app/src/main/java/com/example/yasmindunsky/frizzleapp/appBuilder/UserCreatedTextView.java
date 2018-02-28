@@ -7,6 +7,7 @@ import android.graphics.PorterDuff;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.support.v4.content.ContextCompat;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,6 +25,7 @@ import com.example.yasmindunsky.frizzleapp.R;
 import com.example.yasmindunsky.frizzleapp.Support;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import petrov.kristiyan.colorpicker.ColorPicker;
 
@@ -34,13 +36,52 @@ import petrov.kristiyan.colorpicker.ColorPicker;
 public class UserCreatedTextView extends UserCreatedView {
     TextView thisView;
 
-    public UserCreatedTextView(Context context, int nextViewIndex, int numOfTextViews) {
-        this.layout = R.layout.popup_properties_text_view;
+    public UserCreatedTextView(Context context, Map<String, String> properties, int index){
         this.context = context;
+        this.index = index;
+        this.layout = R.layout.popup_properties_text_view;
+        this.viewType = ViewType.TextView;
+        int textViewStyle = R.style.usersTextView;
+
+        this.thisView = new TextView(context, null, 0, textViewStyle);
+        thisView.setText(properties.get("android:text"));
+
+        String textColorHex = properties.get("android:textColor");
+        thisView.setTextColor(Color.parseColor(textColorHex));
+
+        thisView.setPadding(16,10,16,10);
+
+        int column = Integer.parseInt(properties.get("android:layout_column"));
+        int row = Integer.parseInt(properties.get("android:layout_row"));
+        GridLayout.LayoutParams layoutParams = new GridLayout.LayoutParams(GridLayout.spec(row),
+                GridLayout.spec(column));
+        layoutParams.width = (int) context.getResources().getDimension(R.dimen.user_created_button_width);
+
+        String marginString = properties.get("android:layout_margin");
+        int margin = dpStringToPixel(marginString);
+        layoutParams.setMargins(margin,margin,margin,margin);
+        thisView.setLayoutParams(layoutParams);
+
+        // TODO: load font.
+
+        thisView.setTag(R.id.usersViewId, index);
+        thisView.setTag(R.id.usersViewRow, row);
+        thisView.setTag(R.id.usersViewCol, column);
+    }
+
+    private int dpStringToPixel(String dp) {
+        dp = dp.replaceAll("[^\\d.]", "");
+        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,  Integer.parseInt(dp), context.getResources().getDisplayMetrics());
+    }
+
+    public UserCreatedTextView(Context context, int nextViewIndex, int numOfTextViews) {
+
+        this.context = context;
+        this.layout = R.layout.popup_properties_text_view;
+        this.viewType = ViewType.TextView;
         int textViewStyle = R.style.usersTextView;
         this.thisView = new TextView(context, null, 0, textViewStyle);
         thisView.setText(R.string.newTextViewText);
-        this.viewType = ViewType.TextView;
 
         // index in views map in GraphicEditFragment.
         this.index = nextViewIndex;
@@ -73,8 +114,9 @@ public class UserCreatedTextView extends UserCreatedView {
         properties.put("android:padding", "10dp");
         properties.put("android:paddingStart", "16dp");
         properties.put("android:paddingEnd", "16dp");
+        properties.put("android:layout_column", String.valueOf(column));
+        properties.put("android:layout_row", String.valueOf(row));
 
-        // These will be inserted to the properties table right before XML creation.
         thisView.setTag(R.id.usersViewRow, row);
         thisView.setTag(R.id.usersViewCol, column);
     }

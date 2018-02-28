@@ -1,139 +1,99 @@
 <lesson>
     <slide>
-        <text name="text">"מחשב הוא מכשיר אלקטרוני שיודע לבצע פעולות שהוגדרו מראש, בהתאם לפעולות המשתמש עליו. גם הטלפון שלך הוא מחשב."</text>
+        <text name="text">"כל הכבוד! יצרת אפליקציה אמיתית עם שאלת טריוויה. אבל החידון לא מעניין במיוחד כשיש בו רק שאלה אחת, נכון?"</text>
         <image name="image">"lesson_illustration1"</image>
     </slide>
 
     <slide>
-        <text name="text">"The UI consists of elements\n called Views, for example:"</text>
+        <text name="text">"כדי להוסיף עוד שאלות, תוכלי לחזור שוב על התהליך שעשית. בשיעור הזה ניזכר מה בדיוק עשינו ונשים לב לכמה דגשים חשובים."</text>
         <image name="image">"lesson_illustration2"</image>
     </slide>
 
     <slide>
-        <text name="text">"The layout is the way all the\n Views are organized on screen."</text>
+        <text name="text">""במסך העיצוב, נוסיף שדה טקסט עבור כל שאלה וכפתור עבור כל תשובה.            ה-ID של כל אלמנט צריך להיות ייחודי, אבל אם הרבה אלמנטים משמשים לאותה מטרה, ניתן לתת להם שם זהה ונמספר אותם."</text>
         <image name="image">"lesson_illustration3"</image>
     </slide>
 
     <slide>
-        <text name="text">"Most apps consist mainly of\n buttons, textViews \\u0026 imageViews:"
+        <text name="text">"במסך הקוד, לכל שאלה ניצור פונקציה, ובה נכתוב את שורות הקוד שנותנות לכפתור שם בקוד, ומשנות את הטקסט שעליו לתשובה. שם הפונקציה צריך להיות גם הוא ייחודי."
         </text>
         <image name="image">"lesson_illustration4"</image>
     </slide>
 
     <slide>
-        <text name="text">"Every View has a set of properties.
-            Let’s look at this button View and see its properties."
+        <text name="text">"בחזרה במסך העיצוב, נגדיר לכל כפתור ב-onclick את הפונקציה המתאימה לו. "
         </text>
         <image name="image">"lesson_illustration7"</image>
     </slide>
 
     <slide>
-        <text name="text">"You can control its properties:"</text>
+        <text name="text">"כדי שלא נתבלבל כדאי לעבוד בצורה מסודרת, לבחור מספר לכל שאלה ולהתאים את שמות הפונקציות וה-IDים למספר."</text>
         <image name="image">"lesson_illustration13"</image>
     </slide>
 
     <slide>
-        <text name="text">"When you create a new View\n you give it a unique name, an ID."</text>
+        <text name="text">"כדאי גם שהשמות יהיו בעלי משמעות."</text>
         <image name="image">"lesson_illustration14"</image>
     </slide>
 
-    <slide>
-        <text name="text">"Just like the button View, every\n new View has a table that allows\n you to
-            control its properties."
-        </text>
-        <image name="image">"lesson_illustration15"</image>
-    </slide>
 
     <exercise>
         <type name="type">"SingleResponse"</type>
-        <question name="question">"An app\\u0027s title is an example of what kind of View?"</question>
+        <question name="question">"כדאי לתת לכל הכפתורים באפליקציה את אותו ID בדיוק"</question>
         <image name="image">"exercise_illustrations_1"</image>
         <content name="content"></content>
         <possibilities name = "possibilities">
-            <possibility name = "possibility">"TextView"</possibility>
-            <possibility name = "possibility">"ImageView"</possibility>
+            <possibility name = "possibility">"נכון"</possibility>
+            <possibility name = "possibility">"לא נכון"</possibility>
         </possibilities>
         <answers name="answers">
-            <answer name="answer">"TextView"</answer>
+            <answer name="answer">"לא נכון"</answer>
         </answers>
     </exercise>
-
-    <exercise>
-        <type name="type">"SingleResponse"</type>
-        <question name="question">"A Button is a kind of a View."</question>
-        <image name="image">"exercise_illustrations_2"</image>
-        <content name="content"></content>
-        <possibilities name = "possibilities">
-            <possibility name = "possibility">"True"</possibility>
-            <possibility name = "possibility">"False"</possibility>
-        </possibilities>
-        <answers name="answers">
-            <answer name="answer">"True"</answer>
-        </answers>
-    </exercise>
-
     <exercise>
         <type name="type">"FreeText"</type>
-        <question name="question">"Write the Java command to find a View by it\\u0027s ID."</question>
+        <question name="question">"כמה פונקציות נצטרך באפליקציה אם יש לנו 4 שאלות טריוויה?"</question>
         <image name="image">"exercise_illustrations_3"</image>
         <content name="content"></content>
         <possibilities name = "possibilities"></possibilities>
         <answers name="answers">
-            <answer name="answer">"findViewById"</answer>
+            <answer name="answer">"4"</answer>
         </answers>
     </exercise>
+
+    <exercise>
+        <type name="type">"SingleResponse"</type>
+        <question name="question">"כדאי לתת לפונקציות שמות של חברים ומאכלים."</question>
+        <image name="image">"exercise_illustrations_2"</image>
+        <possibilities name = "possibilities">
+            <possibility name = "possibility">"נכון"</possibility>
+            <possibility name = "possibility">"לא נכון"</possibility>
+        </possibilities>
+        <answers name="answers">
+            <answer name="answer">"לא נכון"</answer>
+        </answers>
+    </exercise>
+
 
     <exercise>
         <type name="type">"MultipleResponse"</type>
-        <question name="question">"The properties table allows us to:"</question>
+        <question name="question">"ה-ID של הכפתור שלי הוא answerButton2, איזה שמות נוכל לתת לפונקציה שתתאים לכפתור כך שנוכל לזהות את הקשר ביניהם?"</question>
         <image name="image">"exercise_illustrations_4"</image>
         <content name="content"></content>
         <possibilities name = "possibilities">
-            <possibility name= "possibility">"Set TextView\\u0027s font"</possibility>
-            <possibility name= "possibility">"Create a New Button"</possibility>
-            <possibility name= "possibility">"Set an ImageView\\u0027s ID"</possibility>
-            <possibility name= "possibility">"Choose app\\u0027s name"</possibility>
-            <possibility name= "possibility">"Set the Button\\u0027s color"</possibility>
+            <possibility name= "possibility">"answerFunction3"</possibility>
+            <possibility name= "possibility">"triviaAnswer2"</possibility>
+            <possibility name= "possibility">"bestFunction"</possibility>
+            <possibility name= "possibility">"answerFunction2"</possibility>
         </possibilities>
         <answers name="answers">
-            <answer name="answer">"Set TextView\\u0027s font"</answer>
-            <answer name="answer">"Set an ImageView\\u0027s ID"</answer>
-            <answer name="answer">"Set the Button\\u0027s color"</answer>
-        </answers>
-    </exercise>
-
-    <exercise>
-        <type name="type">"SingleResponse"</type>
-        <question name="question">"If we change the Button ID to \\u0027Send\\u0027, the text that will appear
-            on the button will be \\u0027Send\\u0027."</question>
-        <image name="image">"exercise_illustrations_5"</image>
-        <content name="content"></content>
-        <possibilities name = "possibilities">
-            <possibility name = "possibility">"True"</possibility>
-            <possibility name = "possibility">"False"</possibility>
-        </possibilities>
-        <answers name="answers">
-            <answer name="answer">"False"</answer>
-        </answers>
-    </exercise>
-
-    <exercise>
-        <type name="type">"SingleResponse"</type>
-        <question name="question">"If we change the Button Text to \\u0027Send\\u0027, the text that will appear
-            on the button will be \\u0027Send\\u0027."</question>
-        <image name="image">"exercise_illustrations_6"</image>
-        <content name="content"></content>
-        <possibilities name = "possibilities">
-            <possibility name = "possibility">"True"</possibility>
-            <possibility name = "possibility">"False"</possibility>
-        </possibilities>
-        <answers name="answers">
-            <answer name="answer">"True"</answer>
+            <answer name="answer">"answerFunction2"</answer>
+            <answer name="answer">"triviaAnswer2"</answer>
         </answers>
     </exercise>
 
     <task>
-        <text name = "text"> "Create a button in the Graphic Edit screen and change its properties as you wish" </text>
+        <text name = "text"> "הוסיפי עוד שאלות לאפליקציה שלך." </text>
     </task>
 
 </lesson>

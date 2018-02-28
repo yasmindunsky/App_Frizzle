@@ -40,13 +40,52 @@ import petrov.kristiyan.colorpicker.ColorPicker;
 public class UserCreatedButton extends UserCreatedView {
     Button thisView;
 
-    public UserCreatedButton(Context context, int nextViewIndex, int numOfButtons) {
+    public UserCreatedButton(Context context, Map<String, String> properties, int index){
+        this.context = context;
+        this.index = index;
         this.layout = R.layout.popup_properties_button;
+        int buttonStyle = R.style.usersButton;
+        this.viewType = ViewType.Button;
+
+
+        this.thisView = new Button(new ContextThemeWrapper(context, buttonStyle), null, buttonStyle);
+        thisView.setText(properties.get("android:text"));
+        thisView.setId(Integer.parseInt(properties.get("android:id")));
+
+        String textColorHex = properties.get("android:textColor");
+        thisView.setTextColor(Color.parseColor(textColorHex));
+
+        String bgColorHex = properties.get("android:backgroundTint");
+        int originalButtonDrawableRes = R.drawable.user_button_background;
+        Drawable buttonDrawable = ContextCompat.getDrawable(context, originalButtonDrawableRes);
+        buttonDrawable.setColorFilter(Color.parseColor(bgColorHex), PorterDuff.Mode.DARKEN);
+        thisView.setBackground(buttonDrawable);
+
+        thisView.setPadding(16,10,16,10);
+
+        int column = Integer.parseInt(properties.get("android:layout_column"));
+        int row = Integer.parseInt(properties.get("android:layout_row"));
+        GridLayout.LayoutParams layoutParams = new GridLayout.LayoutParams(GridLayout.spec(row),
+                GridLayout.spec(column));
+        layoutParams.width = (int) context.getResources().getDimension(R.dimen.user_created_button_width);
+        int margin = Integer.parseInt(properties.get("android:layout_margin"));
+        layoutParams.setMargins(margin,margin,margin,margin);
+        thisView.setLayoutParams(layoutParams);
+
+        // TODO: load font.
+
+        thisView.setTag(R.id.usersViewId, index);
+        thisView.setTag(R.id.usersViewRow, row);
+        thisView.setTag(R.id.usersViewCol, column);
+    }
+
+    public UserCreatedButton(Context context, int nextViewIndex, int numOfButtons) {
         this.context = context;
         int buttonStyle = R.style.usersButton;
+        this.layout = R.layout.popup_properties_button;
+        this.viewType = ViewType.Button;
         this.thisView = new Button(new ContextThemeWrapper(context, buttonStyle), null, buttonStyle);
         thisView.setText(R.string.newButtonText);
-        this.viewType = ViewType.Button;
 
         // index in views map in GraphicEditFragment.
         this.index = nextViewIndex;
@@ -57,7 +96,7 @@ public class UserCreatedButton extends UserCreatedView {
         int column = nextViewIndex % 2;
         GridLayout.LayoutParams layoutParams = new GridLayout.LayoutParams(GridLayout.spec(row),
                 GridLayout.spec(column));
-        layoutParams.width = 400;
+        layoutParams.width = (int) context.getResources().getDimension(R.dimen.user_created_button_width);
         layoutParams.setMargins(10,10,10,10);
 
         thisView.setLayoutParams(layoutParams);
@@ -75,6 +114,8 @@ public class UserCreatedButton extends UserCreatedView {
         properties.put("android:padding", "10dp");
         properties.put("android:paddingStart", "16dp");
         properties.put("android:paddingEnd", "16dp");
+        properties.put("android:layout_column", String.valueOf(column));
+        properties.put("android:layout_row", String.valueOf(row));
 
         // These will be inserted to the properties table right before XML creation.
         thisView.setTag(R.id.usersViewRow, row);

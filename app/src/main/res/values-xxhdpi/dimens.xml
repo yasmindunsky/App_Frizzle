@@ -1,0 +1,18 @@
+<resources>
+    <dimen name="fab_margin">16dp</dimen>
+
+    <!--Lesson-->
+    <dimen name="app_bar_height">53dp</dimen>
+    <dimen name="slide_height">500dp</dimen>
+    <dimen name="slide_illustration_height">369dp</dimen>
+    <dimen name="slide_text_height">75dp</dimen>
+    <dimen name="slide_illustration_width">348dp</dimen>
+    <dimen name="swipe_dots_area_height">35dp</dimen>
+    <dimen name="swipe_dot_max_width">18dp</dimen>
+    <dimen name="start_margin">32dp</dimen>
+    <dimen name="mapButtontextSize">20 </dimen>
+    <dimen name="user_created_button_width">100dp</dimen>
+    <dimen name="colors_top_screen1">300dp</dimen>
+    <dimen name="colors_top_screen2">245dp</dimen>
+
+</resources>

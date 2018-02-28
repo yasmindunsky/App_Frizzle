@@ -12,7 +12,7 @@
         <ImageView
             android:id="@+id/colors"
             android:layout_width="match_parent"
-            android:layout_height="300dp"
+            android:layout_height="@dimen/colors_top_screen1"
             android:layout_alignParentTop="true"
             android:layout_centerInParent="true"
             android:background="@drawable/bg_color_1" />
@@ -32,7 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/continueButton"
             android:layout_alignParentLeft="true"
-            android:layout_marginBottom="100dp"
+            android:layout_marginBottom="70dp"
             android:layout_marginLeft="20dp"
             android:background="@drawable/ic_mentor" />
 
@@ -45,16 +45,16 @@
             android:layout_toRightOf="@+id/mentor"
             android:background="@drawable/bubble"
             android:text="@string/task_text"
-            android:textAppearance="@style/SlideText" />
+            android:textAppearance="@style/taskInNavigationText" />
 
         <Button
             android:id="@+id/continueButton"
-            style="@style/checkButton"
+            style="@style/letsBuildButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:text="Let's Build" />
+            android:text="בואי ניצור" />
 
     </RelativeLayout>
 

@@ -29,19 +29,17 @@
         <image name="imageSource">"slide_6_5"</image>
     </slide>
 
+
     <exercise>
-    <type name="type">"SingleResponse"</type>
-    <question name="question">"איזה פונקציה תרוץ כשהכפתור ילחץ?"</question>
-    <image name="image">"exercise_6_1"</image>
-    <content name="content"></content>
-    <possibilities name = "possibilities">
-        <possibility name = "possibility">"foo"</possibility>
-        <possibility name = "possibility">"bar"</possibility>
-    </possibilities>
-    <answers name="answers">
-        <answer name="answer">"bar"</answer>
-    </answers>
-</exercise>
+        <type name="type">"FreeText"</type>
+        <question name="question">"איזה פונקציה תרוץ כשהכפתור ילחץ?"</question>
+        <image name="image">"exercise_6_1"</image>
+        <content name="content"></content>
+        <possibilities name = "possibilities"></possibilities>
+        <answers name="answers">
+            <answer name="answer">"changeText"</answer>
+        </answers>
+    </exercise>
 
     <exercise>
         <type name="type">"SingleResponse"</type>
@@ -49,36 +47,11 @@
         <image name="image">"exercise_6_2"</image>
         <content name="content"></content>
         <possibilities name = "possibilities">
-            <possibility name = "possibility">"Hi"</possibility>
-            <possibility name = "possibility">"Bye"</possibility>
+            <possibility name = "possibility">"Hello"</possibility>
+            <possibility name = "possibility">"Button"</possibility>
         </possibilities>
         <answers name="answers">
-            <answer name="answer">"Bye"</answer>
-        </answers>
-    </exercise>
-
-    <exercise>
-        <type name="type">"SingleResponse"</type>
-        <question name="question">"על איזה כפתור יופיע טקסט בלחיצה?"</question>
-        <image name="image">"exercise_illustrations_missing"</image>
-        <content name="content"></content>
-        <possibilities name = "possibilities">
-            <possibility name = "possibility">"foo"</possibility>
-            <possibility name = "possibility">"bar"</possibility>
-        </possibilities>
-        <answers name="answers">
-            <answer name="answer">"True"</answer>
-        </answers>
-    </exercise>
-
-    <exercise>
-        <type name="type">"FreeText"</type>
-        <question name="question">"מה יהיה הטקסט על הכפתור בלחיצה?"</question>
-        <image name="image">"exercise_illustrations_missing"</image>
-        <content name="content"></content>
-        <possibilities name = "possibilities"></possibilities>
-        <answers name="answers">
-            <answer name="answer">"let's foo!"</answer>
+            <answer name="answer">"Hello"</answer>
         </answers>
     </exercise>
 

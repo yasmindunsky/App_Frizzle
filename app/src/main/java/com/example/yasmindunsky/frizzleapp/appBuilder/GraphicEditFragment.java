@@ -16,13 +16,20 @@ import android.widget.GridLayout;
 import android.widget.ImageButton;
 import android.widget.PopupWindow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.yasmindunsky.frizzleapp.R;
 import com.example.yasmindunsky.frizzleapp.Support;
+import com.example.yasmindunsky.frizzleapp.UserProfile;
 
 import net.cachapa.expandablelayout.ExpandableLayout;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 /**
@@ -55,8 +62,9 @@ public class GraphicEditFragment extends Fragment {
         gridLayout = view.findViewById(R.id.gridLayout);
         gridLayout.setOnDragListener(new DragListener());
 
-        if (views == null) {
-            views = new HashMap<>();
+//        views = UserProfile.user.getViews();
+        views = UserProfile.user.views;
+        if (views.isEmpty()) {
             numOfButtons = 0;
             numOfTextViews = 0;
             nextViewIndex = 0;
@@ -143,6 +151,13 @@ public class GraphicEditFragment extends Fragment {
     View.OnClickListener newTextOnClick = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
+            // Check if reached max num of elements.
+            if (nextViewIndex >= gridLayout.getColumnCount() * gridLayout.getRowCount()) {
+                Toast.makeText(getActivity(), "אופס, נגמר המקום!",
+                        Toast.LENGTH_LONG).show();
+                return;
+            }
+
             final UserCreatedTextView userCreatedTextView = new UserCreatedTextView(getContext(), nextViewIndex, numOfTextViews);
             TextView newText = userCreatedTextView.getThisView();
 
@@ -173,6 +188,13 @@ public class GraphicEditFragment extends Fragment {
     View.OnClickListener newButtonOnClick = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
+            // Check if reached max num of elements.
+            if (nextViewIndex >= gridLayout.getColumnCount() * gridLayout.getRowCount()) {
+                Toast.makeText(getActivity(), "אופס, נגמר המקום!",
+                        Toast.LENGTH_LONG).show();
+                return;
+            }
+
             final UserCreatedButton userCreatedButton = new UserCreatedButton(getContext(), nextViewIndex, numOfButtons);
             Button newButton = userCreatedButton.getThisView();
 
@@ -503,11 +525,84 @@ public class GraphicEditFragment extends Fragment {
 
             GridLayout.LayoutParams layoutParams = new GridLayout.LayoutParams(GridLayout.spec(row),  GridLayout.spec(column));
             layoutParams.setMargins(10, 10, 10, 10);
-            layoutParams.width = 400;
+            layoutParams.width = (int) getResources().getDimension(R.dimen.user_created_button_width);
 
             view.setTag(R.id.usersViewRow, row);
             view.setTag(R.id.usersViewCol, column);
             return layoutParams;
         }
+    }
+
+    JSONObject viewsToJson() {
+        JSONArray jsonArray = new JSONArray();
+        JSONObject json = new JSONObject();
+        JSONObject finalObject = new JSONObject();
+        try {
+            for (int i = 0 ; i < views.size() ; i++) {
+                json = new JSONObject();
+                json.put("id", i);
+                UserCreatedView userCreatedView = views.get(i);
+                json.put("viewType", userCreatedView.getViewType().toString());
+                Map<String, String> properties = userCreatedView.getProperties();
+                for (Map.Entry<String, String> property: properties.entrySet()) {
+                    json.put(property.getKey(), property.getValue());
+                }
+                jsonArray.put(json);
+            }
+            finalObject.put("views", jsonArray);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return finalObject;
+    }
+
+    public Map<Integer, UserCreatedView>  jsonToViews(JSONObject json) {
+        views = new HashMap<>();
+        numOfButtons = 0;
+        numOfTextViews = 0;
+        nextViewIndex = 0;
+
+        try {
+            JSONArray viewsJson = json.getJSONArray("views");
+            for(int i = 0 ; i < viewsJson.length(); i++){
+                JSONObject viewJson = viewsJson.getJSONObject(i);
+                UserCreatedView.ViewType viewType = getViewType(viewJson.getString("viewType"));
+                int index = Integer.parseInt(viewJson.getString("id"));
+                Map<String,String> properties = new HashMap<>();
+                for (Iterator<String> it = viewJson.keys(); it.hasNext(); ) {
+                    String key = it.next();
+                    properties.put(key.toString(), viewJson.get(key).toString());
+                }
+                UserCreatedView userCreatedView = null;
+                switch (viewType) {
+                    case TextView:
+                        userCreatedView = new UserCreatedTextView(getContext(), properties, i);
+                        numOfTextViews++;
+                        break;
+                    case Button:
+                        userCreatedView = new UserCreatedButton(getContext(), properties, i);
+                        numOfButtons++;
+                        break;
+                }
+                views.put(index, userCreatedView);
+            }
+            nextViewIndex = viewsJson.length();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return views;
+    }
+
+    public UserCreatedView.ViewType getViewType(String viewType) {
+        switch (viewType) {
+            case "Button":
+                return UserCreatedView.ViewType.Button;
+            case "TextView":
+                return UserCreatedView.ViewType.TextView;
+        }
+        return null;
     }
 }
