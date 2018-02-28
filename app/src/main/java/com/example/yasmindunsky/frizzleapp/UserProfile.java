@@ -2,6 +2,7 @@ package com.example.yasmindunsky.frizzleapp;
 
 import com.example.yasmindunsky.frizzleapp.appBuilder.UserCreatedView;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -21,7 +22,15 @@ public class UserProfile {
     private String xml = "";
     private String java = "";
 
-    private Map<Integer, UserCreatedView> views;
+    public Map<Integer, UserCreatedView> getViews() {
+        return views;
+    }
+
+    public void setViews(Map<Integer, UserCreatedView> views) {
+        this.views = views;
+    }
+
+    public Map<Integer, UserCreatedView> views = new HashMap<>();
 
     public static UserProfile user = new UserProfile();
 
@@ -91,4 +100,7 @@ public class UserProfile {
     public void setJava(String java) {
         this.java = java;
     }
+
+
+
 }

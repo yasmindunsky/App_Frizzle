@@ -41,7 +41,7 @@
     <string name="propertiesTableOnClick">OnClick</string>
     <string name="delete">מחיקה</string>
     <string name="EditTextHint">הקלידי את תשובתך...</string>
-    <string name="onboardingMentorText0">כאן תוכלי לבנות אפליקציה משלך בה תוכלי להשתמש ולשתף חברים.</string>
+    <string name="onboardingMentorText0">כאן תלמדי לבנות אפליקצית טריוויה משלך בה תוכלי להשתמש.</string>
     <string name="onboardingMentorText1">גם אם לא יצא לך לתכנת אף פעם, אנחנו נדריך אותך בכל שלב</string>
     <string name="onboardingMentorText2">אחרי כל שיעור קצר תוכלי להשלים עוד חלק בבניית האפליקציה שלך</string>
     <string name="onboardingMentorText3">יאללה, בואי נצא לדרך!</string>

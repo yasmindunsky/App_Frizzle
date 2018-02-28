@@ -45,9 +45,9 @@
 
     <exercise>
         <type name="type">"SingleResponse"</type>
-        <question name="question">"שורת הקוד תוסיף לאפליקציה
-            \\u000A
-            כפתור שלישי."</question>
+        <question name="question">
+            "שורת הקוד:\\u000AButton myButton = (Button)\\u000A        findViewById(R.id.button1);\\u000Aתוסיף לאפליקציה כפתור שלישי"
+</question>
         <image name="image">"exercise_4_1"</image>
         <content name="content"></content>
         <possibilities name = "possibilities">
@@ -55,13 +55,14 @@
             <possibility name = "possibility">"לא נכון"</possibility>
         </possibilities>
         <answers name="answers">
-            <answer name="answer">"נכון"</answer>
+            <answer name="answer">"לא נכון"</answer>
         </answers>
     </exercise>
 
     <exercise>
         <type name="type">"SingleResponse"</type>
-        <question name="question">"איזה כפתור יקרא בקוד myButton?"</question>
+        <question name="question">"אחרי שורת הקוד:\\u000AButton myButton = (Button) findViewById(R.id.button1);\\u000Aאיזה כפתור יהיה קרוי בקוד myButton?
+            "</question>
         <image name="image">"exercise_4_1"</image>
         <content name="content"></content>
         <possibilities name = "possibilities">
@@ -75,7 +76,7 @@
 
     <exercise>
         <type name="type">"FreeText"</type>
-        <question name="question">"איך יקרא הכפתור בקוד?"</question>
+        <question name="question">"אחרי שורת הקוד:\\u000AButton best = (Button)findViewById\\u000A    (R.id.bestButtonEver);\\u000Aאיך יקרא הכפתור בקוד?"</question>
         <image name="image">"exercise_4_3"</image>
         <content name="content"></content>
         <possibilities name = "possibilities"></possibilities>
@@ -86,7 +87,7 @@
 
     <exercise>
         <type name="type">"FreeText"</type>
-        <question name="question">"איך יקרא הכפתור בקוד?"</question>
+        <question name="question">"אחרי שורת הקוד:\\u000AButton like = (Button) findViewById(R.id. likeButton);\\u000Aאיך יקרא הכפתור בקוד?"</question>
         <image name="image">"exercise_4_4"</image>
         <content name="content"></content>
         <possibilities name = "possibilities"></possibilities>

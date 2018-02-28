@@ -1,21 +1,15 @@
 package com.example.yasmindunsky.frizzleapp.appBuilder;
 
-import android.content.ClipData;
 import android.content.Context;
 import android.util.Log;
-import android.view.DragEvent;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.PopupWindow;
-import android.widget.TextView;
 
 import com.example.yasmindunsky.frizzleapp.R;
 
 import org.xmlpull.v1.XmlSerializer;
 
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -37,6 +31,10 @@ public abstract class UserCreatedView {
     }
 
     public int getIndex() { return index; }
+
+    public ViewType getViewType() { return viewType; }
+
+    public Map<String, String> getProperties() { return properties; }
 
     public String createXmlString(XmlSerializer xmlSerializer) {
         String name = viewType.toString();

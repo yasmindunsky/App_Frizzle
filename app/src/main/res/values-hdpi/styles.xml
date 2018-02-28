@@ -1,0 +1,306 @@
+<resources>
+
+     Base application theme.
+    <style name="AppTheme" parent="Theme.AppCompat.Light">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="ActivityTitle" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textSize">23sp</item>
+        <item name="android:letterSpacing">.08</item>
+        <item name="android:gravity">center</item>
+        <item name="android:fontFamily">@font/rubik_medium</item>
+    </style>
+
+    <style name="HomeButton" parent="@android:style/Widget.Button">
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:drawableLeft">@drawable/ic_home</item>
+        <item name="android:layout_width">35dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_marginStart">20dp</item>
+    </style>
+
+    <!--Intro-->
+    <style name="MentorImage" parent="Theme.AppCompat.Light">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/ic_mentor</item>
+    </style>
+
+    <style name="mentorImageOnboarding" parent="MentorImage">
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:layout_alignParentLeft">true</item>
+        <item name="android:layout_marginBottom">0dp</item>
+        <item name="android:layout_marginLeft">20dp</item>
+    </style>
+
+    <style name="registerEditText" parent="@android:style/Widget.EditText">
+        <item name="android:background">@drawable/exercise_text_edit_background</item>
+        <item name="android:padding">10sp</item>
+        <item name="android:paddingStart">20sp</item>
+        <item name="android:paddingEnd">20sp</item>
+        <item name="android:layout_marginBottom">10dp</item>
+
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">@font/alef</item>
+        <item name="android:textColor">@color/TextLightGrey</item>
+        <item name="android:letterSpacing">.08</item>
+
+        <item name="android:singleLine">true</item>
+    </style>
+
+    <style name="registerButton" parent="@android:style/Widget.Button">
+        <item name="android:background">@drawable/register_button_background</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/hero_regular</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:letterSpacing">.08</item>
+        <item name="android:width">200dp</item>
+        <item name="android:height">40dp</item>
+        <item name="android:layout_marginBottom">10dp</item>
+        <item name="android:padding">10sp</item>
+        <item name="android:paddingStart">20sp</item>
+        <item name="android:paddingEnd">20sp</item>
+    </style>
+
+    <style name="userNameEditText" parent="@android:style/Widget.EditText">
+        <item name="android:background">@drawable/user_name_text_edit_background</item>
+        <item name="android:padding">10sp</item>
+        <item name="android:paddingStart">20sp</item>
+        <item name="android:paddingEnd">40sp</item>
+        <item name="android:layout_marginTop">5dp</item>
+        <item name="android:layout_marginBottom">5dp</item>
+
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">@font/alef</item>
+        <item name="android:textColor">@color/TextLightGrey</item>
+        <item name="android:letterSpacing">.08</item>
+
+        <item name="android:singleLine">true</item>
+    </style>
+
+    <!--Lesson-->
+    <style name="GoodJobTitle" parent="@style/ActivityTitle">
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textSize">36sp</item>
+    </style>
+
+        <!--Slides-->
+
+    <style name="SlideText" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textSize">18sp</item>
+        <item name="android:fontFamily">@font/alef_regular</item>
+        <item name="android:textColor">@color/TextGrey</item>
+        <item name="android:letterSpacing">.02</item>
+        <item name="android:lineSpacingExtra">0dp</item>
+        <item name="android:layout_gravity">left|top</item>
+        <item name="android:layout_marginTop">25dp</item>
+        <item name="android:layout_marginStart">@dimen/start_margin</item>
+        <item name="android:layout_marginEnd">@dimen/start_margin</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+        <!--Exercises -->
+
+    <style name="ExerciseImage" parent="Theme.AppCompat.Light">
+        <item name="android:layout_marginTop">40dp</item>
+    </style>
+
+    <style name="ExerciseText" parent="@style/SlideText">
+        <item name="android:layout_marginBottom">20dp</item>
+        <item name="android:layout_marginStart">@dimen/start_margin</item>
+        <item name="android:layout_marginEnd">@dimen/start_margin</item>
+    </style>
+
+    <style name="exerciseMultipleOptionButton" parent="@android:style/Widget.Button">
+        <item name="android:background">@drawable/exercise_option_button_background</item>
+        <item name="android:textColor">@drawable/exercise_option_button_text_color</item>
+        <item name="android:fontFamily">@font/alef</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
+    </style>
+
+    <style name="exerciseTwoOptionButton" parent="@style/exerciseMultipleOptionButton">
+        <item name="android:padding">12dp</item>
+        <item name="android:paddingStart">30dp</item>
+        <item name="android:paddingEnd">30dp</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="editText" parent="@android:style/Widget.EditText">
+        <item name="android:background">@drawable/exercise_text_edit_background</item>
+        <item name="android:layout_marginBottom">20dp</item>
+        <item name="android:layout_marginStart">@dimen/start_margin</item>
+        <item name="android:layout_marginEnd">@dimen/start_margin</item>
+        <item name="android:padding">10sp</item>
+        <item name="android:paddingStart">20sp</item>
+        <item name="android:paddingEnd">20sp</item>
+
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">@font/alef</item>
+        <item name="android:textColor">@color/TextLightGrey</item>
+        <item name="android:letterSpacing">.08</item>
+
+        <item name="android:singleLine">true</item>
+    </style>
+
+    <style name="checkButton" parent="@android:style/Widget.Button">
+        <item name="android:background">@drawable/check_button_background</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/rubik_medium</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:letterSpacing">.08</item>
+        <item name="android:width">250dp</item>
+        <item name="android:height">60dp</item>
+        <item name="android:layout_marginBottom">20dp</item>
+        <item name="android:padding">10sp</item>
+        <item name="android:paddingStart">20sp</item>
+        <item name="android:paddingEnd">20sp</item>
+    </style>
+
+
+    <!--App Builder-->
+        <!--General-->
+    <style name="AppBuilderTabLayout" parent="Widget.Design.TabLayout">
+        <item name="android:layout_marginTop">15dp</item>
+        <item name="android:layout_height">35dp</item>
+        <item name="android:layout_width">match_parent</item>
+
+        <item name="tabMaxWidth">200dp</item>
+        <item name="tabPaddingStart">40dp</item>
+        <item name="tabPaddingEnd">40dp</item>
+
+        <item name="tabIndicatorHeight">0dp</item>
+        <item name="tabBackground">@drawable/app_builder_tab_selector</item>
+        <item name="tabTextAppearance">@style/AppBuilderTabTextAppearance</item>
+        <item name="tabSelectedTextColor">@color/white</item>
+    </style>
+
+    <style name="AppBuilderTabTextAppearance" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/TextLightGrey</item>
+    </style>
+
+    <style name="taskInAppBuilderText" parent="@style/SlideText">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="errorText" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">@color/frizzle_orange</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:fontFamily">@font/alef_regular</item>
+        <item name="android:letterSpacing">.02</item>
+        <item name="android:lineSpacingExtra">0dp</item>
+        <item name="android:layout_gravity">left|top</item>
+        <item name="android:layout_marginBottom">5dp</item>
+        <item name="android:layout_marginStart">@dimen/start_margin</item>
+        <item name="android:layout_marginEnd">@dimen/start_margin</item>
+    </style>
+
+        <!--Graphic Edit-->
+    <style name="usersButton" parent="@android:style/Widget.Button">
+        <item name="android:background">@drawable/user_button_background</item>
+        <item name="android:textColor">@color/TextGrey</item>
+        <item name="android:fontFamily">@font/alef</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
+        <item name="android:layout_margin">10dp</item>
+    </style>
+
+    <style name="usersTextView" parent="@android:style/TextAppearance.DeviceDefault.Medium">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:textColor">@color/TextGrey</item>
+        <item name="android:fontFamily">@font/alef</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
+        <item name="android:layout_margin">10dp</item>
+    </style>
+
+    <style name="usersToolbar">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:background">@color/black</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/rubik</item>
+    </style>
+
+    <style name="propertiesTableKey" parent="@android:style/TextAppearance.Medium">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">@font/alef</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="propertiesTableValue" parent="@style/propertiesTableKey">
+        <item name="android:fontFamily">@font/alef</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="propertiesTableEditTextValue" parent="Widget.AppCompat.EditText">
+        <item name="android:background">@drawable/table_text_edit_background</item>
+    </style>
+
+    <style name="propertiesTableTitle" parent="@android:style/TextAppearance.DeviceDefault.Medium">
+        <item name="android:layout_height">@dimen/app_bar_height</item>
+        <item name="android:fontFamily">@font/rubik</item>
+        <item name="android:background">@drawable/table_text_edit_background</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:text">@string/propertiesTableTitle</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textSize">22sp</item>
+    </style>
+
+    <style name="propertiesTableRow">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_marginEnd">10dp</item>
+        <item name="android:layout_marginStart">10dp</item>
+        <item name="android:background">@drawable/table_border</item>
+        <item name="android:padding">10dp</item>
+    </style>
+
+        <!--Code-->
+    <style name="CodeText" parent="@style/SlideText">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <!--Map-->
+    <style name="mapLessonButton" parent="@android:style/Widget.Material.Button.Borderless">
+        <!--<item name="android:drawable">@drawable/map_lesson_circle</item>-->
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:fontFamily">@font/calibri_regular</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:layout_width">50dp</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+
+
+</resources>

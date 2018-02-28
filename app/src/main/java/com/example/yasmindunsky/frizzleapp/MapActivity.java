@@ -40,7 +40,7 @@ public class MapActivity extends AppCompatActivity {
         topLessonId = UserProfile.user.getTopLessonID();
 
 //        currentLessonId = 3;
-//        topLessonId = 5;
+//        topLessonId = 6 ;
 
         // Set Toolbar sign-out button.
         android.support.v7.widget.Toolbar toolbar =

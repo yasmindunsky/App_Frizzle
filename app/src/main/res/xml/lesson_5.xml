@@ -6,37 +6,15 @@
     </slide>
 
     <slide>
-        <text name="text">"התכונה שנרצה לשנות היא הטקסט שכתוב על הכפתור. לשם כך נשתמש בפקודת Java בשם setText ונקבע מה הטקסט
-            \\u000A
-            החדש שיופיע."</text>
+        <text name="text">"התכונה שנרצה לשנות היא הטקסט שכתוב על הכפתור. לשם כך נשתמש בפקודת Java בשם setText ונקבע מה הטקסט החדש שיופיע."</text>
         <image name="imageSource">"slide_5_2"</image>
     </slide>
 
     <slide>
-        <text name="text">" נפעיל אותה על הכפתור שלנו ונקבע מה הטקסט
-            \\u000A
-            החדש שיופיע."</text>
+        <text name="text">" נפעיל אותה על הכפתור שלנו ונקבע מה הטקסט החדש שיופיע."</text>
         <image name="imageSource">"slide_5_2"</image>
     </slide>
 
-    <exercise>
-        <type name="type">"MultipleResponse"</type>
-        <question name="question">"מה נכון?"</question>
-        <image name="image">"exercise_5_1"</image>
-        <content name="content"></content>
-        <possibilities name = "possibilities">
-            <possibility name= "possibility">"ה-ID של הכפתור הוא likeButton"</possibility>
-            <possibility name= "possibility">"-ID של הכפתור הוא myButton"</possibility>
-            <possibility name= "possibility">"רצף הפקודות יגרום לכך שעל הכפתור יופיע הטקסט like"</possibility>
-            <possibility name= "possibility">"רצף הפקודות ייצור כפתור חדש בשם like"</possibility>
-            <possibility name= "possibility">"הפקודה השניה משנה את שם הכפתור בקוד ל- like"</possibility>
-        </possibilities>
-        <answers name="answers">
-            <answer name="answer">"ה-ID של הכפתור הוא likeButton"</answer>
-            <answer name="answer">"רצף הפקודות יגרום לכך שעל הכפתור יופיע הטקסט like"</answer>
-            <answer name="answer">"רצף הפקודות ייצור כפתור חדש בשם like"</answer>
-        </answers>
-    </exercise>
 
     <exercise>
         <type name="type">"FreeText"</type>
@@ -73,19 +51,19 @@
 
     <exercise>
         <type name="type">"SingleResponse"</type>
-        <question name="question">"איך יראו הכפתורים באפליקציה?"</question>
+        <question name="question">"את הפקודה setText מפעילים על:"</question>
         <image name="image">"exercise_5_5"</image>
         <content name="content"></content>
         <possibilities name = "possibilities">
-            <possibility name = "possibility">"True"</possibility>
-            <possibility name = "possibility">"False"</possibility>
+            <possibility name = "possibility">"ה-ID של הכפתור"</possibility>
+            <possibility name = "possibility">"שם הכפתור בקוד"</possibility>
         </possibilities>
         <answers name="answers">
             <answer name="answer">"True"</answer>
         </answers>
     </exercise>
 
-    <exercise>
+   <!-- <exercise>
         <type name="type">"SingleResponse"</type>
         <question name="question">"הקוד הזה לא יצליח לרוץ. למה?"</question>
         <image name="image">"exercise_5_6"</image>
@@ -97,7 +75,7 @@
         <answers name="answers">
             <answer name="answer">"greenButton הוא לא השם של הכפתור בקוד"</answer>
         </answers>
-    </exercise>
+    </exercise> -->
 
 
     <task>
