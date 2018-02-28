@@ -41,12 +41,14 @@ public abstract class UserCreatedView {
     public String createXmlString(XmlSerializer xmlSerializer) {
         String name = viewType.toString();
         updateLatestPosition();
-        properties.put("android:id", "@+id/" + properties.get("android:id"));
         properties.put("android:textColor", properties.get("android:textColor"));
         try {
             xmlSerializer.startTag("", name);
+            xmlSerializer.attribute("", "android:id", "@+id/" + properties.get("android:id"));
             for (String key: properties.keySet()) {
-                xmlSerializer.attribute("", key, properties.get(key));
+                if (!key.equals("android:id")) {
+                    xmlSerializer.attribute("", key, properties.get(key));
+                }
             }
             xmlSerializer.endTag("", name);
         } catch (IOException e) {

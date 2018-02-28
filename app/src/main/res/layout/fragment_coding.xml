@@ -16,49 +16,21 @@
             android:layoutDirection="ltr">
 
 
-            <TextView
-                android:id="@+id/startCode"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                android:text="public static void main( ) {"
-                android:textAppearance="@style/CodeText"
-                app:layout_constraintBottom_toTopOf="@+id/code"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.086"
-                app:layout_constraintStart_toStartOf="parent" />
-
             <EditText
                 android:id="@+id/code"
-                android:layout_width="wrap_content"
-                android:layout_height="87dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="64dp"
-                android:ems="10"
                 android:inputType="textMultiLine"
+                android:singleLine="false"
                 android:textAppearance="@style/CodeText"
                 android:textDirection="ltr"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.104"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/endCode"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="28dp"
-                android:text="}"
-                android:textAppearance="@style/CodeText"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.044"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/code" />
 
         </android.support.constraint.ConstraintLayout>
     </ScrollView>

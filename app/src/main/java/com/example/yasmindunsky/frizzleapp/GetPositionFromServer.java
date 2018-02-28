@@ -37,6 +37,7 @@ public class GetPositionFromServer extends AsyncTask<String, Void, String> {
             JSONObject reader = new JSONObject(result);
             String topLessonId = String.valueOf(reader.get("topLessonId"));
             String currentLessonId = String.valueOf(reader.get("currentLessonId"));
+            String viewsJSON = String.valueOf(reader.get("views"));
 
             if (currentLessonId.equals("null")) {
                 UserProfile.user.setCurrentLessonID(1);
@@ -49,5 +50,9 @@ public class GetPositionFromServer extends AsyncTask<String, Void, String> {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+    }
+
+    private void fromJSONtoViews(String jsonViews){
+
     }
 }

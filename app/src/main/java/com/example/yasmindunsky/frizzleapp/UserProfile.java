@@ -1,5 +1,9 @@
 package com.example.yasmindunsky.frizzleapp;
 
+import com.example.yasmindunsky.frizzleapp.appBuilder.UserCreatedView;
+
+import java.util.Map;
+
 /**
  * Created by yasmin.dunsky on 03-Feb-18.
  */
@@ -16,6 +20,8 @@ public class UserProfile {
 
     private String xml = "";
     private String java = "";
+
+    private Map<Integer, UserCreatedView> views;
 
     public static UserProfile user = new UserProfile();
 

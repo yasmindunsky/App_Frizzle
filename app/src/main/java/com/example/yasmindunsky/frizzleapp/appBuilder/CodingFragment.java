@@ -38,7 +38,7 @@ public class CodingFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_coding, container, false);
 
-        EditText codeEditor = view.findViewById(R.id.code);
+        final EditText codeEditor = view.findViewById(R.id.code);
 
         codeEditor.addTextChangedListener(new TextWatcher() {
             final List<String> savedWords = Arrays.asList("public", "void", "Button", "TextView");
@@ -50,17 +50,22 @@ public class CodingFragment extends Fragment {
             int startPosition = 0;
             int currentPosition = 0;
 
+            ForegroundColorSpan importantCommandsSpan = new ForegroundColorSpan(getResources().getColor(R.color.frizzle_green));
+
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
             }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+                currentPosition = count;
             }
 
 
             @Override
             public void afterTextChanged(Editable s) {
+                s.removeSpan(importantCommandsSpan);
+
                 // mark saved words such as 'public', 'return', 'Button'
                 markSavedWords(s);
 
@@ -71,28 +76,28 @@ public class CodingFragment extends Fragment {
                 markQuotationMarks(s);
             }
 
+
             private void markSavedWords(Editable s) {
+
                 for (String word : savedWords) {
-                    int index = s.toString().indexOf(word, startPosition);
+                    int index = s.toString().indexOf(word);
 
-                    if (index >= 0) {
-                        s.setSpan(new ForegroundColorSpan(Color.BLUE), index, index + word.length(),
+                    while (index >= 0) {
+                        s.setSpan(importantCommandsSpan, index, index + word.length(),
                                 Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-
-                        startPosition = index + word.length();
+                        index = s.toString().indexOf(word, index + 1);
                     }
                 }
             }
 
             private void markCommands(Editable s) {
                 for (String word : importantCommands) {
-                    int index = s.toString().indexOf(word, startPosition);
+                    int index = s.toString().indexOf(word);
 
-                    if (index >= 0) {
-                        s.setSpan(new ForegroundColorSpan(Color.RED), index, index + word.length(),
+                    while (index >= 0) {
+                        s.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.frizzle_blue)), index, index + word.length(),
                                 Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-
-                        startPosition = index + word.length();
+                        index = s.toString().indexOf(word, index + 1);
                     }
                 }
             }
@@ -103,14 +108,14 @@ public class CodingFragment extends Fragment {
                 if (firstQuotationMark >= 0) {
                     secondQuotationMark = (s.toString()).indexOf("\"", firstQuotationMark + 1);
 
-                    s.setSpan(new ForegroundColorSpan(Color.GREEN), firstQuotationMark, firstQuotationMark + currentPosition + 1,
+                    s.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.frizzle_orange)), firstQuotationMark, firstQuotationMark + currentPosition + 1,
                             Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 
                     currentPosition++;
                 }
 
                 if (secondQuotationMark > 0) {
-                    s.setSpan(new ForegroundColorSpan(Color.GREEN), firstQuotationMark, secondQuotationMark + 1,
+                    s.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.frizzle_orange)), firstQuotationMark, secondQuotationMark + 1,
                             Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 
                     startPosition = secondQuotationMark + 1;

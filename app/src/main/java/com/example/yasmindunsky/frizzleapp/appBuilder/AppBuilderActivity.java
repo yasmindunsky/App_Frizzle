@@ -255,7 +255,7 @@ public class AppBuilderActivity extends AppCompatActivity {
 
         // send java and xml to server for build
         // if succeeded ask user for writing permission and download the apk
-        new BuildApkInServer(new AsyncResponse() {
+         new BuildApkInServer(new AsyncResponse() {
             @Override
             public void processFinish(String output) {
                 if (output.contains("BUILD SUCCESSFUL")) {
@@ -291,7 +291,7 @@ public class AppBuilderActivity extends AppCompatActivity {
                     new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, WRITE_PERMISSION);
         } else {
             // permission was already granted, download apk
-            downloadApk();
+            downloadApk(view);
         }
     }
 
@@ -303,7 +303,7 @@ public class AppBuilderActivity extends AppCompatActivity {
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     // permission granted, download apk from server
-                    downloadApk();
+//                    downloadApk();
 
                 } else {
                     // permission denied
@@ -314,11 +314,11 @@ public class AppBuilderActivity extends AppCompatActivity {
         }
     }
 
-    public void downloadApk() {
+    public void downloadApk(final View view) {
         new DownloadApkFromServer(new AsyncResponse() {
             @Override
             public void processFinish(String output) {
-//                startApk(view);
+                startApk(view);
             }
         }).execute(xml, javaCode);
 
@@ -329,14 +329,16 @@ public class AppBuilderActivity extends AppCompatActivity {
         String destination = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/" + "frizzle_project1.apk";
         File apkFile = new File(destination);
         Context context = view.getContext();
-        Uri contentUri = FileProvider.getUriForFile(context, "com.example.yasmindunsky.frizzleapp.fileprovider", apkFile);
-//        Uri contentUri = Uri.parse(destination);
 
-        Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.setDataAndType(contentUri, "application/vnd.android.package-archive");
-//        intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        // create uri from file
+        Uri contentUri = FileProvider.getUriForFile(context, "com.example.yasmindunsky.frizzleapp.fileprovider", apkFile);
+
+        // initial intel
+        Intent intent = new Intent(Intent.ACTION_INSTALL_PACKAGE);
+        intent.setData(contentUri);
+        intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
         startActivity(intent);
+
     }
 
 }
