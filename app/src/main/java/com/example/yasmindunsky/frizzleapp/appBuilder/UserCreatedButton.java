@@ -20,10 +20,12 @@ import android.widget.ImageButton;
 import android.widget.PopupWindow;
 import android.widget.Spinner;
 import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.example.yasmindunsky.frizzleapp.R;
 import com.example.yasmindunsky.frizzleapp.Support;
+import com.example.yasmindunsky.frizzleapp.UserProfile;
 
 import org.xmlpull.v1.XmlSerializer;
 
@@ -230,6 +232,16 @@ public class UserCreatedButton extends UserCreatedView {
             }
         });
 
+        // ONCLICK
+        TableRow tableRow = popupView.findViewById(R.id.onClickTableRow);
+        if (UserProfile.user.getTopLessonID() < 6) {
+            tableRow.setVisibility(View.INVISIBLE);
+        } else {
+            EditText onClickFuncName = popupView.findViewById(R.id.viewOnClickValue);
+            onClickFuncName.setOnFocusChangeListener(finishedOnClick);
+            onClickFuncName.setHint("שם הפונקציה");
+        }
+
         //DELETE
         ImageButton deleteButton = popupView.findViewById(R.id.delete);
         deleteButton.setTag(index);
@@ -265,6 +277,16 @@ public class UserCreatedButton extends UserCreatedView {
                 String text = String.valueOf(((EditText)v).getText());
                 thisView.setText(text);
                 properties.put("android:text", text);
+            }
+        }
+    };
+
+    EditText.OnFocusChangeListener finishedOnClick = new View.OnFocusChangeListener() {
+        @Override
+        public void onFocusChange(View v, boolean hasFocus) {
+            if (!hasFocus) {
+                String onclickFuncName = String.valueOf(((EditText)v).getText());
+                properties.put("android:onclick", onclickFuncName);
             }
         }
     };
