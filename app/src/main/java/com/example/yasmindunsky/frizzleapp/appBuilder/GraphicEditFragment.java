@@ -75,6 +75,13 @@ public class GraphicEditFragment extends Fragment {
                 View usersView = userCreatedView.getThisView();
                 ((ViewGroup)usersView.getParent()).removeView(usersView);
                 gridLayout.addView(usersView);
+                if (userCreatedView.getViewType().equals(UserCreatedView.ViewType.Button)){
+                    numOfButtons++;
+                }
+                else {
+                    numOfTextViews++;
+                }
+                nextViewIndex++;
             }
         }
 
@@ -173,7 +180,7 @@ public class GraphicEditFragment extends Fragment {
                     // To know what view to delete
                     deleteButton.setTag(R.id.viewToDelete, v.getId());
                     deleteButton.setOnClickListener(deleteView);
-                    popupWindow.showAtLocation(gridLayout, Gravity.CENTER, 0, 0);
+                    popupWindow.showAtLocation(v, Gravity.CENTER, 0, 0);
                 }
             });
 
@@ -211,7 +218,7 @@ public class GraphicEditFragment extends Fragment {
                     // To know what view to delete
                     deleteButton.setTag(R.id.viewToDelete, v.getTag(R.id.usersViewId));
                     deleteButton.setOnClickListener(deleteView);
-                    popupWindow.showAtLocation(gridLayout, Gravity.CENTER, 0, 0);
+                    popupWindow.showAtLocation(v, Gravity.CENTER, 0, 0);
                 }
             });
 
