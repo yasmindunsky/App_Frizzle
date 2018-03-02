@@ -1,46 +1,46 @@
 <lesson>
     <slide>
         <text name="text">"כל הכבוד! יצרת אפליקציה אמיתית עם שאלת טריוויה. אבל החידון לא מעניין במיוחד כשיש בו רק שאלה אחת, נכון?"</text>
-        <image name="image">"lesson_illustration1"</image>
+        <image name="image">"slide_7_1"</image>
     </slide>
 
     <slide>
         <text name="text">"כדי להוסיף עוד שאלות, תוכלי לחזור שוב על התהליך שעשית. בשיעור הזה ניזכר מה בדיוק עשינו ונשים לב לכמה דגשים חשובים."</text>
-        <image name="image">"lesson_illustration2"</image>
+        <image name="image">"slide_7_2"</image>
     </slide>
 
     <slide>
         <text name="text">""במסך העיצוב, נוסיף שדה טקסט עבור כל שאלה וכפתור עבור כל תשובה.            ה-ID של כל אלמנט צריך להיות ייחודי, אבל אם הרבה אלמנטים משמשים לאותה מטרה, ניתן לתת להם שם זהה ונמספר אותם."</text>
-        <image name="image">"lesson_illustration3"</image>
+        <image name="image">"slide_7_3"</image>
     </slide>
 
     <slide>
         <text name="text">"במסך הקוד, לכל שאלה ניצור פונקציה, ובה נכתוב את שורות הקוד שנותנות לכפתור שם בקוד, ומשנות את הטקסט שעליו לתשובה. שם הפונקציה צריך להיות גם הוא ייחודי."
         </text>
-        <image name="image">"lesson_illustration4"</image>
+        <image name="image">"slide_7_4"</image>
     </slide>
 
     <slide>
         <text name="text">"בחזרה במסך העיצוב, נגדיר לכל כפתור ב-onclick את הפונקציה המתאימה לו. "
         </text>
-        <image name="image">"lesson_illustration7"</image>
+        <image name="image">"slide_7_5"</image>
     </slide>
 
     <slide>
         <text name="text">"כדי שלא נתבלבל כדאי לעבוד בצורה מסודרת, לבחור מספר לכל שאלה ולהתאים את שמות הפונקציות וה-IDים למספר."</text>
-        <image name="image">"lesson_illustration13"</image>
+        <image name="image">"slide_7_6"</image>
     </slide>
 
     <slide>
         <text name="text">"כדאי גם שהשמות יהיו בעלי משמעות."</text>
-        <image name="image">"lesson_illustration14"</image>
+        <image name="image">"slide_7_7"</image>
     </slide>
 
 
     <exercise>
         <type name="type">"SingleResponse"</type>
-        <question name="question">"כדאי לתת לכל הכפתורים באפליקציה את אותו ID בדיוק"</question>
-        <image name="image">"exercise_illustrations_1"</image>
+        <question name="question">"כדאי לתת לכל הכפתורים באפליקציה את אותו ID בדיוק."</question>
+        <image name="image">"exercise_7_1"</image>
         <content name="content"></content>
         <possibilities name = "possibilities">
             <possibility name = "possibility">"נכון"</possibility>
@@ -52,19 +52,20 @@
     </exercise>
     <exercise>
         <type name="type">"FreeText"</type>
-        <question name="question">"כמה פונקציות נצטרך באפליקציה אם יש לנו 4 שאלות טריוויה?"</question>
-        <image name="image">"exercise_illustrations_3"</image>
+        <question name="question">"כמה פונקציות נצטרך באפליקציה אם יש לנו 6 שאלות טריוויה?"</question>
+        <image name="image">"exercise_7_2"</image>
         <content name="content"></content>
         <possibilities name = "possibilities"></possibilities>
         <answers name="answers">
-            <answer name="answer">"4"</answer>
+            <answer name="answer">"6"</answer>
         </answers>
     </exercise>
 
     <exercise>
         <type name="type">"SingleResponse"</type>
         <question name="question">"כדאי לתת לפונקציות שמות של חברים ומאכלים."</question>
-        <image name="image">"exercise_illustrations_2"</image>
+        <image name="image">"exercise_7_3"</image>
+        <content name="content"></content>
         <possibilities name = "possibilities">
             <possibility name = "possibility">"נכון"</possibility>
             <possibility name = "possibility">"לא נכון"</possibility>
@@ -78,7 +79,7 @@
     <exercise>
         <type name="type">"MultipleResponse"</type>
         <question name="question">"ה-ID של הכפתור שלי הוא answerButton2, איזה שמות נוכל לתת לפונקציה שתתאים לכפתור כך שנוכל לזהות את הקשר ביניהם?"</question>
-        <image name="image">"exercise_illustrations_4"</image>
+        <image name="image">"exercise_7_4"</image>
         <content name="content"></content>
         <possibilities name = "possibilities">
             <possibility name= "possibility">"answerFunction3"</possibility>

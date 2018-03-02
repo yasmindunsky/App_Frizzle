@@ -22,6 +22,8 @@ public class UserProfile {
     private String xml = "";
     private String java = "";
 
+    public Map<Integer, UserCreatedView> views = new HashMap<>();
+
     public Map<Integer, UserCreatedView> getViews() {
         return views;
     }
@@ -30,7 +32,6 @@ public class UserProfile {
         this.views = views;
     }
 
-    public Map<Integer, UserCreatedView> views = new HashMap<>();
 
     public static UserProfile user = new UserProfile();
 

@@ -138,7 +138,7 @@
 
         </TableRow>
 
-        <TableRow style="@style/propertiesTableRow">
+        <TableRow android:id="@+id/onClickTableRow" style="@style/propertiesTableRow">
 
             <TextView
                 android:id="@+id/viewOnClickKey"
