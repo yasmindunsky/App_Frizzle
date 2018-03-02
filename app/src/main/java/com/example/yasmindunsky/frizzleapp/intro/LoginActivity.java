@@ -74,17 +74,20 @@ public class LoginActivity extends AppCompatActivity {
                     // after successful login, update username of current user
                     UserProfile.user.setUsername(email);
 
-                    // update user position from server
-                    new GetPositionFromServer().execute(email);
 
                     // update user project from server
                     new GetProjectFromServer(view.getContext()).execute(email, "views");
                     new GetProjectFromServer(view.getContext()).execute(email, "xml");
                     new GetProjectFromServer(view.getContext()).execute(email, "code");
 
-                    // go to map
-                    Intent mapIntent = new Intent(view.getContext(), MapActivity.class);
-                    startActivity(mapIntent);
+                    // update user position from server, when done go to map
+                    new GetPositionFromServer(new AsyncResponse() {
+                        @Override
+                        public void processFinish(String output) {
+                            Intent mapIntent = new Intent(view.getContext(), MapActivity.class);
+                            startActivity(mapIntent);
+                        }
+                    }).execute(email);
                 } else {
 
                     // print failed login output message
@@ -92,5 +95,10 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         }).execute(email, password);
+    }
+
+    public void goToMap() {
+        Intent mapIntent = new Intent(this, MapActivity.class);
+        startActivity(mapIntent);
     }
 }

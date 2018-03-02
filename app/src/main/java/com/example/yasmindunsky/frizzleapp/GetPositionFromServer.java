@@ -4,6 +4,7 @@ import android.os.AsyncTask;
 
 import com.example.yasmindunsky.frizzleapp.appBuilder.GraphicEditFragment;
 import com.example.yasmindunsky.frizzleapp.appBuilder.UserCreatedView;
+import com.example.yasmindunsky.frizzleapp.intro.LoginActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -20,6 +21,12 @@ import java.util.Map;
  */
 
 public class GetPositionFromServer extends AsyncTask<String, Void, String> {
+    public AsyncResponse delegate = null;
+
+    public GetPositionFromServer(AsyncResponse delegate) {
+        this.delegate = delegate;
+    }
+
     @Override
     protected String doInBackground(String... strings) {
         ConnectToServer connectToServer = new ConnectToServer();
@@ -52,6 +59,8 @@ public class GetPositionFromServer extends AsyncTask<String, Void, String> {
                 UserProfile.user.setCurrentLessonID(Integer.parseInt(currentLessonId));
                 UserProfile.user.setTopLessonID(Integer.parseInt(topLessonId));
             }
+
+            delegate.processFinish(result);
 
         } catch (JSONException e) {
             e.printStackTrace();

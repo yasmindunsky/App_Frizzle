@@ -72,15 +72,24 @@ public class GraphicEditFragment extends Fragment {
         }
         else {
             // Load previously created views.
-            for (UserCreatedView userCreatedView : views.values()) {
+            for (final UserCreatedView userCreatedView : views.values()) {
                 View usersView = userCreatedView.getThisView();
-//                ((ViewGroup)usersView.getParent()).removeView(usersView);
+
+                if(usersView.getParent() != null) {
+                    ((ViewGroup) usersView.getParent()).removeView(usersView);
+                }
+
                 gridLayout.addView(usersView);
                 if (userCreatedView.getViewType().equals(UserCreatedView.ViewType.Button)){
                     numOfButtons++;
+
+                    final UserCreatedButton userCreatedButton = (UserCreatedButton) userCreatedView;
+                    setButtonOnClicks(userCreatedButton);
                 }
                 else {
                     numOfTextViews++;
+                    final UserCreatedTextView userCreatedTextView = (UserCreatedTextView) userCreatedView;
+                    setTextOnClicks(userCreatedTextView);
                 }
                 nextViewIndex++;
             }
@@ -168,22 +177,7 @@ public class GraphicEditFragment extends Fragment {
 
             final UserCreatedTextView userCreatedTextView = new UserCreatedTextView(getContext(), nextViewIndex, numOfTextViews);
             TextView newText = userCreatedTextView.getThisView();
-
-            newText.setOnLongClickListener(new LongPressListener());
-
-            newText.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    // show the popup window
-                    popupWindow = userCreatedTextView.displayPropertiesTable(getContext());
-
-                    ImageButton deleteButton = popupWindow.getContentView().findViewById(R.id.delete);
-                    // To know what view to delete
-                    deleteButton.setTag(R.id.viewToDelete, v.getId());
-                    deleteButton.setOnClickListener(deleteView);
-                    popupWindow.showAtLocation(v, Gravity.CENTER, 0, 0);
-                }
-            });
+            setTextOnClicks(userCreatedTextView);
 
             // Add to GridLayout and to views map.
             gridLayout.addView(newText);
@@ -206,22 +200,7 @@ public class GraphicEditFragment extends Fragment {
             final UserCreatedButton userCreatedButton = new UserCreatedButton(getContext(), nextViewIndex, numOfButtons);
             Button newButton = userCreatedButton.getThisView();
 
-            newButton.setOnLongClickListener(new LongPressListener());
-
-
-            newButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    // show the popup window
-                    popupWindow = userCreatedButton.displayPropertiesTable(getContext());
-
-                    ImageButton deleteButton = popupWindow.getContentView().findViewById(R.id.delete);
-                    // To know what view to delete
-                    deleteButton.setTag(R.id.viewToDelete, v.getTag(R.id.usersViewId));
-                    deleteButton.setOnClickListener(deleteView);
-                    popupWindow.showAtLocation(v, Gravity.CENTER, 0, 0);
-                }
-            });
+            setButtonOnClicks(userCreatedButton);
 
             // Add to GridLayout and to views map.
             gridLayout.addView(newButton);
@@ -341,6 +320,8 @@ public class GraphicEditFragment extends Fragment {
 //        deleteButton.setOnClickListener(deleteView);
 //    }
 
+
+
     View.OnClickListener deleteView = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -437,6 +418,47 @@ public class GraphicEditFragment extends Fragment {
 //        return colorNamesMap.get(color);
 //
 //    }
+
+    private void setButtonOnClicks(final UserCreatedButton userCreatedButton){
+        Button newButton = userCreatedButton.getThisView();
+
+        newButton.setOnLongClickListener(new LongPressListener());
+
+
+        newButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // show the popup window
+                popupWindow = userCreatedButton.displayPropertiesTable(getContext());
+
+                ImageButton deleteButton = popupWindow.getContentView().findViewById(R.id.delete);
+                // To know what view to delete
+                deleteButton.setTag(R.id.viewToDelete, v.getTag(R.id.usersViewId));
+                deleteButton.setOnClickListener(deleteView);
+                popupWindow.showAtLocation(v, Gravity.CENTER, 0, 0);
+            }
+        });
+    }
+
+    private void setTextOnClicks(final UserCreatedTextView userCreatedTextView){
+        TextView newText = userCreatedTextView.getThisView();
+
+        newText.setOnLongClickListener(new LongPressListener());
+
+        newText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // show the popup window
+                popupWindow = userCreatedTextView.displayPropertiesTable(getContext());
+
+                ImageButton deleteButton = popupWindow.getContentView().findViewById(R.id.delete);
+                // To know what view to delete
+                deleteButton.setTag(R.id.viewToDelete, v.getId());
+                deleteButton.setOnClickListener(deleteView);
+                popupWindow.showAtLocation(v, Gravity.CENTER, 0, 0);
+            }
+        });
+    }
 
     public String getXml(){
         layoutXmlWriter = new LayoutXmlWriter();

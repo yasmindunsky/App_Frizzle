@@ -81,6 +81,8 @@ public class UserCreatedButton extends UserCreatedView {
         thisView.setTag(R.id.usersViewId, index);
         thisView.setTag(R.id.usersViewRow, row);
         thisView.setTag(R.id.usersViewCol, column);
+
+        this.properties = properties;
     }
 
     private int dpStringToPixel(String dp) {
