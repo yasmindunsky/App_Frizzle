@@ -38,6 +38,7 @@ import com.example.yasmindunsky.frizzleapp.lesson.Task;
 import net.cachapa.expandablelayout.ExpandableLayout;
 
 import java.io.File;
+import java.util.Map;
 
 public class AppBuilderActivity extends AppCompatActivity {
 
@@ -48,9 +49,6 @@ public class AppBuilderActivity extends AppCompatActivity {
     Fragment graphicEditFragment;
     Fragment codingFragment;
     String currentTask;
-
-    String javaCode;
-    String xml;
 
 //    View globalView;
     android.support.v7.widget.Toolbar toolbar;
@@ -245,14 +243,7 @@ public class AppBuilderActivity extends AppCompatActivity {
     }
 
     public void onPlay(final View view) {
-        // update java code String
-        String codeWritten = ((CodingFragment) codingFragment).getCode();
-        javaCode = getApplicationContext().getResources().getString(R.string.codeStart) +
-                codeWritten + getApplicationContext().getResources().getString(R.string.codeEnd);
-
-        // update xml String
-        xml = ((GraphicEditFragment) graphicEditFragment).getXml();
-
+        updateUserProjectAttributes();
         // send java and xml to server for build
         // if succeeded ask user for writing permission and download the apk
          new BuildApkInServer(new AsyncResponse() {
@@ -266,7 +257,23 @@ public class AppBuilderActivity extends AppCompatActivity {
                     displayError(output);
                 }
             }
-        }).execute(xml, javaCode);
+        }).execute(UserProfile.user.getXml(), UserProfile.user.getJava());
+    }
+
+    private void updateUserProjectAttributes(){
+        // update java code String
+        String codeWritten = ((CodingFragment) codingFragment).getCode();
+        String javaCode = getApplicationContext().getResources().getString(R.string.codeStart) +
+                codeWritten + getApplicationContext().getResources().getString(R.string.codeEnd);
+        UserProfile.user.setJava(javaCode);
+
+        // update xml String
+        String xml = ((GraphicEditFragment) graphicEditFragment).getXml();
+        UserProfile.user.setXml(xml);
+
+        // update views string
+        Map<Integer, UserCreatedView> views = ((GraphicEditFragment) graphicEditFragment).getViews();
+        UserProfile.user.setViews(views);
     }
 
     private void displayError(String output) {
@@ -320,13 +327,14 @@ public class AppBuilderActivity extends AppCompatActivity {
             public void processFinish(String output) {
                 startApk(view);
             }
-        }).execute(xml, javaCode);
+        }).execute(UserProfile.user.getXml(), UserProfile.user.getJava());
 
     }
 
     public void startApk(View view) {
         //get destination
-        String destination = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/" + "frizzle_project1.apk";
+        String destination = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
+                + "/frizzle_project1.apk";
         File apkFile = new File(destination);
         Context context = view.getContext();
 

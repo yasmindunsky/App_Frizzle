@@ -1,6 +1,7 @@
 package com.example.yasmindunsky.frizzleapp.appBuilder;
 
 import android.content.ClipData;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
@@ -73,7 +74,7 @@ public class GraphicEditFragment extends Fragment {
             // Load previously created views.
             for (UserCreatedView userCreatedView : views.values()) {
                 View usersView = userCreatedView.getThisView();
-                ((ViewGroup)usersView.getParent()).removeView(usersView);
+//                ((ViewGroup)usersView.getParent()).removeView(usersView);
                 gridLayout.addView(usersView);
             }
         }
@@ -537,6 +538,9 @@ public class GraphicEditFragment extends Fragment {
         JSONArray jsonArray = new JSONArray();
         JSONObject json = new JSONObject();
         JSONObject finalObject = new JSONObject();
+
+        views = UserProfile.user.getViews();
+
         try {
             for (int i = 0 ; i < views.size() ; i++) {
                 json = new JSONObject();
@@ -549,6 +553,7 @@ public class GraphicEditFragment extends Fragment {
                 }
                 jsonArray.put(json);
             }
+
             finalObject.put("views", jsonArray);
 
         } catch (JSONException e) {
@@ -558,14 +563,14 @@ public class GraphicEditFragment extends Fragment {
         return finalObject;
     }
 
-    public Map<Integer, UserCreatedView>  jsonToViews(JSONObject json) {
+    public Map<Integer, UserCreatedView>  jsonToViews(Context context, String viewsJsonString) {
         views = new HashMap<>();
         numOfButtons = 0;
         numOfTextViews = 0;
         nextViewIndex = 0;
 
         try {
-            JSONArray viewsJson = json.getJSONArray("views");
+            JSONArray viewsJson = new JSONArray(viewsJsonString);
             for(int i = 0 ; i < viewsJson.length(); i++){
                 JSONObject viewJson = viewsJson.getJSONObject(i);
                 UserCreatedView.ViewType viewType = getViewType(viewJson.getString("viewType"));
@@ -578,11 +583,11 @@ public class GraphicEditFragment extends Fragment {
                 UserCreatedView userCreatedView = null;
                 switch (viewType) {
                     case TextView:
-                        userCreatedView = new UserCreatedTextView(getContext(), properties, i);
+                        userCreatedView = new UserCreatedTextView(context, properties, i);
                         numOfTextViews++;
                         break;
                     case Button:
-                        userCreatedView = new UserCreatedButton(getContext(), properties, i);
+                        userCreatedView = new UserCreatedButton(context, properties, i);
                         numOfButtons++;
                         break;
                 }

@@ -74,8 +74,13 @@ public class LoginActivity extends AppCompatActivity {
                     // after successful login, update username of current user
                     UserProfile.user.setUsername(email);
 
-                    // update user data from server
+                    // update user position from server
                     new GetPositionFromServer().execute(email);
+
+                    // update user project from server
+                    new GetProjectFromServer(view.getContext()).execute(email, "views");
+                    new GetProjectFromServer(view.getContext()).execute(email, "xml");
+                    new GetProjectFromServer(view.getContext()).execute(email, "code");
 
                     // go to map
                     Intent mapIntent = new Intent(view.getContext(), MapActivity.class);

@@ -15,6 +15,7 @@ import com.example.yasmindunsky.frizzleapp.AsyncResponse;
 import com.example.yasmindunsky.frizzleapp.MapActivity;
 import com.example.yasmindunsky.frizzleapp.R;
 import com.example.yasmindunsky.frizzleapp.Support;
+import com.example.yasmindunsky.frizzleapp.UpdatePositionInServer;
 import com.example.yasmindunsky.frizzleapp.UserProfile;
 
 
@@ -99,6 +100,12 @@ public class RegisterFragment extends Fragment {
                     UserProfile.user.setUsername(email);
                     UserProfile.user.setNickName(nickName);
 
+                    // initial position of user in UserProfile and server
+                    initPosition();
+
+                    // initial user project in UserProfile and server
+
+
                     // go to map
                     Intent mapIntent = new Intent(view.getContext(), MapActivity.class);
                     startActivity(mapIntent);
@@ -111,4 +118,18 @@ public class RegisterFragment extends Fragment {
             }
         }).execute(password, email, nickName);
     }
+
+    private void initPosition(){
+        UserProfile.user.setCurrentLessonID(1);
+        UserProfile.user.setTopLessonID(1);
+        UserProfile.user.setCurrentCourseID(1);
+        UserProfile.user.setTopCourseID(1);
+
+        new UpdatePositionInServer().execute();
+    }
+
+//    private void initProject(){
+//        UserProfile.user.setJava("");
+//        UserProfile.user.set
+//    }
 }
