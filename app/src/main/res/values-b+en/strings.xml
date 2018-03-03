@@ -17,11 +17,12 @@
         import android.support.v7.app.AppCompatActivity;
         import android.os.Bundle;
         import android.widget.TextView;
+        import android.view.View;
         public class MainActivity extends AppCompatActivity {
         @Override     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);</string>
-    <string name="codeEnd">}}</string>
+    <string name="codeEnd">}</string>
     <string name="playground">Playground</string>
     <string name="task_text">task</string>
     <string name="codeScreenTitle">Code Task</string>

@@ -17,6 +17,20 @@
 
 
             <EditText
+                android:id="@+id/codeStart"
+                android:layout_width="0dp"
+                android:layout_height="47dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:ems="10"
+                android:inputType="textMultiLine"
+                android:text="protected void onCreate() { "
+                android:textAppearance="@style/CodeText"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:layout_editor_absoluteY="2dp" />
+
+            <EditText
                 android:id="@+id/code"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -25,6 +39,7 @@
                 android:layout_marginTop="64dp"
                 android:inputType="textMultiLine"
                 android:singleLine="false"
+                android:text="\n\n\n}"
                 android:textAppearance="@style/CodeText"
                 android:textDirection="ltr"
                 app:layout_constraintEnd_toEndOf="parent"

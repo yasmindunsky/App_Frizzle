@@ -67,6 +67,9 @@ public class AppBuilderActivity extends AppCompatActivity {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // save user project
+                updateUserProjectAttributes();
+
                 // Go to map home screen
                 Intent mapIntent = new Intent(getBaseContext(), MapActivity.class);
                 startActivity(mapIntent);
@@ -159,12 +162,6 @@ public class AppBuilderActivity extends AppCompatActivity {
         tabLayout.addTab(graphicEditTab, true);
         tabLayout.addTab(codingTab);
         graphicEditTab.select();
-
-
-        // Open Java and XML files.
-        File path = getBaseContext().getFilesDir();
-        javaFile = new File(path, getString(R.string.javaFileName));
-        xmlFile = new File(path, getString(R.string.xmlFileName));
     }
 
     private void openInstructorPopup() {
@@ -257,15 +254,13 @@ public class AppBuilderActivity extends AppCompatActivity {
                     displayError(output);
                 }
             }
-        }).execute(UserProfile.user.getXml(), UserProfile.user.getJava());
+        }).execute(getApplicationContext().getResources().getString(R.string.codeStart), getApplicationContext().getResources().getString(R.string.codeEnd));
     }
 
     private void updateUserProjectAttributes(){
         // update java code String
         String codeWritten = ((CodingFragment) codingFragment).getCode();
-        String javaCode = getApplicationContext().getResources().getString(R.string.codeStart) +
-                codeWritten + getApplicationContext().getResources().getString(R.string.codeEnd);
-        UserProfile.user.setJava(javaCode);
+        UserProfile.user.setJava(codeWritten);
 
         // update xml String
         String xml = ((GraphicEditFragment) graphicEditFragment).getXml();
@@ -284,6 +279,7 @@ public class AppBuilderActivity extends AppCompatActivity {
     }
 
     public void goToLesson(View view) {
+        updateUserProjectAttributes();
         Intent lessonIntent = new Intent(this, LessonActivity.class);
         startActivity(lessonIntent);
     }

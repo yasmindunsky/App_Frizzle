@@ -20,6 +20,7 @@
         import android.os.Bundle;
         import android.widget.Button;
         import android.widget.TextView;
+        import android.view.View;
 
         public class MainActivity extends AppCompatActivity {
         @Override     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +28,6 @@
         setContentView(R.layout.activity_main);
 
     </string>
-    <string name="codeEnd">}}</string>
     <string name="playground">איזור בניית האפליקציה</string>
     <string name="task_text">פירוט המשימה</string>
     <string name="codeScreenTitle">קוד</string>
@@ -84,4 +84,5 @@
         <item>frizzle_purple_blue</item>
         <item>frizzle_blue_green</item>
     </string-array>
+    <string name="codeEnd">}</string>
 </resources>

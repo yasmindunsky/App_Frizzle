@@ -295,7 +295,7 @@ public class UserCreatedButton extends UserCreatedView {
         public void onFocusChange(View v, boolean hasFocus) {
             if (!hasFocus) {
                 String onclickFuncName = String.valueOf(((EditText)v).getText());
-                properties.put("android:onclick", onclickFuncName);
+                properties.put("android:onClick", onclickFuncName);
             }
         }
     };

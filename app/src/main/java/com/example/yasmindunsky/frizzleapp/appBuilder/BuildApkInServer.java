@@ -32,10 +32,14 @@ public class BuildApkInServer extends AsyncTask<String, Void, String> {
 
         GraphicEditFragment graphicEditFragment = new GraphicEditFragment();
 
-        String xml = UserProfile.user.getXml();
-        String code = UserProfile.user.getJava();
-        String username = UserProfile.user.getUsername();
         String courseId = String.valueOf(UserProfile.user.getCurrentCourseID());
+        String username = UserProfile.user.getUsername();
+
+        String start = strings[0];
+        String end = strings[1];
+        String code = start + UserProfile.user.getJava() + end;
+
+        String xml = UserProfile.user.getXml();
 
         JSONObject viewsToJson = ((GraphicEditFragment) graphicEditFragment).viewsToJson();
         String views = viewsToJson.toString();

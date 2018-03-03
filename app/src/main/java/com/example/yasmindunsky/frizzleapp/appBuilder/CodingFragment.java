@@ -1,7 +1,6 @@
 package com.example.yasmindunsky.frizzleapp.appBuilder;
 
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
@@ -14,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 
 import com.example.yasmindunsky.frizzleapp.R;
+import com.example.yasmindunsky.frizzleapp.UserProfile;
 
 import java.util.Arrays;
 import java.util.List;
@@ -25,6 +25,7 @@ import java.util.List;
 public class CodingFragment extends Fragment {
 
     EditText editText;
+    Boolean updateCodeFromUserProfile = true;
 
     public CodingFragment() {
         // Required empty public constructor
@@ -40,8 +41,13 @@ public class CodingFragment extends Fragment {
 
         final EditText codeEditor = view.findViewById(R.id.code);
 
+        if(updateCodeFromUserProfile){
+            codeEditor.setText(UserProfile.user.getJava());
+            updateCodeFromUserProfile = false;
+        }
+
         codeEditor.addTextChangedListener(new TextWatcher() {
-            final List<String> savedWords = Arrays.asList("public", "void", "Button", "TextView");
+            final List<String> savedWords = Arrays.asList("Button", "TextView");
             final List<String> importantCommands = Arrays.asList("findViewById", "setText");
 
             // for quotation mark search
@@ -49,8 +55,6 @@ public class CodingFragment extends Fragment {
             int secondQuotationMark = -1;
             int startPosition = 0;
             int currentPosition = 0;
-
-            ForegroundColorSpan importantCommandsSpan = new ForegroundColorSpan(getResources().getColor(R.color.frizzle_green));
 
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -64,7 +68,6 @@ public class CodingFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable s) {
-                s.removeSpan(importantCommandsSpan);
 
                 // mark saved words such as 'public', 'return', 'Button'
                 markSavedWords(s);
@@ -73,7 +76,7 @@ public class CodingFragment extends Fragment {
                 markCommands(s);
 
                 // mark any String in quotes
-                markQuotationMarks(s);
+//                markQuotationMarks(s);
             }
 
 
@@ -83,7 +86,7 @@ public class CodingFragment extends Fragment {
                     int index = s.toString().indexOf(word);
 
                     while (index >= 0) {
-                        s.setSpan(importantCommandsSpan, index, index + word.length(),
+                        s.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.frizzle_green)), index, index + word.length(),
                                 Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                         index = s.toString().indexOf(word, index + 1);
                     }

@@ -71,9 +71,10 @@ public class LoginActivity extends AppCompatActivity {
                 // in case of success, create new user instance, restore users data and go to map
                 if (output.equals("Authentication succeeded")) {
 
+                    messagePlaceholder.setText("מתחבר...");
+
                     // after successful login, update username of current user
                     UserProfile.user.setUsername(email);
-
 
                     // update user project from server
                     new GetProjectFromServer(view.getContext()).execute(email, "views");

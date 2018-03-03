@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.AsyncTask;
 
 import com.example.yasmindunsky.frizzleapp.ConnectToServer;
+import com.example.yasmindunsky.frizzleapp.R;
 import com.example.yasmindunsky.frizzleapp.UserProfile;
 import com.example.yasmindunsky.frizzleapp.appBuilder.GraphicEditFragment;
 import com.example.yasmindunsky.frizzleapp.appBuilder.UserCreatedButton;
@@ -53,11 +54,14 @@ public class GetProjectFromServer extends AsyncTask<String, Void, String> {
 
     protected void onPostExecute(String result) {
         try {
-            JSONObject reader = new JSONObject(result);
-            String attributeString = String.valueOf(reader.get(attribute));
+            String attributeString = result;
 
             switch (attribute) {
                 case "views":
+                    // read viewsString from JSON
+                    JSONObject reader = new JSONObject(result);
+                    attributeString = String.valueOf(reader.get(attribute));
+
                     // parse viewString to view element
                     GraphicEditFragment graphicEditFragment = new GraphicEditFragment();
                     Map<Integer, UserCreatedView> views = graphicEditFragment.jsonToViews(mContext, attributeString);
@@ -69,6 +73,12 @@ public class GetProjectFromServer extends AsyncTask<String, Void, String> {
                     UserProfile.user.setXml(attributeString);
                     break;
                 case "code":
+                    // trim codeString to the user's code
+                    int start = mContext.getApplicationContext().getResources().getString(R.string.codeStart).length();
+                    int end = attributeString.length() - mContext.getApplicationContext().getResources().getString(R.string.codeEnd).length();
+                    attributeString = attributeString.substring(start, end);
+
+                    // save code to user profile
                     UserProfile.user.setJava(attributeString);
                     break;
             }
