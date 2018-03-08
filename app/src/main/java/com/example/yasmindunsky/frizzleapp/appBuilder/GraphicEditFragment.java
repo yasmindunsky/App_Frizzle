@@ -350,11 +350,12 @@ public class GraphicEditFragment extends Fragment {
             if (viewToDelete.getClass().equals(UserCreatedTextView.class)) {
                 numOfTextViews--;
             }
-            else if (viewToDelete.getClass().equals(Button.class)) {
+            else if (viewToDelete.getClass().equals(UserCreatedButton.class)) {
                 numOfButtons--;
             }
 
-            gridLayout.removeView(viewToDelete.getThisView());
+            View thisView = viewToDelete.getThisView();
+            ((ViewGroup)thisView.getParent()).removeView(thisView);
             views.remove(viewToDeleteIndex);
         }
     };
