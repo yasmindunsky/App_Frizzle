@@ -51,7 +51,7 @@ public class AppBuilderActivity extends AppCompatActivity {
     Fragment codingFragment;
     String currentTask;
     private ProgressBar progressBar = null;
-
+    private ExpandableLayout errorExpandableLayout = null;
 
     //    View globalView;
     android.support.v7.widget.Toolbar toolbar;
@@ -90,7 +90,7 @@ public class AppBuilderActivity extends AppCompatActivity {
 
         // Error ExpandableLayout
         ImageButton clickToExpandError = findViewById(R.id.clickToExpandError);
-        final ExpandableLayout errorExpandableLayout = findViewById(R.id.errorExpandableLayout);
+        errorExpandableLayout = findViewById(R.id.errorExpandableLayout);
         clickToExpandError.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -255,6 +255,7 @@ public class AppBuilderActivity extends AppCompatActivity {
                 progressBar.setVisibility(View.GONE);
                 if (output.contains("BUILD SUCCESSFUL")) {
                     getWritePermission(view);
+                    hideError();
                 }
                 else {
                     // Build didn't work.
@@ -263,6 +264,7 @@ public class AppBuilderActivity extends AppCompatActivity {
             }
         }).execute(getApplicationContext().getResources().getString(R.string.codeStart), getApplicationContext().getResources().getString(R.string.codeEnd));
     }
+
 
     private void updateUserProjectAttributes(){
         // update java code String
@@ -278,11 +280,17 @@ public class AppBuilderActivity extends AppCompatActivity {
         UserProfile.user.setViews(views);
     }
 
+    private void hideError() {
+        LinearLayout errorLayout = findViewById(R.id.errorDisplay);
+        errorLayout.setVisibility(View.GONE);
+    }
+
     private void displayError(String output) {
         TextView error = findViewById(R.id.error);
         error.setText(output);
         LinearLayout errorLayout = findViewById(R.id.errorDisplay);
         errorLayout.setVisibility(View.VISIBLE);
+        errorExpandableLayout.expand();
     }
 
     public void goToLesson(View view) {
