@@ -1,6 +1,7 @@
 package com.example.yasmindunsky.frizzleapp.appBuilder;
 
 import android.content.ClipData;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
@@ -71,15 +72,24 @@ public class GraphicEditFragment extends Fragment {
         }
         else {
             // Load previously created views.
-            for (UserCreatedView userCreatedView : views.values()) {
+            for (final UserCreatedView userCreatedView : views.values()) {
                 View usersView = userCreatedView.getThisView();
-                ((ViewGroup)usersView.getParent()).removeView(usersView);
+
+                if(usersView.getParent() != null) {
+                    ((ViewGroup) usersView.getParent()).removeView(usersView);
+                }
+
                 gridLayout.addView(usersView);
                 if (userCreatedView.getViewType().equals(UserCreatedView.ViewType.Button)){
                     numOfButtons++;
+
+                    final UserCreatedButton userCreatedButton = (UserCreatedButton) userCreatedView;
+                    setButtonOnClicks(userCreatedButton);
                 }
                 else {
                     numOfTextViews++;
+                    final UserCreatedTextView userCreatedTextView = (UserCreatedTextView) userCreatedView;
+                    setTextOnClicks(userCreatedTextView);
                 }
                 nextViewIndex++;
             }
@@ -167,22 +177,7 @@ public class GraphicEditFragment extends Fragment {
 
             final UserCreatedTextView userCreatedTextView = new UserCreatedTextView(getContext(), nextViewIndex, numOfTextViews);
             TextView newText = userCreatedTextView.getThisView();
-
-            newText.setOnLongClickListener(new LongPressListener());
-
-            newText.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    // show the popup window
-                    popupWindow = userCreatedTextView.displayPropertiesTable(getContext());
-
-                    ImageButton deleteButton = popupWindow.getContentView().findViewById(R.id.delete);
-                    // To know what view to delete
-                    deleteButton.setTag(R.id.viewToDelete, v.getId());
-                    deleteButton.setOnClickListener(deleteView);
-                    popupWindow.showAtLocation(v, Gravity.CENTER, 0, 0);
-                }
-            });
+            setTextOnClicks(userCreatedTextView);
 
             // Add to GridLayout and to views map.
             gridLayout.addView(newText);
@@ -205,22 +200,7 @@ public class GraphicEditFragment extends Fragment {
             final UserCreatedButton userCreatedButton = new UserCreatedButton(getContext(), nextViewIndex, numOfButtons);
             Button newButton = userCreatedButton.getThisView();
 
-            newButton.setOnLongClickListener(new LongPressListener());
-
-
-            newButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    // show the popup window
-                    popupWindow = userCreatedButton.displayPropertiesTable(getContext());
-
-                    ImageButton deleteButton = popupWindow.getContentView().findViewById(R.id.delete);
-                    // To know what view to delete
-                    deleteButton.setTag(R.id.viewToDelete, v.getTag(R.id.usersViewId));
-                    deleteButton.setOnClickListener(deleteView);
-                    popupWindow.showAtLocation(v, Gravity.CENTER, 0, 0);
-                }
-            });
+            setButtonOnClicks(userCreatedButton);
 
             // Add to GridLayout and to views map.
             gridLayout.addView(newButton);
@@ -340,6 +320,8 @@ public class GraphicEditFragment extends Fragment {
 //        deleteButton.setOnClickListener(deleteView);
 //    }
 
+
+
     View.OnClickListener deleteView = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -437,6 +419,47 @@ public class GraphicEditFragment extends Fragment {
 //        return colorNamesMap.get(color);
 //
 //    }
+
+    private void setButtonOnClicks(final UserCreatedButton userCreatedButton){
+        Button newButton = userCreatedButton.getThisView();
+
+        newButton.setOnLongClickListener(new LongPressListener());
+
+
+        newButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // show the popup window
+                popupWindow = userCreatedButton.displayPropertiesTable(getContext());
+
+                ImageButton deleteButton = popupWindow.getContentView().findViewById(R.id.delete);
+                // To know what view to delete
+                deleteButton.setTag(R.id.viewToDelete, v.getTag(R.id.usersViewId));
+                deleteButton.setOnClickListener(deleteView);
+                popupWindow.showAtLocation(v, Gravity.CENTER, 0, 0);
+            }
+        });
+    }
+
+    private void setTextOnClicks(final UserCreatedTextView userCreatedTextView){
+        TextView newText = userCreatedTextView.getThisView();
+
+        newText.setOnLongClickListener(new LongPressListener());
+
+        newText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // show the popup window
+                popupWindow = userCreatedTextView.displayPropertiesTable(getContext());
+
+                ImageButton deleteButton = popupWindow.getContentView().findViewById(R.id.delete);
+                // To know what view to delete
+                deleteButton.setTag(R.id.viewToDelete, v.getId());
+                deleteButton.setOnClickListener(deleteView);
+                popupWindow.showAtLocation(v, Gravity.CENTER, 0, 0);
+            }
+        });
+    }
 
     public String getXml(){
         layoutXmlWriter = new LayoutXmlWriter();
@@ -545,6 +568,9 @@ public class GraphicEditFragment extends Fragment {
         JSONArray jsonArray = new JSONArray();
         JSONObject json = new JSONObject();
         JSONObject finalObject = new JSONObject();
+
+        views = UserProfile.user.getViews();
+
         try {
             for (int i = 0 ; i < views.size() ; i++) {
                 json = new JSONObject();
@@ -557,6 +583,7 @@ public class GraphicEditFragment extends Fragment {
                 }
                 jsonArray.put(json);
             }
+
             finalObject.put("views", jsonArray);
 
         } catch (JSONException e) {
@@ -566,14 +593,14 @@ public class GraphicEditFragment extends Fragment {
         return finalObject;
     }
 
-    public Map<Integer, UserCreatedView>  jsonToViews(JSONObject json) {
+    public Map<Integer, UserCreatedView>  jsonToViews(Context context, String viewsJsonString) {
         views = new HashMap<>();
         numOfButtons = 0;
         numOfTextViews = 0;
         nextViewIndex = 0;
 
         try {
-            JSONArray viewsJson = json.getJSONArray("views");
+            JSONArray viewsJson = new JSONArray(viewsJsonString);
             for(int i = 0 ; i < viewsJson.length(); i++){
                 JSONObject viewJson = viewsJson.getJSONObject(i);
                 UserCreatedView.ViewType viewType = getViewType(viewJson.getString("viewType"));
@@ -586,11 +613,11 @@ public class GraphicEditFragment extends Fragment {
                 UserCreatedView userCreatedView = null;
                 switch (viewType) {
                     case TextView:
-                        userCreatedView = new UserCreatedTextView(getContext(), properties, i);
+                        userCreatedView = new UserCreatedTextView(context, properties, i);
                         numOfTextViews++;
                         break;
                     case Button:
-                        userCreatedView = new UserCreatedButton(getContext(), properties, i);
+                        userCreatedView = new UserCreatedButton(context, properties, i);
                         numOfButtons++;
                         break;
                 }

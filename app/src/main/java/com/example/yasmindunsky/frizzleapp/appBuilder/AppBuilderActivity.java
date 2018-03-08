@@ -38,6 +38,7 @@ import com.example.yasmindunsky.frizzleapp.lesson.Task;
 import net.cachapa.expandablelayout.ExpandableLayout;
 
 import java.io.File;
+import java.util.Map;
 
 public class AppBuilderActivity extends AppCompatActivity {
 
@@ -48,9 +49,6 @@ public class AppBuilderActivity extends AppCompatActivity {
     Fragment graphicEditFragment;
     Fragment codingFragment;
     String currentTask;
-
-    String javaCode;
-    String xml;
 
 //    View globalView;
     android.support.v7.widget.Toolbar toolbar;
@@ -69,6 +67,9 @@ public class AppBuilderActivity extends AppCompatActivity {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // save user project
+                updateUserProjectAttributes();
+
                 // Go to map home screen
                 Intent mapIntent = new Intent(getBaseContext(), MapActivity.class);
                 startActivity(mapIntent);
@@ -161,12 +162,6 @@ public class AppBuilderActivity extends AppCompatActivity {
         tabLayout.addTab(graphicEditTab, true);
         tabLayout.addTab(codingTab);
         graphicEditTab.select();
-
-
-        // Open Java and XML files.
-        File path = getBaseContext().getFilesDir();
-        javaFile = new File(path, getString(R.string.javaFileName));
-        xmlFile = new File(path, getString(R.string.xmlFileName));
     }
 
     private void openInstructorPopup() {
@@ -245,17 +240,10 @@ public class AppBuilderActivity extends AppCompatActivity {
     }
 
     public void onPlay(final View view) {
-        // update java code String
-        String codeWritten = ((CodingFragment) codingFragment).getCode();
-        javaCode = getApplicationContext().getResources().getString(R.string.codeStart) +
-                codeWritten + getApplicationContext().getResources().getString(R.string.codeEnd);
-
-        // update xml String
-        xml = ((GraphicEditFragment) graphicEditFragment).getXml();
-
+        updateUserProjectAttributes();
         // send java and xml to server for build
         // if succeeded ask user for writing permission and download the apk
-        new BuildApkInServer(new AsyncResponse() {
+         new BuildApkInServer(new AsyncResponse() {
             @Override
             public void processFinish(String output) {
                 if (output.contains("BUILD SUCCESSFUL")) {
@@ -266,7 +254,21 @@ public class AppBuilderActivity extends AppCompatActivity {
                     displayError(output);
                 }
             }
-        }).execute(xml, javaCode);
+        }).execute(getApplicationContext().getResources().getString(R.string.codeStart), getApplicationContext().getResources().getString(R.string.codeEnd));
+    }
+
+    private void updateUserProjectAttributes(){
+        // update java code String
+        String codeWritten = ((CodingFragment) codingFragment).getCode();
+        UserProfile.user.setJava(codeWritten);
+
+        // update xml String
+        String xml = ((GraphicEditFragment) graphicEditFragment).getXml();
+        UserProfile.user.setXml(xml);
+
+        // update views string
+        Map<Integer, UserCreatedView> views = ((GraphicEditFragment) graphicEditFragment).getViews();
+        UserProfile.user.setViews(views);
     }
 
     private void displayError(String output) {
@@ -277,6 +279,7 @@ public class AppBuilderActivity extends AppCompatActivity {
     }
 
     public void goToLesson(View view) {
+        updateUserProjectAttributes();
         Intent lessonIntent = new Intent(this, LessonActivity.class);
         startActivity(lessonIntent);
     }
@@ -291,7 +294,7 @@ public class AppBuilderActivity extends AppCompatActivity {
                     new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, WRITE_PERMISSION);
         } else {
             // permission was already granted, download apk
-            downloadApk();
+            downloadApk(view);
         }
     }
 
@@ -303,7 +306,7 @@ public class AppBuilderActivity extends AppCompatActivity {
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     // permission granted, download apk from server
-                    downloadApk();
+//                    downloadApk();
 
                 } else {
                     // permission denied
@@ -314,29 +317,32 @@ public class AppBuilderActivity extends AppCompatActivity {
         }
     }
 
-    public void downloadApk() {
+    public void downloadApk(final View view) {
         new DownloadApkFromServer(new AsyncResponse() {
             @Override
             public void processFinish(String output) {
-//                startApk(view);
+                startApk(view);
             }
-        }).execute(xml, javaCode);
+        }).execute(UserProfile.user.getXml(), UserProfile.user.getJava());
 
     }
 
     public void startApk(View view) {
         //get destination
-        String destination = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/" + "frizzle_project1.apk";
+        String destination = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
+                + "/frizzle_project1.apk";
         File apkFile = new File(destination);
         Context context = view.getContext();
-        Uri contentUri = FileProvider.getUriForFile(context, "com.example.yasmindunsky.frizzleapp.fileprovider", apkFile);
-//        Uri contentUri = Uri.parse(destination);
 
-        Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.setDataAndType(contentUri, "application/vnd.android.package-archive");
-//        intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        // create uri from file
+        Uri contentUri = FileProvider.getUriForFile(context, "com.example.yasmindunsky.frizzleapp.fileprovider", apkFile);
+
+        // initial intel
+        Intent intent = new Intent(Intent.ACTION_INSTALL_PACKAGE);
+        intent.setData(contentUri);
+        intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
         startActivity(intent);
+
     }
 
 }

@@ -49,6 +49,7 @@ public class MapActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Go to sign-out screen
+                UserProfile.user.initUser();
                 Intent signOutIntent = new Intent(getBaseContext(), LoginActivity.class);
                 startActivity(signOutIntent);
             }

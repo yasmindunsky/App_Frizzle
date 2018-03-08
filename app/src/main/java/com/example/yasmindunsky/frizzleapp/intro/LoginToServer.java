@@ -37,7 +37,12 @@ class LoginToServer extends AsyncTask<String, Void, String> {
 
             // if login was successful, get user's data
             if (response.equals("Authentication succeeded")) {
-                new GetPositionFromServer().execute(username);
+                new GetPositionFromServer(new AsyncResponse() {
+                    @Override
+                    public void processFinish(String output) {
+
+                    }
+                }).execute(username);
             }
 
             return response;

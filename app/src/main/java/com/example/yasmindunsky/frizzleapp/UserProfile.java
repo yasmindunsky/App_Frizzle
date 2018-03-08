@@ -24,6 +24,22 @@ public class UserProfile {
 
     public Map<Integer, UserCreatedView> views = new HashMap<>();
 
+    public static UserProfile user = new UserProfile();
+
+    public void initUser(){
+        username = "";
+        nickName = "";
+
+        currentLessonID = 1;
+        topLessonID = 1;
+        currentCourseID = 1;
+        topCourseID = 1;
+
+        xml = "";
+        java = "";
+        views = new HashMap<>();
+    }
+
     public Map<Integer, UserCreatedView> getViews() {
         return views;
     }
@@ -31,9 +47,6 @@ public class UserProfile {
     public void setViews(Map<Integer, UserCreatedView> views) {
         this.views = views;
     }
-
-
-    public static UserProfile user = new UserProfile();
 
     private UserProfile() {
     }

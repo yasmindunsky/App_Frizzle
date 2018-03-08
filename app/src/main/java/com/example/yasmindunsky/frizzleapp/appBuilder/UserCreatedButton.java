@@ -8,6 +8,7 @@ import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -52,7 +53,7 @@ public class UserCreatedButton extends UserCreatedView {
 
         this.thisView = new Button(new ContextThemeWrapper(context, buttonStyle), null, buttonStyle);
         thisView.setText(properties.get("android:text"));
-        thisView.setId(Integer.parseInt(properties.get("android:id")));
+//        thisView.setId(Integer.parseInt(properties.get("android:id")));
 
         String textColorHex = properties.get("android:textColor");
         thisView.setTextColor(Color.parseColor(textColorHex));
@@ -70,7 +71,8 @@ public class UserCreatedButton extends UserCreatedView {
         GridLayout.LayoutParams layoutParams = new GridLayout.LayoutParams(GridLayout.spec(row),
                 GridLayout.spec(column));
         layoutParams.width = (int) context.getResources().getDimension(R.dimen.user_created_button_width);
-        int margin = Integer.parseInt(properties.get("android:layout_margin"));
+        String marginString = properties.get("android:layout_margin");
+        int margin = dpStringToPixel(marginString);
         layoutParams.setMargins(margin,margin,margin,margin);
         thisView.setLayoutParams(layoutParams);
 
@@ -79,6 +81,13 @@ public class UserCreatedButton extends UserCreatedView {
         thisView.setTag(R.id.usersViewId, index);
         thisView.setTag(R.id.usersViewRow, row);
         thisView.setTag(R.id.usersViewCol, column);
+
+        this.properties = properties;
+    }
+
+    private int dpStringToPixel(String dp) {
+        dp = dp.replaceAll("[^\\d.]", "");
+        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,  Integer.parseInt(dp), context.getResources().getDisplayMetrics());
     }
 
     public UserCreatedButton(Context context, int nextViewIndex, int numOfButtons) {
@@ -285,7 +294,7 @@ public class UserCreatedButton extends UserCreatedView {
         public void onFocusChange(View v, boolean hasFocus) {
             if (!hasFocus) {
                 String onclickFuncName = String.valueOf(((EditText)v).getText());
-                properties.put("android:onclick", onclickFuncName);
+                properties.put("android:onClick", onclickFuncName);
             }
         }
     };

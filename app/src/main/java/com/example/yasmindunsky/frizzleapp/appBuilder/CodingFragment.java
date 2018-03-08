@@ -1,7 +1,6 @@
 package com.example.yasmindunsky.frizzleapp.appBuilder;
 
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
@@ -14,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 
 import com.example.yasmindunsky.frizzleapp.R;
+import com.example.yasmindunsky.frizzleapp.UserProfile;
 
 import java.util.Arrays;
 import java.util.List;
@@ -25,6 +25,7 @@ import java.util.List;
 public class CodingFragment extends Fragment {
 
     EditText editText;
+    Boolean updateCodeFromUserProfile = true;
 
     public CodingFragment() {
         // Required empty public constructor
@@ -38,10 +39,15 @@ public class CodingFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_coding, container, false);
 
-        EditText codeEditor = view.findViewById(R.id.code);
+        final EditText codeEditor = view.findViewById(R.id.code);
+
+        if(updateCodeFromUserProfile){
+            codeEditor.setText(UserProfile.user.getJava());
+            updateCodeFromUserProfile = false;
+        }
 
         codeEditor.addTextChangedListener(new TextWatcher() {
-            final List<String> savedWords = Arrays.asList("public", "void", "Button", "TextView");
+            final List<String> savedWords = Arrays.asList("Button", "TextView");
             final List<String> importantCommands = Arrays.asList("findViewById", "setText");
 
             // for quotation mark search
@@ -56,11 +62,13 @@ public class CodingFragment extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+                currentPosition = count;
             }
 
 
             @Override
             public void afterTextChanged(Editable s) {
+
                 // mark saved words such as 'public', 'return', 'Button'
                 markSavedWords(s);
 
@@ -68,31 +76,31 @@ public class CodingFragment extends Fragment {
                 markCommands(s);
 
                 // mark any String in quotes
-                markQuotationMarks(s);
+//                markQuotationMarks(s);
             }
 
+
             private void markSavedWords(Editable s) {
+
                 for (String word : savedWords) {
-                    int index = s.toString().indexOf(word, startPosition);
+                    int index = s.toString().indexOf(word);
 
-                    if (index >= 0) {
-                        s.setSpan(new ForegroundColorSpan(Color.BLUE), index, index + word.length(),
+                    while (index >= 0) {
+                        s.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.frizzle_green)), index, index + word.length(),
                                 Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-
-                        startPosition = index + word.length();
+                        index = s.toString().indexOf(word, index + 1);
                     }
                 }
             }
 
             private void markCommands(Editable s) {
                 for (String word : importantCommands) {
-                    int index = s.toString().indexOf(word, startPosition);
+                    int index = s.toString().indexOf(word);
 
-                    if (index >= 0) {
-                        s.setSpan(new ForegroundColorSpan(Color.RED), index, index + word.length(),
+                    while (index >= 0) {
+                        s.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.frizzle_blue)), index, index + word.length(),
                                 Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-
-                        startPosition = index + word.length();
+                        index = s.toString().indexOf(word, index + 1);
                     }
                 }
             }
@@ -103,14 +111,14 @@ public class CodingFragment extends Fragment {
                 if (firstQuotationMark >= 0) {
                     secondQuotationMark = (s.toString()).indexOf("\"", firstQuotationMark + 1);
 
-                    s.setSpan(new ForegroundColorSpan(Color.GREEN), firstQuotationMark, firstQuotationMark + currentPosition + 1,
+                    s.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.frizzle_orange)), firstQuotationMark, firstQuotationMark + currentPosition + 1,
                             Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 
                     currentPosition++;
                 }
 
                 if (secondQuotationMark > 0) {
-                    s.setSpan(new ForegroundColorSpan(Color.GREEN), firstQuotationMark, secondQuotationMark + 1,
+                    s.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.frizzle_orange)), firstQuotationMark, secondQuotationMark + 1,
                             Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 
                     startPosition = secondQuotationMark + 1;

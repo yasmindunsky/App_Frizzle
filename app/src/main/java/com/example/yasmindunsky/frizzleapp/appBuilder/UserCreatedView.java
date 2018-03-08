@@ -42,9 +42,11 @@ public abstract class UserCreatedView {
         properties.put("android:textColor", properties.get("android:textColor"));
         try {
             xmlSerializer.startTag("", name);
-            xmlSerializer.attribute("", "android:id", properties.get("@+id/" + properties.get("android:id")));
+            xmlSerializer.attribute("", "android:id", "@+id/" + properties.get("android:id"));
             for (String key: properties.keySet()) {
-                xmlSerializer.attribute("", key, properties.get(key));
+                if (!key.equals("android:id")) {
+                    xmlSerializer.attribute("", key, properties.get(key));
+                }
             }
             xmlSerializer.endTag("", name);
         } catch (IOException e) {

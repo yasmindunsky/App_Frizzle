@@ -15,6 +15,7 @@ import com.example.yasmindunsky.frizzleapp.AsyncResponse;
 import com.example.yasmindunsky.frizzleapp.MapActivity;
 import com.example.yasmindunsky.frizzleapp.R;
 import com.example.yasmindunsky.frizzleapp.Support;
+import com.example.yasmindunsky.frizzleapp.UpdatePositionInServer;
 import com.example.yasmindunsky.frizzleapp.UserProfile;
 
 
@@ -87,7 +88,15 @@ public class RegisterFragment extends Fragment {
         return true;
     }
 
-    private void registerToServer(String password, final String email, final String nickName, final View view) {
+    private void registerToServer(String password, final String email, String nickName, final View view) {
+        final String newNickName;
+
+        if(nickName.equals("")) {
+            newNickName = email;
+        } else {
+            newNickName = nickName;
+        }
+
         new RegisterToServer(new AsyncResponse() {
             @Override
             public void processFinish(String output) {
@@ -97,7 +106,10 @@ public class RegisterFragment extends Fragment {
 
                     // after successful registration, save username and nickname of current user
                     UserProfile.user.setUsername(email);
-                    UserProfile.user.setNickName(nickName);
+                    UserProfile.user.setNickName(newNickName);
+
+                    // initial position of user in UserProfile and server
+                    initPosition();
 
                     // go to map
                     Intent mapIntent = new Intent(view.getContext(), MapActivity.class);
@@ -109,6 +121,20 @@ public class RegisterFragment extends Fragment {
                     messagePlaceholder.setText(output);
                 }
             }
-        }).execute(password, email, nickName);
+        }).execute(password, email, newNickName);
     }
+
+    private void initPosition(){
+        UserProfile.user.setCurrentLessonID(1);
+        UserProfile.user.setTopLessonID(1);
+        UserProfile.user.setCurrentCourseID(1);
+        UserProfile.user.setTopCourseID(1);
+
+        new UpdatePositionInServer().execute();
+    }
+
+//    private void initProject(){
+//        UserProfile.user.setJava("");
+//        UserProfile.user.set
+//    }
 }
