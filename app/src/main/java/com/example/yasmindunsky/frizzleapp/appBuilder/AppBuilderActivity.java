@@ -24,6 +24,7 @@ import android.widget.GridLayout;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -49,8 +50,10 @@ public class AppBuilderActivity extends AppCompatActivity {
     Fragment graphicEditFragment;
     Fragment codingFragment;
     String currentTask;
+    private ProgressBar progressBar = null;
 
-//    View globalView;
+
+    //    View globalView;
     android.support.v7.widget.Toolbar toolbar;
 
     @Override
@@ -60,6 +63,8 @@ public class AppBuilderActivity extends AppCompatActivity {
 
         graphicEditFragment = new GraphicEditFragment();
         codingFragment = new CodingFragment();
+
+        progressBar = (ProgressBar)findViewById(R.id.progressBar);
 
         // Set Toolbar home button.
         toolbar =
@@ -241,11 +246,13 @@ public class AppBuilderActivity extends AppCompatActivity {
 
     public void onPlay(final View view) {
         updateUserProjectAttributes();
+        progressBar.setVisibility(View.VISIBLE);
         // send java and xml to server for build
         // if succeeded ask user for writing permission and download the apk
          new BuildApkInServer(new AsyncResponse() {
             @Override
             public void processFinish(String output) {
+                progressBar.setVisibility(View.GONE);
                 if (output.contains("BUILD SUCCESSFUL")) {
                     getWritePermission(view);
                 }
