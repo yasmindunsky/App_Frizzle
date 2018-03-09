@@ -53,37 +53,39 @@ public class GetProjectFromServer extends AsyncTask<String, Void, String> {
 
 
     protected void onPostExecute(String result) {
-        try {
-            String attributeString = result;
+        if(!result.equals("")) {
+            try {
+                String attributeString = result;
 
-            switch (attribute) {
-                case "views":
-                    // read viewsString from JSON
-                    JSONObject reader = new JSONObject(result);
-                    attributeString = String.valueOf(reader.get(attribute));
+                switch (attribute) {
+                    case "views":
+                        // read viewsString from JSON
+                        JSONObject reader = new JSONObject(result);
+                        attributeString = String.valueOf(reader.get(attribute));
 
-                    // parse viewString to view element
-                    GraphicEditFragment graphicEditFragment = new GraphicEditFragment();
-                    Map<Integer, UserCreatedView> views = graphicEditFragment.jsonToViews(mContext, attributeString);
+                        // parse viewString to view element
+                        GraphicEditFragment graphicEditFragment = new GraphicEditFragment();
+                        Map<Integer, UserCreatedView> views = graphicEditFragment.jsonToViews(mContext, attributeString);
 
-                    // save the view to the UserProfile object
-                    UserProfile.user.setViews(views);
-                    break;
-                case "xml":
-                    UserProfile.user.setXml(attributeString);
-                    break;
-                case "code":
-                    // trim codeString to the user's code
-                    int start = mContext.getApplicationContext().getResources().getString(R.string.codeStart).length();
-                    int end = attributeString.length() - mContext.getApplicationContext().getResources().getString(R.string.codeEnd).length();
-                    attributeString = attributeString.substring(start, end);
+                        // save the view to the UserProfile object
+                        UserProfile.user.setViews(views);
+                        break;
+                    case "xml":
+                        UserProfile.user.setXml(attributeString);
+                        break;
+                    case "code":
+                        // trim codeString to the user's code
+                        int start = mContext.getApplicationContext().getResources().getString(R.string.codeStart).length();
+                        int end = attributeString.length() - mContext.getApplicationContext().getResources().getString(R.string.codeEnd).length();
+                        attributeString = attributeString.substring(start, end);
 
-                    // save code to user profile
-                    UserProfile.user.setJava(attributeString);
-                    break;
+                        // save code to user profile
+                        UserProfile.user.setJava(attributeString);
+                        break;
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
             }
-        } catch (JSONException e) {
-            e.printStackTrace();
         }
     }
 
