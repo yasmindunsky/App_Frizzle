@@ -137,7 +137,7 @@ public class UserCreatedButton extends UserCreatedView {
         // inflate the layout of the popup window
         LayoutInflater inflater = (LayoutInflater)
                 context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View popupView = inflater.inflate(layout, null);
+        final View popupView = inflater.inflate(layout, null);
 
         // create the popup window
         int width = GridLayout.LayoutParams.WRAP_CONTENT;
@@ -155,8 +155,7 @@ public class UserCreatedButton extends UserCreatedView {
                 popupWindow.dismiss();
             }
         });
-
-
+        
         // ID
         EditText viewId = popupView.findViewById(R.id.viewIdValue);
         viewId.setOnFocusChangeListener(finishedEditingId);
@@ -168,7 +167,7 @@ public class UserCreatedButton extends UserCreatedView {
         viewText.setText(properties.get("android:text"));
 
         // FONT
-        Spinner fontSpinner = (Spinner) popupView.findViewById(R.id.viewFontValue);
+        Spinner fontSpinner = popupView.findViewById(R.id.viewFontValue);
         // Create an ArrayAdapter using the string array and a default spinner layout.
         ArrayAdapter<CharSequence> fontAdapter = ArrayAdapter.createFromResource(context,
                 R.array.fonts, android.R.layout.simple_spinner_item);
@@ -185,7 +184,7 @@ public class UserCreatedButton extends UserCreatedView {
         chooseFontColor.setOnClickListener(new View.OnClickListener() {
         @Override
             public void onClick(View v) {
-                ColorPicker colorPicker = new ColorPicker((Activity)context);
+                ColorPicker colorPicker = new ColorPicker((Activity)popupView.getContext());
                 colorPicker.setRoundColorButton(true);
                 colorPicker.setColors(Support.colorsHexList);
                 colorPicker.show();

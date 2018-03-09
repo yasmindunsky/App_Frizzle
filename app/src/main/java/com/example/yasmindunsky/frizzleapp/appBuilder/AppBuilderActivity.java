@@ -24,6 +24,7 @@ import android.widget.GridLayout;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -49,8 +50,10 @@ public class AppBuilderActivity extends AppCompatActivity {
     Fragment graphicEditFragment;
     Fragment codingFragment;
     String currentTask;
+    private ProgressBar progressBar = null;
+    private ExpandableLayout errorExpandableLayout = null;
 
-//    View globalView;
+    //    View globalView;
     android.support.v7.widget.Toolbar toolbar;
 
     @Override
@@ -60,6 +63,8 @@ public class AppBuilderActivity extends AppCompatActivity {
 
         graphicEditFragment = new GraphicEditFragment();
         codingFragment = new CodingFragment();
+
+        progressBar = (ProgressBar)findViewById(R.id.progressBar);
 
         // Set Toolbar home button.
         toolbar =
@@ -85,7 +90,7 @@ public class AppBuilderActivity extends AppCompatActivity {
 
         // Error ExpandableLayout
         ImageButton clickToExpandError = findViewById(R.id.clickToExpandError);
-        final ExpandableLayout errorExpandableLayout = findViewById(R.id.errorExpandableLayout);
+        errorExpandableLayout = findViewById(R.id.errorExpandableLayout);
         clickToExpandError.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -241,13 +246,16 @@ public class AppBuilderActivity extends AppCompatActivity {
 
     public void onPlay(final View view) {
         updateUserProjectAttributes();
+        progressBar.setVisibility(View.VISIBLE);
         // send java and xml to server for build
         // if succeeded ask user for writing permission and download the apk
          new BuildApkInServer(new AsyncResponse() {
             @Override
             public void processFinish(String output) {
+                progressBar.setVisibility(View.GONE);
                 if (output.contains("BUILD SUCCESSFUL")) {
                     getWritePermission(view);
+                    hideError();
                 }
                 else {
                     // Build didn't work.
@@ -256,6 +264,7 @@ public class AppBuilderActivity extends AppCompatActivity {
             }
         }).execute(getApplicationContext().getResources().getString(R.string.codeStart), getApplicationContext().getResources().getString(R.string.codeEnd));
     }
+
 
     private void updateUserProjectAttributes(){
         // update java code String
@@ -271,11 +280,17 @@ public class AppBuilderActivity extends AppCompatActivity {
         UserProfile.user.setViews(views);
     }
 
+    private void hideError() {
+        LinearLayout errorLayout = findViewById(R.id.errorDisplay);
+        errorLayout.setVisibility(View.GONE);
+    }
+
     private void displayError(String output) {
         TextView error = findViewById(R.id.error);
         error.setText(output);
         LinearLayout errorLayout = findViewById(R.id.errorDisplay);
         errorLayout.setVisibility(View.VISIBLE);
+        errorExpandableLayout.expand();
     }
 
     public void goToLesson(View view) {
