@@ -32,20 +32,21 @@
 
             <EditText
                 android:id="@+id/code"
+                style="@style/CodeText"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="200dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="64dp"
                 android:inputType="textMultiLine"
                 android:singleLine="false"
-                android:text="\n\n\n}"
-                style="@style/CodeText"
+                android:text="}"
                 android:textDirection="ltr"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.104"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                />
 
         </android.support.constraint.ConstraintLayout>
     </ScrollView>

@@ -129,6 +129,7 @@ public class CodingFragment extends Fragment {
         });
 
         editText = (EditText) view.findViewById(R.id.code);
+        editText.setText("}");
         return view;
     }
 
