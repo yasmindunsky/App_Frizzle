@@ -1,0 +1,80 @@
+<lesson>
+    <slide>
+        <text name="text">"נרצה שבכל פעם שלוחצים על הכפתור יוצג מספר אקראי בין 0 ל-100."</text>
+        <image name="image">"slide_7_1"</image>
+    </slide>
+
+    <slide>
+        <text name="text">"לשם כך נשתמש בפקודה בשם Random, שתיתן לנו מספר אקראי."</text>
+        <image name="image">"slide_7_2"</image>
+    </slide>
+
+    <slide>
+        <text name="text">"אם נרצה שיוגרל מספר בטווח אחר, נוכל לכתוב מספר אחר במקום 100."</text>
+        <image name="image">"slide_7_3"</image>
+    </slide>
+
+
+    <exercise>
+        <type name="type">"SingleResponse"</type>
+        <question name="question">"הכותרת של האפליקציה תהיה View מסוג: "</question>
+        <image name="image">"exercise_7_1"</image>
+        <content name="content"></content>
+        <possibilities name = "possibilities">
+            <possibility name = "possibility">"TextView"</possibility>
+            <possibility name = "possibility">"ImageView"</possibility>
+        </possibilities>
+        <answers name="answers">
+            <answer name="answer">"TextView"</answer>
+        </answers>
+    </exercise>
+
+    <exercise>
+        <type name="type">"SingleResponse"</type>
+        <question name="question">"Random r = new Random();
+            int randomNumber = r.nextInt(100);
+            קטע הקוד הזה יגריל מספר בין 0 ל-100"</question>
+        <image name="image">"exercise_7_3"</image>
+        <content name="content"></content>
+        <possibilities name = "possibilities">
+            <possibility name = "possibility">"נכון"</possibility>
+            <possibility name = "possibility">"לא נכון"</possibility>
+        </possibilities>
+        <answers name="answers">
+            <answer name="answer">"נכון"</answer>
+        </answers>
+    </exercise>
+
+    <exercise>
+        <type name="type">"FreeText"</type>
+        <question name="question">""int randomNumber = r.nextInt(   );
+            מה נכתוב בסוגריים כדי שיוגרל מספר בין 0 ל-5?""</question>
+        <image name="image">"exercise_7_2"</image>
+        <content name="content"></content>
+        <possibilities name = "possibilities"></possibilities>
+        <answers name="answers">
+            <answer name="answer">"5"</answer>
+        </answers>
+    </exercise>
+
+    <exercise>
+        <type name="type">"SingleResponse"</type>
+        <question name="question">"Random r = new Random();
+            int randomNumber = r.nextInt(10);
+            נוכל להגריל כאן את המספר 25"</question>
+        <image name="image">"exercise_7_3"</image>
+        <content name="content"></content>
+        <possibilities name = "possibilities">
+            <possibility name = "possibility">"נכון"</possibility>
+            <possibility name = "possibility">"לא נכון"</possibility>
+        </possibilities>
+        <answers name="answers">
+            <answer name="answer">"לא נכון"</answer>
+        </answers>
+    </exercise>
+
+    <task>
+        <text name = "text"> "כתבי את הקוד ליצירת מספר אקראי." </text>
+    </task>
+
+</lesson>

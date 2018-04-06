@@ -1,0 +1,69 @@
+<lesson>
+    <slide>
+        <text name="text">"יצרנו את המספר האקראי, עכשיו נרצה שהוא יופיע באלמנט הטקסט שיצרנו."</text>
+        <image name="image">"slide_7_1"</image>
+    </slide>
+
+    <slide>
+        <text name="text">"לשם כך נצטרך לתת לאלמנט הטקסט שם במסך הקוד."</text>
+        <image name="image">"slide_7_2"</image>
+    </slide>
+
+    <slide>
+        <text name="text">"ניזכר שעושים זאת באמצעות פקודת ה-Java שנקראית findViewById."</text>
+        <image name="image">"slide_7_3"</image>
+    </slide>
+
+    <slide>
+        <text name="text">"ניזכר כי כדי לשנות טקסט נשתמש בפקודה setText ונקבע מה הטקסט החדש שיופיע."</text>
+        <image name="image">"slide_7_3"</image>
+    </slide>
+
+    <slide>
+        <text name="text">"במקרה זה נרצה שהטקסט החדש יהיה המשתנה האקראי שיצרנו randomNumber."</text>
+        <image name="image">"slide_7_3"</image>
+    </slide>
+
+
+    <exercise>
+        <type name="type">"SingleResponse"</type>
+        <question name="question">"אחרי שורת הקוד:\\u000AButton myButton = (Button) findViewById(R.id.button1);\\u000Aאיזה כפתור יהיה קרוי בקוד myButton?
+            "</question>
+        <image name="image">"exercise_4_1"</image>
+        <content name="content"></content>
+        <possibilities name = "possibilities">
+            <possibility name = "possibility">"הירוק"</possibility>
+            <possibility name = "possibility">"הכחול"</possibility>
+        </possibilities>
+        <answers name="answers">
+            <answer name="answer">"הכחול"</answer>
+        </answers>
+    </exercise>
+
+    <exercise>
+        <type name="type">"FreeText"</type>
+        <question name="question">"אחרי שורת הקוד:\\u000AButton best = (Button)findViewById\\u000A    (R.id.bestButtonEver);\\u000Aאיך יקרא הכפתור בקוד?"</question>
+        <image name="image">"exercise_4_3"</image>
+        <content name="content"></content>
+        <possibilities name = "possibilities"></possibilities>
+        <answers name="answers">
+            <answer name="answer">"best"</answer>
+        </answers>
+    </exercise>
+
+    <exercise>
+        <type name="type">"FreeText"</type>
+        <question name="question">"אחרי שורת הקוד:\\u000AButton like = (Button) findViewById(R.id. likeButton);\\u000Aאיך יקרא הכפתור בקוד?"</question>
+        <image name="image">"exercise_4_4"</image>
+        <content name="content"></content>
+        <possibilities name = "possibilities"></possibilities>
+        <answers name="answers">
+            <answer name="answer">"like"</answer>
+        </answers>
+    </exercise>
+
+    <task>
+        <text name = "text"> "הגדירי שהמספר הרנדומלי יופיע על רכיב הטקסט." </text>
+    </task>
+
+</lesson>

@@ -30,7 +30,7 @@ public class MapActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ConstraintLayout mainLayout = (ConstraintLayout ) this.getLayoutInflater().inflate(R.layout.activity_map, null);
+        ConstraintLayout mainLayout = (ConstraintLayout ) this.getLayoutInflater().inflate(R.layout.activity_map_minimal, null);
         setContentView(mainLayout);
 
         // TODO change
@@ -39,8 +39,10 @@ public class MapActivity extends AppCompatActivity {
         currentLessonId = UserProfile.user.getCurrentLessonID();
         topLessonId = UserProfile.user.getTopLessonID();
 
-//        currentLessonId = 3;
-//        topLessonId = 7 ;
+        if (topLessonId < 7){
+            currentLessonId = 6;
+            topLessonId = 7 ;
+        }
 
         // Set Toolbar sign-out button.
         android.support.v7.widget.Toolbar toolbar =
@@ -78,7 +80,7 @@ public class MapActivity extends AppCompatActivity {
 
         Button nextButton = findViewById(R.id.lesson1);
 
-        int numOfLessons = 7;
+        int numOfLessons = 13;
         for (int i = 2; i <= numOfLessons; i++) {
             Button currentButton = nextButton;
 
@@ -87,7 +89,7 @@ public class MapActivity extends AppCompatActivity {
             nextButton = findViewById(identifier);
 
             // Draw line to next button.
-            drawLessonsLine(canvas, currentButton, nextButton, colors, i);
+//            drawLessonsLine(canvas, currentButton, nextButton, colors, i);
 
             // Draw current button.
             drawLessonCircle(canvas, currentButton, betweenColors, i);
@@ -99,8 +101,9 @@ public class MapActivity extends AppCompatActivity {
     private void drawLessonsLine(Canvas canvas, Button currentButton, Button nextButton, String[] colors, int i) {
         Paint paint = new Paint();
 
+        int length = colors.length;
         if (i <= topLessonId) {
-            int lineColor = getResources().getIdentifier(colors[i-2], "color", this.getPackageName());
+            int lineColor = getResources().getIdentifier(colors[(i-2)%length], "color", this.getPackageName());
             paint.setColor(getResources().getColor(lineColor));
         }
         else {
@@ -120,14 +123,20 @@ public class MapActivity extends AppCompatActivity {
 
     private void drawLessonCircle(Canvas canvas, Button button, String[] betweenColors, int i) {
         Paint paint = new Paint();
+        int length = betweenColors.length;
         if (i <= topLessonId + 1) {
-            paint.setColor(getResources().getColor(getResources().getIdentifier(betweenColors[i-2], "color", this.getPackageName())));        }
+            paint.setColor(getResources().getColor(getResources().getIdentifier(betweenColors[(i-2)%length], "color", this.getPackageName())));        }
         else {
             paint.setColor(getResources().getColor(R.color.unselectedDarkGrey));
         }
 
-        float circleX = button.getX() + (button.getWidth()/2);
-        float circleY = button.getY() + (button.getHeight());
+        int[] location = new int[2];
+        button.getLocationOnScreen(location);
+        float circleX = location[0] + button.getWidth()/2;
+        float circleY = location[1] + button.getHeight()/2;
+
+//        float circleX = button.getX() + (button.getWidth()/2);
+//        float circleY = button.getY() + (button.getHeight());
         int radius = button.getLayoutParams().width / 2;
         canvas.drawCircle(circleX,circleY, radius,paint);
 

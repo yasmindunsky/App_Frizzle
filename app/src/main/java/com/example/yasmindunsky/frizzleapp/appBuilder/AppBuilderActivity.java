@@ -234,7 +234,7 @@ public class AppBuilderActivity extends AppCompatActivity {
 
     private void updateCurrentAndTopPosition() {
         int nextLesson = UserProfile.user.getCurrentLessonID() + 1;
-        if (nextLesson <= 7) {
+        if (nextLesson <= 13) {
             UserProfile.user.setCurrentLessonID(nextLesson);
             if (nextLesson > UserProfile.user.getTopLessonID()) {
                 UserProfile.user.setTopLessonID(nextLesson);

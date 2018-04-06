@@ -11,10 +11,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="bottom"
+            android:background="@drawable/map_bg" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/map_bg"
             android:foregroundGravity="top"
             android:gravity="center"
             android:orientation="vertical">
@@ -44,87 +50,185 @@
                     app:textAllCaps="true" />
             </android.support.v7.widget.Toolbar>
 
-            <Button
-                android:id="@+id/lesson1"
-                style="@style/mapLessonButton"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_marginBottom="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="50dp"
-                android:background="@drawable/map_lesson_circle"
-                android:onClick="goToLesson"
-                android:text="1" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/lesson2"
-                style="@style/mapLessonButton"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_margin="10dp"
-                android:background="@drawable/map_lesson_circle"
-                android:onClick="goToLesson"
-                android:text="2" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginStart="20dp"
+                    android:gravity="center"
+                    android:orientation="vertical">
 
-            <Button
-                android:id="@+id/lesson3"
-                style="@style/mapLessonButton"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_margin="10dp"
-                android:background="@drawable/map_lesson_circle"
-                android:onClick="goToLesson"
-                android:text="3" />
+                    <Button
+                        android:id="@+id/lesson13"
+                        style="@style/mapLessonButton"
+                        android:layout_width="65dp"
+                        android:layout_height="60dp"
+                        android:layout_margin="10dp"
+                        android:onClick="goToLesson"
+                        android:text="13"
+                        android:textAppearance="@style/SlideText"
+                        android:textColor="@android:color/transparent" />
 
-            <Button
-                android:id="@+id/lesson4"
-                style="@style/mapLessonButton"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_margin="10dp"
-                android:background="@drawable/map_lesson_circle"
-                android:onClick="goToLesson"
-                android:text="4" />
+                    <Button
+                        android:id="@+id/lesson12"
+                        style="@style/mapLessonButton"
+                        android:layout_width="65dp"
+                        android:layout_height="60dp"
+                        android:layout_margin="10dp"
+                        android:onClick="goToLesson"
+                        android:text="12"
+                        android:textAppearance="@style/SlideText"
+                        android:textColor="@android:color/transparent" />
 
-            <Button
-                android:id="@+id/lesson5"
-                style="@style/mapLessonButton"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_margin="10dp"
-                android:background="@drawable/map_lesson_circle"
-                android:onClick="goToLesson"
-                android:text="5" />
+                    <Button
+                        android:id="@+id/lesson11"
+                        style="@style/mapLessonButton"
+                        android:layout_width="65dp"
+                        android:layout_height="60dp"
+                        android:layout_margin="10dp"
+                        android:onClick="goToLesson"
+                        android:text="11"
+                        android:textAppearance="@style/SlideText"
+                        android:textColor="@android:color/transparent" />
 
-            <Button
-                android:id="@+id/lesson6"
-                style="@style/mapLessonButton"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_margin="10dp"
-                android:background="@drawable/map_lesson_circle"
-                android:onClick="goToLesson"
-                android:text="6" />
+                    <Button
+                        android:id="@+id/lesson10"
+                        style="@style/mapLessonButton"
+                        android:layout_width="65dp"
+                        android:layout_height="60dp"
+                        android:layout_margin="10dp"
+                        android:onClick="goToLesson"
+                        android:text="10"
+                        android:textAppearance="@style/SlideText"
+                        android:textColor="@android:color/transparent" />
 
-            <Button
-                android:id="@+id/lesson7"
-                style="@style/mapLessonButton"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_margin="10dp"
-                android:background="@drawable/map_lesson_circle"
-                android:onClick="goToLesson"
-                android:text="7" />
+                    <Button
+                        android:id="@+id/lesson9"
+                        style="@style/mapLessonButton"
+                        android:layout_width="65dp"
+                        android:layout_height="60dp"
+                        android:layout_margin="10dp"
+                        android:onClick="goToLesson"
+                        android:text="9"
+                        android:textAppearance="@style/SlideText"
+                        android:textColor="@android:color/transparent" />
+
+                    <Button
+                        android:id="@+id/lesson8"
+                        style="@style/mapLessonButton"
+                        android:layout_width="65dp"
+                        android:layout_height="60dp"
+                        android:layout_margin="10dp"
+                        android:onClick="goToLesson"
+                        android:text="8"
+                        android:textAppearance="@style/SlideText"
+                        android:textColor="@android:color/transparent" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginStart="20dp"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/lesson7"
+                        style="@style/mapLessonButton"
+                        android:layout_width="65dp"
+                        android:layout_height="60dp"
+                        android:layout_margin="10dp"
+                        android:onClick="goToLesson"
+                        android:text="7"
+                        android:textAppearance="@style/GoodJobTitle"
+                        android:textColor="@android:color/transparent" />
+
+                    <Button
+                        android:id="@+id/lesson6"
+                        style="@style/mapLessonButton"
+                        android:layout_width="65dp"
+                        android:layout_height="60dp"
+                        android:layout_margin="10dp"
+                        android:onClick="goToLesson"
+                        android:text="6"
+                        android:textAppearance="@style/GoodJobTitle"
+                        android:textColor="@android:color/transparent" />
+
+                    <Button
+                        android:id="@+id/lesson5"
+                        style="@style/mapLessonButton"
+                        android:layout_width="65dp"
+                        android:layout_height="60dp"
+                        android:layout_margin="10dp"
+                        android:onClick="goToLesson"
+                        android:text="5"
+                        android:textAppearance="@style/GoodJobTitle"
+                        android:textColor="@android:color/transparent" />
+
+                    <Button
+                        android:id="@+id/lesson4"
+                        style="@style/mapLessonButton"
+                        android:layout_width="65dp"
+                        android:layout_height="60dp"
+                        android:layout_margin="10dp"
+                        android:onClick="goToLesson"
+                        android:text="4"
+                        android:textAppearance="@style/GoodJobTitle"
+                        android:textColor="@android:color/transparent" />
+
+                    <Button
+                        android:id="@+id/lesson3"
+                        style="@style/mapLessonButton"
+                        android:layout_width="65dp"
+                        android:layout_height="60dp"
+                        android:layout_margin="10dp"
+                        android:onClick="goToLesson"
+                        android:text="3"
+                        android:textAppearance="@style/GoodJobTitle"
+                        android:textColor="@android:color/transparent" />
+
+                    <Button
+                        android:id="@+id/lesson2"
+                        style="@style/mapLessonButton"
+                        android:layout_width="65dp"
+                        android:layout_height="60dp"
+                        android:layout_margin="10dp"
+                        android:onClick="goToLesson"
+                        android:text="2"
+                        android:textAppearance="@style/GoodJobTitle"
+                        android:textColor="@android:color/transparent" />
+
+                    <Button
+                        android:id="@+id/lesson1"
+                        style="@style/mapLessonButton"
+                        android:layout_width="65dp"
+                        android:layout_height="60dp"
+                        android:onClick="goToLesson"
+                        android:text="1"
+                        android:textAppearance="@style/GoodJobTitle"
+                        android:textColor="@android:color/transparent" />
+                </LinearLayout>
+            </LinearLayout>
 
             <Button
                 android:id="@+id/playground"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="11dp"
-                android:onClick="goToPlayground"
-                android:text="@string/playground"
-                android:visibility="invisible" />
+                android:layout_width="50dp"
+                android:layout_height="48dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_gravity="end"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/tag_build"
+                android:onClick="goToPlayground" />
+
+
         </LinearLayout>
 
     </FrameLayout>
