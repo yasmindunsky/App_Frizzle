@@ -1,28 +1,28 @@
 <lesson>
     <slide>
         <text name="text">"האפליקציה שלנו תהיה מורכבת מ3 אלמנטים: טקסט, כפתור ועוד טקסט."</text>
-        <image name="image">"slide_7_1"</image>
+        <image name="image">"slide_2_2_1"</image>
     </slide>
 
     <slide>
-        <text name="text">"אלמנט הטקסט הראשון יהיה הכותרת של האפליקציה.אלמנט הטקסט הראשון יהיה הכותרת של האפליקציה."</text>
-        <image name="image">"slide_7_2"</image>
+        <text name="text">"אלמנט הטקסט הראשון יהיה הכותרת של האפליקציה."</text>
+        <image name="image">"slide_2_2_2"</image>
     </slide>
 
     <slide>
         <text name="text">"על הכפתור נלחץ כדי להפעיל את החיזוי."</text>
-        <image name="image">"slide_7_3"</image>
+        <image name="image">"slide_2_2_3"</image>
     </slide>
 
     <slide>
         <text name="text">"ואת החיזוי עצמו נציג בטקסט."</text>
-        <image name="image">"slide_7_3"</image>
+        <image name="image">"slide_2_2_4"</image>
     </slide>
 
     <exercise>
         <type name="type">"SingleResponse"</type>
         <question name="question">"הכותרת של האפליקציה תהיה View מסוג: "</question>
-        <image name="image">"exercise_7_1"</image>
+        <image name="image">"exercise_2_1"</image>
         <content name="content"></content>
         <possibilities name = "possibilities">
             <possibility name = "possibility">"TextView"</possibility>
@@ -36,7 +36,7 @@
     <exercise>
         <type name="type">"SingleResponse"</type>
         <question name="question">"נשתמש ב-ID של אלמנט כדי לתת לו שם במסך הקוד"</question>
-        <image name="image">"exercise_7_3"</image>
+        <image name="image">"exercise_4_4"</image>
         <content name="content"></content>
         <possibilities name = "possibilities">
             <possibility name = "possibility">"נכון"</possibility>
@@ -50,7 +50,7 @@
     <exercise>
         <type name="type">"SingleResponse"</type>
         <question name="question">"כדאי לתת לאלמנטים ID בעל משמעות"</question>
-        <image name="image">"exercise_7_3"</image>
+        <image name="image">"exercise_2_6"</image>
         <content name="content"></content>
         <possibilities name = "possibilities">
             <possibility name = "possibility">"נכון"</possibility>

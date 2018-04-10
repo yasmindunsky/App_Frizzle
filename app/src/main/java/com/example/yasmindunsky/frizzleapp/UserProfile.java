@@ -56,10 +56,12 @@ public class UserProfile {
     }
 
     public void setCurrentCourseID(int currentCourseID) {
-        this.currentCourseID = currentCourseID;
-        xml = "";
-        java = "";
-        views = new HashMap<>();
+        if (currentCourseID > this.currentCourseID) {
+            this.currentCourseID = currentCourseID;
+            xml = "";
+            java = "";
+            views = new HashMap<>();
+        }
     }
 
     public int getTopCourseID() {
@@ -100,9 +102,7 @@ public class UserProfile {
 
     public void setTopLessonID(int topLessonID) {
         this.topLessonID = topLessonID;
-        if (topLessonID == 8) {
-            this.setCurrentCourseID(2);
-        }
+
     }
 
     public String getXml() {

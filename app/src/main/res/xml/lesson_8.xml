@@ -1,17 +1,17 @@
 <lesson>
     <slide>
         <text name="text">"בקורס הזה נבנה אפליקציית מגדת עתידות."</text>
-        <image name="image">"slide_7_1"</image>
+        <image name="image">"slide_2_1_1"</image>
     </slide>
 
     <slide>
-        <text name="text">"נשאל את האפליקציה שאלות בסגנון 'מה הסיכויים ש..' והיא תענה לנו באחוזים."</text>
-        <image name="image">"slide_7_2"</image>
+        <text name="text">"נשאל את האפליקציה שאלות בסגנון \\u000Aמה הסיכויים ש..\\u000A והיא תענה לנו באחוזים."</text>
+        <image name="image">"slide_2_1_2"</image>
     </slide>
 
     <slide>
         <text name="text">"נעשה זאת באמצעות מה שלמדנו בקורס הקודם - הוספת אלמנטים, הגדרת פונקציה ועוד."</text>
-        <image name="image">"slide_7_3"</image>
+        <image name="image">"slide_2_1_3"</image>
     </slide>
 
     <exercise>
@@ -27,48 +27,21 @@
             <answer name="answer">"לא נכון"</answer>
         </answers>
     </exercise>
-    <exercise>
-        <type name="type">"FreeText"</type>
-        <question name="question">"כמה פונקציות נצטרך באפליקציה אם יש לנו 6 שאלות טריוויה?"</question>
-        <image name="image">"exercise_7_2"</image>
-        <content name="content"></content>
-        <possibilities name = "possibilities"></possibilities>
-        <answers name="answers">
-            <answer name="answer">"6"</answer>
-        </answers>
-    </exercise>
 
     <exercise>
         <type name="type">"SingleResponse"</type>
-        <question name="question">"כדאי לתת לפונקציות שמות של חברים ומאכלים."</question>
-        <image name="image">"exercise_7_3"</image>
+        <question name="question">"נשתמש במסך הממשק הגרפי כדי להחליט איך תראה האפליקציה"</question>
+        <image name="image">"exercise_1_4"</image>
         <content name="content"></content>
         <possibilities name = "possibilities">
             <possibility name = "possibility">"נכון"</possibility>
             <possibility name = "possibility">"לא נכון"</possibility>
         </possibilities>
         <answers name="answers">
-            <answer name="answer">"לא נכון"</answer>
+            <answer name="answer">"נכון"</answer>
         </answers>
     </exercise>
 
-
-    <exercise>
-        <type name="type">"MultipleResponse"</type>
-        <question name="question">"ה-ID של הכפתור שלי הוא answerButton2, איזה שמות נוכל לתת לפונקציה שתתאים לכפתור כך שנוכל לזהות את הקשר ביניהם?"</question>
-        <image name="image">"exercise_7_4"</image>
-        <content name="content"></content>
-        <possibilities name = "possibilities">
-            <possibility name= "possibility">"answerFunction3"</possibility>
-            <possibility name= "possibility">"triviaAnswer2"</possibility>
-            <possibility name= "possibility">"bestFunction"</possibility>
-            <possibility name= "possibility">"answerFunction2"</possibility>
-        </possibilities>
-        <answers name="answers">
-            <answer name="answer">"answerFunction2"</answer>
-            <answer name="answer">"triviaAnswer2"</answer>
-        </answers>
-    </exercise>
 
     <task>
         <text name = "text"> "ניזכר במסך בניית האפליקציה ונעבור לשיעור הבא" </text>

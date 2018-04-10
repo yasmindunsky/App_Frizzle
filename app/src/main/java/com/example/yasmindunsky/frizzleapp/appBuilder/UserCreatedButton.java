@@ -248,6 +248,7 @@ public class UserCreatedButton extends UserCreatedView {
             EditText onClickFuncName = popupView.findViewById(R.id.viewOnClickValue);
             onClickFuncName.setOnFocusChangeListener(finishedOnClick);
             onClickFuncName.setHint("שם הפונקציה");
+            onClickFuncName.setText(properties.get("android:onClick"));
         }
 
         //DELETE

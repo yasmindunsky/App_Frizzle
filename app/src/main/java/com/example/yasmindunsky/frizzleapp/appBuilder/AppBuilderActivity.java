@@ -36,6 +36,7 @@ import com.example.yasmindunsky.frizzleapp.UpdatePositionInServer;
 import com.example.yasmindunsky.frizzleapp.UserProfile;
 import com.example.yasmindunsky.frizzleapp.lesson.LessonActivity;
 import com.example.yasmindunsky.frizzleapp.lesson.Task;
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 import net.cachapa.expandablelayout.ExpandableLayout;
 
@@ -53,12 +54,16 @@ public class AppBuilderActivity extends AppCompatActivity {
     String currentTask;
     private ProgressBar progressBar = null;
     private ExpandableLayout errorExpandableLayout = null;
+    private FirebaseAnalytics mFirebaseAnalytics;
 
     //    View globalView;
     android.support.v7.widget.Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // Obtain the FirebaseAnalytics instance.
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_app_builder);
 
@@ -243,6 +248,9 @@ public class AppBuilderActivity extends AppCompatActivity {
                 new UpdatePositionInServer().execute();
             }
         }
+        Bundle bundle = new Bundle();
+        bundle.putString("LESSON", String.valueOf(nextLesson));
+        mFirebaseAnalytics.logEvent("LESSON_UP", bundle);
     }
 
     public void onPlay(final View view) {
@@ -264,6 +272,8 @@ public class AppBuilderActivity extends AppCompatActivity {
                 }
             }
         }).execute(getApplicationContext().getResources().getString(R.string.codeStart), getApplicationContext().getResources().getString(R.string.codeEnd));
+        Bundle bundle = new Bundle();
+        mFirebaseAnalytics.logEvent("RUN_APP", bundle);
     }
 
 

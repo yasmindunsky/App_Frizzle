@@ -39,10 +39,16 @@ public class MapActivity extends AppCompatActivity {
         currentLessonId = UserProfile.user.getCurrentLessonID();
         topLessonId = UserProfile.user.getTopLessonID();
 
-        if (topLessonId < 7){
-            currentLessonId = 6;
-            topLessonId = 7 ;
-        }
+//        if (topLessonId < 9){
+//            UserProfile.user.setCurrentLessonID(9);
+//            currentLessonId = 9;
+//            UserProfile.user.setTopLessonID(9);
+//            topLessonId = 9;
+//            UserProfile.user.setCurrentCourseID(2);
+//            currentCourseId = 2;
+//            UserProfile.user.setTopCourseID(2);
+//            topCourseId = 2;
+//        }
 
         // Set Toolbar sign-out button.
         android.support.v7.widget.Toolbar toolbar =
@@ -122,7 +128,7 @@ public class MapActivity extends AppCompatActivity {
     }
 
     private void drawLessonCircle(Canvas canvas, Button button, String[] betweenColors, int i) {
-        Paint paint = new Paint();
+            Paint paint = new Paint();
         int length = betweenColors.length;
         if (i <= topLessonId + 1) {
             paint.setColor(getResources().getColor(getResources().getIdentifier(betweenColors[(i-2)%length], "color", this.getPackageName())));        }
@@ -182,6 +188,9 @@ public class MapActivity extends AppCompatActivity {
 
         UserProfile.user.setCurrentLessonID(lessonNumber);
         UserProfile.user.setCurrentCourseID(1);
+        if (lessonNumber == 8) {
+            UserProfile.user.setCurrentCourseID(2);
+        }
 
         // update position in server
         new UpdatePositionInServer().execute();

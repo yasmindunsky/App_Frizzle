@@ -17,6 +17,7 @@ import com.example.yasmindunsky.frizzleapp.R;
 import com.example.yasmindunsky.frizzleapp.Support;
 import com.example.yasmindunsky.frizzleapp.UpdatePositionInServer;
 import com.example.yasmindunsky.frizzleapp.UserProfile;
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 
 public class RegisterFragment extends Fragment {
@@ -24,9 +25,12 @@ public class RegisterFragment extends Fragment {
     TextView messagePlaceholder;
     View view;
     String nickName;
+    private FirebaseAnalytics mFirebaseAnalytics;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        // Obtain the FirebaseAnalytics instance.
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(getContext());
 
         view = inflater.inflate(R.layout.fragment_onboarding3, container, false);
 
@@ -122,6 +126,8 @@ public class RegisterFragment extends Fragment {
                 }
             }
         }).execute(password, email, newNickName);
+        Bundle bundle = new Bundle();
+        mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.LOGIN, bundle);
     }
 
     private void initPosition(){

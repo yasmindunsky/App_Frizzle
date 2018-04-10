@@ -13,14 +13,19 @@ import com.example.yasmindunsky.frizzleapp.GetPositionFromServer;
 import com.example.yasmindunsky.frizzleapp.MapActivity;
 import com.example.yasmindunsky.frizzleapp.R;
 import com.example.yasmindunsky.frizzleapp.UserProfile;
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 public class LoginActivity extends AppCompatActivity {
     TextView messagePlaceholder;
+    private FirebaseAnalytics mFirebaseAnalytics;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        // Obtain the FirebaseAnalytics instance.
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
         messagePlaceholder = findViewById(R.id.mentorText);
 
@@ -47,6 +52,8 @@ public class LoginActivity extends AppCompatActivity {
 
         // register the user to the server and print status message
         loginToServer(email, password, view);
+        Bundle bundle = new Bundle();
+        mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.LOGIN, bundle);
     }
 
     private boolean inputIsValid(String email, String password) {
