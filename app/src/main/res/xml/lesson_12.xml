@@ -1,12 +1,12 @@
 <lesson>
     <slide>
         <text name="text">"נרצה שליד המספר יופיע סימן האחוז."</text>
-        <image name="image">"slide_7_1"</image>
+        <image name="image">"slide_2_5_1"</image>
     </slide>
 
     <slide>
         <text name="text">"לעל מנת לצרף שני טקסט ביחד, במקרה זה המספר שהוגרל וסימן האחוז, נשתמש בסימן הפלוס."</text>
-        <image name="image">"slide_7_2"</image>
+        <image name="image">"slide_2_5_2"</image>
     </slide>
 
     <exercise>

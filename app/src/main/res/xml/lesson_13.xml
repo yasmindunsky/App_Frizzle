@@ -1,22 +1,22 @@
 <lesson>
     <slide>
         <text name="text">"כתבנו קטע קוד, שהוא בעצם רצף של כמה פקודות, שמגריל מספר וכותב אותו עם %."</text>
-        <image name="image">"slide_7_1"</image>
+        <image name="image">"slide_2_6_1"</image>
     </slide>
 
     <slide>
         <text name="text">"אבל נרצה שהטקסט ישתנה רק אחרי שהמשתמש לוחץ על הכפתור."</text>
-        <image name="image">"slide_7_2"</image>
+        <image name="image">"slide_2_6_2"</image>
     </slide>
 
     <slide>
         <text name="text">"ניזכר שכדי לעשות זו, קודם כל ניתן לקטע הקוד שכתבנו שם. קטע קוד שיש לו שם נקרא פונקציה."</text>
-        <image name="image">"slide_7_2"</image>
+        <image name="image">"slide_2_6_3"</image>
     </slide>
 
     <slide>
         <text name="text">"עכשיו נוכל להגדיר שלחיצה על הכפתור קוראת לפונקציה ומריצה את קטע הקוד שיש בה, באמצעות תכונת ה-onclick."</text>
-        <image name="image">"slide_7_2"</image>
+        <image name="image">"slide_2_6_4"</image>
     </slide>
 
 

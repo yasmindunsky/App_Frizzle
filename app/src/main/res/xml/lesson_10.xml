@@ -1,17 +1,17 @@
 <lesson>
     <slide>
         <text name="text">"נרצה שבכל פעם שלוחצים על הכפתור יוצג מספר אקראי בין 0 ל-100."</text>
-        <image name="image">"slide_7_1"</image>
+        <image name="image">"slide_2_3_1"</image>
     </slide>
 
     <slide>
         <text name="text">"לשם כך נשתמש בפקודה בשם Random, שתיתן לנו מספר אקראי."</text>
-        <image name="image">"slide_7_2"</image>
+        <image name="image">"slide_2_3_2"</image>
     </slide>
 
     <slide>
         <text name="text">"אם נרצה שיוגרל מספר בטווח אחר, נוכל לכתוב מספר אחר במקום 100."</text>
-        <image name="image">"slide_7_3"</image>
+        <image name="image">"slide_2_3_3"</image>
     </slide>
 
 

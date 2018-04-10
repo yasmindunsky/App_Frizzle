@@ -1,27 +1,27 @@
 <lesson>
     <slide>
         <text name="text">"יצרנו את המספר האקראי, עכשיו נרצה שהוא יופיע באלמנט הטקסט שיצרנו."</text>
-        <image name="image">"slide_7_1"</image>
+        <image name="image">"slide_2_4_1"</image>
     </slide>
 
     <slide>
         <text name="text">"לשם כך נצטרך לתת לאלמנט הטקסט שם במסך הקוד."</text>
-        <image name="image">"slide_7_2"</image>
+        <image name="image">"slide_2_4_2"</image>
     </slide>
 
     <slide>
         <text name="text">"ניזכר שעושים זאת באמצעות פקודת ה-Java שנקראית findViewById."</text>
-        <image name="image">"slide_7_3"</image>
+        <image name="image">"slide_2_4_3"</image>
     </slide>
 
     <slide>
         <text name="text">"ניזכר כי כדי לשנות טקסט נשתמש בפקודה setText ונקבע מה הטקסט החדש שיופיע."</text>
-        <image name="image">"slide_7_3"</image>
+        <image name="image">"slide_2_4_4"</image>
     </slide>
 
     <slide>
         <text name="text">"במקרה זה נרצה שהטקסט החדש יהיה המשתנה האקראי שיצרנו randomNumber."</text>
-        <image name="image">"slide_7_3"</image>
+        <image name="image">"slide_2_4_6"</image>
     </slide>
 
 
