@@ -30,7 +30,7 @@
                 android:layout_centerInParent="true"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:text="@string/lessonTitle"
+                android:text="@string/lesson_title"
                 android:textAppearance="@style/ActivityTitle" />
         </android.support.v7.widget.Toolbar>
 

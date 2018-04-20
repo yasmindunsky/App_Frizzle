@@ -3,28 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context="com.example.yasmindunsky.frizzleapp.goToAppBuilderFragment">
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <ImageView
-            android:id="@+id/colors"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/colors_top_screen1"
-            android:layout_alignParentTop="true"
-            android:layout_centerInParent="true"
-            android:background="@drawable/bg_color_1" />
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/colors"
-            android:layout_centerHorizontal="true"
-            android:text="@string/amazing"
-            android:textAppearance="@style/GoodJobTitle" />
+        android:layout_width="350dp"
+        android:layout_height="300dp">
 
         <ImageView
             android:id="@+id/mentor"
@@ -32,29 +16,32 @@
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/gotItButton"
             android:layout_alignParentLeft="true"
-            android:layout_marginBottom="70dp"
-            android:layout_marginLeft="20dp"
+            android:layout_marginBottom="100dp"
+            android:layout_marginLeft="60dp"
             android:background="@drawable/ic_mentor" />
 
         <android.support.v7.widget.AppCompatTextView
             android:id="@+id/mentorText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/mentor"
-            android:layout_marginRight="20dp"
+            android:layout_alignTop="@+id/mentor"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="22dp"
             android:layout_toRightOf="@+id/mentor"
             android:background="@drawable/bubble"
-            android:text="@string/task_text"
+            android:breakStrategy="simple"
+            android:text="@string/beta"
             android:textAppearance="@style/taskInNavigationText" />
 
         <Button
             android:id="@+id/gotItButton"
-            style="@style/letsBuildButton"
+            style="@style/checkButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:text="@string/lets_build" />
+            android:text="@string/got_it"
+            android:textSize="18sp" />
 
     </RelativeLayout>
 

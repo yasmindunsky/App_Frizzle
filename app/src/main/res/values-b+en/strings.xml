@@ -3,17 +3,17 @@
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_course">CourseActivity</string>
-    <string name="lessonTitle">LESSON</string>
-    <string name="appBuilderTitle">BUILD</string>
-    <string name="slideText">Everything you see on an app is the user interface - UI</string>
+    <string name="lesson_title">LESSON</string>
+    <string name="app_builder_title">BUILD</string>
+    <string name="slide_text">Everything you see on an app is the user interface - UI</string>
     <string name="check">CHECK</string>
 
     <string name="xmlFileName">activity_main.xml</string>
     <string name="javaFileName">MainActivity.java</string>
 
-    <string name="newButtonText">NEW BUTTON</string>
-    <string name="newTextViewText">NEW TEXT</string>
-    <string name="codeStart">package com.example.noga.myapplication;
+    <string name="new_button_text">NEW BUTTON</string>
+    <string name="new_text_view_text">NEW TEXT</string>
+    <string name="code_start">package com.example.noga.myapplication;
         import android.support.v7.app.AppCompatActivity;
         import android.os.Bundle;
         import android.widget.TextView;
@@ -22,21 +22,21 @@
         @Override     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);</string>
-    <string name="codeEnd">}</string>
+    <string name="code_end">}</string>
     <string name="playground">Playground</string>
     <string name="task_text">task</string>
-    <string name="codeScreenTitle">Code</string>
-    <string name="graphicEditScreenTitle">Design</string>
+    <string name="code_screen_title">Code</string>
+    <string name="graphic_edit_screen_title">Design</string>
     <string name="propertiesTableTitle">PROPERTIES</string>
     <string name="propertiesTableId">ID</string>
     <string name="propertiesTableText">Text</string>
     <string name="propertiesTableFont">Font</string>
     <string name="propertiesTableBgColor">Color</string>
-    <string name="propertiesTableTextAlign">Alignment</string>
+    <string name="properties_table_text_align">Alignment</string>
     <string name="propertiesTableFontColor" >Font Color</string>
     <string name="delete">delete</string>
-    <string name="EditTextHint">Type in your answer..</string>
-    <string name="mentorIntroduction">Hi, I"'"m Ella,</string>
+    <string name="edit_text_hint">Type in your answer..</string>
+    <string name="mentor_introduction">Hi, I"'"m Ella,</string>
     <string name="onboardingMentorText0">here you can build your own app that you can later use and share with friends.</string>
     <string name="onboardingMentorText1">Even if you"'"ve never coded before, I"'"ll guide you step by step!</string>
     <string name="onboardingMentorText2">After each short lesson, you can complete another part of your app.</string>
@@ -46,15 +46,25 @@
     <string name="dont_have_an_account">I don"'"t have an account</string>
     <string name="already_have_an_account">already have an account?</string>
     <string name="register">Register</string>
-    <string name="noPassword">You forgot to choose a password</string>
-    <string name="noEmail">You forgot to fill out your email address</string>
-    <string name="whatsYourName">what"'"s your name?</string>
-    <string name="alreadyRegistered">Already registered? Great. Enter your e-mal and password.</string>
-    <string name="goBuild">Go to the Build screen.</string>
-    <string name="Amazing">wow, amazing!</string>
-    <string name="letsBuild">Let"'"s Build</string>
-    <string name="continueToNextLesson">Continue to next lesson</string>
+    <string name="no_password">You forgot to choose a password</string>
+    <string name="no_email">You forgot to fill out your email address</string>
+    <string name="whats_your_name">what"'"s your name?</string>
+    <string name="already_registered">Already registered? Great. Enter your e-mal and password.</string>
+    <string name="go_build">Go to the Build screen.</string>
+    <string name="amazing">wow, amazing!</string>
+    <string name="lets_build">Let"'"s Build</string>
     <string name="save">save</string>
+    <string name="done">Done</string>
+    <string name="good_work">Good Work!</string>
+    <string name="completed_task">You Completed The Task. You can now continue to the next lesson.</string>
+    <string name="continue_to_next_lesson">Continue</string>
+    <string name="not_ready_yet">Not ready yet</string>
+    <string name="you_did_it">You Did It!</string>
+    <string name="completed_app">You completed your app! You can now share with your friends.</string>
+    <string name="דישרק">share</string>
+    <string name="skip">skip</string>
+    <string name="got_it">got it</string>
+    <string name="beta">Sorry, we\'re still in beta. This feature will be available soon!</string>
 
     <string-array name="fonts">
         <item>sans-serif</item>

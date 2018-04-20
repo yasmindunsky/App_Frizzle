@@ -38,7 +38,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
                 android:layout_weight="1"
-                android:text="@string/mentorIntroduction"
+                android:text="@string/mentor_introduction"
                 android:textAppearance="@style/SlideText" />
 
             <EditText
@@ -48,7 +48,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
                 android:layout_weight="1"
-                android:hint="@string/whatsYourName"
+                android:hint="@string/whats_your_name"
                 android:inputType="textPersonName" />
 
             <android.support.v7.widget.AppCompatTextView

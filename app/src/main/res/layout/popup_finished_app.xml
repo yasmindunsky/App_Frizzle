@@ -3,19 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context="com.example.yasmindunsky.frizzleapp.goToAppBuilderFragment">
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <ImageView
-            android:id="@+id/colors"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/colors_top_screen1"
-            android:layout_alignParentTop="true"
-            android:layout_centerInParent="true"
-            android:background="@drawable/bg_color_1" />
+        android:layout_width="350dp"
+        android:layout_height="400dp">
 
         <TextView
             android:id="@+id/textView"
@@ -23,38 +16,53 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/colors"
             android:layout_centerHorizontal="true"
-            android:text="@string/amazing"
+            android:layout_marginTop="20dp"
+            android:text="@string/you_did_it"
             android:textAppearance="@style/GoodJobTitle" />
 
         <ImageView
             android:id="@+id/mentor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/gotItButton"
+            android:layout_alignBottom="@+id/shareButton"
             android:layout_alignParentLeft="true"
-            android:layout_marginBottom="70dp"
-            android:layout_marginLeft="20dp"
+            android:layout_marginBottom="100dp"
+            android:layout_marginLeft="60dp"
             android:background="@drawable/ic_mentor" />
 
         <android.support.v7.widget.AppCompatTextView
             android:id="@+id/mentorText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/mentor"
-            android:layout_marginRight="20dp"
+            android:layout_alignTop="@+id/mentor"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="22dp"
             android:layout_toRightOf="@+id/mentor"
             android:background="@drawable/bubble"
-            android:text="@string/task_text"
+            android:breakStrategy="simple"
+            android:text="@string/completed_app"
             android:textAppearance="@style/taskInNavigationText" />
 
         <Button
-            android:id="@+id/gotItButton"
-            style="@style/letsBuildButton"
+            android:id="@+id/shareButton"
+            style="@style/checkButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/notReady"
+            android:layout_alignParentBottom="false"
+            android:layout_centerHorizontal="true"
+            android:text="@string/דישרק"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/notReady"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:text="@string/lets_build" />
+            android:layout_centerInParent="false"
+            android:layout_marginBottom="@dimen/default_margin"
+            android:text="@string/skip" />
 
     </RelativeLayout>
 

@@ -83,7 +83,7 @@ public class UserCreatedTextView extends UserCreatedView {
         this.viewType = ViewType.TextView;
         int textViewStyle = R.style.usersTextView;
         this.thisView = new TextView(context, null, 0, textViewStyle);
-        thisView.setText(R.string.newTextViewText);
+        thisView.setText(R.string.new_text_view_text);
 
         // index in views map in GraphicEditFragment.
         this.index = nextViewIndex;

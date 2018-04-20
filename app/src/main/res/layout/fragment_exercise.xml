@@ -28,7 +28,7 @@
             style="@style/ExerciseText"
             android:layout_height="wrap_content"
             android:layout_below="@id/exerciseImage"
-            android:text="@string/slideText"
+            android:text="@string/slide_text"
             android:textAppearance="@style/ExerciseText" />
 
         <android.support.v7.widget.AppCompatButton

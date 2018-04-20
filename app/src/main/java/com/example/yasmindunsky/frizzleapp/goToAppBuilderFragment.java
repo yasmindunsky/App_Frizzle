@@ -43,7 +43,7 @@ public class goToAppBuilderFragment extends Fragment {
         // Update the top position of the user if needed
 //        updateTopPosition();
 
-        view.findViewById(R.id.continueButton).setOnClickListener(new View.OnClickListener() {
+        view.findViewById(R.id.gotItButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent appBuilderActivity = new Intent(getActivity(), AppBuilderActivity.class);
@@ -53,7 +53,7 @@ public class goToAppBuilderFragment extends Fragment {
 
         Task task = LessonActivity.getCurrentLesson().getTask();
         TextView taskTextView = (TextView)view.findViewById(R.id.mentorText);
-        taskTextView.setText(getResources().getString(R.string.goBuild) + "\n" + task.getText());
+        taskTextView.setText(getResources().getString(R.string.go_build) + "\n" + task.getText());
 
         return view;
     }

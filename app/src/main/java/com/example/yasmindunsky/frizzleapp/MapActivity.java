@@ -30,7 +30,7 @@ public class MapActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ConstraintLayout mainLayout = (ConstraintLayout ) this.getLayoutInflater().inflate(R.layout.activity_map_minimal, null);
+        ConstraintLayout mainLayout = (ConstraintLayout ) this.getLayoutInflater().inflate(R.layout.activity_map, null);
         setContentView(mainLayout);
 
         // TODO change
@@ -86,7 +86,7 @@ public class MapActivity extends AppCompatActivity {
 
         Button nextButton = findViewById(R.id.lesson1);
 
-        int numOfLessons = 13;
+        int numOfLessons = 7;
         for (int i = 2; i <= numOfLessons; i++) {
             Button currentButton = nextButton;
 
@@ -95,7 +95,7 @@ public class MapActivity extends AppCompatActivity {
             nextButton = findViewById(identifier);
 
             // Draw line to next button.
-//            drawLessonsLine(canvas, currentButton, nextButton, colors, i);
+            drawLessonsLine(canvas, currentButton, nextButton, colors, i);
 
             // Draw current button.
             drawLessonCircle(canvas, currentButton, betweenColors, i);

@@ -7,10 +7,8 @@ import android.util.TypedValue;
 import android.view.ContextThemeWrapper;
 import android.view.Gravity;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 
@@ -41,7 +39,7 @@ public class FreeText extends Exercise {
         layoutParams.setMarginEnd(marginInDp);
         inputText.setLayoutParams(layoutParams);
         inputText.setTextAppearance(context, R.style.editText);
-        inputText.setHint(R.string.EditTextHint);
+        inputText.setHint(R.string.edit_text_hint);
         inputText.setId(R.id.userAnswerInput);
         layout.setGravity(Gravity.CENTER);
         layout.addView(inputText);

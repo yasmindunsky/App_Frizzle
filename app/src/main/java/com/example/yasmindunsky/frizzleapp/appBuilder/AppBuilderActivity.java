@@ -17,16 +17,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.FrameLayout;
 import android.widget.GridLayout;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.yasmindunsky.frizzleapp.AsyncResponse;
@@ -94,6 +91,15 @@ public class AppBuilderActivity extends AppCompatActivity {
             }
         });
 
+        // Set Done Button
+        Button doneButton = findViewById(R.id.done);
+        doneButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openSuccessPopup();
+            }
+        });
+
         // Error ExpandableLayout
         ImageButton clickToExpandError = findViewById(R.id.clickToExpandError);
         errorExpandableLayout = findViewById(R.id.errorExpandableLayout);
@@ -141,8 +147,8 @@ public class AppBuilderActivity extends AppCompatActivity {
         taskTextView.setText(task.getText());
 
         final TabLayout tabLayout = findViewById(R.id.tabLayout); // get the reference of TabLayout
-        final TabLayout.Tab graphicEditTab = tabLayout.newTab().setText(R.string.graphicEditScreenTitle);
-        TabLayout.Tab codingTab = tabLayout.newTab().setText(R.string.codeScreenTitle);
+        final TabLayout.Tab graphicEditTab = tabLayout.newTab().setText(R.string.graphic_edit_screen_title);
+        TabLayout.Tab codingTab = tabLayout.newTab().setText(R.string.code_screen_title);
 
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -212,10 +218,11 @@ public class AppBuilderActivity extends AppCompatActivity {
                 getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         final View popupView = inflater.inflate(R.layout.popup_task_success, null);
 
-        int width = GridLayout.LayoutParams.MATCH_PARENT;
-        int height = GridLayout.LayoutParams.MATCH_PARENT;
+        int width = GridLayout.LayoutParams.WRAP_CONTENT;
+        int height = GridLayout.LayoutParams.WRAP_CONTENT;
+
         boolean focusable = true; // lets taps outside the popup also dismiss it
-        PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
+        final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
         popupWindow.setOutsideTouchable(true);
         popupWindow.setFocusable(true);
         popupWindow.showAtLocation(toolbar, Gravity.CENTER, 0, 0);
@@ -224,12 +231,84 @@ public class AppBuilderActivity extends AppCompatActivity {
         continueButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                updateCurrentAndTopPosition();
+                // If this is the last lesson, go to share screen
+                if (UserProfile.user.getCurrentLessonID() == 7) {
+                    popupWindow.dismiss();
+                    openFinishedAppPopUp();
+                }
+                // Else, go to map
+                else {
+                    updateCurrentAndTopPosition();
+                    goToMap();
+                }
+            }
+        });
+
+        TextView notReady = popupView.findViewById(R.id.notReady);
+        notReady.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                popupWindow.dismiss();
+            }
+        });
+
+    }
+
+    private void openFinishedAppPopUp() {
+        LayoutInflater inflater = (LayoutInflater)
+                getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        final View popupView = inflater.inflate(R.layout.popup_finished_app, null);
+
+        int width = GridLayout.LayoutParams.WRAP_CONTENT;
+        int height = GridLayout.LayoutParams.WRAP_CONTENT;
+
+        boolean focusable = true; // lets taps outside the popup also dismiss it
+        final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
+        popupWindow.setOutsideTouchable(true);
+        popupWindow.setFocusable(true);
+        popupWindow.showAtLocation(toolbar, Gravity.CENTER, 0, 0);
+
+        Button shareButton = popupView.findViewById(R.id.shareButton);
+        shareButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                popupWindow.dismiss();
+                openSharePopUp();
+            }
+        });
+
+        TextView skip = popupView.findViewById(R.id.notReady);
+        skip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                popupWindow.dismiss();
                 goToMap();
             }
         });
 
+    }
 
+    private void openSharePopUp() {
+        LayoutInflater inflater = (LayoutInflater)
+                getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        final View popupView = inflater.inflate(R.layout.popup_share, null);
+
+        int width = GridLayout.LayoutParams.WRAP_CONTENT;
+        int height = GridLayout.LayoutParams.WRAP_CONTENT;
+
+        boolean focusable = true; // lets taps outside the popup also dismiss it
+        final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
+        popupWindow.setOutsideTouchable(true);
+        popupWindow.setFocusable(true);
+        popupWindow.showAtLocation(toolbar, Gravity.CENTER, 0, 0);
+
+        Button gotItButton = popupView.findViewById(R.id.gotItButton);
+        gotItButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goToMap();
+            }
+        });
     }
 
     private void goToMap() {
@@ -271,7 +350,7 @@ public class AppBuilderActivity extends AppCompatActivity {
                     displayError(output);
                 }
             }
-        }).execute(getApplicationContext().getResources().getString(R.string.codeStart), getApplicationContext().getResources().getString(R.string.codeEnd));
+        }).execute(getApplicationContext().getResources().getString(R.string.code_start), getApplicationContext().getResources().getString(R.string.code_end));
         Bundle bundle = new Bundle();
         mFirebaseAnalytics.logEvent("RUN_APP", bundle);
     }

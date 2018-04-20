@@ -3,17 +3,17 @@
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_course">CourseActivity</string>
-    <string name="lessonTitle">שיעור</string>
-    <string name="appBuilderTitle">בנייה</string>
-    <string name="slideText">Everything you see on an app is the user interface - UI</string>
+    <string name="lesson_title">שיעור</string>
+    <string name="app_builder_title">בנייה</string>
+    <string name="slide_text">Everything you see on an app is the user interface - UI</string>
     <string name="check">בדיקה</string>
 
     <string name="xmlFileName">activity_main.xml</string>
     <string name="javaFileName">MainActivity.java</string>
 
-    <string name="newButtonText">כפתור חדש</string>
-    <string name="newTextViewText">טקסט חדש</string>
-    <string name="codeStart">
+    <string name="new_button_text">כפתור חדש</string>
+    <string name="new_text_view_text">טקסט חדש</string>
+    <string name="code_start">
         package co.frizzle.frizzleproject1;
 
         import android.support.v7.app.AppCompatActivity;
@@ -30,8 +30,8 @@
     </string>
     <string name="playground">איזור בניית האפליקציה</string>
     <string name="task_text">פירוט המשימה</string>
-    <string name="codeScreenTitle">קוד</string>
-    <string name="graphicEditScreenTitle">עיצוב</string>
+    <string name="code_screen_title">קוד</string>
+    <string name="graphic_edit_screen_title">עיצוב</string>
     <string name="propertiesTableTitle">מאפיינים</string>
     <string name="propertiesTableId">מזהה</string>
     <string name="propertiesTableText">טקסט</string>
@@ -40,8 +40,8 @@
     <string name="propertiesTableFontColor" >צבע פונט</string>
     <string name="propertiesTableOnClick">OnClick</string>
     <string name="delete">מחיקה</string>
-    <string name="EditTextHint">הקלידי את תשובתך...</string>
-    <string name="mentorIntroduction">היי, אני אלה,</string>
+    <string name="edit_text_hint">הקלידי את תשובתך...</string>
+    <string name="mentor_introduction">היי, אני אלה,</string>
     <string name="onboardingMentorText0">כאן תלמדי לבנות אפליקצית טריוויה משלך בה תוכלי להשתמש.</string>
     <string name="onboardingMentorText1">גם אם לא יצא לך לתכנת אף פעם, אנחנו נדריך אותך בכל שלב</string>
     <string name="onboardingMentorText2">אחרי כל שיעור קצר תוכלי להשלים עוד חלק בבניית האפליקציה שלך</string>
@@ -51,11 +51,11 @@
     <string name="already_have_an_account">כבר יש לי חשבון</string>
     <string name="dont_have_an_account">אין לי עדיין חשבון</string>
     <string name="register">הרשמה</string>
-    <string name="noPassword">שכחת לכתוב סיסמה!</string>
-    <string name="noEmail">כתובת האימייל לא תקינה</string>
-    <string name="propertiesTableTextAlign">יישור</string>
-    <string name="whatsYourName">מה שמך?</string>
-    <string name="goBuild">עברי למסך הבנייה.</string>
+    <string name="no_password">שכחת לכתוב סיסמה!</string>
+    <string name="no_email">כתובת האימייל לא תקינה</string>
+    <string name="properties_table_text_align">יישור</string>
+    <string name="whats_your_name">מה שמך?</string>
+    <string name="go_build">עברי למסך הבנייה.</string>
 
     <string-array name="fonts">
         <item>sans-serif</item>
@@ -89,10 +89,20 @@
         <item>frizzle_purple_blue</item>
         <item>frizzle_blue_green</item>
     </string-array>
-    <string name="codeEnd">}</string>
-    <string name="alreadyRegistered">את כבר רשומה? מעולה. הכניסי את כתובת האימייל והסיסמה שלך.</string>
-    <string name="Amazing">כל הכבוד!</string>
-    <string name="letsBuild">בואי ניצור</string>
-    <string name="continueToNextLesson">המשיכי לשיעור הבא</string>
+    <string name="code_end">}</string>
+    <string name="already_registered">את כבר רשומה? מעולה. הכניסי את כתובת האימייל והסיסמה שלך.</string>
+    <string name="amazing">כל הכבוד!</string>
+    <string name="lets_build">בואי ניצור</string>
+    <string name="continue_to_next_lesson">המשיכי</string>
     <string name="save">שמירה</string>
+    <string name="done">סיימתי</string>
+    <string name="good_work">יפה מאד!</string>
+    <string name="completed_task">הצלחת להשלים את המשימה. כעת תוכלי להמשיך לשיעור הבא.</string>
+    <string name="not_ready_yet">עדיין לא</string>
+    <string name="you_did_it">עשית את זה!</string>
+    <string name="completed_app">השלמת את בניית האפליקציה. כעת תוכלי לשתף עם חברים.</string>
+    <string name="דישרק">שתפי</string>
+    <string name="skip">דלגי</string>
+    <string name="got_it">הבנתי</string>
+    <string name="beta">האפשרות הזו עדיין לא קיימת, אבל היא תהיה בהקדם</string>
 </resources>

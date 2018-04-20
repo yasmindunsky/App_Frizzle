@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.TableLayout;
 import android.widget.TextView;
 
 import com.example.yasmindunsky.frizzleapp.MapActivity;
@@ -58,7 +57,7 @@ public class LessonActivity extends FragmentActivity {
 
         // Set lesson title to current number.
         TextView lessonTitle = (TextView) findViewById(R.id.lessonTitle);
-        lessonTitle.setText(getString(R.string.lessonTitle) + " " + Integer.toString(UserProfile.user.getCurrentLessonID()));
+        lessonTitle.setText(getString(R.string.lesson_title) + " " + Integer.toString(UserProfile.user.getCurrentLessonID()));
 
         // parse xml file to insert content to the currentLesson
         LessonContentParser lessonContentParser = null;

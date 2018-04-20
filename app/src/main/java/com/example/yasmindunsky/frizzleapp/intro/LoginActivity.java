@@ -59,12 +59,12 @@ public class LoginActivity extends AppCompatActivity {
     private boolean inputIsValid(String email, String password) {
 
         if (email.equals("")) {
-            messagePlaceholder.setText(R.string.noEmail);
+            messagePlaceholder.setText(R.string.no_email);
             return false;
         }
 
         if (password.equals("")) {
-            messagePlaceholder.setText(R.string.noPassword);
+            messagePlaceholder.setText(R.string.no_password);
             return false;
         }
 

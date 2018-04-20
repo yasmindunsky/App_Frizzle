@@ -7,11 +7,8 @@ import com.example.yasmindunsky.frizzleapp.ConnectToServer;
 import com.example.yasmindunsky.frizzleapp.R;
 import com.example.yasmindunsky.frizzleapp.UserProfile;
 import com.example.yasmindunsky.frizzleapp.appBuilder.GraphicEditFragment;
-import com.example.yasmindunsky.frizzleapp.appBuilder.UserCreatedButton;
-import com.example.yasmindunsky.frizzleapp.appBuilder.UserCreatedTextView;
 import com.example.yasmindunsky.frizzleapp.appBuilder.UserCreatedView;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -75,8 +72,8 @@ public class GetProjectFromServer extends AsyncTask<String, Void, String> {
                         break;
                     case "code":
                         // trim codeString to the user's code
-                        int start = mContext.getApplicationContext().getResources().getString(R.string.codeStart).length();
-                        int end = attributeString.length() - mContext.getApplicationContext().getResources().getString(R.string.codeEnd).length();
+                        int start = mContext.getApplicationContext().getResources().getString(R.string.code_start).length();
+                        int end = attributeString.length() - mContext.getApplicationContext().getResources().getString(R.string.code_end).length();
                         attributeString = attributeString.substring(start, end);
 
                         // save code to user profile

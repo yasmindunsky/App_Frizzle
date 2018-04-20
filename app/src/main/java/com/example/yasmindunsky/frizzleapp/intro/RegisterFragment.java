@@ -83,12 +83,12 @@ public class RegisterFragment extends Fragment {
     private boolean inputIsValid(String password, String email) {
 
         if (password.equals("")) {
-            messagePlaceholder.setText(R.string.noPassword);
+            messagePlaceholder.setText(R.string.no_password);
             return false;
         }
 
         if (email.equals("")) {
-            messagePlaceholder.setText(R.string.noEmail);
+            messagePlaceholder.setText(R.string.no_email);
             return false;
         }
 

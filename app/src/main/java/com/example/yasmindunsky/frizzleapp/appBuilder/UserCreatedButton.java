@@ -7,7 +7,6 @@ import android.graphics.PorterDuff;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.support.v4.content.ContextCompat;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
@@ -20,17 +19,12 @@ import android.widget.GridLayout;
 import android.widget.ImageButton;
 import android.widget.PopupWindow;
 import android.widget.Spinner;
-import android.widget.TableLayout;
 import android.widget.TableRow;
-import android.widget.TextView;
 
 import com.example.yasmindunsky.frizzleapp.R;
 import com.example.yasmindunsky.frizzleapp.Support;
 import com.example.yasmindunsky.frizzleapp.UserProfile;
 
-import org.xmlpull.v1.XmlSerializer;
-
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -96,7 +90,7 @@ public class UserCreatedButton extends UserCreatedView {
         this.layout = R.layout.popup_properties_button;
         this.viewType = ViewType.Button;
         this.thisView = new Button(new ContextThemeWrapper(context, buttonStyle), null, buttonStyle);
-        thisView.setText(R.string.newButtonText);
+        thisView.setText(R.string.new_button_text);
 
         // index in views map in GraphicEditFragment.
         this.index = nextViewIndex;

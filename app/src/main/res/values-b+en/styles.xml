@@ -18,13 +18,21 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
-    <style name="ActivityTitle" parent="@android:style/TextAppearance.Medium">
+    <style name="Title" parent="@android:style/TextAppearance.Medium">
         <item name="android:fontFamily">@font/hero_regular</item>
-        <item name="android:textColor">#FFFFFF</item>
         <item name="android:textAlignment">center</item>
-        <item name="android:textSize">23sp</item>
         <item name="android:letterSpacing">.08</item>
         <item name="android:gravity">center</item>
+    </style>
+
+    <style name="ActivityTitleLight" parent="@style/Title">
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textSize">23sp</item>
+    </style>
+
+    <style name="ActivityTitleDark" parent="@style/Title">
+        <item name="android:textColor">@color/TextGrey</item>
+        <item name="android:textSize">23sp</item>
     </style>
 
     <style name="HomeButton" parent="@android:style/Widget.Button">
@@ -160,6 +168,11 @@
         <item name="android:text">@string/propertiesTableTitle</item>
         <item name="android:textAlignment">center</item>
         <item name="android:textSize">22sp</item>
+    </style>
+
+    <style name="GoodJobTitle" parent="@style/Title">
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textSize">36sp</item>
     </style>
 
 </resources>
