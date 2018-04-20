@@ -131,10 +131,10 @@ public class AppBuilderActivity extends AppCompatActivity {
         else {
             clickToExpandTask.setVisibility(View.INVISIBLE);
             taskExpandableLayout.setVisibility(View.INVISIBLE);
-            FrameLayout frame = findViewById(R.id.fragmentFrame);
-            RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) frame.getLayoutParams();
-            layoutParams.addRule(RelativeLayout.BELOW, R.id.tabLayout);
-            frame.setLayoutParams(layoutParams);
+//            FrameLayout frame = findViewById(R.id.fragmentFrame);
+//            RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) frame.getLayoutParams();
+//            layoutParams.addRule(RelativeLayout.BELOW, R.id.tabLayout);
+//            frame.setLayoutParams(layoutParams);
         }
 
         TextView taskTextView = (TextView) findViewById(R.id.task);

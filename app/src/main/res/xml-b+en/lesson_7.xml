@@ -1,0 +1,100 @@
+<lesson>
+    <slide>
+        <text name="text">"Great job! You made a real app with a trivia question. But it\\u0027s not fun when there\\u0027s only one question, right?"</text>
+        <image name="image">"slide_7_1"</image>
+    </slide>
+
+    <slide>
+        <text name="text">"To add more trivie questions, you can return on the entire process you went through. In this lesson we\\u0027ll remember what we did exactly and notice some important things."</text>
+        <image name="image">"slide_7_2"</image>
+    </slide>
+
+    <slide>
+        <text name="text">"In the Design screen we\\u0027ll add a Text element for every question and a Button for every answer. Every element\\u0027s ID should be unique, but if many elements have a similar role, we can give the the same name and a number."</text>
+        <image name="image">"slide_7_3"</image>
+    </slide>
+
+    <slide>
+        <text name="text">"In the Code screen we\\u0027ll create a function for every question, in which we\\u0027ll write the code that gives the button a name in code, and changes it text to the answer. The name of the function should also be unique."
+        </text>
+        <image name="image">"slide_7_4"</image>
+    </slide>
+
+    <slide>
+        <text name="text">"Back in the Design screen, we\\u0027ll define each button\\u0027s OnClick property to be it\\u0027s acquivalent function."
+        </text>
+        <image name="image">"slide_7_5"</image>
+    </slide>
+
+    <slide>
+        <text name="text">"In order to keep things in order, we should pick a number for every question and name the functions and IDs accordingly."</text>
+        <image name="image">"slide_7_6"</image>
+    </slide>
+
+    <slide>
+        <text name="text">"It\\u0027s best to give meaningful names."</text>
+        <image name="image">"slide_7_7"</image>
+    </slide>
+
+
+    <exercise>
+        <type name="type">"SingleResponse"</type>
+        <question name="question">"It\\u0027s best to give every button in the app the same ID."</question>
+        <image name="image">"exercise_7_1"</image>
+        <content name="content"></content>
+        <possibilities name = "possibilities">
+            <possibility name = "possibility">"True"</possibility>
+            <possibility name = "possibility">"False"</possibility>
+        </possibilities>
+        <answers name="answers">
+            <answer name="answer">"False"</answer>
+        </answers>
+    </exercise>
+    <exercise>
+        <type name="type">"FreeText"</type>
+        <question name="question">"How many function would we need if we have 6 trivia questions?"</question>
+        <image name="image">"exercise_7_2"</image>
+        <content name="content"></content>
+        <possibilities name = "possibilities"></possibilities>
+        <answers name="answers">
+            <answer name="answer">"6"</answer>
+        </answers>
+    </exercise>
+
+    <exercise>
+        <type name="type">"SingleResponse"</type>
+        <question name="question">"It\\u0027s best to name functions after friends and food."</question>
+        <image name="image">"exercise_7_3"</image>
+        <content name="content"></content>
+        <possibilities name = "possibilities">
+            <possibility name = "possibility">"True"</possibility>
+            <possibility name = "possibility">"False"</possibility>
+        </possibilities>
+        <answers name="answers">
+            <answer name="answer">"False"</answer>
+        </answers>
+    </exercise>
+
+
+    <exercise>
+        <type name="type">"MultipleResponse"</type>
+        <question name="question">"A button\\u0027s ID is answerButton2, what names could we give the function that goes with that button so it would make most sense?"</question>
+        <image name="image">"exercise_7_4"</image>
+        <content name="content"></content>
+        <possibilities name = "possibilities">
+            <possibility name= "possibility">"answerFunction3"</possibility>
+            <possibility name= "possibility">"triviaAnswer2"</possibility>
+            <possibility name= "possibility">"bestFunction"</possibility>
+            <possibility name= "possibility">"answerFunction2"</possibility>
+        </possibilities>
+        <answers name="answers">
+            <answer name="answer">"answerFunction2"</answer>
+            <answer name="answer">"triviaAnswer2"</answer>
+        </answers>
+    </exercise>
+
+    <task>
+        <text name = "text"> "Add more trivia questions to your app." </text>
+    </task>
+
+</lesson>

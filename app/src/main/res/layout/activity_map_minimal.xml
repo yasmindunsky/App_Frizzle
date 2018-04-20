@@ -18,6 +18,15 @@
             android:layout_gravity="bottom"
             android:background="@drawable/map_bg" />
 
+        <Button
+            android:id="@+id/playground"
+            android:layout_width="50dp"
+            android:layout_height="48dp"
+            android:layout_gravity="bottom|end"
+            android:background="@drawable/tag_build"
+            android:onClick="goToPlayground"
+            tools:layout_editor_absoluteX="362dp" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -34,7 +43,7 @@
                 android:elevation="10dp"
                 android:gravity="center"
                 android:theme="?attr/actionBarTheme"
-                app:navigationIcon="@drawable/ic_home">
+                app:navigationIcon="@drawable/ic_sign_out">
 
                 <android.support.v7.widget.AppCompatTextView
                     android:id="@+id/lessonTitle"
@@ -216,17 +225,6 @@
                         android:textColor="@android:color/transparent" />
                 </LinearLayout>
             </LinearLayout>
-
-            <Button
-                android:id="@+id/playground"
-                android:layout_width="50dp"
-                android:layout_height="48dp"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentEnd="true"
-                android:layout_gravity="end"
-                android:layout_marginBottom="20dp"
-                android:background="@drawable/tag_build"
-                android:onClick="goToPlayground" />
 
 
         </LinearLayout>

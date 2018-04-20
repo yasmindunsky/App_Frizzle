@@ -40,7 +40,10 @@ public class RegisterFragment extends Fragment {
 
         nickName = UserProfile.user.getNickName();
         TextView usersName = view.findViewById(R.id.mentorText);
-        usersName.setText("יאללה " + nickName + ", בואי נצא לדרך!");
+        if (!nickName.equals("")) {
+            usersName.setText(getResources().getString(R.string.onboardingMentorText3Part1) + " " +
+                nickName + ", " + getResources().getString(R.string.onboardingMentorText3Part2));
+        }
 
         messagePlaceholder = view.findViewById(R.id.mentorText);
 

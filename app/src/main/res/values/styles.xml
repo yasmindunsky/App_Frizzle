@@ -24,6 +24,7 @@
         <item name="android:letterSpacing">.08</item>
         <item name="android:gravity">center</item>
         <item name="android:fontFamily">@font/rubik_medium</item>
+        <item name="android:textAllCaps">true</item>
     </style>
 
     <style name="HomeButton" parent="@android:style/Widget.Button">
@@ -83,7 +84,16 @@
         <item name="android:paddingEnd">20sp</item>
     </style>
 
-    <style name="userNameEditText" parent="@android:style/Widget.EditText">
+
+    <style name="buttonText" parent="ActivityTitle">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/hero_regular</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:letterSpacing">.08</item>
+    </style>
+
+    <style name="userNameEditText" parent="@style/SlideText">
         <item name="android:background">@drawable/user_name_text_edit_background</item>
         <item name="android:padding">10sp</item>
         <item name="android:paddingStart">20sp</item>
@@ -207,9 +217,9 @@
         <item name="android:layout_height">35dp</item>
         <item name="android:layout_width">match_parent</item>
 
-        <item name="tabMaxWidth">200dp</item>
-        <item name="tabPaddingStart">40dp</item>
-        <item name="tabPaddingEnd">40dp</item>
+        <item name="tabMaxWidth">150dp</item>
+        <item name="tabPaddingStart">30dp</item>
+        <item name="tabPaddingEnd">30dp</item>
 
         <item name="tabIndicatorHeight">0dp</item>
         <item name="tabBackground">@drawable/app_builder_tab_selector</item>
@@ -306,11 +316,10 @@
         <item name="android:layout_height">match_parent</item>
         <item name="android:layout_marginEnd">10dp</item>
         <item name="android:layout_marginStart">10dp</item>
-        <item name="android:background">@drawable/table_border</item>
         <item name="android:padding">10dp</item>
     </style>
 
-        <!--Code-->
+    <!--Code-->
     <style name="CodeText" parent="@style/SlideText">
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">16sp</item>
@@ -328,6 +337,18 @@
         <item name="android:gravity">center</item>
     </style>
 
+    <style name="propertiesTableSaveButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+
+        <item name="android:layout_margin">20dp</item>
+        <item name="android:paddingStart">30sp</item>
+        <item name="android:paddingEnd">30sp</item>
+        <item name="android:background">@drawable/save_button_background</item>
+        <item name="android:text">@string/save</item>
+        <item name="android:textAppearance">@style/ActivityTitle</item>
+
+    </style>
 
 
 </resources>

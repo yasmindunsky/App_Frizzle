@@ -53,7 +53,7 @@ public class goToAppBuilderFragment extends Fragment {
 
         Task task = LessonActivity.getCurrentLesson().getTask();
         TextView taskTextView = (TextView)view.findViewById(R.id.mentorText);
-        taskTextView.setText("עברי למסך הבנייה.\n" + task.getText());
+        taskTextView.setText(getResources().getString(R.string.goBuild) + "\n" + task.getText());
 
         return view;
     }

@@ -1,8 +1,5 @@
 package com.example.yasmindunsky.frizzleapp.lesson.exercise;
 
-import android.graphics.Color;
-import android.graphics.PorterDuff;
-import android.graphics.drawable.Drawable;
 import android.support.v4.app.Fragment;
 
 import android.os.Bundle;
@@ -11,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -74,9 +70,9 @@ public class ExerciseFragment extends Fragment {
                 button.setLayoutParams(layoutParams);
                 ((Button) view).setText("");
                 if (exercise.isCorrect(fragmentView)) {
-                    view.setBackgroundResource(R.drawable.correct_hebrew);
+                    view.setBackgroundResource(R.drawable.correct);
                 } else {
-                    view.setBackgroundResource(R.drawable.incorrect_hebrew);
+                    view.setBackgroundResource(R.drawable.incorrect);
 
                 }
             }

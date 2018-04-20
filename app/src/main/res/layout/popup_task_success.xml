@@ -57,7 +57,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:text="המשיכי לשיעור הבא"
+            android:text="@string/continueToNextLesson"
             android:textSize="18sp" />
 
     </RelativeLayout>

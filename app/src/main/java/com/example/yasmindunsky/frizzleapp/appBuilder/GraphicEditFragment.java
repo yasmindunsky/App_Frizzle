@@ -5,6 +5,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.util.LayoutDirection;
 import android.util.Log;
 import android.view.DragEvent;
 import android.view.Gravity;
@@ -15,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -101,13 +103,22 @@ public class GraphicEditFragment extends Fragment {
         TextView addButton = view.findViewById(R.id.addButton);
         addButton.setOnClickListener(newButtonOnClick);
 
+        // Set LinearLayout direction to be opposite from device's direction.
+        // This is needed for correct expand animation direction.
+        LinearLayout linearLayout = view.findViewById(R.id.linearLayout);
+        int currentDirection = view.getLayoutDirection();
+        if (currentDirection == View.LAYOUT_DIRECTION_LTR) {
+            linearLayout.setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
+        } else {
+            linearLayout.setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
+        }
+
         expandableLayout = view.findViewById(R.id.taskExpandableLayout);
         expandButton = view.findViewById(R.id.addView);
 
         expandableLayout.setOnExpansionUpdateListener(new ExpandableLayout.OnExpansionUpdateListener() {
             @Override
             public void onExpansionUpdate(float expansionFraction, int state) {
-                Log.d("ExpandableLayout", "State: " + state);
                 expandButton.setRotation(expansionFraction * 135);
             }
         });

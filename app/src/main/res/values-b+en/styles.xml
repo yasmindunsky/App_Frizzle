@@ -6,6 +6,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:breakStrategy">simple</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
@@ -18,12 +19,12 @@
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <style name="ActivityTitle" parent="@android:style/TextAppearance.Medium">
+        <item name="android:fontFamily">@font/hero_regular</item>
         <item name="android:textColor">#FFFFFF</item>
         <item name="android:textAlignment">center</item>
         <item name="android:textSize">23sp</item>
         <item name="android:letterSpacing">.08</item>
         <item name="android:gravity">center</item>
-        <item name="android:fontFamily">@font/hero_regular</item>
     </style>
 
     <style name="HomeButton" parent="@android:style/Widget.Button">
@@ -37,15 +38,18 @@
     <!--Slides-->
 
     <style name="SlideText" parent="@android:style/TextAppearance.Medium">
-        <item name="android:textSize">24sp</item>
+        <item name="android:textSize">18sp</item>
         <item name="android:fontFamily">@font/calibri_regular</item>
         <item name="android:textColor">@color/TextGrey</item>
         <item name="android:letterSpacing">.02</item>
-        <item name="android:lineSpacingExtra">5dp</item>
+        <item name="android:lineSpacingExtra">0dp</item>
         <item name="android:layout_gravity">left|top</item>
         <item name="android:layout_marginTop">25dp</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/start_margin</item>
+        <item name="android:layout_marginEnd">@dimen/start_margin</item>
+        <item name="android:breakStrategy">simple</item>
     </style>
 
     <!--Exercises -->
@@ -101,8 +105,8 @@
     <style name="propertiesTableValue" parent="@style/propertiesTableKey">
         <item name="android:fontFamily">@font/calibri_light</item>
         <item name="android:textSize">16sp</item>
-
     </style>
+
 
     <style name="mapLessonButton" parent="@android:style/Widget.Material.Button.Borderless">
         <item name="android:drawable">@drawable/map_lesson_circle</item>
@@ -146,6 +150,16 @@
         <item name="android:padding">10sp</item>
         <item name="android:paddingStart">20sp</item>
         <item name="android:paddingEnd">20sp</item>
+    </style>
+
+    <style name="propertiesTableTitle" parent="@android:style/TextAppearance.DeviceDefault.Medium">
+        <item name="android:layout_height">@dimen/app_bar_height</item>
+        <item name="android:fontFamily">@font/hero_regular</item>
+        <item name="android:background">@drawable/table_text_edit_background</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:text">@string/propertiesTableTitle</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textSize">22sp</item>
     </style>
 
 </resources>

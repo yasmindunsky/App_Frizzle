@@ -28,7 +28,7 @@
             android:layout_marginTop="40dp"
             android:layout_toRightOf="@+id/mentor"
             android:background="@drawable/bubble"
-            android:text="את כבר רשומה? מעולה. הכניסי את כתובת האימייל והסיסמה שלך."
+            android:text="@string/alreadyRegistered"
             android:textAppearance="@style/SlideText" />
 
         <EditText

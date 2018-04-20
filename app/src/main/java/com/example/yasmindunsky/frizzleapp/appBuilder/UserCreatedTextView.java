@@ -146,6 +146,14 @@ public class UserCreatedTextView extends UserCreatedView {
             }
         });
 
+        // Set saving button.
+        android.support.v7.widget.AppCompatButton saveButton = popupView.findViewById(R.id.saveButton);
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                popupWindow.dismiss();
+            }
+        });
 
         // ID
         EditText viewId = popupView.findViewById(R.id.viewIdValue);

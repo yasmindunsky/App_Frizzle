@@ -22,7 +22,7 @@
             android:layout_marginTop="85dp"
             android:layout_toRightOf="@+id/mentor"
             android:background="@drawable/bubble"
-            android:text="בואי נצא לדרך!"
+            android:text="@string/onboardingMentorText3"
             android:textAppearance="@style/SlideText" />
 
         <EditText

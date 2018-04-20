@@ -1,25 +1,23 @@
 <lesson>
-
-
     <slide>
-        <text name="text">"Now that we can access the button from the code screen, using Java commands we can change its properties according to the user’s actions."</text>
+        <text name="text">"עכשיו כשאנחנו יכולות לגשת לכפתור ממסך הקוד, נוכל להשתמש בפקודת Java על מנת לשנות את התכונות שלו."</text>
         <image name="imageSource">"slide_5_1"</image>
     </slide>
 
     <slide>
-        <text name="text">"התכונה שנרצה לשנות היא הטקסט שכתוב על הכפתור. לשם כך נשתמש בפקודת Java בשם setText ונקבע מה הטקסט החדש שיופיע."</text>
+        <text name="text">"The property we want to set is the text written on the button. For that we\\u0027ll use the setText Java command and choose the new text we want to appear."</text>
         <image name="imageSource">"slide_5_2"</image>
     </slide>
 
     <slide>
-        <text name="text">" נפעיל אותה על הכפתור שלנו ונקבע מה הטקסט החדש שיופיע."</text>
+        <text name="text">" We\\u0027ll apply the command on our button and specify the new text."</text>
         <image name="imageSource">"slide_5_2"</image>
     </slide>
 
 
     <exercise>
         <type name="type">"FreeText"</type>
-        <question name="question">"איך יקרא הכפתור בקוד?"</question>
+        <question name="question">"What will be the button\\u0027s name in code?"</question>
         <image name="image">"exercise_5_2"</image>
         <content name="content"></content>
         <possibilities name = "possibilities"></possibilities>
@@ -30,7 +28,7 @@
 
     <exercise>
         <type name="type">"FreeText"</type>
-        <question name="question">"מה יהיה כתוב על הכפתור?"</question>
+        <question name="question">"What will be written on the button?"</question>
         <image name="image">"exercise_5_2"</image>
         <content name="content"></content>
         <possibilities name = "possibilities"></possibilities>
@@ -41,7 +39,7 @@
 
     <exercise>
         <type name="type">"FreeText"</type>
-        <question name="question">"מה ה-ID של הכפתור?"</question>
+        <question name="question">"What is the button\\u0027s ID?"</question>
         <image name="image">"exercise_5_2"</image>
         <content name="content"></content>
         <possibilities name = "possibilities"></possibilities>
@@ -52,20 +50,20 @@
 
     <exercise>
         <type name="type">"SingleResponse"</type>
-        <question name="question">"את הפקודה setText מפעילים על:"</question>
+        <question name="question">"The setText command is applied on"</question>
         <image name="image">"exercise_5_5"</image>
         <content name="content"></content>
         <possibilities name = "possibilities">
-            <possibility name = "possibility">"ה-ID של הכפתור"</possibility>
-            <possibility name = "possibility">"שם הכפתור בקוד"</possibility>
+            <possibility name = "possibility">"The button\\u0027s ID"</possibility>
+            <possibility name = "possibility">"The button\\u0027s name in code"</possibility>
         </possibilities>
         <answers name="answers">
-            <answer name="answer">"שם הכפתור בקוד"</answer>
+            <answer name="answer">"The button\\u0027s name in code"</answer>
         </answers>
     </exercise>
 
-    <task>
-        <text name = "text"> "הפעילי במסך הקוד את פקודת setText על הכפתור כך שהטקסט עליו ישתנה לתשובה לשאלה שכתבת." </text>
-    </task>
 
+    <task>
+        <text name = "text"> "In the Code screen, apply the setText command on your button so the text will change to the answer to your trivia question." </text>
+    </task>
 </lesson>

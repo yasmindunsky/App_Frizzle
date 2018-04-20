@@ -1,67 +1,84 @@
+<!--\\u000A-->
+
 <lesson>
     <slide>
-        <text name="text">"Everything you see on an app\n is the User Interface - UI."</text>
-        <image name="image">"lesson_illustration1"</image>
-    </slide>
-
-    <slide>
-        <text name="text">"The UI consists of elements\n called Views, for example:"</text>
-        <image name="image">"lesson_illustration2"</image>
-    </slide>
-
-    <slide>
-        <text name="text">"The layout is the way all the\n Views are organized on screen."</text>
-        <image name="image">"lesson_illustration3"</image>
-    </slide>
-
-    <slide>
-        <text name="text">"Most apps consist mainly of\n buttons, textViews \\u0026 imageViews:"
+        <text name="text">
+"A computer is an electronic device that can execute pre-defined actions. Your phone is also a computer."
         </text>
-        <image name="image">"lesson_illustration4"</image>
+        <image name="image">"slide_1_1"</image>
     </slide>
 
     <slide>
-        <text name="text">"Every View has a set of properties.
-            Let’s look at this button View and see its properties."
+        <text name="text">"The computer doesn’t decide how to react to the user, the developer is the one who commands the computer."</text>
+        <image name="image">"slide_1_2"</image>
+    </slide>
+
+    <slide>
+        <text name="text">
+            "The computer only understands commands in his own language."
         </text>
-        <image name="image">"lesson_illustration7"</image>
+        <image name="image">"slide_1_3"</image>
     </slide>
 
     <slide>
-        <text name="text">"You can control its properties:"</text>
-        <image name="image">"lesson_illustration13"</image>
-    </slide>
-
-    <slide>
-        <text name="text">"When you create a new View\n you give it a unique name, an ID."</text>
-        <image name="image">"lesson_illustration14"</image>
-    </slide>
-
-    <slide>
-        <text name="text">"Just like the button View, every\n new View has a table that allows\n you to
-            control its properties."
+        <text name="text">"The developer commands the computer with code that bridges between computer language and human language."
         </text>
-        <image name="image">"lesson_illustration15"</image>
+        <image name="image">"slide_1_4"</image>
+    </slide>
+
+    <slide>
+        <text name="text">"Just like humans have many languages, there are many code languages."
+        </text>
+        <image name="image">"slide_1_5"</image>
+    </slide>
+
+    <slide>
+        <text name="text">"We are going to learn Java language and use it to create apps."</text>
+        <image name="image">"slide_1_6"</image>
+    </slide>
+
+    <slide>
+        <text name="text">"Using Java we can code: give the computer a command to do something, such as play a song."</text>
+        <image name="image">"slide_1_7"</image>
+    </slide>
+
+    <slide>
+        <text name="text">"When we say a piece of code is ‘running’, we mean a series of commands are executed one after the other."</text>
+        <image name="image">"slide_1_8"</image>
+    </slide>
+
+    <slide>
+        <text name="text">
+            "The creation of an app has to aspects: the Design defines how it looks and the Code defines how it behaves."
+        </text>
+        <image name="image">"slide_1_9"</image>
+    </slide>
+
+    <slide>
+        <text name="text">
+            "In Frizzle, we\\u0027ll start with the design in the Graphic Edit screen and then move on to coding in the Coding screen."
+        </text>
+        <image name="image">"slide_1_10"</image>
     </slide>
 
     <exercise>
         <type name="type">"SingleResponse"</type>
-        <question name="question">"An app\\u0027s title is an example of what kind of View?"</question>
-        <image name="image">"exercise_illustrations_1"</image>
+        <question name="question">"A phone is a kind of computer."</question>
+        <image name="image">"exercise_1_1"</image>
         <content name="content"></content>
         <possibilities name = "possibilities">
-            <possibility name = "possibility">"TextView"</possibility>
-            <possibility name = "possibility">"ImageView"</possibility>
+            <possibility name = "possibility">"True"</possibility>
+            <possibility name = "possibility">"False"</possibility>
         </possibilities>
         <answers name="answers">
-            <answer name="answer">"TextView"</answer>
+            <answer name="answer">"True"</answer>
         </answers>
     </exercise>
 
     <exercise>
         <type name="type">"SingleResponse"</type>
-        <question name="question">"A Button is a kind of a View."</question>
-        <image name="image">"exercise_illustrations_2"</image>
+        <question name="question">"there are many languages that bridge between computers and humans."</question>
+        <image name="image">"exercise_1_2"</image>
         <content name="content"></content>
         <possibilities name = "possibilities">
             <possibility name = "possibility">"True"</possibility>
@@ -74,39 +91,19 @@
 
     <exercise>
         <type name="type">"FreeText"</type>
-        <question name="question">"Write the Java command to find a View by it\\u0027s ID."</question>
-        <image name="image">"exercise_illustrations_3"</image>
+        <question name="question">"The language we are going to learn is:"</question>
+        <image name="image">"exercise_1_3"</image>
         <content name="content"></content>
         <possibilities name = "possibilities"></possibilities>
         <answers name="answers">
-            <answer name="answer">"findViewById"</answer>
-        </answers>
-    </exercise>
-
-    <exercise>
-        <type name="type">"MultipleResponse"</type>
-        <question name="question">"The properties table allows us to:"</question>
-        <image name="image">"exercise_illustrations_4"</image>
-        <content name="content"></content>
-        <possibilities name = "possibilities">
-            <possibility name= "possibility">"Set TextView\\u0027s font"</possibility>
-            <possibility name= "possibility">"Create a New Button"</possibility>
-            <possibility name= "possibility">"Set an ImageView\\u0027s ID"</possibility>
-            <possibility name= "possibility">"Choose app\\u0027s name"</possibility>
-            <possibility name= "possibility">"Set the Button\\u0027s color"</possibility>
-        </possibilities>
-        <answers name="answers">
-            <answer name="answer">"Set TextView\\u0027s font"</answer>
-            <answer name="answer">"Set an ImageView\\u0027s ID"</answer>
-            <answer name="answer">"Set the Button\\u0027s color"</answer>
+            <answer name="answer">"Java"</answer>
         </answers>
     </exercise>
 
     <exercise>
         <type name="type">"SingleResponse"</type>
-        <question name="question">"If we change the Button ID to \\u0027Send\\u0027, the text that will appear
-            on the button will be \\u0027Send\\u0027."</question>
-        <image name="image">"exercise_illustrations_5"</image>
+        <question name="question">"We\\u0027ll use the code screen to define the look of the app."</question>
+        <image name="image">"exercise_1_4"</image>
         <content name="content"></content>
         <possibilities name = "possibilities">
             <possibility name = "possibility">"True"</possibility>
@@ -119,9 +116,8 @@
 
     <exercise>
         <type name="type">"SingleResponse"</type>
-        <question name="question">"If we change the Button Text to \\u0027Send\\u0027, the text that will appear
-            on the button will be \\u0027Send\\u0027."</question>
-        <image name="image">"exercise_illustrations_6"</image>
+        <question name="question">"We\\u0027ll use the graphic edit screen to define the look of the app."</question>
+        <image name="image">"exercise_1_5"</image>
         <content name="content"></content>
         <possibilities name = "possibilities">
             <possibility name = "possibility">"True"</possibility>
@@ -133,7 +129,9 @@
     </exercise>
 
     <task>
-        <text name = "text"> "Create a button in the Graphic Edit screen and change its properties as you wish" </text>
+        <text name = "text">
+            "Navigate between the Design and Code screens. In the Design screen, add a button and then delete it."
+        </text>
     </task>
 
 </lesson>

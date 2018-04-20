@@ -41,9 +41,12 @@
     <string name="propertiesTableOnClick">OnClick</string>
     <string name="delete">מחיקה</string>
     <string name="EditTextHint">הקלידי את תשובתך...</string>
+    <string name="mentorIntroduction">היי, אני אלה,</string>
     <string name="onboardingMentorText0">כאן תלמדי לבנות אפליקצית טריוויה משלך בה תוכלי להשתמש.</string>
     <string name="onboardingMentorText1">גם אם לא יצא לך לתכנת אף פעם, אנחנו נדריך אותך בכל שלב</string>
     <string name="onboardingMentorText2">אחרי כל שיעור קצר תוכלי להשלים עוד חלק בבניית האפליקציה שלך</string>
+    <string name="onboardingMentorText3Part1">יאללה</string>
+    <string name="onboardingMentorText3Part2">בואי נצא לדרך!</string>
     <string name="onboardingMentorText3">יאללה, בואי נצא לדרך!</string>
     <string name="already_have_an_account">כבר יש לי חשבון</string>
     <string name="dont_have_an_account">אין לי עדיין חשבון</string>
@@ -51,6 +54,8 @@
     <string name="noPassword">שכחת לכתוב סיסמה!</string>
     <string name="noEmail">כתובת האימייל לא תקינה</string>
     <string name="propertiesTableTextAlign">יישור</string>
+    <string name="whatsYourName">מה שמך?</string>
+    <string name="goBuild">עברי למסך הבנייה.</string>
 
     <string-array name="fonts">
         <item>sans-serif</item>
@@ -85,4 +90,9 @@
         <item>frizzle_blue_green</item>
     </string-array>
     <string name="codeEnd">}</string>
+    <string name="alreadyRegistered">את כבר רשומה? מעולה. הכניסי את כתובת האימייל והסיסמה שלך.</string>
+    <string name="Amazing">כל הכבוד!</string>
+    <string name="letsBuild">בואי ניצור</string>
+    <string name="continueToNextLesson">המשיכי לשיעור הבא</string>
+    <string name="save">שמירה</string>
 </resources>

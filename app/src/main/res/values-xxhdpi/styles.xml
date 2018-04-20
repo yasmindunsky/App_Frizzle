@@ -83,21 +83,6 @@
         <item name="android:paddingEnd">20sp</item>
     </style>
 
-    <style name="userNameEditText" parent="@android:style/Widget.EditText">
-        <item name="android:background">@drawable/user_name_text_edit_background</item>
-        <item name="android:padding">10sp</item>
-        <item name="android:paddingStart">20sp</item>
-        <item name="android:paddingEnd">40sp</item>
-        <item name="android:layout_marginTop">5dp</item>
-        <item name="android:layout_marginBottom">5dp</item>
-
-        <item name="android:textSize">16sp</item>
-        <item name="android:fontFamily">@font/alef</item>
-        <item name="android:textColor">@color/TextLightGrey</item>
-        <item name="android:letterSpacing">.08</item>
-
-        <item name="android:singleLine">true</item>
-    </style>
 
     <!--Lesson-->
     <style name="GoodJobTitle" parent="@style/ActivityTitle">
@@ -205,11 +190,11 @@
     <style name="AppBuilderTabLayout" parent="Widget.Design.TabLayout">
         <item name="android:layout_marginTop">15dp</item>
         <item name="android:layout_height">35dp</item>
-        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_width">240dp</item>
 
-        <item name="tabMaxWidth">200dp</item>
-        <item name="tabPaddingStart">40dp</item>
-        <item name="tabPaddingEnd">40dp</item>
+        <item name="tabMaxWidth">130dp</item>
+        <item name="tabPaddingStart">30dp</item>
+        <item name="tabPaddingEnd">30dp</item>
 
         <item name="tabIndicatorHeight">0dp</item>
         <item name="tabBackground">@drawable/app_builder_tab_selector</item>
@@ -218,8 +203,9 @@
     </style>
 
     <style name="AppBuilderTabTextAppearance" parent="TextAppearance.Design.Tab">
-        <item name="android:textSize">18sp</item>
+        <item name="android:textSize">16sp</item>
         <item name="android:textColor">@color/TextLightGrey</item>
+        <item name="textAllCaps">false</item>
     </style>
 
     <style name="taskInAppBuilderText" parent="@style/SlideText">
@@ -306,7 +292,6 @@
         <item name="android:layout_height">match_parent</item>
         <item name="android:layout_marginEnd">10dp</item>
         <item name="android:layout_marginStart">10dp</item>
-        <item name="android:background">@drawable/table_border</item>
         <item name="android:padding">10dp</item>
     </style>
 

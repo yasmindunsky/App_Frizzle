@@ -35,136 +35,141 @@ android:scaleType="fitCenter"
 app:srcCompat="@drawable/ic_trash" />
 
 
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/tableLayout"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_below="@+id/properties"
-    android:layout_marginTop="20dp"
-    android:background="@drawable/table_background">
+    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/tableLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/properties"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/table_background">
 
-    <TableRow
-        style="@style/propertiesTableRow">
+        <TableRow style="@style/propertiesTableRow">
 
-        <TextView
-            android:id="@+id/viewIdKey"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="@style/propertiesTableKey"
-            android:text="@string/propertiesTableId" />
+            <TextView
+                android:id="@+id/viewIdKey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/propertiesTableId"
+                android:textAppearance="@style/propertiesTableKey" />
 
-        <EditText
-            android:id="@+id/viewIdValue"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text=""
-            android:textAppearance="@style/propertiesTableValue" />
-    </TableRow>
+            <EditText
+                android:id="@+id/viewIdValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:singleLine="false"
+                android:text=""
+                android:textAppearance="@style/propertiesTableValue" />
+        </TableRow>
 
-    <TableRow
-        style="@style/propertiesTableRow">
+        <TableRow style="@style/propertiesTableRow">
 
-        <TextView
-            android:id="@+id/viewTextKey"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/viewIdValue"
-            android:text="@string/propertiesTableText"
-            android:textAppearance="@style/propertiesTableKey" />
+            <TextView
+                android:id="@+id/viewTextKey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/viewIdValue"
+                android:text="@string/propertiesTableText"
+                android:textAppearance="@style/propertiesTableKey" />
 
-        <EditText
-            android:id="@+id/viewTextValue"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:textAppearance="@style/propertiesTableValue" />
+            <EditText
+                android:id="@+id/viewTextValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:textAppearance="@style/propertiesTableValue" />
 
-    </TableRow>
+        </TableRow>
 
-    <TableRow
-        style="@style/propertiesTableRow">
+        <TableRow style="@style/propertiesTableRow">
 
-        <TextView
-            android:id="@+id/viewFontKey"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/propertiesTableFont"
-            android:textAppearance="@style/propertiesTableKey" />
+            <TextView
+                android:id="@+id/viewFontKey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/propertiesTableFont"
+                android:textAppearance="@style/propertiesTableKey" />
 
-        <Spinner
-            android:id="@+id/viewFontValue"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:spinnerMode="dialog" />
-    </TableRow>
+            <Spinner
+                android:id="@+id/viewFontValue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:spinnerMode="dialog" />
+        </TableRow>
 
 
-    <TableRow
-        style="@style/propertiesTableRow">
+        <TableRow style="@style/propertiesTableRow">
 
-        <TextView
-            android:id="@+id/viewFontColorKey"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/propertiesTableFontColor"
-            android:textAppearance="@style/propertiesTableKey" />
+            <TextView
+                android:id="@+id/viewFontColorKey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/propertiesTableFontColor"
+                android:textAppearance="@style/propertiesTableKey" />
 
-        <Button
-            android:id="@+id/viewFontColorValue"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_marginEnd="70dp"
-            android:layout_marginStart="50dp"
-            android:background="@color/TextGrey"  />
+            <Button
+                android:id="@+id/viewFontColorValue"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginEnd="70dp"
+                android:layout_marginStart="50dp"
+                android:background="@color/TextGrey" />
 
 
-    </TableRow>
+        </TableRow>
 
-    <!--<TableRow-->
+        <!--<TableRow-->
         <!--style="@style/propertiesTableRow"-->
         <!--android:layout_width="wrap_content"-->
         <!--android:layout_height="wrap_content">-->
 
         <!--<TextView-->
-            <!--android:id="@+id/viewTextAlignKey"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:text="@string/propertiesTableTextAlign"-->
-            <!--android:textAppearance="@style/propertiesTableKey" />-->
+        <!--android:id="@+id/viewTextAlignKey"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="@string/propertiesTableTextAlign"-->
+        <!--android:textAppearance="@style/propertiesTableKey" />-->
 
         <!--<LinearLayout-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:orientation="horizontal">-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:orientation="horizontal">-->
 
-            <!--<Button-->
-                <!--android:id="@+id/viewTextAlignValueLeft"-->
-                <!--android:layout_width="70dp"-->
-                <!--android:layout_height="match_parent"-->
-                <!--android:layout_weight="1"-->
-                <!--android:text="שמאל" />-->
+        <!--<Button-->
+        <!--android:id="@+id/viewTextAlignValueLeft"-->
+        <!--android:layout_width="70dp"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_weight="1"-->
+        <!--android:text="שמאל" />-->
 
-            <!--<Button-->
-                <!--android:id="@+id/viewTextAlignValueCenter"-->
-                <!--android:layout_width="70dp"-->
-                <!--android:layout_height="match_parent"-->
-                <!--android:layout_weight="1"-->
-                <!--android:text="מרכז" />-->
+        <!--<Button-->
+        <!--android:id="@+id/viewTextAlignValueCenter"-->
+        <!--android:layout_width="70dp"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_weight="1"-->
+        <!--android:text="מרכז" />-->
 
-            <!--<Button-->
-                <!--android:id="@+id/viewTextAlignValueRight"-->
-                <!--android:layout_width="70dp"-->
-                <!--android:layout_height="match_parent"-->
-                <!--android:layout_weight="1"-->
-                <!--android:text="ימין" />-->
+        <!--<Button-->
+        <!--android:id="@+id/viewTextAlignValueRight"-->
+        <!--android:layout_width="70dp"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_weight="1"-->
+        <!--android:text="ימין" />-->
         <!--</LinearLayout>-->
 
 
-    <!--</TableRow>-->
+        <!--</TableRow>-->
 
-</TableLayout>
+    </TableLayout>
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/saveButton"
+        style="@style/propertiesTableSaveButton"
+        android:layout_below="@+id/tableLayout"
+        android:layout_centerHorizontal="true"
+        android:layout_centerInParent="false"
+        />
 </RelativeLayout>

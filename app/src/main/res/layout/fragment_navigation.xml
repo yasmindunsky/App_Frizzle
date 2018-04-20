@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/colors"
             android:layout_centerHorizontal="true"
-            android:text="כל הכבוד!"
+            android:text="@string/Amazing"
             android:textAppearance="@style/GoodJobTitle" />
 
         <ImageView
@@ -54,7 +54,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:text="בואי ניצור" />
+            android:text="@string/letsBuild" />
 
     </RelativeLayout>
 

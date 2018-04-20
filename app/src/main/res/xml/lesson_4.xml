@@ -33,11 +33,6 @@
     </slide>
 
     <slide>
-        <text name="text">"פקודת ה-Java בה נשתמש נקראת findViewById."</text>
-        <image name="imageSource">"slide_4_5"</image>
-    </slide>
-
-    <slide>
         <text name="text">"עכשיו ButtonNameInCode הוא השם של הכפתור במסך הקוד, ונוכל להשתמש בפקודות Java נוספות כדי לשנות את הטקסט עליו."</text>
         <image name="imageSource">"slide_4_1"</image>
     </slide>

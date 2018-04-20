@@ -1,0 +1,109 @@
+<lesson>
+
+    <slide>
+        <text name="text">"We want to change the text that appears on the button when the user clicks it."</text>
+        <image name="imageSource">"slide_4_1"</image>
+    </slide>
+
+    <slide>
+        <text name="text">"As we\\u0027ve learned, to tell the computer how to responed, we need to use Java commands, for that we need to go to the code screen."</text>
+        <image name="imageSource">"slide_4_2"</image>
+    </slide>
+
+    <slide>
+        <text name="text">"
+            "In order to use Java commands on an element, like a button, we need to give the element a name in the code screen. As you remember, when we created the button in the UI screen we gave it a unique ID."</text>
+        <image name="imageSource">"slide_4_3"</image>
+    </slide>
+
+    <slide>
+        <text name="text">
+            "We will give the button a new code-screen-name and use Java to connect it with the button\\u0027s unique-UI-ID."
+        </text>
+        <image name="imageSource">"slide_4_4"</image>
+    </slide>
+
+    <slide>
+        <text name="text">"The Java command we\\u0027ll use is called findViewById."</text>
+        <image name="imageSource">"slide_4_5"</image>
+    </slide>
+
+    <slide>
+        <text name="text">"Now buttonNameInCode is the button’s name in the code screen, and we can use other Java commands to define its behaviour."</text>
+        <image name="imageSource">"slide_4_1"</image>
+    </slide>
+
+
+    <exercise>
+        <type name="type">"SingleResponse"</type>
+        <question name="question">
+            "This code:\\u000A
+            Button myButton = (Button)\\u000A
+            findViewById(R.id.button1);\\u000A
+            Will add the app a third button."
+</question>
+        <image name="image">"exercise_4_1"</image>
+        <content name="content"></content>
+        <possibilities name = "possibilities">
+            <possibility name = "possibility">"True"</possibility>
+            <possibility name = "possibility">"False"</possibility>
+        </possibilities>
+        <answers name="answers">
+            <answer name="answer">"False"</answer>
+        </answers>
+    </exercise>
+
+    <exercise>
+        <type name="type">"SingleResponse"</type>
+        <question name="question">
+            "After this code:\\u000A
+            Button myButton = (Button) findViewById(R.id.button1);\\u000A
+            What button\\u0027s name in code will be myButton?"
+        </question>
+        <image name="image">"exercise_4_1"</image>
+        <content name="content"></content>
+        <possibilities name = "possibilities">
+            <possibility name = "possibility">"Green"</possibility>
+            <possibility name = "possibility">"Blue"</possibility>
+        </possibilities>
+        <answers name="answers">
+            <answer name="answer">"Blue"</answer>
+        </answers>
+    </exercise>
+
+    <exercise>
+        <type name="type">"FreeText"</type>
+        <question name="question">
+            "After this code:\\u000A
+            Button best = (Button)findViewById\\u000A
+            (R.id.bestButtonEver);\\u000A
+            What will be the button\\u0027s name in code?"
+        </question>
+        <image name="image">"exercise_4_3"</image>
+        <content name="content"></content>
+        <possibilities name = "possibilities"></possibilities>
+        <answers name="answers">
+            <answer name="answer">"best"</answer>
+        </answers>
+    </exercise>
+
+    <exercise>
+        <type name="type">"FreeText"</type>
+        <question name="question">
+            "After this code:\\u000A
+            Button like = (Button) findViewById(R.id. likeButton);\\u000A
+            What will be the button\\u0027s name in code?"
+        </question>
+        <image name="image">"exercise_4_4"</image>
+        <content name="content"></content>
+        <possibilities name = "possibilities"></possibilities>
+        <answers name="answers">
+            <answer name="answer">"like"</answer>
+        </answers>
+    </exercise>
+
+
+    <task>
+        <text name = "text"> "Give your button a name in code using the findViewById command." </text>
+    </task>
+</lesson>
