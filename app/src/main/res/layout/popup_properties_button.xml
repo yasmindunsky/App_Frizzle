@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/table_background">
 
-    <TextView
+    <android.support.v7.widget.AppCompatTextView
         android:id="@+id/properties"
         style="@style/propertiesTableTitle"
         android:layout_width="match_parent"
@@ -45,7 +45,7 @@
 
         <TableRow style="@style/propertiesTableRow">
 
-            <TextView
+            <android.support.v7.widget.AppCompatTextView
                 android:id="@+id/viewIdKey"
                 style="@style/propertiesTableKey"
                 android:layout_width="wrap_content"
@@ -63,7 +63,7 @@
 
         <TableRow style="@style/propertiesTableRow">
 
-            <TextView
+            <android.support.v7.widget.AppCompatTextView
                 android:id="@+id/viewTextKey"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -83,7 +83,7 @@
 
         <TableRow style="@style/propertiesTableRow">
 
-            <TextView
+            <android.support.v7.widget.AppCompatTextView
                 android:id="@+id/viewFontKey"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -100,7 +100,7 @@
 
         <TableRow style="@style/propertiesTableRow">
 
-            <TextView
+            <android.support.v7.widget.AppCompatTextView
                 android:id="@+id/viewBgColorKey"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -120,7 +120,7 @@
 
         <TableRow style="@style/propertiesTableRow">
 
-            <TextView
+            <android.support.v7.widget.AppCompatTextView
                 android:id="@+id/viewFontColorKey"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -140,7 +140,7 @@
 
         <TableRow android:id="@+id/onClickTableRow" style="@style/propertiesTableRow">
 
-            <TextView
+            <android.support.v7.widget.AppCompatTextView
                 android:id="@+id/viewOnClickKey"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

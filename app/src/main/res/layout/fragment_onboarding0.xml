@@ -12,16 +12,20 @@
         <ImageView
             android:id="@+id/colors"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/colors_top_screen1"
+            android:layout_height="@dimen/colors_top_screen2"
             android:layout_alignParentTop="true"
             android:layout_centerInParent="true"
-            android:background="@drawable/bg_color_1" />
+            android:background="@drawable/bg_color_2" />
 
         <ImageView
             android:id="@+id/mentor"
-            style="@style/mentorImageOnboarding" />
+            style="@style/mentorImageOnboarding"
+            android:layout_alignParentBottom="false"
+            android:layout_below="@+id/colors"
+            android:layout_marginTop="130dp" />
 
         <LinearLayout
+            android:id="@+id/bubble"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/mentor"
@@ -61,6 +65,17 @@
                 android:text="@string/onboardingMentorText0"
                 android:textAppearance="@style/SlideText" />
         </LinearLayout>
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/goToLoginButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/bubble"
+            android:layout_centerHorizontal="true"
+            android:background="@android:color/transparent"
+            android:text="@string/already_have_an_account"
+            android:textAppearance="@style/italicFormText" />
+
 
     </RelativeLayout>
 

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Frizzle</string>
+    <string name="app_name">Frizzl</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_course">CourseActivity</string>
@@ -13,16 +13,6 @@
 
     <string name="new_button_text">NEW BUTTON</string>
     <string name="new_text_view_text">NEW TEXT</string>
-    <string name="code_start">package com.example.noga.myapplication;
-        import android.support.v7.app.AppCompatActivity;
-        import android.os.Bundle;
-        import android.widget.TextView;
-        import android.view.View;
-        public class MainActivity extends AppCompatActivity {
-        @Override     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);</string>
-    <string name="code_end">}</string>
     <string name="playground">Playground</string>
     <string name="task_text">task</string>
     <string name="code_screen_title">Code</string>
@@ -34,6 +24,7 @@
     <string name="propertiesTableBgColor">Color</string>
     <string name="properties_table_text_align">Alignment</string>
     <string name="propertiesTableFontColor" >Font Color</string>
+    <string name="propertiesTableOnClick">OnClick</string>
     <string name="delete">delete</string>
     <string name="edit_text_hint">Type in your answer..</string>
     <string name="mentor_introduction">Hi, I"'"m Ella,</string>
@@ -65,6 +56,12 @@
     <string name="skip">skip</string>
     <string name="got_it">got it</string>
     <string name="beta">Sorry, we\'re still in beta. This feature will be available soon!</string>
+    <string name="username">User</string>
+    <string name="required_username">*User</string>
+    <string name="password">Password</string>
+    <string name="required_password">*Password</string>
+    <string name="connecting">Connecting...</string>
+    <string name="birth_date">Birth Date</string>
 
     <string-array name="fonts">
         <item>sans-serif</item>
@@ -73,9 +70,29 @@
     </string-array>
 
     <string-array name="colors">
-        <item>white</item>
         <item>red</item>
+        <item>white</item>
         <item>blue</item>
+        <item>orange</item>
         <item>green</item>
+    </string-array>
+
+    <string-array name="frizzleColors">
+        <item>frizzle_orange</item>
+        <item>frizzle_pink</item>
+        <item>frizzle_yellow</item>
+        <item>frizzle_green</item>
+        <item>frizzle_purple</item>
+        <item>frizzle_blue</item>
+    </string-array>
+
+    <string-array name="frizzleBetweenColors">
+        <item>frizzle_yellow_orange</item>
+        <item>frizzle_orange_pink</item>
+        <item>frizzle_pink_yellow</item>
+        <item>frizzle_yellow_green</item>
+        <item>frizzle_green_purple</item>
+        <item>frizzle_purple_blue</item>
+        <item>frizzle_blue_green</item>
     </string-array>
 </resources>

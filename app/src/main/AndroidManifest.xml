@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.yasmindunsky.frizzleapp">
+    package="com.frizzl.app.frizzleapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -16,33 +16,36 @@
         android:largeHeap="true"
         android:theme="@style/AppTheme.NoActionBar">
 
-        <activity android:name=".intro.RegisterActivity">
+        <activity android:name="com.frizzl.app.frizzleapp.intro.RegisterActivity">
         </activity>
 
-        <activity android:name=".intro.LoginActivity">
+        <activity android:name="com.frizzl.app.frizzleapp.intro.LoginActivity">
         </activity>
 
-        <activity android:name=".MapActivity"
+        <activity android:name="com.frizzl.app.frizzleapp.MapActivity"
                   android:theme="@style/AppTheme.NoActionBar">
         </activity>
 
-        <activity android:name=".intro.OnboardingActivity"
+        <activity android:name="com.frizzl.app.frizzleapp.SecondCourseActivity"
             android:theme="@style/AppTheme.NoActionBar">
-
         </activity>
 
-        <activity android:name=".lesson.LessonActivity"/>
-
-        <activity android:name=".appBuilder.AppBuilderActivity">
+        <activity android:name="com.frizzl.app.frizzleapp.intro.OnboardingActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
+        <activity android:name="com.frizzl.app.frizzleapp.lesson.LessonActivity"/>
+
+        <activity android:name="com.frizzl.app.frizzleapp.appBuilder.AppBuilderActivity">
+        </activity>
+
         <provider
             android:name="android.support.v4.content.FileProvider"
-            android:authorities="com.example.yasmindunsky.frizzleapp.fileprovider"
+            android:authorities="com.frizzl.app.frizzleapp.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data

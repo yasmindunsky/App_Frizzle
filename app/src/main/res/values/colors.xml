@@ -12,6 +12,8 @@
     <color name="lightBlue">#c9d3e9</color>
     <color name="black">#33333f</color>
     <color name="backgroundDarkGrey">#525163</color>
+    <color name="lightDarkGrey">#605f71</color>
+
 
 
     <color name="white">#ffffff</color>
@@ -21,6 +23,7 @@
     <color name="holo_blue_light">#ff33b5e5</color>
 
     <!--Frizzle Colors-->
+    <color name="frizzle_light_blue">#0090b1</color>
     <color name="frizzle_orange">#f07a00</color>
     <color name="frizzle_pink">#b93660</color>
     <color name="frizzle_yellow">#f8b119</color>

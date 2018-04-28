@@ -3,14 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    tools:context="com.example.yasmindunsky.frizzleapp.goToAppBuilderFragment">
+    android:background="@android:color/transparent"
+    tools:context="com.frizzl.app.frizzleapp.goToAppBuilderFragment">
 
     <RelativeLayout
-        android:layout_width="350dp"
-        android:layout_height="400dp">
+        android:layout_width="340dp"
+        android:layout_height="400dp"
+        android:background="@drawable/popup_bg">
 
-        <TextView
+        <android.support.v7.widget.AppCompatTextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -27,7 +28,7 @@
             android:layout_alignBottom="@+id/continueButton"
             android:layout_alignParentLeft="true"
             android:layout_marginBottom="100dp"
-            android:layout_marginLeft="60dp"
+            android:layout_marginLeft="32dp"
             android:background="@drawable/ic_mentor" />
 
         <android.support.v7.widget.AppCompatTextView
@@ -35,7 +36,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignTop="@+id/mentor"
-            android:layout_marginRight="50dp"
+            android:layout_marginRight="32dp"
             android:layout_marginTop="22dp"
             android:layout_toRightOf="@+id/mentor"
             android:background="@drawable/bubble"
@@ -43,7 +44,7 @@
             android:text="@string/completed_task"
             android:textAppearance="@style/taskInNavigationText" />
 
-        <Button
+        <android.support.v7.widget.AppCompatButton
             android:id="@+id/continueButton"
             style="@style/checkButton"
             android:layout_width="wrap_content"
@@ -54,7 +55,7 @@
             android:text="@string/continue_to_next_lesson"
             android:textSize="18sp" />
 
-        <TextView
+        <android.support.v7.widget.AppCompatTextView
             android:id="@+id/notReady"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

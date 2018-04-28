@@ -10,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:208030288709:android:1e0bd0d1b80e6460",
         "android_client_info": {
-          "package_name": "com.example.yasmindunsky.frizzleapp"
+          "package_name": "com.frizzl.app.frizzleapp"
         }
       },
       "oauth_client": [
@@ -18,7 +18,7 @@
           "client_id": "208030288709-evlfoofbinftd66pv6f54sre01nmjbjj.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.yasmindunsky.frizzleapp",
+            "package_name": "com.frizzl.app.frizzleapp",
             "certificate_hash": "95f7c921e0fbc918ad5256802be3d4ce80b8534c"
           }
         },

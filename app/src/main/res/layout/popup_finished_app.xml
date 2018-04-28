@@ -3,14 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    tools:context="com.example.yasmindunsky.frizzleapp.goToAppBuilderFragment">
+    android:background="@android:color/transparent"
+    tools:context="com.frizzl.app.frizzleapp.goToAppBuilderFragment">
 
     <RelativeLayout
         android:layout_width="350dp"
-        android:layout_height="400dp">
+        android:layout_height="400dp"
+        android:background="@drawable/popup_bg">
 
-        <TextView
+        <android.support.v7.widget.AppCompatTextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -43,7 +44,7 @@
             android:text="@string/completed_app"
             android:textAppearance="@style/taskInNavigationText" />
 
-        <Button
+        <android.support.v7.widget.AppCompatButton
             android:id="@+id/shareButton"
             style="@style/checkButton"
             android:layout_width="wrap_content"
@@ -54,7 +55,7 @@
             android:text="@string/דישרק"
             android:textSize="18sp" />
 
-        <TextView
+        <android.support.v7.widget.AppCompatTextView
             android:id="@+id/notReady"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -62,7 +63,8 @@
             android:layout_centerHorizontal="true"
             android:layout_centerInParent="false"
             android:layout_marginBottom="@dimen/default_margin"
-            android:text="@string/skip" />
+            android:text="@string/skip"
+            android:textAppearance="@style/italicFormText" />
 
     </RelativeLayout>
 

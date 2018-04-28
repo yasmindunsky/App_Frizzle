@@ -1,0 +1,109 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent"
+    tools:context="com.frizzl.app.frizzleapp.goToAppBuilderFragment">
+
+    <LinearLayout
+        android:layout_width="320dp"
+        android:layout_height="500dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/popup_bg"
+        android:gravity="fill_horizontal"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="You're about to build a"
+            android:textAppearance="@style/SlideText" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/appType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/calibri"
+            android:gravity="center_horizontal"
+            android:text="Fortune Teller App"
+            android:textAppearance="@style/SlideText"
+            android:textColor="@color/frizzle_light_blue"
+            android:textSize="20sp" />
+
+        <ImageView
+            android:id="@+id/apps"
+            android:layout_width="324dp"
+            android:layout_height="265dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/apps" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/createApps"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/default_margin"
+            android:fontFamily="@font/calibri_regular"
+            android:gravity="center_horizontal"
+            android:text="Create many more apps\n and learn to code"
+            android:textAppearance="@style/SlideText"
+            android:textColor="@color/frizzle_blue" />
+
+
+        <LinearLayout
+            android:id="@+id/unlock"
+            android:layout_width="220dp"
+            android:layout_height="55dp"
+            android:layout_gravity="center"
+            android:background="@drawable/unlock_button_background"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingEnd="25dp"
+            android:paddingStart="25dp">
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/unlockText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="unlock"
+                android:textAppearance="@style/ActivityTitleLight" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/price"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/calibri_bold"
+                    android:gravity="center"
+                    android:text="$7.90"
+                    android:textColor="@color/white"
+                    android:textSize="17sp" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/perMonth"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/calibri"
+                    android:gravity="center"
+                    android:text="per month"
+                    android:textColor="@color/white"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</FrameLayout>

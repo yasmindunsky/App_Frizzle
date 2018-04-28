@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="@dimen/slide_height"
     android:background="@color/backgroundLightGrey"
-    tools:context="com.example.yasmindunsky.frizzleapp.lesson.SlideFragment">
+    tools:context="com.frizzl.app.frizzleapp.lesson.SlideFragment">
 
     <RelativeLayout
         android:layout_width="match_parent"

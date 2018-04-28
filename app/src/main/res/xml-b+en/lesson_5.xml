@@ -1,6 +1,6 @@
 <lesson>
     <slide>
-        <text name="text">"עכשיו כשאנחנו יכולות לגשת לכפתור ממסך הקוד, נוכל להשתמש בפקודת Java על מנת לשנות את התכונות שלו."</text>
+        <text name="text">"Now that we can access the button from the code screen, using Java commands we can change its properties according to the user\\u0027s actions."</text>
         <image name="imageSource">"slide_5_1"</image>
     </slide>
 

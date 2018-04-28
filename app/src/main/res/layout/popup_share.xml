@@ -3,12 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    tools:context="com.example.yasmindunsky.frizzleapp.goToAppBuilderFragment">
+    android:background="@android:color/transparent"
+    tools:context="com.frizzl.app.frizzleapp.goToAppBuilderFragment">
 
     <RelativeLayout
         android:layout_width="350dp"
-        android:layout_height="300dp">
+        android:layout_height="300dp"
+        android:background="@drawable/popup_bg">
 
         <ImageView
             android:id="@+id/mentor"
@@ -33,7 +34,7 @@
             android:text="@string/beta"
             android:textAppearance="@style/taskInNavigationText" />
 
-        <Button
+        <android.support.v7.widget.AppCompatButton
             android:id="@+id/gotItButton"
             style="@style/checkButton"
             android:layout_width="wrap_content"

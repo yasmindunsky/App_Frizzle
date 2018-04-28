@@ -1,0 +1,68 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent"
+    tools:context="com.frizzl.app.frizzleapp.goToAppBuilderFragment">
+
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/popup_bg"
+        android:gravity="fill_horizontal"
+        android:orientation="vertical">
+
+        <ImageButton
+            android:id="@+id/close"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_gravity="end"
+            android:backgroundTint="@android:color/transparent"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/ic_x" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/text1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="Thanks for participating\n in our Beta version"
+            android:textAppearance="@style/SlideText"
+            app:fontFamily="@font/calibri_bold" />
+
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/text2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:gravity="center_horizontal"
+            android:text="There will be more\n courses available soon"
+            android:textAppearance="@style/SlideText" />
+
+        <EditText
+            android:id="@+id/username"
+            style="@style/registerEditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:ems="10"
+            android:hint="E-mail"
+            android:inputType="textEmailAddress" />
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/button2"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/unlock_button_background"
+            android:text="Notify Me"
+            android:textAppearance="@style/ActivityTitleLight" />
+
+    </LinearLayout>
+
+</FrameLayout>

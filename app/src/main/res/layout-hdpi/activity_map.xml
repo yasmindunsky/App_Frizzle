@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
-    tools:context="com.example.yasmindunsky.frizzleapp.MapActivity">
+    tools:context="com.frizzl.app.frizzleapp.MapActivity">
 
     <FrameLayout
         android:id="@+id/frameLayout"
@@ -125,7 +125,7 @@
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:text="@string/app_name"
-                android:textAppearance="@style/ActivityTitle"
+                android:textAppearance="@style/ActivityTitleDark"
                 android:textColor="@color/TextGrey"
                 app:fontFamily="@font/hero_regular"
                 app:textAllCaps="true" />
