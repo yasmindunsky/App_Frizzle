@@ -166,7 +166,7 @@ public class UserCreatedTextView extends UserCreatedView {
         viewText.setText(properties.get("android:text"));
 
         // FONT
-        Spinner fontSpinner = (Spinner) popupView.findViewById(R.id.viewFontValue);
+        Spinner fontSpinner = popupView.findViewById(R.id.viewFontValue);
         // Create an ArrayAdapter using the string array and a default spinner layout.
         ArrayAdapter<CharSequence> fontAdapter = ArrayAdapter.createFromResource(context,
                 R.array.fonts, android.R.layout.simple_spinner_item);

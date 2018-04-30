@@ -44,7 +44,7 @@ public class GraphicEditFragment extends Fragment {
     private PopupWindow popupWindow;
     Map<Integer, UserCreatedView> views;
     LayoutXmlWriter layoutXmlWriter;
-    enum viewTypes {Button, TextView};
+    enum viewTypes {Button, TextView}
 
     private ExpandableLayout expandableLayout;
     private FloatingActionButton expandButton;

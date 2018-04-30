@@ -40,7 +40,7 @@ public class LessonActivity extends FragmentActivity {
 
         // Set Toolbar home button.
         android.support.v7.widget.Toolbar toolbar =
-                (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar);
+                findViewById(R.id.toolbar);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -57,7 +57,7 @@ public class LessonActivity extends FragmentActivity {
         currentLesson = new Lesson(UserProfile.user.getCurrentLessonID());
 
         // Set lesson title to current number.
-        TextView lessonTitle = (TextView) findViewById(R.id.lessonTitle);
+        TextView lessonTitle = findViewById(R.id.lessonTitle);
         lessonTitle.setText(getString(R.string.lesson_title) + " " + Integer.toString(UserProfile.user.getCurrentLessonID()));
 
         // parse xml file to insert content to the currentLesson
@@ -81,7 +81,7 @@ public class LessonActivity extends FragmentActivity {
         }
 
         // Connecting TabLayout with ViewPager to show swipe position in dots.
-        final TabLayout tabLayout = (TabLayout) findViewById(R.id.dotsTabLayout);
+        final TabLayout tabLayout = findViewById(R.id.dotsTabLayout);
         tabLayout.setupWithViewPager(viewPager, true);
 
         // Hide Exercise or Slides Tabs according to current fragment.

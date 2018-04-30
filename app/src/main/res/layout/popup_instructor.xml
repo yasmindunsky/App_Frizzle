@@ -5,17 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/table_background"
-    android:gravity="center_horizontal">
+    android:gravity="center_horizontal"
+    android:padding="5dp">
 
     <android.support.v7.widget.AppCompatTextView
         android:id="@+id/title"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_alignParentTop="true"
         android:background="@drawable/table_title_background"
         android:gravity="center"
-        android:paddingBottom="20dp"
-        android:paddingTop="20dp"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"
         android:text="למדריכה"
         android:textSize="24sp" />
 
@@ -25,45 +26,37 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/title" />
 
-    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/tableLayout"
-        android:layout_width="300dp"
+    <EditText
+        android:id="@+id/codeValue"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/errorPlaceholder"
-        android:background="@drawable/table_background">
+        android:layout_toEndOf="@+id/CodeKey"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:text=""
+        android:textAppearance="@style/propertiesTableValue" />
 
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/CodeKey"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/errorPlaceholder"
+        android:layout_marginStart="50dp"
+        android:text="קוד"
+        android:textAppearance="@style/propertiesTableKey" />
 
-        <TableRow
-            android:gravity="center_horizontal"
-            android:padding="10dp">
-
-            <android.support.v7.widget.AppCompatTextView
-                android:id="@+id/CodeKey"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="קוד"
-                android:textAppearance="@style/propertiesTableKey" />
-
-            <EditText
-                android:id="@+id/codeValue"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textPassword"
-                android:text=""
-                android:textAppearance="@style/propertiesTableValue" />
-        </TableRow>
-
-
-        <android.support.v7.widget.AppCompatButton
-            android:id="@+id/confirmButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/register_button_background"
-            android:text="אישור"
-            android:textSize="18sp" />
-
-    </TableLayout>
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/confirmButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/codeValue"
+        android:layout_centerInParent="true"
+        android:layout_margin="10dp"
+        android:background="@drawable/register_button_background"
+        android:foregroundGravity="center"
+        android:padding="15dp"
+        android:text="אישור"
+        android:textAppearance="@style/ActivityTitleLight" />
 
 </RelativeLayout>

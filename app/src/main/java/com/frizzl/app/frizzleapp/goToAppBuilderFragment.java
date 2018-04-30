@@ -52,7 +52,7 @@ public class goToAppBuilderFragment extends Fragment {
         });
 
         Task task = LessonActivity.getCurrentLesson().getTask();
-        TextView taskTextView = (TextView)view.findViewById(R.id.mentorText);
+        TextView taskTextView = view.findViewById(R.id.mentorText);
         taskTextView.setText(getResources().getString(R.string.go_build) + "\n" + task.getText());
 
         return view;

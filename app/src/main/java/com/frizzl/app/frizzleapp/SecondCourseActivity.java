@@ -42,7 +42,7 @@ public class SecondCourseActivity extends AppCompatActivity {
 
         // Set Toolbar sign-out button.
         android.support.v7.widget.Toolbar toolbar =
-                (android.support.v7.widget.Toolbar) findViewById(R.id.mapToolbar);
+                findViewById(R.id.mapToolbar);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

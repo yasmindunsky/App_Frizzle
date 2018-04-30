@@ -86,7 +86,7 @@ public class MultipleResponse extends Exercise {
                 }
             });
 
-            TableRow row = rows.get((int)i / COLS_NUM);
+            TableRow row = rows.get(i / COLS_NUM);
             row.addView(button);
         }
     }

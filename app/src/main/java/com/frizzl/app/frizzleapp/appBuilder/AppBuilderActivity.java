@@ -83,11 +83,11 @@ public class AppBuilderActivity extends AppCompatActivity {
         graphicEditFragment = new GraphicEditFragment();
         codingFragment = new CodingFragment();
 
-        progressBar = (ProgressBar)findViewById(R.id.progressBar);
+        progressBar = findViewById(R.id.progressBar);
 
         // Set Toolbar home button.
         toolbar =
-                (android.support.v7.widget.Toolbar) findViewById(R.id.builderToolbar);
+                findViewById(R.id.builderToolbar);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -113,7 +113,10 @@ public class AppBuilderActivity extends AppCompatActivity {
         doneButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openSuccessPopup();
+
+                //TODO: robotics
+//                openSuccessPopup();
+                openInstructorPopup();
             }
         });
 
@@ -237,6 +240,12 @@ public class AppBuilderActivity extends AppCompatActivity {
                 }
             }
         });
+        popupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
+            @Override
+            public void onDismiss() {
+                undimAppBuilderActivity();
+            }
+        });
 
     }
 
@@ -264,15 +273,16 @@ public class AppBuilderActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // If this is the last lesson, go to share screen
-                if (UserProfile.user.getCurrentLessonID() == 7) {
-                    popupWindow.dismiss();
-                    openFinishedAppPopUp();
-                }
-                // Else, go to map
-                else {
+                //TODO: robotics
+//                if (UserProfile.user.getCurrentLessonID() == 7) {
+//                    popupWindow.dismiss();
+//                    openFinishedAppPopUp();
+//                }
+//                // Else, go to map
+//                else {
                     updateCurrentAndTopPosition();
                     goToMap();
-                }
+//                }
             }
         });
 

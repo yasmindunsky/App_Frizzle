@@ -29,7 +29,8 @@ public class MapActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ConstraintLayout mainLayout = (ConstraintLayout ) this.getLayoutInflater().inflate(R.layout.activity_map, null);
+        //TODO: robotics
+        ConstraintLayout mainLayout = (ConstraintLayout ) this.getLayoutInflater().inflate(R.layout.activity_map_minimal, null);
         setContentView(mainLayout);
 
         currentCourseId = UserProfile.user.getCurrentCourseID();
@@ -50,7 +51,7 @@ public class MapActivity extends AppCompatActivity {
 
         // Set Toolbar sign-out button.
         android.support.v7.widget.Toolbar toolbar =
-                (android.support.v7.widget.Toolbar) findViewById(R.id.mapToolbar);
+                findViewById(R.id.mapToolbar);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,8 +73,8 @@ public class MapActivity extends AppCompatActivity {
     }
 
     private void setMapDesign() {
-        Bitmap bitmap = Bitmap.createBitmap((int) getWindowManager()
-                .getDefaultDisplay().getWidth(), (int) getWindowManager()
+        Bitmap bitmap = Bitmap.createBitmap(getWindowManager()
+                .getDefaultDisplay().getWidth(), getWindowManager()
                 .getDefaultDisplay().getHeight(), Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(bitmap);
         ImageView image = findViewById(R.id.imageView);
@@ -83,8 +84,8 @@ public class MapActivity extends AppCompatActivity {
         String[] betweenColors = getResources().getStringArray(R.array.frizzleBetweenColors);
 
         Button nextButton = findViewById(R.id.lesson1);
-
-        int numOfLessons = 7;
+//TODO: robotics
+        int numOfLessons = 13;
         for (int i = 2; i <= numOfLessons; i++) {
             Button currentButton = nextButton;
 
@@ -93,8 +94,8 @@ public class MapActivity extends AppCompatActivity {
             nextButton = findViewById(identifier);
 
             // Draw line to next button.
-            drawLessonsLine(canvas, currentButton, nextButton, colors, i);
-
+//            drawLessonsLine(canvas, currentButton, nextButton, colors, i);
+//TODO: robotics
             // Draw current button.
             drawLessonCircle(canvas, currentButton, betweenColors, i);
         }

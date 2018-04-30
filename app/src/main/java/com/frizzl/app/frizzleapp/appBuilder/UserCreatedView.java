@@ -17,7 +17,7 @@ import java.util.Map;
  */
 
 public abstract class UserCreatedView {
-    enum ViewType {TextView, Button};
+    enum ViewType {TextView, Button}
 
     ViewType viewType;
     Map<String, String> properties;

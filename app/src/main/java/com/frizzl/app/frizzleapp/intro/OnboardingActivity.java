@@ -29,7 +29,7 @@ public class OnboardingActivity extends FragmentActivity{
         }
 
         // Connecting TabLayout with ViewPager to show swipe position in dots.
-        final TabLayout tabLayout = (TabLayout) findViewById(R.id.dotsTabLayout);
+        final TabLayout tabLayout = findViewById(R.id.dotsTabLayout);
         tabLayout.setupWithViewPager(viewPager, true);
     }
 }

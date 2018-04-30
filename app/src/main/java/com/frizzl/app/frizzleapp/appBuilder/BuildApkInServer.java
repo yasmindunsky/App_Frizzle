@@ -39,7 +39,7 @@ public class BuildApkInServer extends AsyncTask<String, Void, String> {
 
         String xml = UserProfile.user.getXml();
 
-        JSONObject viewsToJson = ((GraphicEditFragment) graphicEditFragment).viewsToJson();
+        JSONObject viewsToJson = graphicEditFragment.viewsToJson();
         String views = viewsToJson.toString();
 
         String query = null;
