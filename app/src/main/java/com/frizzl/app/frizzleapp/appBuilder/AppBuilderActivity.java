@@ -115,8 +115,8 @@ public class AppBuilderActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 //TODO: robotics
-//                openSuccessPopup();
-                openInstructorPopup();
+                openSuccessPopup();
+//                openInstructorPopup();
             }
         });
 
@@ -133,6 +133,7 @@ public class AppBuilderActivity extends AppCompatActivity {
                 }
             }
         });
+
 
         // Task ExpandableLayout
         ImageButton clickToExpandTask = findViewById(R.id.clickToExpandTask);
@@ -273,16 +274,16 @@ public class AppBuilderActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // If this is the last lesson, go to share screen
-                //TODO: robotics
-//                if (UserProfile.user.getCurrentLessonID() == 7) {
-//                    popupWindow.dismiss();
-//                    openFinishedAppPopUp();
-//                }
-//                // Else, go to map
-//                else {
+//                TODO: robotics
+                if (UserProfile.user.getCurrentLessonID() == 7) {
+                    popupWindow.dismiss();
+                    openFinishedAppPopUp();
+                }
+                // Else, go to map
+                else {
                     updateCurrentAndTopPosition();
                     goToMap();
-//                }
+                }
             }
         });
 
@@ -335,6 +336,11 @@ public class AppBuilderActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 popupWindow.dismiss();
+                // User chose to share!
+                Bundle bundle = new Bundle();
+                bundle.putString("SHARED", String.valueOf(true));
+                mFirebaseAnalytics.logEvent("SHARED_APP", bundle);
+
                 openSharePopUp();
             }
         });
@@ -345,6 +351,11 @@ public class AppBuilderActivity extends AppCompatActivity {
             public void onClick(View v) {
                 popupWindow.dismiss();
                 goToNextCourse();
+
+                // User chose not to share
+                Bundle bundle = new Bundle();
+                bundle.putString("SHARED", String.valueOf(false));
+                mFirebaseAnalytics.logEvent("SHARED_APP", bundle);
             }
         });
 

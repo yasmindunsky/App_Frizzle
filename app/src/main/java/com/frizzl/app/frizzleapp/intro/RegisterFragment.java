@@ -115,6 +115,11 @@ public class RegisterFragment extends Fragment {
                         myCalendar.get(Calendar.DAY_OF_MONTH));
 
                 datePickerDialog.show();
+
+                // Send to firebase
+                Bundle bundle = new Bundle();
+                bundle.putString("BIRTH_YEAR", String.valueOf(myCalendar.get(Calendar.YEAR)));
+                mFirebaseAnalytics.logEvent("BIRTH_YEAR", bundle);
             }
         });
 

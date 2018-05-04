@@ -151,7 +151,7 @@
         </ScrollView>
 
         <LinearLayout
-            android:id = "@+id/linearLayout"
+            android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
@@ -162,12 +162,12 @@
             android:orientation="horizontal">
 
             <net.cachapa.expandablelayout.ExpandableLayout
-                android:id="@+id/taskExpandableLayout"
+                android:id="@+id/plusExpandableLayout"
                 android:layout_width="0dp"
                 android:layout_height="45dp"
+                android:layout_gravity="end"
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
-                android:layoutDirection="inherit"
                 android:orientation="horizontal"
                 app:el_duration="1000"
                 app:el_expanded="false">
@@ -180,7 +180,7 @@
                     android:layout_gravity="start"
                     android:background="@drawable/add_button_background"
                     android:gravity="center_vertical|start"
-                    android:layoutDirection="inherit"
+                    android:layoutDirection="ltr"
                     android:lines="1"
                     android:paddingEnd="@dimen/default_margin"
                     android:paddingStart="@dimen/default_margin"
@@ -195,7 +195,7 @@
                     android:layout_gravity="start"
                     android:background="@drawable/add_textview_background"
                     android:gravity="center_vertical|start"
-                    android:layoutDirection="inherit"
+                    android:layoutDirection="ltr"
                     android:lines="1"
                     android:paddingEnd="@dimen/default_margin"
                     android:paddingStart="@dimen/default_margin"

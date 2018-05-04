@@ -117,7 +117,7 @@
     <exercise>
         <type name="type">"SingleResponse"</type>
         <question name="question">"We\\u0027ll use the graphic edit screen to define the look of the app."</question>
-        <image name="image">"exercise_1_5"</image>
+        <image name="image">"exercise_1_4"</image>
         <content name="content"></content>
         <possibilities name = "possibilities">
             <possibility name = "possibility">"True"</possibility>

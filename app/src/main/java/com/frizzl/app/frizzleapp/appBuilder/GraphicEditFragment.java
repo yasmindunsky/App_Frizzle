@@ -100,6 +100,7 @@ public class GraphicEditFragment extends Fragment {
         TextView addButton = view.findViewById(R.id.addButton);
         addButton.setOnClickListener(newButtonOnClick);
 
+        expandableLayout = view.findViewById(R.id.plusExpandableLayout);
         // Set LinearLayout direction to be opposite from device's direction.
         // This is needed for correct expand animation direction.
         LinearLayout linearLayout = view.findViewById(R.id.linearLayout);
@@ -110,7 +111,6 @@ public class GraphicEditFragment extends Fragment {
             linearLayout.setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
         }
 
-        expandableLayout = view.findViewById(R.id.taskExpandableLayout);
         expandButton = view.findViewById(R.id.addView);
 
         expandableLayout.setOnExpansionUpdateListener(new ExpandableLayout.OnExpansionUpdateListener() {

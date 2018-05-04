@@ -13,18 +13,7 @@
 
     <string name="new_button_text">כפתור חדש</string>
     <string name="new_text_view_text">טקסט חדש</string>
-    <string name="code_start">
-        package co.frizzle.frizzleproject1;
 
-        import android.support.v7.app.AppCompatActivity;
-        import android.os.Bundle;
-        import android.widget.Button;
-        import android.widget.TextView;
-        import android.view.View;
-
-        public class MainActivity extends AppCompatActivity {
-
-    </string>
     <string name="playground">איזור בניית האפליקציה</string>
     <string name="task_text">פירוט המשימה</string>
     <string name="code_screen_title">קוד</string>
@@ -86,7 +75,24 @@
         <item>frizzle_purple_blue</item>
         <item>frizzle_blue_green</item>
     </string-array>
+    <string name="code_start">
+        package co.frizzle.frizzleproject1;
+
+        import android.support.v7.app.AppCompatActivity;
+        import android.os.Bundle;
+        import android.widget.Button;
+        import android.widget.TextView;
+        import android.view.View;
+
+        public class MainActivity extends AppCompatActivity {
+
+    </string>
     <string name="code_end">}</string>
+    <string name="initial_code"> \@Override \n
+ protected void onCreate(Bundle savedInstanceState) {\n
+ super.onCreate(savedInstanceState);\n
+ setContentView(R.layout.activity_main);\n\n\n\n
+		}\n\n</string>
     <string name="already_registered">את כבר רשומה? מעולה. הכניסי את כתובת האימייל והסיסמה שלך.</string>
     <string name="amazing">כל הכבוד!</string>
     <string name="lets_build">בואי ניצור</string>
@@ -108,9 +114,5 @@
     <string name="required_password">*Password</string>
     <string name="connecting">מתחבר...</string>
     <string name="birth_date">תאריך לידה</string>
-    <string name="initial_code"> \@Override \n
- protected void onCreate(Bundle savedInstanceState) {\n
- super.onCreate(savedInstanceState);\n
- setContentView(R.layout.activity_main);\n\n\n\n
-		}\n\n</string>
+
 </resources>

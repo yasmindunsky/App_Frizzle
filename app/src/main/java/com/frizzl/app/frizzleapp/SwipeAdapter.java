@@ -58,6 +58,7 @@ public class SwipeAdapter extends FragmentStatePagerAdapter {
             fragment = new goToAppBuilderFragment();
         }
 
+        bundle.putInt("lesson", currentLesson.getID());
         // set the index as argument of the new fragment
         if (currentLesson.isInSlides()) {
             bundle.putInt("index", position);

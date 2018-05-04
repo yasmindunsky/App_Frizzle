@@ -16,6 +16,7 @@ import android.widget.TextView;
 //import com.bumptech.glide.Glide;
 import com.frizzl.app.frizzleapp.R;
 import com.frizzl.app.frizzleapp.Support;
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -25,6 +26,9 @@ public class SlideFragment extends Fragment {
     ImageView fragmentImage;
     AnimationDrawable animationDrawable;
     boolean isAnimated;
+    private FirebaseAnalytics mFirebaseAnalytics;
+    int index;
+    int lessonNum;
 
     public SlideFragment() {
         // Required empty public constructor
@@ -32,6 +36,8 @@ public class SlideFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        // Obtain the FirebaseAnalytics instance.
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(getActivity());
 
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_slide, container, false);
@@ -44,8 +50,9 @@ public class SlideFragment extends Fragment {
         fragmentText = view.findViewById(R.id.slideText);
         fragmentImage = view.findViewById(R.id.slideImage);
         Bundle bundle = getArguments();
-
-        Slide slide = LessonActivity.getCurrentLesson().getLessonSlides().get(bundle.getInt("index"));
+        index = bundle.getInt("index");
+        lessonNum = bundle.getInt("lesson");
+        Slide slide = LessonActivity.getCurrentLesson().getLessonSlides().get(index);
         String message = slide.getSlideText();
         fragmentText.setText(message);
         String imageSrc = slide.getImageSource();
@@ -82,5 +89,12 @@ public class SlideFragment extends Fragment {
 //                });
 
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mFirebaseAnalytics.setCurrentScreen(getActivity(), this.getClass().getSimpleName(),
+                this.getClass().getSimpleName()+lessonNum+"_"+index);
     }
 }

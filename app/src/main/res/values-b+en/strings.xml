@@ -10,6 +10,24 @@
 
     <string name="xmlFileName">activity_main.xml</string>
     <string name="javaFileName">MainActivity.java</string>
+    <string name="code_start">
+        package co.frizzle.frizzleproject1;
+
+        import android.support.v7.app.AppCompatActivity;
+        import android.os.Bundle;
+        import android.widget.Button;
+        import android.widget.TextView;
+        import android.view.View;
+
+        public class MainActivity extends AppCompatActivity {
+
+    </string>
+    <string name="code_end">}</string>
+    <string name="initial_code"> \@Override \n
+ protected void onCreate(Bundle savedInstanceState) {\n
+ super.onCreate(savedInstanceState);\n
+ setContentView(R.layout.activity_main);\n\n\n\n
+		}\n\n</string>
 
     <string name="new_button_text">NEW BUTTON</string>
     <string name="new_text_view_text">NEW TEXT</string>
