@@ -4,6 +4,7 @@ import android.os.AsyncTask;
 
 import com.frizzl.app.frizzleapp.AsyncResponse;
 import com.frizzl.app.frizzleapp.ConnectToServer;
+import com.frizzl.app.frizzleapp.UserProfile;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
@@ -21,13 +22,15 @@ class RegisterToServer extends AsyncTask<String, Void, String> {
         ConnectToServer connectToServer = new ConnectToServer();
         String password = strings[0];
         String email = strings[1];
-        String nickName = strings[2];
+        String birthDate = strings[2];
+        String nickName = strings[3];
 
         try {
-            String query = String.format("username=%s&password=%s&email=%s&nickName=%s",
+            String query = String.format("username=%s&password=%s&email=%s&birthDateStr=%s&nickName=%s",
                     URLEncoder.encode(email, StandardCharsets.UTF_8.name()),
                     URLEncoder.encode(password, StandardCharsets.UTF_8.name()),
                     URLEncoder.encode(email, StandardCharsets.UTF_8.name()),
+                    URLEncoder.encode(birthDate, StandardCharsets.UTF_8.name()),
                     URLEncoder.encode(nickName, StandardCharsets.UTF_8.name()));
             return connectToServer.postToServer("/user/register", query, "POST");
         } catch (UnsupportedEncodingException e) {

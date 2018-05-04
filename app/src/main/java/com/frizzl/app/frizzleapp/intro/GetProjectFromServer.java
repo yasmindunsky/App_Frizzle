@@ -50,7 +50,7 @@ public class GetProjectFromServer extends AsyncTask<String, Void, String> {
 
 
     protected void onPostExecute(String result) {
-        if(!result.equals("")) {
+        if (!result.equals("")) {
             try {
                 String attributeString = result;
 

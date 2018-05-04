@@ -16,9 +16,6 @@
         android:largeHeap="true"
         android:theme="@style/AppTheme.NoActionBar">
 
-        <activity android:name="com.frizzl.app.frizzleapp.intro.RegisterActivity">
-        </activity>
-
         <activity android:name="com.frizzl.app.frizzleapp.intro.LoginActivity">
         </activity>
 
