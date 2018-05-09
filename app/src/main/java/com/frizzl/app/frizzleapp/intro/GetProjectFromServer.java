@@ -86,10 +86,9 @@ public class GetProjectFromServer extends AsyncTask<String, Void, String> {
         }
     }
 
-    private void saveViewsToUser(String viewsString) {
-        GraphicEditFragment graphicEditFragment = new GraphicEditFragment();
-        Map<Integer, UserCreatedView> views = graphicEditFragment.jsonToViews(mContext, viewsString);
-        UserProfile.user.setViews(views);
-
-    }
+//    private void saveViewsToUser(String viewsString) {
+//        GraphicEditFragment graphicEditFragment = new GraphicEditFragment();
+//        Map<Integer, UserCreatedView> views = graphicEditFragment.jsonToViews(mContext, viewsString);
+//        UserProfile.user.setViews(views);
+//    }
 }

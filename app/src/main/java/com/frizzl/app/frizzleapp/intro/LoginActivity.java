@@ -75,6 +75,7 @@ public class LoginActivity extends AppCompatActivity {
         new LoginToServer(new AsyncResponse() {
             @Override
             public void processFinish(String output) {
+
                 // in case of success, create new user instance, restore users data and go to map
                 if (output.equals("Authentication succeeded")) {
 
@@ -82,6 +83,9 @@ public class LoginActivity extends AppCompatActivity {
 
                     // after successful login, update username of current user
                     UserProfile.user.setUsername(email);
+
+                    //TODO change to real nickname from server
+                    UserProfile.user.setNickName(email);
 
                     // update user project from server
                     new GetProjectFromServer(view.getContext()).execute(email, "views");
