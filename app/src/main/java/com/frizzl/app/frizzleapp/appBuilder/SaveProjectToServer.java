@@ -17,10 +17,10 @@ import java.nio.charset.StandardCharsets;
  * Created by yasmin.dunsky on 01-Feb-18.
  */
 
-public class BuildApkInServer extends AsyncTask<String, Void, String> {
+public class SaveProjectToServer extends AsyncTask<String, Void, String> {
     public AsyncResponse delegate = null;
 
-    public BuildApkInServer(AsyncResponse delegate) {
+    public SaveProjectToServer(AsyncResponse delegate) {
         this.delegate = delegate;
     }
 

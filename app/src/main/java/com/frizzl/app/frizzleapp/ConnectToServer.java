@@ -21,7 +21,7 @@ import java.nio.charset.StandardCharsets;
 public class ConnectToServer {
 
     public String postToServer(String path, String body, String method) {
-        final String SERVER_ADDRESS = "http://13.59.192.83:8080/frizzleserver";
+        final String SERVER_ADDRESS = "http://server.frizzle.co:8080/frizzleserver";
 
         HttpURLConnection client = null;
         try {

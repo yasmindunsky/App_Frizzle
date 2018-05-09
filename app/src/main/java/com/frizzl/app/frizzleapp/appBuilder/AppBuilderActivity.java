@@ -58,8 +58,9 @@ public class AppBuilderActivity extends AppCompatActivity {
     private ConstraintLayout constraintLayout;
     private ExpandableLayout errorExpandableLayout = null;
     private FirebaseAnalytics mFirebaseAnalytics;
+    private boolean activityCreated = false;
 
-            //    View globalView;
+    //    View globalView;
     android.support.v7.widget.Toolbar toolbar;
 
     @Override
@@ -68,7 +69,7 @@ public class AppBuilderActivity extends AppCompatActivity {
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
         super.onCreate(savedInstanceState);
-        ConstraintLayout mainLayout = (ConstraintLayout ) this.getLayoutInflater().inflate(R.layout.activity_app_builder, null);
+        ConstraintLayout mainLayout = (ConstraintLayout) this.getLayoutInflater().inflate(R.layout.activity_app_builder, null);
         setContentView(mainLayout);
 
         // Disable dim
@@ -90,18 +91,19 @@ public class AppBuilderActivity extends AppCompatActivity {
         // Set Toolbar home button.
         toolbar =
                 findViewById(R.id.builderToolbar);
+
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // save user project
-                updateUserProjectAttributes();
+                // save user project in profile and server
+                saveProject();
 
                 // Go to map home screen
-                updateUserProjectAttributes();
                 Intent mapIntent = new Intent(getBaseContext(), MapActivity.class);
                 startActivity(mapIntent);
             }
         });
+
         toolbar.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
@@ -182,6 +184,9 @@ public class AppBuilderActivity extends AppCompatActivity {
             }
 
             public void onTabSelected(TabLayout.Tab tab) {
+                if (activityCreated) {
+                    saveProject();
+                }
                 Fragment fragment = null;
                 if (tab.getPosition() == 0) {
                     fragment = graphicEditFragment;
@@ -203,11 +208,9 @@ public class AppBuilderActivity extends AppCompatActivity {
         tabLayout.addTab(codingTab);
         graphicEditTab.select();
 
-
+        activityCreated = true;
 
     }
-
-
 
     private void openInstructorPopup() {
         // inflate the layout of the popup window
@@ -236,8 +239,7 @@ public class AppBuilderActivity extends AppCompatActivity {
                 EditText code = popupView.findViewById(R.id.codeValue);
                 if ("beyonce".equals(code.getText().toString().toLowerCase())) {
                     openSuccessPopup();
-                }
-                else {
+                } else {
                     TextView error = popupView.findViewById(R.id.errorPlaceholder);
                     error.setText("קוד לא נכון, נסי שוב");
                 }
@@ -418,13 +420,13 @@ public class AppBuilderActivity extends AppCompatActivity {
     }
 
     private void goToMap() {
-        updateUserProjectAttributes();
+        saveProject();
         Intent mapIntent = new Intent(this, MapActivity.class);
         startActivity(mapIntent);
     }
 
     private void goToNextCourse() {
-        updateUserProjectAttributes();
+        saveProject();
         Intent mapIntent = new Intent(this, SecondCourseActivity.class);
         startActivity(mapIntent);
     }
@@ -446,19 +448,18 @@ public class AppBuilderActivity extends AppCompatActivity {
     }
 
     public void onPlay(final View view) {
-        updateUserProjectAttributes();
+        updateUserProjectFromActivity();
         progressBar.setVisibility(View.VISIBLE);
         // send java and xml to server for build
         // if succeeded ask user for writing permission and download the apk
-         new BuildApkInServer(new AsyncResponse() {
+        new SaveProjectToServer(new AsyncResponse() {
             @Override
             public void processFinish(String output) {
                 progressBar.setVisibility(View.GONE);
                 if (output.contains("BUILD SUCCESSFUL")) {
                     getWritePermission(view);
                     hideError();
-                }
-                else {
+                } else {
                     // Build didn't work.
                     displayError(output);
                 }
@@ -468,8 +469,7 @@ public class AppBuilderActivity extends AppCompatActivity {
         mFirebaseAnalytics.logEvent("RUN_APP", bundle);
     }
 
-
-    private void updateUserProjectAttributes(){
+    private void updateUserProjectFromActivity() {
         // update java code String
         String codeWritten = ((CodingFragment) codingFragment).getCode();
         UserProfile.user.setJava(codeWritten);
@@ -481,6 +481,18 @@ public class AppBuilderActivity extends AppCompatActivity {
         // update views string
         Map<Integer, UserCreatedView> views = ((GraphicEditFragment) graphicEditFragment).getViews();
         UserProfile.user.setViews(views);
+    }
+
+    private void saveProject() {
+        updateUserProjectFromActivity();
+
+        new SaveProjectToServer(new AsyncResponse() {
+            @Override
+            public void processFinish(String output) {
+
+            }
+        }).execute(getApplicationContext().getResources().getString(R.string.code_start),
+                getApplicationContext().getResources().getString(R.string.code_end));
     }
 
     private void hideError() {
@@ -497,7 +509,7 @@ public class AppBuilderActivity extends AppCompatActivity {
     }
 
     public void goToLesson(View view) {
-        updateUserProjectAttributes();
+        saveProject();
         Intent lessonIntent = new Intent(this, LessonActivity.class);
         startActivity(lessonIntent);
     }

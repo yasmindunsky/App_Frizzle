@@ -13,6 +13,7 @@ public class UserProfile {
 
     private String username = "";
     private String nickName = "";
+    private String birthDate = "";
 
     private int currentLessonID = 1;
     private int topLessonID = 1;
@@ -29,6 +30,7 @@ public class UserProfile {
     public void initUser(){
         username = "";
         nickName = "";
+        birthDate = "";
 
         currentLessonID = 1;
         topLessonID = 1;
@@ -78,6 +80,14 @@ public class UserProfile {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(String birthDate) {
+        this.birthDate = birthDate;
     }
 
     public String getNickName() {

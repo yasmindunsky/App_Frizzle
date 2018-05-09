@@ -585,23 +585,25 @@ public class GraphicEditFragment extends Fragment {
 
         views = UserProfile.user.getViews();
 
-        try {
-            for (int i = 0 ; i < views.size() ; i++) {
-                json = new JSONObject();
-                json.put("id", i);
-                UserCreatedView userCreatedView = views.get(i);
-                json.put("viewType", userCreatedView.getViewType().toString());
-                Map<String, String> properties = userCreatedView.getProperties();
-                for (Map.Entry<String, String> property: properties.entrySet()) {
-                    json.put(property.getKey(), property.getValue());
+        if(views != null) {
+            try {
+                for (int i = 0; i < views.size(); i++) {
+                    json = new JSONObject();
+                    json.put("id", i);
+                    UserCreatedView userCreatedView = views.get(i);
+                    json.put("viewType", userCreatedView.getViewType().toString());
+                    Map<String, String> properties = userCreatedView.getProperties();
+                    for (Map.Entry<String, String> property : properties.entrySet()) {
+                        json.put(property.getKey(), property.getValue());
+                    }
+                    jsonArray.put(json);
                 }
-                jsonArray.put(json);
+
+                finalObject.put("views", jsonArray);
+
+            } catch (JSONException e) {
+                e.printStackTrace();
             }
-
-            finalObject.put("views", jsonArray);
-
-        } catch (JSONException e) {
-            e.printStackTrace();
         }
 
         return finalObject;

@@ -149,6 +149,11 @@ public class RegisterFragment extends Fragment {
     private void registerToServer(String password, final String email, String nickName, final View view) {
         final String newNickName;
 
+        // get birthDate string from button
+        Button birthDate = view.findViewById(R.id.birthdate);
+        final String birthDateString = birthDate.getText().toString();
+
+
         if(nickName.equals("")) {
             newNickName = email;
         } else {
@@ -165,6 +170,7 @@ public class RegisterFragment extends Fragment {
                     // after successful registration, save username and nickname of current user
                     UserProfile.user.setUsername(email);
                     UserProfile.user.setNickName(newNickName);
+                    UserProfile.user.setBirthDate(birthDateString);
 
                     // initial position of user in UserProfile and server
                     initPosition();
@@ -179,7 +185,7 @@ public class RegisterFragment extends Fragment {
                     messagePlaceholder.setText(output);
                 }
             }
-        }).execute(password, email, newNickName);
+        }).execute(password, email, birthDateString, newNickName);
         Bundle bundle = new Bundle();
         mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.LOGIN, bundle);
     }
@@ -194,7 +200,7 @@ public class RegisterFragment extends Fragment {
     }
 
     private void updateLabel() {
-        String myFormat = "MM/dd/yy"; //In which you need put here
+        String myFormat = "MM/dd/yyyy"; //In which you need put here
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
         Button birthDate = view.findViewById(R.id.birthdate);
         birthDate.setText(sdf.format(myCalendar.getTime()));

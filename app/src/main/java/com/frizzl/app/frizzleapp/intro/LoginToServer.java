@@ -25,23 +25,10 @@ class LoginToServer extends AsyncTask<String, Void, String> {
         String password = strings[1];
 
         try {
-            // try login
             String body = String.format("username=%s&password=%s&remember-me='false'",
                     URLEncoder.encode(username, StandardCharsets.UTF_8.name()),
                     URLEncoder.encode(password, StandardCharsets.UTF_8.name()));
-            String response = connectToServer.postToServer("/user/authenticate", body, "POST");
-
-            // if login was successful, get user's data
-            if (response.equals("Authentication succeeded")) {
-                new GetPositionFromServer(new AsyncResponse() {
-                    @Override
-                    public void processFinish(String output) {
-
-                    }
-                }).execute(username);
-            }
-
-            return response;
+            return connectToServer.postToServer("/user/authenticate", body, "POST");
 
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
