@@ -58,7 +58,7 @@
     <string name="no_password">You forgot to choose a password</string>
     <string name="no_email">You forgot to fill out your email address</string>
     <string name="whats_your_name">what"'"s your name?</string>
-    <string name="already_registered">Already registered? Great. Enter your e-mal and password.</string>
+    <string name="already_registered">Already registered? Great. Enter your username and password.</string>
     <string name="go_build">Go to the Build screen.</string>
     <string name="amazing">wow, amazing!</string>
     <string name="lets_build">Let"'"s Build</string>
@@ -70,7 +70,7 @@
     <string name="not_ready_yet">Not ready yet</string>
     <string name="you_did_it">You Did It!</string>
     <string name="completed_app">You completed your app! You can now share with your friends.</string>
-    <string name="דישרק">share</string>
+    <string name="share">share</string>
     <string name="skip">skip</string>
     <string name="got_it">got it</string>
     <string name="beta">Sorry, we\'re still in beta. This feature will be available soon!</string>
@@ -80,6 +80,23 @@
     <string name="required_password">*Password</string>
     <string name="connecting">Connecting...</string>
     <string name="birth_date">Birth Date</string>
+    <string name="you_re_about_to_build_a">You\'re about to build a</string>
+    <string name="fortune_teller_app">Fortune Teller App</string>
+    <string name="create_many_more_apps_n_and_learn_to_code">Create many more apps  and learn to code</string>
+    <string name="unlock">unlock</string>
+    <string name="per_month">per month</string>
+    <string name="what_i_thought">What I thought</string>
+    <string name="rate_your_experience">Rate your experience</string>
+    <string name="thanks_for_participating_n_in_our_beta_version">Thanks for participating  in our Beta version</string>
+    <string name="thanks_for_participating_n_in_our_beta_version_nyour_account_was_not_charged">Thanks for participating  in our Beta version. Your account was not charged.</string>
+    <string name="there_will_be_more_n_courses_available_soon">There will be more  courses available soon</string>
+    <string name="e_mail">E-mail</string>
+    <string name="notify_me">Notify Me</string>
+    <string name="myTriviaApp">My Trivia App</string>
+    <string name="letsPlay">Let\'s Play</string>
+    <string name="inviteYourFriendsToPlay">Invite your friends to download your amazing app and play!</string>
+    <string name="youCompletedYourApp">You Completed Your App</string>
+    <string name="price">$7.90</string>
 
     <string-array name="fonts">
         <item>sans-serif</item>

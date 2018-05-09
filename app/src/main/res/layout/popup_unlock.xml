@@ -21,16 +21,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:text="You're about to build a"
+            android:text="@string/you_re_about_to_build_a"
             android:textAppearance="@style/SlideText" />
 
         <android.support.v7.widget.AppCompatTextView
             android:id="@+id/appType"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/calibri"
             android:gravity="center_horizontal"
-            android:text="Fortune Teller App"
+            android:text="@string/fortune_teller_app"
             android:textAppearance="@style/SlideText"
             android:textColor="@color/frizzle_light_blue"
             android:textSize="20sp" />
@@ -47,9 +46,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/default_margin"
-            android:fontFamily="@font/calibri_regular"
             android:gravity="center_horizontal"
-            android:text="Create many more apps\n and learn to code"
+            android:text="@string/create_many_more_apps_n_and_learn_to_code"
             android:textAppearance="@style/SlideText"
             android:textColor="@color/frizzle_blue" />
 
@@ -70,7 +68,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="unlock"
+                android:text="@string/unlock"
                 android:textAppearance="@style/ActivityTitleLight" />
 
             <LinearLayout
@@ -84,9 +82,9 @@
                     android:id="@+id/price"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/calibri_bold"
+                    android:textAppearance="@style/SlideText"
                     android:gravity="center"
-                    android:text="$7.90"
+                    android:text="@string/price"
                     android:textColor="@color/white"
                     android:textSize="17sp" />
 
@@ -94,15 +92,24 @@
                     android:id="@+id/perMonth"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/calibri"
+                    android:textAppearance="@style/SlideText"
                     android:gravity="center"
-                    android:text="per month"
+                    android:text="@string/per_month"
                     android:textColor="@color/white"
                     android:textSize="12sp" />
 
             </LinearLayout>
 
         </LinearLayout>
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/skip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/default_margin"
+            android:layout_marginTop="@dimen/default_margin"
+            android:gravity="center"
+            android:text="@string/skip" />
 
     </LinearLayout>
 

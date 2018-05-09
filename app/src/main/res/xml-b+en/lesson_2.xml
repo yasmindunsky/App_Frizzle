@@ -79,7 +79,7 @@
         <content name="content"></content>
         <possibilities name = "possibilities"></possibilities>
         <answers name="answers">
-            <answer name="answer">"findViewById"</answer>
+            <answer name="answer">"Send"</answer>
         </answers>
     </exercise>
 

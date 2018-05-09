@@ -10,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:208030288709:android:1e0bd0d1b80e6460",
         "android_client_info": {
-          "package_name": "com.frizzl.app.frizzleapp"
+          "package_name": "com.example.yasmindunsky.frizzleapp"
         }
       },
       "oauth_client": [
@@ -18,8 +18,60 @@
           "client_id": "208030288709-evlfoofbinftd66pv6f54sre01nmjbjj.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
+            "package_name": "com.example.yasmindunsky.frizzleapp",
+            "certificate_hash": "95f7c921e0fbc918ad5256802be3d4ce80b8534c"
+          }
+        },
+        {
+          "client_id": "208030288709-7k6ij9kiuvi9slrnfuvrpgaacagh5e8c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDPD-FtI-hComIJ1oifYq6hn2fRG8EhTWs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "208030288709-7k6ij9kiuvi9slrnfuvrpgaacagh5e8c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:208030288709:android:bccbe5f3d0b4d499",
+        "android_client_info": {
+          "package_name": "com.frizzl.app.frizzleapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "208030288709-nnir14qmdur8qao5up78414574r5tbll.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
             "package_name": "com.frizzl.app.frizzleapp",
             "certificate_hash": "95f7c921e0fbc918ad5256802be3d4ce80b8534c"
+          }
+        },
+        {
+          "client_id": "208030288709-ongskuvafpu000vmcmc7a3uhrq7qegq3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.frizzl.app.frizzleapp",
+            "certificate_hash": "e3489c071c86207f394f17b7039e0ca67727e581"
           }
         },
         {

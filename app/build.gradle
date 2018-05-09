@@ -6,7 +6,7 @@ android {
         applicationId "com.frizzl.app.frizzleapp"
         minSdkVersion 23
         targetSdkVersion 27
-        versionCode 3
+        versionCode 4
         versionName "1.2"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }

@@ -59,18 +59,16 @@
             android:inputType="textPassword"
             android:hint="@string/required_password" />
 
-        <EditText
+        <android.support.v7.widget.AppCompatButton
             android:id="@+id/birthdate"
             style="@style/registerEditText"
-            android:layout_width="wrap_content"
+            android:layout_width="200dp"
             android:layout_height="43dp"
             android:layout_below="@+id/password"
             android:layout_centerHorizontal="true"
             android:layout_centerInParent="false"
             android:layout_centerVertical="false"
-            android:ems="10"
-            android:hint="@string/birth_date"
-            android:inputType="date" />
+            android:hint="@string/birth_date" />
 
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/registerButton"

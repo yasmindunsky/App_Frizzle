@@ -8,7 +8,7 @@
 
     <LinearLayout
         android:layout_width="300dp"
-        android:layout_height="300dp"
+        android:layout_height="400dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="20dp"
         android:layout_marginTop="20dp"
@@ -30,7 +30,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:text="Thanks for participating\n in our Beta version"
+            android:text="@string/thanks_for_participating_n_in_our_beta_version_nyour_account_was_not_charged"
             android:textAppearance="@style/SlideText"
             app:fontFamily="@font/calibri_bold" />
 
@@ -41,27 +41,28 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:gravity="center_horizontal"
-            android:text="There will be more\n courses available soon"
+            android:text="@string/there_will_be_more_n_courses_available_soon"
             android:textAppearance="@style/SlideText" />
 
         <EditText
-            android:id="@+id/username"
+            android:id="@+id/email"
             style="@style/registerEditText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginBottom="32dp"
+            android:layout_marginTop="32dp"
             android:ems="10"
-            android:hint="E-mail"
+            android:hint="@string/e_mail"
             android:inputType="textEmailAddress" />
 
         <android.support.v7.widget.AppCompatButton
-            android:id="@+id/button2"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
+            android:id="@+id/notify"
+            style="@style/unlockButton"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
             android:layout_gravity="center"
             android:background="@drawable/unlock_button_background"
-            android:text="Notify Me"
-            android:textAppearance="@style/ActivityTitleLight" />
+            android:text="@string/notify_me" />
 
     </LinearLayout>
 

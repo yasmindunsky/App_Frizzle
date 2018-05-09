@@ -26,23 +26,23 @@
             app:srcCompat="@drawable/ic_x" />
 
         <android.support.v7.widget.AppCompatTextView
-            android:id="@+id/textView2"
+            android:id="@+id/thanks"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/calibri_bold"
             android:gravity="center_horizontal"
-            android:text="Thanks for participating\n in our Beta version"
+            android:text="@string/thanks_for_participating_n_in_our_beta_version"
             android:textAppearance="@style/SlideText"
             android:textSize="20sp" />
 
 
         <android.support.v7.widget.AppCompatTextView
-            android:id="@+id/textView8"
+            android:id="@+id/pleaseRate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:gravity="center_horizontal"
-            android:text="Rate your experience"
+            android:text="@string/rate_your_experience"
             android:textAppearance="@style/SlideText"
             android:textSize="16sp" />
 
@@ -58,14 +58,14 @@
             android:stepSize="1" />
 
         <android.support.v7.widget.AppCompatEditText
-            android:id="@+id/editText"
+            android:id="@+id/feedback"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:layout_margin="@dimen/default_margin"
             android:background="@drawable/text_box_background"
             android:ems="10"
             android:gravity="top"
-            android:hint="What I thought"
+            android:hint="@string/what_i_thought"
             android:inputType="textMultiLine"
             android:padding="@dimen/default_margin"
             android:textAppearance="@style/italicFormText" />
@@ -76,7 +76,7 @@
             android:layout_width="150dp"
             android:layout_height="50dp"
             android:background="@drawable/unlock_button_background"
-            android:text="Done" />
+            android:text="@string/done" />
 
     </LinearLayout>
 

@@ -10,11 +10,13 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.AppCompatButton;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.GridLayout;
 import android.widget.ImageButton;
@@ -22,8 +24,10 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.RatingBar;
+import android.widget.TextView;
 
 import com.frizzl.app.frizzleapp.intro.LoginActivity;
+import com.frizzl.app.frizzleapp.intro.OnboardingActivity;
 import com.google.firebase.analytics.FirebaseAnalytics;
 
 
@@ -88,15 +92,15 @@ public class SecondCourseActivity extends AppCompatActivity {
             }
         });
 
-//        // Set closing button.
-//        ImageButton closeButton = popupView.findViewById(R.id.close);
-//        closeButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                popupWindow.dismiss();
-//                openBetaWithoutUnlockPopup();
-//            }
-//        });
+        // Set closing button.
+        TextView closeButton = popupView.findViewById(R.id.skip);
+        closeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                popupWindow.dismiss();
+                openBetaWithoutUnlockPopup();
+            }
+        });
 
         // dim
         FrameLayout frameLayout = findViewById(R.id.frameLayout);
@@ -114,7 +118,52 @@ public class SecondCourseActivity extends AppCompatActivity {
     }
 
     private void openBetaAfterUnlockPopup() {
-        Helper.showPopup(getApplicationContext(), R.layout.popup_beta_after_unlock, mainLayout);
+        // inflate the popupLayout of the popup window
+        LayoutInflater inflater = (LayoutInflater)
+                getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        final View popupView = inflater.inflate( R.layout.popup_beta_after_unlock, null);
+
+        // create the popup window
+        int width = GridLayout.LayoutParams.WRAP_CONTENT;
+        int height = GridLayout.LayoutParams.WRAP_CONTENT;
+        boolean focusable = true; // lets taps outside the popup also dismiss it
+        final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
+        popupWindow.setOutsideTouchable(true);
+        popupWindow.setFocusable(true);
+        mainLayout.post(new Runnable() {
+            public void run() {
+                popupWindow.showAtLocation(mainLayout, Gravity.CENTER, 0, 0);
+            }
+        });
+
+        // Set closing button.
+        ImageButton closeButton = popupView.findViewById(R.id.close);
+        if (closeButton != null) {
+            closeButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    popupWindow.dismiss();
+                }
+            });
+        }
+
+        final EditText email = popupView.findViewById(R.id.email);
+        AppCompatButton notifyButton = popupView.findViewById(R.id.notify);
+        notifyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Send data to firebase
+                Bundle bundle = new Bundle();
+                bundle.putString("EMAIL", String.valueOf(email.getText()));
+                mFirebaseAnalytics.logEvent("NOTIFY", bundle);
+                popupWindow.dismiss();
+            }
+        });
+
+        // dim background.
+        mainLayout.setForeground(getApplicationContext().getResources().getDrawable(R.drawable.shade));
+        mainLayout.getForeground().setAlpha(150);
+
         // User chose to unlock!
         Bundle bundle = new Bundle();
         bundle.putString("UNLOCKED", String.valueOf(true));
@@ -166,11 +215,30 @@ public class SecondCourseActivity extends AppCompatActivity {
             public void onClick(View v) {
                 RatingBar ratingBar = popupView.findViewById(R.id.ratingBar);
                 float rating = ratingBar.getRating();
+
+                EditText feedbackEditText = popupView.findViewById(R.id.feedback);
+                String feedback = String.valueOf(feedbackEditText.getText());
+
+                // Send to firebase
                 Bundle bundle = new Bundle();
                 bundle.putString("RATING", String.valueOf(rating));
+                bundle.putString("FEEDBACK", feedback);
                 mFirebaseAnalytics.logEvent("RATING", bundle);
+
+
+
+                popupWindow.dismiss();
             }
         });
+
+        popupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
+            @Override
+            public void onDismiss() {
+                Intent startOverIntent = new Intent(getBaseContext(), OnboardingActivity.class);
+                startActivity(startOverIntent);
+            }
+        });
+
 
 
 

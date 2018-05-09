@@ -104,7 +104,7 @@
     <string name="not_ready_yet">עדיין לא</string>
     <string name="you_did_it">עשית את זה!</string>
     <string name="completed_app">השלמת את בניית האפליקציה. כעת תוכלי לשתף עם חברים.</string>
-    <string name="דישרק">שתפי</string>
+    <string name="share">שתפי</string>
     <string name="skip">דלגי</string>
     <string name="got_it">הבנתי</string>
     <string name="beta">האפשרות הזו עדיין לא קיימת, אבל היא תהיה בהקדם</string>
@@ -114,5 +114,22 @@
     <string name="required_password">*Password</string>
     <string name="connecting">מתחבר...</string>
     <string name="birth_date">תאריך לידה</string>
+    <string name="you_re_about_to_build_a">בקורס הבא תיצרי</string>
+    <string name="fortune_teller_app">אפליקצית מגדת עתידות</string>
+    <string name="create_many_more_apps_n_and_learn_to_code">צרי עוד אפליקציות ולמדי לתכנת</string>
+    <string name="unlock">המשיכי</string>
+    <string name="per_month">לחודש</string>
+    <string name="what_i_thought">מה חשבתי על האפליקציה</string>
+    <string name="rate_your_experience">איך הייתה החוויה שלך?</string>
+    <string name="thanks_for_participating_n_in_our_beta_version">תודה שהשתתפת בגרסה הנסיונית שלנו</string>
+    <string name="thanks_for_participating_n_in_our_beta_version_nyour_account_was_not_charged">זוהי גרסה נסיונית בלבד, תודה שלקחת חלק. החשבון שלך כמובן לא חוייב.</string>
+    <string name="there_will_be_more_n_courses_available_soon">קורסים נוספים יתווספו בקרוב</string>
+    <string name="e_mail">E-mail</string>
+    <string name="notify_me">עדכנו אותי</string>
+    <string name="myTriviaApp">אפליקצית הטריוויה שלי</string>
+    <string name="letsPlay">בואו נשחק</string>
+    <string name="inviteYourFriendsToPlay">הזמיני את החברים שלך להוריד\nאת האפליקציה ולשחק</string>
+    <string name="youCompletedYourApp">סיימת לבנות את האפליקציה</string>
+    <string name="price">$7.90</string>
 
 </resources>

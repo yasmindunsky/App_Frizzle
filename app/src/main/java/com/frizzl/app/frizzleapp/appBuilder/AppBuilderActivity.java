@@ -41,11 +41,13 @@ import com.google.firebase.analytics.FirebaseAnalytics;
 import net.cachapa.expandablelayout.ExpandableLayout;
 
 import java.io.File;
+import java.util.Locale;
 import java.util.Map;
 
 public class AppBuilderActivity extends AppCompatActivity {
 
     final private static int WRITE_PERMISSION = 1;
+    private static final int MAX_NICKNAME_LENGTH = 10;
 
     File javaFile;
     File xmlFile;
@@ -359,6 +361,18 @@ public class AppBuilderActivity extends AppCompatActivity {
             }
         });
 
+        // Personalize photo
+        String usersNickname = UserProfile.user.getNickName();
+        if (!usersNickname.isEmpty() && usersNickname.length() < MAX_NICKNAME_LENGTH) {
+            TextView myTriviaApp = popupView.findViewById(R.id.myTriviaApp);
+            if (Locale.getDefault().getLanguage().equals(Locale.ENGLISH.toLanguageTag())){
+                myTriviaApp.setText(usersNickname + "'s Trivia App");
+            }
+            else {
+                myTriviaApp.setText("אפליקציית הטריוויה\nשל " + usersNickname);
+            }
+        }
+
         popupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
             @Override
             public void onDismiss() {
@@ -427,8 +441,8 @@ public class AppBuilderActivity extends AppCompatActivity {
             }
         }
         Bundle bundle = new Bundle();
-        bundle.putString("LESSON", String.valueOf(nextLesson));
-        mFirebaseAnalytics.logEvent("LESSON_UP", bundle);
+        bundle.putLong(FirebaseAnalytics.Param.LEVEL, nextLesson);
+        mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.LEVEL_UP, bundle);
     }
 
     public void onPlay(final View view) {

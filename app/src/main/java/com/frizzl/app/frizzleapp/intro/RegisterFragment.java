@@ -30,6 +30,9 @@ import java.util.Locale;
 
 public class RegisterFragment extends Fragment {
 
+    private static final int DEFAULT_BIRTH_YEAR = 2000;
+    private static final int DEFAULT_BIRTH_DAY_OF_MONTH = 1;
+    private static final int DEFAULT_BIRTH_MONTH = Calendar.JANUARY;
     TextView messagePlaceholder;
     View view;
     String nickName;
@@ -72,6 +75,11 @@ public class RegisterFragment extends Fragment {
                     return;
                 }
 
+                // Send to firebase
+                Bundle bundle = new Bundle();
+                bundle.putString("BIRTH_YEAR", String.valueOf(myCalendar.get(Calendar.YEAR)));
+                mFirebaseAnalytics.logEvent("BIRTH_YEAR", bundle);
+
                 // register the user and go to map activity
                 registerToServer(password, email, nickName, view);
             }
@@ -107,19 +115,16 @@ public class RegisterFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                myCalendar.set(Calendar.YEAR, 2000);
-                myCalendar.set(Calendar.MONTH, Calendar.JANUARY);
-                myCalendar.set(Calendar.DAY_OF_MONTH, 1);
+                myCalendar.set(Calendar.YEAR, DEFAULT_BIRTH_YEAR);
+                myCalendar.set(Calendar.MONTH, DEFAULT_BIRTH_MONTH);
+                myCalendar.set(Calendar.DAY_OF_MONTH, DEFAULT_BIRTH_DAY_OF_MONTH);
                 DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(), R.style.MySpinnerDatePickerStyle, date, myCalendar
                         .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
                         myCalendar.get(Calendar.DAY_OF_MONTH));
 
                 datePickerDialog.show();
 
-                // Send to firebase
-                Bundle bundle = new Bundle();
-                bundle.putString("BIRTH_YEAR", String.valueOf(myCalendar.get(Calendar.YEAR)));
-                mFirebaseAnalytics.logEvent("BIRTH_YEAR", bundle);
+
             }
         });
 
