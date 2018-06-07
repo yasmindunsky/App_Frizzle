@@ -16,20 +16,17 @@
         android:largeHeap="true"
         android:theme="@style/AppTheme.NoActionBar">
 
-        <!--&lt;!&ndash; Used for Google Play Store Campaign Measurement&ndash;&gt;-->
-        <!--<receiver android:name="com.google.android.gms.analytics.CampaignTrackingReceiver"-->
-            <!--android:enabled="true"-->
-            <!--android:exported="true">-->
-            <!--<intent-filter>-->
-                <!--<action android:name="com.android.vending.INSTALL_REFERRER" />-->
-            <!--</intent-filter>-->
-        <!--</receiver>-->
-        <!--<service android:name="com.google.android.gms.analytics.CampaignTrackingService"-->
-            <!--android:enabled="true"-->
-            <!--android:exported="false" />-->
-
-        <activity android:name="com.frizzl.app.frizzleapp.intro.RegisterActivity">
-        </activity>
+        <!-- Used for Google Play Store Campaign Measurement-->
+        <receiver android:name="com.google.android.gms.analytics.CampaignTrackingReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.android.vending.INSTALL_REFERRER" />
+            </intent-filter>
+        </receiver>
+        <service android:name="com.google.android.gms.analytics.CampaignTrackingService"
+            android:enabled="true"
+            android:exported="false" />
 
         <activity android:name="com.frizzl.app.frizzleapp.intro.LoginActivity">
         </activity>
@@ -69,6 +66,9 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id"/>
 
 
     </application>

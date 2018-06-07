@@ -18,7 +18,6 @@ import com.frizzl.app.frizzleapp.appBuilder.AppBuilderActivity;
 import com.frizzl.app.frizzleapp.intro.LoginActivity;
 import com.frizzl.app.frizzleapp.lesson.LessonActivity;
 
-
 public class MapActivity extends AppCompatActivity {
 
     private int topCourseId;

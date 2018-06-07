@@ -97,6 +97,7 @@
     <string name="inviteYourFriendsToPlay">Invite your friends to download your amazing app and play!</string>
     <string name="youCompletedYourApp">You Completed Your App</string>
     <string name="price">$7.90</string>
+    <string name="facebook_app_id">178438059643086</string>
 
     <string-array name="fonts">
         <item>sans-serif</item>

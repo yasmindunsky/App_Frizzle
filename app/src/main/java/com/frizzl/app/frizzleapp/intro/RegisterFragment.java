@@ -76,9 +76,8 @@ public class RegisterFragment extends Fragment {
                 }
 
                 // Send to firebase
-                Bundle bundle = new Bundle();
-                bundle.putString("BIRTH_YEAR", String.valueOf(myCalendar.get(Calendar.YEAR)));
-                mFirebaseAnalytics.logEvent("BIRTH_YEAR", bundle);
+                mFirebaseAnalytics.setUserProperty("birth_year", String.valueOf(myCalendar.get(Calendar.YEAR)));
+
 
                 // register the user and go to map activity
                 registerToServer(password, email, nickName, view);

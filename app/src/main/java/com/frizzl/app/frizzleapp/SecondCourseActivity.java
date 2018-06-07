@@ -219,13 +219,16 @@ public class SecondCourseActivity extends AppCompatActivity {
                 EditText feedbackEditText = popupView.findViewById(R.id.feedback);
                 String feedback = String.valueOf(feedbackEditText.getText());
 
-                // Send to firebase
+                // Send feedback somewhere
                 Bundle bundle = new Bundle();
-                bundle.putString("RATING", String.valueOf(rating));
-                bundle.putString("FEEDBACK", feedback);
-                mFirebaseAnalytics.logEvent("RATING", bundle);
+                bundle.putString("Feedback", feedback);
+                mFirebaseAnalytics.logEvent("Feedback", bundle);
 
-
+                // Send to firebase
+                bundle = new Bundle();
+                bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "Rating");
+                bundle.putString(FirebaseAnalytics.Param.ITEM_ID, String.valueOf(rating));
+                mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
 
                 popupWindow.dismiss();
             }
