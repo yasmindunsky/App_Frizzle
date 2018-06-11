@@ -43,14 +43,14 @@ public class OnboardingActivity extends FragmentActivity{
                         Uri deepLink = null;
                         if (pendingDynamicLinkData != null) {
                             deepLink = pendingDynamicLinkData.getLink();
+                            String utm_campaign = deepLink.getQueryParameter("utm_campaign");
+                            String utm_source = deepLink.getQueryParameter("utm_source");
+                            // Send user property to firebase
+                            mFirebaseAnalytics.setUserProperty("utm_campaign", utm_campaign);
+                            mFirebaseAnalytics.setUserProperty("utm_source", utm_source);
                         }
 
-                        String utm_campaign = deepLink.getQueryParameter("utm_campaign");
-                        String utm_source = deepLink.getQueryParameter("utm_source");
 
-                        // Send user property to firebase
-                        mFirebaseAnalytics.setUserProperty("utm_campaign", utm_campaign);
-                        mFirebaseAnalytics.setUserProperty("utm_source", utm_source);
                     }
                 })
                 .addOnFailureListener(this, new OnFailureListener() {

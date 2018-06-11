@@ -2,11 +2,6 @@ package com.frizzl.app.frizzleapp;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Rect;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -14,13 +9,11 @@ import android.support.v7.widget.AppCompatButton;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewTreeObserver;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.GridLayout;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.RatingBar;
@@ -57,7 +50,7 @@ public class SecondCourseActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Go to sign-out screen
-                UserProfile.user.initUser();
+                UserProfile.user.restartUserProfile();
                 Intent signOutIntent = new Intent(getBaseContext(), LoginActivity.class);
                 startActivity(signOutIntent);
             }

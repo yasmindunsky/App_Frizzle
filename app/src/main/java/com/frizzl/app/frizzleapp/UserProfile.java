@@ -21,13 +21,14 @@ public class UserProfile {
     private int topCourseID = 1;
 
     private String xml = "";
+//    private String java = "Button myButton = findViewById(R.id.button_id);\n myButton.setText(\"Beyonce\");";
     private String java = "";
 
     public Map<Integer, UserCreatedView> views = new HashMap<>();
 
     public static UserProfile user = new UserProfile();
 
-    public void initUser(){
+    public void restartUserProfile(){
         username = "";
         nickName = "";
         birthDate = "";

@@ -22,13 +22,21 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
+            <Button
+                android:id="@+id/lesson8"
+                style="@style/mapLessonButton"
+                android:layout_above="@+id/lesson7"
+                android:layout_marginBottom="10dp"
+                android:layout_marginStart="250dp"
+                android:onClick="goToLesson"
+                android:text="8"
+                android:textColor="@android:color/transparent" />
             <Button
                 android:id="@+id/lesson7"
                 style="@style/mapLessonButton"
                 android:layout_above="@+id/lesson6"
-                android:layout_marginBottom="20dp"
-                android:layout_marginStart="270dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginStart="210dp"
                 android:onClick="goToLesson"
                 android:text="7"
                 android:textColor="@android:color/transparent" />
@@ -37,8 +45,8 @@
                 android:id="@+id/lesson6"
                 style="@style/mapLessonButton"
                 android:layout_above="@+id/lesson5"
-                android:layout_marginBottom="30dp"
-                android:layout_marginStart="240dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginStart="190dp"
                 android:onClick="goToLesson"
                 android:text="6"
                 android:textColor="@android:color/transparent" />
@@ -47,8 +55,8 @@
                 android:id="@+id/lesson5"
                 style="@style/mapLessonButton"
                 android:layout_above="@+id/lesson4"
-                android:layout_marginBottom="20dp"
-                android:layout_marginStart="210dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginStart="160dp"
                 android:onClick="goToLesson"
                 android:text="5"
                 android:textColor="@android:color/transparent" />
@@ -58,7 +66,7 @@
                 style="@style/mapLessonButton"
                 android:layout_above="@+id/lesson3"
                 android:layout_marginBottom="5dp"
-                android:layout_marginStart="150dp"
+                android:layout_marginStart="120dp"
                 android:onClick="goToLesson"
                 android:text="4"
                 android:textColor="@android:color/transparent" />
@@ -67,8 +75,8 @@
                 android:id="@+id/lesson3"
                 style="@style/mapLessonButton"
                 android:layout_above="@+id/lesson2"
-                android:layout_marginBottom="15dp"
-                android:layout_marginStart="80dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginStart="70dp"
                 android:onClick="goToLesson"
                 android:text="3"
                 android:textColor="@android:color/transparent" />
@@ -77,7 +85,7 @@
                 android:id="@+id/lesson2"
                 style="@style/mapLessonButton"
                 android:layout_above="@+id/lesson1"
-                android:layout_marginBottom="30dp"
+                android:layout_marginBottom="15dp"
                 android:layout_marginStart="20dp"
                 android:onClick="goToLesson"
                 android:text="2"

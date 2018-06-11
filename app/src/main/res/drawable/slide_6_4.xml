@@ -1,8 +1,0 @@
-<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
-    android:oneshot="false">
-    <item android:drawable="@drawable/slide_6_4a" android:duration="3000" />
-    <item android:drawable="@drawable/slide_6_4b" android:duration="1000" />
-    <item android:drawable="@drawable/slide_6_4c" android:duration="1000" />
-    <item android:drawable="@drawable/slide_6_4d" android:duration="1000" />
-
-</animation-list>

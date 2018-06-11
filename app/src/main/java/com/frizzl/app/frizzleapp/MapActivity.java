@@ -55,7 +55,7 @@ public class MapActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Go to sign-out screen
-                UserProfile.user.initUser();
+                UserProfile.user.restartUserProfile();
                 Intent signOutIntent = new Intent(getBaseContext(), LoginActivity.class);
                 startActivity(signOutIntent);
             }
@@ -84,7 +84,7 @@ public class MapActivity extends AppCompatActivity {
 
         Button nextButton = findViewById(R.id.lesson1);
 //TODO: robotics
-        int numOfLessons = 7;
+        int numOfLessons = 8;
         for (int i = 2; i <= numOfLessons; i++) {
             Button currentButton = nextButton;
 

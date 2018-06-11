@@ -1,18 +1,36 @@
 <lesson>
     <slide>
-        <text name="text">"Now that we can access the button from the code screen, using Java commands we can change its properties according to the user\\u0027s actions."</text>
-        <image name="imageSource">"slide_5_1"</image>
+        <text name="text">"We want to change the text written on the ’Reveal’ button when the user taps it."</text>
+        <image name="imageSource">"slide_4_2"</image>
     </slide>
 
     <slide>
-        <text name="text">"The property we want to set is the text written on the button. For that we\\u0027ll use the setText Java command and choose the new text we want to appear."</text>
+        <text name="text">"We can change the text that appears on the button by using two Java commands which are already written in the Code screen. We’ll understand them in the next slides."</text>
         <image name="imageSource">"slide_5_2"</image>
     </slide>
 
     <slide>
-        <text name="text">" We\\u0027ll apply the command on our button and specify the new text."</text>
-        <image name="imageSource">"slide_5_2"</image>
+        <text name="text">"We’ll start from the second command, setText. Using this command we can define what’s the new text that will appear on the button."</text>
+        <image name="imageSource">"slide_5_3"</image>
     </slide>
+
+    <slide>
+        <text name="text">"At the end of the command, in brackets and quotation marks, the new text is written."</text>
+        <image name="imageSource">"slide_5_4"</image>
+    </slide>
+
+    <slide>
+        <text name="text">"The command starts with the name of the button whose text we want to change."</text>
+        <image name="imageSource">"slide_5_5"</image>
+    </slide>
+
+    <slide>
+        <text name="text">"The first command of these two is the one that sets the button’s name and we’ll learn about it in the next lesson."</text>
+        <image name="imageSource">"slide_5_6"</image>
+    </slide>
+
+
+
 
 
     <exercise>
@@ -64,6 +82,6 @@
 
 
     <task>
-        <text name = "text"> "In the Code screen, apply the setText command on your button so the text will change to the answer to your trivia question." </text>
+        <text name = "text"> "In the Code screen, change the text in the setText command so that the text changes to the answer of your trivia question." </text>
     </task>
 </lesson>

@@ -3,62 +3,44 @@
 <lesson>
     <slide>
         <text name="text">
-"A computer is an electronic device that can execute pre-defined actions. Your phone is also a computer."
+            "A computer is an electronic device that can execute pre-defined actions. Your phone is also a computer."
         </text>
         <image name="image">"slide_1_1"</image>
     </slide>
 
     <slide>
-        <text name="text">"The computer doesn’t decide how to react to the user, the developer is the one who commands the computer."</text>
+        <text name="text">
+            "The computer doesn’t decide how to react to the user, the developer is the one who defines how the computer should behave."
+        </text>
         <image name="image">"slide_1_2"</image>
     </slide>
 
     <slide>
         <text name="text">
-            "The computer only understands commands in his own language."
+            "The computer only understands commands in its own language."
         </text>
         <image name="image">"slide_1_3"</image>
     </slide>
 
     <slide>
-        <text name="text">"The developer commands the computer with code that bridges between computer language and human language."
+        <text name="text">
+            "The developer instructs the computer using code and bridges between “computer language” and “human language”."
         </text>
         <image name="image">"slide_1_4"</image>
     </slide>
 
     <slide>
-        <text name="text">"Just like humans have many languages, there are many code languages."
+        <text name="text">
+            "Just like people have many languages, there are many computer languages."
         </text>
         <image name="image">"slide_1_5"</image>
     </slide>
 
     <slide>
-        <text name="text">"We are going to learn Java language and use it to create apps."</text>
+        <text name="text">
+            "We are going to learn the Java language and use it to create apps."
+        </text>
         <image name="image">"slide_1_6"</image>
-    </slide>
-
-    <slide>
-        <text name="text">"Using Java we can code: give the computer a command to do something, such as play a song."</text>
-        <image name="image">"slide_1_7"</image>
-    </slide>
-
-    <slide>
-        <text name="text">"When we say a piece of code is ‘running’, we mean a series of commands are executed one after the other."</text>
-        <image name="image">"slide_1_8"</image>
-    </slide>
-
-    <slide>
-        <text name="text">
-            "The creation of an app has two aspects: the Design defines how it looks and the Code defines how it behaves."
-        </text>
-        <image name="image">"slide_1_9"</image>
-    </slide>
-
-    <slide>
-        <text name="text">
-            "In Frizzle, we\\u0027ll start with the design in the Graphic Edit screen and then move on to coding in the Coding screen."
-        </text>
-        <image name="image">"slide_1_10"</image>
     </slide>
 
     <exercise>
@@ -100,37 +82,9 @@
         </answers>
     </exercise>
 
-    <exercise>
-        <type name="type">"SingleResponse"</type>
-        <question name="question">"We\\u0027ll use the code screen to define the look of the app."</question>
-        <image name="image">"exercise_1_4"</image>
-        <content name="content"></content>
-        <possibilities name = "possibilities">
-            <possibility name = "possibility">"True"</possibility>
-            <possibility name = "possibility">"False"</possibility>
-        </possibilities>
-        <answers name="answers">
-            <answer name="answer">"False"</answer>
-        </answers>
-    </exercise>
-
-    <exercise>
-        <type name="type">"SingleResponse"</type>
-        <question name="question">"We\\u0027ll use the graphic edit screen to define the look of the app."</question>
-        <image name="image">"exercise_1_4"</image>
-        <content name="content"></content>
-        <possibilities name = "possibilities">
-            <possibility name = "possibility">"True"</possibility>
-            <possibility name = "possibility">"False"</possibility>
-        </possibilities>
-        <answers name="answers">
-            <answer name="answer">"True"</answer>
-        </answers>
-    </exercise>
-
     <task>
         <text name = "text">
-            "Navigate between the Design and Code screens. In the Design screen, add a button and then delete it. When you\\u0027re done, click the check mark."
+            "Toggle between the Design and Code screens. We’ll get to know them both in the next lessons. When you’re done, click the checkmark button."
         </text>
     </task>
 

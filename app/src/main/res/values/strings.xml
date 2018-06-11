@@ -64,6 +64,7 @@
         <item>frizzle_green</item>
         <item>frizzle_purple</item>
         <item>frizzle_blue</item>
+        <item>frizzle_red</item>
     </string-array>
 
     <string-array name="frizzleBetweenColors">
@@ -73,8 +74,10 @@
         <item>frizzle_yellow_green</item>
         <item>frizzle_green_purple</item>
         <item>frizzle_purple_blue</item>
-        <item>frizzle_blue_green</item>
+        <item>frizzle_blue_red</item>
+        <item>frizzle_red_purple</item>
     </string-array>
+
     <string name="code_start">
         package co.frizzle.frizzleproject1;
 

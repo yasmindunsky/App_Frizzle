@@ -279,7 +279,7 @@ public class AppBuilderActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // If this is the last lesson, go to share screen
 //                TODO: robotics
-                if (UserProfile.user.getCurrentLessonID() == 7) {
+                if (UserProfile.user.getCurrentLessonID() == 8) {
                     popupWindow.dismiss();
                     openFinishedAppPopUp();
                 }

@@ -1,68 +1,165 @@
 <lesson>
 
     <slide>
-        <text name="text">"Until now we created the UI of the app, but when we run the app and click on the button nothing happens."</text>
+        <text name="text">"Building an app has two aspects: the Design defines how it looks and the Code defines how it behaves."</text>
         <image name="imageSource">"slide_3_1"</image>
     </slide>
 
     <slide>
-        <text name="text">"We want the app to behave in a certain way according to the user’s actions."</text>
+        <text name="text">"We’ll start by designing the app in the Design screen and then move on to coding in the Code screen."</text>
         <image name="imageSource">"slide_3_2"</image>
     </slide>
 
     <slide>
-        <text name="text">"For example, in this app, when the user clicks on the like button we want the number of likes to increase."</text>
+        <text name="text">"The Design of the app consists of elements called Views, for example a Button, TextView or ImageView."</text>
         <image name="imageSource">"slide_3_3"</image>
     </slide>
 
     <slide>
-        <text name="text">"If we want our app to behave this way, we need to use Java and define what the computer will do when a button is clicked."</text>
+        <text name="text">"Most apps consist mainly of Buttons, TextViews and ImageViews
+            as you can see in these examples"</text>
         <image name="imageSource">"slide_3_4"</image>
+    </slide>
+
+    <slide>
+        <text name="text">"This is what our Trivia app is going to look like. It’s made of a Button and a TextView. We’ll first create one question and then add the rest."</text>
+        <image name="imageSource">"slide_3_5"</image>
+    </slide>
+
+    <slide>
+        <text name="text">""Every View has a set of properties.
+            Let’s look at this Button View and see its properties.""</text>
+        <image name="imageSource">"slide_3_6"</image>
+    </slide>
+
+    <slide>
+        <text name="text">"You can control its properties."</text>
+        <image name="imageSource">"slide_3_7"</image>
+    </slide>
+
+    <slide>
+        <text name="text">"When you create a new View you give it a unique name - an ID."</text>
+        <image name="imageSource">"slide_3_8"</image>
     </slide>
 
     <exercise>
         <type name="type">"SingleResponse"</type>
-        <question name="question">"we want to add a title to the app and define the color blue, which screen will we use?"</question>
-        <image name="image">"exercise_3_1"</image>
+        <question name="question">"We\\u0027ll use the code screen to define the look of the app."</question>
+        <image name="image">"exercise_1_4"</image>
         <content name="content"></content>
         <possibilities name = "possibilities">
-            <possibility name = "possibility">"Design"</possibility>
-            <possibility name = "possibility">"Code"</possibility>
+            <possibility name = "possibility">"True"</possibility>
+            <possibility name = "possibility">"False"</possibility>
         </possibilities>
         <answers name="answers">
-            <answer name="answer">"Design"</answer>
+            <answer name="answer">"False"</answer>
         </answers>
     </exercise>
 
     <exercise>
         <type name="type">"SingleResponse"</type>
-        <question name="question">"we want to define that the title's color will turn from purple to green when you click it, which screen will we use?"</question>
-        <image name="image">"exercise_3_2"</image>
+        <question name="question">"We\\u0027ll use the design screen to define the look of the app."</question>
+        <image name="image">"exercise_1_4"</image>
         <content name="content"></content>
         <possibilities name = "possibilities">
-            <possibility name = "possibility">"Design"</possibility>
-            <possibility name = "possibility">"Code"</possibility>
+            <possibility name = "possibility">"True"</possibility>
+            <possibility name = "possibility">"False"</possibility>
         </possibilities>
         <answers name="answers">
-            <answer name="answer">"Code"</answer>
+            <answer name="answer">"True"</answer>
         </answers>
     </exercise>
 
     <exercise>
         <type name="type">"SingleResponse"</type>
-        <question name="question">"The app has a 'play' button, and we want to define that a song starts playing when it is clicked, which screen will we use?"</question>
-        <image name="image">"exercise_3_3"</image>
+        <question name="question">"An app\\u0027s title is an example of what kind of View?"</question>
+        <image name="image">"exercise_2_1"</image>
         <content name="content"></content>
         <possibilities name = "possibilities">
-            <possibility name = "possibility">"Design"</possibility>
-            <possibility name = "possibility">"Code"</possibility>
+            <possibility name = "possibility">"TextView"</possibility>
+            <possibility name = "possibility">"ImageView"</possibility>
         </possibilities>
         <answers name="answers">
-            <answer name="answer">"Code"</answer>
+            <answer name="answer">"TextView"</answer>
         </answers>
     </exercise>
+
+    <exercise>
+        <type name="type">"SingleResponse"</type>
+        <question name="question">"A Button is a kind of a View."</question>
+        <image name="image">"exercise_2_2"</image>
+        <content name="content"></content>
+        <possibilities name = "possibilities">
+            <possibility name = "possibility">"True"</possibility>
+            <possibility name = "possibility">"False"</possibility>
+        </possibilities>
+        <answers name="answers">
+            <answer name="answer">"True"</answer>
+        </answers>
+    </exercise>
+
+    <exercise>
+        <type name="type">"FreeText"</type>
+        <question name="question">"What should we fill in the Text field if we want \\u0027Send\\u0027 to be written on the button?"</question>
+        <image name="image">"exercise_2_3"</image>
+        <content name="content"></content>
+        <possibilities name = "possibilities"></possibilities>
+        <answers name="answers">
+            <answer name="answer">"Send"</answer>
+        </answers>
+    </exercise>
+
+    <exercise>
+        <type name="type">"MultipleResponse"</type>
+        <question name="question">"The properties table allows us to:"</question>
+        <image name="image">"exercise_2_4"</image>
+        <content name="content"></content>
+        <possibilities name = "possibilities">
+            <possibility name= "possibility">"Set TextView\\u0027s font"</possibility>
+            <possibility name= "possibility">"Create a New Button"</possibility>
+            <possibility name= "possibility">"Set an ImageView\\u0027s ID"</possibility>
+            <possibility name= "possibility">"Choose app\\u0027s name"</possibility>
+            <possibility name= "possibility">"Set the Button\\u0027s color"</possibility>
+        </possibilities>
+        <answers name="answers">
+            <answer name="answer">"Set TextView\\u0027s font"</answer>
+            <answer name="answer">"Set an ImageView\\u0027s ID"</answer>
+            <answer name="answer">"Set the Button\\u0027s color"</answer>
+        </answers>
+    </exercise>
+
+    <exercise>
+        <type name="type">"SingleResponse"</type>
+        <question name="question">"If we change the Button ID to \\u0027Send\\u0027, the text that will appear
+            on the button will be \\u0027Send\\u0027."</question>
+        <image name="image">"exercise_2_5"</image>
+        <content name="content"></content>
+        <possibilities name = "possibilities">
+            <possibility name = "possibility">"True"</possibility>
+            <possibility name = "possibility">"False"</possibility>
+        </possibilities>
+        <answers name="answers">
+            <answer name="answer">"False"</answer>
+        </answers>
+    </exercise>
+
+    <exercise>
+        <type name="type">"SingleResponse"</type>
+        <question name="question">"If we change the Button Text to \\u0027Send\\u0027, the text that will appear
+            on the button will be \\u0027Send\\u0027."</question>
+        <image name="image">"exercise_2_6"</image>
+        <content name="content"></content>
+        <possibilities name = "possibilities">
+            <possibility name = "possibility">"True"</possibility>
+            <possibility name = "possibility">"False"</possibility>
+        </possibilities>
+        <answers name="answers">
+            <answer name="answer">"True"</answer>
+        </answers>
+    </exercise>
+
 
     <task>
-        <text name = "text"> "Run the app and click the button." </text>
+        <text name = "text"> "In the Design screen, write your trivia question on the existing TextView. Add a button and write ’Reveal’ on it. Change other properties as you wish." </text>
     </task>
 </lesson>
