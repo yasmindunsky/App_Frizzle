@@ -26,7 +26,10 @@
     <string name="initial_code"> \@Override \n
  protected void onCreate(Bundle savedInstanceState) {\n
  super.onCreate(savedInstanceState);\n
- setContentView(R.layout.activity_main);\n\n\n\n
+ setContentView(R.layout.activity_main);\n\n
+        Button myButton = findViewById(R.id.button_id);\n
+ myButton.setText(\"Beyonce\");\n\n\n
+
 		}\n\n</string>
 
     <string name="new_button_text">NEW BUTTON</string>

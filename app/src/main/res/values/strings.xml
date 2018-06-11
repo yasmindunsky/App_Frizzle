@@ -94,8 +94,10 @@
     <string name="initial_code"> \@Override \n
  protected void onCreate(Bundle savedInstanceState) {\n
  super.onCreate(savedInstanceState);\n
- setContentView(R.layout.activity_main);\n\n\n\n
-		}\n\n</string>
+ setContentView(R.layout.activity_main);\n\n
+        Button myButton = findViewById(R.id.button_id);\n
+ myButton.setText(\"Beyonce\");\n\n\n
+        		}\n\n</string>
     <string name="already_registered">את כבר רשומה? מעולה. הכניסי את כתובת האימייל והסיסמה שלך.</string>
     <string name="amazing">כל הכבוד!</string>
     <string name="lets_build">בואי ניצור</string>
