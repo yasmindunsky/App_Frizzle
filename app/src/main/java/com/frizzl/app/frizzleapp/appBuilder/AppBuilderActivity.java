@@ -471,8 +471,8 @@ public class AppBuilderActivity extends AppCompatActivity {
 
     private void updateUserProjectFromActivity() {
         // update java code String
-        String codeWritten = ((CodingFragment) codingFragment).getCode();
-        UserProfile.user.setJava(codeWritten);
+//        String codeWritten = ((CodingFragment) codingFragment).getCode();
+//        UserProfile.user.setJava(codeWritten);
 
         // update xml String
         String xml = ((GraphicEditFragment) graphicEditFragment).getXml();

@@ -41,8 +41,7 @@ public class CodingFragment extends Fragment {
         String currentCode = UserProfile.user.getJava();
         if (currentCode.equals("")) {
             codeEditor.setText(getResources().getString(R.string.initial_code));
-        }
-        else {
+        } else {
             // Break every line after ;
             currentCode = prepareCodeForPresenting(currentCode);
             codeEditor.setText(currentCode);
@@ -70,6 +69,7 @@ public class CodingFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable s) {
+                UserProfile.user.setJava(s.toString());
 
                 // mark saved words such as 'public', 'return', 'Button'
                 markSavedWords(s);
@@ -135,16 +135,16 @@ public class CodingFragment extends Fragment {
     }
 
     private String prepareCodeForPresenting(String currentCode) {
-        currentCode = currentCode.replaceAll(";",";\n");
-        currentCode = currentCode.replaceAll("\\{","{\n");
+        currentCode = currentCode.replaceAll(";", ";\n");
+        currentCode = currentCode.replaceAll("\\{", "{\n");
         return currentCode;
     }
 
-    public String getCode() {
-        if (codeEditor != null) {
-            return codeEditor.getText().toString();
-        } else {
-            return "";
-        }
-    }
+//    public String getCode() {
+//        if (codeEditor != null) {
+//            return codeEditor.getText().toString();
+//        } else {
+//            return "";
+//        }
+//    }
 }
