@@ -1,5 +1,8 @@
 package com.frizzl.app.frizzleapp;
 
+import android.content.Context;
+
+import com.frizzl.app.frizzleapp.appBuilder.UserCreatedTextView;
 import com.frizzl.app.frizzleapp.appBuilder.UserCreatedView;
 
 import java.util.HashMap;
@@ -21,10 +24,9 @@ public class UserProfile {
     private int topCourseID = 1;
 
     private String xml = "";
-    private String java = "Button myButton = findViewById(R.id.button_id);\n myButton.setText(\"Beyonce\");";
-//    private String java = "";
+    private String java = "";
 
-    public Map<Integer, UserCreatedView> views = new HashMap<>();
+    public Map<Integer,UserCreatedView> views = new HashMap<>();
 
     public static UserProfile user = new UserProfile();
 
@@ -131,7 +133,4 @@ public class UserProfile {
     public void setJava(String java) {
         this.java = java;
     }
-
-
-
 }

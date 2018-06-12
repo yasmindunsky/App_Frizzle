@@ -107,7 +107,7 @@ public class UserCreatedButton extends UserCreatedView {
         thisView.setLayoutParams(layoutParams);
 
         this.properties = new HashMap<>();
-        properties.put("android:id",  "Button" + numOfButtons);
+        properties.put("android:id",  "button_id" + numOfButtons);
         properties.put("android:layout_width", "150dp");
         properties.put("android:layout_height", "wrap_content");
         properties.put("android:layout_margin", "10dp");

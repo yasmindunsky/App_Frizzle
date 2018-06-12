@@ -105,7 +105,7 @@ public class UserCreatedTextView extends UserCreatedView {
 //        newText.setTag(R.id.viewType, GraphicEditFragment.viewTypes.TextView);
 
         this.properties = new HashMap<>();
-        properties.put("android:id",  "TextView" + numOfTextViews);
+        properties.put("android:id",  "text_view" + numOfTextViews);
         properties.put("android:layout_width", "150dp");
         properties.put("android:layout_height", "wrap_content");
         properties.put("android:layout_margin", "10dp");

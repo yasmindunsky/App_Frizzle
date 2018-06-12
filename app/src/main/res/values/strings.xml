@@ -95,8 +95,8 @@
  protected void onCreate(Bundle savedInstanceState) {\n
  super.onCreate(savedInstanceState);\n
  setContentView(R.layout.activity_main);\n\n
-        Button myButton = findViewById(R.id.button_id);\n
- myButton.setText(\"Beyonce\");\n\n\n
+        Button myButton = findViewById(R.id.button_id0);\n
+ myButton.setText(\"Hi There\");\n\n\n
         		}\n\n</string>
     <string name="already_registered">את כבר רשומה? מעולה. הכניסי את כתובת האימייל והסיסמה שלך.</string>
     <string name="amazing">כל הכבוד!</string>

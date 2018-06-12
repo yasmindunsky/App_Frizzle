@@ -75,7 +75,7 @@
     </exercise>
 
     <task>
-        <text name = "text"> "In the Code screen, change the text in the setText command to be "Hi There" and run the app using the Play button. Get back to Frizzl and click the checkmark button." </text>
+        <text name = "text"> "In the Code screen, change the text in the setText command to be ’Hello World’ and run the app using the Play button. Get back to Frizzl and click the checkmark button." </text>
     </task>
 
 </lesson>

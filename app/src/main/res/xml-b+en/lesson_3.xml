@@ -160,6 +160,9 @@
 
 
     <task>
-        <text name = "text"> "In the Design screen, write your trivia question on the existing TextView. Add a button and write ’Reveal’ on it. Change other properties as you wish." </text>
+        <text name = "text"> "In the Design screen,
+            add a TextView and write your trivia question on it.
+            Write ’Reveal’ on the existing Button. Change other properties as you wish."
+        </text>
     </task>
 </lesson>
