@@ -135,8 +135,8 @@ public class CodingFragment extends Fragment {
     }
 
     private String prepareCodeForPresenting(String currentCode) {
-        currentCode = currentCode.replaceAll(";", ";\n");
-        currentCode = currentCode.replaceAll("\\{", "{\n");
+        currentCode = currentCode.replaceAll(";[a-zA-Z]", ";\n");
+        currentCode = currentCode.replaceAll("\\{[a-zA-Z]", "{\n");
         return currentCode;
     }
 
