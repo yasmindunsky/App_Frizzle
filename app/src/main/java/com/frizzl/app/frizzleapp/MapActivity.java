@@ -17,6 +17,10 @@ import android.widget.ImageView;
 import com.frizzl.app.frizzleapp.appBuilder.AppBuilderActivity;
 import com.frizzl.app.frizzleapp.intro.LoginActivity;
 import com.frizzl.app.frizzleapp.lesson.LessonActivity;
+import com.frizzl.app.frizzleapp.notifications.NotificationUtils;
+import com.frizzl.app.frizzleapp.notifications.ReminderUtils;
+
+import java.util.ArrayList;
 
 public class MapActivity extends AppCompatActivity {
 
@@ -24,6 +28,9 @@ public class MapActivity extends AppCompatActivity {
     private int currentCourseId;
     private int topLessonId;
     private int currentLessonId;
+    private MapPresenter mapPresenter;
+    private ArrayList<Button> lessonButtons = new ArrayList<>();
+    private android.support.v7.widget.Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +38,22 @@ public class MapActivity extends AppCompatActivity {
         //TODO: robotics
         ConstraintLayout mainLayout = (ConstraintLayout ) this.getLayoutInflater().inflate(R.layout.activity_map, null);
         setContentView(mainLayout);
+
+        for (int i = 1; i <= 8; i++){
+            int buttonIdentifier = getResources().getIdentifier(String.format("lesson%s", i), "id", getPackageName());
+            Button lessonButton = findViewById(buttonIdentifier);
+            lessonButton.setTag(i);
+            lessonButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mapPresenter.onClickedLesson(v);
+                }
+            });
+            lessonButtons.add(lessonButton);
+        }
+        toolbar = findViewById(R.id.mapToolbar);
+
+        mapPresenter = new MapPresenter(this);
 
         currentCourseId = UserProfile.user.getCurrentCourseID();
         topCourseId = UserProfile.user.getTopCourseID();
@@ -49,8 +72,6 @@ public class MapActivity extends AppCompatActivity {
 //        }
 
         // Set Toolbar sign-out button.
-        android.support.v7.widget.Toolbar toolbar =
-                findViewById(R.id.mapToolbar);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -69,6 +90,9 @@ public class MapActivity extends AppCompatActivity {
                 setMapDesign();
             }
         });
+
+        // Set notifications
+//        ReminderUtils.initialize(this);
     }
 
     private void setMapDesign() {
@@ -161,42 +185,51 @@ public class MapActivity extends AppCompatActivity {
         canvas.drawText(String.valueOf(i-1), circleX, circleY+20, paint);
     }
 
-    public void goToLesson(View view) {
-        // Get the lesson id from the text on the clicked button.
-        int buttonID = view.getId();
-        Button button = view.findViewById(buttonID);
-        String lessonNumber = button.getText().toString();
-
-        // Not allowed to access this lesson yet.
-        if (Integer.parseInt(lessonNumber) > topLessonId) {
-            return;
-        }
-
-        UserProfile.user.setCurrentLessonID(Integer.parseInt(lessonNumber));
-
-        // Update current position of the user inside the lessons.
-        updateCurrentPosition(Integer.parseInt(lessonNumber));
-
-        // Start lesson activity.
+    public void navigateToLesson(){
         Intent lessonIntent = new Intent(this, LessonActivity.class);
         startActivity(lessonIntent);
     }
 
-    private void updateCurrentPosition(int lessonNumber) {
-
-        UserProfile.user.setCurrentLessonID(lessonNumber);
-        UserProfile.user.setCurrentCourseID(1);
-        if (lessonNumber == 8) {
-            UserProfile.user.setCurrentCourseID(2);
-        }
-
-        // update position in server
-        new UpdatePositionInServer().execute();
-    }
-
     public void goToPlayground(View view) {
-        // calling the app builder activity with lesson id
         Intent appBuilderIntent = new Intent(this, AppBuilderActivity.class);
         startActivity(appBuilderIntent);
     }
+
+    public void testNotification(View view){
+        NotificationUtils.remindUser(this);
+    }
+
+//    public void goToLesson(View view) {
+//        // Get the lesson id from the text on the clicked button.
+//        int buttonID = view.getId();
+//        Button button = view.findViewById(buttonID);
+//        String lessonNumber = button.getText().toString();
+//
+//        // Not allowed to access this lesson yet.
+//        if (Integer.parseInt(lessonNumber) > topLessonId) {
+//            return;
+//        }
+//
+//        UserProfile.user.setCurrentLessonID(Integer.parseInt(lessonNumber));
+//
+//        // Update current position of the user inside the lessons.
+//        updateCurrentPosition(Integer.parseInt(lessonNumber));
+//
+//        // Start lesson activity.
+//        Intent lessonIntent = new Intent(this, LessonActivity.class);
+//        startActivity(lessonIntent);
+//    }
+
+//    private void updateCurrentPosition(int lessonNumber) {
+//
+//        UserProfile.user.setCurrentLessonID(lessonNumber);
+//        UserProfile.user.setCurrentCourseID(1);
+//        if (lessonNumber == 8) {
+//            UserProfile.user.setCurrentCourseID(2);
+//        }
+//
+//        // update position in server
+//        new UpdatePositionInServer().execute();
+//    }
+
 }

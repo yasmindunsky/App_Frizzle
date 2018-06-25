@@ -92,7 +92,7 @@ public class UserCreatedButton extends UserCreatedView {
         this.thisView = new Button(new ContextThemeWrapper(context, buttonStyle), null, buttonStyle);
         thisView.setText(R.string.new_button_text);
 
-        // index in views map in GraphicEditFragment.
+        // index in views map in DesignScreenFragment.
         this.index = nextViewIndex;
         thisView.setTag(R.id.usersViewId, index);
 

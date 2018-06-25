@@ -85,7 +85,7 @@ public class UserCreatedTextView extends UserCreatedView {
         this.thisView = new TextView(context, null, 0, textViewStyle);
         thisView.setText(R.string.new_text_view_text);
 
-        // index in views map in GraphicEditFragment.
+        // index in views map in DesignScreenFragment.
         this.index = nextViewIndex;
         thisView.setTag(R.id.usersViewId, index);
 
@@ -102,7 +102,7 @@ public class UserCreatedTextView extends UserCreatedView {
 //        newText.setTag(nextViewIndex);
 
         // Set properties as tags.
-//        newText.setTag(R.id.viewType, GraphicEditFragment.viewTypes.TextView);
+//        newText.setTag(R.id.viewType, DesignScreenFragment.viewTypes.TextView);
 
         this.properties = new HashMap<>();
         properties.put("android:id",  "text_view" + numOfTextViews);

@@ -137,5 +137,7 @@
     <string name="youCompletedYourApp">סיימת לבנות את האפליקציה</string>
     <string name="price">$7.90</string>
     <string name="facebook_app_id">178438059643086</string>
+    <string name="main_notification_channel_name">notification_channel</string>
+    <string name="ran_out_of_place">אופס, נגמר המקום!</string>
 
 </resources>

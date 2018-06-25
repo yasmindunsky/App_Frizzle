@@ -35,7 +35,7 @@ import java.util.Map;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class GraphicEditFragment extends Fragment {
+public class DesignScreenFragment extends Fragment {
 
     private GridLayout gridLayout;
     private int numOfButtons;
@@ -49,7 +49,7 @@ public class GraphicEditFragment extends Fragment {
     private ExpandableLayout expandableLayout;
     private FloatingActionButton expandButton;
 
-    public GraphicEditFragment() {
+    public DesignScreenFragment() {
         // Required empty public constructor
     }
 
@@ -62,7 +62,6 @@ public class GraphicEditFragment extends Fragment {
         gridLayout = view.findViewById(R.id.gridLayout);
         gridLayout.setOnDragListener(new DragListener());
 
-//        views = UserProfile.user.getViews();
         views = UserProfile.user.views;
         if (views.isEmpty()) {
             numOfButtons = 0;
@@ -126,7 +125,6 @@ public class GraphicEditFragment extends Fragment {
         }
 
         expandButton = view.findViewById(R.id.addView);
-
         expandableLayout.setOnExpansionUpdateListener(new ExpandableLayout.OnExpansionUpdateListener() {
             @Override
             public void onExpansionUpdate(float expansionFraction, int state) {
@@ -139,7 +137,6 @@ public class GraphicEditFragment extends Fragment {
                 expandableLayout.toggle();
             }
         });
-
         return view;
     }
 
@@ -170,7 +167,7 @@ public class GraphicEditFragment extends Fragment {
         public void onClick(View view) {
             // Check if reached max num of elements.
             if (nextViewIndex >= gridLayout.getColumnCount() * gridLayout.getRowCount()) {
-                Toast.makeText(getActivity(), "אופס, נגמר המקום!",
+                Toast.makeText(getActivity(), R.string.ran_out_of_place,
                         Toast.LENGTH_LONG).show();
                 return;
             }
@@ -347,6 +344,19 @@ public class GraphicEditFragment extends Fragment {
 
         if(views != null) {
             try {
+//                int i = 0;
+//                for (int key : views.keySet()){
+//                    json = new JSONObject();
+//                    json.put("id", i);
+//                    i++;
+//                    UserCreatedView userCreatedView = views.get(key);
+//                    json.put("viewType", userCreatedView.getViewType().toString());
+//                    Map<String, String> properties = userCreatedView.getProperties();
+//                    for (Map.Entry<String, String> property : properties.entrySet()) {
+//                        json.put(property.getKey(), property.getValue());
+//                    }
+//                    jsonArray.put(json);
+//                }
                 for (int i = 0; i < views.size(); i++) {
                     json = new JSONObject();
                     json.put("id", i);

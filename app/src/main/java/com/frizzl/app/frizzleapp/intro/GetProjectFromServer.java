@@ -6,7 +6,7 @@ import android.os.AsyncTask;
 import com.frizzl.app.frizzleapp.ConnectToServer;
 import com.frizzl.app.frizzleapp.R;
 import com.frizzl.app.frizzleapp.UserProfile;
-import com.frizzl.app.frizzleapp.appBuilder.GraphicEditFragment;
+import com.frizzl.app.frizzleapp.appBuilder.DesignScreenFragment;
 import com.frizzl.app.frizzleapp.appBuilder.UserCreatedView;
 
 import org.json.JSONException;
@@ -61,8 +61,8 @@ public class GetProjectFromServer extends AsyncTask<String, Void, String> {
                         attributeString = String.valueOf(reader.get(attribute));
 
                         // parse viewString to view element
-                        GraphicEditFragment graphicEditFragment = new GraphicEditFragment();
-                        Map<Integer, UserCreatedView> views = graphicEditFragment.jsonToViews(mContext, attributeString);
+                        DesignScreenFragment designScreenFragment = new DesignScreenFragment();
+                        Map<Integer, UserCreatedView> views = designScreenFragment.jsonToViews(mContext, attributeString);
 
                         // save the view to the UserProfile object
                         UserProfile.user.setViews(views);
@@ -87,7 +87,7 @@ public class GetProjectFromServer extends AsyncTask<String, Void, String> {
     }
 
 //    private void saveViewsToUser(String viewsString) {
-//        GraphicEditFragment graphicEditFragment = new GraphicEditFragment();
+//        DesignScreenFragment graphicEditFragment = new DesignScreenFragment();
 //        Map<Integer, UserCreatedView> views = graphicEditFragment.jsonToViews(mContext, viewsString);
 //        UserProfile.user.setViews(views);
 //    }

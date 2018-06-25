@@ -17,6 +17,7 @@ public class UserProfile {
     private String username = "";
     private String nickName = "";
     private String birthDate = "";
+    private String currentAppType = "";
 
     private int currentLessonID = 1;
     private int topLessonID = 1;
@@ -34,6 +35,7 @@ public class UserProfile {
         username = "";
         nickName = "";
         birthDate = "";
+        currentAppType = "";
 
         currentLessonID = 1;
         topLessonID = 1;
@@ -107,6 +109,17 @@ public class UserProfile {
 
     public void setCurrentLessonID(int currentLessonID) {
         this.currentLessonID = currentLessonID;
+        UserProfile.user.setCurrentCourseID(1);
+        if (currentLessonID == 8) {
+            UserProfile.user.setCurrentCourseID(2);
+        }
+
+        // update position in server
+        new UpdatePositionInServer().execute();
+    }
+
+    public boolean isLessonOpen(int lessonID) {
+        return (lessonID <= this.getTopLessonID());
     }
 
     public int getTopLessonID() {
@@ -132,5 +145,13 @@ public class UserProfile {
 
     public void setJava(String java) {
         this.java = java;
+    }
+
+    public String getCurrentAppType() {
+        return currentAppType;
+    }
+
+    public void setCurrentAppType(String currentAppType) {
+        this.currentAppType = currentAppType;
     }
 }

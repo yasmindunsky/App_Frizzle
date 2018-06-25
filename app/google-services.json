@@ -25,6 +25,10 @@
         {
           "client_id": "208030288709-7k6ij9kiuvi9slrnfuvrpgaacagh5e8c.apps.googleusercontent.com",
           "client_type": 3
+        },
+        {
+          "client_id": "208030288709-7k6ij9kiuvi9slrnfuvrpgaacagh5e8c.apps.googleusercontent.com",
+          "client_type": 3
         }
       ],
       "api_key": [
@@ -73,6 +77,10 @@
             "package_name": "com.frizzl.app.frizzleapp",
             "certificate_hash": "e3489c071c86207f394f17b7039e0ca67727e581"
           }
+        },
+        {
+          "client_id": "208030288709-7k6ij9kiuvi9slrnfuvrpgaacagh5e8c.apps.googleusercontent.com",
+          "client_type": 3
         },
         {
           "client_id": "208030288709-7k6ij9kiuvi9slrnfuvrpgaacagh5e8c.apps.googleusercontent.com",

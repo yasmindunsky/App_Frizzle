@@ -83,7 +83,7 @@ public class AppBuilderActivity extends AppCompatActivity {
         });
 
 
-        graphicEditFragment = new GraphicEditFragment();
+        graphicEditFragment = new DesignScreenFragment();
         codingFragment = new CodingFragment();
 
         progressBar = findViewById(R.id.progressBar);
@@ -475,11 +475,11 @@ public class AppBuilderActivity extends AppCompatActivity {
 //        UserProfile.user.setJava(codeWritten);
 
         // update xml String
-        String xml = ((GraphicEditFragment) graphicEditFragment).getXml();
+        String xml = ((DesignScreenFragment) graphicEditFragment).getXml();
         UserProfile.user.setXml(xml);
 
         // update views string
-        Map<Integer, UserCreatedView> views = ((GraphicEditFragment) graphicEditFragment).getViews();
+        Map<Integer, UserCreatedView> views = ((DesignScreenFragment) graphicEditFragment).getViews();
         UserProfile.user.setViews(views);
     }
 

@@ -28,7 +28,7 @@ public class SaveProjectToServer extends AsyncTask<String, Void, String> {
     protected String doInBackground(String... strings) {
         ConnectToServer connectToServer = new ConnectToServer();
 
-        GraphicEditFragment graphicEditFragment = new GraphicEditFragment();
+        DesignScreenFragment designScreenFragment = new DesignScreenFragment();
 
         String courseId = String.valueOf(UserProfile.user.getCurrentCourseID());
         String username = UserProfile.user.getUsername();
@@ -39,7 +39,7 @@ public class SaveProjectToServer extends AsyncTask<String, Void, String> {
 
         String xml = UserProfile.user.getXml();
 
-        JSONObject viewsToJson = graphicEditFragment.viewsToJson();
+        JSONObject viewsToJson = designScreenFragment.viewsToJson();
         String views = viewsToJson.toString();
 
         String query = null;

@@ -100,6 +100,11 @@
     <string name="youCompletedYourApp">You Completed Your App</string>
     <string name="price">$7.90</string>
     <string name="facebook_app_id">178438059643086</string>
+    <string name="main_notification_channel_name">notification_channel</string>
+    <string name="notification_title">new notification</string>
+    <string name="notification_text">text</string>
+    <string name="notification_body">body</string>
+    <string name="ran_out_of_place">Oops, no more room!</string>
 
     <string-array name="fonts">
         <item>sans-serif</item>

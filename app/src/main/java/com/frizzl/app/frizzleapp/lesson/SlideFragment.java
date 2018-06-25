@@ -49,6 +49,7 @@ public class SlideFragment extends Fragment {
 
         fragmentText = view.findViewById(R.id.slideText);
         fragmentImage = view.findViewById(R.id.slideImage);
+
         Bundle bundle = getArguments();
         index = bundle.getInt("index");
         lessonNum = bundle.getInt("lesson");
@@ -96,5 +97,9 @@ public class SlideFragment extends Fragment {
         super.onResume();
         mFirebaseAnalytics.setCurrentScreen(getActivity(), this.getClass().getSimpleName(),
                 this.getClass().getSimpleName()+lessonNum+"_"+index);
+    }
+
+    public void showTextAndIllustration(String text){
+        fragmentText.setText(text);
     }
 }
