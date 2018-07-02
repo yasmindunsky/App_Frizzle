@@ -39,7 +39,7 @@
             android:layout_marginRight="32dp"
             android:layout_marginTop="22dp"
             android:layout_toRightOf="@+id/mentor"
-            android:background="@drawable/bubble"
+            android:background="@drawable/bubble_left"
             android:breakStrategy="simple"
             android:text="@string/completed_task"
             android:textAppearance="@style/taskInNavigationText" />

@@ -13,6 +13,7 @@ import com.frizzl.app.frizzleapp.GetPositionFromServer;
 import com.frizzl.app.frizzleapp.MapActivity;
 import com.frizzl.app.frizzleapp.R;
 import com.frizzl.app.frizzleapp.UserProfile;
+import com.frizzl.app.frizzleapp.preferences.SaveSharedPreference;
 import com.google.firebase.analytics.FirebaseAnalytics;
 
 public class LoginActivity extends AppCompatActivity {
@@ -50,6 +51,8 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
 
+        SaveSharedPreference.setLoggedIn(getApplicationContext(), true);
+
         // register the user to the server and print status message
         loginToServer(email, password, view);
         Bundle bundle = new Bundle();
@@ -71,7 +74,7 @@ public class LoginActivity extends AppCompatActivity {
         return true;
     }
 
-    private void loginToServer(final String email, String password, final View view) {
+    private void loginToServer(final String username, String password, final View view) {
         new LoginToServer(new AsyncResponse() {
             @Override
             public void processFinish(String output) {
@@ -82,31 +85,20 @@ public class LoginActivity extends AppCompatActivity {
                     messagePlaceholder.setText(R.string.connecting);
 
                     // after successful login, update username of current user
-                    UserProfile.user.setUsername(email);
+                    UserProfile.user.setUsername(username);
 
                     //TODO change to real nickname from server
-                    UserProfile.user.setNickName(email);
+                    UserProfile.user.setNickName(username);
 
-                    // update user project from server
-                    new GetProjectFromServer(view.getContext()).execute(email, "views");
-                    new GetProjectFromServer(view.getContext()).execute(email, "xml");
-                    new GetProjectFromServer(view.getContext()).execute(email, "code");
-
-                    // update user position from server, when done go to map
-                    new GetPositionFromServer(new AsyncResponse() {
-                        @Override
-                        public void processFinish(String output) {
-                            Intent mapIntent = new Intent(view.getContext(), MapActivity.class);
-                            startActivity(mapIntent);
-                        }
-                    }).execute(email);
+                    UserProfile.user.updateProfileFromServerAndGoToMap(view.getContext());
+                    SaveSharedPreference.setUsername(view.getContext(), username);
                 } else {
 
                     // print failed login output message
                     messagePlaceholder.setText(output);
                 }
             }
-        }).execute(email, password);
+        }).execute(username, password);
     }
 
     public void goToMap() {

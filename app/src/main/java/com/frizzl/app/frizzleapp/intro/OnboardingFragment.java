@@ -1,6 +1,7 @@
 package com.frizzl.app.frizzleapp.intro;
 
 import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -11,11 +12,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 import com.frizzl.app.frizzleapp.R;
 import com.frizzl.app.frizzleapp.Support;
 import com.frizzl.app.frizzleapp.UserProfile;
+
+import java.util.ArrayList;
 
 
 /**
@@ -28,6 +32,7 @@ public class OnboardingFragment extends Fragment {
     private int layout;
     private int position;
     private View view;
+    ArrayList<RelativeLayout> appLayouts = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -79,18 +84,56 @@ public class OnboardingFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        String nickName = UserProfile.user.getNickName();
-        if (position == 1) {
-            if (nickName != "") {
-                TextView mentorText = view.findViewById(R.id.mentorText);
-                mentorText.setText(nickName + ",\n" + getResources().getString(R.string.onboardingMentorText1));
-            }
+        if (2 == position) {
+            ImageView mapAnimation = (ImageView) view.findViewById(R.id.mapAnimation);
+            mapAnimation.setBackgroundResource(R.drawable.onboarding_map);
+            AnimationDrawable animationDrawable = (AnimationDrawable) mapAnimation.getBackground();
+            animationDrawable.start();
+
         }
-        else if (position == 3) {
-            TextView usersName = view.findViewById(R.id.mentorText);
-            usersName.setText("יאללה " + nickName + ", בואי נצא לדרך!");
+        else if (1 == position) {
+            final RelativeLayout relativeLayout1 = view.findViewById(R.id.app1_button);
+            final RelativeLayout relativeLayout2 = view.findViewById(R.id.app2_button);
+            final RelativeLayout relativeLayout3 = view.findViewById(R.id.app3_button);
+            appLayouts.add(relativeLayout1);
+            appLayouts.add(relativeLayout2);
+            appLayouts.add(relativeLayout3);
+
+            relativeLayout1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onAppSelected(1);
+                }
+            });
+            relativeLayout2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onAppSelected(2);
+                }
+            });
+            relativeLayout3.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onAppSelected(3);
+                }
+            });
         }
     }
 
+    public void onAppSelected(int selectedAppNum){
+        for (int i = 0; i < appLayouts.size(); i++) {
+            if (selectedAppNum == i+1) {
+                appLayouts.get(i).setSelected(true);
+                UserProfile.user.setCurrentAppType(String.valueOf(appLayouts.get(i).findViewById(R.id.app_title)));
 
+                View mentorText1 = view.findViewById(R.id.mentorText1);
+                mentorText1.setVisibility(View.INVISIBLE);
+                View mentorText2 = view.findViewById(R.id.mentorText2);
+                mentorText2.setVisibility(View.VISIBLE);
+            }
+            else {
+                appLayouts.get(i).setSelected(false);
+            }
+        }
+    }
 }

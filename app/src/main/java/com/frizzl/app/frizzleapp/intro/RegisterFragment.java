@@ -1,8 +1,6 @@
 package com.frizzl.app.frizzleapp.intro;
 
-import android.app.AlertDialog;
 import android.app.DatePickerDialog;
-import android.content.res.Resources;
 import android.support.v4.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
@@ -51,10 +49,11 @@ public class RegisterFragment extends Fragment {
         }
 
         nickName = UserProfile.user.getNickName();
+        nickName = nickName.trim();
         TextView usersName = view.findViewById(R.id.mentorText);
         if (!nickName.equals("")) {
-            usersName.setText(getResources().getString(R.string.onboardingMentorText3Part1) + " " +
-                nickName + ", " + getResources().getString(R.string.onboardingMentorText3Part2));
+            usersName.setText("OK " + nickName + ", " +
+                    getResources().getString(R.string.onboardingMentorText4));
         }
 
         messagePlaceholder = view.findViewById(R.id.mentorText);

@@ -1,9 +1,11 @@
 package com.frizzl.app.frizzleapp;
 
 import android.content.Context;
+import android.content.Intent;
 
 import com.frizzl.app.frizzleapp.appBuilder.UserCreatedTextView;
 import com.frizzl.app.frizzleapp.appBuilder.UserCreatedView;
+import com.frizzl.app.frizzleapp.intro.GetProjectFromServer;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -153,5 +155,20 @@ public class UserProfile {
 
     public void setCurrentAppType(String currentAppType) {
         this.currentAppType = currentAppType;
+    }
+
+    public void updateProfileFromServerAndGoToMap(final Context context){
+        new GetProjectFromServer(context).execute(username, "views");
+        new GetProjectFromServer(context).execute(username, "xml");
+        new GetProjectFromServer(context).execute(username, "code");
+
+        // update user position from server, when done go to map
+        new GetPositionFromServer(new AsyncResponse() {
+            @Override
+            public void processFinish(String output) {
+                Intent mapIntent = new Intent(context, MapActivity.class);
+                context.startActivity(mapIntent);
+            }
+        }).execute(username);
     }
 }

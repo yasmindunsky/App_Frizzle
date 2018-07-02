@@ -16,18 +16,6 @@
         android:largeHeap="true"
         android:theme="@style/AppTheme.NoActionBar">
 
-        <!-- Used for Google Play Store Campaign Measurement-->
-        <receiver android:name="com.google.android.gms.analytics.CampaignTrackingReceiver"
-            android:enabled="true"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="com.android.vending.INSTALL_REFERRER" />
-            </intent-filter>
-        </receiver>
-        <service android:name="com.google.android.gms.analytics.CampaignTrackingService"
-            android:enabled="true"
-            android:exported="false" />
-
         <activity android:name="com.frizzl.app.frizzleapp.intro.LoginActivity">
         </activity>
 
@@ -41,9 +29,14 @@
 
         <activity android:name="com.frizzl.app.frizzleapp.intro.OnboardingActivity"
             android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+
+        <activity android:name="com.frizzl.app.frizzleapp.SplashActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
+
             </intent-filter>
         </activity>
 

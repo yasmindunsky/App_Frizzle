@@ -19,6 +19,7 @@ import com.frizzl.app.frizzleapp.intro.LoginActivity;
 import com.frizzl.app.frizzleapp.lesson.LessonActivity;
 import com.frizzl.app.frizzleapp.notifications.NotificationUtils;
 import com.frizzl.app.frizzleapp.notifications.ReminderUtils;
+import com.frizzl.app.frizzleapp.preferences.SaveSharedPreference;
 
 import java.util.ArrayList;
 
@@ -75,8 +76,9 @@ public class MapActivity extends AppCompatActivity {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Go to sign-out screen
+                SaveSharedPreference.setLoggedIn(getApplicationContext(), false);
                 UserProfile.user.restartUserProfile();
+
                 Intent signOutIntent = new Intent(getBaseContext(), LoginActivity.class);
                 startActivity(signOutIntent);
             }

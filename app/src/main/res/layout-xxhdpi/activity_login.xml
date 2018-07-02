@@ -33,7 +33,7 @@
             android:layout_marginRight="45dp"
             android:layout_marginTop="9dp"
             android:layout_toRightOf="@+id/mentor"
-            android:background="@drawable/bubble"
+            android:background="@drawable/bubble_left"
             android:text="@string/already_registered"
             android:textAppearance="@style/SlideText" />
 
