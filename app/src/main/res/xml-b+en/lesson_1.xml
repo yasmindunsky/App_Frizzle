@@ -24,7 +24,7 @@
 
     <slide>
         <text name="text">
-            "The developer instructs the computer using code and bridges between “computer language” and “human language”."
+            "The developer instructs the computer using code. Code bridges between “computer language” and “human language”."
         </text>
         <image name="image">"slide_1_4"</image>
     </slide>
@@ -38,7 +38,7 @@
 
     <slide>
         <text name="text">
-            "We are going to learn the Java language and use it to create apps."
+            "We are going to learn the coding language Java and use it to create apps."
         </text>
         <image name="image">"slide_1_6"</image>
     </slide>

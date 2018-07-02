@@ -75,7 +75,7 @@
     </exercise>
     <task>
         <text name = "text">
-            "In the Code screen, wrap the commands you wrote with a function and give it a name. In the Design Screen, define the button’s onClick property to be the function you created."
+            "In the Code screen, copy the two commands we wrote below the ’}’ sign. Wrap them with a function and give it a name. In the Design Screen, define the button’s onClick property to be the function you created."
         </text>
     </task>
 

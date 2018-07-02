@@ -1,14 +1,14 @@
 <lesson>
     <slide>
         <text name="text">
-            "Great job! You made a real app with a trivia question. But it’s not fun when there’s only one question, right?"
+            "Great job! You made a real app with a question. But it’s not fun when there’s only one question, right?"
         </text>
         <image name="image">"slide_8_1"</image>
     </slide>
 
     <slide>
         <text name="text">
-            "To add more trivia questions, you can repeat the entire process you went through. In this lesson we’ll recall what exactly did we do and highlight some important points."
+            "To add more questions, you can repeat the entire process you went through. In this lesson we’ll recall what exactly did we do and highlight some important points."
         </text>
         <image name="image">"slide_3_5"</image>
     </slide>
@@ -107,7 +107,7 @@
 
     <task>
         <text name = "text">
-            "Add more trivia questions to your app."
+            "Add more questions to your app."
         </text>
     </task>
 

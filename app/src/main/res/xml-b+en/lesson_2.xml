@@ -5,17 +5,22 @@
     </slide>
 
     <slide>
-        <text name="text">"A command to print text on the screen will look like that for example:"</text>
+        <text name="text">
+            "A command to print text on the screen will look something like this:"
+        </text>
         <image name="image">"slide_2_2"</image>
     </slide>
 
     <slide>
-        <text name="text">"Java commands are all in English, without spaces between the words and every word starts with a capital letter."</text>
+        <text name="text">
+            "Java commands are all in English, without spaces between the words. Every word starts with a capital letter."
+        </text>
         <image name="image">"slide_2_3"</image>
     </slide>
 
     <slide>
-        <text name="text">"This type of writing is called camelCase, because the shape of the words is similar to camel humps."
+        <text name="text">
+            "This type of writing is called camelCase, because the shape of the words is similar to a camel’s humps."
         </text>
         <image name="image">"slide_2_4"</image>
     </slide>
@@ -32,12 +37,15 @@
     </slide>
 
     <slide>
-        <text name="text">"This is one of the commands the computer knows how to execute, like other more."</text>
+        <text name="text">
+            "This is one of many commands the computer knows how to execute."
+        </text>
         <image name="image">"slide_2_7"</image>
     </slide>
 
     <slide>
-        <text name="text">"The programmer uses this set of commands that the computer knows to execute in order to defines more complex actions for the computer to perform."
+        <text name="text">
+            "The programmer uses multiple commands that the computer knows how to execute, in order to make the computer to perform more complicated actions."
         </text>
         <image name="image">"slide_2_8"</image>
     </slide>

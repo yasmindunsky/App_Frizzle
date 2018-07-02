@@ -1,34 +1,44 @@
 <lesson>
 
     <slide>
-        <text name="text">"Building an app has two aspects: the Design defines how it looks and the Code defines how it behaves."</text>
+        <text name="text">
+            "Building an app has two aspects: Design and Code. The Design defines how it looks and the Code defines how it behaves."
+        </text>
         <image name="imageSource">"slide_3_1"</image>
     </slide>
 
     <slide>
-        <text name="text">"We’ll start by designing the app in the Design screen and then move on to coding in the Code screen."</text>
+        <text name="text">
+            "We’ll start by designing the app on the Design screen and then move on to coding on the Code screen."</text>
         <image name="imageSource">"slide_3_2"</image>
     </slide>
 
     <slide>
-        <text name="text">"The Design of the app consists of elements called Views, for example a Button, TextView or ImageView."</text>
+        <text name="text">
+            "An app’s design consists of elements called Views, some examples of Views are: Button, TextView and ImageView."
+        </text>
         <image name="imageSource">"slide_3_3"</image>
     </slide>
 
     <slide>
-        <text name="text">"Most apps consist mainly of Buttons, TextViews and ImageViews
-            as you can see in these examples"</text>
+        <text name="text">
+            "Most apps consist mainly of Buttons, TextViews and ImageViews
+            as you can see in these examples:"
+        </text>
         <image name="imageSource">"slide_3_4"</image>
     </slide>
 
     <slide>
-        <text name="text">"This is what our Trivia app is going to look like. It’s made of a Button and a TextView. We’ll first create one question and then add the rest."</text>
+        <text name="text">
+            "This is what our app is going to look like. It’s made of a Button and a TextView. We’ll first create a question and then add the rest."
+        </text>
         <image name="imageSource">"slide_3_5"</image>
     </slide>
 
     <slide>
-        <text name="text">""Every View has a set of properties.
-            Let’s look at this Button View and see its properties.""</text>
+        <text name="text">
+            "Every View has a set of properties. Let’s take a look at this Button’s properties."
+        </text>
         <image name="imageSource">"slide_3_6"</image>
     </slide>
 
@@ -38,7 +48,9 @@
     </slide>
 
     <slide>
-        <text name="text">"When you create a new View you give it a unique name - an ID."</text>
+        <text name="text">
+            "When you create a new View you should give it a unique and descriptive name - an ID."
+        </text>
         <image name="imageSource">"slide_3_8"</image>
     </slide>
 
@@ -160,9 +172,8 @@
 
 
     <task>
-        <text name = "text"> "In the Design screen,
-            add a TextView and write your trivia question on it.
-            Write ’Reveal’ on the existing Button. Change other properties as you wish."
+        <text name = "text">
+            "In the Design screen, write your question on the existing TextView. Add a button and write ’Reveal’ on it. Change other properties as you wish."
         </text>
     </task>
 </lesson>

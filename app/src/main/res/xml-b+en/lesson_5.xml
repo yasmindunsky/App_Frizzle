@@ -82,6 +82,8 @@
 
 
     <task>
-        <text name = "text"> "In the Code screen, change the text in the setText command so that the text changes to the answer of your trivia question." </text>
+        <text name = "text">
+            "In the Code screen, change the text in the setText command so that the text changes to the answer of your question."
+        </text>
     </task>
 </lesson>
