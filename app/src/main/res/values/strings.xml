@@ -31,9 +31,8 @@
     <string name="onboardingMentorText0">כאן תלמדי לבנות אפליקצית טריוויה משלך בה תוכלי להשתמש.</string>
     <string name="onboardingMentorText1">גם אם לא יצא לך לתכנת אף פעם, אנחנו נדריך אותך בכל שלב</string>
     <string name="onboardingMentorText2">אחרי כל שיעור קצר תוכלי להשלים עוד חלק בבניית האפליקציה שלך</string>
-    <string name="onboardingMentorText3Part1">יאללה</string>
-    <string name="onboardingMentorText3Part2">בואי נצא לדרך!</string>
-    <string name="onboardingMentorText3">יאללה, בואי נצא לדרך!</string>
+    <string name="onboardingMentorText3">יאללה</string>
+    <string name="onboardingMentorText4">יאללה, בואי נצא לדרך!</string>
     <string name="already_have_an_account">כבר יש לי חשבון</string>
     <string name="dont_have_an_account">אין לי עדיין חשבון</string>
     <string name="register">הרשמה</string>
@@ -139,5 +138,10 @@
     <string name="facebook_app_id">178438059643086</string>
     <string name="main_notification_channel_name">notification_channel</string>
     <string name="ran_out_of_place">אופס, נגמר המקום!</string>
-
+    <string name="friendship_test_content">Quiz your friends on how well they know you</string>
+    <string name="friendship_test_title">Friendship Test</string>
+    <string name="trivia_master_title">Trivia Master</string>
+    <string name="trivia_master_content">Challenge your friends on your favorite topic</string>
+    <string name="flash_cards_title">Trivis Master</string>
+    <string name="flash_cards_content">Challenge your friends on your favorite topic</string>
 </resources>

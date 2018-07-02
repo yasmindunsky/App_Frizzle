@@ -1,0 +1,11 @@
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:oneshot="false">
+    <item android:drawable="@drawable/onboarding_map_1" android:duration="1000" />
+    <item android:drawable="@drawable/onboarding_map_2" android:duration="1000" />
+    <item android:drawable="@drawable/onboarding_map_3" android:duration="1000" />
+    <item android:drawable="@drawable/onboarding_map_4" android:duration="1000" />
+    <item android:drawable="@drawable/onboarding_map_5" android:duration="1000" />
+    <item android:drawable="@drawable/onboarding_map_6" android:duration="1000" />
+    <item android:drawable="@drawable/onboarding_map_7" android:duration="1000" />
+    <item android:drawable="@drawable/onboarding_map_8" android:duration="1000" />
+</animation-list>

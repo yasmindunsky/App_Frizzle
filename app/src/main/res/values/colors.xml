@@ -40,4 +40,9 @@
     <color name="frizzle_blue_green">#377793</color>
     <color name="frizzle_blue_red">#854d70</color>
     <color name="frizzle_red_purple">#a53b63</color>
+    <color name="frizzl_light_orange">#f9b14f</color>
+    <color name="frizzl_light_pink">#cc688a</color>
+    <color name="frizzl_light_green">#6cb7a3</color>
+
+
 </resources>

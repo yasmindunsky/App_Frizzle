@@ -1,36 +1,41 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <RelativeLayout
+
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <ImageView
-            android:id="@+id/colors"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/colors_top_screen1"
-            android:layout_alignParentTop="true"
-            android:layout_centerInParent="true"
-            android:background="@drawable/bg_color_1" />
-
-        <ImageView
-            android:id="@+id/mentor"
-            style="@style/mentorImageOnboarding" />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <android.support.v7.widget.AppCompatTextView
-            android:id="@+id/mentorText"
-            android:layout_width="wrap_content"
+            android:id="@+id/mentorText3"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/mentor"
-            android:layout_marginEnd="16dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginStart="9dp"
-            android:layout_toRightOf="@+id/mentor"
-            android:background="@drawable/bubble"
-            android:text="@string/onboardingMentorText2"
-            android:textAppearance="@style/SlideText" />
+            android:layout_alignParentBottom="false"
+            android:layout_alignParentStart="false"
+            android:layout_alignParentTop="true"
+            android:layout_marginEnd="58dp"
+            android:layout_marginStart="58dp"
+            android:layout_marginTop="44dp"
+            android:background="@drawable/bubble_left"
+            android:text="@string/onboardingMentorText3"
+            android:textAppearance="@style/MentorText"
+            app:layout_constraintBottom_toTopOf="@+id/radioGroup2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/mapAnimation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/mentorText3"
+            android:layout_weight="2"
+            android:background="@drawable/onboarding_map" />
 
     </RelativeLayout>
 
