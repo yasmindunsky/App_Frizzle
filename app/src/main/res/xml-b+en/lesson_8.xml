@@ -3,7 +3,9 @@
         <text name="text">
             "Great job! You made a real app with a question. But it’s not fun when there’s only one question, right?"
         </text>
-        <image name="image">"slide_8_1"</image>
+        <image name="image">"slide_8_1_friendship_test"</image>
+        <image name="image">"slide_8_1_trivia_master"</image>
+        <image name="image">"slide_8_1_flash_cards"</image>
     </slide>
 
     <slide>

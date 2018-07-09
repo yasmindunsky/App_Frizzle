@@ -197,6 +197,14 @@ public class DesignScreenFragment extends Fragment {
         presentViewsOnGridLayout();
     }
 
+    public int getGridLayoutColCount() {
+        return gridLayout.getColumnCount();
+    }
+
+    public int getGridLayoutRowCount() {
+        return gridLayout.getRowCount();
+    }
+
     class LongPressListener implements View.OnLongClickListener {
         @Override
         public boolean onLongClick(View view) {
@@ -216,15 +224,12 @@ public class DesignScreenFragment extends Fragment {
                 case DragEvent.ACTION_DRAG_LOCATION:
                     // do nothing if hovering above own position
                     if (view == v) return true;
-                    // get the new list index
-//                    final int index = calculateNewIndex(event.getX(), event.getY());
                     break;
                 case DragEvent.ACTION_DROP:
                     // remove the view from the old position
                     gridLayout.removeView(view);
                     // and push to the new
                     GridLayout.LayoutParams layoutParams = getLayoutParams(event.getX(), event.getY(), view);
-
                     view.setLayoutParams(layoutParams);
                     gridLayout.addView(view);
                     view.setVisibility(View.VISIBLE);
@@ -261,7 +266,6 @@ public class DesignScreenFragment extends Fragment {
             return layoutParams;
         }
     }
-
 
     public UserCreatedView.ViewType getViewType(String viewType) {
         switch (viewType) {

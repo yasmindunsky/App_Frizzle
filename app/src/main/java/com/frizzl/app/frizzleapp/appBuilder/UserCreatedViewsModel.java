@@ -31,10 +31,7 @@ public class UserCreatedViewsModel {
         nextViewIndex = 0;
 
         // Add hello world view
-        // TODO use method for new button creation
-        UserCreatedButton userCreatedButton = new UserCreatedButton(context, nextViewIndex, numOfButtons);
-        views.put(nextViewIndex, userCreatedButton);
-        incrementButtonsCount();
+        addNewUserCreatedButton(context);
         return views;
         }
 
@@ -131,23 +128,12 @@ public class UserCreatedViewsModel {
 
         if(views != null) {
             try {
-//                int i = 0;
-//                for (int key : views.keySet()){
-//                    json = new JSONObject();
-//                    json.put("id", i);
-//                    i++;
-//                    UserCreatedView userCreatedView = views.get(key);
-//                    json.put("viewType", userCreatedView.getViewType().toString());
-//                    Map<String, String> properties = userCreatedView.getProperties();
-//                    for (Map.Entry<String, String> property : properties.entrySet()) {
-//                        json.put(property.getKey(), property.getValue());
-//                    }
-//                    jsonArray.put(json);
-//                }
-                for (int i = 0; i < views.size(); i++) {
+                int i = 0;
+                for (int key : views.keySet()){
                     json = new JSONObject();
                     json.put("id", i);
-                    UserCreatedView userCreatedView = views.get(i);
+                    i++;
+                    UserCreatedView userCreatedView = views.get(key);
                     json.put("viewType", userCreatedView.getViewType().toString());
                     Map<String, String> properties = userCreatedView.getProperties();
                     for (Map.Entry<String, String> property : properties.entrySet()) {
@@ -155,6 +141,17 @@ public class UserCreatedViewsModel {
                     }
                     jsonArray.put(json);
                 }
+//                for (int i = 0; i < views.size(); i++) {
+//                    json = new JSONObject();
+//                    json.put("id", i);
+//                    UserCreatedView userCreatedView = views.get(i);
+//                    json.put("viewType", userCreatedView.getViewType().toString());
+//                    Map<String, String> properties = userCreatedView.getProperties();
+//                    for (Map.Entry<String, String> property : properties.entrySet()) {
+//                        json.put(property.getKey(), property.getValue());
+//                    }
+//                    jsonArray.put(json);
+//                }
 
                 finalObject.put("views", jsonArray);
 

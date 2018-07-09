@@ -19,7 +19,7 @@ public class UserProfile {
     private String username = "";
     private String nickName = "";
     private String birthDate = "";
-    private String currentAppType = "";
+    private int currentAppTypeNum = 0;
 
     private int currentLessonID = 1;
     private int topLessonID = 1;
@@ -37,7 +37,7 @@ public class UserProfile {
         username = "";
         nickName = "";
         birthDate = "";
-        currentAppType = "";
+        currentAppTypeNum = 0;
 
         currentLessonID = 1;
         topLessonID = 1;
@@ -149,14 +149,6 @@ public class UserProfile {
         this.java = java;
     }
 
-    public String getCurrentAppType() {
-        return currentAppType;
-    }
-
-    public void setCurrentAppType(String currentAppType) {
-        this.currentAppType = currentAppType;
-    }
-
     public void updateProfileFromServerAndGoToMap(final Context context){
         new GetProjectFromServer(context).execute(username, "views");
         new GetProjectFromServer(context).execute(username, "xml");
@@ -170,5 +162,14 @@ public class UserProfile {
                 context.startActivity(mapIntent);
             }
         }).execute(username);
+    }
+
+
+    public int getCurrentAppTypeNum() {
+        return currentAppTypeNum;
+    }
+
+    public void setCurrentAppTypeNum(int currentAppTypeNum) {
+        this.currentAppTypeNum = currentAppTypeNum;
     }
 }

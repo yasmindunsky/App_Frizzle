@@ -16,7 +16,10 @@ import android.widget.TextView;
 //import com.bumptech.glide.Glide;
 import com.frizzl.app.frizzleapp.R;
 import com.frizzl.app.frizzleapp.Support;
+import com.frizzl.app.frizzleapp.UserProfile;
 import com.google.firebase.analytics.FirebaseAnalytics;
+
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -56,7 +59,12 @@ public class SlideFragment extends Fragment {
         Slide slide = LessonActivity.getCurrentLesson().getLessonSlides().get(index);
         String message = slide.getSlideText();
         fragmentText.setText(message);
-        String imageSrc = slide.getImageSource();
+        List<String> imageSources = slide.getImageSource();
+        int index = 0;
+        if (imageSources.size() > 1) {
+            index = UserProfile.user.getCurrentAppTypeNum();
+        }
+        String imageSrc = imageSources.get(index);
 
         int imageIdentifier = getResources().getIdentifier(imageSrc , "drawable", getActivity().getPackageName());
         Drawable drawable = getResources().getDrawable(imageIdentifier);

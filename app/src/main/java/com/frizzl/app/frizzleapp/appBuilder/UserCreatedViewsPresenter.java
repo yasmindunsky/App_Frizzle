@@ -12,19 +12,19 @@ import java.util.Map;
  */
 
 public class UserCreatedViewsPresenter {
-    private static final int MAX_NUM_OF_ELEMENTS = 10;
     private static Map<Integer, UserCreatedView> views;
     private DesignScreenFragment designScreenFragment;
-
-    public void saveState() {
-        views = UserCreatedViewsModel.getViews();
-        UserProfile.user.setViews(views);
-    }
+//    private UserCreatedViewsModel userCreatedViewsModel;
 
     enum viewTypes {Button, TextView}
 
     public UserCreatedViewsPresenter(DesignScreenFragment designScreenFragment) {
         this.designScreenFragment = designScreenFragment;
+    }
+
+    public void saveState() {
+        views = UserCreatedViewsModel.getViews();
+        UserProfile.user.setViews(views);
     }
 
     public static Map<Integer, UserCreatedView> getViews(Context context) {
@@ -56,9 +56,9 @@ public class UserCreatedViewsPresenter {
 
     private boolean checkIfTheresRoom() {
         // Check if reached max num of elements.
-        // TODO set max num correctly. maybe based on gridLayout.getColumnCount() * gridLayout.getRowCount()
+        int maxNum = designScreenFragment.getGridLayoutColCount() * designScreenFragment.getGridLayoutRowCount();
         int nextViewIndex = UserCreatedViewsModel.getNextViewIndex();
-        if (nextViewIndex >= MAX_NUM_OF_ELEMENTS ) {
+        if (nextViewIndex >= maxNum ) {
             designScreenFragment.showError("אופס, נגמר המקום!");
             return false;
         }

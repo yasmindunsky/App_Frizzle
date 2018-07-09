@@ -76,7 +76,7 @@ public class NotificationUtils {
     public static String generateNotificationText(){
         String nickname = UserProfile.user.getNickName();
         // TODO: add currentAppType to nitifications
-        String currentAppType = UserProfile.user.getCurrentAppType();
+//        String currentAppType = UserProfile.user.getCurrentAppType();
         int lessonID = UserProfile.user.getTopLessonID();
 
         ArrayList<String> notifications = new ArrayList<>();

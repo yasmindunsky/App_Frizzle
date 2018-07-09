@@ -28,6 +28,9 @@ import java.util.ArrayList;
 
 public class OnboardingFragment extends Fragment {
     public static final String POISITION = "position";
+    private static final int FRIENDSHIP_TEST_APP_NUM = 0;
+    private static final int TRIVIA_MASTER_APP_NUM = 1;
+    private static final int FLASH_CARDS_APP_NUM = 2;
 
     private int layout;
     private int position;
@@ -102,19 +105,19 @@ public class OnboardingFragment extends Fragment {
             relativeLayout1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    onAppSelected(1);
+                    onAppSelected(FRIENDSHIP_TEST_APP_NUM);
                 }
             });
             relativeLayout2.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    onAppSelected(2);
+                    onAppSelected(TRIVIA_MASTER_APP_NUM);
                 }
             });
             relativeLayout3.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    onAppSelected(3);
+                    onAppSelected(FLASH_CARDS_APP_NUM);
                 }
             });
         }
@@ -122,9 +125,9 @@ public class OnboardingFragment extends Fragment {
 
     public void onAppSelected(int selectedAppNum){
         for (int i = 0; i < appLayouts.size(); i++) {
-            if (selectedAppNum == i+1) {
+            if (selectedAppNum == i) {
                 appLayouts.get(i).setSelected(true);
-//                UserProfile.user.setCurrentAppType(String.valueOf(appLayouts.get(i).findViewById(R.id.app_title)));
+                UserProfile.user.setCurrentAppTypeNum(selectedAppNum);
 
                 View mentorText1 = view.findViewById(R.id.mentorText1);
                 mentorText1.setVisibility(View.INVISIBLE);

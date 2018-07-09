@@ -8,6 +8,7 @@ import org.xmlpull.v1.XmlPullParserException;
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.List;
 
 import com.frizzl.app.frizzleapp.lesson.exercise.Exercise;
 
@@ -55,7 +56,9 @@ public class LessonContentParser {
             e.printStackTrace();
         }
 
-        Slide lastSlidePage = new Slide("", "good_job");
+        List<String> imageSources = new ArrayList<>();
+        imageSources.add("good_job");
+        Slide lastSlidePage = new Slide("", imageSources);
         slides.add(lastSlidePage);
 
         currentLesson.setSlides(slides);
@@ -76,12 +79,10 @@ public class LessonContentParser {
 
     private Slide parseSlides() throws XmlPullParserException, IOException {
         String text = getValue("text");
-        String image = getValue("image");
-
-        xmlResourceParser.next();
-
-        return new Slide(text, image);
+        List<String> imageSources = getValues("image");
+        return new Slide(text, imageSources);
     }
+
 
     private Exercise parseExercise() throws XmlPullParserException, IOException {
         String type = getValue("type");
@@ -100,6 +101,7 @@ public class LessonContentParser {
         return Exercise.createInstance(type, question, image, content, possibilities, answers);
     }
 
+
     private Task parseTask() throws IOException, XmlPullParserException {
         String text = getValue("text");
 
@@ -115,6 +117,24 @@ public class LessonContentParser {
 
         xmlResourceParser.next();
         return xmlResourceParser.getText();
+    }
+
+    private List<String> getValues(String key) throws IOException, XmlPullParserException {
+        xmlResourceParser.next();
+
+        List<String> values = new ArrayList<>();
+        while (!xmlResourceParser.getName().equals(key)) {
+            xmlResourceParser.next();
+        }
+        while (xmlResourceParser.getEventType() != XmlPullParser.END_TAG &&
+                xmlResourceParser.getName().equals(key)) {
+            xmlResourceParser.next();
+            values.add(xmlResourceParser.getText());
+            xmlResourceParser.next();
+            xmlResourceParser.next();
+        }
+
+        return values;
     }
 
 

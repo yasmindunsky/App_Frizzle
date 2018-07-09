@@ -2,12 +2,16 @@
 
     <slide>
         <text name="text">"Until now we created the design of the app, but when we run the app and click on the button nothing happens."</text>
-        <image name="imageSource">"slide_4_1"</image>
+        <image name="imageSource">"slide_4_1_friendship_test"</image>
+        <image name="imageSource">"slide_4_1_trivia_master"</image>
+        <image name="imageSource">"slide_4_1_flash_cards"</image>
     </slide>
 
     <slide>
         <text name="text">"We want the app to behave in a certain way according to the user’s actions."</text>
-        <image name="imageSource">"slide_4_2"</image>
+        <image name="imageSource">"slide_4_2_friendship_test"</image>
+        <image name="imageSource">"slide_4_2_trivia_master"</image>
+        <image name="imageSource">"slide_4_2_flash_cards"</image>
     </slide>
 
     <slide>

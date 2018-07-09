@@ -1,24 +1,27 @@
 package com.frizzl.app.frizzleapp.lesson;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by yasmin.dunsky on 19-Nov-17.
  */
 
 public class Slide {
     private String slideText;
-    private String imageSource;
+    private List<String> imageSources;
 
-    public Slide(String slideText, String imageSource) {
+    public Slide(String slideText, List<String> imageSources) {
         this.slideText = slideText;
-        this.imageSource = imageSource;
+        this.imageSources = imageSources;
     }
 
     public String getSlideText() {
         return slideText;
     }
 
-    public String getImageSource() {
-        return imageSource;
+    public List<String> getImageSource() {
+        return imageSources;
     }
 
 }
