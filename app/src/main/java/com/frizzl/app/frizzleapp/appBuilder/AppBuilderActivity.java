@@ -475,11 +475,11 @@ public class AppBuilderActivity extends AppCompatActivity {
 //        UserProfile.user.setJava(codeWritten);
 
         // update xml String
-        String xml = ((DesignScreenFragment) graphicEditFragment).getXml();
+        String xml = UserCreatedViewsModel.getXml();
         UserProfile.user.setXml(xml);
 
         // update views string
-        Map<Integer, UserCreatedView> views = ((DesignScreenFragment) graphicEditFragment).getViews();
+        Map<Integer, UserCreatedView> views = UserCreatedViewsPresenter.getViews(getBaseContext());
         UserProfile.user.setViews(views);
     }
 

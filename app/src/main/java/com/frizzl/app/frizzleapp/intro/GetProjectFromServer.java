@@ -8,6 +8,7 @@ import com.frizzl.app.frizzleapp.R;
 import com.frizzl.app.frizzleapp.UserProfile;
 import com.frizzl.app.frizzleapp.appBuilder.DesignScreenFragment;
 import com.frizzl.app.frizzleapp.appBuilder.UserCreatedView;
+import com.frizzl.app.frizzleapp.appBuilder.UserCreatedViewsModel;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -62,7 +63,7 @@ public class GetProjectFromServer extends AsyncTask<String, Void, String> {
 
                         // parse viewString to view element
                         DesignScreenFragment designScreenFragment = new DesignScreenFragment();
-                        Map<Integer, UserCreatedView> views = designScreenFragment.jsonToViews(mContext, attributeString);
+                        Map<Integer, UserCreatedView> views = UserCreatedViewsModel.jsonToViews(mContext, attributeString);
 
                         // save the view to the UserProfile object
                         UserProfile.user.setViews(views);
@@ -74,8 +75,9 @@ public class GetProjectFromServer extends AsyncTask<String, Void, String> {
                         // trim codeString to the user's code
                         int start = mContext.getApplicationContext().getResources().getString(R.string.code_start).length();
                         int end = attributeString.length() - mContext.getApplicationContext().getResources().getString(R.string.code_end).length();
-                        attributeString = attributeString.substring(start, end);
-
+                        if (!attributeString.equals("null")) {
+                            attributeString = attributeString.substring(start, end);
+                        }
                         // save code to user profile
                         UserProfile.user.setJava(attributeString);
                         break;

@@ -1,7 +1,6 @@
 package com.frizzl.app.frizzleapp.appBuilder;
 
 import android.content.ClipData;
-import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
@@ -20,34 +19,23 @@ import android.widget.Toast;
 
 import com.frizzl.app.frizzleapp.R;
 import com.frizzl.app.frizzleapp.Support;
-import com.frizzl.app.frizzleapp.UserProfile;
 
 import net.cachapa.expandablelayout.ExpandableLayout;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class DesignScreenFragment extends Fragment {
-
     private GridLayout gridLayout;
-    private int numOfButtons;
-    private int numOfTextViews;
-    private int nextViewIndex;
     private PopupWindow popupWindow;
     Map<Integer, UserCreatedView> views;
-    LayoutXmlWriter layoutXmlWriter;
-    enum viewTypes {Button, TextView}
 
     private ExpandableLayout expandableLayout;
     private FloatingActionButton expandButton;
+
+    private UserCreatedViewsPresenter userCreatedViewsPresenter;
 
     public DesignScreenFragment() {
         // Required empty public constructor
@@ -56,62 +44,31 @@ public class DesignScreenFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_graphic_edit, container, false);
+
+        userCreatedViewsPresenter = new UserCreatedViewsPresenter(this);
 
         gridLayout = view.findViewById(R.id.gridLayout);
         gridLayout.setOnDragListener(new DragListener());
 
-        views = UserProfile.user.views;
-        if (views.isEmpty()) {
-            numOfButtons = 0;
-            numOfTextViews = 0;
-            nextViewIndex = 0;
-
-            if (1 == UserProfile.user.getTopLessonID()) {
-                // Add hello world view
-                // TODO: this is a duplicate of the onclick create new button, unite those.
-                final UserCreatedButton userCreatedButton = new UserCreatedButton(getContext(), nextViewIndex, numOfButtons);
-                Button button = userCreatedButton.getThisView();
-                setButtonOnClicks(userCreatedButton);
-
-                // Add to GridLayout and to views map.
-                gridLayout.addView(button);
-                views.put(nextViewIndex, userCreatedButton);
-                nextViewIndex++;
-                numOfTextViews++;
-            }
-        }
-        else {
-            // Load previously created views.
-            for (final UserCreatedView userCreatedView : views.values()) {
-                View usersView = userCreatedView.getThisView();
-
-                if(usersView.getParent() != null) {
-                    ((ViewGroup) usersView.getParent()).removeView(usersView);
-                }
-
-                gridLayout.addView(usersView);
-                if (userCreatedView.getViewType().equals(UserCreatedView.ViewType.Button)){
-                    numOfButtons++;
-
-                    final UserCreatedButton userCreatedButton = (UserCreatedButton) userCreatedView;
-                    setButtonOnClicks(userCreatedButton);
-                }
-                else {
-                    numOfTextViews++;
-                    final UserCreatedTextView userCreatedTextView = (UserCreatedTextView) userCreatedView;
-                    setTextOnClicks(userCreatedTextView);
-                }
-                nextViewIndex++;
-            }
-        }
+        views = UserCreatedViewsPresenter.getViews(getContext());
+        presentViewsOnGridLayout();
 
         TextView addText = view.findViewById(R.id.addText);
-        addText.setOnClickListener(newTextOnClick);
+        addText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                userCreatedViewsPresenter.addNewUserCreatedView(getContext(), UserCreatedViewsPresenter.viewTypes.TextView);
+            }
+        });
 
         TextView addButton = view.findViewById(R.id.addButton);
-        addButton.setOnClickListener(newButtonOnClick);
+        addButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                userCreatedViewsPresenter.addNewUserCreatedView(getContext(), UserCreatedViewsPresenter.viewTypes.Button);
+            }
+        });
 
         expandableLayout = view.findViewById(R.id.plusExpandableLayout);
         // Set LinearLayout direction to be opposite from device's direction.
@@ -140,76 +97,40 @@ public class DesignScreenFragment extends Fragment {
         return view;
     }
 
-    View.OnClickListener newTextOnClick = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            // Check if reached max num of elements.
-            if (nextViewIndex >= gridLayout.getColumnCount() * gridLayout.getRowCount()) {
-                Toast.makeText(getActivity(), "אופס, נגמר המקום!",
-                        Toast.LENGTH_LONG).show();
-                return;
+    private void presentViewsOnGridLayout() {
+        gridLayout.removeAllViews();
+        for (final UserCreatedView userCreatedView : views.values()) {
+            View usersView = userCreatedView.getThisView();
+
+            if (usersView.getParent() != null) {
+                ((ViewGroup) usersView.getParent()).removeView(usersView);
             }
 
-            final UserCreatedTextView userCreatedTextView = new UserCreatedTextView(getContext(), nextViewIndex, numOfTextViews);
-            TextView newText = userCreatedTextView.getThisView();
-            setTextOnClicks(userCreatedTextView);
-
-            // Add to GridLayout and to views map.
-            gridLayout.addView(newText);
-            views.put(nextViewIndex, userCreatedTextView);
-            nextViewIndex++;
-            numOfTextViews++;
-        }
-    };
-
-    View.OnClickListener newButtonOnClick = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            // Check if reached max num of elements.
-            if (nextViewIndex >= gridLayout.getColumnCount() * gridLayout.getRowCount()) {
-                Toast.makeText(getActivity(), R.string.ran_out_of_place,
-                        Toast.LENGTH_LONG).show();
-                return;
+            gridLayout.addView(usersView);
+            if (userCreatedView.getViewType().equals(UserCreatedView.ViewType.Button)) {
+                final UserCreatedButton userCreatedButton = (UserCreatedButton) userCreatedView;
+                setButtonOnClicks(userCreatedButton);
+            } else {
+                final UserCreatedTextView userCreatedTextView = (UserCreatedTextView) userCreatedView;
+                setTextOnClicks(userCreatedTextView);
             }
-
-            final UserCreatedButton userCreatedButton = new UserCreatedButton(getContext(), nextViewIndex, numOfButtons);
-            Button newButton = userCreatedButton.getThisView();
-
-            setButtonOnClicks(userCreatedButton);
-
-            // Add to GridLayout and to views map.
-            gridLayout.addView(newButton);
-            views.put(nextViewIndex, userCreatedButton);
-            nextViewIndex++;
-            numOfButtons++;
         }
-    };
+    }
 
     View.OnClickListener deleteView = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             popupWindow.dismiss();
             int viewToDeleteIndex = (int) v.getTag();
-            UserCreatedView viewToDelete = views.get(viewToDeleteIndex);
-
-            if (viewToDelete.getClass().equals(UserCreatedTextView.class)) {
-                numOfTextViews--;
-            }
-            else if (viewToDelete.getClass().equals(UserCreatedButton.class)) {
-                numOfButtons--;
-            }
-
-            View thisView = viewToDelete.getThisView();
-            ((ViewGroup)thisView.getParent()).removeView(thisView);
-            views.remove(viewToDeleteIndex);
+            UserCreatedViewsPresenter.deleteView(viewToDeleteIndex);
         }
     };
 
     private void setButtonOnClicks(final UserCreatedButton userCreatedButton){
-        Button newButton = userCreatedButton.getThisView();
-        newButton.setOnLongClickListener(new LongPressListener());
+        Button button = userCreatedButton.getThisView();
+        button.setOnLongClickListener(new LongPressListener());
 
-        newButton.setOnClickListener(new View.OnClickListener() {
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
                 // show the popup window
@@ -229,11 +150,11 @@ public class DesignScreenFragment extends Fragment {
     }
 
     private void setTextOnClicks(final UserCreatedTextView userCreatedTextView){
-        TextView newText = userCreatedTextView.getThisView();
+        TextView textView = userCreatedTextView.getThisView();
 
-        newText.setOnLongClickListener(new LongPressListener());
+        textView.setOnLongClickListener(new LongPressListener());
 
-        newText.setOnClickListener(new View.OnClickListener() {
+        textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
                 // show the popup window
@@ -252,15 +173,6 @@ public class DesignScreenFragment extends Fragment {
         });
     }
 
-    public String getXml(){
-        layoutXmlWriter = new LayoutXmlWriter();
-        return layoutXmlWriter.writeXml(views);
-    }
-
-    public Map<Integer, UserCreatedView> getViews() {
-        return views;
-    }
-
     @Override
     public void onDestroy()
     {
@@ -268,6 +180,21 @@ public class DesignScreenFragment extends Fragment {
         if (popupWindow != null && popupWindow.isShowing()){
             popupWindow.dismiss();
         }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        userCreatedViewsPresenter.saveState();
+    }
+
+    public void showError(String errorMessage) {
+        Toast.makeText(getActivity(), errorMessage, Toast.LENGTH_LONG).show();
+    }
+
+    public void getViewsAndPresent(Map<Integer, UserCreatedView> views) {
+        views = views;
+        presentViewsOnGridLayout();
     }
 
     class LongPressListener implements View.OnLongClickListener {
@@ -335,87 +262,6 @@ public class DesignScreenFragment extends Fragment {
         }
     }
 
-    JSONObject viewsToJson() {
-        JSONArray jsonArray = new JSONArray();
-        JSONObject json = new JSONObject();
-        JSONObject finalObject = new JSONObject();
-
-        views = UserProfile.user.getViews();
-
-        if(views != null) {
-            try {
-//                int i = 0;
-//                for (int key : views.keySet()){
-//                    json = new JSONObject();
-//                    json.put("id", i);
-//                    i++;
-//                    UserCreatedView userCreatedView = views.get(key);
-//                    json.put("viewType", userCreatedView.getViewType().toString());
-//                    Map<String, String> properties = userCreatedView.getProperties();
-//                    for (Map.Entry<String, String> property : properties.entrySet()) {
-//                        json.put(property.getKey(), property.getValue());
-//                    }
-//                    jsonArray.put(json);
-//                }
-                for (int i = 0; i < views.size(); i++) {
-                    json = new JSONObject();
-                    json.put("id", i);
-                    UserCreatedView userCreatedView = views.get(i);
-                    json.put("viewType", userCreatedView.getViewType().toString());
-                    Map<String, String> properties = userCreatedView.getProperties();
-                    for (Map.Entry<String, String> property : properties.entrySet()) {
-                        json.put(property.getKey(), property.getValue());
-                    }
-                    jsonArray.put(json);
-                }
-
-                finalObject.put("views", jsonArray);
-
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        }
-
-        return finalObject;
-    }
-
-    public Map<Integer, UserCreatedView> jsonToViews(Context context, String viewsJsonString) {
-        views = new HashMap<>();
-        numOfButtons = 0;
-        numOfTextViews = 0;
-        nextViewIndex = 0;
-
-        try {
-            JSONArray viewsJson = new JSONArray(viewsJsonString);
-            for(int i = 0 ; i < viewsJson.length(); i++){
-                JSONObject viewJson = viewsJson.getJSONObject(i);
-                UserCreatedView.ViewType viewType = getViewType(viewJson.getString("viewType"));
-                int index = Integer.parseInt(viewJson.getString("id"));
-                Map<String,String> properties = new HashMap<>();
-                for (Iterator<String> it = viewJson.keys(); it.hasNext(); ) {
-                    String key = it.next();
-                    properties.put(key.toString(), viewJson.get(key).toString());
-                }
-                UserCreatedView userCreatedView = null;
-                switch (viewType) {
-                    case TextView:
-                        userCreatedView = new UserCreatedTextView(context, properties, i);
-                        numOfTextViews++;
-                        break;
-                    case Button:
-                        userCreatedView = new UserCreatedButton(context, properties, i);
-                        numOfButtons++;
-                        break;
-                }
-                views.put(index, userCreatedView);
-            }
-            nextViewIndex = viewsJson.length();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        return views;
-    }
 
     public UserCreatedView.ViewType getViewType(String viewType) {
         switch (viewType) {

@@ -124,7 +124,7 @@ public class OnboardingFragment extends Fragment {
         for (int i = 0; i < appLayouts.size(); i++) {
             if (selectedAppNum == i+1) {
                 appLayouts.get(i).setSelected(true);
-                UserProfile.user.setCurrentAppType(String.valueOf(appLayouts.get(i).findViewById(R.id.app_title)));
+//                UserProfile.user.setCurrentAppType(String.valueOf(appLayouts.get(i).findViewById(R.id.app_title)));
 
                 View mentorText1 = view.findViewById(R.id.mentorText1);
                 mentorText1.setVisibility(View.INVISIBLE);

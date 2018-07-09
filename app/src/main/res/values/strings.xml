@@ -41,6 +41,9 @@
     <string name="properties_table_text_align">יישור</string>
     <string name="whats_your_name">מה שמך?</string>
     <string name="go_build">עברי למסך הבנייה.</string>
+    <string name="notification_title">new notification</string>
+    <string name="notification_text">text</string>
+    <string name="notification_body">body</string>
 
     <string-array name="fonts">
         <item>sans-serif</item>
