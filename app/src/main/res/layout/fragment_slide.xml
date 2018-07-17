@@ -12,7 +12,7 @@
 
         <android.support.v7.widget.AppCompatTextView
             android:id="@+id/slideText"
-            style="@style/SlideText"
+            style="@style/Text.Slide"
             android:layout_alignParentTop="true"
             android:text="@string/slide_text" />
 

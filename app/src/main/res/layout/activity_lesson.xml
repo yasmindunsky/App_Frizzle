@@ -31,7 +31,7 @@
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:text="@string/lesson_title"
-                android:textAppearance="@style/ActivityTitleLight" />
+                android:textAppearance="@style/Text.Title.Light" />
         </android.support.v7.widget.Toolbar>
 
         <FrameLayout

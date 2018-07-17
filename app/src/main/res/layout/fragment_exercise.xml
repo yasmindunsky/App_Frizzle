@@ -14,7 +14,7 @@
 
         <ImageView
             android:id="@+id/exerciseImage"
-            style="@style/ExerciseImage"
+            style="@style/Image.Exercise"
             android:layout_width="match_parent"
             android:layout_height="135dp"
             android:layout_alignParentTop="true"
@@ -25,15 +25,15 @@
 
         <android.support.v7.widget.AppCompatTextView
             android:id="@+id/exerciseQuestion"
-            style="@style/ExerciseText"
+            style="@style/Text.Exercise"
             android:layout_height="wrap_content"
             android:layout_below="@id/exerciseImage"
             android:text="@string/slide_text"
-            android:textAppearance="@style/ExerciseText" />
+            android:textAppearance="@style/Text.Exercise" />
 
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/checkButton"
-            style="@style/checkButton"
+            style="@style/Button.CheckExercise"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"

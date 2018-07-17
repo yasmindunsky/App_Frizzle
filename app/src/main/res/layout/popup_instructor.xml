@@ -57,6 +57,6 @@
         android:foregroundGravity="center"
         android:padding="15dp"
         android:text="אישור"
-        android:textAppearance="@style/ActivityTitleLight" />
+        android:textAppearance="@style/Text.Title.Light" />
 
 </RelativeLayout>

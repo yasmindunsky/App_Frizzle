@@ -26,11 +26,11 @@
             android:layout_marginEnd="4dp"
             android:layout_weight="1"
             android:text="@string/mentor_introduction"
-            android:textAppearance="@style/MentorText" />
+            android:textAppearance="@style/Text.Mentor" />
 
         <android.support.v7.widget.AppCompatEditText
             android:id="@+id/usersNameInput"
-            style="@style/userNameEditText"
+            style="@style/EditText.UserName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@+id/mentorText"
@@ -46,7 +46,7 @@
             android:layout_below="@+id/mentorText"
             android:layout_gravity="start"
             android:text="@string/onboardingMentorText0"
-            android:textAppearance="@style/MentorText" />
+            android:textAppearance="@style/Text.Mentor" />
     </RelativeLayout>
 
     <ImageView
@@ -81,7 +81,7 @@
             android:layout_weight="1"
             android:background="@android:color/transparent"
             android:text="@string/already_have_an_account"
-            android:textAppearance="@style/alreadyHaveAccount" />
+            android:textAppearance="@style/Text.AlreadyHaveAccount" />
 
     </LinearLayout>
 </RelativeLayout>

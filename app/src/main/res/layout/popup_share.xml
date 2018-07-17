@@ -36,7 +36,7 @@
 
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/gotItButton"
-            style="@style/checkButton"
+            style="@style/Button.CheckExercise"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"

@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:text="@string/thanks_for_participating_n_in_our_beta_version_nyour_account_was_not_charged"
-            android:textAppearance="@style/SlideText"
+            android:textAppearance="@style/Text.Slide"
             app:fontFamily="@font/calibri_bold" />
 
 
@@ -42,7 +42,7 @@
             android:layout_marginBottom="20dp"
             android:gravity="center_horizontal"
             android:text="@string/there_will_be_more_n_courses_available_soon"
-            android:textAppearance="@style/SlideText" />
+            android:textAppearance="@style/Text.Slide" />
 
         <EditText
             android:id="@+id/email"
@@ -57,7 +57,7 @@
 
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/notify"
-            style="@style/unlockButton"
+            style="@style/Button.Unlock"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_gravity="center"

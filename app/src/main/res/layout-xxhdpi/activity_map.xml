@@ -24,7 +24,7 @@
             android:layout_height="match_parent">
             <Button
                 android:id="@+id/lesson8"
-                style="@style/mapLessonButton"
+                style="@style/Button.MapLesson"
                 android:layout_above="@+id/lesson7"
                 android:layout_marginBottom="25dp"
                 android:layout_marginStart="300dp"
@@ -34,7 +34,7 @@
 
             <Button
                 android:id="@+id/lesson7"
-                style="@style/mapLessonButton"
+                style="@style/Button.MapLesson"
                 android:layout_above="@+id/lesson6"
                 android:layout_marginBottom="25dp"
                 android:layout_marginStart="300dp"
@@ -44,7 +44,7 @@
 
             <Button
                 android:id="@+id/lesson6"
-                style="@style/mapLessonButton"
+                style="@style/Button.MapLesson"
                 android:layout_above="@+id/lesson5"
                 android:layout_marginBottom="25dp"
                 android:layout_marginStart="290dp"
@@ -54,7 +54,7 @@
 
             <Button
                 android:id="@+id/lesson5"
-                style="@style/mapLessonButton"
+                style="@style/Button.MapLesson"
                 android:layout_above="@+id/lesson4"
                 android:layout_marginBottom="20dp"
                 android:layout_marginStart="240dp"
@@ -64,7 +64,7 @@
 
             <Button
                 android:id="@+id/lesson4"
-                style="@style/mapLessonButton"
+                style="@style/Button.MapLesson"
                 android:layout_above="@+id/lesson3"
                 android:layout_marginBottom="5dp"
                 android:layout_marginStart="180dp"
@@ -74,7 +74,7 @@
 
             <Button
                 android:id="@+id/lesson3"
-                style="@style/mapLessonButton"
+                style="@style/Button.MapLesson"
                 android:layout_above="@+id/lesson2"
                 android:layout_marginBottom="20dp"
                 android:layout_marginStart="90dp"
@@ -84,7 +84,7 @@
 
             <Button
                 android:id="@+id/lesson2"
-                style="@style/mapLessonButton"
+                style="@style/Button.MapLesson"
                 android:layout_above="@+id/lesson1"
                 android:layout_marginBottom="40dp"
                 android:layout_marginStart="30dp"
@@ -94,7 +94,7 @@
 
             <Button
                 android:id="@+id/lesson1"
-                style="@style/mapLessonButton"
+                style="@style/Button.MapLesson"
                 android:layout_alignParentBottom="true"
                 android:layout_marginBottom="20dp"
                 android:layout_marginStart="20dp"
@@ -134,7 +134,7 @@
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:text="@string/app_name"
-                android:textAppearance="@style/ActivityTitleDark"
+                android:textAppearance="@style/Text.Title.Dark"
                 android:textColor="@color/TextGrey"
                 app:fontFamily="@font/hero_regular"
                 app:textAllCaps="true" />

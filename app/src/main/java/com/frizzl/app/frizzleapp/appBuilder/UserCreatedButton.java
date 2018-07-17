@@ -41,7 +41,7 @@ public class UserCreatedButton extends UserCreatedView {
         this.context = context;
         this.index = index;
         this.layout = R.layout.popup_properties_button;
-        int buttonStyle = R.style.usersButton;
+        int buttonStyle = R.style.Button_UserCreated;
         this.viewType = ViewType.Button;
 
 
@@ -86,7 +86,7 @@ public class UserCreatedButton extends UserCreatedView {
 
     public UserCreatedButton(Context context, int nextViewIndex, int numOfButtons) {
         this.context = context;
-        int buttonStyle = R.style.usersButton;
+        int buttonStyle = R.style.Button_UserCreated;
         this.layout = R.layout.popup_properties_button;
         this.viewType = ViewType.Button;
         this.thisView = new Button(new ContextThemeWrapper(context, buttonStyle), null, buttonStyle);

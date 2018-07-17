@@ -54,7 +54,7 @@ public class MultipleResponse extends Exercise {
         }
 
         // Create possibilities ToggleButtons
-        int buttonStyle = R.style.exerciseMultipleOptionButton;
+        int buttonStyle = R.style.Button_ExerciseMultipleOption;
         for (int i = 0; i < possibilitiesNum; i++) {
             final String possibility = possibilities.get(i);
             final ToggleButton button = new ToggleButton(new ContextThemeWrapper(context, buttonStyle), null, buttonStyle);

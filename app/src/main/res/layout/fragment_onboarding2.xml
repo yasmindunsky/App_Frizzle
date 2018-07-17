@@ -22,7 +22,7 @@
             android:layout_marginTop="44dp"
             android:background="@drawable/bubble_left"
             android:text="@string/onboardingMentorText3"
-            android:textAppearance="@style/MentorText"
+            android:textAppearance="@style/Text.Mentor"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"

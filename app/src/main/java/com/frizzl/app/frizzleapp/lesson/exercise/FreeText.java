@@ -26,7 +26,7 @@ public class FreeText extends Exercise {
     }
 
     public void createLayout(final RelativeLayout layout, Context context, final Button checkButton){
-        int style = R.style.editText;
+        int style = R.style.EditText;
         final android.support.v7.widget.AppCompatEditText inputText = new android.support.v7.widget.AppCompatEditText(new ContextThemeWrapper(context, style), null, style);
         LayoutParams layoutParams = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
         layoutParams.addRule(RelativeLayout.BELOW, R.id.exerciseQuestion);
@@ -38,7 +38,7 @@ public class FreeText extends Exercise {
         layoutParams.setMarginStart(marginInDp);
         layoutParams.setMarginEnd(marginInDp);
         inputText.setLayoutParams(layoutParams);
-        inputText.setTextAppearance(context, R.style.editText);
+        inputText.setTextAppearance(context, R.style.EditText);
         inputText.setHint(R.string.edit_text_hint);
         inputText.setId(R.id.userAnswerInput);
         layout.setGravity(Gravity.CENTER);

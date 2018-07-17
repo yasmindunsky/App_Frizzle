@@ -24,7 +24,7 @@
             android:layout_below="@+id/colors"
             android:layout_centerHorizontal="true"
             android:text="@string/amazing"
-            android:textAppearance="@style/GoodJobTitle" />
+            android:textAppearance="@style/Text.Title.GoodJob" />
 
         <ImageView
             android:id="@+id/mentor"

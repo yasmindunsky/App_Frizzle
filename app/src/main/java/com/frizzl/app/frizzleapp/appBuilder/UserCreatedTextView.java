@@ -41,7 +41,7 @@ public class UserCreatedTextView extends UserCreatedView {
         this.index = index;
         this.layout = R.layout.popup_properties_text_view;
         this.viewType = ViewType.TextView;
-        int textViewStyle = R.style.usersTextView;
+        int textViewStyle = R.style.TextView_UserCreated;
 
         this.thisView = new TextView(context, null, 0, textViewStyle);
         thisView.setText(properties.get("android:text"));
@@ -81,7 +81,7 @@ public class UserCreatedTextView extends UserCreatedView {
         this.context = context;
         this.layout = R.layout.popup_properties_text_view;
         this.viewType = ViewType.TextView;
-        int textViewStyle = R.style.usersTextView;
+        int textViewStyle = R.style.TextView_UserCreated;
         this.thisView = new TextView(context, null, 0, textViewStyle);
         thisView.setText(R.string.new_text_view_text);
 

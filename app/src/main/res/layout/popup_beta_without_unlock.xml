@@ -32,7 +32,7 @@
             android:fontFamily="@font/calibri_bold"
             android:gravity="center_horizontal"
             android:text="@string/thanks_for_participating_n_in_our_beta_version"
-            android:textAppearance="@style/SlideText"
+            android:textAppearance="@style/Text.Slide"
             android:textSize="20sp" />
 
 
@@ -43,7 +43,7 @@
             android:layout_marginTop="20dp"
             android:gravity="center_horizontal"
             android:text="@string/rate_your_experience"
-            android:textAppearance="@style/SlideText"
+            android:textAppearance="@style/Text.Slide"
             android:textSize="16sp" />
 
         <RatingBar
@@ -68,11 +68,11 @@
             android:hint="@string/what_i_thought"
             android:inputType="textMultiLine"
             android:padding="@dimen/default_margin"
-            android:textAppearance="@style/italicFormText" />
+            android:textAppearance="@style/Text.ItalicForm" />
 
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/doneButton"
-            style="@style/unlockButton"
+            style="@style/Button.Unlock"
             android:layout_width="150dp"
             android:layout_height="50dp"
             android:background="@drawable/unlock_button_background"

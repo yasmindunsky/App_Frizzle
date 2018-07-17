@@ -25,7 +25,7 @@
             android:layout_toEndOf="@+id/mentor"
             android:background="@drawable/bubble_left"
             android:text="@string/onboardingMentorText4"
-            android:textAppearance="@style/MentorText" />
+            android:textAppearance="@style/Text.Mentor" />
 
         <EditText
             android:id="@+id/username"
@@ -104,7 +104,7 @@
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
                 android:text="@string/already_have_an_account"
-                android:textAppearance="@style/alreadyHaveAccount" />
+                android:textAppearance="@style/Text.AlreadyHaveAccount" />
 
         </LinearLayout>
 

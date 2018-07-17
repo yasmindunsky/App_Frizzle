@@ -26,7 +26,7 @@
         <item name="android:fontFamily">@font/rubik_medium</item>
     </style>
 
-    <style name="HomeButton" parent="@android:style/Widget.Button">
+    <style name="Button.Home" parent="@android:style/Widget.Button">
         <item name="android:background">@color/colorPrimary</item>
         <item name="android:drawableLeft">@drawable/ic_home</item>
         <item name="android:layout_width">35dp</item>
@@ -85,14 +85,14 @@
 
 
     <!--Lesson-->
-    <style name="GoodJobTitle" parent="@style/ActivityTitle">
+    <style name="Text.Title.GoodJob" parent="@style/ActivityTitle">
         <item name="android:textColor">@color/colorPrimary</item>
         <item name="android:textSize">36sp</item>
     </style>
 
         <!--Slides-->
 
-    <style name="SlideText" parent="@android:style/TextAppearance.Medium">
+    <style name="Text.Slide" parent="@android:style/TextAppearance.Medium">
         <item name="android:textSize">18sp</item>
         <item name="android:fontFamily">@font/alef_regular</item>
         <item name="android:textColor">@color/TextGrey</item>
@@ -108,17 +108,17 @@
 
         <!--Exercises -->
 
-    <style name="ExerciseImage" parent="Theme.AppCompat.Light">
+    <style name="Image.Exercise" parent="Theme.AppCompat.Light">
         <item name="android:layout_marginTop">40dp</item>
     </style>
 
-    <style name="ExerciseText" parent="@style/SlideText">
+    <style name="Text.Exercise" parent="@style/Text.Slide">
         <item name="android:layout_marginBottom">20dp</item>
         <item name="android:layout_marginStart">@dimen/start_margin</item>
         <item name="android:layout_marginEnd">@dimen/start_margin</item>
     </style>
 
-    <style name="exerciseMultipleOptionButton" parent="@android:style/Widget.Button">
+    <style name="Button.ExerciseMultipleOption" parent="@android:style/Widget.Button">
         <item name="android:background">@drawable/exercise_option_button_background</item>
         <item name="android:textColor">@drawable/exercise_option_button_text_color</item>
         <item name="android:fontFamily">@font/alef</item>
@@ -128,14 +128,14 @@
         <item name="android:paddingEnd">16dp</item>
     </style>
 
-    <style name="exerciseTwoOptionButton" parent="@style/exerciseMultipleOptionButton">
+    <style name="Button.ExerciseTwoOption" parent="@style/Button.ExerciseMultipleOption">
         <item name="android:padding">12dp</item>
         <item name="android:paddingStart">30dp</item>
         <item name="android:paddingEnd">30dp</item>
         <item name="android:textSize">16sp</item>
     </style>
 
-    <style name="editText" parent="@android:style/Widget.EditText">
+    <style name="EditText" parent="@android:style/Widget.EditText">
         <item name="android:background">@drawable/exercise_text_edit_background</item>
         <item name="android:layout_marginBottom">20dp</item>
         <item name="android:layout_marginStart">@dimen/start_margin</item>
@@ -152,7 +152,7 @@
         <item name="android:singleLine">true</item>
     </style>
 
-    <style name="checkButton" parent="@android:style/Widget.Button">
+    <style name="Button.CheckExercise" parent="@android:style/Widget.Button">
         <item name="android:background">@drawable/check_button_background</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:fontFamily">@font/rubik_medium</item>
@@ -181,7 +181,7 @@
     </style>
 
 
-    <style name="taskInNavigationText" parent="@style/SlideText">
+    <style name="taskInNavigationText" parent="@style/Text.Slide">
         <item name="android:textSize">16sp</item>
     </style>
 
@@ -208,7 +208,7 @@
         <item name="textAllCaps">false</item>
     </style>
 
-    <style name="taskInAppBuilderText" parent="@style/SlideText">
+    <style name="taskInAppBuilderText" parent="@style/Text.Slide">
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">16sp</item>
     </style>
@@ -229,7 +229,7 @@
     </style>
 
         <!--Graphic Edit-->
-    <style name="usersButton" parent="@android:style/Widget.Button">
+    <style name="Button.UserCreated" parent="@android:style/Widget.Button">
         <item name="android:background">@drawable/user_button_background</item>
         <item name="android:textColor">@color/TextGrey</item>
         <item name="android:fontFamily">@font/alef</item>
@@ -240,7 +240,7 @@
         <item name="android:layout_margin">10dp</item>
     </style>
 
-    <style name="usersTextView" parent="@android:style/TextAppearance.DeviceDefault.Medium">
+    <style name="TextView.UserCreated" parent="@android:style/TextAppearance.DeviceDefault.Medium">
         <item name="android:background">@android:color/transparent</item>
         <item name="android:textColor">@color/TextGrey</item>
         <item name="android:fontFamily">@font/alef</item>
@@ -277,7 +277,7 @@
         <item name="android:background">@drawable/table_text_edit_background</item>
     </style>
 
-    <style name="propertiesTableTitle" parent="@android:style/TextAppearance.DeviceDefault.Medium">
+    <style name="Text.Title.PropertiesTable" parent="@android:style/TextAppearance.DeviceDefault.Medium">
         <item name="android:layout_height">@dimen/app_bar_height</item>
         <item name="android:fontFamily">@font/rubik</item>
         <item name="android:background">@drawable/table_text_edit_background</item>
@@ -296,14 +296,14 @@
     </style>
 
         <!--Code-->
-    <style name="CodeText" parent="@style/SlideText">
+    <style name="CodeText" parent="@style/Text.Slide">
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">16sp</item>
 
     </style>
 
     <!--Map-->
-    <style name="mapLessonButton" parent="@android:style/Widget.Material.Button.Borderless">
+    <style name="Button.MapLesson" parent="@android:style/Widget.Material.Button.Borderless">
         <!--<item name="android:drawable">@drawable/map_lesson_circle</item>-->
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">20sp</item>

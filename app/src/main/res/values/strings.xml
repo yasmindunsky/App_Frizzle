@@ -60,7 +60,7 @@
     <string name="no_password">You forgot to choose a password</string>
     <string name="no_email">You forgot to fill out your email address</string>
     <string name="whats_your_name">what"'"s your name?</string>
-    <string name="already_registered">Already registered? Great. Enter your username and password.</string>
+    <string name="already_registered">Already have an account? Enter your username and password.</string>
     <string name="go_build">Go to the Build screen.</string>
     <string name="amazing">wow, amazing!</string>
     <string name="lets_build">Let"'"s Build</string>
@@ -111,6 +111,7 @@
     <string name="trivia_master_content">Challenge your friends on your favorite topic</string>
     <string name="flash_cards_title">Flash Cards</string>
     <string name="flash_cards_content">Help your friends memorize terms or vocab</string>
+    <string name="log_in">log in</string>
 
     <string-array name="fonts">
         <item>sans-serif</item>

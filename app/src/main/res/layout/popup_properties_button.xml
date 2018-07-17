@@ -8,7 +8,7 @@
 
     <android.support.v7.widget.AppCompatTextView
         android:id="@+id/properties"
-        style="@style/propertiesTableTitle"
+        style="@style/Text.Title.PropertiesTable"
         android:layout_width="match_parent"
         android:layout_alignParentTop="true"
         android:background="@drawable/table_title_background"
@@ -161,7 +161,7 @@
     </TableLayout>
     <android.support.v7.widget.AppCompatButton
         android:id="@+id/saveButton"
-        style="@style/propertiesTableSaveButton"
+        style="@style/Button.SavePropertiesTable"
         android:layout_below="@+id/tableLayout"
         android:layout_centerHorizontal="true"
         android:layout_centerInParent="false"

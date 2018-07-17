@@ -40,7 +40,7 @@ public class SingleResponse extends Exercise {
 
         // Create each possibility as a radio button and add to RadioGroup.
         // TODO: choose style based on number of possible answers.
-        int buttonStyle = R.style.exerciseTwoOptionButton;
+        int buttonStyle = R.style.Button_ExerciseTwoOption;
         for (final String possibility : this.getPossibilities()) {
             final AppCompatRadioButton button = new AppCompatRadioButton(new ContextThemeWrapper(context, buttonStyle), null, buttonStyle);
             RadioGroup.LayoutParams buttonLayoutParams =
