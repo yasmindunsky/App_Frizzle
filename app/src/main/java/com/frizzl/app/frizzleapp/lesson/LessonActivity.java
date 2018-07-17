@@ -76,9 +76,9 @@ public class LessonActivity extends FragmentActivity {
         swipeAdapter = new SwipeAdapter(getSupportFragmentManager(), currentLesson);
         viewPager.setAdapter(swipeAdapter);
         // Rotation for RTL swiping.
-        if (Support.isRTL()) {
-            viewPager.setRotationY(180);
-        }
+//        if (Support.isRTL()) {
+//            viewPager.setRotationY(180);
+//        }
 
         // Connecting TabLayout with ViewPager to show swipe position in dots.
         final TabLayout tabLayout = findViewById(R.id.dotsTabLayout);

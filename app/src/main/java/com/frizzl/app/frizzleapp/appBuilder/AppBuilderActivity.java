@@ -28,6 +28,7 @@ import android.widget.PopupWindow;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.crashlytics.android.Crashlytics;
 import com.frizzl.app.frizzleapp.AsyncResponse;
 import com.frizzl.app.frizzleapp.MapActivity;
 import com.frizzl.app.frizzleapp.R;
@@ -433,6 +434,7 @@ public class AppBuilderActivity extends AppCompatActivity {
 
     private void updateCurrentAndTopPosition() {
         int nextLesson = UserProfile.user.getCurrentLessonID() + 1;
+        Crashlytics.setInt("current_lesson", nextLesson);
         if (nextLesson <= 13) {
             UserProfile.user.setCurrentLessonID(nextLesson);
             if (nextLesson > UserProfile.user.getTopLessonID()) {
@@ -479,7 +481,7 @@ public class AppBuilderActivity extends AppCompatActivity {
         UserProfile.user.setXml(xml);
 
         // update views string
-        Map<Integer, UserCreatedView> views = UserCreatedViewsPresenter.getViews(getBaseContext());
+        Map<Integer, UserCreatedView> views = DesignScreenPresenter.getViews(getBaseContext());
         UserProfile.user.setViews(views);
     }
 
@@ -572,6 +574,7 @@ public class AppBuilderActivity extends AppCompatActivity {
         intent.setData(contentUri);
         intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
         startActivity(intent);
+
 
     }
 }

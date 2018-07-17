@@ -76,7 +76,7 @@ public class GetProjectFromServer extends AsyncTask<String, Void, String> {
                         int start = mContext.getApplicationContext().getResources().getString(R.string.code_start).length();
                         int end = attributeString.length() - mContext.getApplicationContext().getResources().getString(R.string.code_end).length();
                         if (!attributeString.equals("null")) {
-                            attributeString = attributeString.substring(start, end);
+                            attributeString = attributeString.substring(start, end); //TODO: Yasmin?
                         }
                         // save code to user profile
                         UserProfile.user.setJava(attributeString);

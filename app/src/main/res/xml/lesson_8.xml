@@ -1,50 +1,118 @@
 <lesson>
     <slide>
-        <text name="text">"בקורס הזה נבנה אפליקציית מגדת עתידות."</text>
-        <image name="image">"slide_2_1_1"</image>
+        <text name="text">
+            "Great job! You made a real app with a question. But it’s not fun when there’s only one question, right?"
+        </text>
+        <image name="image">"slide_8_1_friendship_test"</image>
+        <image name="image">"slide_8_1_trivia_master"</image>
+        <image name="image">"slide_8_1_flash_cards"</image>
     </slide>
 
     <slide>
-        <text name="text">"נשאל את האפליקציה שאלות בסגנון \\u000Aמה הסיכויים ש..\\u000A והיא תענה לנו באחוזים."</text>
-        <image name="image">"slide_2_1_2"</image>
+        <text name="text">
+            "To add more questions, you can repeat the entire process you went through. In this lesson we’ll recall what exactly did we do and highlight some important points."
+        </text>
+        <image name="imageSource">"slide_4_1a_friendship_test"</image>
+        <image name="imageSource">"slide_4_1a_trivia_master"</image>
+        <image name="imageSource">"slide_4_1a_flash_cards"</image>
     </slide>
 
     <slide>
-        <text name="text">"נעשה זאת באמצעות מה שלמדנו בקורס הקודם - הוספת אלמנטים, הגדרת פונקציה ועוד."</text>
-        <image name="image">"slide_2_1_3"</image>
+        <text name="text">
+            "In the Design screen we’ll add a Text element for every question and a Button for every answer. Every element’s ID should be unique, but if many elements have a similar role, we can give them the same name prefix and a different number."
+        </text>
+        <image name="image">"slide_8_3"</image>
     </slide>
+
+    <slide>
+        <text name="text">
+            "In the Code screen we’ll create a function for every question, in which we’ll write the code that gives the button a name, and changes its text to the answer. The name of the function should also be unique."
+        </text>
+        <image name="image">"slide_7_5"</image>
+    </slide>
+
+    <slide>
+        <text name="text">
+            "Back in the Design screen, we’ll define each button’s onClick property to be its appropriate function."
+        </text>
+        <image name="image">"slide_8_5"</image>
+    </slide>
+
+    <slide>
+        <text name="text">
+            "In order to keep things in order, we should pick a number for every question and name the functions and IDs accordingly."
+        </text>
+        <image name="image">"slide_8_6"</image>
+    </slide>
+
+    <slide>
+        <text name="text">
+            "It’s best to issue meaningful names."
+        </text>
+        <image name="image">"slide_8_7"</image>
+    </slide>
+
 
     <exercise>
         <type name="type">"SingleResponse"</type>
-        <question name="question">"כדאי לתת לכל הכפתורים באפליקציה את אותו ID בדיוק."</question>
+        <question name="question">"It\\u0027s best to give every button in the app the same ID."</question>
         <image name="image">"exercise_7_1"</image>
         <content name="content"></content>
         <possibilities name = "possibilities">
-            <possibility name = "possibility">"נכון"</possibility>
-            <possibility name = "possibility">"לא נכון"</possibility>
+            <possibility name = "possibility">"True"</possibility>
+            <possibility name = "possibility">"False"</possibility>
         </possibilities>
         <answers name="answers">
-            <answer name="answer">"לא נכון"</answer>
+            <answer name="answer">"False"</answer>
+        </answers>
+    </exercise>
+    <exercise>
+        <type name="type">"FreeText"</type>
+        <question name="question">"How many function would we need if we have 6 trivia questions?"</question>
+        <image name="image">"exercise_7_2"</image>
+        <content name="content"></content>
+        <possibilities name = "possibilities"></possibilities>
+        <answers name="answers">
+            <answer name="answer">"6"</answer>
         </answers>
     </exercise>
 
     <exercise>
         <type name="type">"SingleResponse"</type>
-        <question name="question">"נשתמש במסך הממשק הגרפי כדי להחליט איך תראה האפליקציה"</question>
-        <image name="image">"exercise_1_4"</image>
+        <question name="question">"It\\u0027s best to name functions after friends and food."</question>
+        <image name="image">"exercise_7_3"</image>
         <content name="content"></content>
         <possibilities name = "possibilities">
-            <possibility name = "possibility">"נכון"</possibility>
-            <possibility name = "possibility">"לא נכון"</possibility>
+            <possibility name = "possibility">"True"</possibility>
+            <possibility name = "possibility">"False"</possibility>
         </possibilities>
         <answers name="answers">
-            <answer name="answer">"נכון"</answer>
+            <answer name="answer">"False"</answer>
         </answers>
     </exercise>
 
 
+    <exercise>
+        <type name="type">"MultipleResponse"</type>
+        <question name="question">"A button\\u0027s ID is answerButton2, what names could we give the function that goes with that button so it would make most sense?"</question>
+        <image name="image">"exercise_7_4"</image>
+        <content name="content"></content>
+        <possibilities name = "possibilities">
+            <possibility name= "possibility">"answerFunction3"</possibility>
+            <possibility name= "possibility">"triviaAnswer2"</possibility>
+            <possibility name= "possibility">"bestFunction"</possibility>
+            <possibility name= "possibility">"answerFunction2"</possibility>
+        </possibilities>
+        <answers name="answers">
+            <answer name="answer">"answerFunction2"</answer>
+            <answer name="answer">"triviaAnswer2"</answer>
+        </answers>
+    </exercise>
+
     <task>
-        <text name = "text"> "ניזכר במסך בניית האפליקציה ונעבור לשיעור הבא" </text>
+        <text name = "text">
+            "Add more questions to your app."
+        </text>
     </task>
 
 </lesson>

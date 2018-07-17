@@ -1,61 +1,108 @@
 <lesson>
 
     <slide>
-        <text name="text">"כתבנו קטע קוד, שהוא בעצם רצף של כמה פקודות, שמשנה את הטקסט שמופיע על הכפתור."</text>
+        <text name="text">"This command sets the button’s name. Let’s review all of its sections."</text>
         <image name="imageSource">"slide_6_1"</image>
     </slide>
 
     <slide>
-        <text name="text">"אבל נרצה שהטקסט ישתנה רק אחרי שהמשתמש לוחץ על הכפתור."</text>
+        <text name="text">"The command starts with the type of View we’re working on, a Button."</text>
         <image name="imageSource">"slide_6_2"</image>
     </slide>
 
     <slide>
-        <text name="text">"כדי לעשות זו, קודם כל ניתן לקטע
-            \\u000A
-            הקוד שכתבנו שם. קטע קוד שיש לו שם נקרא פונקציה."</text>
+        <text name="text">
+            "myButton is the name we have chosen to assign to this specific Button."
+        </text>
         <image name="imageSource">"slide_6_3"</image>
     </slide>
 
     <slide>
-        <text name="text">"עכשיו נוכל להגדיר שלחיצה על הכפתור קוראת לפונקציה ומריצה את קטע הקוד שיש בה."</text>
+        <text name="text">"In parnethesis we write this Button’s ID from the Design screen, with a prefix of ’R.id.’."</text>
         <image name="imageSource">"slide_6_4"</image>
     </slide>
 
     <slide>
-        <text name="text">"בדיוק כמו צבע רקע או פונט, גם OnClick היא תכונה שיש לכפתור.
-            \\u000A
-            זוהי תכונה מיוחדת שמאפשרת לנו לבחור איזו פונקציה תיקרא כשלוחצים על הכפתור."</text>
-        <image name="imageSource">"slide_6_5"</image>
+        <text name="text">
+        ""Now let’s take a look at these two commands:
+            first we choose a name for the Button whos’ text we want to change, and then we define the new text for it.""
+        </text>
+        <image name="imageSource">"slide_5_2"</image>
     </slide>
 
-
     <exercise>
-        <type name="type">"FreeText"</type>
-        <question name="question">"איזה פונקציה תרוץ כשהכפתור ילחץ?"</question>
-        <image name="image">"exercise_6_1"</image>
+        <type name="type">"SingleResponse"</type>
+        <question name="question">
+            "This code:\\u000A
+            Button myButton = (Button)\\u000A
+            findViewById(R.id.button1);\\u000A
+            Will add the app a third button."
+        </question>
+        <image name="image">"exercise_4_1"</image>
         <content name="content"></content>
-        <possibilities name = "possibilities"></possibilities>
+        <possibilities name = "possibilities">
+            <possibility name = "possibility">"True"</possibility>
+            <possibility name = "possibility">"False"</possibility>
+        </possibilities>
         <answers name="answers">
-            <answer name="answer">"changeText"</answer>
+            <answer name="answer">"False"</answer>
         </answers>
     </exercise>
 
     <exercise>
         <type name="type">"SingleResponse"</type>
-        <question name="question">"מה יהיה הטקסט על הכפתור בלחיצה?"</question>
-        <image name="image">"exercise_6_2"</image>
+        <question name="question">
+            "After this code:\\u000A
+            Button myButton = (Button) findViewById(R.id.button1);\\u000A
+            What button\\u0027s name in code will be myButton?"
+        </question>
+        <image name="image">"exercise_4_1"</image>
         <content name="content"></content>
         <possibilities name = "possibilities">
-            <possibility name = "possibility">"Hello"</possibility>
-            <possibility name = "possibility">"Button"</possibility>
+            <possibility name = "possibility">"Green"</possibility>
+            <possibility name = "possibility">"Blue"</possibility>
         </possibilities>
         <answers name="answers">
-            <answer name="answer">"Hello"</answer>
+            <answer name="answer">"Blue"</answer>
         </answers>
     </exercise>
 
+    <exercise>
+        <type name="type">"FreeText"</type>
+        <question name="question">
+            "After this code:\\u000A
+            Button best = (Button)findViewById\\u000A
+            (R.id.bestButtonEver);\\u000A
+            What will be the button\\u0027s name in code?"
+        </question>
+        <image name="image">"exercise_4_3"</image>
+        <content name="content"></content>
+        <possibilities name = "possibilities"></possibilities>
+        <answers name="answers">
+            <answer name="answer">"best"</answer>
+        </answers>
+    </exercise>
+
+    <exercise>
+        <type name="type">"FreeText"</type>
+        <question name="question">
+            "After this code:\\u000A
+            Button like = (Button) findViewById(R.id. likeButton);\\u000A
+            What will be the button\\u0027s name in code?"
+        </question>
+        <image name="image">"exercise_4_4"</image>
+        <content name="content"></content>
+        <possibilities name = "possibilities"></possibilities>
+        <answers name="answers">
+            <answer name="answer">"like"</answer>
+        </answers>
+    </exercise>
+
+
+
     <task>
-        <text name = "text"> "במסך הקוד, עטפי את הפקודות שכתבת בפונקציה ותני לה שם. במסך העיצוב, הגדירי את מאפיין ה-OnClick של הכפתור להיות הפונקציה שיצרת." </text>
+        <text name = "text">
+            "In the Code screen, change your button’s name to a meaningful one. Don’t forget to change it where it is used in the setText command. Then run your app."
+        </text>
     </task>
 </lesson>

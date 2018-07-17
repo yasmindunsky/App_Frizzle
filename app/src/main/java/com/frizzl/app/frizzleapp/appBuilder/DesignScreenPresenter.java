@@ -11,14 +11,14 @@ import java.util.Map;
  * Created by Noga on 09/07/2018.
  */
 
-public class UserCreatedViewsPresenter {
+public class DesignScreenPresenter {
     private static Map<Integer, UserCreatedView> views;
     private DesignScreenFragment designScreenFragment;
 //    private UserCreatedViewsModel userCreatedViewsModel;
 
     enum viewTypes {Button, TextView}
 
-    public UserCreatedViewsPresenter(DesignScreenFragment designScreenFragment) {
+    public DesignScreenPresenter(DesignScreenFragment designScreenFragment) {
         this.designScreenFragment = designScreenFragment;
     }
 

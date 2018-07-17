@@ -1,98 +1,79 @@
 <lesson>
 
     <slide>
-        <text name="text">"נרצה לשנות את הטקסט שמופיע על כפתור ברגע שמשתמש לוחץ עליו."</text>
-        <image name="imageSource">"slide_4_1"</image>
+        <text name="text">"Until now we created the design of the app, but when we run the app and click on the button nothing happens."</text>
+        <image name="imageSource">"slide_4_1_friendship_test"</image>
+        <image name="imageSource">"slide_4_1_trivia_master"</image>
+        <image name="imageSource">"slide_4_1_flash_cards"</image>
     </slide>
 
     <slide>
-        <text name="text">"כמו שלמדנו, כדי לומר למחשב מה לעשות, נשתמש בפקודות Java, ובשביל זה נצטרך לעבור למסך הקוד."</text>
-        <image name="imageSource">"slide_4_2"</image>
+        <text name="text">"We want the app to behave in a certain way according to the user’s actions."</text>
+        <image name="imageSource">"slide_4_2_friendship_test"</image>
+        <image name="imageSource">"slide_4_2_trivia_master"</image>
+        <image name="imageSource">"slide_4_2_flash_cards"</image>
     </slide>
 
     <slide>
-        <text name="text">"
-          כדי להשתמש בפקודות Java על אלמנט, כמו כפתור, נצטרך לתת לאלמנט הזה שם במסך הקוד.\\u000A
-            כשיצרנו את הכפתור במסך העריכה הגרפית נתנו לו מזהה ייחודי, ID.
-        "</text>
-        <image name="imageSource">"slide_4_3"</image>
+        <text name="text">"For example, in this app, when the user clicks on the ’Reveal’ button we want the answer to show up."</text>
+        <image name="imageSource">"slide_4_2_friendship_test"</image>
+        <image name="imageSource">"slide_4_2_trivia_master"</image>
+        <image name="imageSource">"slide_4_2_flash_cards"</image>
     </slide>
 
     <slide>
-        <text name="text">"ניתן לכפתור שם חדש במסך הקוד
-            \\u000A
-            ונחבר אותו באמצעות פקודת Java
-            \\u000A
-            למזהה הייחודי, ה-ID, של הכפתור ממסך העריכה הגרפית."</text>
-        <image name="imageSource">"slide_4_4"</image>
-    </slide>
-
-    <slide>
-        <text name="text">"פקודת ה-Java בה נשתמש נקראת findViewById."</text>
-        <image name="imageSource">"slide_4_5"</image>
-    </slide>
-
-    <slide>
-        <text name="text">"עכשיו ButtonNameInCode הוא השם של הכפתור במסך הקוד, ונוכל להשתמש בפקודות Java נוספות כדי לשנות את הטקסט עליו."</text>
-        <image name="imageSource">"slide_4_1"</image>
+        <text name="text">
+            "If we want our app to behave this way, we need to use Java and define what the computer will do when a button is clicked."
+        </text>
+        <image name="imageSource">"slide_3_2"</image>
     </slide>
 
 
     <exercise>
         <type name="type">"SingleResponse"</type>
-        <question name="question">
-            "שורת הקוד:\\u000AButton myButton = (Button)\\u000A        findViewById(R.id.button1);\\u000Aתוסיף לאפליקציה כפתור שלישי"
-</question>
-        <image name="image">"exercise_4_1"</image>
+        <question name="question">"We want to add a title to the app and define the color blue, which screen will we use?"</question>
+        <image name="image">"exercise_3_1"</image>
         <content name="content"></content>
         <possibilities name = "possibilities">
-            <possibility name = "possibility">"נכון"</possibility>
-            <possibility name = "possibility">"לא נכון"</possibility>
+            <possibility name = "possibility">"Design"</possibility>
+            <possibility name = "possibility">"Code"</possibility>
         </possibilities>
         <answers name="answers">
-            <answer name="answer">"לא נכון"</answer>
+            <answer name="answer">"Design"</answer>
         </answers>
     </exercise>
 
     <exercise>
         <type name="type">"SingleResponse"</type>
-        <question name="question">"אחרי שורת הקוד:\\u000AButton myButton = (Button) findViewById(R.id.button1);\\u000Aאיזה כפתור יהיה קרוי בקוד myButton?
-            "</question>
-        <image name="image">"exercise_4_1"</image>
+        <question name="question">"we want to define that the title’s color will turn from purple to green when you click it, which screen will we use?"</question>
+        <image name="image">"exercise_3_2"</image>
         <content name="content"></content>
         <possibilities name = "possibilities">
-            <possibility name = "possibility">"הירוק"</possibility>
-            <possibility name = "possibility">"הכחול"</possibility>
+            <possibility name = "possibility">"Design"</possibility>
+            <possibility name = "possibility">"Code"</possibility>
         </possibilities>
         <answers name="answers">
-            <answer name="answer">"הכחול"</answer>
+            <answer name="answer">"Code"</answer>
         </answers>
     </exercise>
 
     <exercise>
-        <type name="type">"FreeText"</type>
-        <question name="question">"אחרי שורת הקוד:\\u000AButton best = (Button)findViewById\\u000A    (R.id.bestButtonEver);\\u000Aאיך יקרא הכפתור בקוד?"</question>
-        <image name="image">"exercise_4_3"</image>
+        <type name="type">"SingleResponse"</type>
+        <question name="question">"The app has a ’play’ button, and we want to define that a song starts playing when it is clicked, which screen will we use?"</question>
+        <image name="image">"exercise_3_3"</image>
         <content name="content"></content>
-        <possibilities name = "possibilities"></possibilities>
+        <possibilities name = "possibilities">
+            <possibility name = "possibility">"Design"</possibility>
+            <possibility name = "possibility">"Code"</possibility>
+        </possibilities>
         <answers name="answers">
-            <answer name="answer">"best"</answer>
+            <answer name="answer">"Code"</answer>
         </answers>
     </exercise>
 
-    <exercise>
-        <type name="type">"FreeText"</type>
-        <question name="question">"אחרי שורת הקוד:\\u000AButton like = (Button) findViewById(R.id. likeButton);\\u000Aאיך יקרא הכפתור בקוד?"</question>
-        <image name="image">"exercise_4_4"</image>
-        <content name="content"></content>
-        <possibilities name = "possibilities"></possibilities>
-        <answers name="answers">
-            <answer name="answer">"like"</answer>
-        </answers>
-    </exercise>
 
 
     <task>
-        <text name = "text"> "תני לכפתור שלך שם במסך הקוד באמצעות פקודת findViewById." </text>
+        <text name = "text"> "Run the app and try to click the button." </text>
     </task>
 </lesson>

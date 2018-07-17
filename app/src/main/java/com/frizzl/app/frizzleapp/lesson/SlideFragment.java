@@ -46,9 +46,9 @@ public class SlideFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_slide, container, false);
 
         // Rotation for RTL swiping.
-        if (Support.isRTL()) {
-            view.setRotationY(180);
-        }
+//        if (Support.isRTL()) {
+//            view.setRotationY(180);
+//        }
 
         fragmentText = view.findViewById(R.id.slideText);
         fragmentImage = view.findViewById(R.id.slideImage);

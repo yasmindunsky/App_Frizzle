@@ -44,9 +44,9 @@ public class RegisterFragment extends Fragment {
 
         view = inflater.inflate(R.layout.fragment_onboarding3, container, false);
 
-        if (Support.isRTL()) {
-            view.setRotationY(180);
-        }
+//        if (Support.isRTL()) {
+//            view.setRotationY(180);
+//        }
 
         nickName = UserProfile.user.getNickName();
         nickName = nickName.trim();

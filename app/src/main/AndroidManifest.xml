@@ -1,38 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.frizzl.app.frizzleapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
 
     <application
+        android:name=".FrizzlApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
         android:hardwareAccelerated="false"
         android:largeHeap="true"
-        android:theme="@style/AppTheme.NoActionBar">
+        android:theme="@style/AppTheme.NoActionBar"
+        >
 
-        <activity android:name="com.frizzl.app.frizzleapp.intro.LoginActivity">
+        <activity android:name="com.frizzl.app.frizzleapp.intro.LoginActivity"
+            android:supportsRtl="false"
+            tools:replace="android:supportsRtl">
         </activity>
 
         <activity android:name="com.frizzl.app.frizzleapp.MapActivity"
-                  android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"
+            android:supportsRtl="false"
+            tools:replace="android:supportsRtl">
         </activity>
 
         <activity android:name="com.frizzl.app.frizzleapp.SecondCourseActivity"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
 
-        <activity android:name="com.frizzl.app.frizzleapp.intro.OnboardingActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+        <activity
+            android:name="com.frizzl.app.frizzleapp.intro.OnboardingActivity"
+            android:configChanges="layoutDirection|locale"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:supportsRtl="false"
+            tools:replace="android:supportsRtl">
         </activity>
 
         <activity android:name="com.frizzl.app.frizzleapp.SplashActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:configChanges="layoutDirection|locale"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:supportsRtl="false"
+            tools:replace="android:supportsRtl">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -40,7 +54,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.frizzl.app.frizzleapp.lesson.LessonActivity"/>
+        <activity android:name="com.frizzl.app.frizzleapp.lesson.LessonActivity"
+            android:supportsRtl="false"
+            tools:replace="android:supportsRtl"/>
 
         <activity android:name="com.frizzl.app.frizzleapp.appBuilder.AppBuilderActivity">
         </activity>
@@ -55,6 +71,13 @@
         <service
             android:name=".notifications.NotificationIntentService"
             android:exported="false" />
+        <service
+            android:name=".MyFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+            </intent-filter>
+        </service>
 
         <provider
             android:name="android.support.v4.content.FileProvider"

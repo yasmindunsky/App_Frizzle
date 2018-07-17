@@ -190,13 +190,16 @@ public class UserCreatedTextView extends UserCreatedView {
                 colorPicker.setOnChooseColorListener(new ColorPicker.OnChooseColorListener() {
                     @Override
                     public void onChooseColor(int position,int color) {
-                        thisView.setTextColor(color);
-                        properties.put("android:textColor", Support.colorsHexList.get(position));
+                        if (position != -1) {
 
-                        int originalValueDrawableRes = R.drawable.table_color_circle;
-                        Drawable valueDrawable = ContextCompat.getDrawable(context, originalValueDrawableRes);
-                        valueDrawable.setColorFilter(color, PorterDuff.Mode.DARKEN);
-                        chooseFontColor.setBackground(valueDrawable);
+                            thisView.setTextColor(color);
+                            properties.put("android:textColor", Support.colorsHexList.get(position));
+
+                            int originalValueDrawableRes = R.drawable.table_color_circle;
+                            Drawable valueDrawable = ContextCompat.getDrawable(context, originalValueDrawableRes);
+                            valueDrawable.setColorFilter(color, PorterDuff.Mode.DARKEN);
+                            chooseFontColor.setBackground(valueDrawable);
+                        }
                     }
 
                     @Override

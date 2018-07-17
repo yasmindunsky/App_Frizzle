@@ -1,100 +1,84 @@
 <lesson>
     <slide>
-        <text name="text">"כל הכבוד! יצרת אפליקציה אמיתית עם שאלת טריוויה. אבל החידון לא מעניין במיוחד כשיש בו רק שאלה אחת, נכון?"</text>
-        <image name="image">"slide_7_1"</image>
+        <text name="text">
+            "We just wrote a piece of code which is made out of two Java commands that change the text appearing on a button."
+        </text>
+        <image name="image">"slide_5_2"</image>
     </slide>
 
     <slide>
-        <text name="text">"כדי להוסיף עוד שאלות, תוכלי לחזור שוב על התהליך שעשית. בשיעור הזה ניזכר מה בדיוק עשינו ונשים לב לכמה דגשים חשובים."</text>
-        <image name="image">"slide_7_2"</image>
+        <text name="text">
+            "However, we want to change the text on the button only after the user clicks it."
+        </text>
+        <image name="imageSource">"slide_4_2_friendship_test"</image>
+        <image name="imageSource">"slide_4_2_trivia_master"</image>
+        <image name="imageSource">"slide_4_2_flash_cards"</image>
     </slide>
 
     <slide>
-        <text name="text">""במסך העיצוב, נוסיף שדה טקסט עבור כל שאלה וכפתור עבור כל תשובה.            ה-ID של כל אלמנט צריך להיות ייחודי, אבל אם הרבה אלמנטים משמשים לאותה מטרה, ניתן לתת להם שם זהה ונמספר אותם."</text>
+        <text name="text">
+            "To do so, we first give the piece of code we wrote a name. A piece of code with a name is called a function."
+        </text>
         <image name="image">"slide_7_3"</image>
     </slide>
 
     <slide>
-        <text name="text">"במסך הקוד, לכל שאלה ניצור פונקציה, ובה נכתוב את שורות הקוד שנותנות לכפתור שם בקוד, ומשנות את הטקסט שעליו לתשובה. שם הפונקציה צריך להיות גם הוא ייחודי."
+        <text name="text">
+            "How do we name a piece of code? We wrap it with curly brackets and preceed it with this line of code:"
         </text>
-        <image name="image">"slide_7_4"</image>
+        <image name="image">"slide_7_3b"</image>
     </slide>
 
     <slide>
-        <text name="text">"בחזרה במסך העיצוב, נגדיר לכל כפתור ב-onclick את הפונקציה המתאימה לו. "
+        <text name="text">
+            "The grey parts are static and the colorful part is the name we give the function."
         </text>
         <image name="image">"slide_7_5"</image>
     </slide>
 
     <slide>
-        <text name="text">"כדי שלא נתבלבל כדאי לעבוד בצורה מסודרת, לבחור מספר לכל שאלה ולהתאים את שמות הפונקציות וה-IDים למספר."</text>
+        <text name="text">
+            "We can now define that clicking the button should call the function and run the commands inside it."
+        </text>
         <image name="image">"slide_7_6"</image>
     </slide>
 
     <slide>
-        <text name="text">"כדאי גם שהשמות יהיו בעלי משמעות."</text>
+        <text name="text">
+            "How do we define what functions should run when our button is clicked? Just like background color or font, onClick is also a property of the button View. It is a special property that allows us to choose which function will be called when the button is clicked."
+        </text>
         <image name="image">"slide_7_7"</image>
     </slide>
 
 
     <exercise>
-        <type name="type">"SingleResponse"</type>
-        <question name="question">"כדאי לתת לכל הכפתורים באפליקציה את אותו ID בדיוק."</question>
-        <image name="image">"exercise_7_1"</image>
-        <content name="content"></content>
-        <possibilities name = "possibilities">
-            <possibility name = "possibility">"נכון"</possibility>
-            <possibility name = "possibility">"לא נכון"</possibility>
-        </possibilities>
-        <answers name="answers">
-            <answer name="answer">"לא נכון"</answer>
-        </answers>
-    </exercise>
-    <exercise>
         <type name="type">"FreeText"</type>
-        <question name="question">"כמה פונקציות נצטרך באפליקציה אם יש לנו 6 שאלות טריוויה?"</question>
-        <image name="image">"exercise_7_2"</image>
+        <question name="question">"What function will be executed when the button is clicked?"</question>
+        <image name="image">"exercise_6_1"</image>
         <content name="content"></content>
         <possibilities name = "possibilities"></possibilities>
         <answers name="answers">
-            <answer name="answer">"6"</answer>
+            <answer name="answer">"changeText"</answer>
         </answers>
     </exercise>
 
     <exercise>
         <type name="type">"SingleResponse"</type>
-        <question name="question">"כדאי לתת לפונקציות שמות של חברים ומאכלים."</question>
-        <image name="image">"exercise_7_3"</image>
+        <question name="question">"What will be the text on the button after it\\u0027s clicked?"</question>
+        <image name="image">"exercise_6_2"</image>
         <content name="content"></content>
         <possibilities name = "possibilities">
-            <possibility name = "possibility">"נכון"</possibility>
-            <possibility name = "possibility">"לא נכון"</possibility>
+            <possibility name = "possibility">"Hello"</possibility>
+            <possibility name = "possibility">"Button"</possibility>
         </possibilities>
         <answers name="answers">
-            <answer name="answer">"לא נכון"</answer>
+            <answer name="answer">"Hello"</answer>
         </answers>
     </exercise>
-
-
-    <exercise>
-        <type name="type">"MultipleResponse"</type>
-        <question name="question">"ה-ID של הכפתור שלי הוא answerButton2, איזה שמות נוכל לתת לפונקציה שתתאים לכפתור כך שנוכל לזהות את הקשר ביניהם?"</question>
-        <image name="image">"exercise_7_4"</image>
-        <content name="content"></content>
-        <possibilities name = "possibilities">
-            <possibility name= "possibility">"answerFunction3"</possibility>
-            <possibility name= "possibility">"triviaAnswer2"</possibility>
-            <possibility name= "possibility">"bestFunction"</possibility>
-            <possibility name= "possibility">"answerFunction2"</possibility>
-        </possibilities>
-        <answers name="answers">
-            <answer name="answer">"answerFunction2"</answer>
-            <answer name="answer">"triviaAnswer2"</answer>
-        </answers>
-    </exercise>
-
     <task>
-        <text name = "text"> "הוסיפי עוד שאלות לאפליקציה שלך." </text>
+        <text name = "text">
+            "In the Code screen, copy the two commands we wrote below the ’}’ sign. Wrap them with a function and give it a name. In the Design Screen, define the button’s onClick property to be the function you created."
+        </text>
     </task>
 
 </lesson>

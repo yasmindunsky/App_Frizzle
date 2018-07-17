@@ -35,7 +35,7 @@ public class DesignScreenFragment extends Fragment {
     private ExpandableLayout expandableLayout;
     private FloatingActionButton expandButton;
 
-    private UserCreatedViewsPresenter userCreatedViewsPresenter;
+    private DesignScreenPresenter userCreatedViewsPresenter;
 
     public DesignScreenFragment() {
         // Required empty public constructor
@@ -46,19 +46,19 @@ public class DesignScreenFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_graphic_edit, container, false);
 
-        userCreatedViewsPresenter = new UserCreatedViewsPresenter(this);
+        userCreatedViewsPresenter = new DesignScreenPresenter(this);
 
         gridLayout = view.findViewById(R.id.gridLayout);
         gridLayout.setOnDragListener(new DragListener());
 
-        views = UserCreatedViewsPresenter.getViews(getContext());
+        views = DesignScreenPresenter.getViews(getContext());
         presentViewsOnGridLayout();
 
         TextView addText = view.findViewById(R.id.addText);
         addText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                userCreatedViewsPresenter.addNewUserCreatedView(getContext(), UserCreatedViewsPresenter.viewTypes.TextView);
+                userCreatedViewsPresenter.addNewUserCreatedView(getContext(), DesignScreenPresenter.viewTypes.TextView);
             }
         });
 
@@ -66,7 +66,7 @@ public class DesignScreenFragment extends Fragment {
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                userCreatedViewsPresenter.addNewUserCreatedView(getContext(), UserCreatedViewsPresenter.viewTypes.Button);
+                userCreatedViewsPresenter.addNewUserCreatedView(getContext(), DesignScreenPresenter.viewTypes.Button);
             }
         });
 
@@ -122,7 +122,7 @@ public class DesignScreenFragment extends Fragment {
         public void onClick(View v) {
             popupWindow.dismiss();
             int viewToDeleteIndex = (int) v.getTag();
-            UserCreatedViewsPresenter.deleteView(viewToDeleteIndex);
+            DesignScreenPresenter.deleteView(viewToDeleteIndex);
         }
     };
 
@@ -188,12 +188,19 @@ public class DesignScreenFragment extends Fragment {
         userCreatedViewsPresenter.saveState();
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        views = DesignScreenPresenter.getViews(getContext());
+        presentViewsOnGridLayout();
+    }
+
     public void showError(String errorMessage) {
         Toast.makeText(getActivity(), errorMessage, Toast.LENGTH_LONG).show();
     }
 
     public void getViewsAndPresent(Map<Integer, UserCreatedView> views) {
-        views = views;
+        this.views = views;
         presentViewsOnGridLayout();
     }
 
@@ -253,9 +260,9 @@ public class DesignScreenFragment extends Fragment {
             final int row = (int) Math.floor(y / cellHeight);
 
             // RTL X coordinates are flipped.
-            if (Support.isRTL()) {
-                column =  gridLayout.getColumnCount() - column - 1;
-            }
+//            if (Support.isRTL()) {
+//                column =  gridLayout.getColumnCount() - column - 1;
+//            }
 
             GridLayout.LayoutParams layoutParams = new GridLayout.LayoutParams(GridLayout.spec(row),  GridLayout.spec(column));
             layoutParams.setMargins(10, 10, 10, 10);

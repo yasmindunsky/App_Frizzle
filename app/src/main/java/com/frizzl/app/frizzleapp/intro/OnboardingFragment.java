@@ -47,9 +47,9 @@ public class OnboardingFragment extends Fragment {
         view = inflater.inflate(layout, container, false);
 
 
-        if (Support.isRTL()) {
-            view.setRotationY(180);
-        }
+//        if (Support.isRTL()) {
+//            view.setRotationY(180);
+//        }
 
         if (position == 0) {
             Button loginButton = view.findViewById(R.id.goToLoginButton);
