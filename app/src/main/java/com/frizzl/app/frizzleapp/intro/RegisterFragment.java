@@ -16,7 +16,6 @@ import android.widget.TextView;
 import com.frizzl.app.frizzleapp.AsyncResponse;
 import com.frizzl.app.frizzleapp.MapActivity;
 import com.frizzl.app.frizzleapp.R;
-import com.frizzl.app.frizzleapp.Support;
 import com.frizzl.app.frizzleapp.UpdatePositionInServer;
 import com.frizzl.app.frizzleapp.UserProfile;
 import com.google.firebase.analytics.FirebaseAnalytics;
@@ -132,12 +131,12 @@ public class RegisterFragment extends Fragment {
     private boolean inputIsValid(String password, String email) {
 
         if (password.equals("")) {
-            messagePlaceholder.setText(R.string.no_password);
+            messagePlaceholder.setText(R.string.no_password_register);
             return false;
         }
 
         if (email.equals("")) {
-            messagePlaceholder.setText(R.string.no_email);
+            messagePlaceholder.setText(R.string.no_username_register);
             return false;
         }
 

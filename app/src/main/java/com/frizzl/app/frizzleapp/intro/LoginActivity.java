@@ -8,16 +8,20 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.frizzl.app.frizzleapp.AsyncResponse;
-import com.frizzl.app.frizzleapp.GetPositionFromServer;
 import com.frizzl.app.frizzleapp.MapActivity;
 import com.frizzl.app.frizzleapp.R;
-import com.frizzl.app.frizzleapp.UserProfile;
 import com.frizzl.app.frizzleapp.preferences.SaveSharedPreference;
 import com.google.firebase.analytics.FirebaseAnalytics;
 
 public class LoginActivity extends AppCompatActivity {
-    TextView messagePlaceholder;
+    private LoginPresenter presenter;
+
+    private TextView messagePlaceholder;
+    private Button registerButton;
+    private Button loginButton;
+    private EditText username;
+    private EditText password;
+
     private FirebaseAnalytics mFirebaseAnalytics;
 
     @Override
@@ -25,84 +29,61 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        presenter = new LoginPresenter(this);
+
         // Obtain the FirebaseAnalytics instance.
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
         messagePlaceholder = findViewById(R.id.mentorText);
+        registerButton = findViewById(R.id.goToRegisterButton);
+        loginButton = findViewById(R.id.loginButton);
+        username = findViewById(R.id.username);
+        password = findViewById(R.id.password);
 
-        // Go to login.
-        Button registerButton = findViewById(R.id.goToRegisterButton);
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent registerIntent = new Intent(v.getContext(), OnboardingActivity.class);
-                startActivity(registerIntent);
+                startActivity(new Intent(v.getContext(), OnboardingActivity.class));
             }
         });
+
+        loginButton.setOnClickListener(loginUser);
     }
 
-    public void loginUser(View view) {
-        // take the parameters of the user
-        String email = ((EditText) findViewById(R.id.username)).getText().toString();
-        String password = ((EditText) findViewById(R.id.password)).getText().toString();
+    @Override
+    protected void onDestroy() {
+        presenter.onDestroy();
+        super.onDestroy();
+    }
 
-        // validate the parameters
-        if (!inputIsValid(email, password)) {
-            return;
+    View.OnClickListener loginUser = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            login();
+
+            SaveSharedPreference.setLoggedIn(getApplicationContext(), true);
+            Bundle bundle = new Bundle();
+            mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.LOGIN, bundle);
         }
+    };
 
-        SaveSharedPreference.setLoggedIn(getApplicationContext(), true);
-
-        // register the user to the server and print status message
-        loginToServer(email, password, view);
-        Bundle bundle = new Bundle();
-        mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.LOGIN, bundle);
+    public void showMessage(String message){
+        messagePlaceholder.setText(message);
     }
 
-    private boolean inputIsValid(String email, String password) {
-
-        if (email.equals("")) {
-            messagePlaceholder.setText(R.string.no_email);
-            return false;
-        }
-
-        if (password.equals("")) {
-            messagePlaceholder.setText(R.string.no_password);
-            return false;
-        }
-
-        return true;
+    public void login() {
+        presenter.login(username.getText().toString(), password.getText().toString());
     }
 
-    private void loginToServer(final String username, String password, final View view) {
-        new LoginToServer(new AsyncResponse() {
-            @Override
-            public void processFinish(String output) {
-
-                // in case of success, create new user instance, restore users data and go to map
-                if (output.equals("Authentication succeeded")) {
-
-                    messagePlaceholder.setText(R.string.connecting);
-
-                    // after successful login, update username of current user
-                    UserProfile.user.setUsername(username);
-
-                    //TODO change to real nickname from server
-                    UserProfile.user.setNickName(username);
-
-                    UserProfile.user.updateProfileFromServerAndGoToMap(view.getContext());
-                    SaveSharedPreference.setUsername(view.getContext(), username);
-                } else {
-
-                    // print failed login output message
-                    messagePlaceholder.setText(output);
-                }
-            }
-        }).execute(username, password);
+    public void navigateToMap() {
+        startActivity(new Intent(this, MapActivity.class));
     }
 
-    public void goToMap() {
-        Intent mapIntent = new Intent(this, MapActivity.class);
-        startActivity(mapIntent);
+    public void setPasswordError() {
+        showMessage(getString(R.string.no_password_login));
+    }
+
+    public void setUsernameError() {
+        showMessage(getString(R.string.no_username_login));
     }
 }
