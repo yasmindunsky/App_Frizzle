@@ -39,8 +39,7 @@ public class LessonActivity extends FragmentActivity {
         setContentView(R.layout.activity_lesson);
 
         // Set Toolbar home button.
-        android.support.v7.widget.Toolbar toolbar =
-                findViewById(R.id.toolbar);
+        android.support.v7.widget.Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

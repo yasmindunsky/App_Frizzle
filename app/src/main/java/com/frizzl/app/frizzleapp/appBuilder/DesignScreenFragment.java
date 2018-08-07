@@ -18,7 +18,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.frizzl.app.frizzleapp.R;
-import com.frizzl.app.frizzleapp.Support;
 
 import net.cachapa.expandablelayout.ExpandableLayout;
 
@@ -35,7 +34,7 @@ public class DesignScreenFragment extends Fragment {
     private ExpandableLayout expandableLayout;
     private FloatingActionButton expandButton;
 
-    private DesignScreenPresenter userCreatedViewsPresenter;
+    private DesignScreenPresenter designScreenPresenter;
 
     public DesignScreenFragment() {
         // Required empty public constructor
@@ -46,7 +45,7 @@ public class DesignScreenFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_graphic_edit, container, false);
 
-        userCreatedViewsPresenter = new DesignScreenPresenter(this);
+        designScreenPresenter = new DesignScreenPresenter(this);
 
         gridLayout = view.findViewById(R.id.gridLayout);
         gridLayout.setOnDragListener(new DragListener());
@@ -58,7 +57,7 @@ public class DesignScreenFragment extends Fragment {
         addText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                userCreatedViewsPresenter.addNewUserCreatedView(getContext(), DesignScreenPresenter.viewTypes.TextView);
+                designScreenPresenter.addNewUserCreatedView(getContext(), DesignScreenPresenter.viewTypes.TextView);
             }
         });
 
@@ -66,7 +65,7 @@ public class DesignScreenFragment extends Fragment {
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                userCreatedViewsPresenter.addNewUserCreatedView(getContext(), DesignScreenPresenter.viewTypes.Button);
+                designScreenPresenter.addNewUserCreatedView(getContext(), DesignScreenPresenter.viewTypes.Button);
             }
         });
 
@@ -185,7 +184,7 @@ public class DesignScreenFragment extends Fragment {
     @Override
     public void onPause() {
         super.onPause();
-        userCreatedViewsPresenter.saveState();
+        designScreenPresenter.saveState();
     }
 
     @Override
@@ -210,6 +209,14 @@ public class DesignScreenFragment extends Fragment {
 
     public int getGridLayoutRowCount() {
         return gridLayout.getRowCount();
+    }
+
+    public Map<Integer, UserCreatedView> getViews() {
+        return views;
+    }
+
+    public String getXml() {
+        return designScreenPresenter.getXml();
     }
 
     class LongPressListener implements View.OnLongClickListener {

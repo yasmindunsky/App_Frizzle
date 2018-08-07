@@ -38,6 +38,7 @@
             android:layout_alignParentBottom="true"
             android:layout_gravity="bottom"
             android:layout_marginBottom="15dp"
+            android:layoutDirection="ltr"
             app:tabBackground="@drawable/swipe_dots_tab_selector"
             app:tabIndicatorHeight="0dp"
             app:tabMaxWidth="@dimen/swipe_dot_max_width" />

@@ -16,6 +16,10 @@ public class DesignScreenPresenter {
     private DesignScreenFragment designScreenFragment;
 //    private UserCreatedViewsModel userCreatedViewsModel;
 
+    public String getXml() {
+        return UserCreatedViewsModel.getXml();
+    }
+
     enum viewTypes {Button, TextView}
 
     public DesignScreenPresenter(DesignScreenFragment designScreenFragment) {

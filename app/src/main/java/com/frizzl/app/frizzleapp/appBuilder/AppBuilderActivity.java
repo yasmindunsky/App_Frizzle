@@ -33,7 +33,6 @@ import com.frizzl.app.frizzleapp.AsyncResponse;
 import com.frizzl.app.frizzleapp.MapActivity;
 import com.frizzl.app.frizzleapp.R;
 import com.frizzl.app.frizzleapp.SecondCourseActivity;
-import com.frizzl.app.frizzleapp.UpdatePositionInServer;
 import com.frizzl.app.frizzleapp.UserProfile;
 import com.frizzl.app.frizzleapp.lesson.LessonActivity;
 import com.frizzl.app.frizzleapp.lesson.Task;
@@ -47,22 +46,32 @@ import java.util.Map;
 
 public class AppBuilderActivity extends AppCompatActivity {
 
+    private AppBuilderPresenter appBuilderPresenter;
+
+    private DesignScreenFragment designFragment;
+    private CodingScreenFragment codingFragment;
+    private ProgressBar progressBar;
+    private ConstraintLayout constraintLayout;
+    private ExpandableLayout errorExpandableLayout;
+    private ExpandableLayout taskExpandableLayout;
+    private TabLayout tabLayout;
+    private ImageButton doneButton;
+    private android.support.v7.widget.Toolbar toolbar;
+    private ImageButton clickToExpandError;
+    private ImageButton clickToExpandTask;
+    private TextView taskTextView;
+
+    private FirebaseAnalytics mFirebaseAnalytics;
+
     final private static int WRITE_PERMISSION = 1;
     private static final int MAX_NICKNAME_LENGTH = 10;
 
+    String currentTask;
     File javaFile;
     File xmlFile;
-    Fragment graphicEditFragment;
-    Fragment codingFragment;
-    String currentTask;
-    private ProgressBar progressBar = null;
-    private ConstraintLayout constraintLayout;
-    private ExpandableLayout errorExpandableLayout = null;
-    private FirebaseAnalytics mFirebaseAnalytics;
     private boolean activityCreated = false;
 
     //    View globalView;
-    android.support.v7.widget.Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,8 +82,23 @@ public class AppBuilderActivity extends AppCompatActivity {
         ConstraintLayout mainLayout = (ConstraintLayout) this.getLayoutInflater().inflate(R.layout.activity_app_builder, null);
         setContentView(mainLayout);
 
-        // Disable dim
+        appBuilderPresenter = new AppBuilderPresenter(this, getApplicationContext().getResources().getString(R.string.code_start),
+                getApplicationContext().getResources().getString(R.string.code_end));
+        designFragment = new DesignScreenFragment();
+        codingFragment = new CodingScreenFragment();
+
+        errorExpandableLayout = findViewById(R.id.errorExpandableLayout);
+        taskExpandableLayout = findViewById(R.id.taskExpandableLayout);
+        clickToExpandError = findViewById(R.id.clickToExpandError);
+        clickToExpandTask = findViewById(R.id.clickToExpandTask);
         constraintLayout = findViewById(R.id.constraintLayout);
+        taskTextView = findViewById(R.id.task);
+        progressBar = findViewById(R.id.progressBar);
+        doneButton = findViewById(R.id.done);
+        tabLayout = findViewById(R.id.tabLayout);
+        toolbar = findViewById(R.id.builderToolbar);
+
+        // Disable dim
         constraintLayout.setForeground(getResources().getDrawable(R.drawable.shade));
         mainLayout.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
@@ -83,21 +107,11 @@ public class AppBuilderActivity extends AppCompatActivity {
             }
         });
 
-
-        graphicEditFragment = new DesignScreenFragment();
-        codingFragment = new CodingFragment();
-
-        progressBar = findViewById(R.id.progressBar);
-
-        // Set Toolbar home button.
-        toolbar =
-                findViewById(R.id.builderToolbar);
-
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // save user project in profile and server
-                saveProject();
+                appBuilderPresenter.saveProject();
 
                 // Go to map home screen
                 Intent mapIntent = new Intent(getBaseContext(), MapActivity.class);
@@ -114,20 +128,14 @@ public class AppBuilderActivity extends AppCompatActivity {
         });
 
         // Set Done Button
-        ImageButton doneButton = findViewById(R.id.done);
         doneButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                //TODO: robotics
                 openSuccessPopup();
-//                openInstructorPopup();
             }
         });
 
         // Error ExpandableLayout
-        ImageButton clickToExpandError = findViewById(R.id.clickToExpandError);
-        errorExpandableLayout = findViewById(R.id.errorExpandableLayout);
         clickToExpandError.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -139,10 +147,6 @@ public class AppBuilderActivity extends AppCompatActivity {
             }
         });
 
-
-        // Task ExpandableLayout
-        ImageButton clickToExpandTask = findViewById(R.id.clickToExpandTask);
-        final ExpandableLayout taskExpandableLayout = findViewById(R.id.taskExpandableLayout);
         clickToExpandTask.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -156,7 +160,6 @@ public class AppBuilderActivity extends AppCompatActivity {
 
         // Set Task text.
         Task task = new Task("");
-        TextView taskTextView = findViewById(R.id.task);
         if (LessonActivity.getCurrentLesson() != null) {
             task = LessonActivity.getCurrentLesson().getTask();
         }
@@ -166,31 +169,22 @@ public class AppBuilderActivity extends AppCompatActivity {
             taskExpandableLayout.setVisibility(View.GONE);
             doneButton.setVisibility(View.GONE);
             taskTextView.setVisibility(View.GONE);
-//            FrameLayout frame = findViewById(R.id.fragmentFrame);
-//            RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) frame.getLayoutParams();
-//            layoutParams.addRule(RelativeLayout.BELOW, R.id.tabLayout);
-//            frame.setLayoutParams(layoutParams);
         }
-
         taskTextView.setText(task.getText());
 
-        final TabLayout tabLayout = findViewById(R.id.tabLayout); // get the reference of TabLayout
         final TabLayout.Tab graphicEditTab = tabLayout.newTab().setText(R.string.graphic_edit_screen_title);
         TabLayout.Tab codingTab = tabLayout.newTab().setText(R.string.code_screen_title);
-
-
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             public void onTabReselected(TabLayout.Tab tab) {
-
             }
 
             public void onTabSelected(TabLayout.Tab tab) {
                 if (activityCreated) {
-                    saveProject();
+                    appBuilderPresenter.saveProject();
                 }
                 Fragment fragment = null;
                 if (tab.getPosition() == 0) {
-                    fragment = graphicEditFragment;
+                    fragment = designFragment;
                 } else {
                     fragment = codingFragment;
                 }
@@ -210,7 +204,12 @@ public class AppBuilderActivity extends AppCompatActivity {
         graphicEditTab.select();
 
         activityCreated = true;
+    }
 
+    public void onPlay(final View view) {
+        Bundle bundle = new Bundle();
+        mFirebaseAnalytics.logEvent("RUN_APP", bundle);
+        appBuilderPresenter.compileAndDownloadApp();
     }
 
     private void openInstructorPopup() {
@@ -279,14 +278,17 @@ public class AppBuilderActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // If this is the last lesson, go to share screen
-//                TODO: robotics
                 if (UserProfile.user.getCurrentLessonID() == 8) {
                     popupWindow.dismiss();
                     openFinishedAppPopUp();
                 }
                 // Else, go to map
                 else {
-                    updateCurrentAndTopPosition();
+                    int nextLesson = appBuilderPresenter.updateCurrentAndTopPosition();
+                    Bundle bundle = new Bundle();
+                    bundle.putLong(FirebaseAnalytics.Param.LEVEL, nextLesson);
+                    mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.LEVEL_UP, bundle);
+                    Crashlytics.setInt("current_lesson", nextLesson);
                     goToMap();
                 }
             }
@@ -306,7 +308,6 @@ public class AppBuilderActivity extends AppCompatActivity {
                 undimAppBuilderActivity();
             }
         });
-
     }
 
     public void undimAppBuilderActivity() {
@@ -385,6 +386,20 @@ public class AppBuilderActivity extends AppCompatActivity {
 
     }
 
+    public void getWritePermission() {
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+
+//            globalView = view;
+            // permission from user still isn't granted, ask for permission
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, WRITE_PERMISSION);
+        } else {
+            // permission was already granted, download apk
+            appBuilderPresenter.downloadApk();
+        }
+    }
+
     private void openSharePopUp() {
         LayoutInflater inflater = (LayoutInflater)
                 getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -421,113 +436,26 @@ public class AppBuilderActivity extends AppCompatActivity {
     }
 
     private void goToMap() {
-        saveProject();
-        Intent mapIntent = new Intent(this, MapActivity.class);
-        startActivity(mapIntent);
+        appBuilderPresenter.saveProject();
+        navigateToMap();
     }
 
     private void goToNextCourse() {
-        saveProject();
-        Intent mapIntent = new Intent(this, SecondCourseActivity.class);
-        startActivity(mapIntent);
+        appBuilderPresenter.saveProject();
+        navigateToSecondCourse();
     }
 
-    private void updateCurrentAndTopPosition() {
-        int nextLesson = UserProfile.user.getCurrentLessonID() + 1;
-        Crashlytics.setInt("current_lesson", nextLesson);
-        if (nextLesson <= 13) {
-            UserProfile.user.setCurrentLessonID(nextLesson);
-            if (nextLesson > UserProfile.user.getTopLessonID()) {
-                UserProfile.user.setTopLessonID(nextLesson);
-
-                // update position in server
-                new UpdatePositionInServer().execute();
-            }
-        }
-        Bundle bundle = new Bundle();
-        bundle.putLong(FirebaseAnalytics.Param.LEVEL, nextLesson);
-        mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.LEVEL_UP, bundle);
-    }
-
-    public void onPlay(final View view) {
-        updateUserProjectFromActivity();
-        progressBar.setVisibility(View.VISIBLE);
-        // send java and xml to server for build
-        // if succeeded ask user for writing permission and download the apk
-        new SaveProjectToServer(new AsyncResponse() {
-            @Override
-            public void processFinish(String output) {
-                progressBar.setVisibility(View.GONE);
-                if (output.contains("BUILD SUCCESSFUL")) {
-                    getWritePermission(view);
-                    hideError();
-                } else {
-                    // Build didn't work.
-                    displayError(output);
-                }
-            }
-        }).execute(getApplicationContext().getResources().getString(R.string.code_start), getApplicationContext().getResources().getString(R.string.code_end));
-        Bundle bundle = new Bundle();
-        mFirebaseAnalytics.logEvent("RUN_APP", bundle);
-    }
-
-    private void updateUserProjectFromActivity() {
-        // update java code String
-//        String codeWritten = ((CodingFragment) codingFragment).getCode();
-//        UserProfile.user.setJava(codeWritten);
-
-        // update xml String
-        String xml = UserCreatedViewsModel.getXml();
-        UserProfile.user.setXml(xml);
-
-        // update views string
-        Map<Integer, UserCreatedView> views = DesignScreenPresenter.getViews(getBaseContext());
-        UserProfile.user.setViews(views);
-    }
-
-    private void saveProject() {
-        updateUserProjectFromActivity();
-
-        new SaveProjectToServer(new AsyncResponse() {
-            @Override
-            public void processFinish(String output) {
-
-            }
-        }).execute(getApplicationContext().getResources().getString(R.string.code_start),
-                getApplicationContext().getResources().getString(R.string.code_end));
-    }
-
-    private void hideError() {
+    public void hideError() {
         LinearLayout errorLayout = findViewById(R.id.errorDisplay);
         errorLayout.setVisibility(View.GONE);
     }
 
-    private void displayError(String output) {
+    public void displayError(String output) {
         TextView error = findViewById(R.id.error);
         error.setText(output);
         LinearLayout errorLayout = findViewById(R.id.errorDisplay);
         errorLayout.setVisibility(View.VISIBLE);
         errorExpandableLayout.expand();
-    }
-
-    public void goToLesson(View view) {
-        saveProject();
-        Intent lessonIntent = new Intent(this, LessonActivity.class);
-        startActivity(lessonIntent);
-    }
-
-    private void getWritePermission(View view) {
-        if (ContextCompat.checkSelfPermission(this,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-
-//            globalView = view;
-            // permission from user still isn't granted, ask for permission
-            ActivityCompat.requestPermissions(this,
-                    new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, WRITE_PERMISSION);
-        } else {
-            // permission was already granted, download apk
-            downloadApk(view);
-        }
     }
 
     @Override
@@ -549,22 +477,40 @@ public class AppBuilderActivity extends AppCompatActivity {
         }
     }
 
-    public void downloadApk(final View view) {
-        new DownloadApkFromServer(new AsyncResponse() {
-            @Override
-            public void processFinish(String output) {
-                startApk(view);
-            }
-        }).execute(UserProfile.user.getXml(), UserProfile.user.getJava());
-
+    public void goToLesson(View view) {
+        appBuilderPresenter.saveProject();
+        Intent lessonIntent = new Intent(this, LessonActivity.class);
+        startActivity(lessonIntent);
     }
 
-    public void startApk(View view) {
+    public void navigateToMap() {
+        Intent mapIntent = new Intent(this, MapActivity.class);
+        startActivity(mapIntent);
+    }
+
+    public void navigateToSecondCourse() {
+        Intent mapIntent = new Intent(this, SecondCourseActivity.class);
+        startActivity(mapIntent);
+    }
+
+    public Map<Integer,UserCreatedView> getViews() {
+        return designFragment.getViews();
+    }
+
+    public String getXml() {
+        return designFragment.getXml();
+    }
+
+    public void setProgressBarVisibility(int visible) {
+        progressBar.setVisibility(visible);
+    }
+
+    public void startApk() {
         //get destination
         String destination = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
                 + "/frizzle_project1.apk";
         File apkFile = new File(destination);
-        Context context = view.getContext();
+        Context context = getApplicationContext();
 
         // create uri from file
         Uri contentUri = FileProvider.getUriForFile(context, "com.frizzl.app.frizzleapp.fileprovider", apkFile);
@@ -574,7 +520,6 @@ public class AppBuilderActivity extends AppCompatActivity {
         intent.setData(contentUri);
         intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
         startActivity(intent);
-
-
     }
+
 }

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layoutDirection="ltr"
-    tools:context="com.frizzl.app.frizzleapp.appBuilder.CodingFragment">
+    tools:context="com.frizzl.app.frizzleapp.appBuilder.CodingScreenFragment">
 
     <ScrollView
         android:layout_width="match_parent"

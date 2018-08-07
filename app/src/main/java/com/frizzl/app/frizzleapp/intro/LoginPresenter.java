@@ -36,7 +36,7 @@ public class LoginPresenter {
         loginToServer(username, password);
     }
 
-    private void loginToServer(final String username, String password) {
+    public void loginToServer(final String username, String password) {
         new LoginToServer(new AsyncResponse() {
             @Override
             public void processFinish(String output) {

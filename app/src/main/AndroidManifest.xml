@@ -48,9 +48,7 @@
             android:supportsRtl="false"
             tools:replace="android:supportsRtl">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-
+                <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE"/>
             </intent-filter>
         </activity>
 
@@ -64,9 +62,6 @@
         <service
             android:exported="false"
             android:name=".notifications.ReminderFirebaseJobService">
-            <intent-filter>
-                <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE"/>
-            </intent-filter>
         </service>
         <service
             android:name=".notifications.NotificationIntentService"

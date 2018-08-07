@@ -34,19 +34,6 @@ public class SwipeAdapter extends FragmentStatePagerAdapter {
         Bundle bundle = new Bundle();
         bundle.getInt("position", position);
 
-//        switch (fragmentType) {
-//            case Slide:
-//                fragment = new SlideFragment();
-//                break;
-//            case Exercise:
-//                fragment = new ExerciseFragment();
-//                break;
-//            default:
-//                fragment = new goToAppBuilderFragment();
-//        }
-//        bundle.putInt("index", position);
-
-
         // create the right type of fragment by the current position inside the lesson
         if (position < numOfSlides) {
             fragment = new SlideFragment();
@@ -75,4 +62,6 @@ public class SwipeAdapter extends FragmentStatePagerAdapter {
         //TODO added 1 for the last page in the lesson - consider this
         return numOfFragments;
     }
+
+
 }

@@ -1,7 +1,6 @@
 package com.frizzl.app.frizzleapp.appBuilder;
 
 
-import android.app.AlertDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
@@ -23,11 +22,12 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class CodingFragment extends Fragment {
+public class CodingScreenFragment extends Fragment {
 
-    EditText codeEditor;
+    private CodingScreenPresenter codingScreenPresenter;
+    private EditText codeEditor;
 
-    public CodingFragment() {
+    public CodingScreenFragment() {
         // Required empty public constructor
     }
 
@@ -38,15 +38,10 @@ public class CodingFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_coding, container, false);
 
+        codingScreenPresenter = new CodingScreenPresenter(this);
         codeEditor = view.findViewById(R.id.code);
-        String currentCode = UserProfile.user.getJava();
-        if (currentCode.equals("")) {
-            codeEditor.setText(getResources().getString(R.string.initial_code));
-        } else {
-            // Break every line after ;
-            currentCode = prepareCodeForPresenting(currentCode);
-            codeEditor.setText(currentCode);
-        }
+
+        codingScreenPresenter.getAndPresentCode();
 
         codeEditor.addTextChangedListener(new TextWatcher() {
             final List<String> savedWords = Arrays.asList("Button", "TextView");
@@ -135,17 +130,11 @@ public class CodingFragment extends Fragment {
         return view;
     }
 
-    private String prepareCodeForPresenting(String currentCode) {
-        currentCode = currentCode.replaceAll(";[a-zA-Z]", ";\n");
-        currentCode = currentCode.replaceAll("\\{[a-zA-Z]", "{\n");
-        return currentCode;
+    public void showEmptyCode() {
+        showCode(getResources().getString(R.string.initial_code));
     }
 
-//    public String getCode() {
-//        if (codeEditor != null) {
-//            return codeEditor.getText().toString();
-//        } else {
-//            return "";
-//        }
-//    }
+    public void showCode(String codeForPresenting) {
+        codeEditor.setText(codeForPresenting);
+    }
 }
