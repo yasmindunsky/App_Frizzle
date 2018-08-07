@@ -22,7 +22,9 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/slideText"
             android:layout_gravity="center"
-            android:scaleType="centerInside"/>
+            android:cropToPadding="false"
+            android:scaleType="centerCrop"
+            android:src="@drawable/slide_3_4" />
 
         <Button
             android:id="@+id/next"
