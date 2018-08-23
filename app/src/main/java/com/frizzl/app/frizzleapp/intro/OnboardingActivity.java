@@ -1,27 +1,19 @@
 package com.frizzl.app.frizzleapp.intro;
 
-import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.view.ViewPager;
 import android.util.Log;
 
 import com.frizzl.app.frizzleapp.CustomViewPager;
-import com.frizzl.app.frizzleapp.MapActivity;
 import com.frizzl.app.frizzleapp.R;
-import com.frizzl.app.frizzleapp.Support;
-import com.frizzl.app.frizzleapp.UserProfile;
-import com.frizzl.app.frizzleapp.preferences.SaveSharedPreference;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.dynamiclinks.FirebaseDynamicLinks;
 import com.google.firebase.dynamiclinks.PendingDynamicLinkData;
-
-import java.util.Calendar;
 
 public class OnboardingActivity extends FragmentActivity{
     private static OnboardingSwipeAdapter swipeAdapter;

@@ -39,7 +39,7 @@ public class SaveProjectToServer extends AsyncTask<String, Void, String> {
 
         String xml = UserProfile.user.getXml();
 
-        JSONObject viewsToJson = UserCreatedViewsModel.viewsToJson();
+        JSONObject viewsToJson = UserCreatedViewsModel.viewsToJson(UserProfile.user.getViews());
         String views = viewsToJson.toString();
 
         String query = null;

@@ -42,6 +42,7 @@ public class DesignScreenPresenter {
     public void addNewUserCreatedView(Context context, viewTypes viewType) {
         boolean canAddView = checkIfTheresRoom();
         if (canAddView) {
+            // TODO: make UserCreatedViewsFactory
             switch (viewType) {
                 case TextView:
                     UserCreatedViewsModel.addNewUserCreatedTextView(context);

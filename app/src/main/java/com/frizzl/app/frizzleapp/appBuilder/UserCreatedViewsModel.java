@@ -3,7 +3,10 @@ package com.frizzl.app.frizzleapp.appBuilder;
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.GridLayout;
 
+import com.frizzl.app.frizzleapp.R;
+import com.frizzl.app.frizzleapp.Support;
 import com.frizzl.app.frizzleapp.UserProfile;
 
 import org.json.JSONArray;
@@ -109,6 +112,15 @@ public class UserCreatedViewsModel {
                         numOfButtons++;
                         break;
                 }
+
+                // Set padding.
+                String paddingString = properties.get("android:padding");
+                int padding = Support.dpStringToPixel(paddingString, context);
+                String paddingSideString = properties.get("android:paddingStart");
+                int paddingSide = Support.dpStringToPixel(paddingSideString, context);
+
+                userCreatedView.getThisView().setPadding(paddingSide,padding,paddingSide,padding);
+
                 views.put(index, userCreatedView);
             }
             nextViewIndex = viewsJson.length();
@@ -119,12 +131,10 @@ public class UserCreatedViewsModel {
         return views;
     }
 
-    public static JSONObject viewsToJson() {
+    public static JSONObject viewsToJson(Map<Integer, UserCreatedView> views) {
         JSONArray jsonArray = new JSONArray();
         JSONObject json = new JSONObject();
         JSONObject finalObject = new JSONObject();
-
-        views = UserProfile.user.getViews();
 
         if(views != null) {
             try {
@@ -141,18 +151,6 @@ public class UserCreatedViewsModel {
                     }
                     jsonArray.put(json);
                 }
-//                for (int i = 0; i < views.size(); i++) {
-//                    json = new JSONObject();
-//                    json.put("id", i);
-//                    UserCreatedView userCreatedView = views.get(i);
-//                    json.put("viewType", userCreatedView.getViewType().toString());
-//                    Map<String, String> properties = userCreatedView.getProperties();
-//                    for (Map.Entry<String, String> property : properties.entrySet()) {
-//                        json.put(property.getKey(), property.getValue());
-//                    }
-//                    jsonArray.put(json);
-//                }
-
                 finalObject.put("views", jsonArray);
 
             } catch (JSONException e) {

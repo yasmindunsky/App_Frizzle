@@ -7,7 +7,7 @@
     android:background="@drawable/table_background">
 
     <android.support.v7.widget.AppCompatTextView
-        android:id="@+id/properties"
+        android:id="@+id/propertiesTableTitle"
         style="@style/Text.Title.PropertiesTable"
         android:layout_width="match_parent"
         android:layout_alignParentTop="true"
@@ -40,7 +40,7 @@ app:srcCompat="@drawable/ic_trash" />
         android:id="@+id/tableLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/properties"
+        android:layout_below="@+id/propertiesTableTitle"
         android:layout_marginTop="20dp"
         android:background="@drawable/table_background">
 

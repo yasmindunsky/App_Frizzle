@@ -58,7 +58,7 @@ public class UserCreatedTextView extends UserCreatedView {
         layoutParams.width = (int) context.getResources().getDimension(R.dimen.user_created_button_width);
 
         String marginString = properties.get("android:layout_margin");
-        int margin = dpStringToPixel(marginString);
+        int margin = Support.dpStringToPixel(marginString, context);
         layoutParams.setMargins(margin,margin,margin,margin);
         thisView.setLayoutParams(layoutParams);
 
@@ -71,13 +71,9 @@ public class UserCreatedTextView extends UserCreatedView {
         this.properties = properties;
     }
 
-    private int dpStringToPixel(String dp) {
-        dp = dp.replaceAll("[^\\d.]", "");
-        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,  Integer.parseInt(dp), context.getResources().getDisplayMetrics());
-    }
+
 
     public UserCreatedTextView(Context context, int nextViewIndex, int numOfTextViews) {
-
         this.context = context;
         this.layout = R.layout.popup_properties_text_view;
         this.viewType = ViewType.TextView;
@@ -92,8 +88,8 @@ public class UserCreatedTextView extends UserCreatedView {
         // Set Position in GridLayout and Margins.
         int row = nextViewIndex / 2;
         int column = nextViewIndex % 2;
-        GridLayout.LayoutParams layoutParams = new GridLayout.LayoutParams(GridLayout.spec(row),
-                GridLayout.spec(column));
+        GridLayout.LayoutParams layoutParams =
+                new GridLayout.LayoutParams(GridLayout.spec(row), GridLayout.spec(column));
         layoutParams.width = 400;
         layoutParams.setMargins(10,10,10,10);
         thisView.setLayoutParams(layoutParams);

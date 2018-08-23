@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/table_background"
+    tools:layout_editor_absoluteY="25dp">
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/propertiesTableTitle"
+        style="@style/Text.Title.PropertiesTable"
+        android:layout_width="match_parent"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/table_title_background"
+        android:gravity="center"
+        app:fontFamily="@font/hero_regular" />
+
+    <ImageButton
+        android:id="@+id/close"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/app_bar_height"
+        android:layout_alignParentEnd="true"
+        android:backgroundTint="@android:color/transparent"
+        android:padding="18dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toEndOf="@+id/propertiesTableTitle"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_x" />
+
+    <ImageButton
+        android:id="@+id/delete"
+        android:layout_width="@dimen/app_bar_height"
+        android:layout_height="@dimen/app_bar_height"
+        android:layout_alignParentStart="true"
+        android:backgroundTint="@android:color/transparent"
+        android:padding="15dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintStart_toStartOf="@+id/propertiesTableTitle"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_trash" />
+
+    <EditText
+        android:id="@+id/viewTextValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+
+        android:textAppearance="@style/propertiesTableValue"
+
+        app:layout_constraintBottom_toBottomOf="@+id/viewTextKey"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toTopOf="@+id/viewTextKey"
+        app:layout_constraintVertical_bias="0.388" />
+
+    <Spinner
+        android:id="@+id/viewFontValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:spinnerMode="dialog"
+        app:layout_constraintBottom_toBottomOf="@+id/viewFontKey"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toTopOf="@+id/viewFontKey" />
+
+    <Button
+        android:id="@+id/viewFontColorValue"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:background="@color/TextGrey"
+        app:layout_constraintBottom_toBottomOf="@+id/viewFontColorKey"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toTopOf="@+id/viewFontColorKey" />
+
+    <Button
+        android:id="@+id/viewBgColorValue"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:background="@color/UnselectedLightGrey"
+        app:layout_constraintBottom_toBottomOf="@+id/viewBgColorKey"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toTopOf="@+id/viewBgColorKey" />
+
+    <EditText
+        android:id="@+id/viewOnClickValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="4dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textAppearance="@style/propertiesTableValue"
+        app:layout_constraintBottom_toTopOf="@+id/saveButton"
+        app:layout_constraintStart_toStartOf="@+id/guideline2" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/viewTextKey"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_below="@+id/viewIdValue"
+        android:layout_marginStart="32dp"
+        android:text="@string/propertiesTableText"
+        android:textAppearance="@style/propertiesTableKey"
+        app:layout_constraintBottom_toTopOf="@+id/viewFontKey"
+        app:layout_constraintStart_toStartOf="@+id/guideline1"
+        app:layout_constraintTop_toBottomOf="@+id/propertiesTableTitle" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/viewFontKey"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/propertiesTableFont"
+        android:textAppearance="@style/propertiesTableKey"
+        app:layout_constraintBottom_toTopOf="@+id/viewFontColorKey"
+        app:layout_constraintStart_toStartOf="@+id/guideline1"
+        app:layout_constraintTop_toBottomOf="@+id/viewTextKey" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/viewFontColorKey"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/propertiesTableFontColor"
+        android:textAppearance="@style/propertiesTableKey"
+        app:layout_constraintBottom_toTopOf="@+id/viewBgColorKey"
+        app:layout_constraintStart_toStartOf="@+id/guideline1"
+        app:layout_constraintTop_toBottomOf="@+id/viewFontKey" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/viewBgColorKey"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/propertiesTableBgColor"
+        android:textAppearance="@style/propertiesTableKey"
+        app:layout_constraintBottom_toTopOf="@+id/viewOnClickKey"
+        app:layout_constraintStart_toStartOf="@+id/guideline1"
+        app:layout_constraintTop_toBottomOf="@+id/viewFontColorKey" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/viewOnClickKey"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_below="@+id/viewIdValue"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/propertiesTableOnClick"
+        android:textAppearance="@style/propertiesTableKey"
+
+        app:layout_constraintBottom_toBottomOf="@+id/viewOnClickValue"
+        app:layout_constraintStart_toStartOf="@+id/guideline1"
+        app:layout_constraintTop_toTopOf="@+id/viewOnClickValue"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/saveButton"
+        style="@style/Button.SavePropertiesTable"
+        android:layout_below="@+id/tableLayout"
+        android:layout_centerHorizontal="true"
+        android:layout_centerInParent="false"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.1" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.45" />
+</android.support.constraint.ConstraintLayout>

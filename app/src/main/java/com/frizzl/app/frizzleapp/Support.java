@@ -1,5 +1,8 @@
 package com.frizzl.app.frizzleapp;
 
+import android.content.Context;
+import android.util.TypedValue;
+
 import java.util.ArrayList;
 import java.util.Locale;
 
@@ -16,6 +19,11 @@ public class Support {
         final int directionality = Character.getDirectionality(locale.getDisplayName().charAt(0));
         return directionality == Character.DIRECTIONALITY_RIGHT_TO_LEFT ||
                 directionality == Character.DIRECTIONALITY_RIGHT_TO_LEFT_ARABIC;
+    }
+
+    public static int dpStringToPixel(String dp, Context context) {
+        dp = dp.replaceAll("[^\\d.]", "");
+        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,  Integer.parseInt(dp), context.getResources().getDisplayMetrics());
     }
 
     public static ArrayList<String> colorsHexList = new ArrayList<String>() {{

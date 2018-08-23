@@ -7,12 +7,13 @@
     android:background="@drawable/table_background">
 
     <android.support.v7.widget.AppCompatTextView
-        android:id="@+id/properties"
+        android:id="@+id/propertiesTableTitle"
         style="@style/Text.Title.PropertiesTable"
         android:layout_width="match_parent"
         android:layout_alignParentTop="true"
         android:background="@drawable/table_title_background"
-        android:gravity="center" />
+        android:gravity="center"
+        app:fontFamily="@font/hero_regular" />
 
     <ImageButton
         android:id="@+id/close"
@@ -39,7 +40,7 @@
         android:id="@+id/tableLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/properties"
+        android:layout_below="@+id/propertiesTableTitle"
         android:layout_marginTop="20dp">
 
 
@@ -159,6 +160,7 @@
         </TableRow>
 
     </TableLayout>
+
     <android.support.v7.widget.AppCompatButton
         android:id="@+id/saveButton"
         style="@style/Button.SavePropertiesTable"

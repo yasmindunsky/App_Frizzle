@@ -1,17 +1,23 @@
 package com.frizzl.app.frizzleapp.appBuilder;
 
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
+import android.text.InputType;
 import android.text.Spannable;
 import android.text.TextWatcher;
 import android.text.style.ForegroundColorSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputConnection;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
+import com.frizzl.app.frizzleapp.CodeKeyboard;
 import com.frizzl.app.frizzleapp.R;
 import com.frizzl.app.frizzleapp.UserProfile;
 
@@ -36,10 +42,20 @@ public class CodingScreenFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_coding, container, false);
+        View view = inflater.inflate(R.layout.fragment_code, container, false);
 
         codingScreenPresenter = new CodingScreenPresenter(this);
         codeEditor = view.findViewById(R.id.code);
+
+        // keyboard
+        final CodeKeyboard keyboard = (CodeKeyboard) view.findViewById(R.id.keyboard);
+        codeEditor.setRawInputType(InputType.TYPE_CLASS_TEXT);
+        codeEditor.setTextIsSelectable(true);
+        InputConnection ic = codeEditor.onCreateInputConnection(new EditorInfo());
+        keyboard.setInputConnection(ic);
+        InputMethodManager imm = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+        keyboard.setInputMethodManagar(imm);
+
 
         codingScreenPresenter.getAndPresentCode();
 

@@ -37,7 +37,6 @@ public class MapActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //TODO: robotics
         ConstraintLayout mainLayout = (ConstraintLayout ) this.getLayoutInflater().inflate(R.layout.activity_map, null);
         setContentView(mainLayout);
 
@@ -110,7 +109,6 @@ public class MapActivity extends AppCompatActivity {
         String[] betweenColors = getResources().getStringArray(R.array.frizzleBetweenColors);
 
         Button nextButton = findViewById(R.id.lesson1);
-//TODO: robotics
         int numOfLessons = 8;
         for (int i = 2; i <= numOfLessons; i++) {
             Button currentButton = nextButton;
@@ -120,7 +118,6 @@ public class MapActivity extends AppCompatActivity {
             nextButton = findViewById(identifier);
 
             // Draw line to next button.
-            //TODO: robotics
             drawLessonsLine(canvas, currentButton, nextButton, colors, i);
             // Draw current button.
             drawLessonCircle(canvas, currentButton, betweenColors, i);

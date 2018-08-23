@@ -172,10 +172,12 @@
         </answers>
     </exercise>
 
-
+gg
     <task>
         <text name = "text">
-            "In the Design screen, write ’Reveal’ on the existing Button. Add a TextView and write your question on it. Change other properties as you wish."
+            "In the Design screen, write ’Reveal’ on the existing Button.
+            Add a TextView and write your question on it.
+            Change other properties as you wish."
         </text>
     </task>
 </lesson>

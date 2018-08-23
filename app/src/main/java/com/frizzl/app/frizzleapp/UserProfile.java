@@ -159,7 +159,7 @@ public class UserProfile {
             @Override
             public void processFinish(String output) {
                 Intent mapIntent = new Intent(context, MapActivity.class);
-                context.startActivity(mapIntent); //TODO: Yasmin?
+                context.startActivity(mapIntent);
             }
         }).execute(username);
     }

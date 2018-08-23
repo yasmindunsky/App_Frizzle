@@ -7,7 +7,7 @@
     android:background="@color/colorAccent">
 
         <TextView
-            android:id="@+id/properties"
+            android:id="@+id/propertiesTableTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/hero_regular"

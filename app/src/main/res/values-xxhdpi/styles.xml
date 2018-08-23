@@ -23,7 +23,8 @@
         <item name="android:textSize">23sp</item>
         <item name="android:letterSpacing">.08</item>
         <item name="android:gravity">center</item>
-        <item name="android:fontFamily">@font/rubik_medium</item>
+        <item name="android:fontFamily">@font/hero_regular</item>
+        <item name="android:textAllCaps">true</item>
     </style>
 
     <style name="Button.Home" parent="@android:style/Widget.Button">
@@ -279,8 +280,9 @@
 
     <style name="Text.Title.PropertiesTable" parent="@android:style/TextAppearance.DeviceDefault.Medium">
         <item name="android:layout_height">@dimen/app_bar_height</item>
-        <item name="android:fontFamily">@font/rubik</item>
         <item name="android:background">@drawable/table_text_edit_background</item>
+        <item name="android:fontFamily">@font/hero_regular</item>
+        <item name="android:textAllCaps">true</item>
         <item name="android:padding">10dp</item>
         <item name="android:text">@string/propertiesTableTitle</item>
         <item name="android:textAlignment">center</item>

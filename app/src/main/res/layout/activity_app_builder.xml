@@ -86,7 +86,7 @@
                 android:layout_height="match_parent">
 
                 <ImageButton
-                    android:id="@+id/done"
+                    android:id="@+id/nextTask"
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:layout_alignParentStart="true"
@@ -101,7 +101,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:layout_toEndOf="@+id/done"
+                    android:layout_toEndOf="@+id/nextTask"
                     android:paddingEnd="16dp"
                     android:paddingStart="@dimen/default_margin"
                     android:paddingTop="5dp"

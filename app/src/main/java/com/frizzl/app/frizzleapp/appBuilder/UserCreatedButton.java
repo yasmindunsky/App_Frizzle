@@ -160,9 +160,9 @@ public class UserCreatedButton extends UserCreatedView {
         });
 
         // ID
-        EditText viewId = popupView.findViewById(R.id.viewIdValue);
-        viewId.setOnFocusChangeListener(finishedEditingId);
-        viewId.setText(properties.get("android:id"));
+//        EditText viewId = popupView.findViewById(R.id.viewIdValue);
+//        viewId.setOnFocusChangeListener(finishedEditingId);
+//        viewId.setText(properties.get("android:id"));
 
         // TEXT
         EditText viewText = popupView.findViewById(R.id.viewTextValue);
@@ -250,14 +250,14 @@ public class UserCreatedButton extends UserCreatedView {
 
         // ONCLICK
         TableRow tableRow = popupView.findViewById(R.id.onClickTableRow);
-        if (UserProfile.user.getTopLessonID() < 6) {
-            tableRow.setVisibility(View.INVISIBLE);
-        } else {
+//        if (UserProfile.user.getTopLessonID() < 6) {
+//            tableRow.setVisibility(View.INVISIBLE);
+//        } else {
             EditText onClickFuncName = popupView.findViewById(R.id.viewOnClickValue);
             onClickFuncName.setOnFocusChangeListener(finishedOnClick);
             onClickFuncName.setHint("שם הפונקציה");
             onClickFuncName.setText(properties.get("android:onClick"));
-        }
+//        }
 
         //DELETE
         ImageButton deleteButton = popupView.findViewById(R.id.delete);

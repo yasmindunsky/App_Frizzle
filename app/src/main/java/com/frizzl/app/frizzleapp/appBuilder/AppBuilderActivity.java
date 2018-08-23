@@ -7,7 +7,6 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
-import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
@@ -26,10 +25,10 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.crashlytics.android.Crashlytics;
-import com.frizzl.app.frizzleapp.AsyncResponse;
 import com.frizzl.app.frizzleapp.MapActivity;
 import com.frizzl.app.frizzleapp.R;
 import com.frizzl.app.frizzleapp.SecondCourseActivity;
@@ -51,11 +50,11 @@ public class AppBuilderActivity extends AppCompatActivity {
     private DesignScreenFragment designFragment;
     private CodingScreenFragment codingFragment;
     private ProgressBar progressBar;
-    private ConstraintLayout constraintLayout;
+    private RelativeLayout relativeLayout;
     private ExpandableLayout errorExpandableLayout;
     private ExpandableLayout taskExpandableLayout;
     private TabLayout tabLayout;
-    private ImageButton doneButton;
+    private ImageButton nextButton;
     private android.support.v7.widget.Toolbar toolbar;
     private ImageButton clickToExpandError;
     private ImageButton clickToExpandTask;
@@ -79,7 +78,7 @@ public class AppBuilderActivity extends AppCompatActivity {
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
         super.onCreate(savedInstanceState);
-        ConstraintLayout mainLayout = (ConstraintLayout) this.getLayoutInflater().inflate(R.layout.activity_app_builder, null);
+        RelativeLayout mainLayout = (RelativeLayout) this.getLayoutInflater().inflate(R.layout.activity_app_builder, null);
         setContentView(mainLayout);
 
         appBuilderPresenter = new AppBuilderPresenter(this, getApplicationContext().getResources().getString(R.string.code_start),
@@ -91,15 +90,16 @@ public class AppBuilderActivity extends AppCompatActivity {
         taskExpandableLayout = findViewById(R.id.taskExpandableLayout);
         clickToExpandError = findViewById(R.id.clickToExpandError);
         clickToExpandTask = findViewById(R.id.clickToExpandTask);
-        constraintLayout = findViewById(R.id.constraintLayout);
+        relativeLayout = findViewById(R.id.constraintLayout);
         taskTextView = findViewById(R.id.task);
         progressBar = findViewById(R.id.progressBar);
-        doneButton = findViewById(R.id.done);
+        nextButton = findViewById(R.id.nextTask);
         tabLayout = findViewById(R.id.tabLayout);
         toolbar = findViewById(R.id.builderToolbar);
 
+
         // Disable dim
-        constraintLayout.setForeground(getResources().getDrawable(R.drawable.shade));
+        relativeLayout.setForeground(getResources().getDrawable(R.drawable.shade));
         mainLayout.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
             public void onGlobalLayout() {
@@ -128,7 +128,7 @@ public class AppBuilderActivity extends AppCompatActivity {
         });
 
         // Set Done Button
-        doneButton.setOnClickListener(new View.OnClickListener() {
+        nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openSuccessPopup();
@@ -160,6 +160,7 @@ public class AppBuilderActivity extends AppCompatActivity {
 
         // Set Task text.
         Task task = new Task("");
+
         if (LessonActivity.getCurrentLesson() != null) {
             task = LessonActivity.getCurrentLesson().getTask();
         }
@@ -167,10 +168,11 @@ public class AppBuilderActivity extends AppCompatActivity {
         else {
             clickToExpandTask.setVisibility(View.GONE);
             taskExpandableLayout.setVisibility(View.GONE);
-            doneButton.setVisibility(View.GONE);
+            nextButton.setVisibility(View.GONE);
             taskTextView.setVisibility(View.GONE);
         }
         taskTextView.setText(task.getText());
+
 
         final TabLayout.Tab graphicEditTab = tabLayout.newTab().setText(R.string.graphic_edit_screen_title);
         TabLayout.Tab codingTab = tabLayout.newTab().setText(R.string.code_screen_title);
@@ -210,6 +212,7 @@ public class AppBuilderActivity extends AppCompatActivity {
         Bundle bundle = new Bundle();
         mFirebaseAnalytics.logEvent("RUN_APP", bundle);
         appBuilderPresenter.compileAndDownloadApp();
+        setProgressBarVisibility(View.VISIBLE);
     }
 
     private void openInstructorPopup() {
@@ -311,11 +314,11 @@ public class AppBuilderActivity extends AppCompatActivity {
     }
 
     public void undimAppBuilderActivity() {
-        constraintLayout.getForeground().setAlpha(0);
+        relativeLayout.getForeground().setAlpha(0);
     }
 
     public void dimAppBuilderActivity() {
-        constraintLayout.getForeground().setAlpha(220);
+        relativeLayout.getForeground().setAlpha(220);
     }
 
     private void openFinishedAppPopUp() {
@@ -506,6 +509,8 @@ public class AppBuilderActivity extends AppCompatActivity {
     }
 
     public void startApk() {
+        setProgressBarVisibility(View.GONE);
+
         //get destination
         String destination = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
                 + "/frizzle_project1.apk";
@@ -521,5 +526,4 @@ public class AppBuilderActivity extends AppCompatActivity {
         intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
         startActivity(intent);
     }
-
 }
