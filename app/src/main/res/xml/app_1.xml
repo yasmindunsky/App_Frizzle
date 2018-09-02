@@ -1,0 +1,22 @@
+<!--\\u000A-->
+
+<app>
+    <task>
+        <text name="text">
+            "Add a Text element."
+        </text>
+    </task>
+
+    <task>
+        <text name="text">
+            "Set text to "Hello World"."
+        </text>
+    </task>
+
+    <task>
+        <text name="text">
+            "this is the third task."
+        </text>
+    </task>
+
+</app>

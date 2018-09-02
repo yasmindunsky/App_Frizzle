@@ -13,14 +13,14 @@ import com.frizzl.app.frizzleapp.lesson.SlideFragment;
  * Created by yasmin.dunsky on 19-Nov-17.
  */
 
-public class SwipeAdapter extends FragmentStatePagerAdapter {
+public class LessonSwipeAdapter extends FragmentStatePagerAdapter {
 
 //    Lesson currentLesson = LessonActivity.getCurrentLesson();
     private Lesson currentLesson;
     private int numOfSlides;
     private int numOfFragments;
 
-    public SwipeAdapter(FragmentManager fm, Lesson currentLesson) {
+    public LessonSwipeAdapter(FragmentManager fm, Lesson currentLesson) {
         super(fm);
         this.currentLesson = currentLesson;
         numOfSlides = currentLesson.getSlidesNumber();

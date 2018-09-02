@@ -6,6 +6,8 @@ import android.content.Intent;
 import com.frizzl.app.frizzleapp.appBuilder.UserCreatedTextView;
 import com.frizzl.app.frizzleapp.appBuilder.UserCreatedView;
 import com.frizzl.app.frizzleapp.intro.GetProjectFromServer;
+import com.frizzl.app.frizzleapp.lesson.App;
+import com.frizzl.app.frizzleapp.lesson.AppContentParser;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -20,6 +22,9 @@ public class UserProfile {
     private String nickName = "";
     private String birthDate = "";
     private int currentAppTypeNum = 0;
+
+    private AppContentParser appContentParser = new AppContentParser();
+    private App currentApp;
 
     private int currentLessonID = 1;
     private int topLessonID = 1;
@@ -171,5 +176,17 @@ public class UserProfile {
 
     public void setCurrentAppTypeNum(int currentAppTypeNum) {
         this.currentAppTypeNum = currentAppTypeNum;
+    }
+
+    public int getCurrentAppId() {
+        return currentApp.getID();
+    }
+
+    public App getCurrentApp() {
+        return currentApp;
+    }
+
+    public void setCurrentApp(App currentApp) {
+        this.currentApp = currentApp;
     }
 }

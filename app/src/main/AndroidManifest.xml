@@ -57,6 +57,7 @@
             tools:replace="android:supportsRtl"/>
 
         <activity android:name="com.frizzl.app.frizzleapp.appBuilder.AppBuilderActivity">
+
         </activity>
 
         <service

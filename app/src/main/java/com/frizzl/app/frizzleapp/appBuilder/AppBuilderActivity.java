@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -13,6 +14,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.content.FileProvider;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -29,17 +31,24 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.crashlytics.android.Crashlytics;
+import com.frizzl.app.frizzleapp.AppTasksSwipeAdapter;
+import com.frizzl.app.frizzleapp.CustomViewPager;
 import com.frizzl.app.frizzleapp.MapActivity;
 import com.frizzl.app.frizzleapp.R;
 import com.frizzl.app.frizzleapp.SecondCourseActivity;
 import com.frizzl.app.frizzleapp.UserProfile;
+import com.frizzl.app.frizzleapp.lesson.App;
+import com.frizzl.app.frizzleapp.lesson.AppContentParser;
 import com.frizzl.app.frizzleapp.lesson.LessonActivity;
-import com.frizzl.app.frizzleapp.lesson.Task;
 import com.google.firebase.analytics.FirebaseAnalytics;
+import com.tooltip.Tooltip;
 
 import net.cachapa.expandablelayout.ExpandableLayout;
 
+import org.xmlpull.v1.XmlPullParserException;
+
 import java.io.File;
+import java.io.IOException;
 import java.util.Locale;
 import java.util.Map;
 
@@ -54,7 +63,7 @@ public class AppBuilderActivity extends AppCompatActivity {
     private ExpandableLayout errorExpandableLayout;
     private ExpandableLayout taskExpandableLayout;
     private TabLayout tabLayout;
-    private ImageButton nextButton;
+//    private ImageButton nextButton;
     private android.support.v7.widget.Toolbar toolbar;
     private ImageButton clickToExpandError;
     private ImageButton clickToExpandTask;
@@ -69,6 +78,9 @@ public class AppBuilderActivity extends AppCompatActivity {
     File javaFile;
     File xmlFile;
     private boolean activityCreated = false;
+    private App currentApp;
+    private CustomViewPager viewPager;
+    private AppTasksSwipeAdapter swipeAdapter;
 
     //    View globalView;
 
@@ -91,21 +103,22 @@ public class AppBuilderActivity extends AppCompatActivity {
         clickToExpandError = findViewById(R.id.clickToExpandError);
         clickToExpandTask = findViewById(R.id.clickToExpandTask);
         relativeLayout = findViewById(R.id.constraintLayout);
-        taskTextView = findViewById(R.id.task);
+//        taskTextView = findViewById(R.id.task);
         progressBar = findViewById(R.id.progressBar);
-        nextButton = findViewById(R.id.nextTask);
+//        nextButton = findViewById(R.id.nextTask);
         tabLayout = findViewById(R.id.tabLayout);
         toolbar = findViewById(R.id.builderToolbar);
 
-
         // Disable dim
         relativeLayout.setForeground(getResources().getDrawable(R.drawable.shade));
-        mainLayout.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-            @Override
-            public void onGlobalLayout() {
-                undimAppBuilderActivity();
-            }
-        });
+        relativeLayout.getForeground().setAlpha(0);
+
+//        mainLayout.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+//            @Override
+//            public void onGlobalLayout() {
+//                undimAppBuilderActivity();
+//            }
+//        });
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -119,21 +132,13 @@ public class AppBuilderActivity extends AppCompatActivity {
             }
         });
 
-        toolbar.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                openInstructorPopup();
-                return false;
-            }
-        });
-
         // Set Done Button
-        nextButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openSuccessPopup();
-            }
-        });
+//        nextButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                openTaskSuccessPopup();
+//            }
+//        });
 
         // Error ExpandableLayout
         clickToExpandError.setOnClickListener(new View.OnClickListener() {
@@ -150,6 +155,7 @@ public class AppBuilderActivity extends AppCompatActivity {
         clickToExpandTask.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                openTaskSuccessPopup();
                 if (taskExpandableLayout.isExpanded()) {
                     taskExpandableLayout.collapse();
                 } else {
@@ -159,19 +165,45 @@ public class AppBuilderActivity extends AppCompatActivity {
         });
 
         // Set Task text.
-        Task task = new Task("");
+        // parse xml file to insert content to the currentLesson
+        AppContentParser appContentParser = null;
+        try {
+            appContentParser = new AppContentParser();
+            currentApp = appContentParser.parseAppXml(this, 1);
+            UserProfile.user.setCurrentApp(currentApp);
+        } catch (XmlPullParserException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
-        if (LessonActivity.getCurrentLesson() != null) {
-            task = LessonActivity.getCurrentLesson().getTask();
-        }
-        // Hide if there's no task, for example when arriving straight from the map.
-        else {
-            clickToExpandTask.setVisibility(View.GONE);
-            taskExpandableLayout.setVisibility(View.GONE);
-            nextButton.setVisibility(View.GONE);
-            taskTextView.setVisibility(View.GONE);
-        }
-        taskTextView.setText(task.getText());
+        // Create SwipeAdapter.
+        viewPager = findViewById(R.id.viewPager);
+        swipeAdapter = new AppTasksSwipeAdapter(getSupportFragmentManager(), currentApp);
+        viewPager.setAdapter(swipeAdapter);
+        // Rotation for RTL swiping.
+//        if (Support.isRTL()) {
+//            viewPager.setRotationY(180);
+//        }
+
+//        // Connecting TabLayout with ViewPager to show swipe position in dots.
+//        final TabLayout tabLayout = findViewById(R.id.tabLayout);
+//        tabLayout.setupWithViewPager(viewPager, true);
+
+
+//        Task task = new Task("");
+//
+//        if (LessonActivity.getCurrentLesson() != null) {
+//            task = LessonActivity.getCurrentLesson().getTask();
+//        }
+//        // Hide if there's no task, for example when arriving straight from the map.
+//        else {
+//            clickToExpandTask.setVisibility(View.GONE);
+//            taskExpandableLayout.setVisibility(View.GONE);
+//            nextButton.setVisibility(View.GONE);
+//            taskTextView.setVisibility(View.GONE);
+//        }
+//        taskTextView.setText(task.getText());
 
 
         final TabLayout.Tab graphicEditTab = tabLayout.newTab().setText(R.string.graphic_edit_screen_title);
@@ -208,6 +240,18 @@ public class AppBuilderActivity extends AppCompatActivity {
         activityCreated = true;
     }
 
+    private void presentTooltip(View view, String text) {
+        Tooltip tooltip = new Tooltip.Builder(view)
+                .setText(text)
+                .setBackgroundColor(Color.WHITE)
+                .setTextColor(Color.GRAY)
+                .setCornerRadius((float) 15)
+                .setPadding((float)15)
+                .setTypeface(ResourcesCompat.getFont(getApplicationContext(), R.font.calibri_regular))
+                .setDismissOnClick(true)
+                .show();
+    }
+
     public void onPlay(final View view) {
         Bundle bundle = new Bundle();
         mFirebaseAnalytics.logEvent("RUN_APP", bundle);
@@ -215,102 +259,20 @@ public class AppBuilderActivity extends AppCompatActivity {
         setProgressBarVisibility(View.VISIBLE);
     }
 
-    private void openInstructorPopup() {
-        // inflate the layout of the popup window
-        LayoutInflater inflater = (LayoutInflater)
-                getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        final View popupView = inflater.inflate(R.layout.popup_instructor, null);
-
-        // create the popup window
-        int width = GridLayout.LayoutParams.WRAP_CONTENT;
-        int height = GridLayout.LayoutParams.WRAP_CONTENT;
-        boolean focusable = true; // lets taps outside the popup also dismiss it
-        final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
-        popupWindow.setOutsideTouchable(true);
-        popupWindow.setFocusable(true);
-        toolbar.post(new Runnable() {
-            public void run() {
-                popupWindow.showAtLocation(toolbar, Gravity.CENTER, 0, 0);
-            }
-        });
+    private void presentPopup(PopupWindow popupWindow){
         dimAppBuilderActivity();
-
-        Button confirmButton = popupView.findViewById(R.id.confirmButton);
-        confirmButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                EditText code = popupView.findViewById(R.id.codeValue);
-                if ("beyonce".equals(code.getText().toString().toLowerCase())) {
-                    openSuccessPopup();
-                } else {
-                    TextView error = popupView.findViewById(R.id.errorPlaceholder);
-                    error.setText("קוד לא נכון, נסי שוב");
-                }
-            }
-        });
         popupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
             @Override
             public void onDismiss() {
                 undimAppBuilderActivity();
             }
         });
-
+        popupWindow.showAtLocation(toolbar, Gravity.CENTER, 0, 0);
     }
 
-    private void openSuccessPopup() {
-        LayoutInflater inflater = (LayoutInflater)
-                getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        final View popupView = inflater.inflate(R.layout.popup_task_success, null);
-
-        int width = GridLayout.LayoutParams.WRAP_CONTENT;
-        int height = GridLayout.LayoutParams.WRAP_CONTENT;
-
-        boolean focusable = true; // lets taps outside the popup also dismiss it
-        final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
-        popupWindow.setOutsideTouchable(true);
-        popupWindow.setFocusable(true);
-        toolbar.post(new Runnable() {
-            public void run() {
-                popupWindow.showAtLocation(toolbar, Gravity.CENTER, 0, 0);
-            }
-        });
-        dimAppBuilderActivity();
-
-        Button continueButton = popupView.findViewById(R.id.continueButton);
-        continueButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // If this is the last lesson, go to share screen
-                if (UserProfile.user.getCurrentLessonID() == 8) {
-                    popupWindow.dismiss();
-                    openFinishedAppPopUp();
-                }
-                // Else, go to map
-                else {
-                    int nextLesson = appBuilderPresenter.updateCurrentAndTopPosition();
-                    Bundle bundle = new Bundle();
-                    bundle.putLong(FirebaseAnalytics.Param.LEVEL, nextLesson);
-                    mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.LEVEL_UP, bundle);
-                    Crashlytics.setInt("current_lesson", nextLesson);
-                    goToMap();
-                }
-            }
-        });
-
-        TextView notReady = popupView.findViewById(R.id.notReady);
-        notReady.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                popupWindow.dismiss();
-            }
-        });
-
-        popupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
-            @Override
-            public void onDismiss() {
-                undimAppBuilderActivity();
-            }
-        });
+    private void openTaskSuccessPopup() {
+        PopupWindow popupWindow = new TaskSuccessPopupWindow(getApplicationContext());
+        presentPopup(popupWindow);
     }
 
     public void undimAppBuilderActivity() {
@@ -321,73 +283,72 @@ public class AppBuilderActivity extends AppCompatActivity {
         relativeLayout.getForeground().setAlpha(220);
     }
 
-    private void openFinishedAppPopUp() {
-        LayoutInflater inflater = (LayoutInflater)
-                getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        final View popupView = inflater.inflate(R.layout.popup_finished_app, null);
-
-        int width = GridLayout.LayoutParams.WRAP_CONTENT;
-        int height = GridLayout.LayoutParams.WRAP_CONTENT;
-
-        boolean focusable = true; // lets taps outside the popup also dismiss it
-        final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
-        popupWindow.setOutsideTouchable(true);
-        popupWindow.setFocusable(true);
-        toolbar.post(new Runnable() {
-            public void run() {
-                popupWindow.showAtLocation(toolbar, Gravity.CENTER, 0, 0);
-            }
-        });
-        dimAppBuilderActivity();
-
-        Button shareButton = popupView.findViewById(R.id.shareButton);
-        shareButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                popupWindow.dismiss();
-                // User chose to share!
-                Bundle bundle = new Bundle();
-                bundle.putString("SHARED", String.valueOf(true));
-                mFirebaseAnalytics.logEvent("SHARED_APP", bundle);
-
-                openSharePopUp();
-            }
-        });
-
-        TextView skip = popupView.findViewById(R.id.notReady);
-        skip.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                popupWindow.dismiss();
-                goToNextCourse();
-
-                // User chose not to share
-                Bundle bundle = new Bundle();
-                bundle.putString("SHARED", String.valueOf(false));
-                mFirebaseAnalytics.logEvent("SHARED_APP", bundle);
-            }
-        });
-
-        // Personalize photo
-        String usersNickname = UserProfile.user.getNickName();
-        if (!usersNickname.isEmpty() && usersNickname.length() < MAX_NICKNAME_LENGTH) {
-            TextView myTriviaApp = popupView.findViewById(R.id.myTriviaApp);
-            if (Locale.getDefault().getLanguage().equals(Locale.ENGLISH.toLanguageTag())){
-                myTriviaApp.setText(usersNickname + "'s Trivia App");
-            }
-            else {
-                myTriviaApp.setText("אפליקציית הטריוויה\nשל " + usersNickname);
-            }
-        }
-
-        popupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
-            @Override
-            public void onDismiss() {
-                undimAppBuilderActivity();
-            }
-        });
-
-    }
+//    private void openFinishedAppPopUp() {
+//        LayoutInflater inflater = (LayoutInflater)
+//                getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+//        final View popupView = inflater.inflate(R.layout.popup_finished_app, null);
+//
+//        int width = GridLayout.LayoutParams.WRAP_CONTENT;
+//        int height = GridLayout.LayoutParams.WRAP_CONTENT;
+//
+//        boolean focusable = true; // lets taps outside the popup also dismiss it
+//        final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
+//        popupWindow.setOutsideTouchable(true);
+//        popupWindow.setFocusable(true);
+//        toolbar.post(new Runnable() {
+//            public void run() {
+//                popupWindow.showAtLocation(toolbar, Gravity.CENTER, 0, 0);
+//            }
+//        });
+//        dimAppBuilderActivity();
+//
+//        Button shareButton = popupView.findViewById(R.id.shareButton);
+//        shareButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                popupWindow.dismiss();
+//                // User chose to share!
+//                Bundle bundle = new Bundle();
+//                bundle.putString("SHARED", String.valueOf(true));
+//                mFirebaseAnalytics.logEvent("SHARED_APP", bundle);
+//
+//                openSharePopUp();
+//            }
+//        });
+//
+//        TextView skip = popupView.findViewById(R.id.notReady);
+//        skip.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                popupWindow.dismiss();
+//
+//                // User chose not to share
+//                Bundle bundle = new Bundle();
+//                bundle.putString("SHARED", String.valueOf(false));
+//                mFirebaseAnalytics.logEvent("SHARED_APP", bundle);
+//            }
+//        });
+//
+//        // Personalize photo
+//        String usersNickname = UserProfile.user.getNickName();
+//        if (!usersNickname.isEmpty() && usersNickname.length() < MAX_NICKNAME_LENGTH) {
+//            TextView myTriviaApp = popupView.findViewById(R.id.myTriviaApp);
+//            if (Locale.getDefault().getLanguage().equals(Locale.ENGLISH.toLanguageTag())){
+//                myTriviaApp.setText(usersNickname + "'s Trivia App");
+//            }
+//            else {
+//                myTriviaApp.setText("אפליקציית הטריוויה\nשל " + usersNickname);
+//            }
+//        }
+//
+//        popupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
+//            @Override
+//            public void onDismiss() {
+//                undimAppBuilderActivity();
+//            }
+//        });
+//
+//    }
 
     public void getWritePermission() {
         if (ContextCompat.checkSelfPermission(this,
@@ -403,49 +364,40 @@ public class AppBuilderActivity extends AppCompatActivity {
         }
     }
 
-    private void openSharePopUp() {
-        LayoutInflater inflater = (LayoutInflater)
-                getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        final View popupView = inflater.inflate(R.layout.popup_share, null);
 
-        int width = GridLayout.LayoutParams.WRAP_CONTENT;
-        int height = GridLayout.LayoutParams.WRAP_CONTENT;
 
-        boolean focusable = true; // lets taps outside the popup also dismiss it
-        final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
-        popupWindow.setOutsideTouchable(true);
-        popupWindow.setFocusable(true);
-        toolbar.post(new Runnable() {
-            public void run() {
-                popupWindow.showAtLocation(toolbar, Gravity.CENTER, 0, 0);
-            }
-        });
-        dimAppBuilderActivity();
-
-        Button gotItButton = popupView.findViewById(R.id.gotItButton);
-        gotItButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                goToNextCourse();
-            }
-        });
-
-        popupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
-            @Override
-            public void onDismiss() {
-                undimAppBuilderActivity();
-            }
-        });
-    }
+//    private void openSharePopUp() {
+//        LayoutInflater inflater = (LayoutInflater)
+//                getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+//        final View popupView = inflater.inflate(R.layout.popup_share, null);
+//
+//        int width = GridLayout.LayoutParams.WRAP_CONTENT;
+//        int height = GridLayout.LayoutParams.WRAP_CONTENT;
+//
+//        boolean focusable = true; // lets taps outside the popup also dismiss it
+//        final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
+//        popupWindow.setOutsideTouchable(true);
+//        popupWindow.setFocusable(true);
+//        toolbar.post(new Runnable() {
+//            public void run() {
+//                popupWindow.showAtLocation(toolbar, Gravity.CENTER, 0, 0);
+//            }
+//        });
+//        dimAppBuilderActivity();
+//
+//        Button gotItButton = popupView.findViewById(R.id.gotItButton);
+//
+//        popupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
+//            @Override
+//            public void onDismiss() {
+//                undimAppBuilderActivity();
+//            }
+//        });
+//    }
 
     private void goToMap() {
         appBuilderPresenter.saveProject();
         navigateToMap();
-    }
-
-    private void goToNextCourse() {
-        appBuilderPresenter.saveProject();
-        navigateToSecondCourse();
     }
 
     public void hideError() {
@@ -488,11 +440,6 @@ public class AppBuilderActivity extends AppCompatActivity {
 
     public void navigateToMap() {
         Intent mapIntent = new Intent(this, MapActivity.class);
-        startActivity(mapIntent);
-    }
-
-    public void navigateToSecondCourse() {
-        Intent mapIntent = new Intent(this, SecondCourseActivity.class);
         startActivity(mapIntent);
     }
 

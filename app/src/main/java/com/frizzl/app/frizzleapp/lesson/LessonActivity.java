@@ -3,7 +3,6 @@ package com.frizzl.app.frizzleapp.lesson;
 import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,8 +14,7 @@ import android.widget.TextView;
 import com.frizzl.app.frizzleapp.CustomViewPager;
 import com.frizzl.app.frizzleapp.MapActivity;
 import com.frizzl.app.frizzleapp.R;
-import com.frizzl.app.frizzleapp.Support;
-import com.frizzl.app.frizzleapp.SwipeAdapter;
+import com.frizzl.app.frizzleapp.LessonSwipeAdapter;
 import com.frizzl.app.frizzleapp.UserProfile;
 
 import org.xmlpull.v1.XmlPullParserException;
@@ -24,7 +22,7 @@ import org.xmlpull.v1.XmlPullParserException;
 import java.io.IOException;
 
 public class LessonActivity extends FragmentActivity {
-    private static SwipeAdapter swipeAdapter;
+    private static LessonSwipeAdapter swipeAdapter;
     private static Lesson currentLesson;
     private static CustomViewPager viewPager;
     private boolean isAroundFragmentVisible;
@@ -72,7 +70,7 @@ public class LessonActivity extends FragmentActivity {
 
         // Create SwipeAdapter.
         viewPager = findViewById(R.id.pager);
-        swipeAdapter = new SwipeAdapter(getSupportFragmentManager(), currentLesson);
+        swipeAdapter = new LessonSwipeAdapter(getSupportFragmentManager(), currentLesson);
         viewPager.setAdapter(swipeAdapter);
         // Rotation for RTL swiping.
 //        if (Support.isRTL()) {

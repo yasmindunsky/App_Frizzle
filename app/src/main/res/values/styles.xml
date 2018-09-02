@@ -138,6 +138,21 @@
         <item name="android:breakStrategy">simple</item>
     </style>
 
+    <style name="Text.Task" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textSize">18sp</item>
+        <item name="android:fontFamily">@font/calibri_regular</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:letterSpacing">.02</item>
+        <item name="android:lineSpacingExtra">0dp</item>
+        <item name="android:layout_gravity">left|top</item>
+        <item name="android:layout_marginTop">25dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/start_margin</item>
+        <item name="android:layout_marginEnd">@dimen/start_margin</item>
+        <item name="android:breakStrategy">simple</item>
+    </style>
+
     <style name="Text.Mentor" parent="@style/Text.Slide">
         <item name="android:fontFamily">@font/calibri_bold_italic</item>
     </style>
