@@ -1,70 +1,79 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@android:color/transparent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/table_background"
     tools:context="com.frizzl.app.frizzleapp.goToAppBuilderFragment">
 
-    <RelativeLayout
-        android:layout_width="340dp"
-        android:layout_height="400dp"
-        android:background="@drawable/popup_bg">
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="30dp">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/trophyAnimation"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="false"
+            app:lottie_rawRes="@raw/trophy" />
 
         <android.support.v7.widget.AppCompatTextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@string/wow"
+            android:textAppearance="@style/Text.Title.Wow"
+            app:layout_constraintBottom_toTopOf="@+id/tasksCompleted"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/trophyAnimation"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/tasksCompleted"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentTop="false"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
-            android:text="@string/good_work"
-            android:textAppearance="@style/Text.Title.GoodJob" />
-
-        <ImageView
-            android:id="@+id/mentor"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/continueButton"
-            android:layout_alignParentLeft="true"
-            android:layout_marginBottom="100dp"
-            android:layout_marginLeft="32dp"
-            android:background="@drawable/ic_mentor" />
+            android:text="You've completed all your tasks."
+            android:textAppearance="@style/Text.Info"
+            app:layout_constraintBottom_toTopOf="@+id/amazingWork"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
 
         <android.support.v7.widget.AppCompatTextView
-            android:id="@+id/mentorText"
+            android:id="@+id/amazingWork"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/mentor"
-            android:layout_marginRight="32dp"
-            android:layout_marginTop="22dp"
-            android:layout_toRightOf="@+id/mentor"
-            android:background="@drawable/bubble_left"
-            android:breakStrategy="simple"
-            android:text="@string/completed_task"
-            android:textAppearance="@style/taskInNavigationText" />
+            android:layout_alignParentTop="false"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="16dp"
+            android:text="Amazing work!"
+            android:textAppearance="@style/Text.Info.Bold"
+            app:layout_constraintBottom_toTopOf="@+id/thanksButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tasksCompleted" />
 
         <android.support.v7.widget.AppCompatButton
-            android:id="@+id/continueButton"
-            style="@style/Button.CheckExercise"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/notReady"
-            android:layout_alignParentBottom="false"
-            android:layout_centerHorizontal="true"
-            android:text="@string/continue_to_next_lesson"
-            android:textSize="18sp" />
-
-        <android.support.v7.widget.AppCompatTextView
-            android:id="@+id/notReady"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_centerInParent="false"
-            android:layout_marginBottom="@dimen/default_margin"
-            android:text="@string/not_ready_yet" />
-
-    </RelativeLayout>
+            android:id="@+id/thanksButton"
+            style="@style/Button.Thanks"
+            android:textAppearance="@style/Text.Title.Light"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tasksCompleted"
+            app:layout_constraintVertical_bias="1.0" />
+    </android.support.constraint.ConstraintLayout>
 
 </FrameLayout>

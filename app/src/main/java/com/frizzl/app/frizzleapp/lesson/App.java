@@ -12,6 +12,10 @@ public class App {
 
     private int appID;
     private ArrayList<Task> tasks;
+    private String xml;
+    private String java;
+    private String appName;
+    private String icon;
 
     public App(int appID) {
         this.appID = appID;

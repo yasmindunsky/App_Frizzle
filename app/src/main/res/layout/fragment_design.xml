@@ -151,74 +151,34 @@
                 </GridLayout>
             </LinearLayout>
         </ScrollView>
-
-        <LinearLayout
-            android:id="@+id/linearLayout"
-            android:layout_width="match_parent"
+        
+        <com.fangxu.allangleexpandablebutton.AllAngleExpandableButton
+            android:id="@+id/button_expandable"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="@dimen/default_margin"
-            android:layout_marginEnd="@dimen/default_margin"
-            android:background="@android:color/transparent"
-            android:elevation="6dp"
-            android:orientation="horizontal">
-
-            <net.cachapa.expandablelayout.ExpandableLayout
-                android:id="@+id/plusExpandableLayout"
-                android:layout_width="0dp"
-                android:layout_height="45dp"
-                android:layout_gravity="end"
-                android:layout_weight="1"
-                android:background="@android:color/transparent"
-                android:orientation="horizontal"
-                app:el_duration="1000"
-                app:el_expanded="false">
-
-                <TextView
-                    android:id="@+id/addButton"
-                    style="@style/TextAppearance.AppCompat.Medium"
-                    android:layout_width="180dp"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="start"
-                    android:background="@drawable/add_button_background"
-                    android:gravity="center_vertical|start"
-                    android:layoutDirection="ltr"
-                    android:lines="1"
-                    android:paddingEnd="@dimen/default_margin"
-                    android:paddingStart="@dimen/default_margin"
-                    android:text="Button"
-                    android:textColor="#fff" />
-
-                <TextView
-                    android:id="@+id/addText"
-                    style="@style/TextAppearance.AppCompat.Medium"
-                    android:layout_width="100dp"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="start"
-                    android:background="@drawable/add_textview_background"
-                    android:gravity="center_vertical|start"
-                    android:layoutDirection="ltr"
-                    android:lines="1"
-                    android:paddingEnd="@dimen/default_margin"
-                    android:paddingStart="@dimen/default_margin"
-                    android:text="Text"
-                    android:textColor="#fff" />
-
-            </net.cachapa.expandablelayout.ExpandableLayout>
-
-        </LinearLayout>
-
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/addView"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
             android:layout_marginBottom="@dimen/default_margin"
             android:layout_marginEnd="@dimen/default_margin"
-            android:clickable="true"
-            android:src="@drawable/ic_plus_add_icon"
-            app:backgroundTint="@color/frizzle_yellow" />
+            app:aebAnimDurationMillis="175"
+            app:aebBlurBackground="false"
+            app:aebBlurRadius="10"
+            app:aebButtonElevation="4dp"
+            app:aebButtonGapDp="25dp"
+            app:aebEndAngleDegree="180"
+            app:aebIsSelectionMode="false"
+            app:aebMainButtonRotateAnimDurationMillis="250"
+            app:aebMainButtonRotateDegree="-135"
+            app:aebMainButtonSizeDp="45dp"
+            app:aebMainButtonTextColor="#ffff5656"
+            app:aebMainButtonTextSizeSp="20dp"
+            app:aebMaskBackgroundColor="@android:color/transparent"
+            app:aebRippleColor="@color/frizzle_red"
+            app:aebRippleEffect="false"
+            app:aebStartAngleDegree="90"
+            app:aebSubButtonSizeDp="45dp"
+            app:aebSubButtonTextColor="#ff0000ff"
+            app:aebSubButtonTextSizeSp="18dp" />
 
     </RelativeLayout>
 

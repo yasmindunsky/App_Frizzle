@@ -20,7 +20,7 @@ public class DesignScreenPresenter {
         return UserCreatedViewsModel.getXml();
     }
 
-    enum viewTypes {Button, TextView}
+    enum viewTypes {Button, TextView, ImageView}
 
     public DesignScreenPresenter(DesignScreenFragment designScreenFragment) {
         this.designScreenFragment = designScreenFragment;

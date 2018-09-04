@@ -114,6 +114,12 @@
     <string name="flash_cards_title">Flash Cards</string>
     <string name="flash_cards_content">Help your friends memorize terms or vocab</string>
     <string name="log_in">log in</string>
+    <string name="welcome">welcome</string>
+    <string name="app_explanation_text">Let"'"s start with a tutorial and\n build a simple text displaying app.</string>
+    <string name="start">start</string>
+    <string name="wow">wow!</string>
+    <string name="thanks">thanks</string>
+    <string name="your_app_name">App Name</string>
 
     <string-array name="fonts">
         <item>sans-serif</item>

@@ -2,7 +2,6 @@ package com.frizzl.app.frizzleapp.appBuilder;
 
 import android.content.ClipData;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.view.DragEvent;
 import android.view.Gravity;
@@ -12,15 +11,18 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.fangxu.allangleexpandablebutton.AllAngleExpandableButton;
+import com.fangxu.allangleexpandablebutton.ButtonData;
+import com.fangxu.allangleexpandablebutton.ButtonEventListener;
 import com.frizzl.app.frizzleapp.R;
 
-import net.cachapa.expandablelayout.ExpandableLayout;
-
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -29,11 +31,7 @@ import java.util.Map;
 public class DesignScreenFragment extends Fragment {
     private GridLayout gridLayout;
     private PopupWindow popupWindow;
-    Map<Integer, UserCreatedView> views;
-
-    private ExpandableLayout expandableLayout;
-    private FloatingActionButton expandButton;
-
+    private Map<Integer, UserCreatedView> views;
     private DesignScreenPresenter designScreenPresenter;
 
     public DesignScreenFragment() {
@@ -53,47 +51,49 @@ public class DesignScreenFragment extends Fragment {
         views = DesignScreenPresenter.getViews(getContext());
         presentViewsOnGridLayout();
 
-        TextView addText = view.findViewById(R.id.addText);
-        addText.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                designScreenPresenter.addNewUserCreatedView(getContext(), DesignScreenPresenter.viewTypes.TextView);
-            }
-        });
+        initAddMenu(view);
 
-        TextView addButton = view.findViewById(R.id.addButton);
-        addButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                designScreenPresenter.addNewUserCreatedView(getContext(), DesignScreenPresenter.viewTypes.Button);
-            }
-        });
-
-        expandableLayout = view.findViewById(R.id.plusExpandableLayout);
-        // Set LinearLayout direction to be opposite from device's direction.
-        // This is needed for correct expand animation direction.
-        LinearLayout linearLayout = view.findViewById(R.id.linearLayout);
-        int currentDirection = view.getLayoutDirection();
-        if (currentDirection == View.LAYOUT_DIRECTION_LTR) {
-            linearLayout.setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
-        } else {
-            linearLayout.setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
-        }
-
-        expandButton = view.findViewById(R.id.addView);
-        expandableLayout.setOnExpansionUpdateListener(new ExpandableLayout.OnExpansionUpdateListener() {
-            @Override
-            public void onExpansionUpdate(float expansionFraction, int state) {
-                expandButton.setRotation(expansionFraction * 135);
-            }
-        });
-        expandButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                expandableLayout.toggle();
-            }
-        });
         return view;
+    }
+
+    private void initAddMenu(View view) {
+        AllAngleExpandableButton button = view.findViewById(R.id.button_expandable);
+        final List<ButtonData> buttonDatas = new ArrayList<>();
+        int[] drawable = {R.drawable.ic_add_plus, R.drawable.ic_add_text, R.drawable.ic_add_button, R.drawable.ic_add_image};
+
+        Map<Integer, DesignScreenPresenter.viewTypes> indexToViewType = new HashMap<>();
+        indexToViewType.put(1, DesignScreenPresenter.viewTypes.TextView);
+        indexToViewType.put(2, DesignScreenPresenter.viewTypes.Button);
+        indexToViewType.put(3, DesignScreenPresenter.viewTypes.ImageView);
+
+        ButtonData buttonData = ButtonData.buildIconButton(getContext(), drawable[0], 10);
+        buttonData.setBackgroundColor(getResources().getColor(R.color.frizzle_light_blue));
+        buttonDatas.add(buttonData);
+        for (int i = 1; i < drawable.length; i++) {
+            buttonData = ButtonData.buildIconButton(getContext(), drawable[i], 5);
+            buttonData.setBackgroundColor(getResources().getColor(R.color.frizzle_blue));
+            buttonDatas.add(buttonData);
+        }
+        button.setButtonDatas(buttonDatas);
+        button.setButtonEventListener(new ButtonEventListener() {
+            @Override
+            public void onButtonClicked(int index) {
+                //do whatever you want,the param index is counted from startAngle to endAngle,
+                //the value is from 1 to buttonCount - 1(buttonCount if aebIsSelectionMode=true)
+                DesignScreenPresenter.viewTypes viewType = indexToViewType.get(index);
+                designScreenPresenter.addNewUserCreatedView(getContext(), viewType);
+            }
+
+            @Override
+            public void onExpand() {
+
+            }
+
+            @Override
+            public void onCollapse() {
+
+            }
+        });
     }
 
     private void presentViewsOnGridLayout() {
@@ -279,15 +279,5 @@ public class DesignScreenFragment extends Fragment {
             view.setTag(R.id.usersViewCol, column);
             return layoutParams;
         }
-    }
-
-    public UserCreatedView.ViewType getViewType(String viewType) {
-        switch (viewType) {
-            case "Button":
-                return UserCreatedView.ViewType.Button;
-            case "TextView":
-                return UserCreatedView.ViewType.TextView;
-        }
-        return null;
     }
 }

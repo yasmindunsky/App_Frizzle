@@ -64,6 +64,24 @@
         <item name="android:paddingEnd">20sp</item>
     </style>
 
+    <style name="Button.Start" parent="@android:style/Widget.Button">
+        <item name="android:background">@drawable/button_background_light_blue</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:paddingStart">35sp</item>
+        <item name="android:paddingEnd">35sp</item>p
+        <item name="android:text">@string/start</item>
+    </style>
+
+    <style name="Button.Thanks" parent="@android:style/Widget.Button">
+        <item name="android:background">@drawable/button_background_pink</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:paddingStart">25sp</item>
+        <item name="android:paddingEnd">25sp</item>
+        <item name="android:text">@string/thanks</item>
+    </style>
+
     <style name="Button.Unlock" parent="@android:style/Widget.Button">
         <item name="android:background">@drawable/unlock_button_background</item>
         <item name="android:textColor">@color/white</item>
@@ -153,6 +171,17 @@
         <item name="android:breakStrategy">simple</item>
     </style>
 
+    <style name="Text.Info" parent="@style/Text.Task">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/TextGrey</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:letterSpacing">0</item>
+    </style>
+
+    <style name="Text.Info.Bold" parent="@style/Text.Info">
+        <item name="android:fontFamily">@font/calibri_bold</item>
+    </style>
+
     <style name="Text.Mentor" parent="@style/Text.Slide">
         <item name="android:fontFamily">@font/calibri_bold_italic</item>
     </style>
@@ -162,9 +191,9 @@
     </style>
 
     <style name="Text.ItalicForm" parent="@style/Text.Slide">
-        <item name="android:textColor">@color/TextGrey</item>
+        <item name="android:textColor">@color/TextLightGrey</item>
         <item name="android:fontFamily">@font/calibri_italic</item>
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">20sp</item>
     </style>
 
     <style name="Text.Title" parent="@android:style/TextAppearance.Medium">
@@ -173,11 +202,12 @@
         <item name="android:letterSpacing">.08</item>
         <item name="android:gravity">center</item>
         <item name="android:textAllCaps">true</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@color/black</item>
     </style>
 
     <style name="Text.Title.Light" parent="@style/Text.Title">
-        <item name="android:textColor">#FFFFFF</item>
-        <item name="android:textSize">23sp</item>
+        <item name="android:textColor">@color/white</item>
     </style>
 
     <style name="Text.Title.Dark" parent="@style/Text.Title">
@@ -195,9 +225,25 @@
         <item name="android:textSize">22sp</item>
     </style>
 
+    <style name="Text.Title.Welcome" parent="Text.Title">
+        <item name="android:layout_height">@dimen/app_bar_height</item>
+        <item name="android:fontFamily">@font/hero_regular</item>
+        <item name="android:background">@drawable/table_text_edit_background</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:text">@string/welcome</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
     <style name="Text.Title.GoodJob" parent="@style/Text.Title">
         <item name="android:textColor">@color/colorPrimary</item>
         <item name="android:textSize">36sp</item>
+    </style>
+
+    <style name="Text.Title.Wow" parent="@style/Text.Title">
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textSize">36sp</item>
+        <item name="android:fontFamily">@font/calibri_bold</item>
     </style>
 
     <style name="Button.UserCreated" parent="@android:style/Widget.Button">

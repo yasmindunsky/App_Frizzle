@@ -155,7 +155,7 @@ public class AppBuilderActivity extends AppCompatActivity {
         clickToExpandTask.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openTaskSuccessPopup();
+                openStartAppPopup();
                 if (taskExpandableLayout.isExpanded()) {
                     taskExpandableLayout.collapse();
                 } else {
@@ -272,6 +272,11 @@ public class AppBuilderActivity extends AppCompatActivity {
 
     private void openTaskSuccessPopup() {
         PopupWindow popupWindow = new TaskSuccessPopupWindow(getApplicationContext());
+        presentPopup(popupWindow);
+    }
+
+    private void openStartAppPopup() {
+        PopupWindow popupWindow = new StartAppPopupWindow(getApplicationContext());
         presentPopup(popupWindow);
     }
 

@@ -1,7 +1,6 @@
 package com.frizzl.app.frizzleapp.appBuilder;
 
 import android.content.Context;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -9,10 +8,7 @@ import android.widget.GridLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
-import com.crashlytics.android.Crashlytics;
 import com.frizzl.app.frizzleapp.R;
-import com.frizzl.app.frizzleapp.UserProfile;
-import com.google.firebase.analytics.FirebaseAnalytics;
 
 /**
  * Created by Noga on 02/09/2018.
@@ -32,17 +28,9 @@ public class TaskSuccessPopupWindow extends PopupWindow {
         this.setOutsideTouchable(true);
         this.setFocusable(true);
 
-        Button continueButton = popupView.findViewById(R.id.continueButton);
-        TextView notReady = popupView.findViewById(R.id.notReady);
+        Button thanksButton = popupView.findViewById(R.id.thanksButton);
 
-        continueButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dismiss();
-            }
-        });
-
-        notReady.setOnClickListener(new View.OnClickListener() {
+        thanksButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dismiss();
