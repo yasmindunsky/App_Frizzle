@@ -3,11 +3,9 @@ package com.frizzl.app.frizzleapp;
 import android.content.Context;
 import android.content.Intent;
 
-import com.frizzl.app.frizzleapp.appBuilder.UserCreatedTextView;
 import com.frizzl.app.frizzleapp.appBuilder.UserCreatedView;
 import com.frizzl.app.frizzleapp.intro.GetProjectFromServer;
-import com.frizzl.app.frizzleapp.lesson.App;
-import com.frizzl.app.frizzleapp.lesson.AppContentParser;
+import com.frizzl.app.frizzleapp.lesson.AppTasks;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -23,8 +21,8 @@ public class UserProfile {
     private String birthDate = "";
     private int currentAppTypeNum = 0;
 
-    private AppContentParser appContentParser = new AppContentParser();
-    private App currentApp;
+    private AppTasks currentAppTasks;
+    private UserApp currentUserApp;
 
     private int currentLessonID = 1;
     private int topLessonID = 1;
@@ -179,14 +177,22 @@ public class UserProfile {
     }
 
     public int getCurrentAppId() {
-        return currentApp.getID();
+        return currentAppTasks.getID();
     }
 
-    public App getCurrentApp() {
-        return currentApp;
+    public AppTasks getCurrentAppTasks() {
+        return currentAppTasks;
     }
 
-    public void setCurrentApp(App currentApp) {
-        this.currentApp = currentApp;
+    public void setCurrentAppTasks(AppTasks currentAppTasks) {
+        this.currentAppTasks = currentAppTasks;
+    }
+
+    public UserApp getCurrentUserApp() {
+        return currentUserApp;
+    }
+
+    public void setCurrentUserApp(UserApp currentUserApp) {
+        this.currentUserApp = currentUserApp;
     }
 }

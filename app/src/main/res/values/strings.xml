@@ -120,6 +120,8 @@
     <string name="wow">wow!</string>
     <string name="thanks">thanks</string>
     <string name="your_app_name">App Name</string>
+    <string name="function_name">Function name</string>
+    <string name="add_image">Add Image</string>
 
     <string-array name="fonts">
         <item>sans-serif</item>
@@ -155,4 +157,6 @@
         <item>frizzle_blue_red</item>
         <item>frizzle_red_purple</item>
     </string-array>
+
+
 </resources>

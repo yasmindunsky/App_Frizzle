@@ -110,16 +110,6 @@
                 android:text="1"
                 android:textColor="@android:color/transparent" />
 
-            <Button
-                android:id="@+id/playground"
-                android:layout_width="50dp"
-                android:layout_height="48dp"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentEnd="true"
-                android:layout_marginBottom="20dp"
-                android:background="@drawable/tag_build"
-                android:onClick="goToPlayground" />
-
         </RelativeLayout>
 
         <android.support.v7.widget.Toolbar

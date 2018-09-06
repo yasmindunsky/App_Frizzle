@@ -1,25 +1,11 @@
 package com.frizzl.app.frizzleapp.appBuilder;
 
-import android.Manifest;
-import android.content.Context;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.net.Uri;
-import android.os.Bundle;
-import android.os.Environment;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.content.FileProvider;
-import android.view.View;
-
-import com.crashlytics.android.Crashlytics;
 import com.frizzl.app.frizzleapp.AsyncResponse;
-import com.frizzl.app.frizzleapp.R;
 import com.frizzl.app.frizzleapp.UpdatePositionInServer;
+import com.frizzl.app.frizzleapp.UserApp;
 import com.frizzl.app.frizzleapp.UserProfile;
 import com.google.firebase.analytics.FirebaseAnalytics;
 
-import java.io.File;
 import java.util.Map;
 
 public class AppBuilderPresenter {
@@ -27,16 +13,18 @@ public class AppBuilderPresenter {
     private AppBuilderActivity appBuilderActivity;
     private String codeStart;
     private String codeEnd;
+    private int currentAppID;
 
     final private static int WRITE_PERMISSION = 1;
     final private static int MAX_NICKNAME_LENGTH = 10;
 
     private FirebaseAnalytics mFirebaseAnalytics;
 
-    public AppBuilderPresenter(AppBuilderActivity appBuilderActivity, String codeStart, String codeEnd){
+    public AppBuilderPresenter(AppBuilderActivity appBuilderActivity, String codeStart, String codeEnd, int currentAppID){
         this.appBuilderActivity = appBuilderActivity;
         this.codeStart = codeStart;
         this.codeEnd = codeEnd;
+        this.currentAppID = currentAppID;
     }
 
     public int updateCurrentAndTopPosition() {
@@ -94,5 +82,22 @@ public class AppBuilderPresenter {
             }
         }).execute(codeStart, codeEnd);
 
+    }
+
+    public void onResume() {
+        UserApp currentUserApp = UserProfile.user.getCurrentUserApp();
+        if (currentUserApp == null){
+            currentUserApp = new UserApp(currentAppID);
+            UserProfile.user.setCurrentUserApp(currentUserApp);
+            appBuilderActivity.openStartAppPopup();
+        }
+    }
+
+    public void setAppNameAndIcon(String appName, String iconDrawable) {
+        UserApp currentUserApp = UserProfile.user.getCurrentUserApp();
+        currentUserApp.setName(appName);
+        currentUserApp.setIcon(iconDrawable);
+        UserProfile.user.setCurrentUserApp(currentUserApp);
+        appBuilderActivity.updateAppNameAndIcon(appName, iconDrawable);
     }
 }

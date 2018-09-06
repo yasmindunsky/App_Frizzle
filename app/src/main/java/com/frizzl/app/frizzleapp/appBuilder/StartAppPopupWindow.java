@@ -1,6 +1,8 @@
 package com.frizzl.app.frizzleapp.appBuilder;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.support.v4.content.res.ResourcesCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -11,6 +13,8 @@ import android.widget.PopupWindow;
 import android.widget.RadioButton;
 
 import com.frizzl.app.frizzleapp.R;
+import com.tooltip.OnDismissListener;
+import com.tooltip.Tooltip;
 
 import java.util.ArrayList;
 
@@ -19,15 +23,20 @@ import java.util.ArrayList;
  */
 
 public class StartAppPopupWindow extends PopupWindow {
-    int width = GridLayout.LayoutParams.WRAP_CONTENT;
-    int height = GridLayout.LayoutParams.WRAP_CONTENT;
-    RadioButton selectedButton;
+    private int width = GridLayout.LayoutParams.WRAP_CONTENT;
+    private int height = GridLayout.LayoutParams.WRAP_CONTENT;
+    private RadioButton selectedButton;
+    private AppBuilderActivity activityCalled;
+    private View popupView;
 
-    public StartAppPopupWindow(Context conext){
+    public StartAppPopupWindow(AppBuilderActivity activity){
         LayoutInflater inflater = (LayoutInflater)
-                conext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View popupView = inflater.inflate(R.layout.popup_start_app, null);
+                activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        popupView = inflater.inflate(R.layout.popup_start_app, null);
         setContentView(popupView);
+
+        this.activityCalled = activity;
+
         setWidth(width);
         setHeight(height);
         this.setOutsideTouchable(true);
@@ -67,12 +76,22 @@ public class StartAppPopupWindow extends PopupWindow {
             });
         }
 
+//        radioButton1.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                activity.presentNextTutorialMessage();
+//            }
+//        });
+
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO: Pass selected name and icon
-//                editText.getText();
-//                selectedButton;
+                String appName = String.valueOf(editText.getText());
+                String iconDrawable = "";
+                if (selectedButton != null) {
+                    iconDrawable = (String) selectedButton.getTag();
+                }
+                activity.onStartButtonFromStartAppPopup(appName, iconDrawable);
                 dismiss();
             }
         });

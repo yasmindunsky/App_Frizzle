@@ -1,22 +1,16 @@
 package com.frizzl.app.frizzleapp.lesson;
 
 
-import android.graphics.drawable.AnimationDrawable;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
 import android.widget.TextView;
 
 import com.frizzl.app.frizzleapp.R;
 import com.frizzl.app.frizzleapp.UserProfile;
 import com.google.firebase.analytics.FirebaseAnalytics;
-
-import java.util.List;
 
 //import com.bumptech.glide.Glide;
 
@@ -51,7 +45,7 @@ public class TaskFragment extends Fragment {
         index = bundle.getInt("index");
         appId = bundle.getInt("lesson");
 
-        Task task = UserProfile.user.getCurrentApp().getTasks().get(index);
+        Task task = UserProfile.user.getCurrentAppTasks().getTasks().get(index);
 
         String taskText  = task.getText();
         fragmentText.setText(taskText);

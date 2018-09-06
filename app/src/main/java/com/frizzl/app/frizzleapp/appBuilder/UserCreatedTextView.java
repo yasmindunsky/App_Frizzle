@@ -40,7 +40,7 @@ public class UserCreatedTextView extends UserCreatedView {
         this.context = context;
         this.index = index;
         this.layout = R.layout.popup_properties_text_view;
-        this.viewType = ViewType.TextView;
+        this.viewType = "TextView";
         int textViewStyle = R.style.TextView_UserCreated;
 
         this.thisView = new TextView(context, null, 0, textViewStyle);
@@ -76,7 +76,7 @@ public class UserCreatedTextView extends UserCreatedView {
     public UserCreatedTextView(Context context, int nextViewIndex, int numOfTextViews) {
         this.context = context;
         this.layout = R.layout.popup_properties_text_view;
-        this.viewType = ViewType.TextView;
+        this.viewType = "TextView";
         int textViewStyle = R.style.TextView_UserCreated;
         this.thisView = new TextView(context, null, 0, textViewStyle);
         thisView.setText(R.string.new_text_view_text);

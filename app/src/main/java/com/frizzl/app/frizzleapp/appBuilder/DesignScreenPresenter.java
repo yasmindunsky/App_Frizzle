@@ -1,8 +1,9 @@
 package com.frizzl.app.frizzleapp.appBuilder;
 
 import android.content.Context;
-import android.widget.Toast;
 
+import com.frizzl.app.frizzleapp.AnnotationUserCreatedViewType;
+import com.frizzl.app.frizzleapp.UserApp;
 import com.frizzl.app.frizzleapp.UserProfile;
 
 import java.util.Map;
@@ -19,8 +20,6 @@ public class DesignScreenPresenter {
     public String getXml() {
         return UserCreatedViewsModel.getXml();
     }
-
-    enum viewTypes {Button, TextView, ImageView}
 
     public DesignScreenPresenter(DesignScreenFragment designScreenFragment) {
         this.designScreenFragment = designScreenFragment;
@@ -39,24 +38,26 @@ public class DesignScreenPresenter {
         return views;
     }
 
-    public void addNewUserCreatedView(Context context, viewTypes viewType) {
+    public void addNewUserCreatedView(Context context, String viewType) {
         boolean canAddView = checkIfTheresRoom();
         if (canAddView) {
             // TODO: make UserCreatedViewsFactory
             switch (viewType) {
-                case TextView:
+                case AnnotationUserCreatedViewType.TEXT_VIEW:
                     UserCreatedViewsModel.addNewUserCreatedTextView(context);
                     break;
-                case Button:
+                case AnnotationUserCreatedViewType.BUTTON:
                     UserCreatedViewsModel.addNewUserCreatedButton(context);
                     break;
+                case AnnotationUserCreatedViewType.IMAGE_VIEW:
+                    UserCreatedViewsModel.addNewUserCreatedImageView(context);
             }
             designScreenFragment.getViewsAndPresent(views);
         }
     }
 
     public static void deleteView(int viewToDeleteIndex) {
-        UserCreatedViewsModel.deleteUserCreatedVIew(viewToDeleteIndex);
+        UserCreatedViewsModel.deleteUserCreatedView(viewToDeleteIndex);
     }
 
     private boolean checkIfTheresRoom() {
@@ -68,5 +69,23 @@ public class DesignScreenPresenter {
             return false;
         }
         return true;
+    }
+
+    public String getAppName() {
+        UserApp currentUserApp = UserProfile.user.getCurrentUserApp();
+        String appName = "";
+        if (currentUserApp != null) {
+            appName = currentUserApp.getName();
+        }
+        return appName;
+    }
+
+    public String getIcon() {
+        UserApp currentUserApp = UserProfile.user.getCurrentUserApp();
+        String icon = "";
+        if (currentUserApp != null) {
+            icon = currentUserApp.getIcon();
+        }
+        return icon;
     }
 }

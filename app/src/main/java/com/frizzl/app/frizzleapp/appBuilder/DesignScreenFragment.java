@@ -1,8 +1,11 @@
 package com.frizzl.app.frizzleapp.appBuilder;
 
 import android.content.ClipData;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.res.ResourcesCompat;
 import android.view.DragEvent;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -11,6 +14,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,7 +23,10 @@ import android.widget.Toast;
 import com.fangxu.allangleexpandablebutton.AllAngleExpandableButton;
 import com.fangxu.allangleexpandablebutton.ButtonData;
 import com.fangxu.allangleexpandablebutton.ButtonEventListener;
+import com.frizzl.app.frizzleapp.AnnotationUserCreatedViewType;
 import com.frizzl.app.frizzleapp.R;
+import com.tooltip.OnDismissListener;
+import com.tooltip.Tooltip;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -33,6 +41,8 @@ public class DesignScreenFragment extends Fragment {
     private PopupWindow popupWindow;
     private Map<Integer, UserCreatedView> views;
     private DesignScreenPresenter designScreenPresenter;
+    private TextView appNameTitle;
+    private ImageView appIcon;
 
     public DesignScreenFragment() {
         // Required empty public constructor
@@ -46,9 +56,14 @@ public class DesignScreenFragment extends Fragment {
         designScreenPresenter = new DesignScreenPresenter(this);
 
         gridLayout = view.findViewById(R.id.gridLayout);
-        gridLayout.setOnDragListener(new DragListener());
+        appNameTitle = view.findViewById(R.id.app_name_title);
+        appIcon = view.findViewById(R.id.app_icon);
 
-        views = DesignScreenPresenter.getViews(getContext());
+        gridLayout.setOnDragListener(new DragListener());
+        setAppName(designScreenPresenter.getAppName());
+        setAppIcon(designScreenPresenter.getIcon());
+
+        views = designScreenPresenter.getViews(getContext());
         presentViewsOnGridLayout();
 
         initAddMenu(view);
@@ -61,10 +76,10 @@ public class DesignScreenFragment extends Fragment {
         final List<ButtonData> buttonDatas = new ArrayList<>();
         int[] drawable = {R.drawable.ic_add_plus, R.drawable.ic_add_text, R.drawable.ic_add_button, R.drawable.ic_add_image};
 
-        Map<Integer, DesignScreenPresenter.viewTypes> indexToViewType = new HashMap<>();
-        indexToViewType.put(1, DesignScreenPresenter.viewTypes.TextView);
-        indexToViewType.put(2, DesignScreenPresenter.viewTypes.Button);
-        indexToViewType.put(3, DesignScreenPresenter.viewTypes.ImageView);
+        Map<Integer, String> indexToViewType = new HashMap<>();
+        indexToViewType.put(1, AnnotationUserCreatedViewType.TEXT_VIEW);
+        indexToViewType.put(2, AnnotationUserCreatedViewType.BUTTON);
+        indexToViewType.put(3, AnnotationUserCreatedViewType.IMAGE_VIEW);
 
         ButtonData buttonData = ButtonData.buildIconButton(getContext(), drawable[0], 10);
         buttonData.setBackgroundColor(getResources().getColor(R.color.frizzle_light_blue));
@@ -80,7 +95,7 @@ public class DesignScreenFragment extends Fragment {
             public void onButtonClicked(int index) {
                 //do whatever you want,the param index is counted from startAngle to endAngle,
                 //the value is from 1 to buttonCount - 1(buttonCount if aebIsSelectionMode=true)
-                DesignScreenPresenter.viewTypes viewType = indexToViewType.get(index);
+                String viewType = indexToViewType.get(index);
                 designScreenPresenter.addNewUserCreatedView(getContext(), viewType);
             }
 
@@ -106,12 +121,15 @@ public class DesignScreenFragment extends Fragment {
             }
 
             gridLayout.addView(usersView);
-            if (userCreatedView.getViewType().equals(UserCreatedView.ViewType.Button)) {
+            if (userCreatedView.getViewType().equals(AnnotationUserCreatedViewType.BUTTON)) {
                 final UserCreatedButton userCreatedButton = (UserCreatedButton) userCreatedView;
                 setButtonOnClicks(userCreatedButton);
-            } else {
+            } else if (userCreatedView.getViewType().equals(AnnotationUserCreatedViewType.TEXT_VIEW)) {
                 final UserCreatedTextView userCreatedTextView = (UserCreatedTextView) userCreatedView;
                 setTextOnClicks(userCreatedTextView);
+            } else {
+                final UserCreatedImageView userCreatedImageView = (UserCreatedImageView)userCreatedView;
+                setImageOnClicks(userCreatedImageView);
             }
         }
     }
@@ -172,6 +190,30 @@ public class DesignScreenFragment extends Fragment {
         });
     }
 
+    private void setImageOnClicks(final UserCreatedImageView userCreatedImageView){
+        ImageView imageView = userCreatedImageView.getThisView();
+
+        imageView.setOnLongClickListener(new LongPressListener());
+
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(final View v) {
+                // show the popup window
+                popupWindow = userCreatedImageView.displayPropertiesTable(getContext());
+
+                ImageButton deleteButton = popupWindow.getContentView().findViewById(R.id.delete);
+                // To know what view to delete
+                deleteButton.setTag(R.id.viewToDelete, v.getId());
+                deleteButton.setOnClickListener(deleteView);
+                v.post(new Runnable() {
+                    public void run() {
+                        popupWindow.showAtLocation(v, Gravity.CENTER, 0, 0);
+                    }
+                });
+            }
+        });
+    }
+
     @Override
     public void onDestroy()
     {
@@ -217,6 +259,37 @@ public class DesignScreenFragment extends Fragment {
 
     public String getXml() {
         return designScreenPresenter.getXml();
+    }
+
+    public void setAppName(String appName) {
+        appNameTitle.setText(appName);
+    }
+
+    public void setAppIcon(String iconDrawable) {
+        if (iconDrawable != "") {
+            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT);
+            layoutParams.weight = 1;
+            int iconIdentifier = getResources().getIdentifier(iconDrawable, "drawable", getActivity().getPackageName());
+            Drawable drawable = getResources().getDrawable(iconIdentifier);
+            appIcon.setImageDrawable(drawable);
+            appIcon.setLayoutParams(layoutParams);
+        }
+    }
+
+    public void presentTooltip(View view, String text, OnDismissListener listener) {
+        Tooltip tooltip = new Tooltip.Builder(view)
+                .setText(text)
+                .setTextColor(getResources().getColor(R.color.TextGrey))
+                .setTextSize((float)16)
+                .setTypeface(ResourcesCompat.getFont(getContext(), R.font.calibri_regular))
+                .setMargin((float)4)
+                .setBackgroundColor(Color.WHITE)
+                .setCornerRadius((float) 15)
+                .setPadding((float)35)
+                .setDismissOnClick(true)
+                .setOnDismissListener(listener)
+                .setCancelable(true)
+                .show();
     }
 
     class LongPressListener implements View.OnLongClickListener {

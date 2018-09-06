@@ -5,10 +5,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
-import com.frizzl.app.frizzleapp.lesson.App;
-import com.frizzl.app.frizzleapp.lesson.SlideFragment;
+import com.frizzl.app.frizzleapp.lesson.AppTasks;
 import com.frizzl.app.frizzleapp.lesson.TaskFragment;
-import com.frizzl.app.frizzleapp.lesson.exercise.ExerciseFragment;
 
 /**
  * Created by yasmin.dunsky on 19-Nov-17.
@@ -16,10 +14,10 @@ import com.frizzl.app.frizzleapp.lesson.exercise.ExerciseFragment;
 
 public class AppTasksSwipeAdapter extends FragmentStatePagerAdapter {
 
-    private App currentApp;
+    private AppTasks currentApp;
     private int numOfFragments;
 
-    public AppTasksSwipeAdapter(FragmentManager fm, App currentApp) {
+    public AppTasksSwipeAdapter(FragmentManager fm, AppTasks currentApp) {
         super(fm);
         this.currentApp = currentApp;
         numOfFragments = currentApp.getTasksNum();

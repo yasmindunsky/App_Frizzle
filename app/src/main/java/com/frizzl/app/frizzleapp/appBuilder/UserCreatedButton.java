@@ -40,9 +40,9 @@ public class UserCreatedButton extends UserCreatedView {
     public UserCreatedButton(Context context, Map<String, String> properties, int index){
         this.context = context;
         this.index = index;
-        this.layout = R.layout.popup_properties_button;
+        this.layout = R.layout.popup_properties_button_try;
         int buttonStyle = R.style.Button_UserCreated;
-        this.viewType = ViewType.Button;
+        this.viewType = "Button";
 
 
         this.thisView = new Button(new ContextThemeWrapper(context, buttonStyle), null, buttonStyle);
@@ -87,8 +87,8 @@ public class UserCreatedButton extends UserCreatedView {
     public UserCreatedButton(Context context, int nextViewIndex, int numOfButtons) {
         this.context = context;
         int buttonStyle = R.style.Button_UserCreated;
-        this.layout = R.layout.popup_properties_button;
-        this.viewType = ViewType.Button;
+        this.layout = R.layout.popup_properties_button_try;
+        this.viewType = "Button";
         this.thisView = new Button(new ContextThemeWrapper(context, buttonStyle), null, buttonStyle);
         thisView.setText(R.string.new_button_text);
 
@@ -255,7 +255,7 @@ public class UserCreatedButton extends UserCreatedView {
 //        } else {
             EditText onClickFuncName = popupView.findViewById(R.id.viewOnClickValue);
             onClickFuncName.setOnFocusChangeListener(finishedOnClick);
-            onClickFuncName.setHint("שם הפונקציה");
+            onClickFuncName.setHint(R.string.function_name);
             onClickFuncName.setText(properties.get("android:onClick"));
 //        }
 

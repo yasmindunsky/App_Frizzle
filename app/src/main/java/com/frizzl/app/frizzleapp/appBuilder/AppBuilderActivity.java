@@ -17,12 +17,7 @@ import android.support.v4.content.FileProvider;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewTreeObserver;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.GridLayout;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
@@ -30,17 +25,16 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.crashlytics.android.Crashlytics;
 import com.frizzl.app.frizzleapp.AppTasksSwipeAdapter;
 import com.frizzl.app.frizzleapp.CustomViewPager;
 import com.frizzl.app.frizzleapp.MapActivity;
 import com.frizzl.app.frizzleapp.R;
-import com.frizzl.app.frizzleapp.SecondCourseActivity;
 import com.frizzl.app.frizzleapp.UserProfile;
-import com.frizzl.app.frizzleapp.lesson.App;
+import com.frizzl.app.frizzleapp.lesson.AppTasks;
 import com.frizzl.app.frizzleapp.lesson.AppContentParser;
 import com.frizzl.app.frizzleapp.lesson.LessonActivity;
 import com.google.firebase.analytics.FirebaseAnalytics;
+import com.tooltip.OnDismissListener;
 import com.tooltip.Tooltip;
 
 import net.cachapa.expandablelayout.ExpandableLayout;
@@ -49,7 +43,6 @@ import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Locale;
 import java.util.Map;
 
 public class AppBuilderActivity extends AppCompatActivity {
@@ -58,6 +51,7 @@ public class AppBuilderActivity extends AppCompatActivity {
 
     private DesignScreenFragment designFragment;
     private CodingScreenFragment codingFragment;
+    private PopupWindow startAppPopupWindow;
     private ProgressBar progressBar;
     private RelativeLayout relativeLayout;
     private ExpandableLayout errorExpandableLayout;
@@ -66,8 +60,10 @@ public class AppBuilderActivity extends AppCompatActivity {
 //    private ImageButton nextButton;
     private android.support.v7.widget.Toolbar toolbar;
     private ImageButton clickToExpandError;
-    private ImageButton clickToExpandTask;
+//    private ImageButton clickToExpandTask;
     private TextView taskTextView;
+    private AppTasks currentApp;
+    private Tutorial tutorial;
 
     private FirebaseAnalytics mFirebaseAnalytics;
 
@@ -78,9 +74,9 @@ public class AppBuilderActivity extends AppCompatActivity {
     File javaFile;
     File xmlFile;
     private boolean activityCreated = false;
-    private App currentApp;
     private CustomViewPager viewPager;
     private AppTasksSwipeAdapter swipeAdapter;
+    private int currentAppID;
 
     //    View globalView;
 
@@ -93,15 +89,14 @@ public class AppBuilderActivity extends AppCompatActivity {
         RelativeLayout mainLayout = (RelativeLayout) this.getLayoutInflater().inflate(R.layout.activity_app_builder, null);
         setContentView(mainLayout);
 
-        appBuilderPresenter = new AppBuilderPresenter(this, getApplicationContext().getResources().getString(R.string.code_start),
-                getApplicationContext().getResources().getString(R.string.code_end));
         designFragment = new DesignScreenFragment();
         codingFragment = new CodingScreenFragment();
+        startAppPopupWindow = new StartAppPopupWindow(this);
 
         errorExpandableLayout = findViewById(R.id.errorExpandableLayout);
         taskExpandableLayout = findViewById(R.id.taskExpandableLayout);
         clickToExpandError = findViewById(R.id.clickToExpandError);
-        clickToExpandTask = findViewById(R.id.clickToExpandTask);
+//        clickToExpandTask = findViewById(R.id.clickToExpandTask);
         relativeLayout = findViewById(R.id.constraintLayout);
 //        taskTextView = findViewById(R.id.task);
         progressBar = findViewById(R.id.progressBar);
@@ -152,25 +147,26 @@ public class AppBuilderActivity extends AppCompatActivity {
             }
         });
 
-        clickToExpandTask.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openStartAppPopup();
-                if (taskExpandableLayout.isExpanded()) {
-                    taskExpandableLayout.collapse();
-                } else {
-                    taskExpandableLayout.expand();
-                }
-            }
-        });
+//        clickToExpandTask.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                openStartAppPopup();
+//                if (taskExpandableLayout.isExpanded()) {
+//                    taskExpandableLayout.collapse();
+//                } else {
+//                    taskExpandableLayout.expand();
+//                }
+//            }
+//        });
 
         // Set Task text.
         // parse xml file to insert content to the currentLesson
         AppContentParser appContentParser = null;
+        currentAppID = 1;
         try {
             appContentParser = new AppContentParser();
-            currentApp = appContentParser.parseAppXml(this, 1);
-            UserProfile.user.setCurrentApp(currentApp);
+            currentApp = appContentParser.parseAppXml(this, currentAppID);
+            UserProfile.user.setCurrentAppTasks(currentApp);
         } catch (XmlPullParserException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -237,19 +233,18 @@ public class AppBuilderActivity extends AppCompatActivity {
         tabLayout.addTab(codingTab);
         graphicEditTab.select();
 
+        appBuilderPresenter = new AppBuilderPresenter(this, getApplicationContext().getResources().getString(R.string.code_start),
+                getApplicationContext().getResources().getString(R.string.code_end), currentAppID);
+
         activityCreated = true;
     }
 
-    private void presentTooltip(View view, String text) {
-        Tooltip tooltip = new Tooltip.Builder(view)
-                .setText(text)
-                .setBackgroundColor(Color.WHITE)
-                .setTextColor(Color.GRAY)
-                .setCornerRadius((float) 15)
-                .setPadding((float)15)
-                .setTypeface(ResourcesCompat.getFont(getApplicationContext(), R.font.calibri_regular))
-                .setDismissOnClick(true)
-                .show();
+    @Override
+    protected void onResume() {
+        super.onResume();
+        appBuilderPresenter.onResume();
+        tutorial = new Tutorial(getApplicationContext(),AppBuilderActivity.this, startAppPopupWindow, designFragment);
+
     }
 
     public void onPlay(final View view) {
@@ -267,17 +262,22 @@ public class AppBuilderActivity extends AppCompatActivity {
                 undimAppBuilderActivity();
             }
         });
-        popupWindow.showAtLocation(toolbar, Gravity.CENTER, 0, 0);
+        // In order to show popUp after activity has been created
+        toolbar.post(new Runnable() {
+            @Override
+            public void run() {
+                popupWindow.showAtLocation(toolbar, Gravity.CENTER, 0, 0);
+            }
+        });
     }
 
-    private void openTaskSuccessPopup() {
+    public void openTaskSuccessPopup() {
         PopupWindow popupWindow = new TaskSuccessPopupWindow(getApplicationContext());
         presentPopup(popupWindow);
     }
 
-    private void openStartAppPopup() {
-        PopupWindow popupWindow = new StartAppPopupWindow(getApplicationContext());
-        presentPopup(popupWindow);
+    public void openStartAppPopup() {
+        presentPopup(startAppPopupWindow);
     }
 
     public void undimAppBuilderActivity() {
@@ -477,5 +477,19 @@ public class AppBuilderActivity extends AppCompatActivity {
         intent.setData(contentUri);
         intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
         startActivity(intent);
+    }
+
+    public void onStartButtonFromStartAppPopup(String appName, String iconDrawable) {
+        appBuilderPresenter.setAppNameAndIcon(appName, iconDrawable);
+        presentNextTutorialMessage();
+    }
+
+    public void presentNextTutorialMessage() {
+        tutorial.presentNextTutorialMessage();
+    }
+
+    public void updateAppNameAndIcon(String appName, String iconDrawable) {
+        designFragment.setAppName(appName);
+        designFragment.setAppIcon(iconDrawable);
     }
 }

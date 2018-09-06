@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.res.XmlResourceParser;
 
 import com.frizzl.app.frizzleapp.R;
-import com.frizzl.app.frizzleapp.UserProfile;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -20,10 +19,10 @@ public class AppContentParser {
 
     private XmlResourceParser xmlResourceParser;
 
-    public App parseAppXml(Context context, int currentAppID) throws XmlPullParserException, IOException {
+    public AppTasks parseAppXml(Context context, int currentAppID) throws XmlPullParserException, IOException {
         String lessonXmlName = "app_" + Integer.toString(currentAppID);
         xmlResourceParser = context.getResources().getXml(getResId(lessonXmlName, R.xml.class));
-        App currentApp = new App(currentAppID);
+        AppTasks currentApp = new AppTasks(currentAppID);
         ArrayList<Task> tasks = new ArrayList<>();
         try {
             int eventType = xmlResourceParser.getEventType();

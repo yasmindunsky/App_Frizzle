@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.PopupWindow;
 
+import com.frizzl.app.frizzleapp.AnnotationUserCreatedViewType;
 import com.frizzl.app.frizzleapp.R;
 
 import org.xmlpull.v1.XmlSerializer;
@@ -17,9 +18,8 @@ import java.util.Map;
  */
 
 public abstract class UserCreatedView {
-    enum ViewType {TextView, Button}
 
-    ViewType viewType;
+    String viewType;
     Map<String, String> properties;
     View thisView;
     int layout;
@@ -32,12 +32,12 @@ public abstract class UserCreatedView {
 
     public int getIndex() { return index; }
 
-    public ViewType getViewType() { return viewType; }
+    public String getViewType() { return viewType; }
 
     public Map<String, String> getProperties() { return properties; }
 
     public String createXmlString(XmlSerializer xmlSerializer) {
-        String name = viewType.toString();
+        String name = viewType;
         updateLatestPosition();
         properties.put("android:textColor", properties.get("android:textColor"));
         try {

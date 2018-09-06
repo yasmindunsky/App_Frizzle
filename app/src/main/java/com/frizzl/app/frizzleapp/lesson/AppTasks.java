@@ -8,16 +8,12 @@ import java.util.ArrayList;
  * Created by yasmin.dunsky on 19-Nov-17.
  */
 
-public class App {
+public class AppTasks {
 
     private int appID;
     private ArrayList<Task> tasks;
-    private String xml;
-    private String java;
-    private String appName;
-    private String icon;
 
-    public App(int appID) {
+    public AppTasks(int appID) {
         this.appID = appID;
     }
 

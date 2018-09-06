@@ -64,13 +64,12 @@
         <item name="android:paddingEnd">20sp</item>
     </style>
 
-    <style name="Button.Start" parent="@android:style/Widget.Button">
+    <style name="Button.LightBlue" parent="@android:style/Widget.Button">
         <item name="android:background">@drawable/button_background_light_blue</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">40dp</item>
         <item name="android:paddingStart">35sp</item>
         <item name="android:paddingEnd">35sp</item>p
-        <item name="android:text">@string/start</item>
     </style>
 
     <style name="Button.Thanks" parent="@android:style/Widget.Button">
@@ -171,6 +170,9 @@
         <item name="android:breakStrategy">simple</item>
     </style>
 
+
+
+
     <style name="Text.Info" parent="@style/Text.Task">
         <item name="android:textSize">20sp</item>
         <item name="android:textColor">@color/TextGrey</item>
@@ -210,6 +212,10 @@
         <item name="android:textColor">@color/white</item>
     </style>
 
+    <style name="Text.Title.App" parent="@style/Text.Title.Light">
+        <item name="android:textSize">20sp</item>
+    </style>
+
     <style name="Text.Title.Dark" parent="@style/Text.Title">
         <item name="android:textColor">@color/TextGrey</item>
         <item name="android:textSize">23sp</item>
@@ -225,12 +231,11 @@
         <item name="android:textSize">22sp</item>
     </style>
 
-    <style name="Text.Title.Welcome" parent="Text.Title">
+    <style name="Text.Title.Popup" parent="Text.Title">
         <item name="android:layout_height">@dimen/app_bar_height</item>
         <item name="android:fontFamily">@font/hero_regular</item>
         <item name="android:background">@drawable/table_text_edit_background</item>
         <item name="android:padding">10dp</item>
-        <item name="android:text">@string/welcome</item>
         <item name="android:textAlignment">center</item>
         <item name="android:textAllCaps">true</item>
     </style>
@@ -297,5 +302,11 @@
         <item name="android:calendarViewShown">false</item>
     </style>
 
+    <style name="AppBuilderTabTextAppearance" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/TextLightGrey</item>
+        <item name="android:textColorHighlight">@color/frizzle_light_blue</item>
+        <item name="android:fontFamily">@font/calibri_regular</item>
+    </style>
 
 </resources>

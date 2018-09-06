@@ -3,11 +3,9 @@ package com.frizzl.app.frizzleapp.appBuilder;
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.GridLayout;
 
-import com.frizzl.app.frizzleapp.R;
+import com.frizzl.app.frizzleapp.AnnotationUserCreatedViewType;
 import com.frizzl.app.frizzleapp.Support;
-import com.frizzl.app.frizzleapp.UserProfile;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -22,15 +20,18 @@ import java.util.Map;
  */
 
 public class UserCreatedViewsModel {
+
     private static Map<Integer, UserCreatedView> views;
     private static int numOfButtons;
     private static int numOfTextViews;
+    private static int numOfImageViews;
     private static int nextViewIndex;
 
     public static Map<Integer, UserCreatedView> initializeViews(Context context) {
         views = new HashMap<>();
         numOfButtons = 0;
         numOfTextViews = 0;
+        numOfImageViews = 0;
         nextViewIndex = 0;
 
         // Add hello world view
@@ -48,6 +49,11 @@ public class UserCreatedViewsModel {
         numOfTextViews++;
     }
 
+    private static void incrementImageViewsCount() {
+        nextViewIndex++;
+        numOfImageViews++;
+    }
+
     public static void addNewUserCreatedTextView(Context context){
         UserCreatedTextView userCreatedTextView = new UserCreatedTextView(context, nextViewIndex, numOfTextViews);
         views.put(nextViewIndex, userCreatedTextView);
@@ -60,7 +66,13 @@ public class UserCreatedViewsModel {
         incrementButtonsCount();
     }
 
-    public static void deleteUserCreatedVIew(int viewToDeleteIndex){
+    public static void addNewUserCreatedImageView(Context context){
+        UserCreatedImageView userCreatedImageView = new UserCreatedImageView(context, nextViewIndex, numOfImageViews);
+        views.put(nextViewIndex, userCreatedImageView);
+        incrementImageViewsCount();
+    }
+
+    public static void deleteUserCreatedView(int viewToDeleteIndex){
         UserCreatedView viewToDelete = views.get(viewToDeleteIndex);
 
         if (viewToDelete.getClass().equals(UserCreatedTextView.class)) {
@@ -68,6 +80,9 @@ public class UserCreatedViewsModel {
         }
         else if (viewToDelete.getClass().equals(UserCreatedButton.class)) {
             numOfButtons--;
+        }
+        else if (viewToDelete.getClass().equals(UserCreatedImageView.class)) {
+            numOfImageViews--;
         }
 
         View thisView = viewToDelete.getThisView();
@@ -94,7 +109,7 @@ public class UserCreatedViewsModel {
             JSONArray viewsJson = new JSONArray(viewsJsonString);
             for(int i = 0 ; i < viewsJson.length(); i++){
                 JSONObject viewJson = viewsJson.getJSONObject(i);
-                UserCreatedView.ViewType viewType = getViewType(viewJson.getString("viewType"));
+                String viewType = viewJson.getString("viewType");
                 int index = Integer.parseInt(viewJson.getString("id"));
                 Map<String,String> properties = new HashMap<>();
                 for (Iterator<String> it = viewJson.keys(); it.hasNext(); ) {
@@ -103,13 +118,17 @@ public class UserCreatedViewsModel {
                 }
                 UserCreatedView userCreatedView = null;
                 switch (viewType) {
-                    case TextView:
+                    case AnnotationUserCreatedViewType.TEXT_VIEW:
                         userCreatedView = new UserCreatedTextView(context, properties, i);
                         numOfTextViews++;
                         break;
-                    case Button:
+                    case AnnotationUserCreatedViewType.BUTTON:
                         userCreatedView = new UserCreatedButton(context, properties, i);
                         numOfButtons++;
+                        break;
+                    case AnnotationUserCreatedViewType.IMAGE_VIEW:
+                        userCreatedView = new UserCreatedImageView(context, properties, i);
+                        numOfImageViews++;
                         break;
                 }
 
@@ -159,16 +178,6 @@ public class UserCreatedViewsModel {
         }
 
         return finalObject;
-    }
-
-    public static UserCreatedView.ViewType getViewType(String viewType) {
-        switch (viewType) {
-            case "Button":
-                return UserCreatedView.ViewType.Button;
-            case "TextView":
-                return UserCreatedView.ViewType.TextView;
-        }
-        return null;
     }
 
     public static Map<Integer, UserCreatedView> getViews() {
