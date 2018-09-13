@@ -12,7 +12,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.frizzl.app.frizzleapp.CustomViewPager;
-import com.frizzl.app.frizzleapp.MapActivity;
+import com.frizzl.app.frizzleapp.map.MapActivity;
 import com.frizzl.app.frizzleapp.R;
 import com.frizzl.app.frizzleapp.LessonSwipeAdapter;
 import com.frizzl.app.frizzleapp.UserProfile;

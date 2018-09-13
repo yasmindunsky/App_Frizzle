@@ -4,7 +4,8 @@ import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Color;
+import android.graphics.drawable.Animatable;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -14,7 +15,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.content.FileProvider;
-import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.View;
@@ -27,7 +27,7 @@ import android.widget.TextView;
 
 import com.frizzl.app.frizzleapp.AppTasksSwipeAdapter;
 import com.frizzl.app.frizzleapp.CustomViewPager;
-import com.frizzl.app.frizzleapp.MapActivity;
+import com.frizzl.app.frizzleapp.map.MapActivity;
 import com.frizzl.app.frizzleapp.R;
 import com.frizzl.app.frizzleapp.UserProfile;
 import com.frizzl.app.frizzleapp.lesson.AppTasks;
@@ -35,7 +35,6 @@ import com.frizzl.app.frizzleapp.lesson.AppContentParser;
 import com.frizzl.app.frizzleapp.lesson.LessonActivity;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.tooltip.OnDismissListener;
-import com.tooltip.Tooltip;
 
 import net.cachapa.expandablelayout.ExpandableLayout;
 
@@ -57,7 +56,8 @@ public class AppBuilderActivity extends AppCompatActivity {
     private ExpandableLayout errorExpandableLayout;
     private ExpandableLayout taskExpandableLayout;
     private TabLayout tabLayout;
-//    private ImageButton nextButton;
+    private ImageButton nextButton;
+    private ImageButton prevButton;
     private android.support.v7.widget.Toolbar toolbar;
     private ImageButton clickToExpandError;
 //    private ImageButton clickToExpandTask;
@@ -100,20 +100,16 @@ public class AppBuilderActivity extends AppCompatActivity {
         relativeLayout = findViewById(R.id.constraintLayout);
 //        taskTextView = findViewById(R.id.task);
         progressBar = findViewById(R.id.progressBar);
-//        nextButton = findViewById(R.id.nextTask);
+        nextButton = findViewById(R.id.nextTask);
+        nextButton.setEnabled(false);
+
+        prevButton = findViewById(R.id.prevTask);
         tabLayout = findViewById(R.id.tabLayout);
         toolbar = findViewById(R.id.builderToolbar);
 
         // Disable dim
         relativeLayout.setForeground(getResources().getDrawable(R.drawable.shade));
         relativeLayout.getForeground().setAlpha(0);
-
-//        mainLayout.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-//            @Override
-//            public void onGlobalLayout() {
-//                undimAppBuilderActivity();
-//            }
-//        });
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -126,14 +122,6 @@ public class AppBuilderActivity extends AppCompatActivity {
                 startActivity(mapIntent);
             }
         });
-
-        // Set Done Button
-//        nextButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                openTaskSuccessPopup();
-//            }
-//        });
 
         // Error ExpandableLayout
         clickToExpandError.setOnClickListener(new View.OnClickListener() {
@@ -177,6 +165,22 @@ public class AppBuilderActivity extends AppCompatActivity {
         viewPager = findViewById(R.id.viewPager);
         swipeAdapter = new AppTasksSwipeAdapter(getSupportFragmentManager(), currentApp);
         viewPager.setAdapter(swipeAdapter);
+
+        nextButton.setOnClickListener(new View.OnClickListener() {
+
+
+            @Override
+            public void onClick(View v)
+            {
+                viewPager.setCurrentItem(getItem(1), true);
+            }
+        });
+        prevButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                viewPager.setCurrentItem(getItem(-1),true);
+            }
+        });
         // Rotation for RTL swiping.
 //        if (Support.isRTL()) {
 //            viewPager.setRotationY(180);
@@ -236,14 +240,18 @@ public class AppBuilderActivity extends AppCompatActivity {
         appBuilderPresenter = new AppBuilderPresenter(this, getApplicationContext().getResources().getString(R.string.code_start),
                 getApplicationContext().getResources().getString(R.string.code_end), currentAppID);
 
+        tutorial = new Tutorial(getApplicationContext());
         activityCreated = true;
+    }
+
+    private int getItem(int i) {
+        return viewPager.getCurrentItem() + i;
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         appBuilderPresenter.onResume();
-        tutorial = new Tutorial(getApplicationContext(),AppBuilderActivity.this, startAppPopupWindow, designFragment);
 
     }
 
@@ -369,8 +377,6 @@ public class AppBuilderActivity extends AppCompatActivity {
         }
     }
 
-
-
 //    private void openSharePopUp() {
 //        LayoutInflater inflater = (LayoutInflater)
 //                getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -485,11 +491,27 @@ public class AppBuilderActivity extends AppCompatActivity {
     }
 
     public void presentNextTutorialMessage() {
-        tutorial.presentNextTutorialMessage();
+        OnDismissListener listener = new OnDismissListener() {
+            @Override
+            public void onDismiss() {
+                designFragment.presentTuturialMessage();
+            }
+        };
+        tutorial.presentTooltip(viewPager, "Here you can see\n what your task is.", listener, Gravity.BOTTOM);
     }
 
     public void updateAppNameAndIcon(String appName, String iconDrawable) {
         designFragment.setAppName(appName);
         designFragment.setAppIcon(iconDrawable);
+    }
+
+    public void openNextArrow(){
+        Drawable drawable = getResources().getDrawable(R.drawable.task_arrow_animated);
+        nextButton.setEnabled(true);
+        nextButton.setImageDrawable(drawable);
+        if (drawable instanceof Animatable) {
+            ((Animatable) drawable).start();
+        }
+        tutorial.presentTooltip(nextButton, "Great!\n Move on to your next task.", null, Gravity.BOTTOM);
     }
 }

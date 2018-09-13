@@ -6,6 +6,7 @@ import android.content.Intent;
 import com.frizzl.app.frizzleapp.appBuilder.UserCreatedView;
 import com.frizzl.app.frizzleapp.intro.GetProjectFromServer;
 import com.frizzl.app.frizzleapp.lesson.AppTasks;
+import com.frizzl.app.frizzleapp.map.MapActivity;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -194,5 +195,9 @@ public class UserProfile {
 
     public void setCurrentUserApp(UserApp currentUserApp) {
         this.currentUserApp = currentUserApp;
+    }
+
+    public int getCurrentLevel() {
+        return 3;
     }
 }

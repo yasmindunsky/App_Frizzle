@@ -24,14 +24,10 @@
             tools:replace="android:supportsRtl">
         </activity>
 
-        <activity android:name="com.frizzl.app.frizzleapp.MapActivity"
+        <activity android:name="com.frizzl.app.frizzleapp.map.MapActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:supportsRtl="false"
             tools:replace="android:supportsRtl">
-        </activity>
-
-        <activity android:name="com.frizzl.app.frizzleapp.SecondCourseActivity"
-            android:theme="@style/AppTheme.NoActionBar">
         </activity>
 
         <activity

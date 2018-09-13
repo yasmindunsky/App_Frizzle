@@ -1,6 +1,7 @@
 package com.frizzl.app.frizzleapp;
 
-import org.junit.Before;
+import com.frizzl.app.frizzleapp.map.MapActivity;
+
 import org.junit.Test;
 
 /**

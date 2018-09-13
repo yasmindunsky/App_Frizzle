@@ -14,7 +14,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.frizzl.app.frizzleapp.AsyncResponse;
-import com.frizzl.app.frizzleapp.MapActivity;
+import com.frizzl.app.frizzleapp.map.MapActivity;
 import com.frizzl.app.frizzleapp.R;
 import com.frizzl.app.frizzleapp.UpdatePositionInServer;
 import com.frizzl.app.frizzleapp.UserProfile;

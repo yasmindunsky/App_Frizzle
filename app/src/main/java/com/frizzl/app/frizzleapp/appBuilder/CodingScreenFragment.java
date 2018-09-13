@@ -3,26 +3,15 @@ package com.frizzl.app.frizzleapp.appBuilder;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.Fragment;
-import android.text.Editable;
-import android.text.InputType;
-import android.text.Spannable;
-import android.text.TextWatcher;
-import android.text.style.ForegroundColorSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.EditorInfo;
-import android.view.inputmethod.InputConnection;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
+import android.widget.LinearLayout;
 
 import com.frizzl.app.frizzleapp.CodeKeyboard;
 import com.frizzl.app.frizzleapp.R;
-import com.frizzl.app.frizzleapp.UserProfile;
-
-import java.util.Arrays;
-import java.util.List;
 
 
 /**
@@ -31,7 +20,9 @@ import java.util.List;
 public class CodingScreenFragment extends Fragment {
 
     private CodingScreenPresenter codingScreenPresenter;
-    private EditText codeEditor;
+    private CodeEditor codeEditor;
+    private CodeKeyboard codeKeyboard;
+    private LinearLayout linearLayout;
 
     public CodingScreenFragment() {
         // Required empty public constructor
@@ -44,104 +35,24 @@ public class CodingScreenFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_code, container, false);
 
+        Context context = getContext();
+        CodeKeyboard codeKeyboard = new CodeKeyboard(context);
+        LinearLayout.LayoutParams keyboardLayoutParams = new
+                LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT);
+        codeKeyboard.setLayoutParams(keyboardLayoutParams);
+        codeEditor = new CodeEditor(context, codeKeyboard);
+        LinearLayout.LayoutParams editorLayoutParams = new
+                LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.MATCH_PARENT);
+        codeEditor.setLayoutParams(editorLayoutParams);
+
+        linearLayout = view.findViewById(R.id.codeLinearLayout);
+        linearLayout.addView(codeEditor);
+        linearLayout.addView(codeKeyboard);
+
         codingScreenPresenter = new CodingScreenPresenter(this);
-        codeEditor = view.findViewById(R.id.code);
-
-        // keyboard
-        final CodeKeyboard keyboard = (CodeKeyboard) view.findViewById(R.id.keyboard);
-        codeEditor.setRawInputType(InputType.TYPE_CLASS_TEXT);
-        codeEditor.setTextIsSelectable(true);
-        InputConnection ic = codeEditor.onCreateInputConnection(new EditorInfo());
-        keyboard.setInputConnection(ic);
-        InputMethodManager imm = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-        keyboard.setInputMethodManagar(imm);
-
-
         codingScreenPresenter.getAndPresentCode();
-
-        codeEditor.addTextChangedListener(new TextWatcher() {
-            final List<String> savedWords = Arrays.asList("Button", "TextView");
-            final List<String> importantCommands = Arrays.asList("findViewById", "setText");
-
-            // for quotation mark search
-            int firstQuotationMark = -1;
-            int secondQuotationMark = -1;
-            int startPosition = 0;
-            int currentPosition = 0;
-
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                currentPosition = count;
-            }
-
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                UserProfile.user.setJava(s.toString());
-
-                // mark saved words such as 'public', 'return', 'Button'
-                markSavedWords(s);
-
-                // mark commands such as 'setText'
-                markCommands(s);
-
-                // mark any String in quotes
-//                markQuotationMarks(s);
-            }
-
-
-            private void markSavedWords(Editable s) {
-
-                for (String word : savedWords) {
-                    int index = s.toString().indexOf(word);
-
-                    while (index >= 0) {
-                        s.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.frizzle_green)), index, index + word.length(),
-                                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-                        index = s.toString().indexOf(word, index + 1);
-                    }
-                }
-            }
-
-            private void markCommands(Editable s) {
-                for (String word : importantCommands) {
-                    int index = s.toString().indexOf(word);
-
-                    while (index >= 0) {
-                        s.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.frizzle_blue)), index, index + word.length(),
-                                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-                        index = s.toString().indexOf(word, index + 1);
-                    }
-                }
-            }
-
-            private void markQuotationMarks(Editable s) {
-                //quotation marks
-                firstQuotationMark = (s.toString()).indexOf("\"", startPosition);
-                if (firstQuotationMark >= 0) {
-                    secondQuotationMark = (s.toString()).indexOf("\"", firstQuotationMark + 1);
-
-                    s.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.frizzle_orange)), firstQuotationMark, firstQuotationMark + currentPosition + 1,
-                            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-
-                    currentPosition++;
-                }
-
-                if (secondQuotationMark > 0) {
-                    s.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.frizzle_orange)), firstQuotationMark, secondQuotationMark + 1,
-                            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-
-                    startPosition = secondQuotationMark + 1;
-                    secondQuotationMark = -1;
-                    currentPosition = 0;
-                }
-            }
-        });
-
 
         return view;
     }

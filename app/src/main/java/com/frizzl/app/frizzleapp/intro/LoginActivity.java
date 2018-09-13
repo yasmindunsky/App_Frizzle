@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.frizzl.app.frizzleapp.MapActivity;
+import com.frizzl.app.frizzleapp.map.MapActivity;
 import com.frizzl.app.frizzleapp.R;
 import com.frizzl.app.frizzleapp.preferences.SaveSharedPreference;
 import com.google.firebase.analytics.FirebaseAnalytics;

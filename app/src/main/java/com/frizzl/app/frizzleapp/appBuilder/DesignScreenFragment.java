@@ -43,6 +43,8 @@ public class DesignScreenFragment extends Fragment {
     private DesignScreenPresenter designScreenPresenter;
     private TextView appNameTitle;
     private ImageView appIcon;
+    private Tutorial tutorial;
+    private AllAngleExpandableButton plusButton;
 
     public DesignScreenFragment() {
         // Required empty public constructor
@@ -58,6 +60,7 @@ public class DesignScreenFragment extends Fragment {
         gridLayout = view.findViewById(R.id.gridLayout);
         appNameTitle = view.findViewById(R.id.app_name_title);
         appIcon = view.findViewById(R.id.app_icon);
+        plusButton = view.findViewById(R.id.button_expandable);
 
         gridLayout.setOnDragListener(new DragListener());
         setAppName(designScreenPresenter.getAppName());
@@ -67,12 +70,12 @@ public class DesignScreenFragment extends Fragment {
         presentViewsOnGridLayout();
 
         initAddMenu(view);
+        tutorial = new Tutorial(getContext());
 
         return view;
     }
 
     private void initAddMenu(View view) {
-        AllAngleExpandableButton button = view.findViewById(R.id.button_expandable);
         final List<ButtonData> buttonDatas = new ArrayList<>();
         int[] drawable = {R.drawable.ic_add_plus, R.drawable.ic_add_text, R.drawable.ic_add_button, R.drawable.ic_add_image};
 
@@ -89,8 +92,8 @@ public class DesignScreenFragment extends Fragment {
             buttonData.setBackgroundColor(getResources().getColor(R.color.frizzle_blue));
             buttonDatas.add(buttonData);
         }
-        button.setButtonDatas(buttonDatas);
-        button.setButtonEventListener(new ButtonEventListener() {
+        plusButton.setButtonDatas(buttonDatas);
+        plusButton.setButtonEventListener(new ButtonEventListener() {
             @Override
             public void onButtonClicked(int index) {
                 //do whatever you want,the param index is counted from startAngle to endAngle,
@@ -266,7 +269,7 @@ public class DesignScreenFragment extends Fragment {
     }
 
     public void setAppIcon(String iconDrawable) {
-        if (iconDrawable != "") {
+        if (iconDrawable != "" && iconDrawable != null) {
             LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT);
             layoutParams.weight = 1;
             int iconIdentifier = getResources().getIdentifier(iconDrawable, "drawable", getActivity().getPackageName());
@@ -290,6 +293,10 @@ public class DesignScreenFragment extends Fragment {
                 .setOnDismissListener(listener)
                 .setCancelable(true)
                 .show();
+    }
+
+    public void presentTuturialMessage() {
+        tutorial.presentTooltip(plusButton, "Here you can\n add elements.", null, Gravity.TOP);
     }
 
     class LongPressListener implements View.OnLongClickListener {

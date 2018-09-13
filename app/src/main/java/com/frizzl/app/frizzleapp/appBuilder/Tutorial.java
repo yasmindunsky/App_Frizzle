@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
 import android.support.v4.content.res.ResourcesCompat;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.PopupWindow;
 
@@ -19,47 +20,49 @@ import java.util.List;
  */
 
 public class Tutorial {
+    // TODO: make this a normal object
     private Context context;
     private int nextTutorialMessage;
     private String[] messages;
     private List<View> views;
     private OnDismissListener[] listeners;
+    private int[] gravities;
 
-    public Tutorial(Context context, AppBuilderActivity appBuilderActivity, PopupWindow startAppPopupWindow, DesignScreenFragment designScreenFragment){
-        this.nextTutorialMessage = 0;
+    public Tutorial(Context context){
+//        this.nextTutorialMessage = 0;
         this.context = context;
 
-        messages = new String[]{"Here you can see\n what your task is.", "Here you can\n add elements.", "Great!\n Move on to your next task.", "Good job!\n Here you can install your app."};
+//        messages = new String[]{"Here you can see\n what your task is.", "Here you can\n add elements.", "Great!\n Move on to your next task.", "Good job!\n Here you can install your app."};
+//        gravities = new int[]{Gravity.BOTTOM, Gravity.TOP, Gravity.BOTTOM, Gravity.BOTTOM};
 
-        views = new ArrayList<>();
-//        views.add(startAppPopupWindow.getContentView().findViewById(R.id.app_name));
-//        views.add(startAppPopupWindow.getContentView().findViewById(R.id.radioButton1));
-        views.add(appBuilderActivity.findViewById(R.id.viewPager));
-        views.add(designScreenFragment.getView().findViewById(R.id.button_expandable));
-        views.add(appBuilderActivity.findViewById(R.id.viewPager)); //TODO change to next button
-        views.add(appBuilderActivity.findViewById(R.id.play));
+//        views = new ArrayList<>();
+//        views.add(appBuilderActivity.findViewById(R.id.viewPager));
+//        views.add(designScreenFragment.getView().findViewById(R.id.button_expandable));
+//        views.add(appBuilderActivity.findViewById(R.id.viewPager)); //TODO change to next button
+//        views.add(appBuilderActivity.findViewById(R.id.play));
 
-        OnDismissListener presentNextOnDismissListener = new OnDismissListener() {
-            @Override
-            public void onDismiss() {
-                presentNextTutorialMessage();
-            }
-        };
-        listeners = new OnDismissListener[]{presentNextOnDismissListener, null, null, null};
+//        OnDismissListener presentNextOnDismissListener = new OnDismissListener() {
+//            @Override
+//            public void onDismiss() {
+//                presentNextTutorialMessage();
+//            }
+//        };
+//        listeners = new OnDismissListener[]{presentNextOnDismissListener, null, null, null};
     }
 
-    public void presentNextTutorialMessage(){
-        presentTooltip(views.get(nextTutorialMessage), messages[nextTutorialMessage], listeners[nextTutorialMessage]);
-        nextTutorialMessage++;
-    }
+//    public void presentNextTutorialMessage(){
+//        presentTooltip(views.get(nextTutorialMessage), messages[nextTutorialMessage], listeners[nextTutorialMessage], gravities[nextTutorialMessage]);
+//        nextTutorialMessage++;
+//    }
 
-    public void presentTooltip(View view, String text, OnDismissListener listener) {
+    public void presentTooltip(View view, String text, OnDismissListener listener, int gravity) {
         Tooltip tooltip = new Tooltip.Builder(view)
                 .setText(text)
                 .setTextColor(context.getResources().getColor(R.color.TextGrey))
                 .setTextSize((float)16)
                 .setTypeface(ResourcesCompat.getFont(context, R.font.calibri_regular))
                 .setMargin((float)4)
+                .setGravity(gravity)
                 .setBackgroundColor(Color.WHITE)
                 .setCornerRadius((float) 15)
                 .setPadding((float)35)
