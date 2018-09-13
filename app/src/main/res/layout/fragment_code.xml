@@ -1,6 +1,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/codeFrameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layoutDirection="ltr"
@@ -13,27 +14,26 @@
 
 
         <LinearLayout
+            android:id="@+id/codeLinearLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_margin="24dp"
             android:orientation="vertical">
 
-            <EditText
-                android:id="@+id/code"
-                style="@style/CodeText"
-                android:layout_height="match_parent"
-                android:background="@null"
-                android:ems="10"
-                android:inputType="textMultiLine"
-                android:text="@string/initial_code"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                tools:layout_editor_absoluteY="2dp" />
-            <com.frizzl.app.frizzleapp.CodeKeyboard
-                android:id="@+id/keyboard"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_alignParentBottom="true"/>
+            <!--<com.frizzl.app.frizzleapp.appBuilder.CodeEditor-->
+                <!--android:id="@+id/code"-->
+                <!--style="@style/CodeText"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:background="@null"-->
+                <!--android:ems="10"-->
+                <!--android:inputType="textMultiLine"-->
+                <!--android:text="@string/initial_code" />-->
+
+            <!--<com.frizzl.app.frizzleapp.CodeKeyboard-->
+            <!--android:id="@+id/keyboard"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:orientation="vertical" />-->
         </LinearLayout>
     </ScrollView>
 </FrameLayout>

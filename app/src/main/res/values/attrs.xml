@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="AppMapButton">
+        <attr name="enabledColor" format="color"/>
+        <attr name="disabledColor" format="color"/>
+        <attr name="completedDrawable" format="integer"/>
+    </declare-styleable>
+
+    <declare-styleable name="PracticeMapButton">
+        <attr name="enabledColor"/>
+        <attr name="disabledColor"/>
+    </declare-styleable>
+</resources>

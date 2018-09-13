@@ -14,6 +14,9 @@
     <color name="backgroundDarkGrey">#525163</color>
     <color name="lightDarkGrey">#605f71</color>
 
+    <color name="codeGrey">#c5c4c3</color>
+    <color name="codePink">#f06ba8</color>
+    <color name="codeOrange">#ee7a22</color>
 
 
     <color name="white">#ffffff</color>
@@ -24,13 +27,24 @@
 
     <!--Frizzle Colors-->
     <color name="frizzle_light_blue">#0090b1</color>
+    <color name="frizzl_medium_light_blue">#26a0bb</color>
+    <color name="frizzl_light_light_blue">#4db1c7</color>
     <color name="frizzle_orange">#f07a00</color>
     <color name="frizzle_pink">#b93660</color>
-    <color name="frizzle_yellow">#f8b119</color>
     <color name="frizzle_green">#39a085</color>
     <color name="frizzle_purple">#772c87</color>
+    <color name="frizzle_yellow">#f8b119</color>
     <color name="frizzle_blue">#3550a2</color>
     <color name="frizzle_red">#d34b3b</color>
+
+    <color name="frizzle_faded_orange">#fadcce</color>
+    <color name="frizzle_faded_pink">#ebd0d7</color>
+    <color name="frizzle_faded_purple">#eae3ec</color>
+    <color name="frizzle_faded_green">#d1e5de</color>
+    <color name="frizzle_faded_yellow">#fce5c5</color>
+    <color name="frizzle_faded_light_blue">#cae1e9</color>
+
+
     <color name="frizzle_yellow_orange">#f59713</color>
     <color name="frizzle_orange_pink">#d55830</color>
     <color name="frizzle_pink_yellow">#d9743c</color>
@@ -40,9 +54,11 @@
     <color name="frizzle_blue_green">#377793</color>
     <color name="frizzle_blue_red">#854d70</color>
     <color name="frizzle_red_purple">#a53b63</color>
+
     <color name="frizzl_light_orange">#f9b14f</color>
     <color name="frizzl_light_pink">#cc688a</color>
     <color name="frizzl_light_green">#6cb7a3</color>
+
 
 
 </resources>

@@ -23,13 +23,10 @@
 
     </string>
     <string name="code_end">}</string>
-    <string name="initial_code"> \@Override \n
- protected void onCreate(Bundle savedInstanceState) {\n
- super.onCreate(savedInstanceState);\n
- setContentView(R.layout.activity_main);\n\n
-        Button myButton = findViewById(R.id.button_id0);\n
- myButton.setText(\"Hi There\");\n\n\n
-        		}\n\n</string>
+    <string name="initial_code"> public void functionName(View view){\n
+        \t speakOut("lalala");\n
+        }
+    </string>
 
     <string name="new_button_text">NEW BUTTON</string>
     <string name="new_text_view_text">NEW TEXT</string>

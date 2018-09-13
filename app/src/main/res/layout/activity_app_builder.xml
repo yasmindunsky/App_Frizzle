@@ -89,14 +89,50 @@
         <!--android:textSize="30sp"-->
         <!--app:srcCompat="@drawable/ic_expand_grab_icon" />-->
 
+    <LinearLayout
+        android:id="@+id/taskProgress"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_below="@+id/taskExpandableLayout"
+        android:background="@color/frizzl_light_light_blue"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/prevTask"
+            style="@style/Widget.AppCompat.ImageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="6dp"
+            android:layout_marginStart="16dp"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:baselineAlignBottom="false"
+            android:scaleType="fitStart"
+            android:src="@drawable/ic_task_arrow_icon_back" />
+
+        <ImageButton
+            android:id="@+id/nextTask"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="6dp"
+            android:layout_marginEnd="16dp"
+            android:layout_weight="1"
+            android:adjustViewBounds="false"
+            android:background="@android:color/transparent"
+            android:scaleType="fitEnd"
+            app:srcCompat="@drawable/ic_task_arrow_icon_forward" />
+    </LinearLayout>
+
     <android.support.design.widget.TabLayout
         android:id="@+id/tabLayout"
         android:layout_width="250dp"
         android:layout_height="@dimen/app_bar_height"
         android:layout_alignParentStart="true"
-        android:layout_below="@id/taskExpandableLayout"
+        android:layout_below="@+id/taskProgress"
         app:tabIndicatorColor="@color/frizzle_light_blue"
         app:tabTextAppearance="@style/AppBuilderTabTextAppearance" />
+
+
 
     <LinearLayout
         android:id="@+id/errorDisplay"
