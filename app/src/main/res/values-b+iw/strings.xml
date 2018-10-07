@@ -1,0 +1,247 @@
+<resources>
+    <string name="app_name">Frizzl</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_course">CourseActivity</string>
+    <string name="lesson_title">LESSON</string>
+    <string name="app_builder_title">BUILD</string>
+    <string name="slide_text">Everything you see on an app is the user interface - UI</string>
+    <string name="check">CHECK</string>
+
+    <string name="xmlFileName">activity_main.xml</string>
+    <string name="javaFileName">MainActivity.java</string>
+    <string name="code_start">
+        package com.frizzl.frizzlproject3;
+
+        import android.content.ActivityNotFoundException;
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
+import android.support.v4.content.res.ResourcesCompat;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.Gravity;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.Toast;
+
+import com.tooltip.Tooltip;
+
+import java.util.Locale;
+
+public class MainActivity extends AppCompatActivity implements   TextToSpeech.OnInitListener{
+    LinearLayout backToFrizzlLayout;
+    TextToSpeech tts;
+    @Override protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        final Context context = getApplicationContext();
+
+        backToFrizzlLayout = findViewById(R.id.backToFrizzlButton);
+        presentTooltip(context);
+        backToFrizzlLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_MAIN, null);
+                intent.addCategory(Intent.CATEGORY_LAUNCHER);
+                final ComponentName cn = new ComponentName(\"com.frizzl.app.frizzleapp\",
+                        \"com.frizzl.app.frizzleapp.appBuilder.AppBuilderActivity\");
+                intent.setComponent(cn);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                try
+                {
+                    startActivity(intent);
+                }catch(ActivityNotFoundException e){
+                    Toast.makeText(context,\"There was an error returning to Frizzl\",Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        tts = new TextToSpeech(this, this, \"com.google.android.tts\");
+        }
+    </string>
+    <string name="code_end">
+
+    private void speakOut(String textToSay) {
+        tts.speak(textToSay, TextToSpeech.QUEUE_ADD, null);
+    }
+
+    private void presentTooltip(Context context) {
+        Tooltip tooltip = new Tooltip.Builder(backToFrizzlLayout)
+                .setText(\"Here you can\\n go back to Frizzl\")
+                .setTextColor(context.getResources().getColor(R.color.darkGrey))
+                .setTextSize(16f)
+                .setTypeface(ResourcesCompat.getFont(context, R.font.calibri_regular))
+                .setMargin(4f)
+                .setGravity(Gravity.TOP)
+                .setBackgroundColor(context.getResources().getColor(R.color.lightGrey))
+                .setCornerRadius(15f)
+                .setPadding(35f)
+                .setDismissOnClick(true)
+                .setCancelable(true)
+                .show();
+    }
+
+    @Override
+    public void onDestroy() {
+        if (tts != null) {
+            tts.stop();
+            tts.shutdown();
+        }
+        super.onDestroy();
+    }
+
+    @Override
+    public void onInit(int status) {
+
+        if (status == TextToSpeech.SUCCESS) {
+
+            int result = tts.setLanguage(Locale.US);
+
+            if (result == TextToSpeech.LANG_MISSING_DATA
+                    || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+                Log.e(\"TTS\", \"This Language is not supported\");
+            }
+
+        } else {
+            Log.e(\"TTS\", \"Initilization Failed!\");
+        }
+
+    }
+}
+    </string>
+    <string name="initial_code">
+    </string>
+
+    <string name="new_button_text">NEW BUTTON</string>
+    <string name="new_text_view_text">NEW TEXT</string>
+    <string name="playground">Playground</string>
+    <string name="task_text">task</string>
+    <string name="code_screen_title">Code</string>
+    <string name="graphic_edit_screen_title">Design</string>
+    <string name="propertiesTableTitle">Edit Element</string>
+    <string name="propertiesTableId">ID</string>
+    <string name="propertiesTableText">Text</string>
+    <string name="propertiesTableFont">Font</string>
+    <string name="propertiesTableBgColor">Color</string>
+    <string name="properties_table_text_align">Alignment</string>
+    <string name="propertiesTableFontColor" >Font Color</string>
+    <string name="propertiesTableOnClick">OnClick</string>
+    <string name="delete">delete</string>
+    <string name="edit_text_hint">Type in your answer..</string>
+    <string name="mentor_introduction">Hey,</string>
+    <string name="onboardingMentorText0">let"'"s start building your app!</string>
+    <string name="onboardingMentorText1">What kind of app\ndo you want to build?</string>
+    <string name="onboardingMentorText2">Great choice!\nAfter eight lessons your\napp will be complete.</string>
+    <string name="onboardingMentorText3">In every lesson you"'"ll learn just what you need in order
+    to advance in your personal project</string>
+    <string name="onboardingMentorText4">Let"'"s go!</string>
+    <string name="dont_have_an_account">I don"'"t have an account</string>
+    <string name="already_have_an_account">already have an account?</string>
+    <string name="register">Register</string>
+    <string name="no_password_register">You forgot to choose a password</string>
+    <string name="no_username_register">You forgot to fill out your username</string>
+    <string name="no_username_login">You forgot to fill out your username</string>
+    <string name="no_password_login">You forgot to fill out your password</string>
+    <string name="whats_your_name">what"'"s your name?</string>
+    <string name="already_registered">Already have an account? Enter your username and password.</string>
+    <string name="go_build">Go to the Build screen.</string>
+    <string name="amazing">wow, amazing!</string>
+    <string name="lets_build">Let"'"s Build</string>
+    <string name="save">save</string>
+    <string name="done">Done</string>
+    <string name="good_work">Good Work!</string>
+    <string name="completed_task">You Completed The Task. You can now continue to the next lesson.</string>
+    <string name="continue_to_next_lesson">Continue</string>
+    <string name="not_ready_yet">Not ready yet</string>
+    <string name="you_did_it">You Did It!</string>
+    <string name="completed_app">You completed your app! You can now share with your friends.</string>
+    <string name="share">share</string>
+    <string name="skip">skip</string>
+    <string name="got_it">got it</string>
+    <string name="beta">Sorry, we\'re still in beta. This feature will be available soon!</string>
+    <string name="username">User</string>
+    <string name="required_username">*User</string>
+    <string name="password">Password</string>
+    <string name="required_password">*Password</string>
+    <string name="connecting">Connecting...</string>
+    <string name="birth_date">Birth Date</string>
+    <string name="you_re_about_to_build_a">You\'re about to build a</string>
+    <string name="fortune_teller_app">Fortune Teller App</string>
+    <string name="create_many_more_apps_n_and_learn_to_code">Create many more apps  and learn to code</string>
+    <string name="unlock">unlock</string>
+    <string name="per_month">per month</string>
+    <string name="what_i_thought">What I thought</string>
+    <string name="rate_your_experience">Rate your experience</string>
+    <string name="thanks_for_participating_n_in_our_beta_version">Thanks for participating  in our Beta version</string>
+    <string name="thanks_for_participating_n_in_our_beta_version_nyour_account_was_not_charged">Thanks for participating  in our Beta version. Your account was not charged.</string>
+    <string name="there_will_be_more_n_courses_available_soon">There will be more  courses available soon</string>
+    <string name="e_mail">E-mail</string>
+    <string name="notify_me">Notify Me</string>
+    <string name="myTriviaApp">My Trivia App</string>
+    <string name="letsPlay">Let\'s Play</string>
+    <string name="inviteYourFriendsToPlay">Invite your friends to download your amazing app and play!</string>
+    <string name="youCompletedYourApp">You Completed Your App</string>
+    <string name="price">$7.90</string>
+    <string name="facebook_app_id">178438059643086</string>
+    <string name="main_notification_channel_name">notification_channel</string>
+    <string name="notification_title">new notification</string>
+    <string name="notification_text">text</string>
+    <string name="notification_body">body</string>
+    <string name="ran_out_of_place">Oops, no more room!</string>
+    <string name="friendship_test_content">Quiz your friends on how well they know you</string>
+    <string name="friendship_test_title">Friendship Test</string>
+    <string name="trivia_master_title">Trivia Master</string>
+    <string name="trivia_master_content">Challenge your friends on your favorite topic</string>
+    <string name="flash_cards_title">Flash Cards</string>
+    <string name="flash_cards_content">Help your friends memorize terms or vocab</string>
+    <string name="log_in">log in</string>
+    <string name="welcome">welcome</string>
+    <string name="app_explanation_text">Let"'"s start with a tutorial and\n build a simple text displaying app.</string>
+    <string name="start">start</string>
+    <string name="wow">wow!</string>
+    <string name="thanks">thanks</string>
+    <string name="your_app_name">App Name</string>
+    <string name="function_name">Function name</string>
+    <string name="choose_image">Choose Image</string>
+    <string name="speakout_keyboard">speakOut(\"…\")</string>
+    <string name="function_keyboard">Add function</string>
+
+    <string-array name="fonts">
+        <item>sans-serif</item>
+        <item>serif</item>
+        <item>monospace</item>
+    </string-array>
+
+    <string-array name="colors">
+        <item>red</item>
+        <item>white</item>
+        <item>blue</item>
+        <item>orange</item>
+        <item>green</item>
+    </string-array>
+
+    <string-array name="frizzleColors">
+        <item>frizzle_orange</item>
+        <item>frizzle_pink</item>
+        <item>frizzle_yellow</item>
+        <item>frizzle_green</item>
+        <item>frizzle_purple</item>
+        <item>frizzle_blue</item>
+        <item>frizzle_red</item>
+    </string-array>
+
+    <string-array name="frizzleBetweenColors">
+        <item>frizzle_yellow_orange</item>
+        <item>frizzle_orange_pink</item>
+        <item>frizzle_pink_yellow</item>
+        <item>frizzle_yellow_green</item>
+        <item>frizzle_green_purple</item>
+        <item>frizzle_purple_blue</item>
+        <item>frizzle_blue_red</item>
+        <item>frizzle_red_purple</item>
+    </string-array>
+
+
+</resources>

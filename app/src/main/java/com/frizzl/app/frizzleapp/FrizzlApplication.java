@@ -16,6 +16,8 @@ import com.squareup.leakcanary.LeakCanary;
 
 import java.util.Locale;
 
+import static io.fabric.sdk.android.Fabric.isDebuggable;
+
 /**
  * Created by Noga on 16/07/2018.
  */
@@ -28,23 +30,25 @@ public class FrizzlApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        if (LeakCanary.isInAnalyzerProcess(this)) {
-            // This process is dedicated to LeakCanary for heap analysis.
-            // You should not init your app in this process.
-            return;
-        }
-        LeakCanary.install(this);
+//        if (LeakCanary.isInAnalyzerProcess(this)) {
+//            // This process is dedicated to LeakCanary for heap analysis.
+//            // You should not init your app in this process.
+//            return;
+//        }
+//        LeakCanary.install(this);
 
         // Normal app init code...
 
-        // Set language key for Crashlyticsu
-        String language = "";
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            language = LocaleList.getDefault().get(0).getLanguage();
-        } else {
-            language = Locale.getDefault().getLanguage();
+        // Set language key for Crashlytics
+        if(!isDebuggable()) {
+            String language = "";
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                language = LocaleList.getDefault().get(0).getLanguage();
+            } else {
+                language = Locale.getDefault().getLanguage();
+            }
+            Crashlytics.setString("language", language);
         }
-        Crashlytics.setString("language", language);
 
 ////        // Set to English and LTR
 //        Resources resources = this.getResources();

@@ -56,8 +56,8 @@ public class OnboardingFragment extends Fragment {
             loginButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent loginIntent = new Intent(view.getContext(), LoginActivity.class);
-                    startActivity(loginIntent);
+//                    Intent loginIntent = new Intent(view.getContext(), LoginActivity.class);
+//                    startActivity(loginIntent);
                 }
             });
 
@@ -76,7 +76,7 @@ public class OnboardingFragment extends Fragment {
                     } else {
                         usersNameInput.setTextColor(getResources().getColor(R.color.TextGrey));
                         String nickname = String.valueOf(usersNameInput.getText());
-                        UserProfile.user.setNickName(nickname);
+//                        UserProfile.user.setNickName(nickname);
                     }
                 }
             });
@@ -127,7 +127,7 @@ public class OnboardingFragment extends Fragment {
         for (int i = 0; i < appLayouts.size(); i++) {
             if (selectedAppNum == i) {
                 appLayouts.get(i).setSelected(true);
-                UserProfile.user.setCurrentAppTypeNum(selectedAppNum);
+//                UserProfile.user.setCurrentAppTypeNum(selectedAppNum);
 
                 View mentorText1 = view.findViewById(R.id.mentorText1);
                 mentorText1.setVisibility(View.INVISIBLE);

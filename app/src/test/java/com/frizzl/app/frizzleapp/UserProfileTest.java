@@ -2,15 +2,13 @@ package com.frizzl.app.frizzleapp;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
 /**
  * Created by Noga on 14/06/2018.
  */
 public class UserProfileTest {
     @Test
     public void restartUserProfile_valid_assertRestarted() throws Exception {
-        UserProfile.user.restartUserProfile();
+        UserProfile.user.init();
         assertEquals(1, UserProfile.user.getTopLessonID());
         assertEquals(1, UserProfile.user.getTopCourseID());
         assertEquals(1, UserProfile.user.getCurrentLessonID());

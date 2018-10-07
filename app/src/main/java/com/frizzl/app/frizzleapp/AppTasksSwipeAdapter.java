@@ -14,13 +14,13 @@ import com.frizzl.app.frizzleapp.lesson.TaskFragment;
 
 public class AppTasksSwipeAdapter extends FragmentStatePagerAdapter {
 
-    private AppTasks currentApp;
+    private AppTasks appTasks;
     private int numOfFragments;
 
-    public AppTasksSwipeAdapter(FragmentManager fm, AppTasks currentApp) {
+    public AppTasksSwipeAdapter(FragmentManager fm, AppTasks appTasks) {
         super(fm);
-        this.currentApp = currentApp;
-        numOfFragments = currentApp.getTasksNum();
+        this.appTasks = appTasks;
+        numOfFragments = appTasks.getTasksNum();
     }
 
     @Override
@@ -30,7 +30,7 @@ public class AppTasksSwipeAdapter extends FragmentStatePagerAdapter {
         Bundle bundle = new Bundle();
         bundle.getInt("position", position);
 
-        bundle.putInt("task", currentApp.getID());
+        bundle.putInt("task", appTasks.getID());
         // set the index as argument of the new fragment
         bundle.putInt("index", position);
 

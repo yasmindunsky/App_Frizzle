@@ -3,6 +3,7 @@ package com.frizzl.app.frizzleapp.lesson;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,6 +35,7 @@ public class TaskFragment extends Fragment {
 
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_task, container, false);
+        view.setPadding(60,50,60,50);
 
         // Rotation for RTL swiping.
 //        if (Support.isRTL()) {
@@ -56,10 +58,6 @@ public class TaskFragment extends Fragment {
     public void onResume() {
         super.onResume();
         mFirebaseAnalytics.setCurrentScreen(getActivity(), this.getClass().getSimpleName(),
-                this.getClass().getSimpleName()+ appId +"_"+index);
-    }
-
-    public void showTextAndIllustration(String text){
-        fragmentText.setText(text);
+                this.getClass().getSimpleName()+ appId + "_" + index);
     }
 }

@@ -3,28 +3,38 @@
 <app>
     <task>
         <text name="text">
-            "Add a Text element."
+            "Add a picture of your parrot by adding an Image Element."
         </text>
     </task>
 
     <task>
         <text name="text">
-            "Set text to "Hello World"."
+            "Add a button and write a question on it."
         </text>
     </task>
 
     <task>
         <text name="text">
-            "this is the third task."
+            "Add a function and name it."
         </text>
     </task>
 
-    <xml>
+    <task>
+        <text name="text">
+            "Write a speakOut command inside the function."
+        </text>
+    </task>
 
-    </xml>
+    <task>
+        <text name="text">
+            "Connect the function to the button."
+        </text>
+    </task>
 
-    <code>
-
-    </code>
+    <task>
+        <text name="text">
+            "Repeat those steps with two more buttons."
+        </text>
+    </task>
 
 </app>

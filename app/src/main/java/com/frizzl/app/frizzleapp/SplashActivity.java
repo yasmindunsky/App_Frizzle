@@ -1,21 +1,14 @@
 package com.frizzl.app.frizzleapp;
 
 import android.app.Activity;
-import android.app.ActivityManager;
+import android.content.Context;
 import android.content.Intent;
-import android.content.res.Configuration;
-import android.content.res.Resources;
-import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.LocaleList;
 
-import com.crashlytics.android.Crashlytics;
 import com.frizzl.app.frizzleapp.intro.OnboardingActivity;
+import com.frizzl.app.frizzleapp.map.MapActivity;
 import com.frizzl.app.frizzleapp.preferences.SaveSharedPreference;
 import com.google.firebase.analytics.FirebaseAnalytics;
-
-import java.util.Locale;
 
 public class SplashActivity extends Activity{
     private FirebaseAnalytics mFirebaseAnalytics;
@@ -26,21 +19,25 @@ public class SplashActivity extends Activity{
         setContentView(R.layout.activity_splash);
 
         // Obtain the FirebaseAnalytics instance.
-        mFirebaseAnalytics = FirebaseAnalytics.getInstance(getApplicationContext());
+        Context applicationContext = getApplicationContext();
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(applicationContext);
         if (BuildConfig.DEBUG) {
-            FirebaseAnalytics.getInstance(getApplicationContext()).setAnalyticsCollectionEnabled(false);
+            FirebaseAnalytics.getInstance(applicationContext).setAnalyticsCollectionEnabled(false);
         }
 
-
-        // Check if already logged in
-        if(SaveSharedPreference.getLoggedStatus(getApplicationContext())) {
-            String username = SaveSharedPreference.getUserName(getApplicationContext());
-            UserProfile.user.setUsername(username);
-            UserProfile.user.updateProfileFromServerAndGoToMap(getApplicationContext());
-        }
-        else {
+        // Check if it is the device's first time here
+        boolean firstTime = SaveSharedPreference.getFirstTime(applicationContext);
+//        boolean firstTime = true;
+        if(firstTime) {
+            SaveSharedPreference.setFirstTime(applicationContext, false);
             Intent onboardingIntent = new Intent(getBaseContext(), OnboardingActivity.class);
             startActivity(onboardingIntent);
+        }
+        else {
+            // get userProfile from internal storage
+            UserProfile.user.loadSerializedObject(applicationContext);
+            Intent mapIntent = new Intent(getBaseContext(), MapActivity.class);
+            startActivity(mapIntent);
         }
     }
 }

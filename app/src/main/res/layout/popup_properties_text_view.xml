@@ -44,25 +44,25 @@ app:srcCompat="@drawable/ic_trash" />
         android:layout_marginTop="20dp"
         android:background="@drawable/table_background">
 
-        <TableRow style="@style/propertiesTableRow">
+        <!--<TableRow style="@style/propertiesTableRow">-->
 
-            <android.support.v7.widget.AppCompatTextView
-                android:id="@+id/viewIdKey"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/propertiesTableId"
-                android:textAppearance="@style/propertiesTableKey" />
+            <!--<android.support.v7.widget.AppCompatTextView-->
+                <!--android:id="@+id/viewIdKey"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="@string/propertiesTableId"-->
+                <!--android:textAppearance="@style/propertiesTableKey" />-->
 
-            <EditText
-                android:id="@+id/viewIdValue"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:singleLine="false"
-                android:text=""
-                android:textAppearance="@style/propertiesTableValue" />
-        </TableRow>
+            <!--<EditText-->
+                <!--android:id="@+id/viewIdValue"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:ems="10"-->
+                <!--android:inputType="textPersonName"-->
+                <!--android:singleLine="false"-->
+                <!--android:text=""-->
+                <!--android:textAppearance="@style/propertiesTableValue" />-->
+        <!--</TableRow>-->
 
         <TableRow style="@style/propertiesTableRow">
 

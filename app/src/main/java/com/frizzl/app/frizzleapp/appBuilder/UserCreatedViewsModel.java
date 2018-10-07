@@ -1,11 +1,13 @@
 package com.frizzl.app.frizzleapp.appBuilder;
 
 import android.content.Context;
+import android.support.v4.app.Fragment;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.frizzl.app.frizzleapp.AnnotationUserCreatedViewType;
 import com.frizzl.app.frizzleapp.Support;
+import com.frizzl.app.frizzleapp.UserProfile;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -26,6 +28,7 @@ public class UserCreatedViewsModel {
     private static int numOfTextViews;
     private static int numOfImageViews;
     private static int nextViewIndex;
+    private static int numOfButton;
 
     public static Map<Integer, UserCreatedView> initializeViews(Context context) {
         views = new HashMap<>();
@@ -34,8 +37,6 @@ public class UserCreatedViewsModel {
         numOfImageViews = 0;
         nextViewIndex = 0;
 
-        // Add hello world view
-        addNewUserCreatedButton(context);
         return views;
         }
 
@@ -94,9 +95,9 @@ public class UserCreatedViewsModel {
         return nextViewIndex;
     }
 
-    public static String getXml(){
+    public static String getXml(String appIcon, String appName){
         LayoutXmlWriter layoutXmlWriter = new LayoutXmlWriter();
-        return layoutXmlWriter.writeXml(views);
+        return layoutXmlWriter.writeXml(views, appIcon, appName);
     }
 
     public static Map<Integer, UserCreatedView> jsonToViews(Context context, String viewsJsonString) {
@@ -182,5 +183,42 @@ public class UserCreatedViewsModel {
 
     public static Map<Integer, UserCreatedView> getViews() {
         return views;
+    }
+
+    public static void setViews(Map<Integer, UserCreatedView> views) {
+        views = views;
+        numOfButtons = 0;
+        numOfTextViews = 0;
+        numOfImageViews = 0;
+        nextViewIndex = 0;
+    }
+
+    public static int getNumOfButtons() {
+        return numOfButtons;
+    }
+
+    public static int getNumOfTextViews() {
+        return numOfTextViews;
+    }
+
+    public static int getNumOfImageViews() {
+        return numOfImageViews;
+    }
+
+    public static void setNumOfButton(int numOfButton) {
+        UserCreatedViewsModel.numOfButton = numOfButton;
+    }
+
+    public static void setNumOfTextViews(int numOfTextViews) {
+        UserCreatedViewsModel.numOfTextViews = numOfTextViews;
+    }
+
+    public static void setNumOfImageViews(int numOfImageViews) {
+        UserCreatedViewsModel.numOfImageViews = numOfImageViews;
+    }
+
+    public static String getManifest(String appIcon, String appName) {
+        LayoutXmlWriter layoutXmlWriter = new LayoutXmlWriter();
+        return layoutXmlWriter.writeManifest(appIcon, appName);
     }
 }

@@ -1,6 +1,7 @@
 package com.frizzl.app.frizzleapp.appBuilder;
 
 import android.content.Context;
+import android.widget.PopupWindow;
 
 import com.frizzl.app.frizzleapp.AnnotationUserCreatedViewType;
 import com.frizzl.app.frizzleapp.UserApp;
@@ -18,7 +19,10 @@ public class DesignScreenPresenter {
 //    private UserCreatedViewsModel userCreatedViewsModel;
 
     public String getXml() {
-        return UserCreatedViewsModel.getXml();
+        UserApp currentUserApp = UserProfile.user.getCurrentUserApp();
+        String appIcon = currentUserApp.getIcon();
+        String appName = currentUserApp.getName();
+        return UserCreatedViewsModel.getXml(appIcon, appName);
     }
 
     public DesignScreenPresenter(DesignScreenFragment designScreenFragment) {
@@ -27,12 +31,23 @@ public class DesignScreenPresenter {
 
     public void saveState() {
         views = UserCreatedViewsModel.getViews();
-        UserProfile.user.setViews(views);
+        UserApp currentUserApp = UserProfile.user.getCurrentUserApp();
+        currentUserApp.setViews(UserCreatedViewsModel.getViews(), UserCreatedViewsModel.getNumOfButtons(),
+                UserCreatedViewsModel.getNumOfTextViews(),  UserCreatedViewsModel.getNumOfImageViews(),
+                UserCreatedViewsModel.getNextViewIndex());
+                UserProfile.user.setCurrentUserAppID(currentUserApp);
     }
 
     public static Map<Integer, UserCreatedView> getViews(Context context) {
-        views = UserProfile.user.getViews();
-        if (views.isEmpty()) {
+        UserApp currentUserApp = UserProfile.user.getCurrentUserApp();
+        if (currentUserApp != null) {
+            views = currentUserApp.getViews();
+            UserCreatedViewsModel.setViews(views);
+            UserCreatedViewsModel.setNumOfButton(currentUserApp.getNumOfButtons());
+            UserCreatedViewsModel.setNumOfTextViews(currentUserApp.getNumOfTextViews());
+            UserCreatedViewsModel.setNumOfImageViews(currentUserApp.getNumOfImageViews());
+        }
+        if (views == null || views.isEmpty()) {
             views = UserCreatedViewsModel.initializeViews(context);
         }
         return views;
@@ -44,6 +59,12 @@ public class DesignScreenPresenter {
             // TODO: make UserCreatedViewsFactory
             switch (viewType) {
                 case AnnotationUserCreatedViewType.TEXT_VIEW:
+
+                    // For temp testing
+                    if (UserProfile.user.getCurrentLevel() == 0 && UserProfile.user.getCurrentTaskNum() == 0) {
+                        designScreenFragment.taskCompleted();
+                    }
+
                     UserCreatedViewsModel.addNewUserCreatedTextView(context);
                     break;
                 case AnnotationUserCreatedViewType.BUTTON:
@@ -51,6 +72,14 @@ public class DesignScreenPresenter {
                     break;
                 case AnnotationUserCreatedViewType.IMAGE_VIEW:
                     UserCreatedViewsModel.addNewUserCreatedImageView(context);
+                    int thisViewIndex = UserCreatedViewsModel.getNextViewIndex() - 1;
+                    UserCreatedView userCreatedView = UserCreatedViewsModel.getViews().get(thisViewIndex);
+                    PopupWindow propertiesTablePopupWindow = userCreatedView.getPropertiesTablePopupWindow(context);
+                    designScreenFragment.presentPopup(propertiesTablePopupWindow);
+                    // For temp testing
+                    if (UserProfile.user.getCurrentLevel() == 3 && UserProfile.user.getCurrentTaskNum() == 0) {
+                        designScreenFragment.taskCompleted();
+                    }
             }
             designScreenFragment.getViewsAndPresent(views);
         }
@@ -87,5 +116,12 @@ public class DesignScreenPresenter {
             icon = currentUserApp.getIcon();
         }
         return icon;
+    }
+
+    public String getManifest() {
+        UserApp currentUserApp = UserProfile.user.getCurrentUserApp();
+        String appIcon = currentUserApp.getIcon();
+        String appName = currentUserApp.getName();
+        return UserCreatedViewsModel.getManifest(appIcon, appName);
     }
 }

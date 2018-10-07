@@ -4,10 +4,13 @@
         <attr name="enabledColor" format="color"/>
         <attr name="disabledColor" format="color"/>
         <attr name="completedDrawable" format="integer"/>
+        <attr name="appID" format="integer"/>
     </declare-styleable>
 
     <declare-styleable name="PracticeMapButton">
         <attr name="enabledColor"/>
         <attr name="disabledColor"/>
+        <attr name="completedDrawable"/>
+        <attr name="practiceID" format="integer"/>
     </declare-styleable>
 </resources>

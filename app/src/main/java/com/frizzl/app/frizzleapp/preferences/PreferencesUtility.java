@@ -9,4 +9,5 @@ public class PreferencesUtility {
     // Values for Shared Prefrences
     public static final String LOGGED_IN_PREF = "logged_in_status";
     public static final String USERNAME_PREF = "username";
+    public static final String FIRST_TIME_PREF = "first_time";
 }

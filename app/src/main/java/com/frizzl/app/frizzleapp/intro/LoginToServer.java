@@ -4,7 +4,6 @@ import android.os.AsyncTask;
 
 import com.frizzl.app.frizzleapp.AsyncResponse;
 import com.frizzl.app.frizzleapp.ConnectToServer;
-import com.frizzl.app.frizzleapp.GetPositionFromServer;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;

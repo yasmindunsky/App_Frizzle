@@ -19,10 +19,6 @@ public class OnboardingSwipeAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        if (3 == position) {
-            RegisterFragment registerFragment = new RegisterFragment();
-            return registerFragment;
-        }
         OnboardingFragment fragment = new OnboardingFragment();
         Bundle bundle = new Bundle();
         bundle.putInt(OnboardingFragment.POISITION, position);

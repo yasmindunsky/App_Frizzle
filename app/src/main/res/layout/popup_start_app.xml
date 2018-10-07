@@ -114,15 +114,6 @@
                     android:tag="ic_tutorial_app_3"
                     android:buttonTint="@android:color/transparent" />
 
-                <RadioButton
-                    android:id="@+id/radioButton4"
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:layout_marginBottom="10dp"
-                    android:background="@drawable/icon_picker_tutorial_app_4_selector"
-                    android:tag="ic_tutorial_app_4"
-                    android:buttonTint="@android:color/transparent" />
-
             </LinearLayout>
 
             <LinearLayout
@@ -159,15 +150,6 @@
                     android:layout_weight="1"
                     android:background="@drawable/icon_picker_tutorial_app_7_selector"
                     android:tag="ic_tutorial_app_7"
-                    android:buttonTint="@android:color/transparent" />
-
-                <RadioButton
-                    android:id="@+id/radioButton8"
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/icon_picker_tutorial_app_1_selector"
-                    android:tag="ic_tutorial_app_8"
                     android:buttonTint="@android:color/transparent" />
 
             </LinearLayout>

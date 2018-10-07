@@ -153,19 +153,6 @@
         <item name="android:singleLine">true</item>
     </style>
 
-    <style name="Button.CheckExercise" parent="@android:style/Widget.Button">
-        <item name="android:background">@drawable/check_button_background</item>
-        <item name="android:textColor">@color/white</item>
-        <item name="android:fontFamily">@font/rubik_medium</item>
-        <item name="android:textSize">24sp</item>
-        <item name="android:letterSpacing">.08</item>
-        <item name="android:width">250dp</item>
-        <item name="android:height">60dp</item>
-        <item name="android:layout_marginBottom">20dp</item>
-        <item name="android:padding">10sp</item>
-        <item name="android:paddingStart">20sp</item>
-        <item name="android:paddingEnd">20sp</item>
-    </style>
 
     <style name="letsBuildButton" parent="@android:style/Widget.Button">
         <item name="android:background">@drawable/check_button_background</item>
@@ -225,27 +212,6 @@
     </style>
 
         <!--Graphic Edit-->
-    <style name="Button.UserCreated" parent="@android:style/Widget.Button">
-        <item name="android:background">@drawable/user_button_background</item>
-        <item name="android:textColor">@color/TextGrey</item>
-        <item name="android:fontFamily">@font/alef</item>
-        <item name="android:textSize">14sp</item>
-        <item name="android:padding">10dp</item>
-        <item name="android:paddingStart">16dp</item>
-        <item name="android:paddingEnd">16dp</item>
-        <item name="android:layout_margin">10dp</item>
-    </style>
-
-    <style name="TextView.UserCreated" parent="@android:style/TextAppearance.DeviceDefault.Medium">
-        <item name="android:background">@android:color/transparent</item>
-        <item name="android:textColor">@color/TextGrey</item>
-        <item name="android:fontFamily">@font/alef</item>
-        <item name="android:textSize">14sp</item>
-        <item name="android:padding">10dp</item>
-        <item name="android:paddingStart">16dp</item>
-        <item name="android:paddingEnd">16dp</item>
-        <item name="android:layout_margin">10dp</item>
-    </style>
 
     <style name="usersToolbar">
         <item name="android:layout_height">wrap_content</item>

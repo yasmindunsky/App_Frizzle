@@ -4,14 +4,22 @@ package com.frizzl.app.frizzleapp.appBuilder;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
+import android.support.constraint.ConstraintSet;
 import android.support.v4.app.Fragment;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
+import android.widget.TextView;
 
 import com.frizzl.app.frizzleapp.CodeKeyboard;
 import com.frizzl.app.frizzleapp.R;
+import com.frizzl.app.frizzleapp.UserProfile;
 
 
 /**
@@ -22,7 +30,8 @@ public class CodingScreenFragment extends Fragment {
     private CodingScreenPresenter codingScreenPresenter;
     private CodeEditor codeEditor;
     private CodeKeyboard codeKeyboard;
-    private LinearLayout linearLayout;
+    private ScrollView scrollView;
+    private ConstraintLayout constraintLayout;
 
     public CodingScreenFragment() {
         // Required empty public constructor
@@ -35,26 +44,75 @@ public class CodingScreenFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_code, container, false);
 
+        scrollView = view.findViewById(R.id.code_scroll);
+        constraintLayout = view.findViewById(R.id.code_constraint_layout);
+
         Context context = getContext();
-        CodeKeyboard codeKeyboard = new CodeKeyboard(context);
-        LinearLayout.LayoutParams keyboardLayoutParams = new
-                LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+        codeKeyboard = new CodeKeyboard(context);
+        ConstraintLayout.LayoutParams keyboardLayoutParams = new
+                ConstraintLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT);
+        keyboardLayoutParams.bottomToBottom = R.id.code_constraint_layout;
         codeKeyboard.setLayoutParams(keyboardLayoutParams);
+        codeKeyboard.setOrientation(LinearLayout.VERTICAL);
+
         codeEditor = new CodeEditor(context, codeKeyboard);
-        LinearLayout.LayoutParams editorLayoutParams = new
-                LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+        codeEditor.setKeyboardVisibility(View.VISIBLE);
+        ScrollView.LayoutParams editorLayoutParams = new
+                ScrollView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.MATCH_PARENT);
         codeEditor.setLayoutParams(editorLayoutParams);
+        codeEditor.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
 
-        linearLayout = view.findViewById(R.id.codeLinearLayout);
-        linearLayout.addView(codeEditor);
-        linearLayout.addView(codeKeyboard);
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
 
-        codingScreenPresenter = new CodingScreenPresenter(this);
-        codingScreenPresenter.getAndPresentCode();
+            @Override
+            public void afterTextChanged(Editable s) {
+                // For temp testing
+                if (UserProfile.user.getCurrentLevel() == 3) {
+                    String code = s.toString();
+                    boolean taskCompleted = false;
+                    if (UserProfile.user.getCurrentTaskNum() == 2) {
+                        int beforeName = code.indexOf("public void") + String.valueOf("public void").length();
+                        int afterName = code.indexOf("(View view)");
+                        if (afterName - beforeName > 2) {
+                            taskCompleted = true;
+                        }
+                    } else if (UserProfile.user.getCurrentTaskNum() == 3) {
+                        int beforeTextToSay = code.indexOf("speakOut\"") + String.valueOf("speakOut\"").length();
+                        int afterTextToSay = code.indexOf("\");");
+                        if (afterTextToSay - beforeTextToSay > 0){
+                            taskCompleted = true;
+                        }
+                    }
+                    if (taskCompleted){
+                        AppBuilderActivity appBuilderActivity = (AppBuilderActivity) getActivity();
+                        appBuilderActivity.taskCompleted();
+                    }
+                }
+            }
+        });
+
+        scrollView.addView(codeEditor);
+        ConstraintLayout.LayoutParams scrollViewLayoutParams = (ConstraintLayout.LayoutParams) scrollView.getLayoutParams();
+        scrollViewLayoutParams.bottomToTop = codeKeyboard.getId();
+        scrollView.setLayoutParams(scrollViewLayoutParams);
+        constraintLayout.addView(codeKeyboard);
+
+        if (codingScreenPresenter != null) {
+            codingScreenPresenter.getAndPresentCode();
+        } else {
+            Log.e("APP_BUILDER", "codingScreenPresenter was not set.");
+        }
 
         return view;
+    }
+
+    public void setPresenter(CodingScreenPresenter codingScreenPresenter){
+        this.codingScreenPresenter = codingScreenPresenter;
     }
 
     public void showEmptyCode() {
@@ -63,5 +121,19 @@ public class CodingScreenFragment extends Fragment {
 
     public void showCode(String codeForPresenting) {
         codeEditor.setText(codeForPresenting);
+    }
+
+    public String getCode() {
+        String code = "";
+        if (codeEditor != null){
+            code = codeEditor.getText().toString();
+        }
+        return code;
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        codingScreenPresenter.onPause();
     }
 }

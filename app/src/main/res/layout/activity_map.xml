@@ -38,7 +38,8 @@
                 app:layout_constraintTop_toTopOf="parent"
                 custom:enabledColor="@color/frizzle_light_blue"
                 custom:disabledColor="@color/frizzle_faded_light_blue"
-                custom:completedDrawable="@drawable/map_app_circle_light_blue_completed">
+                custom:completedDrawable="@drawable/map_app_circle_light_blue_completed"
+                custom:appID="2">
 
                 <ImageButton
                     android:id="@+id/ic_friendship_app"
@@ -100,6 +101,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/views_practice"
                 custom:disabledColor="@color/frizzle_faded_purple"
                 custom:enabledColor="@color/frizzle_purple"
+                custom:appID="1"
                 custom:completedDrawable="@drawable/map_app_circle_purple_completed">
 
                 <ImageButton
@@ -132,7 +134,8 @@
                 app:layout_constraintTop_toBottomOf="@+id/polly_app"
                 custom:disabledColor="@color/frizzle_faded_pink"
                 custom:enabledColor="@color/frizzle_pink"
-                custom:completedDrawable="@drawable/map_app_circle_pink_completed"/>
+                custom:completedDrawable="@drawable/map_app_circle_pink_completed"
+                custom:practiceID="2"/>
 
             <com.frizzl.app.frizzleapp.map.PracticeMapButton
                 android:id="@+id/speakout_practice"
@@ -149,7 +152,8 @@
                 app:layout_constraintTop_toBottomOf="@+id/onclick_practice"
                 custom:disabledColor="@color/frizzle_faded_orange"
                 custom:enabledColor="@color/frizzle_orange"
-                custom:completedDrawable="@drawable/map_app_circle_orange_completed"/>
+                custom:completedDrawable="@drawable/map_app_circle_orange_completed"
+                custom:practiceID="1"/>
 
             <com.frizzl.app.frizzleapp.map.AppMapButton
                 android:id="@+id/tutorial_app"
@@ -163,6 +167,7 @@
                 custom:enabledColor="@color/frizzle_blue"
                 custom:disabledColor="@color/frizzle_blue"
                 custom:completedDrawable="@drawable/map_app_circle_blue_completed"
+                custom:appID="0"
                 >
 
                 <ImageButton
@@ -195,8 +200,7 @@
         android:background="@color/white"
         android:elevation="4dp"
         android:gravity="center"
-        android:theme="?attr/actionBarTheme"
-        app:navigationIcon="@drawable/ic_sign_out">
+        android:theme="?attr/actionBarTheme">
 
         <android.support.v7.widget.AppCompatTextView
             android:id="@+id/lessonTitle"

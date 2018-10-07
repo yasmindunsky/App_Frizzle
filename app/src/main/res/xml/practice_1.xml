@@ -1,0 +1,84 @@
+<!--\\u000A-->
+<!--’-->
+
+<practice>
+    <slide>
+        <info_text>
+            "In order for apps to do interesting things we need to use code.\\u000A
+            This is the first code command that we’ll learn, in a language called Java."
+        </info_text>
+        <task_text>
+            "Run the code and see what it does."
+        </task_text>
+        <reminder_text></reminder_text>
+        <code mutable="false" runnable="true">
+            "speakOut(\\u0022Hello\\u0022);"
+        </code>
+        <mutable_design></mutable_design>
+        <call_to_action>
+            "Next"
+        </call_to_action>
+    </slide>
+
+    <slide>
+        <info_text></info_text>
+        <task_text>
+            "Change the command so it will read your name and run it again."
+        </task_text>
+        <reminder_text></reminder_text>
+        <code mutable="true" runnable="true">
+            "speakOut(\\u0022Hello\\u0022);"
+        </code>
+        <mutable_design></mutable_design>
+        <call_to_action>
+            "Next"
+        </call_to_action>
+    </slide>
+
+    <slide>
+        <info_text></info_text>
+        <task_text>
+            "Write the command by yourself so it will read \\u0022this is so cool\\u0022 and run the code."
+        </task_text>
+        <reminder_text>reminder: speakOut(\\u0022Hello\\u0022);</reminder_text>
+        <code mutable="true" runnable="true">
+            "\\u0020"
+        </code>
+        <mutable_design></mutable_design>
+        <call_to_action>
+            "Check"
+        </call_to_action>
+        <solution>speakOut(\\u0022this is so cool\\u0022);</solution>
+    </slide>
+
+    <slide>
+        <info_text></info_text>
+        <task_text>
+            "Delete the semicolon at the end of the command and try to run it again."
+        </task_text>
+        <reminder_text></reminder_text>
+        <code mutable="true" runnable="true">
+            "speakOut(\\u0022Hello\\u0022);"
+        </code>
+        <mutable_design></mutable_design>
+        <call_to_action>
+            "Check"
+        </call_to_action>
+    </slide>
+
+    <slide>
+        <info_text></info_text>
+        <task_text>
+            "Type a space character between the ’speak’ and ’out’ in the command name and run the code."
+        </task_text>
+        <reminder_text></reminder_text>
+        <code mutable="true" runnable="true">
+            "speakOut(\\u0022Hello\\u0022);"
+        </code>
+        <mutable_design></mutable_design>
+        <call_to_action>
+            "Check"
+        </call_to_action>
+    </slide>
+
+</practice>

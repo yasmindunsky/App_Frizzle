@@ -16,15 +16,23 @@ public class MapPresenter {
         this.mapActivity = mapActivity;
     }
 
-    public void onClickedApp(View view){
-        mapActivity.goToApp();
+    public void onClickedApp(int appID){
+        int level = (appID == 0) ? 0 : 3; // TODO change
+        UserProfile.user.setCurrentLevel(level);
+        mapActivity.goToApp(appID);
     }
 
-    public void onClickedPractice(View view){
+    public void onClickedPractice(int practiceID){
+        UserProfile.user.setCurrentLevel(practiceID);
+        mapActivity.goToPractice(practiceID);
 
     }
 
     public int getCurrentLevel() {
         return UserProfile.user.getCurrentLevel();
+    }
+
+    public int getTopLevel() {
+        return UserProfile.user.getTopLevel();
     }
 }

@@ -1,39 +1,37 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/codeFrameLayout"
+    android:id="@+id/code_constraint_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layoutDirection="ltr"
     tools:context="com.frizzl.app.frizzleapp.appBuilder.CodingScreenFragment">
 
+
     <ScrollView
+        android:id="@+id/code_scroll"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/black">
+        android:layout_alignParentTop="true"
+        android:background="@color/black"
+        app:layout_constraintTop_toTopOf="parent">
+        <!--app:layout_constraintBottom_toTopOf="@+id/keyboard"-->
 
+        <!--<com.frizzl.app.frizzleapp.appBuilder.CodeEditor-->
+        <!--android:id="@+id/code"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:background="@null"-->
+        <!--android:ems="10"-->
+        <!--android:inputType="textMultiLine"-->
+        <!--android:text="@string/initial_code" />-->
 
-        <LinearLayout
-            android:id="@+id/codeLinearLayout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="24dp"
-            android:orientation="vertical">
-
-            <!--<com.frizzl.app.frizzleapp.appBuilder.CodeEditor-->
-                <!--android:id="@+id/code"-->
-                <!--style="@style/CodeText"-->
-                <!--android:layout_height="match_parent"-->
-                <!--android:background="@null"-->
-                <!--android:ems="10"-->
-                <!--android:inputType="textMultiLine"-->
-                <!--android:text="@string/initial_code" />-->
-
-            <!--<com.frizzl.app.frizzleapp.CodeKeyboard-->
-            <!--android:id="@+id/keyboard"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:orientation="vertical" />-->
-        </LinearLayout>
     </ScrollView>
-</FrameLayout>
+
+    <!--<com.frizzl.app.frizzleapp.CodeKeyboard-->
+    <!--android:id="@+id/keyboard"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:orientation="vertical"-->
+    <!--app:layout_constraintBottom_toBottomOf="parent" />-->
+
+</android.support.constraint.ConstraintLayout>

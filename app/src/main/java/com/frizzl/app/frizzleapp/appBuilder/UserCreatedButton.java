@@ -2,6 +2,7 @@ package com.frizzl.app.frizzleapp.appBuilder;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.ContextWrapper;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.Typeface;
@@ -44,7 +45,6 @@ public class UserCreatedButton extends UserCreatedView {
         int buttonStyle = R.style.Button_UserCreated;
         this.viewType = "Button";
 
-
         this.thisView = new Button(new ContextThemeWrapper(context, buttonStyle), null, buttonStyle);
         thisView.setText(properties.get("android:text"));
 //        thisView.setId(Integer.parseInt(properties.get("android:id")));
@@ -53,10 +53,7 @@ public class UserCreatedButton extends UserCreatedView {
         thisView.setTextColor(Color.parseColor(textColorHex));
 
         String bgColorHex = properties.get("android:backgroundTint");
-        int originalButtonDrawableRes = R.drawable.user_button_background;
-        Drawable buttonDrawable = ContextCompat.getDrawable(context, originalButtonDrawableRes);
-        buttonDrawable.setColorFilter(Color.parseColor(bgColorHex), PorterDuff.Mode.DARKEN);
-        thisView.setBackground(buttonDrawable);
+        setBackgroundColor(bgColorHex);
 
         thisView.setPadding(16,10,16,10);
 
@@ -114,8 +111,9 @@ public class UserCreatedButton extends UserCreatedView {
         properties.put("android:text", (String) thisView.getText());
         properties.put("android:fontFamily", "serif");
         properties.put("android:textColor", "#535264");
+        properties.put("android:textSize", "18sp");
         properties.put("android:background", "@drawable/user_button_background");
-        properties.put("android:backgroundTint", "#f4f4f4");
+        properties.put("android:backgroundTint", "#f8b119");
         properties.put("android:padding", "10dp");
         properties.put("android:paddingStart", "16dp");
         properties.put("android:paddingEnd", "16dp");
@@ -127,7 +125,7 @@ public class UserCreatedButton extends UserCreatedView {
         thisView.setTag(R.id.usersViewCol, column);
     }
 
-    public PopupWindow displayPropertiesTable(final Context context) {
+    public PopupWindow getPropertiesTablePopupWindow(final Context context) {
         // inflate the layout of the popup window
         LayoutInflater inflater = (LayoutInflater)
                 context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -294,6 +292,12 @@ public class UserCreatedButton extends UserCreatedView {
                 String text = String.valueOf(((EditText)v).getText());
                 thisView.setText(text);
                 properties.put("android:text", text);
+
+                // For temp testing
+                if (UserProfile.user.getCurrentLevel() == 3 && UserProfile.user.getCurrentTaskNum()== 1) {
+                    AppBuilderActivity appBuilderActivity = (AppBuilderActivity) getActivity();
+                    appBuilderActivity.taskCompleted();
+                }
             }
         }
     };
@@ -304,6 +308,13 @@ public class UserCreatedButton extends UserCreatedView {
             if (!hasFocus) {
                 String onclickFuncName = String.valueOf(((EditText)v).getText());
                 properties.put("android:onClick", onclickFuncName);
+
+                // For temp testing
+                if (UserProfile.user.getCurrentLevel() == 3 && UserProfile.user.getCurrentTaskNum()== 4
+                        && !onclickFuncName.equals("")) {
+                    AppBuilderActivity appBuilderActivity = (AppBuilderActivity) getActivity();
+                    appBuilderActivity.taskCompleted();
+                }
             }
         }
     };
@@ -355,4 +366,32 @@ public class UserCreatedButton extends UserCreatedView {
         return colorNamesMap.get(color);
 
     }
+
+    public void setBackgroundColor(String hex) {
+        int originalButtonDrawableRes = R.drawable.user_button_background;
+        Drawable buttonDrawable = ContextCompat.getDrawable(context, originalButtonDrawableRes);
+        buttonDrawable.setColorFilter(Color.parseColor(hex), PorterDuff.Mode.DARKEN);
+        thisView.setBackground(buttonDrawable);
+    }
+
+    public void setTextColor(String hex) {
+        thisView.setTextColor(Color.parseColor(hex));
+    }
+
+    public String getOnClick() {
+        String onClick = properties.get("android:onClick");
+        return onClick != null ? onClick : "";
+    }
+
+    public Activity getActivity() {
+        Context context = thisView.getContext();
+        while (context instanceof ContextWrapper) {
+            if (context instanceof Activity) {
+                return (Activity)context;
+            }
+            context = ((ContextWrapper)context).getBaseContext();
+        }
+        return null;
+    }
+
 }

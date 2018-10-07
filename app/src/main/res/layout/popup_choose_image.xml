@@ -18,11 +18,23 @@
             android:layout_alignParentTop="true"
             android:background="@drawable/table_title_background"
             android:gravity="center"
-            android:text="@string/add_image"
+            android:text="@string/choose_image"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/delete"
+            android:layout_width="@dimen/app_bar_height"
+            android:layout_height="@dimen/app_bar_height"
+            android:layout_alignParentStart="true"
+            android:backgroundTint="@android:color/transparent"
+            android:padding="15dp"
+            android:scaleType="fitCenter"
+            app:layout_constraintStart_toStartOf="@+id/add_image_title"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_trash" />
 
         <RadioGroup
             android:id="@+id/radioGroup2"
@@ -51,6 +63,7 @@
                     android:layout_marginEnd="10dp"
                     android:background="@drawable/polly_1_selector"
                     android:buttonTint="@android:color/transparent"
+                    android:tag="polly_1"
                     android:checked="false" />
 
                 <RadioButton
@@ -60,6 +73,7 @@
                     android:layout_marginBottom="10dp"
                     android:layout_marginEnd="10dp"
                     android:background="@drawable/polly_2_selector"
+                    android:tag="polly_2"
                     android:buttonTint="@android:color/transparent" />
 
                 <RadioButton
@@ -69,14 +83,7 @@
                     android:layout_marginBottom="10dp"
                     android:layout_marginEnd="10dp"
                     android:background="@drawable/polly_3_selector"
-                    android:buttonTint="@android:color/transparent" />
-
-                <RadioButton
-                    android:id="@+id/radioButton4"
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:layout_marginBottom="10dp"
-                    android:background="@drawable/polly_4_selector"
+                    android:tag="polly_3"
                     android:buttonTint="@android:color/transparent" />
 
             </LinearLayout>
@@ -94,6 +101,7 @@
                     android:layout_marginEnd="10dp"
                     android:layout_weight="1"
                     android:background="@drawable/polly_5_selector"
+                    android:tag="polly_5"
                     android:buttonTint="@android:color/transparent" />
 
                 <RadioButton
@@ -103,6 +111,7 @@
                     android:layout_marginEnd="10dp"
                     android:layout_weight="1"
                     android:background="@drawable/polly_6_selector"
+                    android:tag="polly_6"
                     android:buttonTint="@android:color/transparent" />
 
                 <RadioButton
@@ -112,14 +121,7 @@
                     android:layout_marginEnd="10dp"
                     android:layout_weight="1"
                     android:background="@drawable/polly_7_selector"
-                    android:buttonTint="@android:color/transparent" />
-
-                <RadioButton
-                    android:id="@+id/radioButton8"
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/polly_1_selector"
+                    android:tag="polly_7"
                     android:buttonTint="@android:color/transparent" />
 
             </LinearLayout>
@@ -127,13 +129,13 @@
         </RadioGroup>
 
         <android.support.v7.widget.AppCompatButton
-            android:id="@+id/startButton"
+            android:id="@+id/saveButton"
             style="@style/Button.LightBlue"
             android:layout_marginBottom="16dp"
             android:layout_marginTop="16dp"
             android:textAppearance="@style/Text.Title.Light"
             android:textColor="@color/white"
-            android:text="@string/done"
+            android:text="@string/save"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

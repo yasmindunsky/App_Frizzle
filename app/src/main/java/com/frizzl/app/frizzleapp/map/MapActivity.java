@@ -10,15 +10,18 @@ import android.widget.ScrollView;
 import com.frizzl.app.frizzleapp.R;
 import com.frizzl.app.frizzleapp.UserProfile;
 import com.frizzl.app.frizzleapp.appBuilder.AppBuilderActivity;
-import com.frizzl.app.frizzleapp.intro.LoginActivity;
-import com.frizzl.app.frizzleapp.preferences.SaveSharedPreference;
+import com.frizzl.app.frizzleapp.lesson.AppContentParser;
+import com.frizzl.app.frizzleapp.lesson.AppTasks;
+import com.frizzl.app.frizzleapp.lesson.PracticeActivity;
 
+import org.xmlpull.v1.XmlPullParserException;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class MapActivity extends AppCompatActivity {
 
-    private int currentLevel;
     private MapPresenter mapPresenter;
     private ArrayList<MapButton> levelButtons = new ArrayList<>();
     private android.support.v7.widget.Toolbar toolbar;
@@ -59,13 +62,17 @@ public class MapActivity extends AppCompatActivity {
         View.OnClickListener onClickedApp = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mapPresenter.onClickedApp(v);
+                AppMapButton appMapButton = (AppMapButton) v;
+                int appID = appMapButton.getAppID();
+                mapPresenter.onClickedApp(appID);
             }
         };
         View.OnClickListener onClickedPractice = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mapPresenter.onClickedPractice(v);
+                PracticeMapButton practiceMapButton = (PracticeMapButton)v;
+                int practiceID = practiceMapButton.getPracticeID();
+                mapPresenter.onClickedPractice(practiceID);
             }
         };
         tutorialAppButton.setOnClickListener(onClickedApp);
@@ -76,30 +83,6 @@ public class MapActivity extends AppCompatActivity {
         viewsPracticeButton.setOnClickListener(onClickedPractice);
         variablesPracticeButton.setOnClickListener(onClickedPractice);
 
-        currentLevel = mapPresenter.getCurrentLevel();
-        for (int i = 0; i < levelButtons.size(); i++) {
-            MapButton mapButton = levelButtons.get(i);
-            if (i >= currentLevel) {
-                mapButton.setEnabled(false);
-            }
-            else {
-                mapButton.setCompleted(true);
-            }
-        }
-        levelButtons.get(currentLevel).setEnabled(true);
-
-        // Set Toolbar sign-out button.
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SaveSharedPreference.setLoggedIn(getApplicationContext(), false);
-                UserProfile.user.restartUserProfile();
-
-                Intent signOutIntent = new Intent(getBaseContext(), LoginActivity.class);
-                startActivity(signOutIntent);
-            }
-        });
-
         // Set scroll position.
         scrollView.post(new Runnable() {
             public void run() {
@@ -108,19 +91,48 @@ public class MapActivity extends AppCompatActivity {
         });
     }
 
-//    public void navigateToLesson(){
-//        Intent lessonIntent = new Intent(this, LessonActivity.class);
-//        startActivity(lessonIntent);
-//    }
-//
-//    public void goToPlayground(View view) {
-//        Intent appBuilderIntent = new Intent(this, AppBuilderActivity.class);
-//        startActivity(appBuilderIntent);
-//    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        int topLevel = mapPresenter.getTopLevel();
+        for (int i = 0; i < levelButtons.size(); i++) {
+            MapButton mapButton = levelButtons.get(i);
+            if (i >= topLevel) {
+                mapButton.setEnabled(false);
+            }
+            else {
+                mapButton.setEnabled(true);
+                mapButton.setCompleted(true);
+            }
+        }
+        levelButtons.get(topLevel).setEnabled(true);
+    }
 
-    public void goToApp() {
+    public void goToApp(int appID) {
+        // parse app & update user profile
+        AppContentParser appContentParser = null;
+        try {
+            appContentParser = new AppContentParser();
+            AppTasks appTasks = appContentParser.parseAppXml(this, appID);
+            UserProfile.user.setCurrentAppTasks(appTasks);
+            UserProfile.user.setCurrentUserAppID(appID);
+        } catch (XmlPullParserException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // go to app builder
         Intent appIntent = new Intent(this, AppBuilderActivity.class);
+        appIntent.putExtra("appID", appID);
         startActivity(appIntent);
+    }
+
+    public void goToPractice(int practiceID) {
+        // go to app builder
+        Intent practiceIntent = new Intent(this, PracticeActivity.class);
+        practiceIntent.putExtra("practiceID", practiceID);
+        startActivity(practiceIntent);
     }
 
 //    private void updateCurrentPosition(int lessonNumber) {

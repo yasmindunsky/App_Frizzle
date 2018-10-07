@@ -11,17 +11,19 @@ import android.view.inputmethod.ExtractedTextRequest;
 import android.view.inputmethod.InputConnection;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
 import java.util.HashSet;
 
 public class CodeKeyboard extends LinearLayout implements View.OnClickListener {
 
-    private Button button1, button2, button3, button4,
-            button5, button0, buttonDelete, buttonEnter;
+    private static final int NUM_OF_CHARS_TO_BACK_AFTER_SPEAKOUT = 3;
+    private static final int NUM_OF_CHARS_TO_BACK_AFTER_FUNCTION = 21;
+    private Button speakOutButton, functionButton;
+    private ImageButton englishButton, buttonDelete, buttonEnter;
 
     private SparseArray<String> keyValues = new SparseArray<>();
-    private HashSet<String> writeWithinBrackets = new HashSet<>();
 
     private InputConnection inputConnection;
     private InputMethodManager inputMethodManagar;
@@ -41,38 +43,25 @@ public class CodeKeyboard extends LinearLayout implements View.OnClickListener {
 
     private void init(Context context, AttributeSet attrs) {
         LayoutInflater.from(context).inflate(R.layout.keyboard_code, this, true);
-        button1 = (Button) findViewById(R.id.button_1);
-        button1.setOnClickListener(this);
-        button2 = (Button) findViewById(R.id.button_2);
-        button2.setOnClickListener(this);
-        button3 = (Button) findViewById(R.id.button_3);
-        button3.setOnClickListener(this);
-        button4 = (Button) findViewById(R.id.button_4);
-        button4.setOnClickListener(this);
-        button5 = (Button) findViewById(R.id.button_5);
-        button5.setOnClickListener(this);
-        button0 = (Button) findViewById(R.id.button_0);
-        button0.setOnClickListener(new OnClickListener() {
+        speakOutButton = findViewById(R.id.button_speakout);
+        speakOutButton.setOnClickListener(this);
+        functionButton = findViewById(R.id.button_function);
+        functionButton.setOnClickListener(this);
+        englishButton = findViewById(R.id.button_english);
+        englishButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 inputMethodManagar.toggleSoftInput(InputMethodManager.SHOW_FORCED,0);
             }
         });
-        buttonDelete = (Button) findViewById(R.id.button_delete);
+        buttonDelete = findViewById(R.id.button_delete);
         buttonDelete.setOnClickListener(this);
-        buttonEnter = (Button) findViewById(R.id.button_enter);
+        buttonEnter = findViewById(R.id.button_enter);
         buttonEnter.setOnClickListener(this);
 
-        keyValues.put(R.id.button_1, "findViewById()");
-        keyValues.put(R.id.button_2, "speakOut()");
-        keyValues.put(R.id.button_3, "\"\"");
-        keyValues.put(R.id.button_4, ";");
-        keyValues.put(R.id.button_5, "public void () {\n}");
+        keyValues.put(R.id.button_speakout, "speakOut(\"\");");
+        keyValues.put(R.id.button_function, "public void  (View view) {\n    \n}");
         keyValues.put(R.id.button_enter, "\n");
-
-        writeWithinBrackets.add("findViewById()");
-        writeWithinBrackets.add("speakOut()");
-        writeWithinBrackets.add("\"\"");
     }
 
     @Override
@@ -91,11 +80,11 @@ public class CodeKeyboard extends LinearLayout implements View.OnClickListener {
         } else {
             String value = keyValues.get(view.getId());
             inputConnection.commitText(value, 1);
-            if (writeWithinBrackets.contains(value)) {
-                moveCursor(-1);
+            if (view.getId() == R.id.button_speakout) {
+                moveCursor(-NUM_OF_CHARS_TO_BACK_AFTER_SPEAKOUT);
             }
-            if (view.getId()==R.id.button_5) {
-                moveCursor(-7);
+            if (view.getId() == R.id.button_function) {
+                moveCursor(-NUM_OF_CHARS_TO_BACK_AFTER_FUNCTION);
             }
         }
     }
@@ -103,7 +92,7 @@ public class CodeKeyboard extends LinearLayout implements View.OnClickListener {
     private void moveCursor(int numOfChars) {
         ExtractedText extractedText = inputConnection.getExtractedText(new ExtractedTextRequest(), 0);
         int cursorPosition = extractedText.selectionStart;
-        inputConnection.setSelection(cursorPosition+numOfChars, cursorPosition+numOfChars);
+        inputConnection.setSelection(cursorPosition + numOfChars, cursorPosition + numOfChars);
     }
 
     public void setInputConnection(InputConnection ic) {

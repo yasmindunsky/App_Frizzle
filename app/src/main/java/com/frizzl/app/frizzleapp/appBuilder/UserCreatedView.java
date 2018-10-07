@@ -1,6 +1,8 @@
 package com.frizzl.app.frizzleapp.appBuilder;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.ContextWrapper;
 import android.util.Log;
 import android.view.View;
 import android.widget.PopupWindow;
@@ -39,7 +41,9 @@ public abstract class UserCreatedView {
     public String createXmlString(XmlSerializer xmlSerializer) {
         String name = viewType;
         updateLatestPosition();
-        properties.put("android:textColor", properties.get("android:textColor"));
+        if (viewType != AnnotationUserCreatedViewType.IMAGE_VIEW) {
+            properties.put("android:textColor", properties.get("android:textColor"));
+        }
         try {
             xmlSerializer.startTag("", name);
             xmlSerializer.attribute("", "android:id", "@+id/" + properties.get("android:id"));
@@ -67,7 +71,7 @@ public abstract class UserCreatedView {
 
     public abstract View getThisView();
 
-    public abstract PopupWindow displayPropertiesTable(Context context);
+    public abstract PopupWindow getPropertiesTablePopupWindow(Context context);
 
 
 }

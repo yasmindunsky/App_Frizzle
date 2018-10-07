@@ -1,22 +1,10 @@
 package com.frizzl.app.frizzleapp.appBuilder;
 
 
-import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.text.Editable;
-import android.text.Spannable;
-import android.text.TextWatcher;
-import android.text.style.ForegroundColorSpan;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.EditText;
 
-import com.frizzl.app.frizzleapp.R;
+import com.frizzl.app.frizzleapp.UserApp;
 import com.frizzl.app.frizzleapp.UserProfile;
-
-import java.util.Arrays;
-import java.util.List;
 
 
 /**
@@ -37,7 +25,7 @@ public class CodingScreenPresenter {
     }
 
     public void getAndPresentCode() {
-        String currentCode = UserProfile.user.getJava();
+        String currentCode = UserProfile.user.getCurrentUserApp().getCode();
         if (currentCode.equals("")) {
             codingScreenFragment.showEmptyCode();
         } else {
@@ -45,5 +33,15 @@ public class CodingScreenPresenter {
             codingScreenFragment.showCode(codeForPresenting);
         }
     }
-    
+
+    public void saveState() {
+        String currentCode = codingScreenFragment.getCode();
+        UserApp currentUserApp = UserProfile.user.getCurrentUserApp();
+        currentUserApp.setCode(currentCode);
+        UserProfile.user.setCurrentUserAppID(currentUserApp);
+    }
+
+    public void onPause() {
+        saveState();
+    }
 }

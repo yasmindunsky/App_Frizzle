@@ -3,7 +3,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/constraintLayout"
+    android:id="@+id/appBuilderLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
@@ -36,12 +36,12 @@
         <FrameLayout
             android:id="@+id/taskFrame"
             android:layout_width="match_parent"
-            android:layout_height="50dp">
+            android:layout_height="80dp">
 
             <com.frizzl.app.frizzleapp.CustomViewPager
                 android:id="@+id/viewPager"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
         </FrameLayout>
 
         <!-- <RelativeLayout
@@ -74,20 +74,20 @@
     </net.cachapa.expandablelayout.ExpandableLayout>
 
     <!--<ImageButton-->
-        <!--android:id="@+id/clickToExpandTask"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="20dp"-->
-        <!--android:layout_below="@+id/taskExpandableLayout"-->
-        <!--android:layout_centerHorizontal="true"-->
-        <!--android:background="@color/frizzl_light_green"-->
-        <!--android:gravity="center_horizontal|center"-->
-        <!--android:paddingBottom="5dp"-->
-        <!--android:paddingTop="5dp"-->
-        <!--android:scaleType="fitCenter"-->
-        <!--android:text="="-->
-        <!--android:textColor="@color/TextLightGrey"-->
-        <!--android:textSize="30sp"-->
-        <!--app:srcCompat="@drawable/ic_expand_grab_icon" />-->
+    <!--android:id="@+id/clickToExpandTask"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="20dp"-->
+    <!--android:layout_below="@+id/taskExpandableLayout"-->
+    <!--android:layout_centerHorizontal="true"-->
+    <!--android:background="@color/frizzl_light_green"-->
+    <!--android:gravity="center_horizontal|center"-->
+    <!--android:paddingBottom="5dp"-->
+    <!--android:paddingTop="5dp"-->
+    <!--android:scaleType="fitCenter"-->
+    <!--android:text="="-->
+    <!--android:textColor="@color/TextLightGrey"-->
+    <!--android:textSize="30sp"-->
+    <!--app:srcCompat="@drawable/ic_expand_grab_icon" />-->
 
     <LinearLayout
         android:id="@+id/taskProgress"
@@ -130,8 +130,9 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/taskProgress"
         app:tabIndicatorColor="@color/frizzle_light_blue"
-        app:tabTextAppearance="@style/AppBuilderTabTextAppearance" />
-
+        app:tabSelectedTextColor="#4db1c7"
+        app:tabTextAppearance="@style/AppBuilderTabTextAppearance"
+        app:tabTextColor="#7f7e8d" />
 
 
     <LinearLayout
@@ -209,5 +210,19 @@
         android:paddingRight="8dp"
         android:scaleType="fitCenter"
         app:srcCompat="@drawable/ic_play_run_icon" />
+
+    <Button
+        android:id="@+id/moveOnButton"
+        style="@style/Button.CheckExercise"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/button_background_pink"
+        android:paddingEnd="30dp"
+        android:paddingStart="30dp"
+        android:text="let's move on"
+        android:textAllCaps="true"
+        android:textColor="@color/white" />
 
 </RelativeLayout>

@@ -25,19 +25,23 @@ public class DownloadApkFromServer extends AsyncTask<String, Void, String> {
     protected String doInBackground(String... strings) {
         ConnectToServer connectToServer = new ConnectToServer();
 
-        String xml = strings[0];
-        String code = strings[1];
-        String username = UserProfile.user.getUsername();
-        String courseId = String.valueOf(UserProfile.user.getCurrentCourseID());
-
+        String code = strings[0];
+        String xml = strings[1];
+        String manifest = strings[2];
+        String username = "";
+        String courseId = "3";
+//        String username = UserProfile.user.getUsername();
+//        String courseId = String.valueOf(UserProfile.user.getCurrentUserApp().getAppID());
+//        String courseId = String.valueOf(UserProfile.user.getCurrentCourseID());
 
         String query = null;
         try {
-            query = String.format("username=%s&courseId=%s&code=%s&xml=%s",
+            query = String.format("username=%s&courseId=%s&code=%s&xml=%s&xml2=%s",
                     URLEncoder.encode(username, StandardCharsets.UTF_8.name()),
                     URLEncoder.encode(courseId, StandardCharsets.UTF_8.name()),
                     URLEncoder.encode(code, StandardCharsets.UTF_8.name()),
-                    URLEncoder.encode(xml, StandardCharsets.UTF_8.name()));
+                    URLEncoder.encode(xml, StandardCharsets.UTF_8.name()),
+                    URLEncoder.encode(manifest, StandardCharsets.UTF_8.name()));
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }

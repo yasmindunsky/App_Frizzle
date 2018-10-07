@@ -108,7 +108,7 @@ public class ConnectToServer {
         File file = new File(PATH);
         file.mkdirs();
 
-        File outputFile = new File(file, "frizzle_project1.apk");
+        File outputFile = new File(file, "frizzl_project.apk");
         outputFile.setReadable(true);
         outputFile.setWritable(true);
 

@@ -1,57 +1,50 @@
-<?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+    android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/backgroundLightGrey"
-    tools:context="com.frizzl.app.frizzleapp.lesson.LessonActivity">
+    android:padding="30dp"
+    tools:context="com.frizzl.app.frizzleapp.intro.OnboardingActivity">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/onboarding"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <FrameLayout
-            android:id="@+id/fragment"
-            android:layout_width="match_parent"
-            android:layout_height="600dp"
-            android:layout_above="@id/dotsTabLayout"
-            android:layout_alignParentTop="true"
-            android:layout_marginBottom="0dp"
-            android:layout_marginTop="0dp"
-            android:elevation="4dp">
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/letsStart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="false"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"
+        android:text="Let's start\n building apps!"
+        android:textAlignment="center"
+        android:textAppearance="@style/Text.Info.Bold"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/thanksButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image" />
 
-            <com.frizzl.app.frizzleapp.CustomViewPager
-                android:id="@+id/pager"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-            </com.frizzl.app.frizzleapp.CustomViewPager>
-
-        </FrameLayout>
-
-        <android.support.design.widget.TabLayout
-            android:id="@+id/dotsTabLayout"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/swipe_dots_area_height"
-            android:layout_alignParentBottom="true"
-            android:layout_gravity="bottom"
-            android:layout_marginBottom="15dp"
-            android:layoutDirection="ltr"
-            app:tabBackground="@drawable/swipe_dots_tab_selector"
-            app:tabIndicatorHeight="0dp"
-            app:tabMaxWidth="@dimen/swipe_dot_max_width" />
-
-    </RelativeLayout>
-
-    <!--<LinearLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:gravity="center"-->
-        <!--android:orientation="vertical">-->
-
-
-    <!--</LinearLayout>-->
-
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/yayButton"
+        style="@style/Button.Thanks"
+        android:text="yay!"
+        android:textAppearance="@style/Text.Title.Light"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tasksCompleted"
+        app:layout_constraintVertical_bias="1.0" />
 </android.support.constraint.ConstraintLayout>

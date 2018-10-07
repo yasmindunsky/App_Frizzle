@@ -4,8 +4,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
-import com.frizzl.app.frizzleapp.UserProfile;
-
 import static com.frizzl.app.frizzleapp.preferences.PreferencesUtility.*;
 
 /**
@@ -47,4 +45,21 @@ public class SaveSharedPreference {
     public static String getUserName(Context context) {
         return getPreferences(context).getString(USERNAME_PREF, "");
     }
+
+    /**
+     * Set if this is this device's first time or not
+     * @param context
+     * @param loggedIn
+     */
+    public static void setFirstTime(Context context, boolean firstTime) {
+        SharedPreferences.Editor editor = getPreferences(context).edit();
+        editor.putBoolean(FIRST_TIME_PREF, firstTime);
+        editor.apply();
+    }
+
+    public static boolean getFirstTime(Context context) {
+        return getPreferences(context).getBoolean(FIRST_TIME_PREF, true);
+    }
+
+
 }

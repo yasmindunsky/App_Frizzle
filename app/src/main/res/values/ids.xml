@@ -12,6 +12,12 @@
     <item name="usersViewRow" type="id" />
     <item name="usersViewBgColor" type="id" />
     <item name="viewToDelete" type="id" />
+    <item name="infoText" type="id" />
+    <item name="taskText" type="id" />
+    <item name="reminderText" type="id" />
+    <item name="designSection" type="id" />
+    <item name="codeSection" type="id" />
+    <item name="codeKeyboard" type="id" />
 
 
 </resources>

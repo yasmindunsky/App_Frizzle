@@ -1,11 +1,10 @@
 package com.frizzl.app.frizzleapp.appBuilder;
 
 import android.content.ClipData;
-import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.res.ResourcesCompat;
+import android.util.Log;
 import android.view.DragEvent;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -25,8 +24,6 @@ import com.fangxu.allangleexpandablebutton.ButtonData;
 import com.fangxu.allangleexpandablebutton.ButtonEventListener;
 import com.frizzl.app.frizzleapp.AnnotationUserCreatedViewType;
 import com.frizzl.app.frizzleapp.R;
-import com.tooltip.OnDismissListener;
-import com.tooltip.Tooltip;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -45,6 +42,7 @@ public class DesignScreenFragment extends Fragment {
     private ImageView appIcon;
     private Tutorial tutorial;
     private AllAngleExpandableButton plusButton;
+    private AppBuilderActivity appBuilderActivity;
 
     public DesignScreenFragment() {
         // Required empty public constructor
@@ -55,22 +53,26 @@ public class DesignScreenFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_design, container, false);
 
-        designScreenPresenter = new DesignScreenPresenter(this);
-
+        appBuilderActivity = (AppBuilderActivity) getActivity();
         gridLayout = view.findViewById(R.id.gridLayout);
         appNameTitle = view.findViewById(R.id.app_name_title);
         appIcon = view.findViewById(R.id.app_icon);
         plusButton = view.findViewById(R.id.button_expandable);
 
         gridLayout.setOnDragListener(new DragListener());
-        setAppName(designScreenPresenter.getAppName());
-        setAppIcon(designScreenPresenter.getIcon());
-
-        views = designScreenPresenter.getViews(getContext());
-        presentViewsOnGridLayout();
 
         initAddMenu(view);
         tutorial = new Tutorial(getContext());
+
+        if (designScreenPresenter != null) {
+            setAppName(designScreenPresenter.getAppName());
+            setAppIcon(designScreenPresenter.getIcon());
+
+            views = designScreenPresenter.getViews(getContext());
+            presentViewsOnGridLayout();
+        } else {
+            Log.e("APP_BUILDER", "designScreenPresenter was not set.");
+        }
 
         return view;
     }
@@ -154,7 +156,7 @@ public class DesignScreenFragment extends Fragment {
             @Override
             public void onClick(final View v) {
                 // show the popup window
-                popupWindow = userCreatedButton.displayPropertiesTable(getContext());
+                popupWindow = userCreatedButton.getPropertiesTablePopupWindow(getContext());
 
                 ImageButton deleteButton = popupWindow.getContentView().findViewById(R.id.delete);
                 // To know what view to delete
@@ -162,11 +164,16 @@ public class DesignScreenFragment extends Fragment {
                 deleteButton.setOnClickListener(deleteView);
                 v.post(new Runnable() {
                     public void run() {
-                        popupWindow.showAtLocation(v, Gravity.CENTER, 0, 0);
+                        presentPopup(popupWindow);
                     }
                 });
             }
         });
+    }
+
+    public void presentPopup(PopupWindow popupWindow) {
+        AppBuilderActivity activity = (AppBuilderActivity)getActivity();
+        activity.presentPopup(popupWindow, null);
     }
 
     private void setTextOnClicks(final UserCreatedTextView userCreatedTextView){
@@ -178,7 +185,7 @@ public class DesignScreenFragment extends Fragment {
             @Override
             public void onClick(final View v) {
                 // show the popup window
-                popupWindow = userCreatedTextView.displayPropertiesTable(getContext());
+                popupWindow = userCreatedTextView.getPropertiesTablePopupWindow(getContext());
 
                 ImageButton deleteButton = popupWindow.getContentView().findViewById(R.id.delete);
                 // To know what view to delete
@@ -186,7 +193,7 @@ public class DesignScreenFragment extends Fragment {
                 deleteButton.setOnClickListener(deleteView);
                 v.post(new Runnable() {
                     public void run() {
-                        popupWindow.showAtLocation(v, Gravity.CENTER, 0, 0);
+                        presentPopup(popupWindow);
                     }
                 });
             }
@@ -202,7 +209,7 @@ public class DesignScreenFragment extends Fragment {
             @Override
             public void onClick(final View v) {
                 // show the popup window
-                popupWindow = userCreatedImageView.displayPropertiesTable(getContext());
+                popupWindow = userCreatedImageView.getPropertiesTablePopupWindow(getContext());
 
                 ImageButton deleteButton = popupWindow.getContentView().findViewById(R.id.delete);
                 // To know what view to delete
@@ -210,7 +217,7 @@ public class DesignScreenFragment extends Fragment {
                 deleteButton.setOnClickListener(deleteView);
                 v.post(new Runnable() {
                     public void run() {
-                        popupWindow.showAtLocation(v, Gravity.CENTER, 0, 0);
+                        presentPopup(popupWindow);
                     }
                 });
             }
@@ -265,6 +272,9 @@ public class DesignScreenFragment extends Fragment {
     }
 
     public void setAppName(String appName) {
+        if (appName == "") {
+            appName = "My Frizzl App";
+        }
         appNameTitle.setText(appName);
     }
 
@@ -279,24 +289,20 @@ public class DesignScreenFragment extends Fragment {
         }
     }
 
-    public void presentTooltip(View view, String text, OnDismissListener listener) {
-        Tooltip tooltip = new Tooltip.Builder(view)
-                .setText(text)
-                .setTextColor(getResources().getColor(R.color.TextGrey))
-                .setTextSize((float)16)
-                .setTypeface(ResourcesCompat.getFont(getContext(), R.font.calibri_regular))
-                .setMargin((float)4)
-                .setBackgroundColor(Color.WHITE)
-                .setCornerRadius((float) 15)
-                .setPadding((float)35)
-                .setDismissOnClick(true)
-                .setOnDismissListener(listener)
-                .setCancelable(true)
-                .show();
-    }
-
     public void presentTuturialMessage() {
         tutorial.presentTooltip(plusButton, "Here you can\n add elements.", null, Gravity.TOP);
+    }
+
+    public void taskCompleted() {
+        appBuilderActivity.taskCompleted();
+    }
+
+    public String getManifest() {
+        return designScreenPresenter.getManifest();
+    }
+
+    public void setPresenter(DesignScreenPresenter designScreenPresenter) {
+        this.designScreenPresenter = designScreenPresenter;
     }
 
     class LongPressListener implements View.OnLongClickListener {
@@ -323,7 +329,7 @@ public class DesignScreenFragment extends Fragment {
                     // remove the view from the old position
                     gridLayout.removeView(view);
                     // and push to the new
-                    GridLayout.LayoutParams layoutParams = getLayoutParams(event.getX(), event.getY(), view);
+                    GridLayout.LayoutParams layoutParams = getPostDragLayoutParams(event.getX(), event.getY(), view);
                     view.setLayoutParams(layoutParams);
                     gridLayout.addView(view);
                     view.setVisibility(View.VISIBLE);
@@ -337,7 +343,7 @@ public class DesignScreenFragment extends Fragment {
             return true;
         }
 
-        private GridLayout.LayoutParams getLayoutParams(float x, float y, View view) {
+        private GridLayout.LayoutParams getPostDragLayoutParams(float x, float y, View view) {
             // calculate which column to move to
             final float cellWidth = gridLayout.getWidth() / gridLayout.getColumnCount();
             int column = (int) (x / cellWidth);
@@ -354,6 +360,10 @@ public class DesignScreenFragment extends Fragment {
             GridLayout.LayoutParams layoutParams = new GridLayout.LayoutParams(GridLayout.spec(row),  GridLayout.spec(column));
             layoutParams.setMargins(10, 10, 10, 10);
             layoutParams.width = (int) getResources().getDimension(R.dimen.user_created_button_width);
+            if (view.getClass().equals(ImageView.class)){
+                layoutParams.width = (int) getResources().getDimension(R.dimen.user_created_image_view_width);
+                layoutParams.height = (int) getResources().getDimension(R.dimen.user_created_image_view_width);
+            }
 
             view.setTag(R.id.usersViewRow, row);
             view.setTag(R.id.usersViewCol, column);

@@ -20,17 +20,19 @@ public class PracticeMapButton extends android.support.v7.widget.AppCompatButton
     private int disabledColor;
     private Drawable completedDrawable;
     private boolean completed = false;
+    private int practiceID;
 
     public PracticeMapButton(Context context, AttributeSet attrs){
         super(context, attrs);
         TypedArray a = context.getTheme().obtainStyledAttributes(
                 attrs,
-                R.styleable.AppMapButton,
+                R.styleable.PracticeMapButton,
                 0, 0);
         try {
-            enabledColor = a.getColor(R.styleable.AppMapButton_enabledColor, Color.WHITE);
-            disabledColor = a.getColor(R.styleable.AppMapButton_disabledColor, Color.BLACK);
-            completedDrawable = a.getDrawable(R.styleable.AppMapButton_completedDrawable);
+            enabledColor = a.getColor(R.styleable.PracticeMapButton_enabledColor, Color.WHITE);
+            disabledColor = a.getColor(R.styleable.PracticeMapButton_disabledColor, Color.BLACK);
+            completedDrawable = a.getDrawable(R.styleable.PracticeMapButton_completedDrawable);
+            practiceID = a.getInt(R.styleable.PracticeMapButton_practiceID, 1);
         } finally {
             a.recycle();
         }
@@ -82,5 +84,9 @@ public class PracticeMapButton extends android.support.v7.widget.AppCompatButton
             setBackground(completedDrawable);
             setPracticeNameColor();
         }
+    }
+
+    public int getPracticeID() {
+        return practiceID;
     }
 }

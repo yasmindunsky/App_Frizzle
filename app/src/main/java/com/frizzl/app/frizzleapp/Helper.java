@@ -1,6 +1,8 @@
 package com.frizzl.app.frizzleapp;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.ContextWrapper;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -52,4 +54,7 @@ public class Helper {
 
         return popupView;
     }
+
+
+
 }

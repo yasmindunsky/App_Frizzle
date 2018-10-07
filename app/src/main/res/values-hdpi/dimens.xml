@@ -12,6 +12,7 @@
     <dimen name="start_margin">32dp</dimen>
     <dimen name="mapButtontextSize">20</dimen>
     <dimen name="user_created_button_width">100dp</dimen>
+    <dimen name="user_created_image_view_width">100dp</dimen>
     <dimen name="colors_top_screen1">230dp</dimen>
     <dimen name="colors_top_screen2">188dp</dimen>
 

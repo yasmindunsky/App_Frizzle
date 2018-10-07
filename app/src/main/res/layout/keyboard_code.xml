@@ -1,80 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge xmlns:android="http://schemas.android.com/apk/res/android">
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/UnselectedLightGrey"
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/button_1"
+            android:id="@+id/button_speakout"
+            android:textAppearance="@style/Text.KeyBoardsKeys"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_margin="5dp"
             android:layout_weight="1"
-            android:text="findViewById()"/>
+            android:background="@drawable/keyboard_key"
+            android:text="@string/speakout_keyboard" />
 
         <Button
-            android:id="@+id/button_2"
+            android:id="@+id/button_function"
+            android:textAppearance="@style/Text.KeyBoardsKeys"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_margin="5dp"
             android:layout_weight="1"
-            android:text="speakOut()"/>
-
-        <Button
-            android:id="@+id/button_3"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="&quot;&quot;"/>
-
-        <Button
-            android:id="@+id/button_4"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text=";"/>
-
-        <Button
-            android:id="@+id/button_5"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="function() {}"/>
+            android:background="@drawable/keyboard_key"
+            android:text="@string/function_keyboard" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/UnselectedLightGrey"
         android:orientation="horizontal">
 
-
-        <Button
-            android:id="@+id/button_0"
+        <ImageButton
+            android:id="@+id/button_english"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="55dp"
+            android:layout_margin="5dp"
             android:layout_weight="1"
-            android:text="english"/>
-    </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+            android:background="@drawable/keyboard_key"
+            android:padding="15dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_keyboard"
+            android:text="english" />
 
-        <Button
-            android:id="@+id/button_delete"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:text="Delete"/>
-
-        <Button
+        <ImageButton
             android:id="@+id/button_enter"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="3"
-            android:text="Enter"/>
+            android:layout_height="55dp"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+
+            android:background="@drawable/keyboard_key"
+            android:padding="15dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_enter"
+            android:text="Enter" />
+
+        <ImageButton
+            android:id="@+id/button_delete"
+            android:layout_width="0dp"
+            android:layout_height="55dp"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/keyboard_key"
+            android:padding="15dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_backspace"
+            android:text="Delete" />
 
     </LinearLayout>
 

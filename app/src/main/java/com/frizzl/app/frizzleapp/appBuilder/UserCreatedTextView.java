@@ -2,6 +2,7 @@ package com.frizzl.app.frizzleapp.appBuilder;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.ContextWrapper;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.Typeface;
@@ -23,6 +24,7 @@ import android.widget.TextView;
 
 import com.frizzl.app.frizzleapp.R;
 import com.frizzl.app.frizzleapp.Support;
+import com.frizzl.app.frizzleapp.UserProfile;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -108,6 +110,7 @@ public class UserCreatedTextView extends UserCreatedView {
         properties.put("android:text", (String) thisView.getText());
         properties.put("android:fontFamily", "serif");
         properties.put("android:textColor", "#535264");
+        properties.put("android:textSize", "18sp");
         properties.put("android:background", "@drawable/user_text_view_background");
         properties.put("android:padding", "10dp");
         properties.put("android:paddingStart", "16dp");
@@ -119,7 +122,7 @@ public class UserCreatedTextView extends UserCreatedView {
         thisView.setTag(R.id.usersViewCol, column);
     }
 
-    public PopupWindow displayPropertiesTable(final Context context) {
+    public PopupWindow getPropertiesTablePopupWindow(final Context context) {
         // inflate the layout of the popup window
         LayoutInflater inflater = (LayoutInflater)
                 context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -152,14 +155,16 @@ public class UserCreatedTextView extends UserCreatedView {
         });
 
         // ID
-        EditText viewId = popupView.findViewById(R.id.viewIdValue);
-        viewId.setOnFocusChangeListener(finishedEditingId);
-        viewId.setText(properties.get("android:id"));
+//        EditText viewId = popupView.findViewById(R.id.viewIdValue);
+//        viewId.setOnFocusChangeListener(finishedEditingId);
+//        viewId.setText(properties.get("android:id"));
 
         // TEXT
         EditText viewText = popupView.findViewById(R.id.viewTextValue);
         viewText.setOnFocusChangeListener(finishedEditingText);
         viewText.setText(properties.get("android:text"));
+
+
 
         // FONT
         Spinner fontSpinner = popupView.findViewById(R.id.viewFontValue);
@@ -265,6 +270,13 @@ public class UserCreatedTextView extends UserCreatedView {
                 String text = String.valueOf(((EditText)v).getText());
                 thisView.setText(text);
                 properties.put("android:text", text);
+
+                // For temp testing
+                if (UserProfile.user.getCurrentLevel() == 0 && UserProfile.user.getCurrentTaskNum()==1 &&
+                        text.trim().toLowerCase().equals("hello world")) {
+                    AppBuilderActivity appBuilderActivity = (AppBuilderActivity) getActivity();
+                    appBuilderActivity.taskCompleted();
+                }
             }
         }
     };
@@ -312,4 +324,16 @@ public class UserCreatedTextView extends UserCreatedView {
 //        return colorNamesMap.get(color);
 //
 //    }
+
+    public Activity getActivity() {
+        Context context = thisView.getContext();
+        while (context instanceof ContextWrapper) {
+            if (context instanceof Activity) {
+                return (Activity)context;
+            }
+            context = ((ContextWrapper)context).getBaseContext();
+        }
+        return null;
+    }
+
 }
