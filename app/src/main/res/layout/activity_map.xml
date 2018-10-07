@@ -42,19 +42,17 @@
                 custom:appID="2">
 
                 <ImageButton
-                    android:id="@+id/ic_friendship_app"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:background="@drawable/ic_friendship_test_app_icon"
                     android:scaleType="fitCenter" />
 
                 <TextView
-                    android:id="@+id/text_friendship_app"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="5dp"
                     android:gravity="center"
-                    android:text="Friendship\nTest App"
+                    android:text="@string/friendship_test_app"
                     android:textAppearance="@style/Text.Map" />
             </com.frizzl.app.frizzleapp.map.AppMapButton>
 
@@ -62,7 +60,7 @@
                 android:id="@+id/variables_practice"
                 style="@style/Button.MapPractice"
                 android:background="@drawable/map_app_circle_yellow_selector"
-                android:text="Variables Practice"
+                android:text="@string/variables_practice"
                 android:textAppearance="@style/Text.Map"
                 app:layout_constraintBottom_toTopOf="@+id/views_practice"
                 app:layout_constraintHorizontal_bias="0.523"
@@ -77,7 +75,7 @@
                 android:id="@+id/views_practice"
                 style="@style/Button.MapPractice"
                 android:background="@drawable/map_app_circle_green_selector"
-                android:text="Views Practice"
+                android:text="@string/views_practice"
                 android:textAppearance="@style/Text.Map"
                 app:layout_constraintBottom_toTopOf="@+id/polly_app"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -105,19 +103,17 @@
                 custom:completedDrawable="@drawable/map_app_circle_purple_completed">
 
                 <ImageButton
-                    android:id="@+id/ic_polly_app"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:background="@drawable/ic_polly_app_icon"
                     android:scaleType="fitCenter" />
 
                 <TextView
-                    android:id="@+id/text_polly_app"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="5dp"
                     android:gravity="center"
-                    android:text="Polly App"
+                    android:text="@string/polly_app"
                     android:textAppearance="@style/Text.Map" />
             </com.frizzl.app.frizzleapp.map.AppMapButton>
 
@@ -125,7 +121,7 @@
                 android:id="@+id/onclick_practice"
                 style="@style/Button.MapPractice"
                 android:background="@drawable/map_app_circle_pink_selector"
-                android:text="onClick Practice"
+                android:text="@string/onclick_practice"
                 android:textAppearance="@style/Text.Map"
                 app:layout_constraintBottom_toTopOf="@+id/speakout_practice"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -141,7 +137,7 @@
                 android:id="@+id/speakout_practice"
                 style="@style/Button.MapPractice"
                 android:background="@drawable/map_app_circle_orange_selector"
-                android:text="speakOut Practice"
+                android:text="@string/speakout_practice"
                 android:textAppearance="@style/Text.Map"
                 app:layout_constraintBottom_toTopOf="@+id/tutorial_app"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -171,19 +167,17 @@
                 >
 
                 <ImageButton
-                    android:id="@+id/ic_tutorial_app"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:background="@drawable/ic_tutorial_app_icon"
                     android:scaleType="fitCenter" />
 
                 <TextView
-                    android:id="@+id/text_tutorial_app"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="5dp"
                     android:gravity="center"
-                    android:text="Tutorial App"
+                    android:text="@string/tutorial_app"
                     android:textAppearance="@style/Text.Map" />
             </com.frizzl.app.frizzleapp.map.AppMapButton>
 
@@ -203,7 +197,6 @@
         android:theme="?attr/actionBarTheme">
 
         <android.support.v7.widget.AppCompatTextView
-            android:id="@+id/lessonTitle"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_centerInParent="true"

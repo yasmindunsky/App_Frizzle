@@ -1,6 +1,5 @@
 package com.frizzl.app.frizzleapp.lesson;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
@@ -9,7 +8,6 @@ import android.widget.ImageButton;
 import com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar;
 import com.frizzl.app.frizzleapp.CustomViewPager;
 import com.frizzl.app.frizzleapp.R;
-import com.frizzl.app.frizzleapp.map.MapActivity;
 
 import org.xmlpull.v1.XmlPullParserException;
 

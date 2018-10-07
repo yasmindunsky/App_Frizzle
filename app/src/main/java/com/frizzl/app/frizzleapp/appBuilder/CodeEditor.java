@@ -1,16 +1,12 @@
 package com.frizzl.app.frizzleapp.appBuilder;
 
 import android.content.Context;
-import android.content.res.ColorStateList;
-import android.graphics.Color;
-import android.graphics.PorterDuff;
 import android.support.v4.content.res.ResourcesCompat;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.Spannable;
 import android.text.TextWatcher;
 import android.text.style.ForegroundColorSpan;
-import android.text.style.TextAppearanceSpan;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;

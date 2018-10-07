@@ -75,7 +75,7 @@ public class ConnectToServer {
     }
 
     @NonNull
-    private String getTextResponse(HttpURLConnection client) throws IOException {
+    private String getTextResponse(HttpURLConnection client) {
         try {
             BufferedReader in = new BufferedReader(new InputStreamReader(client.getInputStream()));
             StringBuffer sb = new StringBuffer("");
@@ -92,7 +92,7 @@ public class ConnectToServer {
         }
     }
 
-    private void convertInputStreamToFIle(HttpURLConnection client, String fileName) throws IOException {
+    private void convertInputStreamToFIle(HttpURLConnection client, String fileName) {
         try {
             File newFile = new File("/data/user/0/com.example.yasmindunsky.frizzleapp/files/", fileName);
             FileOutputStream stream = new FileOutputStream(newFile, false);

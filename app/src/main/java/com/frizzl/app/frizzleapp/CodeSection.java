@@ -1,9 +1,7 @@
 package com.frizzl.app.frizzleapp;
 
 import android.content.Context;
-import android.preference.PreferenceManager;
 import android.speech.tts.TextToSpeech;
-import android.support.constraint.ConstraintLayout;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -123,12 +121,12 @@ public class CodeSection extends RelativeLayout {
         boolean valid = true;
         String code = codeEditor.getText().toString();
         // Contains 'speakOut'
-        valid &= code.indexOf("speakOut") >= 0 ? true : false;
+        valid = code.contains("speakOut");
         // Contains '("'
         code = code.replaceAll("\\s+","");
-        valid &= code.indexOf("(\"") >= 0 ? true : false;
+        valid &= code.contains("(\"");
         // Contains '");'
-        valid &= code.indexOf("\");") >= 0 ? true : false;
+        valid &= code.contains("\");");
         return valid;
     }
 

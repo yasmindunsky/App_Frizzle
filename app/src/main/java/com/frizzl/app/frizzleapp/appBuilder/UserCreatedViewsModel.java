@@ -1,13 +1,11 @@
 package com.frizzl.app.frizzleapp.appBuilder;
 
 import android.content.Context;
-import android.support.v4.app.Fragment;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.frizzl.app.frizzleapp.AnnotationUserCreatedViewType;
 import com.frizzl.app.frizzleapp.Support;
-import com.frizzl.app.frizzleapp.UserProfile;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -185,8 +183,8 @@ public class UserCreatedViewsModel {
         return views;
     }
 
-    public static void setViews(Map<Integer, UserCreatedView> views) {
-        views = views;
+    public static void setViews(Map<Integer, UserCreatedView> newViews) {
+        views = newViews;
         numOfButtons = 0;
         numOfTextViews = 0;
         numOfImageViews = 0;

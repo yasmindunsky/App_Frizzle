@@ -1,18 +1,14 @@
 package com.frizzl.app.frizzleapp.appBuilder;
 
-import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
 import android.support.v4.content.res.ResourcesCompat;
-import android.view.Gravity;
 import android.view.View;
-import android.widget.PopupWindow;
 
 import com.frizzl.app.frizzleapp.R;
 import com.tooltip.OnDismissListener;
 import com.tooltip.Tooltip;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**

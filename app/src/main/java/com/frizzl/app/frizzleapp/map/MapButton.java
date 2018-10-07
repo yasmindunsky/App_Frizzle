@@ -9,6 +9,6 @@ import android.graphics.Color;
 public interface MapButton {
     int enabledColor = Color.BLACK;
     int disabledColor = Color.BLACK;
-    public void setCompleted(boolean completed);
-    public void setEnabled(boolean enabled);
+    void setCompleted(boolean completed);
+    void setEnabled(boolean enabled);
 }

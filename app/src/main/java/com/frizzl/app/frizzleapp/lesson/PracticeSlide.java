@@ -1,7 +1,6 @@
 package com.frizzl.app.frizzleapp.lesson;
 
 import com.frizzl.app.frizzleapp.Code;
-import com.frizzl.app.frizzleapp.appBuilder.CodeEditor;
 
 import java.io.Serializable;
 

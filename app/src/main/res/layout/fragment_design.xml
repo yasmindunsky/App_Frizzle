@@ -26,7 +26,6 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:id="@+id/app_top"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:adjustViewBounds="true"
@@ -55,7 +54,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="My FIrst App"
+                        android:text="@string/my_first_app"
                         android:textAppearance="@style/Text.Title.Light" />
                 </LinearLayout>
 
@@ -185,7 +184,6 @@
                 </GridLayout>
 
                 <ImageView
-                    android:id="@+id/app_bottom"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:adjustViewBounds="true"

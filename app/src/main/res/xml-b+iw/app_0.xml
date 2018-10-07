@@ -4,13 +4,13 @@
     tools:keep="@xml/app_0">
     <task>
         <text name="text">
-            "Add a Text element."
+            "הוסיפי רכיב טקסט."
         </text>
     </task>
 
     <task>
         <text name="text">
-            "Set text to "Hello World"."
+            "שני את הטקסט ל-"Hello World"."
         </text>
     </task>
 

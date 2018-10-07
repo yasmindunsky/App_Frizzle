@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -47,7 +46,7 @@
             android:padding="15dp"
             android:scaleType="centerInside"
             android:src="@drawable/ic_keyboard"
-            android:text="english" />
+            android:text="@string/keyboard_english" />
 
         <ImageButton
             android:id="@+id/button_enter"
@@ -60,7 +59,7 @@
             android:padding="15dp"
             android:scaleType="centerInside"
             android:src="@drawable/ic_enter"
-            android:text="Enter" />
+            android:text="@string/keyboard_enter" />
 
         <ImageButton
             android:id="@+id/button_delete"
@@ -72,7 +71,7 @@
             android:padding="15dp"
             android:scaleType="centerInside"
             android:src="@drawable/ic_backspace"
-            android:text="Delete" />
+            android:text="@string/keyboard_delete" />
 
     </LinearLayout>
 

@@ -5,11 +5,11 @@
     tools:keep="@xml/practice_1">
     <slide>
         <info_text>
-            "In order for apps to do interesting things we need to use code.\\u000A
-            This is the first code command that we’ll learn, in a language called Java."
+            "כדי שאפליקציות יוכלו לעשות דברים מעניינים אנחנו צריכות להשתמש בקוד.\\u000A
+            זוהי הפקודה הראשונה שנלמד, בשפה שנקראת ג'אווה."
         </info_text>
         <task_text>
-            "Run the code and see what it does."
+            "הריצי את הקוד ותראי מה קורה."
         </task_text>
         <reminder_text></reminder_text>
         <code mutable="false" runnable="true">
@@ -17,7 +17,7 @@
         </code>
         <mutable_design></mutable_design>
         <call_to_action>
-            "Next"
+            "קדימה"
         </call_to_action>
     </slide>
 

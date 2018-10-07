@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     package="com.frizzl.app.frizzleapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -21,23 +20,20 @@
 
         <activity android:name="com.frizzl.app.frizzleapp.map.MapActivity"
             android:theme="@style/AppTheme.NoActionBar"
-            android:supportsRtl="false"
-            tools:replace="android:supportsRtl">
+            >
         </activity>
 
         <activity
             android:name="com.frizzl.app.frizzleapp.intro.OnboardingActivity"
             android:configChanges="layoutDirection|locale"
             android:theme="@style/AppTheme.NoActionBar"
-            android:supportsRtl="false"
-            tools:replace="android:supportsRtl">
+            >
         </activity>
 
         <activity android:name="com.frizzl.app.frizzleapp.SplashActivity"
             android:configChanges="layoutDirection|locale"
             android:theme="@style/AppTheme.NoActionBar"
-            android:supportsRtl="false"
-            tools:replace="android:supportsRtl">
+            >
             <intent-filter>
                 <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE"/>
                 <action android:name="android.intent.action.MAIN" />
@@ -47,8 +43,7 @@
         </activity>
 
         <activity android:name="com.frizzl.app.frizzleapp.lesson.PracticeActivity"
-            android:supportsRtl="false"
-            tools:replace="android:supportsRtl"/>
+            />
 
         <activity android:name="com.frizzl.app.frizzleapp.appBuilder.AppBuilderActivity"
             android:exported="true">

@@ -2,7 +2,6 @@ package com.frizzl.app.frizzleapp.appBuilder;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.GridLayout;
@@ -98,8 +97,7 @@ public class UserCreatedImageView extends UserCreatedView {
     }
 
     public PopupWindow getPropertiesTablePopupWindow(Context context) {
-        ChooseImagePopupWindow chooseImagePoupWindow = new ChooseImagePopupWindow(context, index, this);
-        return chooseImagePoupWindow;
+        return new ChooseImagePopupWindow(context, index, this);
     }
 
     @Override

@@ -6,7 +6,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.PopupWindow;
-import android.widget.TextView;
 
 import com.frizzl.app.frizzleapp.R;
 

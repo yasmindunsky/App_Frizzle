@@ -3,13 +3,11 @@ package com.frizzl.app.frizzleapp.lesson;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatTextView;
 import android.view.ContextThemeWrapper;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -171,7 +169,7 @@ public class PracticeSlideFragment extends Fragment {
                     moveToNextFragment();
                 }
                 else {
-                    button.setText("Try Again");
+                    button.setText(R.string.try_again);
                 }
             }
         });
@@ -220,7 +218,7 @@ public class PracticeSlideFragment extends Fragment {
         boolean correct = true;
         correct &= code.contains(functionName.trim());
         // Contains 'speakOut'
-        correct &= code.indexOf("public void") >= 0 ? true : false;
+        correct &= code.indexOf("public void") >= 0;
         return correct;
     }
 
@@ -228,12 +226,12 @@ public class PracticeSlideFragment extends Fragment {
         boolean correct = true;
         correct &= code.contains(expectedString.trim().toLowerCase());
         // Contains 'speakOut'
-        correct &= code.indexOf("speakOut") >= 0 ? true : false;
+        correct &= code.contains("speakOut");
         // Contains '("'
         code = code.replaceAll("\\s+", "");
-        correct &= code.indexOf("(\"") >= 0 ? true : false;
+        correct &= code.contains("(\"");
         // Contains '");'
-        correct &= code.indexOf("\");") >= 0 ? true : false;
+        correct &= code.contains("\");");
         return correct;
     }
 

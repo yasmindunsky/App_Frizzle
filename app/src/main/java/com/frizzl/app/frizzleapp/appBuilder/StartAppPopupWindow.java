@@ -1,8 +1,6 @@
 package com.frizzl.app.frizzleapp.appBuilder;
 
 import android.content.Context;
-import android.graphics.Color;
-import android.support.v4.content.res.ResourcesCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -13,8 +11,6 @@ import android.widget.PopupWindow;
 import android.widget.RadioButton;
 
 import com.frizzl.app.frizzleapp.R;
-import com.tooltip.OnDismissListener;
-import com.tooltip.Tooltip;
 
 import java.util.ArrayList;
 

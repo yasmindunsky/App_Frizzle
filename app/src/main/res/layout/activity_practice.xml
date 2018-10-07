@@ -32,10 +32,8 @@
         app:rcProgressColor="@color/frizzle_pink" />
 
     <FrameLayout
-        android:id="@+id/fragment"
         android:layout_width="match_parent"
         android:layout_height="@dimen/slide_height"
-        android:layout_above="@id/dotsTabLayout"
         android:elevation="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

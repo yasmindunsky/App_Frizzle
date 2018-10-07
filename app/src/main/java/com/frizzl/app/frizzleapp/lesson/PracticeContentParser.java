@@ -68,7 +68,7 @@ public class PracticeContentParser {
         Code code = getCode("code");
         String design = getValue("mutable_design");
         String callToActionText = getValue("call_to_action");
-        boolean hasDesign = design == null ? false : true;
+        boolean hasDesign = design != null;
         return new PracticeSlide(infoText, reminderText, taskText, code, callToActionText, hasDesign);
     }
 

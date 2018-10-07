@@ -1,18 +1,14 @@
 package com.frizzl.app.frizzleapp;
 
 import android.app.Application;
-import android.content.SharedPreferences;
 import android.content.res.Configuration;
-import android.content.res.Resources;
 import android.os.Build;
 import android.os.LocaleList;
-import android.preference.PreferenceManager;
 
 import com.crashlytics.android.Crashlytics;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
-import com.squareup.leakcanary.LeakCanary;
 
 import java.util.Locale;
 

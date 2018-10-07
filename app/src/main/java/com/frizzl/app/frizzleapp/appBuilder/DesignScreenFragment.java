@@ -272,14 +272,14 @@ public class DesignScreenFragment extends Fragment {
     }
 
     public void setAppName(String appName) {
-        if (appName == "") {
+        if (appName.equals("")) {
             appName = "My Frizzl App";
         }
         appNameTitle.setText(appName);
     }
 
     public void setAppIcon(String iconDrawable) {
-        if (iconDrawable != "" && iconDrawable != null) {
+        if (!iconDrawable.equals("") && iconDrawable != null) {
             LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT);
             layoutParams.weight = 1;
             int iconIdentifier = getResources().getIdentifier(iconDrawable, "drawable", getActivity().getPackageName());

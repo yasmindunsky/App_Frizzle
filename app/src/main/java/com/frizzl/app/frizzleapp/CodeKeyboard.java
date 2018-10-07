@@ -14,14 +14,10 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
-import java.util.HashSet;
-
 public class CodeKeyboard extends LinearLayout implements View.OnClickListener {
 
     private static final int NUM_OF_CHARS_TO_BACK_AFTER_SPEAKOUT = 3;
     private static final int NUM_OF_CHARS_TO_BACK_AFTER_FUNCTION = 21;
-    private Button speakOutButton, functionButton;
-    private ImageButton englishButton, buttonDelete, buttonEnter;
 
     private SparseArray<String> keyValues = new SparseArray<>();
 
@@ -38,25 +34,25 @@ public class CodeKeyboard extends LinearLayout implements View.OnClickListener {
 
     public CodeKeyboard(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        init(context, attrs);
+        init(context);
     }
 
-    private void init(Context context, AttributeSet attrs) {
+    private void init(Context context) {
         LayoutInflater.from(context).inflate(R.layout.keyboard_code, this, true);
-        speakOutButton = findViewById(R.id.button_speakout);
+        Button speakOutButton = findViewById(R.id.button_speakout);
         speakOutButton.setOnClickListener(this);
-        functionButton = findViewById(R.id.button_function);
+        Button functionButton = findViewById(R.id.button_function);
         functionButton.setOnClickListener(this);
-        englishButton = findViewById(R.id.button_english);
+        ImageButton englishButton = findViewById(R.id.button_english);
         englishButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 inputMethodManagar.toggleSoftInput(InputMethodManager.SHOW_FORCED,0);
             }
         });
-        buttonDelete = findViewById(R.id.button_delete);
+        ImageButton buttonDelete = findViewById(R.id.button_delete);
         buttonDelete.setOnClickListener(this);
-        buttonEnter = findViewById(R.id.button_enter);
+        ImageButton buttonEnter = findViewById(R.id.button_enter);
         buttonEnter.setOnClickListener(this);
 
         keyValues.put(R.id.button_speakout, "speakOut(\"\");");

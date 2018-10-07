@@ -4,18 +4,15 @@ package com.frizzl.app.frizzleapp.appBuilder;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
-import android.support.constraint.ConstraintSet;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
-import android.widget.TextView;
 
 import com.frizzl.app.frizzleapp.CodeKeyboard;
 import com.frizzl.app.frizzleapp.R;

@@ -70,7 +70,6 @@ app:srcCompat="@drawable/ic_trash" />
                 android:id="@+id/viewTextKey"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/viewIdValue"
                 android:text="@string/propertiesTableText"
                 android:textAppearance="@style/propertiesTableKey" />
 

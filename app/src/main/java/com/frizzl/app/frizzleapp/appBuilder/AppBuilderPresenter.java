@@ -7,8 +7,6 @@ import com.frizzl.app.frizzleapp.UserApp;
 import com.frizzl.app.frizzleapp.UserProfile;
 import com.google.firebase.analytics.FirebaseAnalytics;
 
-import java.util.Map;
-
 public class AppBuilderPresenter {
 
     private AppBuilderActivity appBuilderActivity;

@@ -20,7 +20,6 @@ import android.widget.GridLayout;
 import android.widget.ImageButton;
 import android.widget.PopupWindow;
 import android.widget.Spinner;
-import android.widget.TableRow;
 
 import com.frizzl.app.frizzleapp.R;
 import com.frizzl.app.frizzleapp.Support;
@@ -247,17 +246,12 @@ public class UserCreatedButton extends UserCreatedView {
         });
 
         // ONCLICK
-        TableRow tableRow = popupView.findViewById(R.id.onClickTableRow);
-//        if (UserProfile.user.getTopLessonID() < 6) {
-//            tableRow.setVisibility(View.INVISIBLE);
-//        } else {
-            EditText onClickFuncName = popupView.findViewById(R.id.viewOnClickValue);
-            onClickFuncName.setOnFocusChangeListener(finishedOnClick);
-            onClickFuncName.setHint(R.string.function_name);
-            onClickFuncName.setText(properties.get("android:onClick"));
-//        }
+        EditText onClickFuncName = popupView.findViewById(R.id.viewOnClickValue);
+        onClickFuncName.setOnFocusChangeListener(finishedOnClick);
+        onClickFuncName.setHint(R.string.function_name);
+        onClickFuncName.setText(properties.get("android:onClick"));
 
-        //DELETE
+        // DELETE
         ImageButton deleteButton = popupView.findViewById(R.id.delete);
         deleteButton.setTag(index);
 //        deleteButton.setOnClickListener(deleteView);
@@ -274,16 +268,6 @@ public class UserCreatedButton extends UserCreatedView {
     public Button getThisView() {
         return thisView;
     }
-
-    EditText.OnFocusChangeListener finishedEditingId = new View.OnFocusChangeListener() {
-        @Override
-        public void onFocusChange(View v, boolean hasFocus) {
-            if (!hasFocus) {
-                String id = String.valueOf(((EditText)v).getText());
-                properties.put("android:id", id);
-            }
-        }
-    };
 
     EditText.OnFocusChangeListener finishedEditingText = new View.OnFocusChangeListener() {
         @Override

@@ -3,8 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="@drawable/table_background"
-    tools:context="com.frizzl.app.frizzleapp.goToAppBuilderFragment">
+    android:background="@drawable/table_background">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
@@ -41,7 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="false"
             android:layout_centerHorizontal="true"
-            android:text="You've completed all your tasks."
+            android:text="@string/all_tasks_completed"
             android:textAppearance="@style/Text.Info"
             app:layout_constraintBottom_toTopOf="@+id/amazingWork"
             app:layout_constraintEnd_toEndOf="parent"
@@ -55,7 +54,7 @@
             android:layout_alignParentTop="false"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="16dp"
-            android:text="Amazing work!"
+            android:text="@string/amazing_work"
             android:textAppearance="@style/Text.Info.Bold"
             app:layout_constraintBottom_toTopOf="@+id/thanksButton"
             app:layout_constraintEnd_toEndOf="parent"

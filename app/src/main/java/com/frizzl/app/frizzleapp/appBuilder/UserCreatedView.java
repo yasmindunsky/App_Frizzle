@@ -1,8 +1,6 @@
 package com.frizzl.app.frizzleapp.appBuilder;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.ContextWrapper;
 import android.util.Log;
 import android.view.View;
 import android.widget.PopupWindow;
@@ -38,10 +36,10 @@ public abstract class UserCreatedView {
 
     public Map<String, String> getProperties() { return properties; }
 
-    public String createXmlString(XmlSerializer xmlSerializer) {
+    public void createXmlString(XmlSerializer xmlSerializer) {
         String name = viewType;
         updateLatestPosition();
-        if (viewType != AnnotationUserCreatedViewType.IMAGE_VIEW) {
+        if (!viewType.equals( AnnotationUserCreatedViewType.IMAGE_VIEW)) {
             properties.put("android:textColor", properties.get("android:textColor"));
         }
         try {
@@ -56,7 +54,6 @@ public abstract class UserCreatedView {
         } catch (IOException e) {
             Log.e("Exception", "xmlSerializer " + xmlSerializer.toString() + " failed: " + e.toString());
         }
-        return null;
     }
 
     private void updateLatestPosition() {

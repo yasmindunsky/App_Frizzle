@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <item type="id" name="userAnswerInput" />
-    <item type="id" name="radioGroup" />
     <item type="id" name="textView" />
     <item type="id" name="button" />
 
-    <item type="id" name="usersViewFontFamily" />
     <item type="id" name="usersViewId" />
-    <item name="viewType" type="id" />
     <item name="usersViewCol" type="id" />
     <item name="usersViewRow" type="id" />
-    <item name="usersViewBgColor" type="id" />
     <item name="viewToDelete" type="id" />
     <item name="infoText" type="id" />
     <item name="taskText" type="id" />

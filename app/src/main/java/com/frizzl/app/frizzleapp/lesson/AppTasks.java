@@ -1,7 +1,5 @@
 package com.frizzl.app.frizzleapp.lesson;
 
-import com.frizzl.app.frizzleapp.lesson.exercise.Exercise;
-
 import java.util.ArrayList;
 
 /**

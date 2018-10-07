@@ -49,7 +49,7 @@ public class UserApp implements Serializable {
     }
 
     public String getName() {
-        if (name == "") {
+        if (name.equals("")) {
             name = "My Frizzl App";
         }
         return name;
@@ -68,7 +68,7 @@ public class UserApp implements Serializable {
     }
 
     public String getIcon() {
-        if (icon == ""){
+        if (icon.equals("")){
             icon = "ic_tutorial_app_5";
         }
         return icon;

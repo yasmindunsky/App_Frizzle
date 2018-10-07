@@ -1,7 +1,6 @@
 package com.frizzl.app.frizzleapp.appBuilder;
 
 import android.Manifest;
-import android.content.ActivityNotFoundException;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -28,7 +27,6 @@ import android.widget.PopupWindow;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.frizzl.app.frizzleapp.AppTasksSwipeAdapter;
 import com.frizzl.app.frizzleapp.CustomViewPager;
@@ -42,7 +40,6 @@ import com.tooltip.OnDismissListener;
 import net.cachapa.expandablelayout.ExpandableLayout;
 
 import java.io.File;
-import java.util.Map;
 
 public class AppBuilderActivity extends AppCompatActivity {
     private static final int INSTALLED_APP = 1;
@@ -184,16 +181,13 @@ public class AppBuilderActivity extends AppCompatActivity {
 //        final TabLayout tabLayout = findViewById(R.id.tabLayout);
 //        tabLayout.setupWithViewPager(viewPager, true);
 
-        final TabLayout.Tab graphicEditTab = tabLayout.newTab().setText(R.string.graphic_edit_screen_title);
-        TabLayout.Tab codingTab = tabLayout.newTab().setText(R.string.code_screen_title);
+        final TabLayout.Tab graphicEditTab = tabLayout.newTab().setText(R.string.design);
+        TabLayout.Tab codingTab = tabLayout.newTab().setText(R.string.code);
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             public void onTabReselected(TabLayout.Tab tab) {
             }
 
             public void onTabSelected(TabLayout.Tab tab) {
-                if (activityCreated) {
-
-                }
                 Fragment fragment = null;
                 if (tab.getPosition() == 0) {
                     fragment = designFragment;
@@ -269,7 +263,7 @@ public class AppBuilderActivity extends AppCompatActivity {
                 moveOnButton.setVisibility(View.VISIBLE);
             }
         };
-    };
+    }
 
     public void openTaskSuccessPopup() {
         PopupWindow successPopupWindow = new TaskSuccessPopupWindow(getApplicationContext());
@@ -330,7 +324,6 @@ public class AppBuilderActivity extends AppCompatActivity {
                     // permission denied
 
                 }
-                return;
             }
         }
     }
