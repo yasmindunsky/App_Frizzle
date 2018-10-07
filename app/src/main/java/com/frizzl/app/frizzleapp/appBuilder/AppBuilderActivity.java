@@ -258,7 +258,7 @@ public class AppBuilderActivity extends AppCompatActivity {
     private Runnable afterSuccessPopupClosed (){
         return new Runnable(){
             public void run(){
-                tutorial.presentTooltip(playButton, "Here you can\ninstall your app.", null, Gravity.BOTTOM);
+                tutorial.presentTooltip(playButton, getString(R.string.tooltip_install_app), null, Gravity.BOTTOM);
                 showMovedOn = true;
                 moveOnButton.setVisibility(View.VISIBLE);
             }
@@ -390,7 +390,7 @@ public class AppBuilderActivity extends AppCompatActivity {
                 designFragment.presentTuturialMessage();
             }
         };
-        tutorial.presentTooltip(viewPager, "Here you can see\n what your task is.", listener, Gravity.BOTTOM);
+        tutorial.presentTooltip(viewPager, getString(R.string.tooltip_see_task), listener, Gravity.BOTTOM);
     }
 
     public void updateAppNameAndIcon(String appName, String iconDrawable) {
@@ -412,7 +412,7 @@ public class AppBuilderActivity extends AppCompatActivity {
             ((Animatable) drawable).start();
         }
         if (UserProfile.user.getCurrentTaskNum() == 0 && UserProfile.user.getCurrentLevel() == 0) {
-            tutorial.presentTooltip(nextButton, "Great!\n Move on to your next task.", null, Gravity.BOTTOM);
+            tutorial.presentTooltip(nextButton, getString(R.string.tooltip_move_on), null, Gravity.BOTTOM);
         }
     }
 

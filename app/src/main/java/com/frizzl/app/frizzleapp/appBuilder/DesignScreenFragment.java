@@ -290,7 +290,7 @@ public class DesignScreenFragment extends Fragment {
     }
 
     public void presentTuturialMessage() {
-        tutorial.presentTooltip(plusButton, "Here you can\n add elements.", null, Gravity.TOP);
+        tutorial.presentTooltip(plusButton, getString(R.string.tooltip_add_elements), null, Gravity.TOP);
     }
 
     public void taskCompleted() {
