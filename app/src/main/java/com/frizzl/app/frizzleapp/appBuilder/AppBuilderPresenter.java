@@ -2,7 +2,6 @@ package com.frizzl.app.frizzleapp.appBuilder;
 
 import android.util.Log;
 
-import com.frizzl.app.frizzleapp.AsyncResponse;
 import com.frizzl.app.frizzleapp.UserApp;
 import com.frizzl.app.frizzleapp.UserProfile;
 import com.google.firebase.analytics.FirebaseAnalytics;
@@ -52,15 +51,12 @@ public class AppBuilderPresenter {
     }
 
     public void downloadApk(String code, String xml, String manifest) {
-        new DownloadApkFromServer(new AsyncResponse() {
-            @Override
-            public void processFinish(String output) {
-                if (output == null || output.equals("")){
-                    output = "no output from server";
-                }
-                Log.d("INSTALL",output);
-                appBuilderActivity.startApk();
+        new DownloadApkFromServer(output -> {
+            if (output == null || output.equals("")){
+                output = "no output from server";
             }
+            Log.d("INSTALL", "output:" + output);
+            appBuilderActivity.installUsersApp();
         }).execute(codeStart + code + codeEnd, xml, manifest);
     }
 

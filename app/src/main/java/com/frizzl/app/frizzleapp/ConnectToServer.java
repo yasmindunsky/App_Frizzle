@@ -2,6 +2,7 @@ package com.frizzl.app.frizzleapp;
 
 import android.os.Environment;
 import android.support.annotation.NonNull;
+import android.util.Log;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -50,6 +51,7 @@ public class ConnectToServer {
                 output.write(body.getBytes(StandardCharsets.UTF_8));
                 output.flush();
                 output.close();
+//                Log.d("INSTALL", "output: " + output);
             } catch (Exception e) {
                 return "Connection to server failed";
             }

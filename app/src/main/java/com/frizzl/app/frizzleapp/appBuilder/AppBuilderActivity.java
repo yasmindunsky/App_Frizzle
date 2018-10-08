@@ -4,10 +4,12 @@ import android.Manifest;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.Animatable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.design.widget.TabLayout;
@@ -42,7 +44,8 @@ import net.cachapa.expandablelayout.ExpandableLayout;
 import java.io.File;
 
 public class AppBuilderActivity extends AppCompatActivity {
-    private static final int INSTALLED_APP = 1;
+    private static final int INSTALLED_APP_ABOVE_N = 1;
+    private static final int INSTALLED_APP_BELOW_N = 2;
     private AppBuilderPresenter appBuilderPresenter;
     private DesignScreenPresenter designScreenPresenter;
     private CodingScreenPresenter codingScreenPresenter;
@@ -291,6 +294,7 @@ public class AppBuilderActivity extends AppCompatActivity {
             ActivityCompat.requestPermissions(this,
                     new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, WRITE_PERMISSION);
         }
+
 //        else {
 //            // permission was already granted, download apk
 //            appBuilderPresenter.downloadApk();
@@ -336,48 +340,65 @@ public class AppBuilderActivity extends AppCompatActivity {
         progressBar.setVisibility(visible);
     }
 
-    public void startApk() {
+    public void installUsersApp() {
         setProgressBarVisibility(View.GONE);
 
-        //get destination
         String destination =
                 Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
                 + "/frizzl_project.apk";
         File apkFile = new File(destination);
+        Log.e("INSTALL", "apkFile length: " + apkFile.length() / 1024);
         Context context = getApplicationContext();
 
-        // create uri from file
-        Uri contentUri = FileProvider.getUriForFile(context,
-                "com.frizzl.app.frizzlapp.fileprovider", apkFile);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            // create uri from file
+            Uri contentUri = FileProvider.getUriForFile(context,
+                    "com.frizzl.app.frizzlapp.fileprovider", apkFile);
 
-        Log.e("INSTALL", "apkFile length: " + apkFile.length()/1024);
-
-        // initial intel
-        Intent intent = new Intent(Intent.ACTION_INSTALL_PACKAGE);
-        intent.setData(contentUri);
-        intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-        intent.putExtra(Intent.EXTRA_RETURN_RESULT, true);
-        startActivityForResult(intent, INSTALLED_APP);
+            // initial intel
+            Intent intent = new Intent(Intent.ACTION_INSTALL_PACKAGE);
+            intent.setData(contentUri);
+            intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            intent.putExtra(Intent.EXTRA_RETURN_RESULT, true);
+            intent.putExtra(Intent.EXTRA_NOT_UNKNOWN_SOURCE, true);
+            startActivityForResult(intent, INSTALLED_APP_ABOVE_N);
+        } else {
+            Uri contentUri = Uri.fromFile(apkFile);
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setDataAndType(contentUri, "application/vnd.android.package-archive");
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.putExtra(Intent.EXTRA_RETURN_RESULT, true);
+            startActivityForResult(intent, INSTALLED_APP_BELOW_N);
+        }
     }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data)
     {
-        if (requestCode == INSTALLED_APP) {
-            if(resultCode == RESULT_OK){
-                Log.e("INSTALL", "Package Installation Success");
-                Intent intent = new Intent(Intent.ACTION_MAIN, null);
-                intent.addCategory(Intent.CATEGORY_LAUNCHER);
-                final ComponentName cn = new ComponentName("com.frizzl.frizzlproject3", "com.frizzl.frizzlproject3.MainActivity");
-                intent.setComponent(cn);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                 startActivity(intent);
-            } else if(resultCode == RESULT_FIRST_USER){
-                Log.e("INSTALL", "Package Installation Cancelled by USER");
-            } else{
-                Log.e("INSTALL", "Something went wrong - INSTALLATION FAILED");
-            }
+        switch (requestCode) {
+            case INSTALLED_APP_ABOVE_N:
+                Log.d("INSTALL", "resultCode: " + resultCode);
+                if(resultCode == RESULT_OK){
+                    Log.d("INSTALL", "Package Installation Success.");
+                    startUsersApp();
+                } else if(resultCode == RESULT_FIRST_USER){
+                    Log.d("INSTALL", "RESULT_FIRST_USER, Installation Failed");
+                } else if (resultCode == RESULT_CANCELED){
+                    Log.d("INSTALL", "Installation Cancelled.");
+                }
+                break;
+            case INSTALLED_APP_BELOW_N:
+                startUsersApp();
         }
+    }
+
+    private void startUsersApp() {
+        Intent intent = new Intent(Intent.ACTION_MAIN, null);
+        intent.addCategory(Intent.CATEGORY_LAUNCHER);
+        final ComponentName cn = new ComponentName("com.frizzl.frizzlproject3", "com.frizzl.frizzlproject3.MainActivity");
+        intent.setComponent(cn);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
     }
 
     public void onStartButtonFromStartAppPopup(String appName, String iconDrawable) {
