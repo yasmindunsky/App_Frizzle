@@ -9,15 +9,15 @@ import java.util.ArrayList;
 
 public class AppTasks implements Serializable{
 
-    private int appID;
+    private int appLevelID;
     private ArrayList<Task> tasks;
 
-    public AppTasks(int appID) {
-        this.appID = appID;
+    public AppTasks(int appLevelID) {
+        this.appLevelID = appLevelID;
     }
 
     public int getID() {
-        return appID;
+        return appLevelID;
     }
 
     public ArrayList<Task> getTasks() {

@@ -5,9 +5,11 @@ import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.PopupWindow;
 import android.widget.ScrollView;
 
 import com.frizzl.app.frizzleapp.R;
+import com.frizzl.app.frizzleapp.Support;
 import com.frizzl.app.frizzleapp.UserProfile;
 import com.frizzl.app.frizzleapp.appBuilder.AppBuilderActivity;
 import com.frizzl.app.frizzleapp.lesson.AppContentParser;
@@ -26,7 +28,7 @@ public class MapActivity extends AppCompatActivity {
     private ArrayList<MapButton> levelButtons = new ArrayList<>();
     private android.support.v7.widget.Toolbar toolbar;
     private ScrollView scrollView;
-    private AppMapButton tutorialAppButton;
+//    private AppMapButton tutorialAppButton;
     private AppMapButton pollyAppButton;
     private AppMapButton friendshipTestAppButton;
     private PracticeMapButton speakOutPracticeButton;
@@ -44,14 +46,15 @@ public class MapActivity extends AppCompatActivity {
 
         toolbar = findViewById(R.id.mapToolbar);
         scrollView = findViewById(R.id.map_scroll_view);
-        tutorialAppButton = findViewById(R.id.tutorial_app);
+//        tutorialAppButton = findViewById(R.id.tutorial_app);
         pollyAppButton = findViewById(R.id.polly_app);
         friendshipTestAppButton = findViewById(R.id.friendship_app);
         speakOutPracticeButton = findViewById(R.id.speakout_practice);
         onClickPracticeButton = findViewById(R.id.onclick_practice);
         viewsPracticeButton = findViewById(R.id.views_practice);
         variablesPracticeButton = findViewById(R.id.variables_practice);
-        levelButtons.addAll(Arrays.asList(tutorialAppButton,
+        levelButtons.addAll(Arrays.asList(
+//                tutorialAppButton,
                 speakOutPracticeButton,
                 onClickPracticeButton,
                 pollyAppButton,
@@ -59,23 +62,22 @@ public class MapActivity extends AppCompatActivity {
                 variablesPracticeButton,
                 friendshipTestAppButton));
 
-        View.OnClickListener onClickedApp = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AppMapButton appMapButton = (AppMapButton) v;
-                int appID = appMapButton.getAppID();
-                mapPresenter.onClickedApp(appID);
-            }
+        PopupWindow helpPopupWindow = new HelpPopupWindow(this);
+        toolbar.setNavigationIcon(R.drawable.ic_task_arrow_icon_back);
+        toolbar.setNavigationOnClickListener(v -> Support.presentPopup(helpPopupWindow, null, mainLayout, mainLayout,
+                getApplicationContext()));
+
+        View.OnClickListener onClickedApp = v -> {
+            AppMapButton appMapButton = (AppMapButton) v;
+            int levelID = appMapButton.getLevelID();
+            mapPresenter.onClickedApp(levelID);
         };
-        View.OnClickListener onClickedPractice = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                PracticeMapButton practiceMapButton = (PracticeMapButton)v;
-                int practiceID = practiceMapButton.getPracticeID();
-                mapPresenter.onClickedPractice(practiceID);
-            }
+        View.OnClickListener onClickedPractice = v -> {
+            PracticeMapButton practiceMapButton = (PracticeMapButton)v;
+            int practiceID = practiceMapButton.getPracticeID();
+            mapPresenter.onClickedPractice(practiceID);
         };
-        tutorialAppButton.setOnClickListener(onClickedApp);
+//        tutorialAppButton.setOnClickListener(onClickedApp);
         pollyAppButton.setOnClickListener(onClickedApp);
         friendshipTestAppButton.setOnClickListener(onClickedApp);
         speakOutPracticeButton.setOnClickListener(onClickedPractice);
@@ -84,11 +86,7 @@ public class MapActivity extends AppCompatActivity {
         variablesPracticeButton.setOnClickListener(onClickedPractice);
 
         // Set scroll position.
-        scrollView.post(new Runnable() {
-            public void run() {
-                scrollView.fullScroll(View.FOCUS_DOWN);
-            }
-        });
+        scrollView.post(() -> scrollView.fullScroll(View.FOCUS_DOWN));
     }
 
     @Override
@@ -108,23 +106,21 @@ public class MapActivity extends AppCompatActivity {
         levelButtons.get(topLevel).setEnabled(true);
     }
 
-    public void goToApp(int appID) {
+    public void goToApp(int levelID) {
         // parse app & update user profile
         AppContentParser appContentParser = null;
         try {
             appContentParser = new AppContentParser();
-            AppTasks appTasks = appContentParser.parseAppXml(this, appID);
+            AppTasks appTasks = appContentParser.parseAppXml(this, levelID);
             UserProfile.user.setCurrentAppTasks(appTasks);
-            UserProfile.user.setCurrentUserAppID(appID);
-        } catch (XmlPullParserException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+            UserProfile.user.setCurrentUserAppLevelID(levelID);
+        } catch (XmlPullParserException | IOException e) {
             e.printStackTrace();
         }
 
         // go to app builder
         Intent appIntent = new Intent(this, AppBuilderActivity.class);
-        appIntent.putExtra("appID", appID);
+        appIntent.putExtra("appLevelID", levelID);
         startActivity(appIntent);
     }
 
@@ -146,5 +142,7 @@ public class MapActivity extends AppCompatActivity {
 //        // update position in server
 //        new UpdatePositionInServer().execute();
 //    }
+
+
 
 }

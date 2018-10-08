@@ -154,6 +154,7 @@ public class MainActivity extends AppCompatActivity implements   TextToSpeech.On
     <string name="tooltip_install_app">Here you can install your app.</string>
     <string name="tooltip_see_task">Here you can see  what your task is.</string>
     <string name="tooltip_move_on">Great!  Move on to your next task.</string>
+    <string name="send">send</string>
 
     <string-array name="fonts">
         <item>sans-serif</item>

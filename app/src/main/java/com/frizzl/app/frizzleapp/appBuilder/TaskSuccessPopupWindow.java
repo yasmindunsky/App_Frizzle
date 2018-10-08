@@ -29,11 +29,6 @@ public class TaskSuccessPopupWindow extends PopupWindow {
 
         Button thanksButton = popupView.findViewById(R.id.thanksButton);
 
-        thanksButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dismiss();
-            }
-        });
+        thanksButton.setOnClickListener(v -> dismiss());
     }
 }

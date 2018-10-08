@@ -45,14 +45,11 @@ public class ChooseImagePopupWindow extends PopupWindow {
         RadioButton radioButton7 = popupView.findViewById(R.id.radioButton7);
         selectedButton = radioButton1;
 
-        saveButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Object tag = selectedButton.getTag();
-                if (tag != null) {
-                    userCreatedImageView.setImage(selectedButton.getBackground(), tag.toString());
-                    dismiss();
-                }
+        saveButton.setOnClickListener(v -> {
+            Object tag = selectedButton.getTag();
+            if (tag != null) {
+                userCreatedImageView.setImage(selectedButton.getBackground(), tag.toString());
+                dismiss();
             }
         });
 
@@ -71,16 +68,13 @@ public class ChooseImagePopupWindow extends PopupWindow {
         radioButtons.add(radioButton7);
 
         for (RadioButton radioButton : radioButtons) {
-            radioButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                @Override
-                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                    if (isChecked) {
-                        for (RadioButton radioButton : radioButtons) {
-                            radioButton.setChecked(false);
-                        }
-                        buttonView.setChecked(true);
-                        selectedButton = (RadioButton) buttonView;
+            radioButton.setOnCheckedChangeListener((buttonView, isChecked) -> {
+                if (isChecked) {
+                    for (RadioButton radioButton4 : radioButtons) {
+                        radioButton4.setChecked(false);
                     }
+                    buttonView.setChecked(true);
+                    selectedButton = (RadioButton) buttonView;
                 }
             });
         }

@@ -26,7 +26,6 @@ public class UserCreatedViewsModel {
     private static int numOfTextViews;
     private static int numOfImageViews;
     private static int nextViewIndex;
-    private static int numOfButton;
 
     public static Map<Integer, UserCreatedView> initializeViews(Context context) {
         views = new HashMap<>();
@@ -113,7 +112,7 @@ public class UserCreatedViewsModel {
                 Map<String,String> properties = new HashMap<>();
                 for (Iterator<String> it = viewJson.keys(); it.hasNext(); ) {
                     String key = it.next();
-                    properties.put(key.toString(), viewJson.get(key).toString());
+                    properties.put(key, viewJson.get(key).toString());
                 }
                 UserCreatedView userCreatedView = null;
                 switch (viewType) {
@@ -162,7 +161,7 @@ public class UserCreatedViewsModel {
                     json.put("id", i);
                     i++;
                     UserCreatedView userCreatedView = views.get(key);
-                    json.put("viewType", userCreatedView.getViewType().toString());
+                    json.put("viewType", userCreatedView.getViewType());
                     Map<String, String> properties = userCreatedView.getProperties();
                     for (Map.Entry<String, String> property : properties.entrySet()) {
                         json.put(property.getKey(), property.getValue());
@@ -204,7 +203,6 @@ public class UserCreatedViewsModel {
     }
 
     public static void setNumOfButton(int numOfButton) {
-        UserCreatedViewsModel.numOfButton = numOfButton;
     }
 
     public static void setNumOfTextViews(int numOfTextViews) {
@@ -218,5 +216,9 @@ public class UserCreatedViewsModel {
     public static String getManifest(String appIcon, String appName) {
         LayoutXmlWriter layoutXmlWriter = new LayoutXmlWriter();
         return layoutXmlWriter.writeManifest(appIcon, appName);
+    }
+
+    public static void setNextViewIndex(int nextViewIndex) {
+        UserCreatedViewsModel.nextViewIndex = nextViewIndex;
     }
 }

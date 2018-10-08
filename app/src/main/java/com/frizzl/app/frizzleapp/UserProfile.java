@@ -21,7 +21,7 @@ public class UserProfile implements Serializable {
     private int currentTaskNum;
     private UserApp tutorialUserApp;
     private UserApp pollyUserApp;
-    private int currentUserAppID;
+    private int currentUserAppLevelID;
 
     // level is of apps and practices combined
     private int currentLevel;
@@ -50,11 +50,11 @@ public class UserProfile implements Serializable {
     }
 
     public UserApp getCurrentUserApp() {
-        return (currentUserAppID == 0) ? tutorialUserApp : pollyUserApp;
+        return (currentUserAppLevelID == 0) ? tutorialUserApp : pollyUserApp;
     }
 
-    public void setCurrentUserAppID(UserApp currentUserApp) {
-        if (currentUserAppID == 0){
+    public void setCurrentUserAppLevelID(UserApp currentUserApp) {
+        if (currentUserAppLevelID == 0){
             tutorialUserApp = currentUserApp;
         } else {
             pollyUserApp = currentUserApp;
@@ -86,10 +86,8 @@ public class UserProfile implements Serializable {
             user = (UserProfile) objectInputStream.readObject();
             objectInputStream.close();
             fileInputStream.close();
-        } catch (IOException i) {
+        } catch (IOException | ClassNotFoundException i) {
             i.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
         }
     }
 
@@ -103,8 +101,8 @@ public class UserProfile implements Serializable {
         }
     }
 
-    public void finishedApp(int appID) {
-        if (appID == topLevel) {
+    public void finishedApp(int appLevelID) {
+        if (appLevelID == topLevel) {
             topLevel++;
         }
         if (currentLevel < topLevel){
@@ -128,8 +126,8 @@ public class UserProfile implements Serializable {
         this.currentLevel = currentLevel;
     }
 
-    public void setCurrentUserAppID(int appID) {
-        currentUserAppID = appID;
+    public void setCurrentUserAppLevelID(int appLevelID) {
+        currentUserAppLevelID = appLevelID;
     }
 
 }

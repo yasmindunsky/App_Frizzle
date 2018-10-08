@@ -20,7 +20,7 @@ public class AppMapButton extends LinearLayout implements MapButton{
     private int disabledColor;
     private Drawable completedDrawable;
     private boolean completed = false;
-    private int appID;
+    private int levelID;
 
     public AppMapButton(Context context, AttributeSet attrs){
         super(context, attrs);
@@ -32,7 +32,7 @@ public class AppMapButton extends LinearLayout implements MapButton{
             enabledColor = a.getColor(R.styleable.AppMapButton_enabledColor, Color.WHITE);
             disabledColor = a.getColor(R.styleable.AppMapButton_disabledColor, Color.BLACK);
             completedDrawable = a.getDrawable(R.styleable.AppMapButton_completedDrawable);
-            appID = a.getInt(R.styleable.AppMapButton_appID, 0);
+            levelID = a.getInt(R.styleable.AppMapButton_levelID, 0);
         } finally {
             a.recycle();
         }
@@ -92,7 +92,7 @@ public class AppMapButton extends LinearLayout implements MapButton{
         }
     }
 
-    public int getAppID() {
-        return appID;
+    public int getLevelID() {
+        return levelID;
     }
 }

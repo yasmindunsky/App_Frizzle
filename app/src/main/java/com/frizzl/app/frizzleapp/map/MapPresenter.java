@@ -13,15 +13,15 @@ public class MapPresenter {
         this.mapActivity = mapActivity;
     }
 
-    public void onClickedApp(int appID){
-        int level = (appID == 0) ? 0 : 3; // TODO change
-        UserProfile.user.setCurrentLevel(level);
-        mapActivity.goToApp(appID);
+    public void onClickedApp(int levelID){
+//        int level = (appID == 0) ? 0 : 3; // TODO change
+        UserProfile.user.setCurrentLevel(levelID);
+        mapActivity.goToApp(levelID);
     }
 
-    public void onClickedPractice(int practiceID){
-        UserProfile.user.setCurrentLevel(practiceID);
-        mapActivity.goToPractice(practiceID);
+    public void onClickedPractice(int levelID){
+        UserProfile.user.setCurrentLevel(levelID);
+        mapActivity.goToPractice(levelID);
 
     }
 

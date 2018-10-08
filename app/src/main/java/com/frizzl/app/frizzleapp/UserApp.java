@@ -22,11 +22,11 @@ public class UserApp implements Serializable {
 
     private String name;
     private String icon;
-    private int appID;
+    private int appLevelID;
     private Object nextIndex;
 
-    public UserApp(int appID){
-        this.appID = appID;
+    public UserApp(int appLevelID){
+        this.appLevelID = appLevelID;
         this.name = "My Frizzl App";
         this.icon = "ic_tutorial_app_5";
         this.xml = "";
@@ -98,8 +98,8 @@ public class UserApp implements Serializable {
         return xml;
     }
 
-    public int getAppID() {
-        return appID;
+    public int getAppLevelID() {
+        return appLevelID;
     }
 
     public int getNumOfButtons() {

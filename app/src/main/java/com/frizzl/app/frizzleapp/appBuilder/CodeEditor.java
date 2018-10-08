@@ -65,12 +65,7 @@ public class CodeEditor extends android.support.v7.widget.AppCompatEditText {
             InputMethodManager imm = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
             keyboard.setInputMethodManagar(imm);
             setKeyboardVisibility(INVISIBLE);
-            setOnFocusChangeListener(new OnFocusChangeListener() {
-                @Override
-                public void onFocusChange(View v, boolean hasFocus) {
-                    setKeyboardVisibility(hasFocus ? VISIBLE : INVISIBLE);
-                }
-            });
+            setOnFocusChangeListener((v, hasFocus) -> setKeyboardVisibility(hasFocus ? VISIBLE : INVISIBLE));
         }
 
         // Set coloring
@@ -111,8 +106,10 @@ public class CodeEditor extends android.support.v7.widget.AppCompatEditText {
             if (secondQuotationMark > 0) {
                 s.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.frizzle_orange)), firstQuotationMark, secondQuotationMark + 1,
                         Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                startPosition = secondQuotationMark + 1;
+            } else {
+                startPosition = firstQuotationMark + 1;
             }
-            startPosition = secondQuotationMark + 1;
             secondQuotationMark = -1;
             currentPosition = 0;
             firstQuotationMark = s.toString().indexOf("\"", startPosition);

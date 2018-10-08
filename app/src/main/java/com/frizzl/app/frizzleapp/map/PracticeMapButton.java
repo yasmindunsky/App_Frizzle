@@ -29,7 +29,7 @@ public class PracticeMapButton extends android.support.v7.widget.AppCompatButton
             enabledColor = a.getColor(R.styleable.PracticeMapButton_enabledColor, Color.WHITE);
             disabledColor = a.getColor(R.styleable.PracticeMapButton_disabledColor, Color.BLACK);
             completedDrawable = a.getDrawable(R.styleable.PracticeMapButton_completedDrawable);
-            practiceID = a.getInt(R.styleable.PracticeMapButton_practiceID, 1);
+            practiceID = a.getInt(R.styleable.PracticeMapButton_levelID, 1);
         } finally {
             a.recycle();
         }

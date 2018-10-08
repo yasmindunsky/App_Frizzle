@@ -31,21 +31,18 @@ public class CodeSection extends RelativeLayout {
         super(context);
         setId(R.id.relativeLayout);
 
-        TextToSpeech.OnInitListener onInitListener = new TextToSpeech.OnInitListener() {
-            @Override
-            public void onInit(int status) {
-                if (status == TextToSpeech.SUCCESS) {
+        TextToSpeech.OnInitListener onInitListener = status -> {
+            if (status == TextToSpeech.SUCCESS) {
 
-                    int result = tts.setLanguage(Locale.US);
+                int result = tts.setLanguage(Locale.US);
 
-                    if (result == TextToSpeech.LANG_MISSING_DATA
-                            || result == TextToSpeech.LANG_NOT_SUPPORTED) {
-                        Log.e("TTS", "This Language is not supported");
-                    }
-
-                } else {
-                    Log.e("TTS", "Initilization Failed!");
+                if (result == TextToSpeech.LANG_MISSING_DATA
+                        || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+                    Log.e("TTS", "This Language is not supported");
                 }
+
+            } else {
+                Log.e("TTS", "Initilization Failed!");
             }
         };
         tts = new TextToSpeech(context, onInitListener, "com.google.android.tts");
@@ -56,16 +53,13 @@ public class CodeSection extends RelativeLayout {
         codeEditor.clearFocus();
         codeEditor.setBackground(getResources().getDrawable(R.drawable.code_bg));
         codeEditor.setGravity(Gravity.START);
-        this.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-                                                                 @Override
-                                                                 public void onGlobalLayout() {
-                                                                    codeEditor.setWidth(getWidth());
-        RelativeLayout.LayoutParams codeEditorLayoutParams = new RelativeLayout.LayoutParams(
-                LayoutParams.MATCH_PARENT,
-                LayoutParams.WRAP_CONTENT);
-        codeEditor.setLayoutParams(codeEditorLayoutParams);
-                                                                 }
-                                                             });
+        this.getViewTreeObserver().addOnGlobalLayoutListener(() -> {
+           codeEditor.setWidth(getWidth());
+LayoutParams codeEditorLayoutParams = new LayoutParams(
+LayoutParams.MATCH_PARENT,
+LayoutParams.WRAP_CONTENT);
+codeEditor.setLayoutParams(codeEditorLayoutParams);
+        });
         addView(codeEditor);
 
         if (runnable) {
@@ -74,15 +68,12 @@ public class CodeSection extends RelativeLayout {
             playButton.setScaleType(ImageView.ScaleType.FIT_CENTER);
             playButton.setAdjustViewBounds(false);
             playButton.setImageDrawable(getResources().getDrawable(R.drawable.ic_play_run_icon));
-            OnClickListener runCode = new OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (codeIsValid()) {
-                        speakOut();
-                    }
-                    else {
-                        displayErrorPopup(v, "Uh oh, there is some problem with the code");
-                    }
+            OnClickListener runCode = v -> {
+                if (codeIsValid()) {
+                    speakOut();
+                }
+                else {
+                    displayErrorPopup(v, "Uh oh, there is some problem with the code");
                 }
             };
             playButton.setOnClickListener(runCode);
@@ -109,12 +100,7 @@ public class CodeSection extends RelativeLayout {
                 ViewGroup.LayoutParams.WRAP_CONTENT, true);
         popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
         ImageButton closeButton = popupView.findViewById(R.id.close);
-        closeButton.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                popupWindow.dismiss();
-            }
-        });
+        closeButton.setOnClickListener(v -> popupWindow.dismiss());
     }
 
     private boolean codeIsValid() {

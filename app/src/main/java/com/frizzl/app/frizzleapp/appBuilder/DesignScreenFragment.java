@@ -68,7 +68,7 @@ public class DesignScreenFragment extends Fragment {
             setAppName(designScreenPresenter.getAppName());
             setAppIcon(designScreenPresenter.getIcon());
 
-            views = designScreenPresenter.getViews(getContext());
+            views = DesignScreenPresenter.getViews(getContext());
             presentViewsOnGridLayout();
         } else {
             Log.e("APP_BUILDER", "designScreenPresenter was not set.");
@@ -126,15 +126,19 @@ public class DesignScreenFragment extends Fragment {
             }
 
             gridLayout.addView(usersView);
-            if (userCreatedView.getViewType().equals(AnnotationUserCreatedViewType.BUTTON)) {
-                final UserCreatedButton userCreatedButton = (UserCreatedButton) userCreatedView;
-                setButtonOnClicks(userCreatedButton);
-            } else if (userCreatedView.getViewType().equals(AnnotationUserCreatedViewType.TEXT_VIEW)) {
-                final UserCreatedTextView userCreatedTextView = (UserCreatedTextView) userCreatedView;
-                setTextOnClicks(userCreatedTextView);
-            } else {
-                final UserCreatedImageView userCreatedImageView = (UserCreatedImageView)userCreatedView;
-                setImageOnClicks(userCreatedImageView);
+            switch (userCreatedView.getViewType()) {
+                case AnnotationUserCreatedViewType.BUTTON:
+                    final UserCreatedButton userCreatedButton = (UserCreatedButton) userCreatedView;
+                    setButtonOnClicks(userCreatedButton);
+                    break;
+                case AnnotationUserCreatedViewType.TEXT_VIEW:
+                    final UserCreatedTextView userCreatedTextView = (UserCreatedTextView) userCreatedView;
+                    setTextOnClicks(userCreatedTextView);
+                    break;
+                default:
+                    final UserCreatedImageView userCreatedImageView = (UserCreatedImageView) userCreatedView;
+                    setImageOnClicks(userCreatedImageView);
+                    break;
             }
         }
     }
@@ -152,22 +156,15 @@ public class DesignScreenFragment extends Fragment {
         Button button = userCreatedButton.getThisView();
         button.setOnLongClickListener(new LongPressListener());
 
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(final View v) {
-                // show the popup window
-                popupWindow = userCreatedButton.getPropertiesTablePopupWindow(getContext());
+        button.setOnClickListener(v -> {
+            // show the popup window
+            popupWindow = userCreatedButton.getPropertiesTablePopupWindow(getContext());
 
-                ImageButton deleteButton = popupWindow.getContentView().findViewById(R.id.delete);
-                // To know what view to delete
-                deleteButton.setTag(R.id.viewToDelete, v.getTag(R.id.usersViewId));
-                deleteButton.setOnClickListener(deleteView);
-                v.post(new Runnable() {
-                    public void run() {
-                        presentPopup(popupWindow);
-                    }
-                });
-            }
+            ImageButton deleteButton = popupWindow.getContentView().findViewById(R.id.delete);
+            // To know what view to delete
+            deleteButton.setTag(R.id.viewToDelete, v.getTag(R.id.usersViewId));
+            deleteButton.setOnClickListener(deleteView);
+            v.post(() -> presentPopup(popupWindow));
         });
     }
 
@@ -181,22 +178,15 @@ public class DesignScreenFragment extends Fragment {
 
         textView.setOnLongClickListener(new LongPressListener());
 
-        textView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(final View v) {
-                // show the popup window
-                popupWindow = userCreatedTextView.getPropertiesTablePopupWindow(getContext());
+        textView.setOnClickListener(v -> {
+            // show the popup window
+            popupWindow = userCreatedTextView.getPropertiesTablePopupWindow(getContext());
 
-                ImageButton deleteButton = popupWindow.getContentView().findViewById(R.id.delete);
-                // To know what view to delete
-                deleteButton.setTag(R.id.viewToDelete, v.getId());
-                deleteButton.setOnClickListener(deleteView);
-                v.post(new Runnable() {
-                    public void run() {
-                        presentPopup(popupWindow);
-                    }
-                });
-            }
+            ImageButton deleteButton = popupWindow.getContentView().findViewById(R.id.delete);
+            // To know what view to delete
+            deleteButton.setTag(R.id.viewToDelete, v.getId());
+            deleteButton.setOnClickListener(deleteView);
+            v.post(() -> presentPopup(popupWindow));
         });
     }
 
@@ -205,22 +195,15 @@ public class DesignScreenFragment extends Fragment {
 
         imageView.setOnLongClickListener(new LongPressListener());
 
-        imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(final View v) {
-                // show the popup window
-                popupWindow = userCreatedImageView.getPropertiesTablePopupWindow(getContext());
+        imageView.setOnClickListener(v -> {
+            // show the popup window
+            popupWindow = userCreatedImageView.getPropertiesTablePopupWindow(getContext());
 
-                ImageButton deleteButton = popupWindow.getContentView().findViewById(R.id.delete);
-                // To know what view to delete
-                deleteButton.setTag(R.id.viewToDelete, v.getId());
-                deleteButton.setOnClickListener(deleteView);
-                v.post(new Runnable() {
-                    public void run() {
-                        presentPopup(popupWindow);
-                    }
-                });
-            }
+            ImageButton deleteButton = popupWindow.getContentView().findViewById(R.id.delete);
+            // To know what view to delete
+            deleteButton.setTag(R.id.viewToDelete, v.getId());
+            deleteButton.setOnClickListener(deleteView);
+            v.post(() -> presentPopup(popupWindow));
         });
     }
 

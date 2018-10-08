@@ -2,18 +2,19 @@
 <!--’-->
 
 <practice xmlns:tools="http://schemas.android.com/tools"
-    tools:keep="@xml/practice_1">
+    tools:keep="@xml/practice_2">
     <slide>
         <info_text>
-            "In order for apps to do interesting things we need to use code.\\u000A
-            This is the first code command that we’ll learn, in a language called Java."
+            "If we want to connect a button to a command we need to create a function.
+            \\u000AThis is what a function looks like:
+            \\u000A(In this example, the speakOut command is inside myFirstFunction)"
         </info_text>
-        <task_text>
-            "Run the code and see what it does."
-        </task_text>
+        <task_text />
         <reminder_text></reminder_text>
-        <code mutable="false" runnable="true">
-            "speakOut(\\u0022Hello\\u0022);"
+        <code mutable="false" runnable="false">
+            "public void myFirstFunction(){\\u000A
+            \\u0009speakOut(\\u0022Hello\\u0022);\\u000A
+            }"
         </code>
         <mutable_design></mutable_design>
         <call_to_action>
@@ -22,61 +23,57 @@
     </slide>
 
     <slide>
-        <info_text></info_text>
+        <info_text>"We added a new function below."</info_text>
         <task_text>
-            "Change the command so it will read your name and run it again."
+            "Add the speakOut command inside the new function so it will read out ’Goodbye’."
         </task_text>
         <reminder_text></reminder_text>
-        <code mutable="true" runnable="true">
-            "speakOut(\\u0022Hello\\u0022);"
+        <code mutable="true" runnable="false">
+            "public void myFirstFunction(){
+            \\u000A\\u0009speakOut(\\u0022Hello\\u0022);
+            \\u000A}
+            \\u000A
+            \\u000Apublic void mySecondFunction(){
+            \\u000A\\u0009
+            \\u000A}"
         </code>
         <mutable_design></mutable_design>
         <call_to_action>
-            "Next"
+            "Check"
         </call_to_action>
     </slide>
 
     <slide>
         <info_text></info_text>
         <task_text>
-            "Write the command by yourself so it will read \\u0022this is so cool\\u0022 and run the code."
+            "Create a new function, name it ’sayMyName’ and write a speakOut command inside it
+            that says your name."
         </task_text>
-        <reminder_text>reminder: speakOut(\\u0022Hello\\u0022);</reminder_text>
-        <code mutable="true" runnable="true">
+        <reminder_text>" Reminder:
+            \\u000Apublic void myFirstFunction(View view){
+            \\u000A\\u0009speakOut(\\u0022Hello\\u0022);
+            \\u000A}"</reminder_text>
+        <code mutable="true" runnable="false">
             "\\u0020"
         </code>
         <mutable_design></mutable_design>
         <call_to_action>
             "Check"
         </call_to_action>
-        <solution>speakOut(\\u0022this is so cool\\u0022);</solution>
     </slide>
 
     <slide>
-        <info_text></info_text>
+        <info_text>"We’ll now learn how to connect a function to a button."</info_text>
         <task_text>
-            "Delete the semicolon at the end of the command and try to run it again."
+            "Set the button’s onClick property to ’sayHello’."
         </task_text>
         <reminder_text></reminder_text>
-        <code mutable="true" runnable="true">
-            "speakOut(\\u0022Hello\\u0022);"
+        <code mutable="false" runnable="false">
+            "public void sayHello(){
+            \\u000A\\u0009speakOut(\\u0022Hello\\u0022);
+            \\u000A}"
         </code>
-        <mutable_design></mutable_design>
-        <call_to_action>
-            "Check"
-        </call_to_action>
-    </slide>
-
-    <slide>
-        <info_text></info_text>
-        <task_text>
-            "Type a space character between the ’speak’ and ’out’ in the command name and run the code."
-        </task_text>
-        <reminder_text></reminder_text>
-        <code mutable="true" runnable="true">
-            "speakOut(\\u0022Hello\\u0022);"
-        </code>
-        <mutable_design></mutable_design>
+        <mutable_design>true</mutable_design>
         <call_to_action>
             "Check"
         </call_to_action>

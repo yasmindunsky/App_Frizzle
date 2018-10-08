@@ -35,7 +35,7 @@ public class DesignScreenPresenter {
         currentUserApp.setViews(UserCreatedViewsModel.getViews(), UserCreatedViewsModel.getNumOfButtons(),
                 UserCreatedViewsModel.getNumOfTextViews(),  UserCreatedViewsModel.getNumOfImageViews(),
                 UserCreatedViewsModel.getNextViewIndex());
-                UserProfile.user.setCurrentUserAppID(currentUserApp);
+                UserProfile.user.setCurrentUserAppLevelID(currentUserApp);
     }
 
     public static Map<Integer, UserCreatedView> getViews(Context context) {
@@ -46,6 +46,7 @@ public class DesignScreenPresenter {
             UserCreatedViewsModel.setNumOfButton(currentUserApp.getNumOfButtons());
             UserCreatedViewsModel.setNumOfTextViews(currentUserApp.getNumOfTextViews());
             UserCreatedViewsModel.setNumOfImageViews(currentUserApp.getNumOfImageViews());
+            UserCreatedViewsModel.setNextViewIndex(currentUserApp.getNextIndex());
         }
         if (views == null || views.isEmpty()) {
             views = UserCreatedViewsModel.initializeViews(context);

@@ -2,11 +2,9 @@ package com.frizzl.app.frizzleapp;
 
 import android.os.Environment;
 import android.support.annotation.NonNull;
-import android.util.Log;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -80,7 +78,7 @@ public class ConnectToServer {
     private String getTextResponse(HttpURLConnection client) {
         try {
             BufferedReader in = new BufferedReader(new InputStreamReader(client.getInputStream()));
-            StringBuffer sb = new StringBuffer("");
+            StringBuilder sb = new StringBuilder("");
             String line = "";
 
             while ((line = in.readLine()) != null) {
@@ -101,7 +99,6 @@ public class ConnectToServer {
             stream.write(client.getInputStream().available());
             stream.close();
         } catch (IOException e) {
-            return;
         }
     }
 

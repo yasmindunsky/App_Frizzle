@@ -4,7 +4,6 @@ import android.Manifest;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.Animatable;
 import android.graphics.drawable.Drawable;
@@ -78,7 +77,7 @@ public class AppBuilderActivity extends AppCompatActivity {
     private boolean activityCreated = false;
     private CustomViewPager viewPager;
     private AppTasksSwipeAdapter swipeAdapter;
-    private int currentAppID;
+    private int currentAppLevelID;
     private static boolean showMovedOn = false;
 
     @Override
@@ -87,7 +86,7 @@ public class AppBuilderActivity extends AppCompatActivity {
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
         super.onCreate(savedInstanceState);
-        currentAppID = getIntent().getIntExtra("appID", 0);
+        currentAppLevelID = getIntent().getIntExtra("appLevelID", 0);
 
         RelativeLayout mainLayout = (RelativeLayout) this.getLayoutInflater().inflate(R.layout.activity_app_builder, null);
         setContentView(mainLayout);
@@ -116,40 +115,31 @@ public class AppBuilderActivity extends AppCompatActivity {
         disableNextArrow();
 
         moveOnButton.setVisibility(showMovedOn ? View.VISIBLE : View.INVISIBLE);
-        moveOnButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                UserProfile.user.finishedApp(currentAppID);
-                showMovedOn = false;
-                onBackPressed();
-            }
+        moveOnButton.setOnClickListener(v -> {
+            UserProfile.user.finishedApp(currentAppLevelID);
+            showMovedOn = false;
+            onBackPressed();
         });
 
         // Disable dim
         relativeLayout.setForeground(getResources().getDrawable(R.drawable.shade));
         relativeLayout.getForeground().setAlpha(0);
 
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // save user project in profile and server
-                appBuilderPresenter.saveProject();
+        toolbar.setNavigationOnClickListener(v -> {
+            // save user project in profile and server
+            appBuilderPresenter.saveProject();
 
-                // Go to map home screen
-                Intent mapIntent = new Intent(getBaseContext(), MapActivity.class);
-                startActivity(mapIntent);
-            }
+            // Go to map home screen
+            Intent mapIntent = new Intent(getBaseContext(), MapActivity.class);
+            startActivity(mapIntent);
         });
 
         // Error ExpandableLayout
-        clickToExpandError.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (errorExpandableLayout.isExpanded()) {
-                    errorExpandableLayout.collapse();
-                } else {
-                    errorExpandableLayout.expand();
-                }
+        clickToExpandError.setOnClickListener(v -> {
+            if (errorExpandableLayout.isExpanded()) {
+                errorExpandableLayout.collapse();
+            } else {
+                errorExpandableLayout.expand();
             }
         });
 
@@ -162,20 +152,11 @@ public class AppBuilderActivity extends AppCompatActivity {
         // Prevent swiping.
         viewPager.setPagingEnabled(false);
 
-        nextButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v)
-            {
-                viewPager.setCurrentItem(getItem(1), true);
-                disableNextArrow();
-            }
+        nextButton.setOnClickListener(v -> {
+            viewPager.setCurrentItem(getItem(1), true);
+            disableNextArrow();
         });
-        prevButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                viewPager.setCurrentItem(getItem(-1),true);
-            }
-        });
+        prevButton.setOnClickListener(v -> viewPager.setCurrentItem(getItem(-1),true));
         // Rotation for RTL swiping.
 //        if (Support.isRTL()) {
 //            viewPager.setRotationY(180);
@@ -216,7 +197,7 @@ public class AppBuilderActivity extends AppCompatActivity {
         appBuilderPresenter = new AppBuilderPresenter(this,
                 codingScreenPresenter, designScreenPresenter,
                 getApplicationContext().getResources().getString(R.string.code_start),
-                getApplicationContext().getResources().getString(R.string.code_end), currentAppID);
+                getApplicationContext().getResources().getString(R.string.code_end), currentAppLevelID);
 
         tutorial = new Tutorial(getApplicationContext());
         activityCreated = true;
@@ -235,37 +216,29 @@ public class AppBuilderActivity extends AppCompatActivity {
     public void onPlay(final View view) {
         Bundle bundle = new Bundle();
         mFirebaseAnalytics.logEvent("RUN_APP", bundle);
+        designScreenPresenter.saveState();
+        codingScreenPresenter.saveState();
         appBuilderPresenter.compileAndDownloadApp();
         setProgressBarVisibility(View.VISIBLE);
     }
 
     public void presentPopup(PopupWindow popupWindow, Runnable runOnDismiss){
         dimAppBuilderActivity();
-        popupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
-            @Override
-            public void onDismiss() {
-                undimAppBuilderActivity();
-                if (runOnDismiss != null) {
-                    runOnDismiss.run();
-                }
+        popupWindow.setOnDismissListener(() -> {
+            undimAppBuilderActivity();
+            if (runOnDismiss != null) {
+                runOnDismiss.run();
             }
         });
         // In order to show popUp after activity has been created
-        toolbar.post(new Runnable() {
-            @Override
-            public void run() {
-                popupWindow.showAtLocation(toolbar, Gravity.CENTER, 0, 0);
-            }
-        });
+        toolbar.post(() -> popupWindow.showAtLocation(toolbar, Gravity.CENTER, 0, 0));
     }
 
     private Runnable afterSuccessPopupClosed (){
-        return new Runnable(){
-            public void run(){
-                tutorial.presentTooltip(playButton, getString(R.string.tooltip_install_app), null, Gravity.BOTTOM);
-                showMovedOn = true;
-                moveOnButton.setVisibility(View.VISIBLE);
-            }
+        return () -> {
+            tutorial.presentTooltip(playButton, getString(R.string.tooltip_install_app), null, Gravity.BOTTOM);
+            showMovedOn = true;
+            moveOnButton.setVisibility(View.VISIBLE);
         };
     }
 
@@ -407,18 +380,13 @@ public class AppBuilderActivity extends AppCompatActivity {
 
     public void onStartButtonFromStartAppPopup(String appName, String iconDrawable) {
         appBuilderPresenter.setAppNameAndIcon(appName, iconDrawable);
-        if (currentAppID == 0) {
+        if (currentAppLevelID == 0) {
             presentNextTutorialMessage();
         }
     }
 
     public void presentNextTutorialMessage() {
-        OnDismissListener listener = new OnDismissListener() {
-            @Override
-            public void onDismiss() {
-                designFragment.presentTuturialMessage();
-            }
-        };
+        OnDismissListener listener = () -> designFragment.presentTuturialMessage();
         tutorial.presentTooltip(viewPager, getString(R.string.tooltip_see_task), listener, Gravity.BOTTOM);
     }
 
@@ -473,7 +441,7 @@ public class AppBuilderActivity extends AppCompatActivity {
         currentUserApp.setXml(xml);
         currentUserApp.setCode(code);
         currentUserApp.setManifest(manifest);
-        UserProfile.user.setCurrentUserAppID(currentUserApp);
+        UserProfile.user.setCurrentUserAppLevelID(currentUserApp);
     }
 
     private String getManifest() {

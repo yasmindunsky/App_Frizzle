@@ -58,16 +58,13 @@ public class StartAppPopupWindow extends PopupWindow {
         radioButtons.add(radioButton7);
 
         for (RadioButton radioButton : radioButtons) {
-            radioButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                @Override
-                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                    if (isChecked) {
-                        for (RadioButton radioButton : radioButtons) {
-                            radioButton.setChecked(false);
-                        }
-                        buttonView.setChecked(true);
-                        selectedButton = (RadioButton) buttonView;
+            radioButton.setOnCheckedChangeListener((buttonView, isChecked) -> {
+                if (isChecked) {
+                    for (RadioButton radioButton4 : radioButtons) {
+                        radioButton4.setChecked(false);
                     }
+                    buttonView.setChecked(true);
+                    selectedButton = (RadioButton) buttonView;
                 }
             });
         }
@@ -79,17 +76,14 @@ public class StartAppPopupWindow extends PopupWindow {
 //            }
 //        });
 
-        startButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String appName = String.valueOf(editText.getText());
-                String iconDrawable = "";
-                if (selectedButton != null) {
-                    iconDrawable = (String) selectedButton.getTag();
-                }
-                activity.onStartButtonFromStartAppPopup(appName, iconDrawable);
-                dismiss();
+        startButton.setOnClickListener(v -> {
+            String appName = String.valueOf(editText.getText());
+            String iconDrawable = "";
+            if (selectedButton != null) {
+                iconDrawable = (String) selectedButton.getTag();
             }
+            activity.onStartButtonFromStartAppPopup(appName, iconDrawable);
+            dismiss();
         });
     }
 

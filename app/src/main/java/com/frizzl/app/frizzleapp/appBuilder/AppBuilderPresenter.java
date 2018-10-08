@@ -13,7 +13,7 @@ public class AppBuilderPresenter {
     private DesignScreenPresenter designScreenPresenter;
     private String codeStart;
     private String codeEnd;
-    private int currentAppID;
+    private int currentAppLevelID;
 
     final private static int WRITE_PERMISSION = 1;
     final private static int MAX_NICKNAME_LENGTH = 10;
@@ -22,13 +22,13 @@ public class AppBuilderPresenter {
 
     public AppBuilderPresenter(AppBuilderActivity appBuilderActivity, CodingScreenPresenter codingScreenPresenter,
                                DesignScreenPresenter designScreenPresenter,
-                               String codeStart, String codeEnd, int currentAppID){
+                               String codeStart, String codeEnd, int currentAppLevelID){
         this.appBuilderActivity = appBuilderActivity;
         this.codingScreenPresenter = codingScreenPresenter;
         this.designScreenPresenter = designScreenPresenter;
         this.codeStart = codeStart;
         this.codeEnd = codeEnd;
-        this.currentAppID = currentAppID;
+        this.currentAppLevelID = currentAppLevelID;
     }
 
 //    private void updateUserProfileFromActivity() {
@@ -42,7 +42,7 @@ public class AppBuilderPresenter {
 //                userCreatedViewsModel.getNextViewIndex());
 //        currentUserApp.setXml(xml);
 //        currentUserApp.setCode(code);
-//        UserProfile.user.setCurrentUserAppID(currentUserApp);
+//        UserProfile.user.setCurrentUserAppLevelID(currentUserApp);
 //    }
 
     public void saveProject() {
@@ -87,11 +87,11 @@ public class AppBuilderPresenter {
     }
 
     public void onResume() {
-        UserProfile.user.setCurrentUserAppID(currentAppID);
+        UserProfile.user.setCurrentUserAppLevelID(currentAppLevelID);
         UserApp currentUserApp = UserProfile.user.getCurrentUserApp();
         if (currentUserApp == null){
-            currentUserApp = new UserApp(currentAppID);
-            UserProfile.user.setCurrentUserAppID(currentUserApp);
+            currentUserApp = new UserApp(currentAppLevelID);
+            UserProfile.user.setCurrentUserAppLevelID(currentUserApp);
             appBuilderActivity.openStartAppPopup();
         }
     }
@@ -103,7 +103,7 @@ public class AppBuilderPresenter {
         LayoutXmlWriter layoutXmlWriter = new LayoutXmlWriter();
         String manifest = layoutXmlWriter.writeManifest(icon, appName);
         currentUserApp.setManifest(manifest);
-        UserProfile.user.setCurrentUserAppID(currentUserApp);
+        UserProfile.user.setCurrentUserAppLevelID(currentUserApp);
         appBuilderActivity.updateAppNameAndIcon(appName, icon);
     }
 }

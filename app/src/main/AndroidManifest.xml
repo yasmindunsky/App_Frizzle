@@ -21,18 +21,19 @@
 
         <activity android:name="com.frizzl.app.frizzleapp.map.MapActivity"
             android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="nosensor" android:configChanges="keyboardHidden|orientation"
             >
         </activity>
 
         <activity
             android:name="com.frizzl.app.frizzleapp.intro.OnboardingActivity"
-            android:configChanges="layoutDirection|locale"
+            android:screenOrientation="nosensor" android:configChanges="keyboardHidden|orientation"
             android:theme="@style/AppTheme.NoActionBar"
             >
         </activity>
 
         <activity android:name="com.frizzl.app.frizzleapp.SplashActivity"
-            android:configChanges="layoutDirection|locale"
+            android:screenOrientation="nosensor" android:configChanges="keyboardHidden|orientation"
             android:theme="@style/AppTheme.NoActionBar"
             >
             <intent-filter>
@@ -44,9 +45,11 @@
         </activity>
 
         <activity android:name="com.frizzl.app.frizzleapp.lesson.PracticeActivity"
+            android:screenOrientation="nosensor" android:configChanges="keyboardHidden|orientation"
             />
 
         <activity android:name="com.frizzl.app.frizzleapp.appBuilder.AppBuilderActivity"
+            android:screenOrientation="nosensor" android:configChanges="keyboardHidden|orientation"
             android:exported="true">
 
         </activity>

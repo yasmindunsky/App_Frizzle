@@ -30,12 +30,9 @@ public class PracticeLastSlideFragment extends android.support.v4.app.Fragment {
         this.practiceID = bundle.getInt("lesson");
 
         Button thanksButton = view.findViewById(R.id.thanksButton);
-        thanksButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getActivity().onBackPressed();
-                UserProfile.user.finishedPractice(practiceID);
-            }
+        thanksButton.setOnClickListener(v -> {
+            getActivity().onBackPressed();
+            UserProfile.user.finishedPractice(practiceID);
         });
         return view;
     }

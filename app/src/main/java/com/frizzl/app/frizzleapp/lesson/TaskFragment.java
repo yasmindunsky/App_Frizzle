@@ -21,7 +21,7 @@ public class TaskFragment extends Fragment {
     TextView fragmentText;
     private FirebaseAnalytics mFirebaseAnalytics;
     int index;
-    int appId;
+    int appLevelId;
 
     public TaskFragment() {
         // Required empty public constructor
@@ -44,7 +44,7 @@ public class TaskFragment extends Fragment {
         fragmentText = view.findViewById(R.id.textView2);
         Bundle bundle = getArguments();
         index = bundle.getInt("index");
-        appId = bundle.getInt("lesson");
+        appLevelId = bundle.getInt("lesson");
 
         Task task = UserProfile.user.getCurrentAppTasks().getTasks().get(index);
 
@@ -57,6 +57,6 @@ public class TaskFragment extends Fragment {
     public void onResume() {
         super.onResume();
         mFirebaseAnalytics.setCurrentScreen(getActivity(), this.getClass().getSimpleName(),
-                this.getClass().getSimpleName()+ appId + "_" + index);
+                this.getClass().getSimpleName()+ appLevelId + "_" + index);
     }
 }

@@ -22,6 +22,7 @@ import com.frizzl.app.frizzleapp.CodeKeyboard;
 import com.frizzl.app.frizzleapp.DesignSection;
 import com.frizzl.app.frizzleapp.R;
 import com.frizzl.app.frizzleapp.CodeSection;
+import com.frizzl.app.frizzleapp.Support;
 import com.frizzl.app.frizzleapp.UserProfile;
 import com.frizzl.app.frizzleapp.appBuilder.UserCreatedButton;
 
@@ -156,21 +157,18 @@ public class PracticeSlideFragment extends Fragment {
         layoutParams.addRule(RelativeLayout.CENTER_HORIZONTAL);
         layoutParams.setMargins(0,TOP_DOWN_MARGIN,0,TOP_DOWN_MARGIN);
         callToActionButton.setLayoutParams(layoutParams);
-        callToActionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Button button = (Button) v;
-                boolean moveOn = true;
-                CharSequence buttonText = button.getText();
-                if (buttonText.equals("Check") || buttonText.equals("Try Again")){
-                    moveOn = checkPractice();
-                }
-                if (moveOn) {
-                    moveToNextFragment();
-                }
-                else {
-                    button.setText(R.string.try_again);
-                }
+        callToActionButton.setOnClickListener(v -> {
+            Button button = (Button) v;
+            boolean moveOn = true;
+            CharSequence buttonText = button.getText();
+            if (buttonText.equals("Check") || buttonText.equals("Try Again")){
+                moveOn = checkPractice();
+            }
+            if (moveOn) {
+                moveToNextFragment();
+            }
+            else {
+                button.setText(R.string.try_again);
             }
         });
         relativeLayout.addView(callToActionButton);
@@ -186,13 +184,13 @@ public class PracticeSlideFragment extends Fragment {
         int currentSlide = viewPager.getCurrentItem();
 
         int currentLevel = UserProfile.user.getCurrentLevel();
-        if (currentLevel == 1) {
+        if (currentLevel == Support.SPEAKOUT_PRACTICE_LEVEL_ID) {
             if (currentSlide == 2) {
                 CodeSection codeSection = relativeLayout.findViewById(R.id.codeSection);
                 String code = codeSection.getCode();
                 correct = checkIfContainsSpeakOutAndString(code, "this is so cool");
             }
-        } else if (currentLevel == 2){
+        } else if (currentLevel == Support.ONCLICK_PRACTICE_LEVEL_ID){
             if (currentSlide == 1){
                 CodeSection codeSection = relativeLayout.findViewById(R.id.codeSection);
                 String code = codeSection.getCode();
@@ -218,7 +216,7 @@ public class PracticeSlideFragment extends Fragment {
         boolean correct = true;
         correct &= code.contains(functionName.trim());
         // Contains 'speakOut'
-        correct &= code.indexOf("public void") >= 0;
+        correct &= code.contains("public void");
         return correct;
     }
 

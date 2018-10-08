@@ -4,8 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="10dp"
-    android:background="@drawable/table_background"
-    tools:context="com.frizzl.app.frizzleapp.goToAppBuilderFragment">
+    android:background="@drawable/table_background">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"

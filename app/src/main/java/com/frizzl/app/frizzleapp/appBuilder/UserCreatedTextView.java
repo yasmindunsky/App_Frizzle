@@ -137,21 +137,11 @@ public class UserCreatedTextView extends UserCreatedView {
 
         // Set closing button.
         ImageButton closeButton = popupView.findViewById(R.id.close);
-        closeButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                popupWindow.dismiss();
-            }
-        });
+        closeButton.setOnClickListener(v -> popupWindow.dismiss());
 
         // Set saving button.
         android.support.v7.widget.AppCompatButton saveButton = popupView.findViewById(R.id.saveButton);
-        saveButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                popupWindow.dismiss();
-            }
-        });
+        saveButton.setOnClickListener(v -> popupWindow.dismiss());
 
         // ID
 //        EditText viewId = popupView.findViewById(R.id.viewIdValue);
@@ -180,33 +170,30 @@ public class UserCreatedTextView extends UserCreatedView {
         // FONT COLOR
         final Button chooseFontColor = popupView.findViewById(R.id.viewFontColorValue);
         chooseFontColor.setBackgroundColor(Color.parseColor(properties.get("android:textColor")));
-        chooseFontColor.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ColorPicker colorPicker = new ColorPicker((Activity)context);
-                colorPicker.setRoundColorButton(true);
-                colorPicker.setColors(Support.colorsHexList);
-                colorPicker.show();
-                colorPicker.setOnChooseColorListener(new ColorPicker.OnChooseColorListener() {
-                    @Override
-                    public void onChooseColor(int position,int color) {
-                        if (position != -1) {
+        chooseFontColor.setOnClickListener(v -> {
+            ColorPicker colorPicker = new ColorPicker((Activity)context);
+            colorPicker.setRoundColorButton(true);
+            colorPicker.setColors(Support.colorsHexList);
+            colorPicker.show();
+            colorPicker.setOnChooseColorListener(new ColorPicker.OnChooseColorListener() {
+                @Override
+                public void onChooseColor(int position,int color) {
+                    if (position != -1) {
 
-                            thisView.setTextColor(color);
-                            properties.put("android:textColor", Support.colorsHexList.get(position));
+                        thisView.setTextColor(color);
+                        properties.put("android:textColor", Support.colorsHexList.get(position));
 
-                            int originalValueDrawableRes = R.drawable.table_color_circle;
-                            Drawable valueDrawable = ContextCompat.getDrawable(context, originalValueDrawableRes);
-                            valueDrawable.setColorFilter(color, PorterDuff.Mode.DARKEN);
-                            chooseFontColor.setBackground(valueDrawable);
-                        }
+                        int originalValueDrawableRes = R.drawable.table_color_circle;
+                        Drawable valueDrawable = ContextCompat.getDrawable(context, originalValueDrawableRes);
+                        valueDrawable.setColorFilter(color, PorterDuff.Mode.DARKEN);
+                        chooseFontColor.setBackground(valueDrawable);
                     }
+                }
 
-                    @Override
-                    public void onCancel(){
-                    }
-                });
-            }
+                @Override
+                public void onCancel(){
+                }
+            });
         });
 //
 //        // ALIGNMENT
@@ -252,13 +239,10 @@ public class UserCreatedTextView extends UserCreatedView {
         return thisView;
     }
 
-    private EditText.OnFocusChangeListener finishedEditingId = new View.OnFocusChangeListener() {
-        @Override
-        public void onFocusChange(View v, boolean hasFocus) {
-            if (!hasFocus) {
-                String id = String.valueOf(((EditText)v).getText());
-                properties.put("android:id", id);
-            }
+    private EditText.OnFocusChangeListener finishedEditingId = (v, hasFocus) -> {
+        if (!hasFocus) {
+            String id = String.valueOf(((EditText)v).getText());
+            properties.put("android:id", id);
         }
     };
 

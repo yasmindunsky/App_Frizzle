@@ -32,18 +32,15 @@ public class DesignSection extends RelativeLayout {
 
     public DesignSection(Context context, boolean runnable) {
         super(context);
-        TextToSpeech.OnInitListener onInitListener = new TextToSpeech.OnInitListener() {
-            @Override
-            public void onInit(int status) {
-                if (status == TextToSpeech.SUCCESS) {
-                    int result = tts.setLanguage(Locale.US);
-                    if (result == TextToSpeech.LANG_MISSING_DATA
-                            || result == TextToSpeech.LANG_NOT_SUPPORTED) {
-                        Log.e("TTS", "This Language is not supported");
-                    }
-                } else {
-                    Log.e("TTS", "Initilization Failed!");
+        TextToSpeech.OnInitListener onInitListener = status -> {
+            if (status == TextToSpeech.SUCCESS) {
+                int result = tts.setLanguage(Locale.US);
+                if (result == TextToSpeech.LANG_MISSING_DATA
+                        || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+                    Log.e("TTS", "This Language is not supported");
                 }
+            } else {
+                Log.e("TTS", "Initilization Failed!");
             }
         };
         tts = new TextToSpeech(context, onInitListener, "com.google.android.tts");
@@ -61,17 +58,14 @@ public class DesignSection extends RelativeLayout {
         userCreatedButton.setBackgroundColor("#f8b119");
         userCreatedButton.setTextColor("#FFFFFF");
         Button buttonView = userCreatedButton.getThisView();
-        buttonView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(final View v) {
-                // show the popup window
-                PopupWindow popupWindow = userCreatedButton.getPropertiesTablePopupWindow(getContext());
-                v.post(new Runnable() {
-                    public void run() {
-                        popupWindow.showAtLocation(v, Gravity.CENTER, 0, 0);
-                    }
-                });
-            }
+        buttonView.setOnClickListener(v -> {
+            // show the popup window
+            PopupWindow popupWindow = userCreatedButton.getPropertiesTablePopupWindow(getContext());
+            v.post(new Runnable() {
+                public void run() {
+                    popupWindow.showAtLocation(v, Gravity.CENTER, 0, 0);
+                }
+            });
         });
         layoutParams = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -116,13 +110,10 @@ public class DesignSection extends RelativeLayout {
             buttonDrawable.setColorFilter(Color.parseColor(userCreatedButton.getProperties().get("android:backgroundTint")), PorterDuff.Mode.DARKEN);
             button.setBackground(buttonDrawable);
 
-            button.setOnClickListener(new OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    boolean onClickSet = userCreatedButton.getOnClick().equals("sayHello");
-                    if (onClickSet) {
-                        tts.speak("Hello", TextToSpeech.QUEUE_ADD, null);
-                    }
+            button.setOnClickListener(v1 -> {
+                boolean onClickSet = userCreatedButton.getOnClick().equals("sayHello");
+                if (onClickSet) {
+                    tts.speak("Hello", TextToSpeech.QUEUE_ADD, null);
                 }
             });
 
@@ -130,12 +121,7 @@ public class DesignSection extends RelativeLayout {
                     ViewGroup.LayoutParams.WRAP_CONTENT, true);
             popupWindow.showAtLocation(v, Gravity.CENTER, 0, 0);
             ImageButton closeButton = popupView.findViewById(R.id.close);
-            closeButton.setOnClickListener(new OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    popupWindow.dismiss();
-                }
-            });
+            closeButton.setOnClickListener(v12 -> popupWindow.dismiss());
         }
     };
 

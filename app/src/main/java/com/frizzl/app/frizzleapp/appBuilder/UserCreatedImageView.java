@@ -110,13 +110,10 @@ public class UserCreatedImageView extends UserCreatedView {
         return thisView;
     }
 
-    private EditText.OnFocusChangeListener finishedEditingId = new View.OnFocusChangeListener() {
-        @Override
-        public void onFocusChange(View v, boolean hasFocus) {
-            if (!hasFocus) {
-                String id = String.valueOf(((EditText)v).getText());
-                properties.put("android:id", id);
-            }
+    private EditText.OnFocusChangeListener finishedEditingId = (v, hasFocus) -> {
+        if (!hasFocus) {
+            String id = String.valueOf(((EditText)v).getText());
+            properties.put("android:id", id);
         }
     };
 

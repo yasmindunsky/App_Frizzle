@@ -38,7 +38,7 @@ public class CodingScreenPresenter {
         String currentCode = codingScreenFragment.getCode();
         UserApp currentUserApp = UserProfile.user.getCurrentUserApp();
         currentUserApp.setCode(currentCode);
-        UserProfile.user.setCurrentUserAppID(currentUserApp);
+        UserProfile.user.setCurrentUserAppLevelID(currentUserApp);
     }
 
     public void onPause() {

@@ -34,20 +34,13 @@ public class PracticeActivity extends FragmentActivity {
         try {
             practiceContentParser = new PracticeContentParser();
             currentPractice = practiceContentParser.parsePractice(this, practiceID);
-        } catch (XmlPullParserException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+        } catch (XmlPullParserException | IOException e) {
             e.printStackTrace();
         }
 
         // Set home button.
         ImageButton mapButton = findViewById(R.id.home);
-        mapButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
+        mapButton.setOnClickListener(v -> onBackPressed());
 
         RoundCornerProgressBar progressBar = findViewById(R.id.progressBar);
         int numOfSlides = currentPractice.getNumOfSlides();

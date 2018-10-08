@@ -44,12 +44,7 @@ public class CodeKeyboard extends LinearLayout implements View.OnClickListener {
         Button functionButton = findViewById(R.id.button_function);
         functionButton.setOnClickListener(this);
         ImageButton englishButton = findViewById(R.id.button_english);
-        englishButton.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                inputMethodManagar.toggleSoftInput(InputMethodManager.SHOW_FORCED,0);
-            }
-        });
+        englishButton.setOnClickListener(view -> inputMethodManagar.toggleSoftInput(InputMethodManager.SHOW_FORCED,0));
         ImageButton buttonDelete = findViewById(R.id.button_delete);
         buttonDelete.setOnClickListener(this);
         ImageButton buttonEnter = findViewById(R.id.button_enter);
