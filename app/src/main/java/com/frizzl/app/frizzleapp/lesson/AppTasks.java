@@ -1,12 +1,13 @@
 package com.frizzl.app.frizzleapp.lesson;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by yasmin.dunsky on 19-Nov-17.
  */
 
-public class AppTasks {
+public class AppTasks implements Serializable{
 
     private int appID;
     private ArrayList<Task> tasks;

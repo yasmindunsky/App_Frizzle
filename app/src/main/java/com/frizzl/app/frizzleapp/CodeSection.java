@@ -89,7 +89,7 @@ public class CodeSection extends RelativeLayout {
 
             RelativeLayout.LayoutParams playButtonLayoutParams = new RelativeLayout.LayoutParams(80, 80);
             playButtonLayoutParams.addRule(RelativeLayout.CENTER_VERTICAL);
-            playButtonLayoutParams.addRule(RelativeLayout.ALIGN_PARENT_END);
+            playButtonLayoutParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
             playButtonLayoutParams.setMarginEnd(20);
             playButton.setLayoutParams(playButtonLayoutParams);
             addView(playButton);

@@ -68,7 +68,7 @@ public class ConnectToServer {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            if (client != null) // Make sure the connection is not null.
+            if (client != null)
                 client.disconnect();
         }
         return null;
@@ -103,7 +103,7 @@ public class ConnectToServer {
         }
     }
 
-    private void downloadApk(HttpURLConnection client) throws FileNotFoundException {
+    private void downloadApk(HttpURLConnection client) throws IOException {
         String PATH = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/";
         File file = new File(PATH);
         file.mkdirs();
@@ -118,20 +118,17 @@ public class ConnectToServer {
 
         FileOutputStream fos = new FileOutputStream(outputFile);
         InputStream inputStream;
-        try {
-            inputStream = client.getInputStream();
 
-            byte[] buffer = new byte[1024];
-            int len = 0;
-            while ((len = inputStream.read(buffer)) != -1) {
-                fos.write(buffer, 0, len);
-            }
+        inputStream = client.getInputStream();
 
-            fos.close();
-            inputStream.close();
-        } catch (IOException e) {
-            e.printStackTrace();
+        byte[] buffer = new byte[1024];
+        int len = 0;
+        while ((len = inputStream.read(buffer)) != -1) {
+            fos.write(buffer, 0, len);
         }
+
+        fos.close();
+        inputStream.close();
     }
 
 

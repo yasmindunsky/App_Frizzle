@@ -29,9 +29,6 @@ public class DownloadApkFromServer extends AsyncTask<String, Void, String> {
         String manifest = strings[2];
         String username = "";
         String courseId = "3";
-//        String username = UserProfile.user.getUsername();
-//        String courseId = String.valueOf(UserProfile.user.getCurrentUserApp().getAppID());
-//        String courseId = String.valueOf(UserProfile.user.getCurrentCourseID());
 
         String query = null;
         try {

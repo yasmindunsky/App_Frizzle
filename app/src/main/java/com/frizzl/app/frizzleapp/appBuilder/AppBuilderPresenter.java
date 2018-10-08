@@ -55,6 +55,9 @@ public class AppBuilderPresenter {
         new DownloadApkFromServer(new AsyncResponse() {
             @Override
             public void processFinish(String output) {
+                if (output == null || output.equals("")){
+                    output = "no output from server";
+                }
                 Log.d("INSTALL",output);
                 appBuilderActivity.startApk();
             }

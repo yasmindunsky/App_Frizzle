@@ -340,13 +340,17 @@ public class AppBuilderActivity extends AppCompatActivity {
         setProgressBarVisibility(View.GONE);
 
         //get destination
-        String destination = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
+        String destination =
+                Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
                 + "/frizzl_project.apk";
         File apkFile = new File(destination);
         Context context = getApplicationContext();
 
         // create uri from file
-        Uri contentUri = FileProvider.getUriForFile(context, "com.frizzl.app.frizzlapp.fileprovider", apkFile);
+        Uri contentUri = FileProvider.getUriForFile(context,
+                "com.frizzl.app.frizzlapp.fileprovider", apkFile);
+
+        Log.e("INSTALL", "apkFile length: " + apkFile.length()/1024);
 
         // initial intel
         Intent intent = new Intent(Intent.ACTION_INSTALL_PACKAGE);
