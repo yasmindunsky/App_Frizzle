@@ -12,6 +12,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.provider.Settings;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
@@ -351,23 +352,26 @@ public class AppBuilderActivity extends AppCompatActivity {
         Context context = getApplicationContext();
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            // create uri from file
             Uri contentUri = FileProvider.getUriForFile(context,
                     "com.frizzl.app.frizzlapp.fileprovider", apkFile);
-
-            // initial intel
-            Intent intent = new Intent(Intent.ACTION_INSTALL_PACKAGE);
-            intent.setData(contentUri);
-            intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-            intent.putExtra(Intent.EXTRA_RETURN_RESULT, true);
-            intent.putExtra(Intent.EXTRA_NOT_UNKNOWN_SOURCE, true);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                if (!getPackageManager().canRequestPackageInstalls()) {
+                    startActivityForResult(new Intent(Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES)
+                            .setData(Uri.parse(String.format("package:%s", getPackageName()))), 1234);
+                }
+            }
+            Intent intent = new Intent(Intent.ACTION_INSTALL_PACKAGE)
+                    .setData(contentUri)
+                    .setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+                    .putExtra(Intent.EXTRA_RETURN_RESULT, true)
+                    .putExtra(Intent.EXTRA_NOT_UNKNOWN_SOURCE, true);
             startActivityForResult(intent, INSTALLED_APP_ABOVE_N);
         } else {
             Uri contentUri = Uri.fromFile(apkFile);
-            Intent intent = new Intent(Intent.ACTION_VIEW);
-            intent.setDataAndType(contentUri, "application/vnd.android.package-archive");
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            intent.putExtra(Intent.EXTRA_RETURN_RESULT, true);
+            Intent intent = new Intent(Intent.ACTION_VIEW)
+                    .setDataAndType(contentUri, "application/vnd.android.package-archive")
+                    .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                    .putExtra(Intent.EXTRA_RETURN_RESULT, true);
             startActivityForResult(intent, INSTALLED_APP_BELOW_N);
         }
     }
