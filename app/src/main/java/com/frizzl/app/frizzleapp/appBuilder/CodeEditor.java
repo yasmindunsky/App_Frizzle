@@ -1,6 +1,5 @@
 package com.frizzl.app.frizzleapp.appBuilder;
 
-import android.app.Activity;
 import android.content.Context;
 import android.support.v4.content.res.ResourcesCompat;
 import android.text.Editable;
@@ -8,7 +7,6 @@ import android.text.InputType;
 import android.text.Spannable;
 import android.text.TextWatcher;
 import android.text.style.ForegroundColorSpan;
-import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
 import android.view.inputmethod.InputMethodManager;
@@ -101,7 +99,7 @@ public class CodeEditor extends android.support.v7.widget.AppCompatEditText {
     private void markQuotationMarks(Editable s) {
         int startPosition = 0;
         int firstQuotationMark = s.toString().indexOf("\"", startPosition);
-        int secondQuotationMark = -1;
+        int secondQuotationMark;
         while (firstQuotationMark >= 0) {
             secondQuotationMark = (s.toString()).indexOf("\"", firstQuotationMark + 1);
 
@@ -117,7 +115,6 @@ public class CodeEditor extends android.support.v7.widget.AppCompatEditText {
             } else {
                 startPosition = firstQuotationMark + 1;
             }
-            secondQuotationMark = -1;
             currentPosition = 0;
             firstQuotationMark = s.toString().indexOf("\"", startPosition);
         }

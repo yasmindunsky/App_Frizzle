@@ -150,7 +150,7 @@ public class UserCreatedViewsModel {
 
     public static JSONObject viewsToJson(Map<Integer, UserCreatedView> views) {
         JSONArray jsonArray = new JSONArray();
-        JSONObject json = new JSONObject();
+        JSONObject json;
         JSONObject finalObject = new JSONObject();
 
         if(views != null) {

@@ -16,22 +16,12 @@ public class SaveSharedPreference {
         return PreferenceManager.getDefaultSharedPreferences(context);
     }
 
-    /**
-     * Set the Login Status
-     * @param context
-     * @param loggedIn
-     */
     public static void setLoggedIn(Context context, boolean loggedIn) {
         SharedPreferences.Editor editor = getPreferences(context).edit();
         editor.putBoolean(LOGGED_IN_PREF, loggedIn);
         editor.apply();
     }
 
-    /**
-     * Get the Login Status
-     * @param context
-     * @return boolean: login status
-     */
     public static boolean getLoggedStatus(Context context) {
         return getPreferences(context).getBoolean(LOGGED_IN_PREF, false);
     }
@@ -46,11 +36,6 @@ public class SaveSharedPreference {
         return getPreferences(context).getString(USERNAME_PREF, "");
     }
 
-    /**
-     * Set if this is this device's first time or not
-     * @param context
-     * @param loggedIn
-     */
     public static void setFirstTime(Context context, boolean firstTime) {
         SharedPreferences.Editor editor = getPreferences(context).edit();
         editor.putBoolean(FIRST_TIME_PREF, firstTime);
@@ -60,6 +45,4 @@ public class SaveSharedPreference {
     public static boolean getFirstTime(Context context) {
         return getPreferences(context).getBoolean(FIRST_TIME_PREF, true);
     }
-
-
 }

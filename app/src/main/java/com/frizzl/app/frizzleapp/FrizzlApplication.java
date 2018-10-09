@@ -9,6 +9,7 @@ import com.crashlytics.android.Crashlytics;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
+import com.squareup.leakcanary.LeakCanary;
 
 import java.util.Locale;
 
@@ -26,18 +27,18 @@ public class FrizzlApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-//        if (LeakCanary.isInAnalyzerProcess(this)) {
-//            // This process is dedicated to LeakCanary for heap analysis.
-//            // You should not init your app in this process.
-//            return;
-//        }
-//        LeakCanary.install(this);
+        if (LeakCanary.isInAnalyzerProcess(this)) {
+            // This process is dedicated to LeakCanary for heap analysis.
+            // You should not init your app in this process.
+            return;
+        }
+        LeakCanary.install(this);
 
         // Normal app init code...
 
         // Set language key for Crashlytics
         if(!isDebuggable()) {
-            String language = "";
+            String language;
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                 language = LocaleList.getDefault().get(0).getLanguage();
             } else {

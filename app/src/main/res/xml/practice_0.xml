@@ -15,7 +15,7 @@
         <code mutable="false" runnable="true">
             "speakOut(\\u0022Hello\\u0022);"
         </code>
-        <mutable_design></mutable_design>
+        <mutable_design />
         <call_to_action>
             "Next"
         </call_to_action>

@@ -36,7 +36,7 @@ public class UserProfile implements Serializable {
     public void init(){
         tutorialUserApp = null;
         pollyUserApp = null;
-        topLevel = 0;
+        topLevel = 2;
         currentLevel = 0;
     }
 

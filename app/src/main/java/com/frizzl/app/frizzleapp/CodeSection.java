@@ -7,7 +7,6 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
@@ -104,7 +103,7 @@ codeEditor.setLayoutParams(codeEditorLayoutParams);
     }
 
     private boolean codeIsValid() {
-        boolean valid = true;
+        boolean valid;
         String code = codeEditor.getText().toString();
         // Contains 'speakOut'
         valid = code.contains("speakOut");

@@ -3,10 +3,8 @@ package com.frizzl.app.frizzleapp.appBuilder;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.frizzl.app.frizzleapp.AsyncResponse;
 import com.frizzl.app.frizzleapp.UserApp;
 import com.frizzl.app.frizzleapp.UserProfile;
-import com.google.firebase.analytics.FirebaseAnalytics;
 
 public class AppBuilderPresenter {
 

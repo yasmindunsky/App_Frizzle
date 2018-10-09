@@ -62,11 +62,8 @@ public class DesignSection extends RelativeLayout {
         buttonView.setOnClickListener(v -> {
             // show the popup window
             PopupWindow popupWindow = userCreatedButton.getPropertiesTablePopupWindow(getContext());
-            v.post(new Runnable() {
-                public void run() {
-                    popupWindow.showAtLocation(v, Gravity.CENTER, 0, 0);
-                }
-            });
+            v.post(() ->
+                    Support.presentPopup(popupWindow, null, v, layout, context));
         });
         layoutParams = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT);

@@ -2,7 +2,6 @@ package com.frizzl.app.frizzleapp.lesson;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.view.View;
 import android.widget.ImageButton;
 
 import com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar;
@@ -29,7 +28,7 @@ public class PracticeActivity extends FragmentActivity {
 
         // parse practice & update user profile
         int practiceID = getIntent().getIntExtra("practiceID", 1);
-        PracticeContentParser practiceContentParser = null;
+        PracticeContentParser practiceContentParser;
         try {
             practiceContentParser = new PracticeContentParser();
             currentPractice = practiceContentParser.parsePractice(this, practiceID);

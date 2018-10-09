@@ -79,7 +79,7 @@ public class ConnectToServer {
         try {
             BufferedReader in = new BufferedReader(new InputStreamReader(client.getInputStream()));
             StringBuilder sb = new StringBuilder("");
-            String line = "";
+            String line;
 
             while ((line = in.readLine()) != null) {
                 sb.append(line);
@@ -121,7 +121,7 @@ public class ConnectToServer {
         inputStream = client.getInputStream();
 
         byte[] buffer = new byte[1024];
-        int len = 0;
+        int len;
         while ((len = inputStream.read(buffer)) != -1) {
             fos.write(buffer, 0, len);
         }

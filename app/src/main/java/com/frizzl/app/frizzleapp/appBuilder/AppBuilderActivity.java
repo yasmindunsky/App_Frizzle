@@ -173,7 +173,7 @@ public class AppBuilderActivity extends AppCompatActivity {
             }
 
             public void onTabSelected(TabLayout.Tab tab) {
-                Fragment fragment = null;
+                Fragment fragment;
                 if (tab.getPosition() == 0) {
                     fragment = designFragment;
                 } else {

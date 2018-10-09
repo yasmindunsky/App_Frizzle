@@ -3,7 +3,6 @@ package com.frizzl.app.frizzleapp.appBuilder;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.CompoundButton;
 import android.widget.GridLayout;
 import android.widget.ImageButton;
 import android.widget.PopupWindow;

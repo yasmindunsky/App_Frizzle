@@ -121,7 +121,7 @@ public class MapActivity extends AppCompatActivity {
 
     public void goToApp(int levelID) {
         // parse app & update user profile
-        AppContentParser appContentParser = null;
+        AppContentParser appContentParser;
         try {
             appContentParser = new AppContentParser();
             AppTasks appTasks = appContentParser.parseAppXml(this, levelID);
