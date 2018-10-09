@@ -1,5 +1,6 @@
 package com.frizzl.app.frizzleapp.appBuilder;
 
+import android.app.Activity;
 import android.content.Context;
 import android.support.v4.content.res.ResourcesCompat;
 import android.text.Editable;
@@ -65,7 +66,13 @@ public class CodeEditor extends android.support.v7.widget.AppCompatEditText {
             InputMethodManager imm = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
             keyboard.setInputMethodManagar(imm);
             setKeyboardVisibility(INVISIBLE);
-            setOnFocusChangeListener((v, hasFocus) -> setKeyboardVisibility(hasFocus ? VISIBLE : INVISIBLE));
+            setOnFocusChangeListener((v, hasFocus) -> {
+                setKeyboardVisibility(hasFocus ? VISIBLE : INVISIBLE);
+
+                if (hasFocus) {
+                    v.post(()-> imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0));
+                }
+            });
         }
 
         // Set coloring
@@ -161,4 +168,5 @@ public class CodeEditor extends android.support.v7.widget.AppCompatEditText {
         super.setText(text);
         setSelection(getText().length());
     }
+
 }
