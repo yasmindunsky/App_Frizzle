@@ -64,6 +64,7 @@ class LayoutXmlWriter {
             xmlSerializer.attribute("", "android:layout_width", String.valueOf("wrap_content"));
             xmlSerializer.attribute("", "android:layout_height", String.valueOf("wrap_content"));
             xmlSerializer.attribute("", "android:layout_weight", String.valueOf("1"));
+            xmlSerializer.attribute("", "android:gravity", String.valueOf("left"));
             xmlSerializer.attribute("", "android:text", appName);
             xmlSerializer.attribute("", "android:textAppearance", String.valueOf("@style/Text.Title.Light"));
             xmlSerializer.endTag("", "TextView");

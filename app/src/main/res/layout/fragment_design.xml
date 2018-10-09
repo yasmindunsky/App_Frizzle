@@ -54,8 +54,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:gravity="left"
                         android:text="@string/my_first_app"
-                        android:textAppearance="@style/Text.Title.Light" />
+                        android:textAppearance="@style/Text.Title.Light"
+                        tools:ignore="RtlHardcoded" />
                 </LinearLayout>
 
                 <GridLayout
