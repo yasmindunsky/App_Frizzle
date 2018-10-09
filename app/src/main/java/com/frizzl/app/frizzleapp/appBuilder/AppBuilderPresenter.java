@@ -2,6 +2,7 @@ package com.frizzl.app.frizzleapp.appBuilder;
 
 import android.util.Log;
 
+import com.frizzl.app.frizzleapp.AsyncResponse;
 import com.frizzl.app.frizzleapp.UserApp;
 import com.frizzl.app.frizzleapp.UserProfile;
 import com.google.firebase.analytics.FirebaseAnalytics;
@@ -70,19 +71,17 @@ public class AppBuilderPresenter {
         appBuilderActivity.getWritePermission();
         appBuilderActivity.hideError();
 
-        downloadApk(code, xml, manifest);
-//        // send java and xml to server for build
-//        // if succeeded ask user for writing permission and download the apk
-//        new SaveProjectToServer(new AsyncResponse() {
-//            @Override
-//            public void processFinish(String output) {
-//                if (output.contains("BUILD SUCCESSFUL")) {
-//                } else {
-//                    // Build didn't work.
-//                    appBuilderActivity.displayError(output);
-//                }
-//            }
-//        }).execute(codeStart, codeEnd);
+        // send java and xml to server for build
+        // if succeeded ask user for writing permission and download the apk
+        new SaveProjectToServer(output -> {
+            if (output.contains("BUILD SUCCESSFUL")) {
+                Log.d("INSTALL", "save output: " + output);
+                downloadApk(code, xml, manifest);
+            } else {
+                // Build didn't work.
+                appBuilderActivity.displayError(output);
+            }
+        }).execute(code, xml, manifest);
 
     }
 
