@@ -130,6 +130,7 @@ public class PracticeSlideFragment extends Fragment {
 
         if (practiceSlide.hasDesign()) {
             DesignSection designSection = new DesignSection(context, true);
+            designSection.setBackgroundLayout(relativeLayout);
             designSection.setId(R.id.designSection);
             designSection.setPadding(SIDES_MARGIN, SIDES_MARGIN, SIDES_MARGIN, SIDES_MARGIN);
             RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,

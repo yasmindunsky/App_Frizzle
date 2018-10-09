@@ -29,6 +29,7 @@ public class DesignSection extends RelativeLayout {
     private ImageButton playButton;
     private TextToSpeech tts;
     private UserCreatedButton userCreatedButton;
+    private ViewGroup layout;
 
     public DesignSection(Context context, boolean runnable) {
         super(context);
@@ -119,7 +120,7 @@ public class DesignSection extends RelativeLayout {
 
             PopupWindow popupWindow = new PopupWindow(popupView, ViewGroup.LayoutParams.WRAP_CONTENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT, true);
-            popupWindow.showAtLocation(v, Gravity.CENTER, 0, 0);
+            Support.presentPopup(popupWindow, null, v, layout, context);
             ImageButton closeButton = popupView.findViewById(R.id.close);
             closeButton.setOnClickListener(v12 -> popupWindow.dismiss());
         }
@@ -127,5 +128,9 @@ public class DesignSection extends RelativeLayout {
 
     public UserCreatedButton getUserCreatedButton() {
         return userCreatedButton;
+    }
+
+    public void setBackgroundLayout(ViewGroup layout) {
+        this.layout = layout;
     }
 }

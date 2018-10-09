@@ -43,9 +43,9 @@ public class Support {
 
     public static void presentPopup(PopupWindow popupWindow, Runnable runOnDismiss, View viewToPopOn,
                              View viewToDim, Context context){
-        dimView(viewToDim, context);
+        if (viewToDim != null) dimView(viewToDim, context);
         popupWindow.setOnDismissListener(() -> {
-            undimView(viewToDim, context);
+            if (viewToDim != null) undimView(viewToDim, context);
             if (runOnDismiss != null) {
                 runOnDismiss.run();
             }
