@@ -21,13 +21,11 @@ public class SplashActivity extends Activity{
         // Obtain the FirebaseAnalytics instance.
         Context applicationContext = getApplicationContext();
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(applicationContext);
-        if (BuildConfig.DEBUG) {
-            FirebaseAnalytics.getInstance(applicationContext).setAnalyticsCollectionEnabled(false);
-        }
+        // Don't sent analytics in debug
+        mFirebaseAnalytics.setAnalyticsCollectionEnabled(!BuildConfig.DEBUG);
 
         // Check if it is the device's first time here
         boolean firstTime = SaveSharedPreference.getFirstTime(applicationContext);
-//        boolean firstTime = true;
         if(firstTime) {
             SaveSharedPreference.setFirstTime(applicationContext, false);
             Intent onboardingIntent = new Intent(getBaseContext(), OnboardingActivity.class);

@@ -196,6 +196,17 @@
         android:gravity="center"
         android:theme="?attr/actionBarTheme">
 
+        <ImageView
+            android:id="@+id/support_icon"
+            android:layout_width="30dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="end"
+            android:layout_margin="15dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_feedback_support"
+            tools:layout_editor_absoluteX="248dp"
+            tools:layout_editor_absoluteY="4dp" />
+
         <android.support.v7.widget.AppCompatTextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"

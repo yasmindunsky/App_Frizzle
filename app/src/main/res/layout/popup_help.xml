@@ -1,50 +1,67 @@
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/popup_bg">
+    android:layout_margin="10dp"
+    android:background="@drawable/table_background">
+
+<android.support.constraint.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <android.support.v7.widget.AppCompatTextView
-        android:id="@+id/welcomeTitle"
+        android:id="@+id/feedbackTitle"
         style="@style/Text.Title.Popup"
         android:layout_width="match_parent"
         android:layout_alignParentTop="true"
-        android:layout_marginBottom="8dp"
         android:background="@drawable/table_title_background"
         android:gravity="center"
-        android:text="@string/welcome"
-        app:layout_constraintBottom_toTopOf="@+id/appExplanationText"
+        android:paddingEnd="40dp"
+        android:paddingStart="40dp"
+        android:text="@string/feedback_support"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <android.support.v7.widget.AppCompatTextView
-        android:id="@+id/appExplanationText"
-        android:layout_width="wrap_content"
-        android:layout_height="44dp"
+    <EditText
+        android:id="@+id/feedback_box"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
-        android:text="@string/app_explanation_text"
-        android:textAlignment="center"
-        android:textAppearance="@style/Text.Info"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/welcomeTitle" />
-
-    <EditText
-        android:id="@+id/app_name"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="24dp"
         android:background="@drawable/edit_text_background"
         android:ems="10"
-        android:hint="@string/your_app_name"
-        android:inputType="textPersonName"
+        android:gravity="top|start"
+        android:hint="@string/feedback_hint"
+        android:inputType="textMultiLine"
+        android:lines="6"
+        android:padding="10dp"
+        android:paddingEnd="20dp"
+        android:paddingStart="20dp"
+        android:singleLine="false"
+        android:textAppearance="@style/Text.ItalicForm"
+        android:textColor="@color/TextGrey"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/feedbackTitle" />
+
+    <EditText
+        android:id="@+id/email"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/edit_text_background"
+        android:ems="10"
+        android:hint="@string/email_hint"
+        android:inputType="textEmailAddress"
         android:maxLength="17"
         android:padding="10dp"
         android:paddingEnd="20dp"
@@ -52,21 +69,27 @@
         android:singleLine="true"
         android:textAppearance="@style/Text.ItalicForm"
         android:textColor="@color/TextGrey"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appExplanationText" />
+        app:layout_constraintTop_toBottomOf="@+id/feedback_box" />
 
     <android.support.v7.widget.AppCompatButton
         android:id="@+id/sendButton"
         style="@style/Button.LightBlue"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="24dp"
+        android:layout_marginTop="24dp"
         android:text="@string/send"
         android:textAppearance="@style/Text.Title.Light"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/email" />
 
 </android.support.constraint.ConstraintLayout>
 
+</FrameLayout>

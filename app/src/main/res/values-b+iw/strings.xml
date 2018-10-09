@@ -53,6 +53,8 @@ Use "'" for special chars.
     <string name="tooltip_see_task">Here you can see  what your task is.</string>
     <string name="tooltip_move_on">Great!  Move on to your next task.</string>
     <string name="send">send</string>
+    <string name="feedback_support"><![CDATA[feedback & support]]></string>
+    <string name="email_hint">e-mail</string>
 
     <string-array name="fonts">
         <item>sans-serif</item>

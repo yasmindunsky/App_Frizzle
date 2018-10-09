@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.ScrollView;
 
@@ -27,6 +28,7 @@ public class MapActivity extends AppCompatActivity {
     private MapPresenter mapPresenter;
     private ArrayList<MapButton> levelButtons = new ArrayList<>();
     private android.support.v7.widget.Toolbar toolbar;
+    private ImageView toolbarIcon;
     private ScrollView scrollView;
 //    private AppMapButton tutorialAppButton;
     private AppMapButton pollyAppButton;
@@ -45,6 +47,7 @@ public class MapActivity extends AppCompatActivity {
         mapPresenter = new MapPresenter(this);
 
         toolbar = findViewById(R.id.mapToolbar);
+        toolbarIcon = findViewById(R.id.support_icon);
         scrollView = findViewById(R.id.map_scroll_view);
 //        tutorialAppButton = findViewById(R.id.tutorial_app);
         pollyAppButton = findViewById(R.id.polly_app);
@@ -63,8 +66,7 @@ public class MapActivity extends AppCompatActivity {
                 friendshipTestAppButton));
 
         PopupWindow helpPopupWindow = new HelpPopupWindow(this);
-        toolbar.setNavigationIcon(R.drawable.ic_task_arrow_icon_back);
-        toolbar.setNavigationOnClickListener(v -> Support.presentPopup(helpPopupWindow, null, mainLayout, mainLayout,
+        toolbarIcon.setOnClickListener(v -> Support.presentPopup(helpPopupWindow, null, mainLayout, mainLayout,
                 getApplicationContext()));
 
         View.OnClickListener onClickedApp = v -> {
