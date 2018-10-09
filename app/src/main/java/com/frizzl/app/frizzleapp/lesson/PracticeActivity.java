@@ -17,7 +17,6 @@ public class PracticeActivity extends FragmentActivity {
     private static PracticeSwipeAdapter swipeAdapter;
     private static Practice currentPractice;
     private static CustomViewPager viewPager;
-    private boolean isAroundFragmentVisible;
 
     static public Practice getCurrentPractice() {
         return currentPractice;
@@ -46,8 +45,6 @@ public class PracticeActivity extends FragmentActivity {
         int numOfSlides = currentPractice.getNumOfSlides();
         progressBar.setMax(numOfSlides);
         progressBar.setProgress(1f);
-
-        isAroundFragmentVisible = true;
 
         // Create SwipeAdapter.
         viewPager = findViewById(R.id.pager);

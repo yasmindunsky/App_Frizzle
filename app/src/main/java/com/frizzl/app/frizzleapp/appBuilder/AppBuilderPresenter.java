@@ -1,6 +1,7 @@
 package com.frizzl.app.frizzleapp.appBuilder;
 
 import android.util.Log;
+import android.widget.Toast;
 
 import com.frizzl.app.frizzleapp.AsyncResponse;
 import com.frizzl.app.frizzleapp.UserApp;
@@ -74,9 +75,12 @@ public class AppBuilderPresenter {
                 downloadApk(code, xml, manifest);
             } else {
                 // Build didn't work.
-                appBuilderActivity.displayError(output);
+                Toast.makeText(appBuilderActivity, "output", Toast.LENGTH_LONG);
+//                appBuilderActivity.displayError(output);
             }
         }).execute(code, xml, manifest);
+
+//        downloadApk(code, xml, manifest);
 
     }
 
