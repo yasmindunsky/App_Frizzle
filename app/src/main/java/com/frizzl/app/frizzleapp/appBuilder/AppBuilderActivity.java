@@ -418,10 +418,15 @@ public class AppBuilderActivity extends AppCompatActivity {
     }
 
     public void taskCompleted() {
+        int currentTaskNum = UserProfile.user.getCurrentTaskNum();
+        int currentLevel = UserProfile.user.getCurrentLevel();
+        Bundle bundle = new Bundle();
+        bundle.putString("TASK_ID", currentLevel + "_" + currentTaskNum);
+        mFirebaseAnalytics.logEvent("COMPLETED_TASK", bundle);
         // If not the last task
-        if (UserProfile.user.getCurrentTaskNum() < UserProfile.user.getCurrentAppTasks().getTasksNum() - 1){
+        if (currentTaskNum < UserProfile.user.getCurrentAppTasks().getTasksNum() - 1){
             enableNextArrow();
-            UserProfile.user.setCurrentTaskNum(UserProfile.user.getCurrentTaskNum() + 1);
+            UserProfile.user.setCurrentTaskNum(currentTaskNum + 1);
         }
         else {
             openTaskSuccessPopup();

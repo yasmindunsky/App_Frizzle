@@ -16,6 +16,7 @@ import com.frizzl.app.frizzleapp.appBuilder.AppBuilderActivity;
 import com.frizzl.app.frizzleapp.lesson.AppContentParser;
 import com.frizzl.app.frizzleapp.lesson.AppTasks;
 import com.frizzl.app.frizzleapp.lesson.PracticeActivity;
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 import org.xmlpull.v1.XmlPullParserException;
 
@@ -37,12 +38,16 @@ public class MapActivity extends AppCompatActivity {
     private PracticeMapButton onClickPracticeButton;
     private PracticeMapButton viewsPracticeButton;
     private PracticeMapButton variablesPracticeButton;
+    private FirebaseAnalytics mFirebaseAnalytics;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ConstraintLayout mainLayout = (ConstraintLayout ) this.getLayoutInflater().inflate(R.layout.activity_map, null);
         setContentView(mainLayout);
+
+        // Obtain the FirebaseAnalytics instance.
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
         mapPresenter = new MapPresenter(this);
 
@@ -72,12 +77,18 @@ public class MapActivity extends AppCompatActivity {
         View.OnClickListener onClickedApp = v -> {
             AppMapButton appMapButton = (AppMapButton) v;
             int levelID = appMapButton.getLevelID();
+            Bundle bundle = new Bundle();
+            bundle.putInt("LEVEL_ID", levelID);
+            mFirebaseAnalytics.logEvent("STARTED_APP", bundle);
             mapPresenter.onClickedApp(levelID);
         };
         View.OnClickListener onClickedPractice = v -> {
             PracticeMapButton practiceMapButton = (PracticeMapButton)v;
-            int practiceID = practiceMapButton.getPracticeID();
-            mapPresenter.onClickedPractice(practiceID);
+            int practiceLevelID = practiceMapButton.getPracticeID();
+            Bundle bundle = new Bundle();
+            bundle.putInt("LEVEL_ID", practiceLevelID);
+            mFirebaseAnalytics.logEvent("STARTED_PRACTICE", bundle);
+            mapPresenter.onClickedPractice(practiceLevelID);
         };
 //        tutorialAppButton.setOnClickListener(onClickedApp);
         pollyAppButton.setOnClickListener(onClickedApp);
@@ -132,19 +143,4 @@ public class MapActivity extends AppCompatActivity {
         practiceIntent.putExtra("practiceID", practiceID);
         startActivity(practiceIntent);
     }
-
-//    private void updateCurrentPosition(int lessonNumber) {
-//
-//        UserProfile.user.setCurrentLessonID(lessonNumber);
-//        UserProfile.user.setCurrentCourseID(1);
-//        if (lessonNumber == 8) {
-//            UserProfile.user.setCurrentCourseID(2);
-//        }
-//
-//        // update position in server
-//        new UpdatePositionInServer().execute();
-//    }
-
-
-
 }

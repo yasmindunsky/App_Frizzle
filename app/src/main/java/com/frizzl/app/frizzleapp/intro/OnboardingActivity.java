@@ -19,7 +19,6 @@ import com.google.firebase.dynamiclinks.FirebaseDynamicLinks;
 import com.google.firebase.dynamiclinks.PendingDynamicLinkData;
 
 public class OnboardingActivity extends FragmentActivity{
-    private FirebaseAnalytics mFirebaseAnalytics;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,29 +30,6 @@ public class OnboardingActivity extends FragmentActivity{
             Intent mapIntent = new Intent(getBaseContext(), MapActivity.class);
             startActivity(mapIntent);
         });
-
-        // Obtain the FirebaseAnalytics instance.
-        mFirebaseAnalytics = FirebaseAnalytics.getInstance(getApplicationContext());
-
-        // Handle dynamic links
-        FirebaseAnalytics.getInstance(getApplicationContext());
-        FirebaseDynamicLinks.getInstance()
-                .getDynamicLink(getIntent())
-                .addOnSuccessListener(this, pendingDynamicLinkData -> {
-                    // Get deep link from result (may be null if no link is found)
-                    Uri deepLink = null;
-                    if (pendingDynamicLinkData != null) {
-                        deepLink = pendingDynamicLinkData.getLink();
-                        String utm_campaign = deepLink.getQueryParameter("utm_campaign");
-                        String utm_source = deepLink.getQueryParameter("utm_source");
-                        // Send user property to firebase
-                        mFirebaseAnalytics.setUserProperty("utm_campaign", utm_campaign);
-                        mFirebaseAnalytics.setUserProperty("utm_source", utm_source);
-                    }
-
-
-                })
-                .addOnFailureListener(this, e -> Log.w("failed", "getDynamicLink:onFailure", e));
 
         // Rotation for RTL swiping.
 //        if (Support.isRTL()) {

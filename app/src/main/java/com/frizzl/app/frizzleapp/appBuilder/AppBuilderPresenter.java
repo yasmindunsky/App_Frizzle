@@ -16,11 +16,6 @@ public class AppBuilderPresenter {
     private String codeEnd;
     private int currentAppLevelID;
 
-    final private static int WRITE_PERMISSION = 1;
-    final private static int MAX_NICKNAME_LENGTH = 10;
-
-    private FirebaseAnalytics mFirebaseAnalytics;
-
     public AppBuilderPresenter(AppBuilderActivity appBuilderActivity, CodingScreenPresenter codingScreenPresenter,
                                DesignScreenPresenter designScreenPresenter,
                                String codeStart, String codeEnd, int currentAppLevelID){
