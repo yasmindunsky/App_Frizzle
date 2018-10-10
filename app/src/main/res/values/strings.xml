@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name" translatable="false">Frizzl</string>
 
-    <string name="code_start">
+    <string name="code_start" translatable="false">
         package com.frizzl.frizzlproject3;
 
 import android.content.ActivityNotFoundException;
@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements   TextToSpeech.On
         tts = new TextToSpeech(this, this, \"com.google.android.tts\");
         }
     </string>
-    <string name="code_end">
+    <string name="code_end" translatable="false">
 
      \@SuppressWarnings(\"deprecation\")
      private void speakOut(String textToSay) {
@@ -125,7 +125,7 @@ public class MainActivity extends AppCompatActivity implements   TextToSpeech.On
     <string name="facebook_app_id" translatable="false">178438059643086</string>
     <string name="main_notification_channel_name" translatable="false">notification_channel</string>
     <string name="welcome">welcome</string>
-    <string name="app_explanation_text">Let"'"s start with a tutorial and\n build a simple text displaying app.</string>
+    <string name="app_explanation_text" translatable="false">Let"'"s start with a tutorial and\n build a simple text displaying app.</string>
     <string name="start">start</string>
     <string name="wow">wow!</string>
     <string name="thanks">thanks</string>

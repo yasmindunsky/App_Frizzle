@@ -7,14 +7,14 @@ android {
         applicationId "com.frizzl.app.frizzleapp"
         minSdkVersion 23
         targetSdkVersion 27
-        versionCode 13
-        versionName "1.2.4"
+        versionCode 14
+        versionName "2.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
-            minifyEnabled true
-            shrinkResources true
+            minifyEnabled false
+            shrinkResources false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
