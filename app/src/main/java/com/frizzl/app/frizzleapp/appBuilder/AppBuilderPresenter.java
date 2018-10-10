@@ -52,13 +52,13 @@ public class AppBuilderPresenter {
             }
             Log.d("INSTALL", "output:" + output);
             appBuilderActivity.installUsersApp();
-        }).execute(codeStart + code + codeEnd, xml, manifest);
+        }).execute(code, xml, manifest);
     }
 
     public void compileAndDownloadApp() {
         saveProject();
         UserApp currentUserApp = UserProfile.user.getCurrentUserApp();
-        String code = currentUserApp.getCode();
+        String code = codeStart + currentUserApp.getCode() + codeEnd;
         String xml = currentUserApp.getXml();
         String manifest = currentUserApp.getManifest();
 
@@ -67,19 +67,18 @@ public class AppBuilderPresenter {
 
         // send java and xml to server for build
         // if succeeded ask user for writing permission and download the apk
-        new SaveProjectToServer(output -> {
-            if (output.contains("BUILD SUCCESSFUL")) {
-                Log.d("INSTALL", "save output: " + output);
-                downloadApk(code, xml, manifest);
-            } else {
-                // Build didn't work.
-                Toast.makeText(appBuilderActivity, "output", Toast.LENGTH_LONG);
-//                appBuilderActivity.displayError(output);
-            }
-        }).execute(code, xml, manifest);
+//        new SaveProjectToServer(output -> {
+//            if (output.contains("BUILD SUCCESSFUL")) {
+//                Log.d("INSTALL", "save output: " + output);
+//                downloadApk(code, xml, manifest);
+//            } else {
+//                // Build didn't work.
+//                Toast.makeText(appBuilderActivity, "output", Toast.LENGTH_LONG);
+////                appBuilderActivity.displayError(output);
+//            }
+//        }).execute(code, xml, manifest);
 
-//        downloadApk(code, xml, manifest);
-
+        downloadApk(code, xml, manifest);
     }
 
     public void onResume() {
