@@ -55,6 +55,9 @@ Use "'" for special chars.
     <string name="send">send</string>
     <string name="feedback_support"><![CDATA[feedback & support]]></string>
     <string name="email_hint">e-mail</string>
+    <string name="contact_us"><![CDATA[Feel free to contact us for feedback & support]]></string>
+    <string name="next">next</string>
+    <string name="welcome_to_our_beta">welcome to our beta</string>
 
     <string-array name="fonts">
         <item>sans-serif</item>

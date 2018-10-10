@@ -58,6 +58,15 @@
         <item name="android:text">@string/thanks</item>
     </style>
 
+    <style name="Button.Hollow.Blue" parent="@android:style/Widget.Button">
+        <item name="android:background">@drawable/button_background_hollow_light_blue</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:paddingStart">25sp</item>
+        <item name="android:paddingEnd">25sp</item>
+        <item name="android:textAppearance">@style/Text.Title.Blue</item>
+    </style>
+
     <style name="Button.MapApp" parent="@android:style/Widget.Material.Button.Borderless">
         <item name="android:layout_height">140dp</item>
         <item name="android:layout_width">140dp</item>
@@ -165,6 +174,10 @@
         <item name="android:padding">10dp</item>
         <item name="android:textAlignment">center</item>
         <item name="android:textAllCaps">true</item>
+    </style>
+
+    <style name="Text.Title.Blue" parent="@style/Text.Title">
+        <item name="android:textColor">@color/frizzle_light_blue</item>
     </style>
 
     <style name="Text.Title.Wow" parent="@style/Text.Title">

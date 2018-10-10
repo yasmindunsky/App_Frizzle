@@ -15,7 +15,7 @@ public class OnboardingActivity extends FragmentActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_onboarding);
-        Button button = findViewById(R.id.yayButton);
+        Button button = findViewById(R.id.nextButton);
         button.setOnClickListener(v -> {
             UserProfile.user.loadSerializedObject(getBaseContext());
             Intent mapIntent = new Intent(getBaseContext(), MapActivity.class);

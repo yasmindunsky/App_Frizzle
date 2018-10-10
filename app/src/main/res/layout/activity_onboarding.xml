@@ -1,49 +1,79 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/relativeLayout"
+    android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="30dp"
     tools:context="com.frizzl.app.frizzleapp.intro.OnboardingActivity">
 
-    <ImageView
-        android:id="@+id/image"
-        android:layout_width="0dp"
-        android:layout_height="200dp"
-        android:layout_marginTop="50dp"
-        android:src="@drawable/onboarding"
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/betaTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="false"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:text="@string/welcome_to_our_beta"
+        android:textAlignment="center"
+        android:textAppearance="@style/Text.Title.Blue"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="0dp"
+        android:layout_height="180dp"
+        android:layout_marginTop="8dp"
+        android:adjustViewBounds="true"
+        android:cropToPadding="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_lego"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/betaTitle" />
+
+    <ImageView
+        android:id="@+id/supportIcon"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:padding="5dp"
+        android:src="@drawable/ic_feedback_support"
+        app:layout_constraintStart_toStartOf="@id/contactUs"
+        app:layout_constraintTop_toTopOf="@+id/contactUs" />
+
     <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/contactUs"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="false"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="16dp"
-        android:text="@string/onboarding_text"
+        android:layout_marginTop="36dp"
+        android:lineSpacingExtra="4sp"
+        android:paddingStart="10dp"
+        android:text="@string/contact_us"
         android:textAlignment="center"
-        android:textAppearance="@style/Text.Info.Bold"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/thanksButton"
+        android:textAppearance="@style/Text.Info"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/image" />
 
     <android.support.v7.widget.AppCompatButton
-        android:id="@+id/yayButton"
-        style="@style/Button.Thanks"
-        android:text="@string/yay"
-        android:textAppearance="@style/Text.Title.Light"
-        android:textColor="@color/white"
+        android:id="@+id/nextButton"
+        style="@style/Button.Hollow.Blue"
+        android:layout_marginBottom="24dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/next"
+        android:textAppearance="@style/Text.Title.Blue"
+        android:textColor="@color/frizzle_light_blue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tasksCompleted"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/contactUs" />
 </android.support.constraint.ConstraintLayout>

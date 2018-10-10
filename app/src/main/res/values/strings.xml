@@ -164,6 +164,9 @@ public class MainActivity extends AppCompatActivity implements   TextToSpeech.On
     <string name="feedback_support"><![CDATA[feedback & support]]></string>
     <string name="feedback_hint">We\'d love to hear your thoughts or answer any questions...</string>
     <string name="email_hint">e-mail</string>
+    <string name="contact_us"><![CDATA[Feel free to contact\nus for feedback & support]]></string>
+    <string name="next">next</string>
+    <string name="welcome_to_our_beta">welcome\n to our beta</string>
 
     <string-array name="fonts">
         <item>sans-serif</item>
