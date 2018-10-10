@@ -262,7 +262,7 @@ public class UserCreatedButton extends UserCreatedView {
                 properties.put("android:text", text);
 
                 // For temp testing
-                if (UserProfile.user.getCurrentLevel() == 3 && UserProfile.user.getCurrentTaskNum()== 1) {
+                if (UserProfile.user.getCurrentLevel() == Support.POLLY_APP_LEVEL_ID && UserProfile.user.getCurrentTaskNum()== 1) {
                     AppBuilderActivity appBuilderActivity = (AppBuilderActivity) getActivity();
                     appBuilderActivity.taskCompleted();
                 }
@@ -276,7 +276,7 @@ public class UserCreatedButton extends UserCreatedView {
             properties.put("android:onClick", onclickFuncName);
 
             // For temp testing
-            if (UserProfile.user.getCurrentLevel() == 3 && UserProfile.user.getCurrentTaskNum()== 4
+            if (UserProfile.user.getCurrentLevel() == Support.POLLY_APP_LEVEL_ID && UserProfile.user.getCurrentTaskNum()== 4
                     && !onclickFuncName.equals("")) {
                 AppBuilderActivity appBuilderActivity = (AppBuilderActivity) getActivity();
                 appBuilderActivity.taskCompleted();
