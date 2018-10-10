@@ -40,7 +40,7 @@ public class UserCreatedButton extends UserCreatedView {
     public UserCreatedButton(Context context, Map<String, String> properties, int index){
         this.context = context;
         this.index = index;
-        this.layout = R.layout.popup_properties_button_try;
+        this.layout = R.layout.popup_properties_button;
         int buttonStyle = R.style.Button_UserCreated;
         this.viewType = "Button";
 
@@ -83,7 +83,7 @@ public class UserCreatedButton extends UserCreatedView {
     public UserCreatedButton(Context context, int nextViewIndex, int numOfButtons) {
         this.context = context;
         int buttonStyle = R.style.Button_UserCreated;
-        this.layout = R.layout.popup_properties_button_try;
+        this.layout = R.layout.popup_properties_button;
         this.viewType = "Button";
         this.thisView = new Button(new ContextThemeWrapper(context, buttonStyle), null, buttonStyle);
         thisView.setText(R.string.new_button_text);

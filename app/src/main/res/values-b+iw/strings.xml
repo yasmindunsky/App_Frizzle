@@ -12,7 +12,6 @@ Use "'" for special chars.
     <string name="propertiesTableFont">פונט</string>
     <string name="propertiesTableBgColor">צבע רקע</string>
     <string name="propertiesTableTextColor">צבע טקסט</string>
-    <string name="propertiesTableOnClick">OnClick</string>
     <string name="save">שמירה</string>
     <string name="welcome">ברוכה הבאה</string>
     <string name="app_explanation_text"></string>
@@ -50,6 +49,7 @@ Use "'" for special chars.
     <string name="tooltip_move_on">Great!  Move on to your next task.</string>
     <string name="send">שליחה</string>
     <string name="feedback_support">משוב ותמיכה</string>
+    <string name="here_you_can_see_an_example_for_a_two_lines_task">כאן אפשר לראות דוגמה למשימה באורך שתי שורות.</string>
     <string name="feedback_hint">נשמח לשמוע מה דעתך ולענות על כל שאלה…</string>
     <string name="email_hint">האימייל שלך</string>
     <string name="contact_us">תרגישי חופשי ליצור איתנו קשר, לשתף חוויות או לשאול שאלות</string>

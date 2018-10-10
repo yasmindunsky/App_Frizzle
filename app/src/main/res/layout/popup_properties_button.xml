@@ -65,6 +65,7 @@
         android:padding="12dp"
         android:text="@string/propertiesTableText"
         android:textAppearance="@style/propertiesTableKey"
+
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/imageView3" />
@@ -129,11 +130,11 @@
         android:ems="10"
         android:gravity="center_vertical|start"
         android:inputType="textPersonName"
-
         android:textAppearance="@style/propertiesTableValue"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toTopOf="@id/viewTextKey" />
+        app:layout_constraintTop_toTopOf="@id/viewTextKey"
+        />
 
     <Spinner
         android:id="@+id/viewFontValue"
@@ -193,20 +194,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent=".08" />
+        app:layout_constraintGuide_percent="@dimen/properties_button_guideline" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent=".4" />
+        app:layout_constraintGuide_percent="@dimen/properties_button_guideline2" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent=".92" />
+        app:layout_constraintGuide_percent="@dimen/properties_button_guideline3" />
 
 </android.support.constraint.ConstraintLayout>

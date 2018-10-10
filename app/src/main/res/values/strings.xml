@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Frizzl</string>
+    <string name="app_name" translatable="false">Frizzl</string>
 
     <string name="code_start">
         package com.frizzl.frizzlproject3;
@@ -118,10 +118,10 @@ public class MainActivity extends AppCompatActivity implements   TextToSpeech.On
     <string name="propertiesTableFont">Font</string>
     <string name="propertiesTableBgColor">Color</string>
     <string name="propertiesTableTextColor" >Text Color</string>
-    <string name="propertiesTableOnClick">OnClick</string>
+    <string name="propertiesTableOnClick" translatable="false">OnClick</string>
     <string name="save">save</string>
-    <string name="facebook_app_id">178438059643086</string>
-    <string name="main_notification_channel_name">notification_channel</string>
+    <string name="facebook_app_id" translatable="false">178438059643086</string>
+    <string name="main_notification_channel_name" translatable="false">notification_channel</string>
     <string name="welcome">welcome</string>
     <string name="app_explanation_text">Let"'"s start with a tutorial and\n build a simple text displaying app.</string>
     <string name="start">start</string>
@@ -130,7 +130,7 @@ public class MainActivity extends AppCompatActivity implements   TextToSpeech.On
     <string name="your_app_name">App Name</string>
     <string name="function_name">Function name</string>
     <string name="choose_image">Choose Image</string>
-    <string name="speakout_keyboard">speakOut(\"…\")</string>
+    <string name="speakout_keyboard" translatable="false">speakOut(\"…\")</string>
     <string name="function_keyboard">Add function</string>
     <string name="error_text">Error text</string>
     <string name="lets_move_on_from_app">let\'s move on</string>
@@ -153,7 +153,7 @@ public class MainActivity extends AppCompatActivity implements   TextToSpeech.On
     <string name="button">Button</string>
     <string name="all_tasks_completed">You\'ve completed all your tasks.</string>
     <string name="amazing_work">Amazing work!</string>
-    <string name="initial_code" />
+    <string name="initial_code" translatable="false" />
     <string name="try_again">Try Again</string>
     <string name="tooltip_add_elements">Here you can  add elements.</string>
     <string name="tooltip_install_app">Here you can install your app.</string>
