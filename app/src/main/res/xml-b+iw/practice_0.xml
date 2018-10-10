@@ -24,7 +24,7 @@
     <slide>
         <info_text></info_text>
         <task_text>
-            "Change the command so it will read your name and run it again."
+            "שני את הפקודה כדי שהיא תקרא בשמך (באנגלית) והריצי שוב."
         </task_text>
         <reminder_text></reminder_text>
         <code mutable="true" runnable="true">
@@ -32,22 +32,22 @@
         </code>
         <mutable_design></mutable_design>
         <call_to_action>
-            "Next"
+            "קדימה"
         </call_to_action>
     </slide>
 
     <slide>
         <info_text></info_text>
         <task_text>
-            "Write the command by yourself so it will read \\u0022this is so cool\\u0022 and run the code."
+            "כתבי את הפקודה בעצמך כך שהיא תקרא \\u0022this is so cool\\u0022 והריצי את הקוד."
         </task_text>
-        <reminder_text>reminder: speakOut(\\u0022Hello\\u0022);</reminder_text>
+        <reminder_text>תזכורת: speakOut(\\u0022Hello\\u0022);</reminder_text>
         <code mutable="true" runnable="true">
             "\\u0020"
         </code>
         <mutable_design></mutable_design>
         <call_to_action>
-            "Check"
+            "בדיקה"
         </call_to_action>
         <solution>speakOut(\\u0022this is so cool\\u0022);</solution>
     </slide>
@@ -55,7 +55,7 @@
     <slide>
         <info_text></info_text>
         <task_text>
-            "Delete the semicolon at the end of the command and try to run it again."
+            "מחקי את סימן הנקודה-פסיק בסוף הפקודה והריצי את הקוד."
         </task_text>
         <reminder_text></reminder_text>
         <code mutable="true" runnable="true">
@@ -63,14 +63,14 @@
         </code>
         <mutable_design></mutable_design>
         <call_to_action>
-            "Check"
+            "בדיקה"
         </call_to_action>
     </slide>
 
     <slide>
         <info_text></info_text>
         <task_text>
-            "Type a space character between the ’speak’ and ’out’ in the command name and run the code."
+            "הקלידי את התו רווח בין ה-’speak’ וה-’out’ בשם הפקודה והריצי את הקוד."
         </task_text>
         <reminder_text></reminder_text>
         <code mutable="true" runnable="true">
@@ -78,7 +78,7 @@
         </code>
         <mutable_design></mutable_design>
         <call_to_action>
-            "Check"
+            "בדיקה"
         </call_to_action>
     </slide>
 

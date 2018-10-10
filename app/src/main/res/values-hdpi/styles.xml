@@ -28,7 +28,7 @@
 
     <!--Slides-->
 
-    <style name="Text.Slide" parent="@android:style/TextAppearance.Medium">
+    <style name="Text.Basic" parent="@android:style/TextAppearance.Medium">
         <item name="android:textSize">18sp</item>
         <item name="android:fontFamily">@font/alef_regular</item>
         <item name="android:textColor">@color/TextGrey</item>

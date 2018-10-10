@@ -117,7 +117,7 @@ public class MainActivity extends AppCompatActivity implements   TextToSpeech.On
     <string name="propertiesTableText">Text</string>
     <string name="propertiesTableFont">Font</string>
     <string name="propertiesTableBgColor">Color</string>
-    <string name="propertiesTableFontColor" >Font Color</string>
+    <string name="propertiesTableTextColor" >Text Color</string>
     <string name="propertiesTableOnClick">OnClick</string>
     <string name="save">save</string>
     <string name="facebook_app_id">178438059643086</string>
@@ -141,7 +141,6 @@ public class MainActivity extends AppCompatActivity implements   TextToSpeech.On
     <string name="onclick_practice">onClick Practice</string>
     <string name="speakout_practice">speakOut Practice</string>
     <string name="tutorial_app">Tutorial App</string>
-    <string name="onboarding_text">Let\'s start  building apps!</string>
     <string name="yay">yay!</string>
     <string name="my_first_app">My First App</string>
     <string name="you_learned_so_much">You learned so much,</string>
@@ -162,8 +161,8 @@ public class MainActivity extends AppCompatActivity implements   TextToSpeech.On
     <string name="tooltip_move_on">Great!  Move on to your next task.</string>
     <string name="send">send</string>
     <string name="feedback_support"><![CDATA[feedback & support]]></string>
-    <string name="feedback_hint">We\'d love to hear your thoughts or answer any questions...</string>
-    <string name="email_hint">e-mail</string>
+    <string name="feedback_hint">We\'d love to hear your thoughts or answer any questions…</string>
+    <string name="email_hint">Your E-mail</string>
     <string name="contact_us"><![CDATA[Feel free to contact\nus for feedback & support]]></string>
     <string name="next">next</string>
     <string name="welcome_to_our_beta">welcome\n to our beta</string>

@@ -106,7 +106,7 @@ app:srcCompat="@drawable/ic_trash" />
                 android:id="@+id/viewFontColorKey"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/propertiesTableFontColor"
+                android:text="@string/propertiesTableTextColor"
                 android:textAppearance="@style/propertiesTableKey" />
 
             <Button

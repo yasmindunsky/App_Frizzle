@@ -5,9 +5,9 @@
     tools:keep="@xml/practice_2">
     <slide>
         <info_text>
-            "If we want to connect a button to a command we need to create a function.
-            \\u000AThis is what a function looks like:
-            \\u000A(In this example, the speakOut command is inside myFirstFunction)"
+            "אם נרצה לחבר את הכפתור לפקודה, נצטרך ליצור פונקציה.
+            \\u000A            ככה פונקציה נראית:
+            \\u000A            (בדוגמה הזו, פקודת ה-speakOut נמצאת בתוך הפונקציה myFirstFunction)"
         </info_text>
         <task_text />
         <reminder_text></reminder_text>
@@ -18,14 +18,14 @@
         </code>
         <mutable_design></mutable_design>
         <call_to_action>
-            "Next"
+            "קדימה"
         </call_to_action>
     </slide>
 
     <slide>
         <info_text>"We added a new function below."</info_text>
         <task_text>
-            "Add the speakOut command inside the new function so it will read out ’Goodbye’."
+            "הוסיפי את פקודת ה-speakOut בתוך הפונקציה החדשה כך שהיא תקרא ’Goodbye’."
         </task_text>
         <reminder_text></reminder_text>
         <code mutable="true" runnable="false">
@@ -39,17 +39,16 @@
         </code>
         <mutable_design></mutable_design>
         <call_to_action>
-            "Check"
+            "בדיקה"
         </call_to_action>
     </slide>
 
     <slide>
         <info_text></info_text>
         <task_text>
-            "Create a new function, name it ’sayMyName’ and write a speakOut command inside it
-            that says your name."
+            "צרי פונקציה חדשה, קראי לה’sayMyName’ וכתבי פקודת speakOut שקוראת בשמך בתוכה."
         </task_text>
-        <reminder_text>" Reminder:
+        <reminder_text>" תזכורת:
             \\u000Apublic void myFirstFunction(View view){
             \\u000A\\u0009speakOut(\\u0022Hello\\u0022);
             \\u000A}"</reminder_text>
@@ -58,14 +57,14 @@
         </code>
         <mutable_design></mutable_design>
         <call_to_action>
-            "Check"
+            "בדיקה"
         </call_to_action>
     </slide>
 
     <slide>
-        <info_text>"We’ll now learn how to connect a function to a button."</info_text>
+        <info_text>"עכשיו נראה איך מחברים את הפונקציה לכפתור."</info_text>
         <task_text>
-            "Set the button’s onClick property to ’sayHello’."
+            "הגדירי שמאפיין ה-onClick של הכפתור יהיה ’sayHello’."
         </task_text>
         <reminder_text></reminder_text>
         <code mutable="false" runnable="false">
@@ -75,7 +74,7 @@
         </code>
         <mutable_design>true</mutable_design>
         <call_to_action>
-            "Check"
+            "בדיקה"
         </call_to_action>
     </slide>
 

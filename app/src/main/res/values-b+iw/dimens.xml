@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="feedback_support_title_margins">80dp</dimen>
+</resources>

@@ -86,7 +86,7 @@
         <item name="android:enabled">false</item>
     </style>
 
-    <style name="Text.Slide" parent="@android:style/TextAppearance.Medium">
+    <style name="Text.Basic" parent="@android:style/TextAppearance.Medium">
         <item name="android:textSize">18sp</item>
         <item name="android:fontFamily">@font/calibri_regular</item>
         <item name="android:textColor">@color/TextGrey</item>
@@ -132,10 +132,9 @@
         <item name="android:fontFamily">@font/calibri_bold</item>
     </style>
 
-    <style name="Text.ItalicForm" parent="@style/Text.Slide">
+    <style name="Text.ItalicForm" parent="@style/Text.Basic">
         <item name="android:textColor">@color/TextLightGrey</item>
-        <item name="android:fontFamily">@font/calibri_italic</item>
-        <item name="android:textSize">20sp</item>
+        <item name="android:textSize">18sp</item>
     </style>
 
     <style name="Text.Title" parent="@android:style/TextAppearance.Medium">
@@ -169,7 +168,6 @@
 
     <style name="Text.Title.Popup" parent="Text.Title">
         <item name="android:layout_height">@dimen/app_bar_height</item>
-        <item name="android:fontFamily">@font/hero_regular</item>
         <item name="android:background">@drawable/table_text_edit_background</item>
         <item name="android:padding">10dp</item>
         <item name="android:textAlignment">center</item>
@@ -183,7 +181,6 @@
     <style name="Text.Title.Wow" parent="@style/Text.Title">
         <item name="android:textColor">@color/colorPrimary</item>
         <item name="android:textSize">36sp</item>
-        <item name="android:fontFamily">@font/calibri_bold</item>
     </style>
 
     <style name="Button.UserCreated" parent="@android:style/Widget.Button">

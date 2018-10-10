@@ -4,37 +4,37 @@
     tools:keep="@xml/app_1">
     <task>
         <text name="text">
-            "Add a picture of your parrot by adding an Image Element."
+            "הוסיפי כפתור של תוכי על ידי הוספת אלמנט תמונה."
         </text>
     </task>
 
     <task>
         <text name="text">
-            "Add a button and write a question on it."
+            "הוסיפי כפתור וכתבי עליו שאלה."
         </text>
     </task>
 
     <task>
         <text name="text">
-            "Add a function and name it."
+            "הסויפי פונקציה ותני לה שם."
         </text>
     </task>
 
     <task>
         <text name="text">
-            "Write a speakOut command inside the function."
+            "כתבי פקודת speakOut בתוך הפונקציה."
         </text>
     </task>
 
     <task>
         <text name="text">
-            "Connect the function to the button."
+            "חברי את הפונקציה לכפתור."
         </text>
     </task>
 
     <task>
         <text name="text">
-            "Repeat those steps with two more buttons."
+            "חזרי על השלבים האלה והוסיפי עוד שני כפתורים."
         </text>
     </task>
 
