@@ -156,7 +156,7 @@ public class PracticeSlideFragment extends Fragment {
             layoutParams.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
         }
         layoutParams.addRule(RelativeLayout.CENTER_HORIZONTAL);
-        layoutParams.setMargins(0,TOP_DOWN_MARGIN,0,TOP_DOWN_MARGIN);
+        layoutParams.setMargins(0,TOP_DOWN_MARGIN,0,TOP_DOWN_MARGIN*4);
         callToActionButton.setLayoutParams(layoutParams);
         callToActionButton.setOnClickListener(v -> {
             Button button = (Button) v;
