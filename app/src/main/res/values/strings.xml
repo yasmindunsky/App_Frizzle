@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity implements   TextToSpeech.On
                 final ComponentName cn = new ComponentName(\"com.frizzl.app.frizzleapp\",
                         \"com.frizzl.app.frizzleapp.appBuilder.AppBuilderActivity\");
                 intent.setComponent(cn);
+                intent.putExtra(\"appLevelID\", 2);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 try
                 {
@@ -64,15 +65,16 @@ public class MainActivity extends AppCompatActivity implements   TextToSpeech.On
      }
 
     private void presentTooltip(Context context) {
-     int color = ContextCompat.getColor(context, R.color.darkGrey);
+        int bgColor = ContextCompat.getColor(context, R.color.lightGrey);
+        int textColor = ContextCompat.getColor(context, R.color.darkGrey);
      new Tooltip.Builder(backToFrizzlLayout)
              .setText(\"Here you can\\n go back to Frizzl\")
-             .setTextColor(color)
+             .setTextColor(textColor)
              .setTextSize(16f)
              .setTypeface(ResourcesCompat.getFont(context, R.font.calibri_regular))
              .setMargin(4f)
              .setGravity(Gravity.TOP)
-             .setBackgroundColor(color)
+             .setBackgroundColor(bgColor)
              .setCornerRadius(15f)
              .setPadding(35f)
              .setDismissOnClick(true)
