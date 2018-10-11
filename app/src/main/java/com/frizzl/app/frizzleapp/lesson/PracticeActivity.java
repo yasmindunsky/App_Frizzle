@@ -13,11 +13,11 @@ import org.xmlpull.v1.XmlPullParserException;
 import java.io.IOException;
 
 public class PracticeActivity extends FragmentActivity {
-    private static PracticeSwipeAdapter swipeAdapter;
-    private static Practice currentPractice;
-    private static CustomViewPager viewPager;
+    private  PracticeSwipeAdapter swipeAdapter;
+    private  Practice currentPractice;
+    private  CustomViewPager viewPager;
 
-    static public Practice getCurrentPractice() {
+    public Practice getCurrentPractice() {
         return currentPractice;
     }
 
