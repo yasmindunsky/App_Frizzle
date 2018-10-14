@@ -1,82 +1,82 @@
-<!--\\u000A-->
+<!--\n-->
 <!--’-->
 
 <practice xmlns:tools="http://schemas.android.com/tools"
-    tools:keep="@xml/practice_2">
-    <slide>
-        <info_text>
-            "If we want to connect a button to a command we need to create a function.
-            \\u000AThis is what a function looks like:
-            \\u000A(In this example, the speakOut command is inside myFirstFunction)"
-        </info_text>
-        <task_text />
-        <reminder_text></reminder_text>
-        <code mutable="false" runnable="false">
-            "public void myFirstFunction(){\\u000A
-            \\u0009speakOut(\\u0022Hello\\u0022);\\u000A
-            }"
-        </code>
-        <mutable_design></mutable_design>
-        <call_to_action>
-            "Next"
-        </call_to_action>
-    </slide>
+tools:keep="@xml/practice_2">
+<slide>
+<info_text>
+If we want to connect a button to a command we need to create a function.
+\nThis is what a function looks like:
+\n(In this example, the speakOut command is inside myFirstFunction)
+</info_text>
+<task_text />
+<reminder_text></reminder_text>
+<code mutable="false" runnable="false">
+public void myFirstFunction(){\n
+speakOut("Hello");\n
+}
+</code>
+<mutable_design></mutable_design>
+<call_to_action>
+Next
+</call_to_action>
+</slide>
 
-    <slide>
-        <info_text>"We added a new function below."</info_text>
-        <task_text>
-            "Add the speakOut command inside the new function so it will read out ’Goodbye’."
-        </task_text>
-        <reminder_text></reminder_text>
-        <code mutable="true" runnable="false">
-            "public void myFirstFunction(){
-            \\u000A\\u0009speakOut(\\u0022Hello\\u0022);
-            \\u000A}
-            \\u000A
-            \\u000Apublic void mySecondFunction(){
-            \\u000A\\u0009
-            \\u000A}"
-        </code>
-        <mutable_design></mutable_design>
-        <call_to_action>
-            "Check"
-        </call_to_action>
-    </slide>
+<slide>
+<info_text>We added a new function below.</info_text>
+<task_text>
+Add the speakOut command inside the new function so it will read out ’Goodbye’.
+</task_text>
+<reminder_text></reminder_text>
+<code mutable="true" runnable="false">
+public void myFirstFunction(){
+\nspeakOut("Hello");
+\n}
+\n
+\npublic void mySecondFunction(){
+\n
+\n}
+</code>
+<mutable_design></mutable_design>
+<call_to_action>
+Check
+</call_to_action>
+</slide>
 
-    <slide>
-        <info_text></info_text>
-        <task_text>
-            "Create a new function, name it ’sayMyName’ and write a speakOut command inside it
-            that says your name."
-        </task_text>
-        <reminder_text>" Reminder:
-            \\u000Apublic void myFirstFunction(View view){
-            \\u000A\\u0009speakOut(\\u0022Hello\\u0022);
-            \\u000A}"</reminder_text>
-        <code mutable="true" runnable="false">
-            "\\u0020"
-        </code>
-        <mutable_design></mutable_design>
-        <call_to_action>
-            "Check"
-        </call_to_action>
-    </slide>
+<slide>
+<info_text></info_text>
+<task_text>
+Create a new function, name it ’sayMyName’ and write a speakOut command inside it
+that says your name.
+</task_text>
+<reminder_text> Reminder:
+\npublic void myFirstFunction(View view){
+\nspeakOut("Hello");
+\n}</reminder_text>
+<code mutable="true" runnable="false">
+\\u0020
+</code>
+<mutable_design></mutable_design>
+<call_to_action>
+Check
+</call_to_action>
+</slide>
 
-    <slide>
-        <info_text>"We’ll now learn how to connect a function to a button."</info_text>
-        <task_text>
-            "Set the button’s onClick property to ’sayHello’."
-        </task_text>
-        <reminder_text></reminder_text>
-        <code mutable="false" runnable="false">
-            "public void sayHello(){
-            \\u000A\\u0009speakOut(\\u0022Hello\\u0022);
-            \\u000A}"
-        </code>
-        <mutable_design>true</mutable_design>
-        <call_to_action>
-            "Check"
-        </call_to_action>
-    </slide>
+<slide>
+<info_text>We’ll now learn how to connect a function to a button.</info_text>
+<task_text>
+Set the button’s onClick property to ’sayHello’.
+</task_text>
+<reminder_text></reminder_text>
+<code mutable="false" runnable="false">
+public void sayHello(){
+\nspeakOut("Hello");
+\n}
+</code>
+<mutable_design>true</mutable_design>
+<call_to_action>
+Check
+</call_to_action>
+</slide>
 
 </practice>

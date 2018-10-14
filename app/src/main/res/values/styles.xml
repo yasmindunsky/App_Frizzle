@@ -253,7 +253,7 @@
     </style>
 
     <style name="Text.PracticeSlide.taskText" parent="Text.PracticeSlide">
-        <item name="android:fontFamily">@font/calibri_bold</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
 </resources>

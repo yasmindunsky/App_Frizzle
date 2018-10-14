@@ -1,80 +1,80 @@
-<!--\\u000A-->
+<!--\n-->
 <!--’-->
 
 <practice xmlns:tools="http://schemas.android.com/tools"
     tools:keep="@xml/practice_2">
     <slide>
         <info_text>
-            "אם נרצה לחבר את הכפתור לפקודה, נצטרך ליצור פונקציה.
-            \\u000A            ככה פונקציה נראית:
-            \\u000A            (בדוגמה הזו, פקודת ה-speakOut נמצאת בתוך הפונקציה myFirstFunction)"
+אם נרצה לחבר את הכפתור לפקודה, נצטרך ליצור פונקציה.
+\nככה פונקציה נראית:
+\n(בדוגמה הזו, פקודת ה-speakOut נמצאת בתוך הפונקציה myFirstFunction)
         </info_text>
         <task_text />
         <reminder_text></reminder_text>
         <code mutable="false" runnable="false">
-            "public void myFirstFunction(){\\u000A
-            \\u0009speakOut(\\u0022Hello\\u0022);\\u000A
-            }"
+public void myFirstFunction(){\n
+    speakOut("Hello");\n
+}
         </code>
         <mutable_design></mutable_design>
         <call_to_action>
-            "קדימה"
+קדימה
         </call_to_action>
     </slide>
 
     <slide>
-        <info_text>"We added a new function below."</info_text>
+        <info_text>הוספנו פונקציה חדשה.</info_text>
         <task_text>
-            "הוסיפי את פקודת ה-speakOut בתוך הפונקציה החדשה כך שהיא תקרא ’Goodbye’."
+הוסיפי את פקודת ה-speakOut בתוך הפונקציה החדשה כך שהיא תקרא ’Goodbye’.
         </task_text>
         <reminder_text></reminder_text>
         <code mutable="true" runnable="false">
-            "public void myFirstFunction(){
-            \\u000A\\u0009speakOut(\\u0022Hello\\u0022);
-            \\u000A}
-            \\u000A
-            \\u000Apublic void mySecondFunction(){
-            \\u000A\\u0009
-            \\u000A}"
+public void myFirstFunction(){
+\n    speakOut("Hello");
+\n}
+\n
+\npublic void mySecondFunction(){
+\n
+\n}
         </code>
         <mutable_design></mutable_design>
         <call_to_action>
-            "בדיקה"
+בדיקה
         </call_to_action>
     </slide>
 
     <slide>
         <info_text></info_text>
         <task_text>
-            "צרי פונקציה חדשה, קראי לה’sayMyName’ וכתבי פקודת speakOut שקוראת בשמך בתוכה."
+צרי פונקציה חדשה, קראי לה’sayMyName’ וכתבי פקודת speakOut שקוראת בשמך בתוכה.
         </task_text>
-        <reminder_text>" תזכורת:
-            \\u000Apublic void myFirstFunction(View view){
-            \\u000A\\u0009speakOut(\\u0022Hello\\u0022);
-            \\u000A}"</reminder_text>
+        <reminder_text> תזכורת:
+\npublic void myFirstFunction(View view){
+\n    speakOut("Hello");
+\n}</reminder_text>
         <code mutable="true" runnable="false">
-            "\\u0020"
+\n
         </code>
         <mutable_design></mutable_design>
         <call_to_action>
-            "בדיקה"
+בדיקה
         </call_to_action>
     </slide>
 
     <slide>
-        <info_text>"עכשיו נראה איך מחברים את הפונקציה לכפתור."</info_text>
+        <info_text>עכשיו נראה איך מחברים את הפונקציה לכפתור.</info_text>
         <task_text>
-            "הגדירי שמאפיין ה-onClick של הכפתור יהיה ’sayHello’."
+הגדירי שמאפיין ה-onClick של הכפתור יהיה ’sayHello’.
         </task_text>
         <reminder_text></reminder_text>
         <code mutable="false" runnable="false">
-            "public void sayHello(){
-            \\u000A\\u0009speakOut(\\u0022Hello\\u0022);
-            \\u000A}"
+public void sayHello(){
+\n    speakOut("Hello");
+\n}
         </code>
         <mutable_design>true</mutable_design>
         <call_to_action>
-            "בדיקה"
+בדיקה
         </call_to_action>
     </slide>
 
