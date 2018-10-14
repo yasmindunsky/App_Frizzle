@@ -32,10 +32,10 @@ import android.widget.TextView;
 
 import com.frizzl.app.frizzleapp.AppTasksSwipeAdapter;
 import com.frizzl.app.frizzleapp.CustomViewPager;
-import com.frizzl.app.frizzleapp.UserApp;
-import com.frizzl.app.frizzleapp.map.MapActivity;
 import com.frizzl.app.frizzleapp.R;
+import com.frizzl.app.frizzleapp.UserApp;
 import com.frizzl.app.frizzleapp.UserProfile;
+import com.frizzl.app.frizzleapp.map.MapActivity;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.tooltip.OnDismissListener;
 
@@ -86,19 +86,13 @@ public class AppBuilderActivity extends AppCompatActivity {
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
         super.onCreate(savedInstanceState);
+
         currentAppLevelID = getIntent().getIntExtra("appLevelID", 0);
 
         RelativeLayout mainLayout = (RelativeLayout) this.getLayoutInflater().inflate(R.layout.activity_app_builder, null);
         setContentView(mainLayout);
 
-        designFragment = new DesignScreenFragment();
-        designScreenPresenter = new DesignScreenPresenter(designFragment);
-        designFragment.setPresenter(designScreenPresenter);
-        codingFragment = new CodingScreenFragment();
-        codingScreenPresenter = new CodingScreenPresenter(codingFragment);
-        codingFragment.setPresenter(codingScreenPresenter);
 
-        startAppPopupWindow = new StartAppPopupWindow(this);
 
         errorExpandableLayout = findViewById(R.id.errorExpandableLayout);
 //        taskExpandableLayout = findViewById(R.id.taskExpandableLayout);
@@ -111,6 +105,21 @@ public class AppBuilderActivity extends AppCompatActivity {
         prevButton = findViewById(R.id.prevTask);
         tabLayout = findViewById(R.id.tabLayout);
         toolbar = findViewById(R.id.builderToolbar);
+
+        designFragment = new DesignScreenFragment();
+        designScreenPresenter = new DesignScreenPresenter(designFragment);
+        designFragment.setPresenter(designScreenPresenter);
+        codingFragment = new CodingScreenFragment();
+        codingScreenPresenter = new CodingScreenPresenter(codingFragment);
+        codingFragment.setPresenter(codingScreenPresenter);
+
+        appBuilderPresenter = new AppBuilderPresenter(this,
+                codingScreenPresenter, designScreenPresenter,
+                getApplicationContext().getResources().getString(R.string.code_start),
+                getApplicationContext().getResources().getString(R.string.code_end), currentAppLevelID);
+        appBuilderPresenter.onCreate();
+
+        startAppPopupWindow = new StartAppPopupWindow(this);
 
         disableNextArrow();
 
@@ -194,10 +203,7 @@ public class AppBuilderActivity extends AppCompatActivity {
         tabLayout.addTab(codingTab);
         graphicEditTab.select();
 
-        appBuilderPresenter = new AppBuilderPresenter(this,
-                codingScreenPresenter, designScreenPresenter,
-                getApplicationContext().getResources().getString(R.string.code_start),
-                getApplicationContext().getResources().getString(R.string.code_end), currentAppLevelID);
+
 
         tutorial = new Tutorial(getApplicationContext());
         activityCreated = true;

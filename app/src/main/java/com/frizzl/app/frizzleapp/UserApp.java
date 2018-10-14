@@ -3,6 +3,7 @@ package com.frizzl.app.frizzleapp;
 import com.frizzl.app.frizzleapp.appBuilder.UserCreatedView;
 
 import java.io.Serializable;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -32,7 +33,7 @@ public class UserApp implements Serializable {
         this.xml = "";
         this.code = "";
         this.manifest = "";
-//        this.views = new HashMap<>();
+        this.views = new HashMap<>();
     }
 
     public Map<Integer, UserCreatedView> getViews() {

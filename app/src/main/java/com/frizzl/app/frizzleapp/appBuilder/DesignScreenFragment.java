@@ -1,8 +1,10 @@
 package com.frizzl.app.frizzleapp.appBuilder;
 
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.ClipData;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.DragEvent;
@@ -30,6 +32,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -43,6 +46,7 @@ public class DesignScreenFragment extends Fragment {
     private Tutorial tutorial;
     private AllAngleExpandableButton plusButton;
     private AppBuilderActivity appBuilderActivity;
+    private UserCreatedViewsModel userCreatedViewsModel;
 
     public DesignScreenFragment() {
         // Required empty public constructor
@@ -64,11 +68,19 @@ public class DesignScreenFragment extends Fragment {
         initAddMenu(view);
         tutorial = new Tutorial(getContext());
 
+        // Create a ViewModel the first time the system calls an activity's onCreate() method.
+        // Re-created activities receive the same MyViewModel instance created by the first activity.
+
+        userCreatedViewsModel = ViewModelProviders.of(getActivity()).get(UserCreatedViewsModel.class);
+
         if (designScreenPresenter != null) {
             setAppName(designScreenPresenter.getAppName());
             setAppIcon(designScreenPresenter.getIcon());
-
-            views = DesignScreenPresenter.getViews(getContext());
+            views = userCreatedViewsModel.getViews();
+            if (views == null) {
+                views = designScreenPresenter.getViewsFromUserProfile();
+                userCreatedViewsModel.setViews(views);
+            }
             presentViewsOnGridLayout();
         } else {
             Log.e("APP_BUILDER", "designScreenPresenter was not set.");
@@ -148,7 +160,7 @@ public class DesignScreenFragment extends Fragment {
         public void onClick(View v) {
             popupWindow.dismiss();
             int viewToDeleteIndex = (int) v.getTag();
-            DesignScreenPresenter.deleteView(viewToDeleteIndex);
+            userCreatedViewsModel.deleteUserCreatedView(viewToDeleteIndex);
         }
     };
 
@@ -225,7 +237,7 @@ public class DesignScreenFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        views = DesignScreenPresenter.getViews(getContext());
+        views = userCreatedViewsModel.getViews();
         presentViewsOnGridLayout();
     }
 
@@ -233,8 +245,8 @@ public class DesignScreenFragment extends Fragment {
         Toast.makeText(getActivity(), errorMessage, Toast.LENGTH_LONG).show();
     }
 
-    public void getViewsAndPresent(Map<Integer, UserCreatedView> views) {
-        this.views = views;
+    public void getViewsAndPresent() {
+        this.views = userCreatedViewsModel.getViews();
         presentViewsOnGridLayout();
     }
 
@@ -251,7 +263,7 @@ public class DesignScreenFragment extends Fragment {
     }
 
     public String getXml() {
-        return designScreenPresenter.getXml();
+        return designScreenPresenter.getXml(userCreatedViewsModel.getViews());
     }
 
     public void setAppName(String appName) {
@@ -286,6 +298,38 @@ public class DesignScreenFragment extends Fragment {
 
     public void setPresenter(DesignScreenPresenter designScreenPresenter) {
         this.designScreenPresenter = designScreenPresenter;
+    }
+
+    public UserCreatedViewsModel getUserCreatedViewsModel() {
+        return userCreatedViewsModel;
+    }
+
+    public int getNumOfButtons() {
+        return userCreatedViewsModel.getNumOfButtons();
+    }
+
+    public int getNumOfTextViews() {
+        return userCreatedViewsModel.getNumOfTextViews();
+    }
+
+    public int getNextViewIndex() {
+        return userCreatedViewsModel.getNextViewIndex();
+    }
+
+    public int getNumOfImageViews() {
+        return userCreatedViewsModel.getNumOfImageViews();
+    }
+
+    public void addNewUserCreatedTextView() {
+        userCreatedViewsModel.addNewUserCreatedTextView(getActivity().getApplicationContext());
+    }
+
+    public void addNewUserCreatedButton() {
+        userCreatedViewsModel.addNewUserCreatedButton(getActivity().getApplicationContext());
+    }
+
+    public void addNewUserCreatedImageView() {
+        userCreatedViewsModel.addNewUserCreatedImageView(getActivity().getApplicationContext());
     }
 
     class LongPressListener implements View.OnLongClickListener {

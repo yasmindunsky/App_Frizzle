@@ -1,76 +1,82 @@
 package com.frizzl.app.frizzleapp.appBuilder;
 
+import android.arch.lifecycle.LiveData;
+import android.arch.lifecycle.MutableLiveData;
+import android.arch.lifecycle.ViewModel;
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.frizzl.app.frizzleapp.AnnotationUserCreatedViewType;
 import com.frizzl.app.frizzleapp.Support;
+import com.frizzl.app.frizzleapp.UserApp;
+import com.frizzl.app.frizzleapp.UserProfile;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 /**
  * Created by Noga on 09/07/2018.
  */
 
-public class UserCreatedViewsModel {
+public class UserCreatedViewsModel extends ViewModel {
+    
+    private Map<Integer, UserCreatedView> views;
+    private int numOfButtons;
+    private int numOfTextViews;
+    private int numOfImageViews;
+    private int nextViewIndex;
 
-    private static Map<Integer, UserCreatedView> views;
-    private static int numOfButtons;
-    private static int numOfTextViews;
-    private static int numOfImageViews;
-    private static int nextViewIndex;
-
-    public static Map<Integer, UserCreatedView> initializeViews(Context context) {
+    public Map<Integer, UserCreatedView> initializeViews(Context context) {
         views = new HashMap<>();
         numOfButtons = 0;
         numOfTextViews = 0;
         numOfImageViews = 0;
         nextViewIndex = 0;
-
         return views;
         }
 
-    private static void incrementButtonsCount() {
+    private void incrementButtonsCount() {
         nextViewIndex++;
         numOfButtons++;
     }
 
-    private static void incrementTextViewsCount() {
+    private void incrementTextViewsCount() {
         nextViewIndex++;
         numOfTextViews++;
     }
 
-    private static void incrementImageViewsCount() {
+    private void incrementImageViewsCount() {
         nextViewIndex++;
         numOfImageViews++;
     }
 
-    public static void addNewUserCreatedTextView(Context context){
+    public void addNewUserCreatedTextView(Context context){
         UserCreatedTextView userCreatedTextView = new UserCreatedTextView(context, nextViewIndex, numOfTextViews);
         views.put(nextViewIndex, userCreatedTextView);
         incrementTextViewsCount();
     }
 
-    public static void addNewUserCreatedButton(Context context){
+    public void addNewUserCreatedButton(Context context){
         UserCreatedButton userCreatedButton = new UserCreatedButton(context, nextViewIndex, numOfButtons);
         views.put(nextViewIndex, userCreatedButton);
         incrementButtonsCount();
     }
 
-    public static void addNewUserCreatedImageView(Context context){
+    public void addNewUserCreatedImageView(Context context){
         UserCreatedImageView userCreatedImageView = new UserCreatedImageView(context, nextViewIndex, numOfImageViews);
         views.put(nextViewIndex, userCreatedImageView);
         incrementImageViewsCount();
     }
 
-    public static void deleteUserCreatedView(int viewToDeleteIndex){
+    public void deleteUserCreatedView(int viewToDeleteIndex){
         UserCreatedView viewToDelete = views.get(viewToDeleteIndex);
 
         if (viewToDelete.getClass().equals(UserCreatedTextView.class)) {
@@ -88,16 +94,11 @@ public class UserCreatedViewsModel {
         views.remove(viewToDeleteIndex);
     }
 
-    public static int getNextViewIndex() {
+    public int getNextViewIndex() {
         return nextViewIndex;
     }
 
-    public static String getXml(String appIcon, String appName){
-        LayoutXmlWriter layoutXmlWriter = new LayoutXmlWriter();
-        return layoutXmlWriter.writeXml(views, appIcon, appName);
-    }
-
-    public static Map<Integer, UserCreatedView> jsonToViews(Context context, String viewsJsonString) {
+    public Map<Integer, UserCreatedView> jsonToViews(Context context, String viewsJsonString) {
         views = new HashMap<>();
         numOfButtons = 0;
         numOfTextViews = 0;
@@ -148,7 +149,7 @@ public class UserCreatedViewsModel {
         return views;
     }
 
-    public static JSONObject viewsToJson(Map<Integer, UserCreatedView> views) {
+    public JSONObject viewsToJson(Map<Integer, UserCreatedView> views) {
         JSONArray jsonArray = new JSONArray();
         JSONObject json;
         JSONObject finalObject = new JSONObject();
@@ -178,11 +179,11 @@ public class UserCreatedViewsModel {
         return finalObject;
     }
 
-    public static Map<Integer, UserCreatedView> getViews() {
+    public Map<Integer, UserCreatedView> getViews() {
         return views;
     }
 
-    public static void setViews(Map<Integer, UserCreatedView> newViews) {
+    public void setViews(Map<Integer, UserCreatedView> newViews) {
         views = newViews;
         numOfButtons = 0;
         numOfTextViews = 0;
@@ -190,35 +191,30 @@ public class UserCreatedViewsModel {
         nextViewIndex = 0;
     }
 
-    public static int getNumOfButtons() {
+    public int getNumOfButtons() {
         return numOfButtons;
     }
 
-    public static int getNumOfTextViews() {
+    public int getNumOfTextViews() {
         return numOfTextViews;
     }
 
-    public static int getNumOfImageViews() {
+    public int getNumOfImageViews() {
         return numOfImageViews;
     }
 
-    public static void setNumOfButton(int numOfButton) {
+    public void setNumOfButton(int numOfButton) {
     }
 
-    public static void setNumOfTextViews(int numOfTextViews) {
-        UserCreatedViewsModel.numOfTextViews = numOfTextViews;
+    public void setNumOfTextViews(int numOfTextViews) {
+        numOfTextViews = numOfTextViews;
     }
 
-    public static void setNumOfImageViews(int numOfImageViews) {
-        UserCreatedViewsModel.numOfImageViews = numOfImageViews;
+    public void setNumOfImageViews(int numOfImageViews) {
+        numOfImageViews = numOfImageViews;
     }
 
-    public static String getManifest(String appIcon, String appName) {
-        LayoutXmlWriter layoutXmlWriter = new LayoutXmlWriter();
-        return layoutXmlWriter.writeManifest(appIcon, appName);
-    }
-
-    public static void setNextViewIndex(int nextViewIndex) {
-        UserCreatedViewsModel.nextViewIndex = nextViewIndex;
+    public void setNextViewIndex(int nextViewIndex) {
+        nextViewIndex = nextViewIndex;
     }
 }

@@ -14,6 +14,7 @@ public class AppBuilderPresenter {
     private String codeStart;
     private String codeEnd;
     private int currentAppLevelID;
+    private boolean justOpenedApp;
 
     public AppBuilderPresenter(AppBuilderActivity appBuilderActivity, CodingScreenPresenter codingScreenPresenter,
                                DesignScreenPresenter designScreenPresenter,
@@ -82,12 +83,9 @@ public class AppBuilderPresenter {
     }
 
     public void onResume() {
-        UserProfile.user.setCurrentUserAppLevelID(currentAppLevelID);
-        UserApp currentUserApp = UserProfile.user.getCurrentUserApp();
-        if (currentUserApp == null){
-            currentUserApp = new UserApp(currentAppLevelID);
-            UserProfile.user.setCurrentUserAppLevelID(currentUserApp);
+        if (justOpenedApp) {
             appBuilderActivity.openStartAppPopup();
+            justOpenedApp = false;
         }
     }
 
@@ -100,5 +98,14 @@ public class AppBuilderPresenter {
         currentUserApp.setManifest(manifest);
         UserProfile.user.setCurrentUserAppLevelID(currentUserApp);
         appBuilderActivity.updateAppNameAndIcon(appName, icon);
+    }
+
+    public void onCreate() {
+        UserApp currentUserApp = UserProfile.user.getCurrentUserApp();
+        if (currentUserApp == null){
+            currentUserApp = new UserApp(currentAppLevelID);
+            UserProfile.user.setCurrentUserAppLevelID(currentUserApp);
+            justOpenedApp = true;
+        }
     }
 }

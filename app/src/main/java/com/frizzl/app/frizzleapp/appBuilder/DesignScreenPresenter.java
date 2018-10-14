@@ -15,15 +15,14 @@ import java.util.Map;
  */
 
 public class DesignScreenPresenter {
-    private static Map<Integer, UserCreatedView> views;
     private DesignScreenFragment designScreenFragment;
-//    private UserCreatedViewsModel userCreatedViewsModel;
 
-    public String getXml() {
+    public String getXml(Map<Integer, UserCreatedView> views) {
         UserApp currentUserApp = UserProfile.user.getCurrentUserApp();
         String appIcon = currentUserApp.getIcon();
         String appName = currentUserApp.getName();
-        return UserCreatedViewsModel.getXml(appIcon, appName);
+        LayoutXmlWriter layoutXmlWriter = new LayoutXmlWriter();
+        return layoutXmlWriter.writeXml(views, appIcon, appName);
     }
 
     public DesignScreenPresenter(DesignScreenFragment designScreenFragment) {
@@ -31,29 +30,28 @@ public class DesignScreenPresenter {
     }
 
     public void saveState() {
-        views = UserCreatedViewsModel.getViews();
         UserApp currentUserApp = UserProfile.user.getCurrentUserApp();
-        currentUserApp.setViews(UserCreatedViewsModel.getViews(), UserCreatedViewsModel.getNumOfButtons(),
-                UserCreatedViewsModel.getNumOfTextViews(),  UserCreatedViewsModel.getNumOfImageViews(),
-                UserCreatedViewsModel.getNextViewIndex());
+        currentUserApp.setViews(designScreenFragment.getViews(), designScreenFragment.getNumOfButtons(),
+                designScreenFragment.getNumOfTextViews(),  designScreenFragment.getNumOfImageViews(),
+                designScreenFragment.getNextViewIndex());
                 UserProfile.user.setCurrentUserAppLevelID(currentUserApp);
     }
 
-    public static Map<Integer, UserCreatedView> getViews(Context context) {
-        UserApp currentUserApp = UserProfile.user.getCurrentUserApp();
-        if (currentUserApp != null) {
-            views = currentUserApp.getViews();
-            UserCreatedViewsModel.setViews(views);
-            UserCreatedViewsModel.setNumOfButton(currentUserApp.getNumOfButtons());
-            UserCreatedViewsModel.setNumOfTextViews(currentUserApp.getNumOfTextViews());
-            UserCreatedViewsModel.setNumOfImageViews(currentUserApp.getNumOfImageViews());
-            UserCreatedViewsModel.setNextViewIndex(currentUserApp.getNextIndex());
-        }
-        if (views == null || views.isEmpty()) {
-            views = UserCreatedViewsModel.initializeViews(context);
-        }
-        return views;
-    }
+//    public Map<Integer, UserCreatedView> getViews(Context context) {
+//        UserApp currentUserApp = UserProfile.user.getCurrentUserApp();
+//        if (currentUserApp != null) {
+//            views = currentUserApp.getViews();
+//            userCreatedViewsModel.setViews(views);
+//            userCreatedViewsModel.setNumOfButton(currentUserApp.getNumOfButtons());
+//            userCreatedViewsModel.setNumOfTextViews(currentUserApp.getNumOfTextViews());
+//            userCreatedViewsModel.setNumOfImageViews(currentUserApp.getNumOfImageViews());
+//            userCreatedViewsModel.setNextViewIndex(currentUserApp.getNextIndex());
+//        }
+//        if (views == null || views.isEmpty()) {
+//            views = userCreatedViewsModel.initializeViews(context);
+//        }
+//        return views;
+//    }
 
     public void addNewUserCreatedView(Context context, String viewType) {
         boolean canAddView = checkIfTheresRoom();
@@ -67,15 +65,15 @@ public class DesignScreenPresenter {
                         designScreenFragment.taskCompleted();
                     }
 
-                    UserCreatedViewsModel.addNewUserCreatedTextView(context);
+                    designScreenFragment.addNewUserCreatedTextView();
                     break;
                 case AnnotationUserCreatedViewType.BUTTON:
-                    UserCreatedViewsModel.addNewUserCreatedButton(context);
+                    designScreenFragment.addNewUserCreatedButton();
                     break;
                 case AnnotationUserCreatedViewType.IMAGE_VIEW:
-                    UserCreatedViewsModel.addNewUserCreatedImageView(context);
-                    int thisViewIndex = UserCreatedViewsModel.getNextViewIndex() - 1;
-                    UserCreatedView userCreatedView = UserCreatedViewsModel.getViews().get(thisViewIndex);
+                    designScreenFragment.addNewUserCreatedImageView();
+                    int thisViewIndex = designScreenFragment.getNextViewIndex() - 1;
+                    UserCreatedView userCreatedView = designScreenFragment.getViews().get(thisViewIndex);
                     PopupWindow propertiesTablePopupWindow = userCreatedView.getPropertiesTablePopupWindow(context);
                     designScreenFragment.presentPopup(propertiesTablePopupWindow);
                     // For temp testing
@@ -83,18 +81,14 @@ public class DesignScreenPresenter {
                         designScreenFragment.taskCompleted();
                     }
             }
-            designScreenFragment.getViewsAndPresent(views);
+            designScreenFragment.getViewsAndPresent();
         }
-    }
-
-    public static void deleteView(int viewToDeleteIndex) {
-        UserCreatedViewsModel.deleteUserCreatedView(viewToDeleteIndex);
     }
 
     private boolean checkIfTheresRoom() {
         // Check if reached max num of elements.
         int maxNum = designScreenFragment.getGridLayoutColCount() * designScreenFragment.getGridLayoutRowCount();
-        int nextViewIndex = UserCreatedViewsModel.getNextViewIndex();
+        int nextViewIndex = designScreenFragment.getNextViewIndex();
         if (nextViewIndex >= maxNum ) {
             designScreenFragment.showError("אופס, נגמר המקום!");
             return false;
@@ -124,6 +118,15 @@ public class DesignScreenPresenter {
         UserApp currentUserApp = UserProfile.user.getCurrentUserApp();
         String appIcon = currentUserApp.getIcon();
         String appName = currentUserApp.getName();
-        return UserCreatedViewsModel.getManifest(appIcon, appName);
+        LayoutXmlWriter layoutXmlWriter = new LayoutXmlWriter();
+        return layoutXmlWriter.writeManifest(appIcon, appName);
     }
+
+    public Map<Integer, UserCreatedView> getViewsFromUserProfile() {
+        return UserProfile.user.getCurrentUserApp().getViews();
+    }
+
+//    public void setUserCreatedViewsModel(UserCreatedViewsModel userCreatedViewsModel) {
+//        this.userCreatedViewsModel = userCreatedViewsModel;
+//    }
 }
