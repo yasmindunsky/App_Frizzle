@@ -6,14 +6,14 @@ tools:keep="@xml/practice_2">
 <slide>
 <info_text>
 If we want to connect a button to a command we need to create a function.
-\nThis is what a function looks like:
-\n(In this example, the speakOut command is inside myFirstFunction)
+This is what a function looks like:
+(In this example, the speakOut command is inside myFirstFunction)
 </info_text>
 <task_text />
 <reminder_text></reminder_text>
 <code mutable="false" runnable="false">
-public void myFirstFunction(){\n
-speakOut("Hello");\n
+public void myFirstFunction(){
+speakOut("Hello");
 }
 </code>
 <mutable_design></mutable_design>
@@ -30,12 +30,12 @@ Add the speakOut command inside the new function so it will read out ’Goodbye�
 <reminder_text></reminder_text>
 <code mutable="true" runnable="false">
 public void myFirstFunction(){
-\nspeakOut("Hello");
-\n}
-\n
-\npublic void mySecondFunction(){
-\n
-\n}
+speakOut("Hello");
+}
+
+public void mySecondFunction(){
+
+}
 </code>
 <mutable_design></mutable_design>
 <call_to_action>
@@ -50,11 +50,11 @@ Create a new function, name it ’sayMyName’ and write a speakOut command insi
 that says your name.
 </task_text>
 <reminder_text> Reminder:
-\npublic void myFirstFunction(View view){
-\nspeakOut("Hello");
-\n}</reminder_text>
+public void myFirstFunction(View view){
+speakOut("Hello");
+}</reminder_text>
 <code mutable="true" runnable="false">
-\\u0020
+\n
 </code>
 <mutable_design></mutable_design>
 <call_to_action>
@@ -70,8 +70,8 @@ Set the button’s onClick property to ’sayHello’.
 <reminder_text></reminder_text>
 <code mutable="false" runnable="false">
 public void sayHello(){
-\nspeakOut("Hello");
-\n}
+speakOut("Hello");
+}
 </code>
 <mutable_design>true</mutable_design>
 <call_to_action>
