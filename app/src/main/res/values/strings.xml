@@ -168,6 +168,11 @@ public class MainActivity extends AppCompatActivity implements   TextToSpeech.On
     <string name="contact_us"><![CDATA[Feel free to contact\nus for feedback & support]]></string>
     <string name="next">next</string>
     <string name="welcome_to_our_beta">welcome\n to our beta</string>
+    <string name="practice">practice</string>
+    <string name="practice_explanation_text">In this next practice we\'ll learn to use commands.</string>
+    <string name="cool">cool</string>
+    <string name="onclick_practice_explanation_text">Learn onclick</string>
+    <string name="speakout_practice_explanation_text">Learn speakOut</string>
 
     <string-array name="fonts">
         <item>sans-serif</item>

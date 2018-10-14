@@ -17,10 +17,6 @@ public class PracticeActivity extends FragmentActivity {
     private  Practice currentPractice;
     private  CustomViewPager viewPager;
 
-    public Practice getCurrentPractice() {
-        return currentPractice;
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

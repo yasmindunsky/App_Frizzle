@@ -22,6 +22,7 @@
         app:layout_constraintTop_toBottomOf="@+id/mapToolbar">
 
         <android.support.constraint.ConstraintLayout
+            android:id="@+id/constraintLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="16dp">
@@ -36,9 +37,9 @@
                 app:layout_constraintHorizontal_bias="0.225"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                custom:enabledColor="@color/frizzle_light_blue"
-                custom:disabledColor="@color/frizzle_faded_light_blue"
                 custom:completedDrawable="@drawable/map_app_circle_light_blue_completed"
+                custom:disabledColor="@color/frizzle_faded_light_blue"
+                custom:enabledColor="@color/frizzle_light_blue"
                 custom:levelID="3">
 
                 <ImageButton
@@ -67,9 +68,9 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/friendship_app"
-                custom:enabledColor="@color/frizzle_yellow"
+                custom:completedDrawable="@drawable/map_app_circle_yellow_completed"
                 custom:disabledColor="@color/frizzle_faded_yellow"
-                custom:completedDrawable="@drawable/map_app_circle_yellow_completed"/>
+                custom:enabledColor="@color/frizzle_yellow" />
 
             <com.frizzl.app.frizzleapp.map.PracticeMapButton
                 android:id="@+id/views_practice"
@@ -82,9 +83,9 @@
                 app:layout_constraintHorizontal_bias="0.719"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/variables_practice"
-                custom:enabledColor="@color/frizzle_green"
+                custom:completedDrawable="@drawable/map_app_circle_green_completed"
                 custom:disabledColor="@color/frizzle_faded_green"
-                custom:completedDrawable="@drawable/map_app_circle_green_completed"/>
+                custom:enabledColor="@color/frizzle_green" />
 
             <com.frizzl.app.frizzleapp.map.AppMapButton
                 android:id="@+id/polly_app"
@@ -97,10 +98,10 @@
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/views_practice"
+                custom:completedDrawable="@drawable/map_app_circle_purple_completed"
                 custom:disabledColor="@color/frizzle_faded_purple"
                 custom:enabledColor="@color/frizzle_purple"
-                custom:levelID="2"
-                custom:completedDrawable="@drawable/map_app_circle_purple_completed">
+                custom:levelID="2">
 
                 <ImageButton
                     android:layout_width="60dp"
@@ -128,10 +129,10 @@
                 app:layout_constraintHorizontal_bias="0.63"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/polly_app"
+                custom:completedDrawable="@drawable/map_app_circle_pink_completed"
                 custom:disabledColor="@color/frizzle_faded_pink"
                 custom:enabledColor="@color/frizzle_pink"
-                custom:completedDrawable="@drawable/map_app_circle_pink_completed"
-                custom:levelID="1"/>
+                custom:levelID="1" />
 
             <com.frizzl.app.frizzleapp.map.PracticeMapButton
                 android:id="@+id/speakout_practice"
@@ -146,39 +147,39 @@
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/onclick_practice"
+                custom:completedDrawable="@drawable/map_app_circle_orange_completed"
                 custom:disabledColor="@color/frizzle_faded_orange"
                 custom:enabledColor="@color/frizzle_orange"
-                custom:completedDrawable="@drawable/map_app_circle_orange_completed"
-                custom:levelID="0"/>
+                custom:levelID="0" />
 
             <!--<com.frizzl.app.frizzleapp.map.AppMapButton-->
-                <!--android:id="@+id/tutorial_app"-->
-                <!--style="@style/Button.MapApp"-->
-                <!--android:background="@drawable/map_app_circle_blue_selector"-->
-                <!--android:focusableInTouchMode="false"-->
-                <!--android:orientation="vertical"-->
-                <!--app:layout_constraintBottom_toBottomOf="parent"-->
-                <!--app:layout_constraintStart_toStartOf="parent"-->
-                <!--app:layout_constraintTop_toBottomOf="@+id/speakout_practice"-->
-                <!--custom:enabledColor="@color/frizzle_blue"-->
-                <!--custom:disabledColor="@color/frizzle_blue"-->
-                <!--custom:completedDrawable="@drawable/map_app_circle_blue_completed"-->
-                <!--cusappLevelIDppID="0"-->
-                <!--&gt;-->
+            <!--android:id="@+id/tutorial_app"-->
+            <!--style="@style/Button.MapApp"-->
+            <!--android:background="@drawable/map_app_circle_blue_selector"-->
+            <!--android:focusableInTouchMode="false"-->
+            <!--android:orientation="vertical"-->
+            <!--app:layout_constraintBottom_toBottomOf="parent"-->
+            <!--app:layout_constraintStart_toStartOf="parent"-->
+            <!--app:layout_constraintTop_toBottomOf="@+id/speakout_practice"-->
+            <!--custom:enabledColor="@color/frizzle_blue"-->
+            <!--custom:disabledColor="@color/frizzle_blue"-->
+            <!--custom:completedDrawable="@drawable/map_app_circle_blue_completed"-->
+            <!--cusappLevelIDppID="0"-->
+            <!--&gt;-->
 
-                <!--<ImageButton-->
-                    <!--android:layout_width="60dp"-->
-                    <!--android:layout_height="60dp"-->
-                    <!--android:background="@drawable/ic_tutorial_app_icon"-->
-                    <!--android:scaleType="fitCenter" />-->
+            <!--<ImageButton-->
+            <!--android:layout_width="60dp"-->
+            <!--android:layout_height="60dp"-->
+            <!--android:background="@drawable/ic_tutorial_app_icon"-->
+            <!--android:scaleType="fitCenter" />-->
 
-                <!--<TextView-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="match_parent"-->
-                    <!--android:layout_marginTop="5dp"-->
-                    <!--android:gravity="center"-->
-                    <!--android:text="@string/tutorial_app"-->
-                    <!--android:textAppearance="@style/Text.Map" />-->
+            <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_marginTop="5dp"-->
+            <!--android:gravity="center"-->
+            <!--android:text="@string/tutorial_app"-->
+            <!--android:textAppearance="@style/Text.Map" />-->
             <!--</com.frizzl.app.frizzleapp.map.AppMapButton>-->
 
         </android.support.constraint.ConstraintLayout>

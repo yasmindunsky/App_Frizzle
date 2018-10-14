@@ -1,5 +1,6 @@
 package com.frizzl.app.frizzleapp.map;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
@@ -40,6 +41,7 @@ public class MapActivity extends AppCompatActivity {
     private PracticeMapButton viewsPracticeButton;
     private PracticeMapButton variablesPracticeButton;
     private FirebaseAnalytics mFirebaseAnalytics;
+    private ConstraintLayout constraintLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +54,7 @@ public class MapActivity extends AppCompatActivity {
 
         mapPresenter = new MapPresenter(this);
 
+        constraintLayout = findViewById(R.id.constraintLayout);
         toolbar = findViewById(R.id.mapToolbar);
         toolbarIcon = findViewById(R.id.support_icon);
         scrollView = findViewById(R.id.map_scroll_view);
@@ -140,9 +143,17 @@ public class MapActivity extends AppCompatActivity {
     }
 
     public void goToPractice(int practiceID) {
-        // go to app builder
-        Intent practiceIntent = new Intent(this, PracticeActivity.class);
-        practiceIntent.putExtra("practiceID", practiceID);
-        startActivity(practiceIntent);
+        // Present pre-practice pop-up
+        final Context applicationContext = getApplicationContext();
+        PopupWindow popupWindow = mapPresenter.getPrePracticePopup();
+        Runnable startPractice = () -> {
+            // go to practice
+            Intent practiceIntent = new Intent(applicationContext, PracticeActivity.class);
+            practiceIntent.putExtra("practiceID", practiceID);
+            startActivity(practiceIntent);
+        };
+        Support.presentPopup(popupWindow, startPractice, constraintLayout, constraintLayout, applicationContext);
+
+
     }
 }
