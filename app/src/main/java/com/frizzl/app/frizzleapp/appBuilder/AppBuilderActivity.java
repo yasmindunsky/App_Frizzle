@@ -67,6 +67,7 @@ public class AppBuilderActivity extends AppCompatActivity {
 //    private ImageButton clickToExpandTask;
 //    private TextView taskTextView;
 //    private AppTasks currentApp;
+
     private Tutorial tutorial;
 
     private FirebaseAnalytics mFirebaseAnalytics;

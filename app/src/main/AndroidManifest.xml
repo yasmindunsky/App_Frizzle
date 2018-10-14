@@ -47,12 +47,16 @@
         </activity>
 
         <activity android:name="com.frizzl.app.frizzleapp.lesson.PracticeActivity"
-            android:screenOrientation="nosensor" android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="nosensor"
+            android:configChanges="keyboardHidden|orientation"
+            android:windowSoftInputMode="stateAlwaysHidden"
             />
 
         <activity android:name="com.frizzl.app.frizzleapp.appBuilder.AppBuilderActivity"
             android:screenOrientation="nosensor" android:configChanges="keyboardHidden|orientation"
-            android:exported="true">
+            android:windowSoftInputMode="stateAlwaysHidden"
+            android:exported="true"
+            >
 
         </activity>
 

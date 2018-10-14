@@ -66,9 +66,13 @@ public class CodeEditor extends android.support.v7.widget.AppCompatEditText {
             setKeyboardVisibility(INVISIBLE);
             setOnFocusChangeListener((v, hasFocus) -> {
                 setKeyboardVisibility(hasFocus ? VISIBLE : INVISIBLE);
-
                 if (hasFocus) {
-                    v.post(()-> imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0));
+                    v.post(()->
+                    {
+                        imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
+                        imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+                    });
+
                 }
             });
         }
