@@ -5,8 +5,7 @@
     tools:keep="@xml/practice_1">
     <slide>
  <info_text>
-    כדי שאפליקציות יוכלו לעשות דברים מעניינים אנחנו צריכות להשתמש בקוד.
-זוהי הפקודה הראשונה שנלמד, בשפה שנקראת ג'אווה.
+שיעור ראשון להלהלה.
  </info_text>
  <task_text>
      הריצי את הקוד ותראי מה קורה.
@@ -16,9 +15,7 @@
      speakOut("Hello");
  </code>
  <mutable_design />
- <call_to_action>
-     קדימה
- </call_to_action>
+ <call_to_action>קדימה</call_to_action>
     </slide>
 
     <slide>
@@ -31,9 +28,7 @@
      speakOut("Hello");
  </code>
  <mutable_design></mutable_design>
- <call_to_action>
-     קדימה
- </call_to_action>
+ <call_to_action>קדימה</call_to_action>
     </slide>
 
     <slide>
@@ -46,9 +41,7 @@
      \n
  </code>
  <mutable_design></mutable_design>
- <call_to_action>
-     בדיקה
- </call_to_action>
+ <call_to_action>בדיקה</call_to_action>
  <solution>speakOut("this is so cool");</solution>
     </slide>
 
@@ -62,9 +55,7 @@
      speakOut("Hello");
  </code>
  <mutable_design></mutable_design>
- <call_to_action>
-     בדיקה
- </call_to_action>
+ <call_to_action>בדיקה</call_to_action>
     </slide>
 
     <slide>
@@ -77,9 +68,7 @@
      speakOut("Hello");
  </code>
  <mutable_design></mutable_design>
- <call_to_action>
-     בדיקה
- </call_to_action>
+ <call_to_action>בדיקה</call_to_action>
     </slide>
 
 </practice>

@@ -1,0 +1,44 @@
+<!--\n-->
+<!--’-->
+
+<practice xmlns:tools="http://schemas.android.com/tools"
+tools:keep="@xml/practice_2">
+    <slide>
+        <info_text>If we want to connect a button to a command we need to create a function.
+        This is what a function looks like:
+        (In this example, the speakOut command is inside myFirstFunction)</info_text>
+        <task_text />
+        <reminder_text></reminder_text>
+        <code mutable="false" runnable="false">public void myFirstFunction(){\n\tspeakOut("Hello");\n}</code>
+        <mutable_design></mutable_design>
+        <call_to_action>Next</call_to_action>
+    </slide>
+
+    <slide>
+        <info_text>We added a new function below.</info_text>
+        <task_text>Add the speakOut command inside the new function so it will read out ’Goodbye’.</task_text>
+        <reminder_text></reminder_text>
+        <code mutable="true" runnable="false">public void myFirstFunction(){\n\tspeakOut("Hello");\n}\npublic void mySecondFunction(){\n\t\n}</code>
+        <mutable_design></mutable_design>
+        <call_to_action>Check</call_to_action>
+    </slide>
+
+    <slide>
+        <info_text></info_text>
+        <task_text>Create a new function, name it ’sayMyName’ and write a speakOut command inside it
+        that says your name.</task_text>
+        <reminder_text> Reminder:\npublic void myFirstFunction(View view){\n\nspeakOut("Hello");\n}</reminder_text>
+        <code mutable="true" runnable="false">\n</code>
+        <mutable_design></mutable_design>
+        <call_to_action>Check</call_to_action>
+    </slide>
+
+    <slide>
+        <info_text>We’ll now learn how to connect a function to a button.</info_text>
+        <task_text>Set the button’s onClick property to ’sayHello’.</task_text>
+        <reminder_text></reminder_text>
+        <code mutable="false" runnable="false">public void sayHello(){\n\tspeakOut("Hello");\n}</code>
+        <mutable_design>true</mutable_design>
+        <call_to_action>Check</call_to_action>
+    </slide>
+</practice>

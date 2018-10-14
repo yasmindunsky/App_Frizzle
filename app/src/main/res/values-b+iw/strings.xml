@@ -58,6 +58,9 @@ Use "'" for special chars.
     <string name="practice_explanation_text" >בתרגול הזה נלמד להשתמש בפקודות</string>
     <string name="cool">יאללה</string>
     <string name="onclick_practice_explanation_text" >"בואו נלמד "</string>
+    <string name="first_practice">first practice</string>
+    <string name="first_practice_explanation_text">learn first lesson</string>
+    <string name="check">בדיקה</string>
 
     <string-array name="fonts">
         <item>sans-serif</item>

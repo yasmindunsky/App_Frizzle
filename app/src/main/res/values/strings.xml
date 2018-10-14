@@ -173,6 +173,9 @@ public class MainActivity extends AppCompatActivity implements   TextToSpeech.On
     <string name="cool">cool</string>
     <string name="onclick_practice_explanation_text">Learn onclick</string>
     <string name="speakout_practice_explanation_text">Learn speakOut</string>
+    <string name="first_practice">first practice</string>
+    <string name="first_practice_explanation_text">learn first lesson</string>
+    <string name="check">check</string>
 
     <string-array name="fonts">
         <item>sans-serif</item>

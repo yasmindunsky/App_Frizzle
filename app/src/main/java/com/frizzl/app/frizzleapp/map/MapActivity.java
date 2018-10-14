@@ -36,6 +36,7 @@ public class MapActivity extends AppCompatActivity {
 //    private AppMapButton tutorialAppButton;
     private AppMapButton pollyAppButton;
     private AppMapButton friendshipTestAppButton;
+    private PracticeMapButton firstPracticeButton;
     private PracticeMapButton speakOutPracticeButton;
     private PracticeMapButton onClickPracticeButton;
     private PracticeMapButton viewsPracticeButton;
@@ -61,12 +62,14 @@ public class MapActivity extends AppCompatActivity {
 //        tutorialAppButton = findViewById(R.id.tutorial_app);
         pollyAppButton = findViewById(R.id.polly_app);
         friendshipTestAppButton = findViewById(R.id.friendship_app);
+        firstPracticeButton = findViewById(R.id.first_practice);
         speakOutPracticeButton = findViewById(R.id.speakout_practice);
         onClickPracticeButton = findViewById(R.id.onclick_practice);
         viewsPracticeButton = findViewById(R.id.views_practice);
         variablesPracticeButton = findViewById(R.id.variables_practice);
         levelButtons.addAll(Arrays.asList(
 //                tutorialAppButton,
+                firstPracticeButton,
                 speakOutPracticeButton,
                 onClickPracticeButton,
                 pollyAppButton,
@@ -97,6 +100,7 @@ public class MapActivity extends AppCompatActivity {
 //        tutorialAppButton.setOnClickListener(onClickedApp);
         pollyAppButton.setOnClickListener(onClickedApp);
         friendshipTestAppButton.setOnClickListener(onClickedApp);
+        firstPracticeButton.setOnClickListener(onClickedPractice);
         speakOutPracticeButton.setOnClickListener(onClickedPractice);
         onClickPracticeButton.setOnClickListener(onClickedPractice);
         viewsPracticeButton.setOnClickListener(onClickedPractice);

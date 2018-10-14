@@ -101,7 +101,7 @@
                 custom:completedDrawable="@drawable/map_app_circle_purple_completed"
                 custom:disabledColor="@color/frizzle_faded_purple"
                 custom:enabledColor="@color/frizzle_purple"
-                custom:levelID="2">
+                custom:levelID="3">
 
                 <ImageButton
                     android:layout_width="60dp"
@@ -132,7 +132,7 @@
                 custom:completedDrawable="@drawable/map_app_circle_pink_completed"
                 custom:disabledColor="@color/frizzle_faded_pink"
                 custom:enabledColor="@color/frizzle_pink"
-                custom:levelID="1" />
+                custom:levelID="2" />
 
             <com.frizzl.app.frizzleapp.map.PracticeMapButton
                 android:id="@+id/speakout_practice"
@@ -140,13 +140,31 @@
                 android:background="@drawable/map_app_circle_orange_selector"
                 android:text="@string/speakout_practice"
                 android:textAppearance="@style/Text.Map"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toBottomOf="@id/first_practice"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.351"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/onclick_practice"
+                custom:completedDrawable="@drawable/map_app_circle_orange_completed"
+                custom:disabledColor="@color/frizzle_faded_orange"
+                custom:enabledColor="@color/frizzle_orange"
+                custom:levelID="1" />
+
+            <com.frizzl.app.frizzleapp.map.PracticeMapButton
+                android:id="@+id/first_practice"
+                style="@style/Button.MapPractice"
+                android:background="@drawable/map_app_circle_orange_selector"
+                android:text="@string/first_practice"
+                android:textAppearance="@style/Text.Map"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/speakout_practice"
                 custom:completedDrawable="@drawable/map_app_circle_orange_completed"
                 custom:disabledColor="@color/frizzle_faded_orange"
                 custom:enabledColor="@color/frizzle_orange"

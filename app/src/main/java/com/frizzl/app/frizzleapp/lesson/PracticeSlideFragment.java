@@ -162,14 +162,17 @@ public class PracticeSlideFragment extends Fragment {
             Button button = (Button) v;
             boolean moveOn = true;
             CharSequence buttonText = button.getText();
-            if (buttonText.equals("Check") || buttonText.equals("Try Again")){
+            String checkText = getActivity().getApplicationContext().getResources().getString(R.string.check);
+            String tryAgainText = getActivity().getApplicationContext().getResources().getString(R.string.try_again);
+            if (buttonText.equals(checkText) || buttonText.equals(tryAgainText)){
                 moveOn = checkPractice();
             }
             if (moveOn) {
                 moveToNextFragment();
             }
             else {
-                button.setText(R.string.try_again);
+                if (buttonText.equals(tryAgainText)) button.setText(R.string.next);
+                else button.setText(tryAgainText);
             }
         });
         relativeLayout.addView(callToActionButton);

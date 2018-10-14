@@ -44,6 +44,8 @@ public class MapPresenter {
             explanationText = mapActivity.getApplicationContext().getResources().getString(R.string.onclick_practice_explanation_text);
         } else if (currentLevel == Support.SPEAKOUT_PRACTICE_LEVEL_ID) {
             explanationText = mapActivity.getApplicationContext().getResources().getString(R.string.speakout_practice_explanation_text);
+        } else if (currentLevel == Support.FIRST_PRACTICE_LEVEL_ID) {
+            explanationText = mapActivity.getApplicationContext().getResources().getString(R.string.first_practice_explanation_text);
         }
         return new PrePracticePopupWindow(mapActivity, explanationText);
     }
