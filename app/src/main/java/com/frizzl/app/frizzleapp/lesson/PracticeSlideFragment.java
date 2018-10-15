@@ -161,7 +161,7 @@ public class PracticeSlideFragment extends Fragment {
         callToActionButton.setOnClickListener(v -> {
             Button button = (Button) v;
             boolean moveOn = true;
-            CharSequence buttonText = button.getText();
+            String buttonText = button.getText().toString().trim();
             String checkText = getActivity().getApplicationContext().getResources().getString(R.string.check);
             String tryAgainText = getActivity().getApplicationContext().getResources().getString(R.string.try_again);
             if (buttonText.equals(checkText) || buttonText.equals(tryAgainText)){

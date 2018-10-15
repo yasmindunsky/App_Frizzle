@@ -23,6 +23,7 @@ public class SplashActivity extends Activity{
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(applicationContext);
         // Don't sent analytics in debug
         mFirebaseAnalytics.setAnalyticsCollectionEnabled(!BuildConfig.DEBUG);
+//        mFirebaseAnalytics.setAnalyticsCollectionEnabled(true); // TODO: change before release
 
         // Check if it is the device's first time here
         boolean firstTime = SaveSharedPreference.getFirstTime(applicationContext);

@@ -53,7 +53,7 @@ Use "'" for special chars.
     <string name="email_hint">האימייל שלך</string>
     <string name="contact_us">תרגישי חופשי ליצור איתנו קשר, לשתף חוויות או לשאול שאלות</string>
     <string name="next">קדימה</string>
-    <string name="welcome_to_our_beta">.ברוכה הבאה לגרסת הבטא שלנו</string>
+    <string name="welcome_to_our_beta">ברוכה הבאה לגרסת הבטא שלנו</string>
     <string name="practice">practice</string>
     <string name="practice_explanation_text" >בתרגול הזה נלמד להשתמש בפקודות</string>
     <string name="cool">יאללה</string>
@@ -61,6 +61,8 @@ Use "'" for special chars.
     <string name="first_practice">first practice</string>
     <string name="first_practice_explanation_text">learn first lesson</string>
     <string name="check">בדיקה</string>
+    <string name="speakout_practice_explanation_text">בואו נלמד ספיקאאוט</string>
+
 
     <string-array name="fonts">
         <item>sans-serif</item>
