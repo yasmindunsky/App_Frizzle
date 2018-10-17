@@ -1,0 +1,68 @@
+<!--\n-->
+<!--’-->
+
+<practice xmlns:tools="http://schemas.android.com/tools"
+    tools:keep="@xml/practice_2">
+    <slide>
+        <info_text>אם נרצה לחבר את הכפתור לפקודה, נצטרך ליצור פונקציה.
+            \nככה פונקציה נראית:
+            \n(בדוגמה הזו, פקודת ה-speakOut נמצאת בתוך הפונקציה myFirstFunction)
+        </info_text>
+        <task_text />
+        <reminder_text></reminder_text>
+        <code mutable="false" runnable="false">public void myFirstFunction(){\n\tspeakOut("Hello");\n}
+        </code>
+        <mutable_design></mutable_design>
+        <call_to_action>קדימה</call_to_action>
+    </slide>
+
+    <slide>
+        <info_text>הוספנו פונקציה חדשה.</info_text>
+        <task_text>
+הוסיפי את פקודת ה-speakOut בתוך הפונקציה החדשה כך שהיא תקרא ’Goodbye’.
+        </task_text>
+        <reminder_text></reminder_text>
+        <code mutable="true" runnable="false">
+public void myFirstFunction(){
+\tspeakOut("Hello");
+}
+
+public void mySecondFunction(){
+
+}</code>
+        <mutable_design></mutable_design>
+        <call_to_action>בדיקה</call_to_action>
+    </slide>
+
+    <slide>
+        <info_text></info_text>
+        <task_text>
+צרי פונקציה חדשה, קראי לה’sayMyName’ וכתבי פקודת speakOut שקוראת בשמך בתוכה.
+        </task_text>
+        <reminder_text> תזכורת:
+public void myFirstFunction(View view){
+\tspeakOut("Hello");
+}</reminder_text>
+        <code mutable="true" runnable="false">
+\n
+        </code>
+        <mutable_design></mutable_design>
+        <call_to_action>בדיקה</call_to_action>
+    </slide>
+
+    <slide>
+        <info_text>עכשיו נראה איך מחברים את הפונקציה לכפתור.</info_text>
+        <task_text>
+הגדירי שמאפיין ה-onClick של הכפתור יהיה ’sayHello’.
+        </task_text>
+        <reminder_text></reminder_text>
+        <code mutable="false" runnable="false">
+public void sayHello(){
+\tspeakOut("Hello");
+}
+        </code>
+        <mutable_design>true</mutable_design>
+        <call_to_action>בדיקה</call_to_action>
+    </slide>
+
+</practice>

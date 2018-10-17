@@ -4,7 +4,7 @@
 <practice xmlns:tools="http://schemas.android.com/tools"
 tools:keep="@xml/practice_1">
     <slide>
-        <info_text>In order for apps to do interesting things we need to use code.\nThis is the first code command that we’ll learn, in a language called Java.</info_text>
+        <info_text>first lesson lalalala.</info_text>
         <task_text>Run the code and see what it does.</task_text>
         <reminder_text />
         <code mutable="false" runnable="true">speakOut("Hello");</code>

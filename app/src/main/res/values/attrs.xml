@@ -13,4 +13,11 @@
         <attr name="completedDrawable"/>
         <attr name="levelID"/>
     </declare-styleable>
+
+    <declare-styleable name="IntroMapButton">
+        <attr name="enabledColor"/>
+        <attr name="disabledColor"/>
+        <attr name="completedDrawable"/>
+        <attr name="levelID"/>
+    </declare-styleable>
 </resources>

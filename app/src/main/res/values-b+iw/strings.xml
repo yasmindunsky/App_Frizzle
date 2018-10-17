@@ -62,6 +62,8 @@ Use "'" for special chars.
     <string name="first_practice_explanation_text">learn first lesson</string>
     <string name="check">בדיקה</string>
     <string name="speakout_practice_explanation_text">בואו נלמד ספיקאאוט</string>
+    <string name="polly_intro">Polly Intro</string>
+    <string name="friendship_intro">Friendship Test Intro</string>
 
 
     <string-array name="fonts">

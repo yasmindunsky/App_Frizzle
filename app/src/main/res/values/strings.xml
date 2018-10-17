@@ -137,11 +137,11 @@ public class MainActivity extends AppCompatActivity implements   TextToSpeech.On
     <string name="error_text">Error text</string>
     <string name="lets_move_on_from_app">let\'s move on</string>
     <string name="friendship_test_app">Friendship Test App</string>
-    <string name="variables_practice">Variables Practice</string>
-    <string name="views_practice">Views Practice</string>
+    <string name="variables_practice">Practice 2</string>
+    <string name="views_practice">Practice 1</string>
     <string name="polly_app">Polly App</string>
-    <string name="onclick_practice">onClick Practice</string>
-    <string name="speakout_practice">speakOut Practice</string>
+    <string name="onclick_practice">Practice 3</string>
+    <string name="speakout_practice">Practice 2</string>
     <string name="tutorial_app">Tutorial App</string>
     <string name="yay">yay!</string>
     <string name="my_first_app">My First App</string>
@@ -173,9 +173,11 @@ public class MainActivity extends AppCompatActivity implements   TextToSpeech.On
     <string name="cool">cool</string>
     <string name="onclick_practice_explanation_text">Learn onclick</string>
     <string name="speakout_practice_explanation_text">Learn speakOut</string>
-    <string name="first_practice">first practice</string>
+    <string name="first_practice">Practice 1</string>
     <string name="first_practice_explanation_text">learn first lesson</string>
     <string name="check">Check</string>
+    <string name="polly_intro">Polly Intro</string>
+    <string name="friendship_intro">Friendship Test\nIntro</string>
 
     <string-array name="fonts">
         <item>sans-serif</item>

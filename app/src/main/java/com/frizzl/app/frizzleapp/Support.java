@@ -14,10 +14,10 @@ import java.util.Locale;
  */
 
 public class Support {
-    public final static int FIRST_PRACTICE_LEVEL_ID = 0;
-    public final static int SPEAKOUT_PRACTICE_LEVEL_ID = 1;
-    public final static int ONCLICK_PRACTICE_LEVEL_ID = 2;
-    public final static int POLLY_APP_LEVEL_ID = 3;
+    public final static int FIRST_PRACTICE_LEVEL_ID = 1;
+    public final static int SPEAKOUT_PRACTICE_LEVEL_ID = 2;
+    public final static int ONCLICK_PRACTICE_LEVEL_ID = 3;
+    public final static int POLLY_APP_LEVEL_ID = 4;
 
     public static boolean isRTL() {
         return isRTL(Locale.getDefault());
