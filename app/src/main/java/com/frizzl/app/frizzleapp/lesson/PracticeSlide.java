@@ -1,6 +1,7 @@
 package com.frizzl.app.frizzleapp.lesson;
 
 import com.frizzl.app.frizzleapp.Code;
+import com.frizzl.app.frizzleapp.Design;
 
 import java.io.Serializable;
 
@@ -13,16 +14,16 @@ public class PracticeSlide implements Serializable{
     private String reminderText;
     private String taskText;
     private Code code;
+    private Design design;
     private String callToActionText;
-    private boolean hasDesign;
 
-    public PracticeSlide(String infoText, String reminderText, String taskText, Code code, String callToActionText, boolean hasDesign) {
+    public PracticeSlide(String infoText, String reminderText, String taskText, Code code, String callToActionText, Design design) {
         this.infoText = infoText;
         this.reminderText = reminderText;
         this.taskText = taskText;
         this.code = code;
         this.callToActionText = callToActionText;
-        this.hasDesign = hasDesign;
+        this.design = design;
     }
 
     public boolean hasInfoText() {
@@ -54,7 +55,7 @@ public class PracticeSlide implements Serializable{
     }
 
     public boolean hasDesign() {
-        return hasDesign;
+        return design != null;
     }
 
     public boolean hasCode() {
@@ -63,5 +64,9 @@ public class PracticeSlide implements Serializable{
 
     public Code getCode() {
         return code;
+    }
+
+    public Design getDesign() {
+        return design;
     }
 }

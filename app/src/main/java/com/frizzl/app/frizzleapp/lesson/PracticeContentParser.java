@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.XmlResourceParser;
 
 import com.frizzl.app.frizzleapp.Code;
+import com.frizzl.app.frizzleapp.Design;
 import com.frizzl.app.frizzleapp.R;
 
 import org.xmlpull.v1.XmlPullParser;
@@ -66,10 +67,9 @@ public class PracticeContentParser {
         String taskText = getValue("task_text");
         String reminderText = getValue("reminder_text");
         Code code = getCode("code");
-        String design = getValue("mutable_design");
+        Design design = getDesign("design");
         String callToActionText = getValue("call_to_action");
-        boolean hasDesign = design != null;
-        return new PracticeSlide(infoText, reminderText, taskText, code, callToActionText, hasDesign);
+        return new PracticeSlide(infoText, reminderText, taskText, code, callToActionText, design);
     }
 
     private Code getCode(String key)throws XmlPullParserException, IOException  {
@@ -79,6 +79,11 @@ public class PracticeContentParser {
                 xmlResourceParser.next();
             }
 
+            boolean shows = xmlResourceParser.getAttributeBooleanValue(2, false);
+            if (!shows) {
+                xmlResourceParser.next();
+                return null;
+            }
             boolean mutable = xmlResourceParser.getAttributeBooleanValue(0, false);
             boolean runnable = xmlResourceParser.getAttributeBooleanValue(1, false);
             xmlResourceParser.next();
@@ -86,6 +91,24 @@ public class PracticeContentParser {
             return new Code(mutable, runnable, codeString);
 
     }
+
+    private Design getDesign(String key)throws XmlPullParserException, IOException  {
+        xmlResourceParser.next();
+
+        while (!xmlResourceParser.getName().equals(key)) {
+            xmlResourceParser.next();
+        }
+
+        boolean shows = xmlResourceParser.getAttributeBooleanValue(1, false);
+        if (!shows) {
+            xmlResourceParser.next();
+            return null;
+        }
+        boolean runnable = xmlResourceParser.getAttributeBooleanValue(0, false);
+        xmlResourceParser.next();
+        return new Design(runnable);
+    }
+
 
     private String getValue(String key) throws XmlPullParserException, IOException {
         xmlResourceParser.next();

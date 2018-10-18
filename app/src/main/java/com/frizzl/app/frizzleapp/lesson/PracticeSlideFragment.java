@@ -19,6 +19,7 @@ import com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar;
 
 import com.frizzl.app.frizzleapp.Code;
 import com.frizzl.app.frizzleapp.CodeKeyboard;
+import com.frizzl.app.frizzleapp.Design;
 import com.frizzl.app.frizzleapp.DesignSection;
 import com.frizzl.app.frizzleapp.R;
 import com.frizzl.app.frizzleapp.CodeSection;
@@ -127,7 +128,9 @@ public class PracticeSlideFragment extends Fragment {
         }
 
         if (practiceSlide.hasDesign()) {
-            DesignSection designSection = new DesignSection(context, true);
+            Design design = practiceSlide.getDesign();
+            boolean runnable = design.getRunnable();
+            DesignSection designSection = new DesignSection(context, runnable);
             designSection.setBackgroundLayout(relativeLayout);
             designSection.setId(R.id.designSection);
             designSection.setPadding(SIDES_MARGIN, SIDES_MARGIN, SIDES_MARGIN, SIDES_MARGIN);
