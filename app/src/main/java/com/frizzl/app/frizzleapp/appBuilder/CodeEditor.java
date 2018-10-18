@@ -50,6 +50,7 @@ public class CodeEditor extends android.support.v7.widget.AppCompatEditText {
     private void colorText(Editable editableText) {
         markQuotationMarks(editableText);
         markFunctionNames(editableText);
+        markComments(editableText);
 //        markCommands(editableText);
 //        markSavedWords(editableText);
     }
@@ -137,6 +138,25 @@ public class CodeEditor extends android.support.v7.widget.AppCompatEditText {
                         Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
             }
             index = s.toString().indexOf(functionIdentification, index + 1);
+        }
+    }
+
+    private void markComments(Editable s) {
+        int startPosition = 0;
+        int commentStart = s.toString().indexOf("//", startPosition);
+        int commentEnd;
+        while (commentStart >= 0) {
+            commentEnd = (s.toString()).indexOf("\n", commentStart + 1);
+            if (commentEnd < 0) commentEnd = s.length();
+            s.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.codeComment)),
+                    commentStart,
+                    commentEnd,
+                    Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+            startPosition = commentEnd + 1;
+            if (startPosition > 0) {
+                commentStart = s.toString().indexOf("//", startPosition);
+            }
+            else commentStart = -1;
         }
     }
 

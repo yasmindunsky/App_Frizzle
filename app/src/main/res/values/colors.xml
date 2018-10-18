@@ -13,7 +13,7 @@
     <color name="lightDarkGrey">#605f71</color>
 
     <color name="codeGrey">#c5c4c3</color>
-
+    <color name="codeComment">#727272</color>
 
     <color name="white">#ffffff</color>
 
