@@ -393,7 +393,7 @@ public class AppBuilderActivity extends AppCompatActivity {
     }
 
     public void presentNextTutorialMessage() {
-        OnDismissListener listener = () -> designFragment.presentTuturialMessage();
+        OnDismissListener listener = () -> designFragment.presentTutorialMessage();
         tutorial.presentTooltip(viewPager, getString(R.string.tooltip_see_task), listener, Gravity.BOTTOM);
     }
 

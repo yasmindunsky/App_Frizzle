@@ -90,7 +90,7 @@ public class DesignScreenFragment extends Fragment {
     }
 
     private void initAddMenu(View view) {
-        final List<ButtonData> buttonDatas = new ArrayList<>();
+        final List<ButtonData> buttonsData = new ArrayList<>();
         int[] drawable = {R.drawable.ic_add_plus, R.drawable.ic_add_text, R.drawable.ic_add_button, R.drawable.ic_add_image};
 
         Map<Integer, String> indexToViewType = new HashMap<>();
@@ -100,13 +100,13 @@ public class DesignScreenFragment extends Fragment {
 
         ButtonData buttonData = ButtonData.buildIconButton(getContext(), drawable[0], 10);
         buttonData.setBackgroundColor(getResources().getColor(R.color.frizzle_light_blue));
-        buttonDatas.add(buttonData);
+        buttonsData.add(buttonData);
         for (int i = 1; i < drawable.length; i++) {
             buttonData = ButtonData.buildIconButton(getContext(), drawable[i], 5);
             buttonData.setBackgroundColor(getResources().getColor(R.color.frizzle_blue));
-            buttonDatas.add(buttonData);
+            buttonsData.add(buttonData);
         }
-        plusButton.setButtonDatas(buttonDatas);
+        plusButton.setButtonDatas(buttonsData);
         plusButton.setButtonEventListener(new ButtonEventListener() {
             @Override
             public void onButtonClicked(int index) {
@@ -284,7 +284,7 @@ public class DesignScreenFragment extends Fragment {
         }
     }
 
-    public void presentTuturialMessage() {
+    public void presentTutorialMessage() {
         tutorial.presentTooltip(plusButton, getString(R.string.tooltip_add_elements), null, Gravity.TOP);
     }
 

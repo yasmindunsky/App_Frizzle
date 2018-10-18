@@ -62,7 +62,7 @@ public class CodeEditor extends android.support.v7.widget.AppCompatEditText {
             InputConnection ic = this.onCreateInputConnection(new EditorInfo());
             keyboard.setInputConnection(ic);
             InputMethodManager imm = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-            keyboard.setInputMethodManagar(imm);
+            keyboard.setInputMethodManager(imm);
             setKeyboardVisibility(INVISIBLE);
             setOnFocusChangeListener((v, hasFocus) -> {
                 setKeyboardVisibility(hasFocus ? VISIBLE : INVISIBLE);

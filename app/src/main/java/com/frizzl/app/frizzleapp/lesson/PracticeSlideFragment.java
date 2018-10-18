@@ -26,8 +26,6 @@ import com.frizzl.app.frizzleapp.Support;
 import com.frizzl.app.frizzleapp.UserProfile;
 import com.frizzl.app.frizzleapp.appBuilder.UserCreatedButton;
 
-//import com.bumptech.glide.Glide;
-
 /**
  * A simple {@link Fragment} subclass.
  */

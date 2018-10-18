@@ -41,7 +41,7 @@ public class DesignSection extends RelativeLayout {
                     Log.e("TTS", "This Language is not supported");
                 }
             } else {
-                Log.e("TTS", "Initilization Failed!");
+                Log.e("TTS", "Initialization Failed!");
             }
         };
         tts = new TextToSpeech(context, onInitListener, "com.google.android.tts");

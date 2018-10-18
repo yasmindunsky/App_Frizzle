@@ -13,39 +13,39 @@ tools:keep="@xml/practice_1">
     </slide>
 
     <slide>
-        <info_text></info_text>
+        <info_text />
         <task_text>Change the command so it will read your name and run it again.</task_text>
-        <reminder_text></reminder_text>
+        <reminder_text />
         <code mutable="true" runnable="true">speakOut("Hello");</code>
-        <mutable_design></mutable_design>
+        <mutable_design />
         <call_to_action>Next</call_to_action>
     </slide>
 
     <slide>
-        <info_text></info_text>
+        <info_text />
         <task_text>Write the command by yourself so it will read "this is so cool" and run the code.</task_text>
         <reminder_text>reminder: speakOut("Hello");</reminder_text>
         <code mutable="true" runnable="true">\n</code>
-        <mutable_design></mutable_design>
+        <mutable_design />
         <call_to_action>Check</call_to_action>
         <solution>speakOut("this is so cool");</solution>
     </slide>
 
     <slide>
-        <info_text></info_text>
+        <info_text />
         <task_text>Delete the semicolon at the end of the command and try to run it again.</task_text>
-        <reminder_text></reminder_text>
+        <reminder_text />
         <code mutable="true" runnable="true">speakOut("Hello");</code>
-        <mutable_design></mutable_design>
+        <mutable_design />
         <call_to_action>Check</call_to_action>
     </slide>
 
     <slide>
-        <info_text></info_text>
+        <info_text />
         <task_text>Type a space character between the ’speak’ and ’out’ in the command name and run the code.</task_text>
-        <reminder_text></reminder_text>
+        <reminder_text />
         <code mutable="true" runnable="true">speakOut("Hello");</code>
-        <mutable_design></mutable_design>
+        <mutable_design />
         <call_to_action>Check</call_to_action>
     </slide>
 </practice>

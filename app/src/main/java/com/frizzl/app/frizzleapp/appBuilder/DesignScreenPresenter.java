@@ -37,24 +37,8 @@ public class DesignScreenPresenter {
                 UserProfile.user.setCurrentUserAppLevelID(currentUserApp);
     }
 
-//    public Map<Integer, UserCreatedView> getViews(Context context) {
-//        UserApp currentUserApp = UserProfile.user.getCurrentUserApp();
-//        if (currentUserApp != null) {
-//            views = currentUserApp.getViews();
-//            userCreatedViewsModel.setViews(views);
-//            userCreatedViewsModel.setNumOfButton(currentUserApp.getNumOfButtons());
-//            userCreatedViewsModel.setNumOfTextViews(currentUserApp.getNumOfTextViews());
-//            userCreatedViewsModel.setNumOfImageViews(currentUserApp.getNumOfImageViews());
-//            userCreatedViewsModel.setNextViewIndex(currentUserApp.getNextIndex());
-//        }
-//        if (views == null || views.isEmpty()) {
-//            views = userCreatedViewsModel.initializeViews(context);
-//        }
-//        return views;
-//    }
-
     public void addNewUserCreatedView(Context context, String viewType) {
-        boolean canAddView = checkIfTheresRoom();
+        boolean canAddView = checkIfThereIsRoom();
         if (canAddView) {
             // TODO: make UserCreatedViewsFactory
             switch (viewType) {
@@ -85,7 +69,7 @@ public class DesignScreenPresenter {
         }
     }
 
-    private boolean checkIfTheresRoom() {
+    private boolean checkIfThereIsRoom() {
         // Check if reached max num of elements.
         int maxNum = designScreenFragment.getGridLayoutColCount() * designScreenFragment.getGridLayoutRowCount();
         int nextViewIndex = designScreenFragment.getNextViewIndex();

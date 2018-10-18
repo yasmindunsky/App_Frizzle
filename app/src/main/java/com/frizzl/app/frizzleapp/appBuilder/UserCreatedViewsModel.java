@@ -203,18 +203,4 @@ public class UserCreatedViewsModel extends ViewModel {
         return numOfImageViews;
     }
 
-    public void setNumOfButton(int numOfButton) {
-    }
-
-    public void setNumOfTextViews(int numOfTextViews) {
-        numOfTextViews = numOfTextViews;
-    }
-
-    public void setNumOfImageViews(int numOfImageViews) {
-        numOfImageViews = numOfImageViews;
-    }
-
-    public void setNextViewIndex(int nextViewIndex) {
-        nextViewIndex = nextViewIndex;
-    }
 }

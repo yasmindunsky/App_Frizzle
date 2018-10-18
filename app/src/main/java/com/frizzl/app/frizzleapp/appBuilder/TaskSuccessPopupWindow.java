@@ -17,9 +17,9 @@ public class TaskSuccessPopupWindow extends PopupWindow {
     int width = GridLayout.LayoutParams.WRAP_CONTENT;
     int height = GridLayout.LayoutParams.WRAP_CONTENT;
 
-    public TaskSuccessPopupWindow(Context conext){
+    public TaskSuccessPopupWindow(Context context){
         LayoutInflater inflater = (LayoutInflater)
-                conext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View popupView = inflater.inflate(R.layout.popup_task_success, null);
         setContentView(popupView);
         setWidth(width);

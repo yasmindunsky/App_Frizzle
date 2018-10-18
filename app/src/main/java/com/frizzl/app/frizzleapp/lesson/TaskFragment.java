@@ -12,8 +12,6 @@ import com.frizzl.app.frizzleapp.R;
 import com.frizzl.app.frizzleapp.UserProfile;
 import com.google.firebase.analytics.FirebaseAnalytics;
 
-//import com.bumptech.glide.Glide;
-
 /**
  * A simple {@link Fragment} subclass.
  */

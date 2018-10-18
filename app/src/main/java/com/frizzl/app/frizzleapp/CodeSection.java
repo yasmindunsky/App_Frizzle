@@ -2,6 +2,7 @@ package com.frizzl.app.frizzleapp;
 
 import android.content.Context;
 import android.speech.tts.TextToSpeech;
+import android.text.Editable;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -41,7 +42,7 @@ public class CodeSection extends RelativeLayout {
                 }
 
             } else {
-                Log.e("TTS", "Initilization Failed!");
+                Log.e("TTS", "Initialization Failed!");
             }
         };
         tts = new TextToSpeech(context, onInitListener, "com.google.android.tts");
@@ -103,6 +104,9 @@ codeEditor.setLayoutParams(codeEditorLayoutParams);
     }
 
     private boolean codeIsValid() {
+        if (codeEditor.getText() == null){
+            return false;
+        }
         boolean valid;
         String code = codeEditor.getText().toString();
         // Contains 'speakOut'
@@ -116,6 +120,9 @@ codeEditor.setLayoutParams(codeEditorLayoutParams);
     }
 
     private void speakOut() {
+        if (codeEditor.getText() == null){
+            return;
+        }
         String code = codeEditor.getText().toString();
         String textToSay = "";
         int startIndex = code.indexOf("\"") + 1;
@@ -128,7 +135,7 @@ codeEditor.setLayoutParams(codeEditorLayoutParams);
     }
 
     public String getCode() {
-        return codeEditor.getText().toString();
+        return codeEditor.getText() == null ? "" : codeEditor.getText().toString();
     }
 
     @Override
