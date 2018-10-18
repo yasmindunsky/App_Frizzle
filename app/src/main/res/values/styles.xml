@@ -27,7 +27,7 @@
         <item name="android:textAppearance">@style/ActivityTitle</item>
     </style>
 
-    <style name="Button.CheckExercise" parent="@android:style/Widget.Button">
+    <style name="Button.PracticeCTA" parent="@android:style/Widget.Button">
         <item name="android:background">@drawable/check_button_background</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:fontFamily">@font/hero_light</item>

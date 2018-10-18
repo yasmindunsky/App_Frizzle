@@ -87,9 +87,10 @@ class PracticeContentParser {
             }
             boolean mutable = xmlResourceParser.getAttributeBooleanValue(0, false);
             boolean runnable = xmlResourceParser.getAttributeBooleanValue(1, false);
+            boolean waitForCTA = xmlResourceParser.getAttributeBooleanValue(3, false);
             xmlResourceParser.next();
             String codeString = xmlResourceParser.getText();
-            return new Code(mutable, runnable, codeString);
+            return new Code(mutable, runnable, waitForCTA, codeString);
 
     }
 

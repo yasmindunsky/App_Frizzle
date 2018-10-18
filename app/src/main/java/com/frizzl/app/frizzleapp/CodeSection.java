@@ -26,10 +26,14 @@ public class CodeSection extends RelativeLayout {
     private CodeEditor codeEditor;
     private ImageButton playButton;
     private TextToSpeech tts;
+    // This variable represents the listener passed in by the owning object
+    // The listener must implement the events interface and passes messages up to the parent.
+    private readyForCTAListener readyForCTAListener;
 
-    public CodeSection(Context context, String code, boolean runnable, boolean editable, CodeKeyboard codeKeyboard) {
+    public CodeSection(Context context, String code, boolean runnable, boolean editable, boolean waitForCTA, CodeKeyboard codeKeyboard) {
         super(context);
         setId(R.id.relativeLayout);
+        this.readyForCTAListener = null;
 
         TextToSpeech.OnInitListener onInitListener = status -> {
             if (status == TextToSpeech.SUCCESS) {
@@ -69,6 +73,8 @@ codeEditor.setLayoutParams(codeEditorLayoutParams);
             playButton.setAdjustViewBounds(false);
             playButton.setImageDrawable(getResources().getDrawable(R.drawable.ic_play_run_icon));
             OnClickListener runCode = v -> {
+                if (waitForCTA && readyForCTAListener != null) readyForCTAListener.onReadyForCTA();
+
                 if (codeIsValid()) {
                     speakOut();
                 }
@@ -142,5 +148,16 @@ codeEditor.setLayoutParams(codeEditorLayoutParams);
     protected void onDetachedFromWindow() {
         super.onDetachedFromWindow();
         tts.shutdown();
+    }
+
+    public void setReadyForCTAListener(CodeSection.readyForCTAListener readyForCTAListener) {
+        this.readyForCTAListener = readyForCTAListener;
+    }
+
+    // This interface defines the type of messages I want to communicate to my owner
+    public interface readyForCTAListener {
+        // These methods are the different events and
+        // need to pass relevant arguments related to the event triggered
+        public void onReadyForCTA();
     }
 }

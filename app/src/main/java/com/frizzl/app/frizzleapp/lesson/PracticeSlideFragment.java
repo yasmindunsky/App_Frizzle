@@ -7,11 +7,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatTextView;
-import android.text.Editable;
-import android.text.Spannable;
-import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
-import android.text.style.ForegroundColorSpan;
 import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -42,6 +38,8 @@ public class PracticeSlideFragment extends Fragment {
     private RelativeLayout relativeLayout;
     private static final int SIDES_MARGIN = 50;
     private static final int TOP_DOWN_MARGIN = 15;
+    private AppCompatButton callToActionButton;
+    private boolean waitForCTA = false;
 
     public PracticeSlideFragment() {
         // Required empty public constructor
@@ -115,6 +113,7 @@ public class PracticeSlideFragment extends Fragment {
         CodeKeyboard codeKeyboard = null;
         if (practiceSlide.hasCode()){
             Code code = practiceSlide.getCode();
+            waitForCTA = code.getWaitForCTA();
             boolean mutable = code.getMutable();
             if (mutable){
                 codeKeyboard = new CodeKeyboard(context);
@@ -128,7 +127,7 @@ public class PracticeSlideFragment extends Fragment {
                 codeKeyboard.setLayoutParams(keyboardLayoutParams);
                 relativeLayout.addView(codeKeyboard);
             }
-            CodeSection codeSection = new CodeSection(context, code.getCode(), code.getRunnable(), mutable, codeKeyboard);
+            CodeSection codeSection = new CodeSection(context, code.getCode(), code.getRunnable(), mutable, code.getWaitForCTA(), codeKeyboard);
             codeSection.setId(R.id.codeSection);
             RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -137,6 +136,13 @@ public class PracticeSlideFragment extends Fragment {
             codeSection.setLayoutParams(layoutParams);
             relativeLayout.addView(codeSection);
             currentAddedViewID = codeSection.getId();
+
+            codeSection.setReadyForCTAListener(new CodeSection.readyForCTAListener() {
+                @Override
+                public void onReadyForCTA() {
+                    enableCTAButton(true);
+                }
+            });
         }
 
         if (practiceSlide.hasDesign()) {
@@ -156,12 +162,12 @@ public class PracticeSlideFragment extends Fragment {
             currentAddedViewID = designSection.getId();
         }
 
-        int checkButtonStyle = R.style.Button_CheckExercise;
-        AppCompatButton callToActionButton = new AppCompatButton(new ContextThemeWrapper(context, checkButtonStyle));
+        int ctaButtonStyle = R.style.Button_PracticeCTA;
+        callToActionButton = new AppCompatButton(new ContextThemeWrapper(context, ctaButtonStyle));
         callToActionButton.setText(practiceSlide.getCallToActionText());
         callToActionButton.setBackground(getResources().getDrawable(R.drawable.check_button_background));
-        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(550,
-                ViewGroup.LayoutParams.WRAP_CONTENT);
+        RelativeLayout.LayoutParams layoutParams =
+                new RelativeLayout.LayoutParams(550, ViewGroup.LayoutParams.WRAP_CONTENT);
         if (codeKeyboard != null) {
             layoutParams.addRule(RelativeLayout.ABOVE, codeKeyboard.getId());
         }
@@ -189,6 +195,7 @@ public class PracticeSlideFragment extends Fragment {
             }
         });
         relativeLayout.addView(callToActionButton);
+        if (waitForCTA) enableCTAButton(false);
 
         return view;
     }
@@ -257,5 +264,11 @@ public class PracticeSlideFragment extends Fragment {
         viewPager.setCurrentItem(i);
         RoundCornerProgressBar progressBar = getActivity().findViewById(R.id.progressBar);
         progressBar.setProgress(i);
+    }
+
+    public void enableCTAButton(boolean enabled){
+        int alpha = enabled ? 255 : 220;
+        callToActionButton.getBackground().setAlpha(alpha);
+        callToActionButton.setEnabled(enabled);
     }
 }

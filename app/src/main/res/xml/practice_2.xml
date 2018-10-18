@@ -7,8 +7,8 @@ tools:keep="@xml/practice_1">
         <info_text>In order for apps to do interesting things we need to use code.\nThis is the first code command that we’ll learn, in a language called Java.</info_text>
         <task_text>Run the code and see what it does.</task_text>
         <reminder_text />
-        <code mutable="false" runnable="true">speakOut("Hello");</code>
-        <mutable_design />
+        <code shows="true" mutable="false" runnable="true" waitForCTA="true">speakOut("Hello");</code>
+        <design shows="false"/>
         <call_to_action>Next</call_to_action>
     </slide>
 
@@ -16,8 +16,8 @@ tools:keep="@xml/practice_1">
         <info_text />
         <task_text>Change the command so it will read your name and run it again.</task_text>
         <reminder_text />
-        <code mutable="true" runnable="true">speakOut("Hello");</code>
-        <mutable_design />
+        <code shows="true" mutable="true" runnable="true"  waitForCTA="false">speakOut("Hello");</code>
+        <design shows="false"/>
         <call_to_action>Next</call_to_action>
     </slide>
 
@@ -25,8 +25,8 @@ tools:keep="@xml/practice_1">
         <info_text />
         <task_text>Write the command by yourself so it will read "this is so cool" and run the code.</task_text>
         <reminder_text>reminder: speakOut("Hello");</reminder_text>
-        <code mutable="true" runnable="true">\n</code>
-        <mutable_design />
+        <code shows="true" mutable="true" runnable="true"  waitForCTA="true">\n</code>
+        <design shows="false"/>
         <call_to_action>Check</call_to_action>
         <solution>speakOut("this is so cool");</solution>
     </slide>
@@ -35,8 +35,8 @@ tools:keep="@xml/practice_1">
         <info_text />
         <task_text>Delete the semicolon at the end of the command and try to run it again.</task_text>
         <reminder_text />
-        <code mutable="true" runnable="true">speakOut("Hello");</code>
-        <mutable_design />
+        <code shows="true" mutable="true" runnable="true" waitForCTA="true">speakOut("Hello");</code>
+        <design shows="false"/>
         <call_to_action>Check</call_to_action>
     </slide>
 
@@ -44,8 +44,8 @@ tools:keep="@xml/practice_1">
         <info_text />
         <task_text>Type a space character between the ’speak’ and ’out’ in the command name and run the code.</task_text>
         <reminder_text />
-        <code mutable="true" runnable="true">speakOut("Hello");</code>
-        <mutable_design />
+        <code shows="true" mutable="true" runnable="true" waitForCTA="true">speakOut("Hello");</code>
+        <design shows="false"/>
         <call_to_action>Check</call_to_action>
     </slide>
 </practice>
