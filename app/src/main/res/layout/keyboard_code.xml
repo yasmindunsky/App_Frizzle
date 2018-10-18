@@ -9,17 +9,19 @@
 
         <Button
             android:id="@+id/button_speakout"
-            android:textAppearance="@style/Text.KeyBoardsKeys"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:layout_weight="1"
             android:background="@drawable/keyboard_key"
-            android:text="@string/speakout_keyboard" />
+            android:text="@string/speakout_keyboard"
+            android:textColor="@color/frizzle_orange"
+            android:textAppearance="@style/Text.KeyBoardsKeys" />
 
         <Button
             android:id="@+id/button_function"
             android:textAppearance="@style/Text.KeyBoardsKeys"
+            android:textColor="@color/frizzle_light_blue"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
