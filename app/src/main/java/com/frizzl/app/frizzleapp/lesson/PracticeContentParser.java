@@ -18,15 +18,15 @@ import java.util.List;
 /**
  * Created by yasmin.dunsky on 21-Dec-17.
  */
-public class PracticeContentParser {
+class PracticeContentParser {
 
     private XmlResourceParser xmlResourceParser;
-    Practice currentPractice;
+    private Practice currentPractice;
 
-    public PracticeContentParser() throws XmlPullParserException {
+    PracticeContentParser() throws XmlPullParserException {
     }
 
-    public Practice parsePractice(Context context, int practiceID) throws XmlPullParserException, IOException {
+    Practice parsePractice(Context context, int practiceID) throws XmlPullParserException, IOException {
         currentPractice = new Practice(practiceID);
         String lessonXmlName = "practice_" + practiceID;
         xmlResourceParser = context.getResources().getXml(getResId(lessonXmlName, R.xml.class));
@@ -66,13 +66,14 @@ public class PracticeContentParser {
         String infoText = getValue("info_text");
         String taskText = getValue("task_text");
         String reminderText = getValue("reminder_text");
-        Code code = getCode("code");
-        Design design = getDesign("design");
+        Code code = getCode();
+        Design design = getDesign();
         String callToActionText = getValue("call_to_action");
         return new PracticeSlide(infoText, reminderText, taskText, code, callToActionText, design);
     }
 
-    private Code getCode(String key)throws XmlPullParserException, IOException  {
+    private Code getCode()throws XmlPullParserException, IOException  {
+        String key = "code";
             xmlResourceParser.next();
 
             while (!xmlResourceParser.getName().equals(key)) {
@@ -92,7 +93,8 @@ public class PracticeContentParser {
 
     }
 
-    private Design getDesign(String key)throws XmlPullParserException, IOException  {
+    private Design getDesign()throws XmlPullParserException, IOException  {
+        String key = "design";
         xmlResourceParser.next();
 
         while (!xmlResourceParser.getName().equals(key)) {

@@ -5,8 +5,8 @@
 tools:keep="@xml/practice_2">
     <slide>
         <info_text>If we want to connect a button to a command we need to create a function.
-This is what a function looks like:
-(In this example, the speakOut command is inside myFirstFunction)</info_text>
+This is what a $light_blue$function$light_blue$ looks like:
+(In this example, the $orange$speakOut$orange$ command is inside myFirstFunction)</info_text>
         <task_text />
         <reminder_text></reminder_text>
         <code show="true" mutable="false" runnable="false">public void myFirstFunction(){\n\tspeakOut("Hello");\n}</code>

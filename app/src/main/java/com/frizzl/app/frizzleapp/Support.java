@@ -1,6 +1,10 @@
 package com.frizzl.app.frizzleapp;
 
 import android.content.Context;
+import android.text.Editable;
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
+import android.text.style.ForegroundColorSpan;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
@@ -63,5 +67,34 @@ public class Support {
     public static void undimView(View view, Context context) {
         view.setForeground(context.getResources().getDrawable(R.drawable.shade));
         view.getForeground().setAlpha(0);
+    }
+
+    public static SpannableStringBuilder markWithColorBetweenTwoSymbols(Spannable s, String symbol, int color, boolean removeSymbol) {
+        SpannableStringBuilder ssb = new SpannableStringBuilder(s);
+        int symbolLength = symbol.length();
+        int currentPosition = 0;
+        int startPosition = 0;
+        int firstSymbol = ssb.toString().indexOf(symbol, startPosition);
+        int secondSymbol;
+        while (firstSymbol >= 0) {
+            secondSymbol = (ssb.toString()).indexOf(symbol, firstSymbol + 1);
+            currentPosition++;
+            if (secondSymbol > 0) {
+                ssb.setSpan(new ForegroundColorSpan(color), firstSymbol, secondSymbol + 1,
+                        Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                if (removeSymbol) {
+                    ssb.replace(firstSymbol, firstSymbol+symbolLength, "");
+                    ssb.replace(secondSymbol-symbolLength, secondSymbol, ""); //Indices
+                    // should have secondSymbol, symbolLength+symbolLength but since first symbol
+                    // was already deleted they changed.
+                }
+                startPosition = secondSymbol + 1;
+            } else {
+                startPosition = firstSymbol + 1;
+            }
+            currentPosition = 0;
+            firstSymbol = ssb.toString().indexOf(symbol, startPosition);
+        }
+        return ssb;
     }
 }

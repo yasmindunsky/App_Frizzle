@@ -7,6 +7,11 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatTextView;
+import android.text.Editable;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.SpannableStringBuilder;
+import android.text.style.ForegroundColorSpan;
 import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -62,7 +67,14 @@ public class PracticeSlideFragment extends Fragment {
             int infoTextStyle = R.style.Text_PracticeSlide_infoText;
             AppCompatTextView infoText = new AppCompatTextView(new ContextThemeWrapper(context, infoTextStyle));
             infoText.setId(R.id.infoText);
-            infoText.setText(practiceSlide.getInfoText());
+
+            SpannableStringBuilder spannableInfoText = new SpannableStringBuilder(practiceSlide.getInfoText());
+            spannableInfoText = Support.markWithColorBetweenTwoSymbols(spannableInfoText,
+                    "$light_blue$", getResources().getColor(R.color.frizzle_light_blue), true);
+            spannableInfoText = Support.markWithColorBetweenTwoSymbols(spannableInfoText,
+                    "$orange$", getResources().getColor(R.color.frizzle_orange), true);
+            infoText.setText(spannableInfoText);
+
             RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT);
             layoutParams.setMargins(SIDES_MARGIN,TOP_DOWN_MARGIN,SIDES_MARGIN,TOP_DOWN_MARGIN);
