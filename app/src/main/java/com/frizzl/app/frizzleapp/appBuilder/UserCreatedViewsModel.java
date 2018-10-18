@@ -1,7 +1,5 @@
 package com.frizzl.app.frizzleapp.appBuilder;
 
-import android.arch.lifecycle.LiveData;
-import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 import android.content.Context;
 import android.view.View;
@@ -9,17 +7,13 @@ import android.view.ViewGroup;
 
 import com.frizzl.app.frizzleapp.AnnotationUserCreatedViewType;
 import com.frizzl.app.frizzleapp.Support;
-import com.frizzl.app.frizzleapp.UserApp;
-import com.frizzl.app.frizzleapp.UserProfile;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 /**

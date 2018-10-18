@@ -1,7 +1,6 @@
 package com.frizzl.app.frizzleapp;
 
 import android.content.Context;
-import android.text.Editable;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.style.ForegroundColorSpan;

@@ -1,7 +1,6 @@
 package com.frizzl.app.frizzleapp.appBuilder;
 
 import android.util.Log;
-import android.widget.Toast;
 
 import com.frizzl.app.frizzleapp.UserApp;
 import com.frizzl.app.frizzleapp.UserProfile;

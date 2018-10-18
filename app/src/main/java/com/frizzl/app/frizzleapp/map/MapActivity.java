@@ -12,7 +12,6 @@ import android.widget.ScrollView;
 
 import com.frizzl.app.frizzleapp.R;
 import com.frizzl.app.frizzleapp.Support;
-import com.frizzl.app.frizzleapp.UserApp;
 import com.frizzl.app.frizzleapp.UserProfile;
 import com.frizzl.app.frizzleapp.appBuilder.AppBuilderActivity;
 import com.frizzl.app.frizzleapp.lesson.AppContentParser;

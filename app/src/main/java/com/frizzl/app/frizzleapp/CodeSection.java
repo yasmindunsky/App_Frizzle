@@ -2,7 +2,6 @@ package com.frizzl.app.frizzleapp;
 
 import android.content.Context;
 import android.speech.tts.TextToSpeech;
-import android.text.Editable;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -158,6 +157,6 @@ codeEditor.setLayoutParams(codeEditorLayoutParams);
     public interface readyForCTAListener {
         // These methods are the different events and
         // need to pass relevant arguments related to the event triggered
-        public void onReadyForCTA();
+        void onReadyForCTA();
     }
 }

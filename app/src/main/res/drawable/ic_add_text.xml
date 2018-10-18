@@ -6,7 +6,7 @@
     android:viewportHeight="595">
 
     <path
-        android:name="backgroundrect"
+        android:name="backgroundRect"
         android:strokeWidth="1"
         android:pathData="M 0 0 H 100 V 100 H 0 V 0 Z" />
     <path

@@ -2,14 +2,19 @@
   <dictionary name="Noga">
     <words>
       <w>alef</w>
+      <w>calibri</w>
       <w>crashlytics</w>
       <w>dunsky</w>
+      <w>fileprovider</w>
       <w>firebase</w>
       <w>frizzl</w>
+      <w>frizzlapp</w>
+      <w>frizzlproject</w>
       <w>mozilla</w>
       <w>noga</w>
       <w>onboarding</w>
       <w>speakout</w>
+      <w>undim</w>
     </words>
   </dictionary>
 </component>

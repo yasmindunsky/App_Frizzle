@@ -137,12 +137,7 @@ public class PracticeSlideFragment extends Fragment {
             relativeLayout.addView(codeSection);
             currentAddedViewID = codeSection.getId();
 
-            codeSection.setReadyForCTAListener(new CodeSection.readyForCTAListener() {
-                @Override
-                public void onReadyForCTA() {
-                    enableCTAButton(true);
-                }
-            });
+            codeSection.setReadyForCTAListener(() -> enableCTAButton(true));
         }
 
         if (practiceSlide.hasDesign()) {
@@ -268,7 +263,9 @@ public class PracticeSlideFragment extends Fragment {
 
     public void enableCTAButton(boolean enabled){
         int alpha = enabled ? 255 : 220;
-        callToActionButton.getBackground().setAlpha(alpha);
-        callToActionButton.setEnabled(enabled);
+        if (callToActionButton != null){
+            callToActionButton.getBackground().setAlpha(alpha);
+            callToActionButton.setEnabled(enabled);
+        }
     }
 }
