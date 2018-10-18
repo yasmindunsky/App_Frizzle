@@ -12,10 +12,4 @@
             <solid android:color="@color/colorPrimary"/>
         </shape>
     </item>
-    <item android:state_enabled="true" >
-        <shape android:shape="rectangle"  >
-            <corners android:radius="40dip" />
-            <solid android:color="@color/colorPrimary"/>
-        </shape>
-    </item>
 </selector>

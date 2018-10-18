@@ -17,9 +17,13 @@ public class OnboardingActivity extends FragmentActivity{
         setContentView(R.layout.activity_onboarding);
         Button button = findViewById(R.id.nextButton);
         button.setOnClickListener(v -> {
+            setContentView(R.layout.activity_onboarding2);
+            Button yayButton = findViewById(R.id.yayButton);
+            yayButton.setOnClickListener(view -> {
             UserProfile.user.loadSerializedObject(getBaseContext());
             Intent mapIntent = new Intent(getBaseContext(), MapActivity.class);
             startActivity(mapIntent);
+            });
         });
 
         // Rotation for RTL swiping.

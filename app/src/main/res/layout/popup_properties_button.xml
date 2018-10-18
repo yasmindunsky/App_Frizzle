@@ -179,7 +179,7 @@
     <android.support.v7.widget.AppCompatButton
         android:id="@+id/saveButton"
         style="@style/Button.SavePropertiesTable"
-        android:layout_below="@+id/tableLayout"
+        android:layout_below="@+id/viewOnClickKey"
         android:layout_centerHorizontal="true"
         android:layout_centerInParent="false"
         android:layout_marginBottom="24dp"
