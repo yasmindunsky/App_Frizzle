@@ -86,7 +86,14 @@ public class PracticeSlideFragment extends Fragment {
             int taskTextStyle = R.style.Text_PracticeSlide_taskText;
             AppCompatTextView taskText = new AppCompatTextView(new ContextThemeWrapper(context, taskTextStyle));
             taskText.setId(R.id.taskText);
-            taskText.setText(practiceSlide.getTaskText());
+
+            SpannableStringBuilder spannableTaskText = new SpannableStringBuilder(practiceSlide.getTaskText());
+            spannableTaskText = Support.markWithColorBetweenTwoSymbols(spannableTaskText,
+                    "$light_blue$", getResources().getColor(R.color.frizzle_light_blue), true);
+            spannableTaskText = Support.markWithColorBetweenTwoSymbols(spannableTaskText,
+                    "$orange$", getResources().getColor(R.color.frizzle_orange), true);
+            taskText.setText(spannableTaskText);
+
             RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT);
             layoutParams.setMargins(SIDES_MARGIN,TOP_DOWN_MARGIN,SIDES_MARGIN,TOP_DOWN_MARGIN);
