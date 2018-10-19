@@ -17,7 +17,7 @@ import android.widget.LinearLayout;
 public class CodeKeyboard extends LinearLayout implements View.OnClickListener {
 
     private static final int NUM_OF_CHARS_TO_BACK_AFTER_SPEAKOUT = 3;
-    private static final int NUM_OF_CHARS_TO_BACK_AFTER_FUNCTION = 21;
+    private static final int NUM_OF_CHARS_TO_BACK_AFTER_FUNCTION = 57;
 
     private SparseArray<String> keyValues = new SparseArray<>();
 
@@ -51,7 +51,7 @@ public class CodeKeyboard extends LinearLayout implements View.OnClickListener {
         buttonEnter.setOnClickListener(this);
 
         keyValues.put(R.id.button_speakout, "speakOut(\"\");");
-        keyValues.put(R.id.button_function, "public void  (View view) {\n    \n}");
+        keyValues.put(R.id.button_function, "public void nameYouChoose(View view) {\n\t//Here you'll write commands\n    \n}");
         keyValues.put(R.id.button_enter, "\n");
     }
 
@@ -62,10 +62,15 @@ public class CodeKeyboard extends LinearLayout implements View.OnClickListener {
 
         if (view.getId() == R.id.button_delete) {
             CharSequence selectedText = inputConnection.getSelectedText(0);
-
             if (TextUtils.isEmpty(selectedText)) {
-                inputConnection.deleteSurroundingText(1, 0);
+                // no selection, so delete previous character
+//                inputConnection.deleteSurroundingText(1, 0);
+                ExtractedText extractedText = inputConnection.getExtractedText(new ExtractedTextRequest(), 0);
+                int cursorPosition = extractedText.selectionStart;
+                inputConnection.setSelection(cursorPosition - 1, cursorPosition);
+                inputConnection.commitText("", 1);
             } else {
+                // delete the selection
                 inputConnection.commitText("", 1);
             }
         } else {
