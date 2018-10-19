@@ -4,41 +4,119 @@
 <practice xmlns:tools="http://schemas.android.com/tools"
 tools:keep="@xml/practice_2">
     <slide>
-        <info_text>If we want to connect a button to a command we need to create a function.
-This is what a $light_blue$function$light_blue$ looks like:
-(In this example, the $orange$speakOut$orange$ command is inside myFirstFunction)</info_text>
-        <task_text />
-        <reminder_text></reminder_text>
-        <code show="true" mutable="false" runnable="false">public void myFirstFunction(){\n\tspeakOut("Hello");\n}</code>
-        <design shows="false"/>
-        <call_to_action>Next</call_to_action>
+        <info_text>We can add buttons to our app</info_text>
+        <task_text/>
+        <reminder_text />
+        <code show = "false" mutable="false" runnable="false" waitForCTA="false"></code>
+        <design show = "true" runnable = "false"></design>
+        <call_to_action>Got it</call_to_action>
+    </slide>
+
+
+    <slide>
+        <info_text/>
+        <task_text>Run and try clicking the button</task_text>
+        <reminder_text />
+        <code show = "false" mutable="false" runnable="false" waitForCTA="false"></code>
+        <design show = "true" runnable = "true"></design>
+        <call_to_action>Got it</call_to_action>
     </slide>
 
     <slide>
-        <info_text>We added a new function below.</info_text>
-        <task_text>Add the speakOut command inside the new function so it will read out ’Goodbye’.</task_text>
-        <reminder_text></reminder_text>
-        <code show="true" mutable="true" runnable="false">public void myFirstFunction(){\n\tspeakOut("Hello");\n}\npublic void mySecondFunction(){\n\t\n}</code>
-        <design shows="false"/>
+        <info_text>We'll add functionality to our button: we'll learn how to define the button to speak out text when it is clicked</info_text>
+        <task_text/>
+        <reminder_text/>
+        <code show = "false" mutable="false" runnable="false" waitForCTA="false"></code>
+        <design show = "false" runnable = "false"></design>
+        <call_to_action>Got it</call_to_action>
+    </slide>
+
+    <slide>
+        <info_text>To add functionality to our button, we will add to our code a structure called $light_blue$function$light_blue$</info_text>
+        <task_text/>
+        <reminder_text/>
+        <code show = "false" mutable="false" runnable="false" waitForCTA="false"></code>
+        <design show = "false" runnable = "false"></design>
+        <call_to_action>Got it</call_to_action>
+    </slide>
+
+    <slide>
+        <info_text>A $light_blue$function$light_blue$ is a structure that raps $orange$commands$orange$ and has a name. We'll see now how a $light_blue$function$light_blue$ looks like</info_text>
+        <task_text/>
+        <reminder_text/>
+        <code show = "false" mutable="false" runnable="false" waitForCTA="false"></code>
+        <design show = "false" runnable = "false"></design>
+        <call_to_action>Got it</call_to_action>
+    </slide>
+
+    <slide>
+        <info_text/>
+        <task_text>Use the keyboard to add a $light_blue$function$light_blue$ to the code</task_text>
+        <reminder_text/>
+        <code show = "true" mutable="true" runnable="false" waitForCTA="false"></code>
+        <design show = "false" runnable = "false"></design>
         <call_to_action>Check</call_to_action>
     </slide>
 
     <slide>
-        <info_text></info_text>
-        <task_text>Create a new function, name it ’sayMyName’ and write a speakOut command inside it
-        that says your name.</task_text>
-        <reminder_text> Reminder:\npublic void myFirstFunction(View view){\n\tspeakOut("Hello");\n}</reminder_text>
-        <code show="true" mutable="true" runnable="false">\n</code>
-        <design shows="false"/>
+        <info_text>We'll learn in the future what's the meaning of the text written in white. For now, we won't change it</info_text>
+        <task_text/>
+        <reminder_text/>
+        <code show = "true" mutable="false" runnable="false" waitForCTA="false">
+public void nameYouChoose(View view){
+\t// Here you will write commands
+}
+        </code>
+        <design show = "false" runnable = "false"></design>
+        <call_to_action>Got it</call_to_action>
+    </slide>
+
+    <slide>
+        <info_text/>
+        <task_text>Change the $light_blue$function$light_blue$ name to 'myFunction'</task_text>
+        <reminder_text/>
+        <code show = "true" mutable="false" runnable="false" waitForCTA="false">
+public void nameYouChoose(View view){
+\t// Here you will write commands
+}
+        </code>
+        <design show = "false" runnable = "false"></design>
         <call_to_action>Check</call_to_action>
     </slide>
 
     <slide>
-        <info_text>We’ll now learn how to connect a function to a button.</info_text>
-        <task_text>Set the button’s onClick property to ’sayHello’.</task_text>
-        <reminder_text></reminder_text>
-        <code show="true" mutable="false" runnable="false">public void sayHello(){\n\tspeakOut("Hello");\n}</code>
-        <design shows="true" runnable="false"/>
+        <info_text/>
+        <task_text>Write the $orange$speakOut command$orange$ inside the $light_blue$function$light_blue$</task_text>
+        <reminder_text/>
+        <code show = "true" mutable="false" runnable="false" waitForCTA="false">
+public void myFunction(View view){
+\t// Here you will write commands
+}
+        </code>
+        <design show = "false" runnable = "false"></design>
         <call_to_action>Check</call_to_action>
+    </slide>
+
+    <slide>
+        <info_text/>
+        <task_text>Write the $light_blue$function$light_blue$ name in the onClick field of the button</task_text>
+        <reminder_text/>
+        <code show = "true" mutable="false" runnable="false" waitForCTA="false">
+public void myFunction(View view){
+\tspeakOut("Hello");
+}
+        </code>
+        <design show = "true" runnable = "false">myButton</design>
+        <call_to_action>Check</call_to_action>
+    </slide>
+
+    <slide>
+        <info_text/>
+        <task_text>Try to run and click the button</task_text>
+        <reminder_text/>
+        <code show = "true" mutable="false" runnable="false" waitForCTA="false">public void myFunction(View view){\n\tspeakOut("Hello");\n}
+        </code>
+        <design show = "true" runnable = "true">myButton</design>
+        <call_to_action>Got it</call_to_action>
     </slide>
 </practice>

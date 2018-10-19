@@ -1,75 +1,53 @@
-<!--\\u000A-->
-<!--’-->
+<!--\\u000A--><!--’-->
 
 <practice xmlns:tools="http://schemas.android.com/tools"
     tools:keep="@xml/practice_1">
     <slide>
- <info_text>
-    כדי שאפליקציות יוכלו לעשות דברים מעניינים אנחנו צריכות להשתמש בקוד.
-זוהי הפקודה הראשונה שנלמד, בשפה שנקראת ג'אווה.
- </info_text>
- <task_text>
-     הריצי את הקוד ותראי מה קורה.
- </task_text>
- <reminder_text />
- <code mutable="false" runnable="true">
-     speakOut("Hello");
- </code>
- <mutable_design />
- <call_to_action>קדימה</call_to_action>
+        <info_text>הפקודה הזאת פוקדת לפלאפון להקריא את הטקסט</info_text>
+        <task_text/>
+        <reminder_text />
+        <code show = "true" mutable="false" runnable="true" waitForCTA="false">speakOut("Hello");</code>
+        <design show = "false" runnable = "false"></design>
+        <call_to_action>הבנתי</call_to_action>
+    </slide>
+
+
+    <slide>
+        <info_text/>
+        <task_text>שנה את הפקודה כך שתקריא את שמך (באנגלית)</task_text>
+        <reminder_text />
+        <code show = "true" mutable="true" runnable="true" waitForCTA="true">speakOut("Hello");</code>
+        <design show = "false" runnable = "false"></design>
+        <call_to_action>בדיקה</call_to_action>
     </slide>
 
     <slide>
- <info_text></info_text>
- <task_text>
-     שני את הפקודה כדי שהיא תקרא בשמך (באנגלית) והריצי שוב.
- </task_text>
- <reminder_text></reminder_text>
- <code mutable="true" runnable="true">
-     speakOut("Hello");
- </code>
- <mutable_design></mutable_design>
- <call_to_action>קדימה</call_to_action>
+        <info_text>כתוב את הפקודה כך שתקריא את הטקסט:
+            'this is so cool' </info_text>
+        <task_text/>
+        <reminder_text>תזכורת: speakOut("Hello"); </reminder_text>
+        <code show = "true" mutable="true" runnable="true" waitForCTA="false">\n</code>
+        <design show = "false" runnable = "false"></design>
+        <call_to_action>בדיקה</call_to_action>
+        <solution>speakOut("this is so cool");</solution>
     </slide>
 
     <slide>
- <info_text></info_text>
- <task_text>
-     כתבי את הפקודה בעצמך כך שהיא תקרא "this is so cool" והריצי את הקוד.
- </task_text>
- <reminder_text>תזכורת: speakOut("Hello");</reminder_text>
- <code mutable="true" runnable="true">
-     \n
- </code>
- <mutable_design></mutable_design>
- <call_to_action>בדיקה</call_to_action>
- <solution>speakOut("this is so cool");</solution>
+        <info_text/>
+        <task_text>            מחקי את סימן הנקודה-פסיק בסוף הפקודה והריצי את הקוד.</task_text>
+        <reminder_text/>
+        <code show ="true" mutable="true" runnable="true" waitForCTA="true">speakOut("Hello");</code>
+        <design show = "false" runnable = "false"></design>
+        <call_to_action>הבנתי</call_to_action>
     </slide>
 
     <slide>
- <info_text></info_text>
- <task_text>
-     מחקי את סימן הנקודה-פסיק בסוף הפקודה והריצי את הקוד.
- </task_text>
- <reminder_text></reminder_text>
- <code mutable="true" runnable="true">
-     speakOut("Hello");
- </code>
- <mutable_design></mutable_design>
- <call_to_action>בדיקה</call_to_action>
-    </slide>
-
-    <slide>
- <info_text></info_text>
- <task_text>
-     הקלידי את התו רווח בין ה-’speak’ וה-’out’ בשם הפקודה והריצי את הקוד.
- </task_text>
- <reminder_text></reminder_text>
- <code mutable="true" runnable="true">
-     speakOut("Hello");
- </code>
- <mutable_design></mutable_design>
- <call_to_action>בדיקה</call_to_action>
+        <info_text/>
+        <task_text>הקלידי את התו רווח בין ה-’speak’ וה-’out’ בשם הפקודה והריצי את הקוד.</task_text>
+        <reminder_text/>
+        <code show="true" mutable="true" runnable="true" waitForCTA="true"> speakOut("Hello");</code>
+        <design show = "false" runnable = "false"></design>
+        <call_to_action>הבנתי</call_to_action>
     </slide>
 
 </practice>

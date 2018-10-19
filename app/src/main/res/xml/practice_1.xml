@@ -1,51 +1,51 @@
-<!--\\u000A-->
-<!--’-->
+<!--\\u000A--><!--’-->
 
 <practice xmlns:tools="http://schemas.android.com/tools"
-tools:keep="@xml/practice_1">
+    tools:keep="@xml/practice_1">
     <slide>
-        <info_text>first lesson lalalala.</info_text>
-        <task_text>Run the code and see what it does.</task_text>
+        <info_text>Building apps has two aspects: designing the app and writing code</info_text>
+        <task_text />
         <reminder_text />
-        <code mutable="false" runnable="true">speakOut("Hello");</code>
-        <mutable_design />
-        <call_to_action>Next</call_to_action>
+        <code mutable = "false" show = "false" runnable ="false" waitForCTA="false"></code>
+        <design show = "false" runnable = "false"></design>
+        <call_to_action>Got it</call_to_action>
     </slide>
 
     <slide>
-        <info_text />
-        <task_text>Change the command so it will read your name and run it again.</task_text>
+        <info_text>When we design our app we can easily add elements such as text, button and image</info_text>
+        <task_text/>
         <reminder_text />
-        <code mutable="true" runnable="true">speakOut("Hello");</code>
-        <mutable_design />
-        <call_to_action>Next</call_to_action>
+        <code mutable = "false" show = "false" runnable ="false" waitForCTA="false"></code>
+        <design show = "true" runnable = "false">My Button</design>
+        <call_to_action>Got it</call_to_action>
     </slide>
 
     <slide>
-        <info_text />
-        <task_text>Write the command by yourself so it will read "this is so cool" and run the code.</task_text>
-        <reminder_text>reminder: speakOut("Hello");</reminder_text>
-        <code mutable="true" runnable="true">\n</code>
-        <mutable_design />
-        <call_to_action>Check</call_to_action>
-        <solution>speakOut("this is so cool");</solution>
+        <info_text>To make those elements active, we will learn to write code in a language called Java</info_text>
+        <task_text/>
+        <reminder_text/>
+        <code mutable = "false" show = "true" runnable ="false" waitForCTA="false">// Here you will write code in Java </code>
+        <design show = "false" runnable = "false"></design>
+        <call_to_action>Got it</call_to_action>
     </slide>
 
     <slide>
-        <info_text />
-        <task_text>Delete the semicolon at the end of the command and try to run it again.</task_text>
-        <reminder_text />
-        <code mutable="true" runnable="true">speakOut("Hello");</code>
-        <mutable_design />
-        <call_to_action>Check</call_to_action>
+        <info_text>With code we define the computer how to behave</info_text>
+        <task_text/>
+        <reminder_text/>
+        <code mutable = "false" show = "true" runnable ="true" waitForCTA="true">speakOut("hello");</code>
+        <design show = "false" runnable = "false"></design>
+        <call_to_action>Got it</call_to_action>
     </slide>
 
     <slide>
-        <info_text />
-        <task_text>Type a space character between the ’speak’ and ’out’ in the command name and run the code.</task_text>
-        <reminder_text />
-        <code mutable="true" runnable="true">speakOut("Hello");</code>
-        <mutable_design />
-        <call_to_action>Check</call_to_action>
+        <info_text>The first $orange$command$orange$ we will learn is the $orange$speakOut command$orange$.
+It commands the computer to speak out text.</info_text>
+        <task_text/>
+        <reminder_text/>
+        <code mutable = "false" show = "true" runnable ="true" waitForCTA="false">speakOut("my first command!");</code>
+        <design show = "false" runnable = "false"></design>
+        <call_to_action>Got it</call_to_action>
     </slide>
+
 </practice>
