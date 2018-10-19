@@ -108,8 +108,9 @@ class PracticeContentParser {
             return null;
         }
         boolean runnable = xmlResourceParser.getAttributeBooleanValue(0, false);
+        boolean withOnClickSet = xmlResourceParser.getAttributeBooleanValue(2, false);
         xmlResourceParser.next();
-        return new Design(runnable);
+        return new Design(runnable, withOnClickSet);
     }
 
 

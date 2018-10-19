@@ -7,7 +7,7 @@
         <task_text />
         <reminder_text />
         <code mutable = "false" show = "false" runnable ="false" waitForCTA="false"></code>
-        <design show = "false" runnable = "false"></design>
+        <design show = "false" runnable = "false" withOnClickSet="false"></design>
         <call_to_action>הבנתי</call_to_action>
     </slide>
 
@@ -26,7 +26,7 @@
         <task_text/>
         <reminder_text/>
         <code mutable = "false" show = "true" runnable ="false" waitForCTA="false">\n// כאן תוכלו לכתוב בהמשך קוד למחשב בשפת ג'אווה\n</code>
-        <design show = "false" runnable = "false"></design>
+        <design show = "false" runnable = "false" withOnClickSet="false"></design>
         <call_to_action>הבנתי</call_to_action>
     </slide>
 
@@ -36,7 +36,7 @@
         <task_text/>
         <reminder_text/>
         <code mutable = "false" show = "true" runnable ="true" waitForCTA="true">speakOut("hello");</code>
-        <design show = "false" runnable = "false"></design>
+        <design show = "false" runnable = "false" withOnClickSet="false"></design>
         <call_to_action>הבנתי</call_to_action>
     </slide>
 
@@ -45,7 +45,7 @@
         <task_text/>
         <reminder_text/>
         <code mutable = "false" show = "true" runnable ="true" waitForCTA="false">speakOut("my first command!");</code>
-        <design show = "false" runnable = "false"></design>
+        <design show = "false" runnable = "false" withOnClickSet="false"></design>
         <call_to_action>הבנתי</call_to_action>
     </slide>
 

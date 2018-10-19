@@ -3,38 +3,38 @@
 <practice xmlns:tools="http://schemas.android.com/tools"
     tools:keep="@xml/practice_1">
     <slide>
-        <info_text>Building apps has two aspects: designing the app and writing code</info_text>
-        <task_text />
+        <info_text>Building apps has two aspects: designing the app and writing code, for example:</info_text>
+        <task_text></task_text>
         <reminder_text />
-        <code mutable = "false" show = "false" runnable ="false" waitForCTA="false"></code>
-        <design show = "false" runnable = "false"></design>
+        <code mutable="false" show="false" runnable ="false" waitForCTA="false"/>
+        <design show="false" runnable="false"/>
         <call_to_action>Got it</call_to_action>
     </slide>
 
     <slide>
-        <info_text>When we design our app we can easily add elements such as text, button and image</info_text>
+        <info_text>When we design our app we can easily add elements such as text, button and image.</info_text>
         <task_text/>
         <reminder_text />
-        <code mutable = "false" show = "false" runnable ="false" waitForCTA="false"></code>
-        <design show = "true" runnable = "false">My Button</design>
+        <code mutable="false" show="false" runnable ="false" waitForCTA="false"></code>
+        <design show="true" runnable="false">My Button</design>
         <call_to_action>Got it</call_to_action>
     </slide>
 
     <slide>
-        <info_text>To make those elements active, we will learn to write code in a language called Java</info_text>
+        <info_text>To make those elements active, we will learn to write code in a language called Java.</info_text>
         <task_text/>
         <reminder_text/>
-        <code mutable = "false" show = "true" runnable ="false" waitForCTA="false">// Here you will write code in Java </code>
-        <design show = "false" runnable = "false"></design>
+        <code mutable="false" show="true" runnable ="false" waitForCTA="false">// Here you will write code in Java </code>
+        <design show="false" runnable="false" withOnClickSet="false"></design>
         <call_to_action>Got it</call_to_action>
     </slide>
 
     <slide>
-        <info_text>With code we define the computer how to behave</info_text>
+        <info_text>With code we define the computer how to behave.</info_text>
         <task_text/>
         <reminder_text/>
-        <code mutable = "false" show = "true" runnable ="true" waitForCTA="true">speakOut("hello");</code>
-        <design show = "false" runnable = "false"></design>
+        <code mutable="false" show="true" runnable ="true" waitForCTA="true">speakOut("hello");</code>
+        <design show="false" runnable="false" withOnClickSet="false"></design>
         <call_to_action>Got it</call_to_action>
     </slide>
 
@@ -43,8 +43,8 @@
 It commands the computer to speak out text.</info_text>
         <task_text/>
         <reminder_text/>
-        <code mutable = "false" show = "true" runnable ="true" waitForCTA="false">speakOut("my first command!");</code>
-        <design show = "false" runnable = "false"></design>
+        <code mutable="false" show="true" runnable ="true" waitForCTA="false">speakOut("my first command!");</code>
+        <design show="false" runnable="false" withOnClickSet="false"></design>
         <call_to_action>Got it</call_to_action>
     </slide>
 

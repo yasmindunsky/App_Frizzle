@@ -10,12 +10,16 @@ import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatTextView;
 import android.text.SpannableStringBuilder;
 import android.view.ContextThemeWrapper;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar;
 
@@ -151,7 +155,8 @@ public class PracticeSlideFragment extends Fragment {
         if (practiceSlide.hasDesign()) {
             Design design = practiceSlide.getDesign();
             boolean runnable = design.getRunnable();
-            DesignSection designSection = new DesignSection(context, runnable);
+            boolean withOnClickSet = design.getWithOnClickSet();
+            DesignSection designSection = new DesignSection(context, runnable, withOnClickSet);
             designSection.setBackgroundLayout(relativeLayout);
             designSection.setId(R.id.designSection);
             designSection.setPadding(SIDES_MARGIN, SIDES_MARGIN, SIDES_MARGIN, SIDES_MARGIN);
@@ -162,6 +167,22 @@ public class PracticeSlideFragment extends Fragment {
             layoutParams.addRule(RelativeLayout.BELOW, currentAddedViewID);
             designSection.setLayoutParams(layoutParams);
             relativeLayout.addView(designSection);
+            designSection.setDisplayErrorListener(() -> {
+                if (UserProfile.user.getCurrentLevel() == Support.ONCLICK_PRACTICE_LEVEL_ID
+                        && getCurrentSlide() == 1) {
+                    LayoutInflater errorInflater = (LayoutInflater)
+                            context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                    View popupView = errorInflater.inflate(R.layout.popup_code_section_run_error, null);
+                    TextView errorText = popupView.findViewById(R.id.errorText);
+                    errorText.setText(R.string.our_button_does_nothing);
+                    PopupWindow popupWindow = new PopupWindow(popupView, ViewGroup.LayoutParams.WRAP_CONTENT,
+                            ViewGroup.LayoutParams.WRAP_CONTENT, true);
+                    popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
+                    ImageButton closeButton = popupView.findViewById(R.id.close);
+                    closeButton.setOnClickListener(v -> popupWindow.dismiss());
+                }
+            });
+
             currentAddedViewID = designSection.getId();
         }
 
@@ -207,36 +228,54 @@ public class PracticeSlideFragment extends Fragment {
         boolean correct = true;
 
         // What slide are we at
-        ViewPager viewPager = getActivity().findViewById(R.id.pager);
-        int currentSlide = viewPager.getCurrentItem();
+        int currentSlide = getCurrentSlide();
 
         int currentLevel = UserProfile.user.getCurrentLevel();
         if (currentLevel == Support.SPEAKOUT_PRACTICE_LEVEL_ID) {
             if (currentSlide == 2) {
+                // Check if speakOut was added and written 'this is so cool'.
                 CodeSection codeSection = relativeLayout.findViewById(R.id.codeSection);
                 String code = codeSection.getCode();
                 correct = checkIfContainsSpeakOutAndString(code, "this is so cool");
             }
         } else if (currentLevel == Support.ONCLICK_PRACTICE_LEVEL_ID){
-            if (currentSlide == 1){
-                CodeSection codeSection = relativeLayout.findViewById(R.id.codeSection);
-                String code = codeSection.getCode();
-                correct &= checkIfContainsSpeakOutAndString(code, "goodbye");
-            }
             if (currentSlide == 2){
+                //
                 CodeSection codeSection = relativeLayout.findViewById(R.id.codeSection);
                 String code = codeSection.getCode();
-                correct &= checkIfContainsFunctionWithName(code, "sayMyName");
-                correct &= checkIfContainsSpeakOutAndString(code, "");
-
+                correct = checkIfContainsSpeakOutAndString(code, "goodbye");
             }
-            if (currentSlide == 3){
+            else if (currentSlide == 5){
+                // Check if new function was added.
+                CodeSection codeSection = relativeLayout.findViewById(R.id.codeSection);
+                String code = codeSection.getCode();
+                correct = checkIfContainsFunctionWithName(code, "");
+            }
+            else if (currentSlide == 7){
+                // Check function name changed to 'myFunction'.
+                CodeSection codeSection = relativeLayout.findViewById(R.id.codeSection);
+                String code = codeSection.getCode();
+                correct = checkIfContainsFunctionWithName(code, "myFunction");
+            }
+            else if (currentSlide == 8){
+                // Check if speakOut was written inside function.
+                CodeSection codeSection = relativeLayout.findViewById(R.id.codeSection);
+                String code = codeSection.getCode();
+                correct = checkIfContainsSpeakOutAndString(code, "Hello");
+            }
+            else if (currentSlide == 9){
+                // Check if 'myFunction' was written as the onClick value.
                 DesignSection designSection = relativeLayout.findViewById(R.id.designSection);
                 UserCreatedButton userCreatedButton = designSection.getUserCreatedButton();
-                correct &= userCreatedButton.getOnClick().equals("sayHello");
+                correct &= userCreatedButton.getOnClick().trim().equals("myFunction");
             }
         }
         return correct;
+    }
+
+    private int getCurrentSlide() {
+        ViewPager viewPager = getActivity().findViewById(R.id.pager);
+        return viewPager.getCurrentItem();
     }
 
     private boolean checkIfContainsFunctionWithName(String code, String functionName) {
@@ -249,7 +288,7 @@ public class PracticeSlideFragment extends Fragment {
 
     private boolean checkIfContainsSpeakOutAndString(String code, String expectedString) {
         boolean correct = true;
-        correct &= code.contains(expectedString.trim().toLowerCase());
+        correct &= code.toLowerCase().contains(expectedString.trim().toLowerCase());
         // Contains 'speakOut'
         correct &= code.contains("speakOut");
         // Contains '("'

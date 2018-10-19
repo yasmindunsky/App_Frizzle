@@ -7,7 +7,7 @@
         <task_text/>
         <reminder_text />
         <code show = "true" mutable="false" runnable="true" waitForCTA="false">speakOut("Hello");</code>
-        <design show = "false" runnable = "false"></design>
+        <design show = "false" runnable = "false" withOnClickSet="false"></design>
         <call_to_action>הבנתי</call_to_action>
     </slide>
 
@@ -17,7 +17,7 @@
         <task_text>שנה את הפקודה כך שתקריא את שמך (באנגלית)</task_text>
         <reminder_text />
         <code show = "true" mutable="true" runnable="true" waitForCTA="true">speakOut("Hello");</code>
-        <design show = "false" runnable = "false"></design>
+        <design show = "false" runnable = "false" withOnClickSet="false"></design>
         <call_to_action>בדיקה</call_to_action>
     </slide>
 
@@ -27,7 +27,7 @@
         <task_text/>
         <reminder_text>תזכורת: speakOut("Hello"); </reminder_text>
         <code show = "true" mutable="true" runnable="true" waitForCTA="false">\n</code>
-        <design show = "false" runnable = "false"></design>
+        <design show = "false" runnable = "false" withOnClickSet="false"></design>
         <call_to_action>בדיקה</call_to_action>
         <solution>speakOut("this is so cool");</solution>
     </slide>
@@ -37,7 +37,7 @@
         <task_text>            מחקי את סימן הנקודה-פסיק בסוף הפקודה והריצי את הקוד.</task_text>
         <reminder_text/>
         <code show ="true" mutable="true" runnable="true" waitForCTA="true">speakOut("Hello");</code>
-        <design show = "false" runnable = "false"></design>
+        <design show = "false" runnable = "false" withOnClickSet="false"></design>
         <call_to_action>הבנתי</call_to_action>
     </slide>
 
@@ -46,7 +46,7 @@
         <task_text>הקלידי את התו רווח בין ה-’speak’ וה-’out’ בשם הפקודה והריצי את הקוד.</task_text>
         <reminder_text/>
         <code show="true" mutable="true" runnable="true" waitForCTA="true"> speakOut("Hello");</code>
-        <design show = "false" runnable = "false"></design>
+        <design show = "false" runnable = "false" withOnClickSet="false"></design>
         <call_to_action>הבנתי</call_to_action>
     </slide>
 

@@ -29,8 +29,10 @@ public class DesignSection extends RelativeLayout {
     private TextToSpeech tts;
     private UserCreatedButton userCreatedButton;
     private ViewGroup layout;
+    private DisplayErrorListener displayErrorListener;
 
-    public DesignSection(Context context, boolean runnable) {
+
+    public DesignSection(Context context, boolean runnable, boolean withOnClickSet) {
         super(context);
         TextToSpeech.OnInitListener onInitListener = status -> {
             if (status == TextToSpeech.SUCCESS) {
@@ -57,6 +59,10 @@ public class DesignSection extends RelativeLayout {
         userCreatedButton = new UserCreatedButton(context, 1, 1);
         userCreatedButton.setBackgroundColor("#f8b119");
         userCreatedButton.setTextColor("#FFFFFF");
+        userCreatedButton.setText("My Button");
+        if (withOnClickSet) {
+            userCreatedButton.setOnClick("myFunction");
+        }
         Button buttonView = userCreatedButton.getThisView();
         buttonView.setOnClickListener(v -> {
             // show the popup window
@@ -79,7 +85,7 @@ public class DesignSection extends RelativeLayout {
             playButton.setAdjustViewBounds(false);
             playButton.setImageDrawable(getResources().getDrawable(R.drawable.ic_play_run_icon));
 
-            playButton.setOnClickListener(runCode);
+            playButton.setOnClickListener(runDesign);
 
             LayoutParams playButtonLayoutParams = new LayoutParams(80, 80);
             playButtonLayoutParams.addRule(RelativeLayout.CENTER_VERTICAL);
@@ -89,7 +95,7 @@ public class DesignSection extends RelativeLayout {
             addView(playButton);
         }
     }
-    OnClickListener runCode = new OnClickListener() {
+    OnClickListener runDesign = new OnClickListener() {
         @Override
         public void onClick(View v) {
             Context context = getContext();
@@ -108,10 +114,12 @@ public class DesignSection extends RelativeLayout {
             button.setBackground(buttonDrawable);
 
             button.setOnClickListener(v1 -> {
-                boolean onClickSet = userCreatedButton.getOnClick().equals("sayHello");
+                boolean onClickSet = userCreatedButton.getOnClick().equals("myFunction");
                 if (onClickSet) {
                     tts.speak("Hello", TextToSpeech.QUEUE_ADD, null);
                 }
+                if (displayErrorListener != null) displayErrorListener.onDisplayError();
+
             });
 
             PopupWindow popupWindow = new PopupWindow(popupView, ViewGroup.LayoutParams.WRAP_CONTENT,
@@ -128,5 +136,16 @@ public class DesignSection extends RelativeLayout {
 
     public void setBackgroundLayout(ViewGroup layout) {
         this.layout = layout;
+    }
+
+    public void setDisplayErrorListener(DisplayErrorListener displayErrorListener) {
+        this.displayErrorListener = displayErrorListener;
+    }
+
+    // This interface defines the type of messages I want to communicate to my owner
+    public interface DisplayErrorListener {
+        // These methods are the different events and
+        // need to pass relevant arguments related to the event triggered
+        void onDisplayError();
     }
 }

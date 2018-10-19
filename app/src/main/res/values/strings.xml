@@ -179,6 +179,7 @@ public class MainActivity extends AppCompatActivity implements   TextToSpeech.On
     <string name="polly_intro">Polly Intro</string>
     <string name="friendship_intro">Friendship Test\nIntro</string>
     <string name="onboarding_text">Let\'s start building apps.</string>
+    <string name="our_button_does_nothing">Our button does nothing yet.</string>
 
     <string-array name="fonts">
         <item>sans-serif</item>

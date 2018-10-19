@@ -359,4 +359,12 @@ public class UserCreatedButton extends UserCreatedView {
         return null;
     }
 
+    public void setText(String text) {
+        thisView.setText(text);
+        properties.put("android:text", text);
+    }
+
+    public void setOnClick(String function) {
+        properties.put("android:onClick", function);
+    }
 }

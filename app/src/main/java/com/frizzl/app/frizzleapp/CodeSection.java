@@ -73,7 +73,6 @@ codeEditor.setLayoutParams(codeEditorLayoutParams);
             playButton.setImageDrawable(getResources().getDrawable(R.drawable.ic_play_run_icon));
             OnClickListener runCode = v -> {
                 if (waitForCTA && readyForCTAListener != null) readyForCTAListener.onReadyForCTA();
-
                 if (codeIsValid()) {
                     speakOut();
                 }
