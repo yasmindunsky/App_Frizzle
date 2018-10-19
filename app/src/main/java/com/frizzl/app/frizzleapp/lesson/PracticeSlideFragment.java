@@ -42,7 +42,7 @@ public class PracticeSlideFragment extends Fragment {
     private PracticeSlide practiceSlide;
     private RelativeLayout relativeLayout;
     private static final int SIDES_MARGIN = 50;
-    private static final int TOP_DOWN_MARGIN = 15;
+    private static final int TOP_DOWN_MARGIN = 25;
     private AppCompatButton callToActionButton;
     private boolean waitForCTA = false;
 
@@ -148,7 +148,6 @@ public class PracticeSlideFragment extends Fragment {
             codeSection.setLayoutParams(layoutParams);
             relativeLayout.addView(codeSection);
             currentAddedViewID = codeSection.getId();
-
             codeSection.setReadyForCTAListener(() -> enableCTAButton(true));
         }
 
@@ -159,10 +158,9 @@ public class PracticeSlideFragment extends Fragment {
             DesignSection designSection = new DesignSection(context, runnable, withOnClickSet);
             designSection.setBackgroundLayout(relativeLayout);
             designSection.setId(R.id.designSection);
-            designSection.setPadding(SIDES_MARGIN, SIDES_MARGIN, SIDES_MARGIN, SIDES_MARGIN);
+            designSection.setPadding(SIDES_MARGIN, TOP_DOWN_MARGIN, SIDES_MARGIN, TOP_DOWN_MARGIN);
             RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT);
-            designSection.setLayoutParams(layoutParams);
             layoutParams.setMargins(SIDES_MARGIN, 0, SIDES_MARGIN, TOP_DOWN_MARGIN);
             layoutParams.addRule(RelativeLayout.BELOW, currentAddedViewID);
             designSection.setLayoutParams(layoutParams);
@@ -192,14 +190,9 @@ public class PracticeSlideFragment extends Fragment {
         callToActionButton.setBackground(getResources().getDrawable(R.drawable.check_button_background));
         RelativeLayout.LayoutParams layoutParams =
                 new RelativeLayout.LayoutParams(550, ViewGroup.LayoutParams.WRAP_CONTENT);
-        if (codeKeyboard != null) {
-            layoutParams.addRule(RelativeLayout.ABOVE, codeKeyboard.getId());
-        }
-        else {
-            layoutParams.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
-        }
+        layoutParams.addRule(RelativeLayout.BELOW, currentAddedViewID);
         layoutParams.addRule(RelativeLayout.CENTER_HORIZONTAL);
-        layoutParams.setMargins(0,TOP_DOWN_MARGIN,0,TOP_DOWN_MARGIN*4);
+        layoutParams.setMargins(0,TOP_DOWN_MARGIN * 2,0,TOP_DOWN_MARGIN*4);
         callToActionButton.setLayoutParams(layoutParams);
         callToActionButton.setOnClickListener(v -> {
             Button button = (Button) v;

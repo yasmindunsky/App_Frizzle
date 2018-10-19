@@ -31,7 +31,6 @@ public class DesignSection extends RelativeLayout {
     private ViewGroup layout;
     private DisplayErrorListener displayErrorListener;
 
-
     public DesignSection(Context context, boolean runnable, boolean withOnClickSet) {
         super(context);
         TextToSpeech.OnInitListener onInitListener = status -> {
@@ -48,13 +47,14 @@ public class DesignSection extends RelativeLayout {
         tts = new TextToSpeech(context, onInitListener, "com.google.android.tts");
 
         setId(R.id.constraintLayout);
+
         ImageView imageView = new ImageView(context);
         imageView.setImageDrawable(getResources().getDrawable(R.drawable.design_element_bg));
-        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT,
-                LayoutParams.MATCH_PARENT);
+        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT,
+                LayoutParams.WRAP_CONTENT);
         imageView.setLayoutParams(layoutParams);
+        imageView.setAdjustViewBounds(true);
         addView(imageView);
-
 
         userCreatedButton = new UserCreatedButton(context, 1, 1);
         userCreatedButton.setBackgroundColor("#f8b119");
