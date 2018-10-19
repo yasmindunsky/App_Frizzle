@@ -4,6 +4,7 @@ package com.frizzl.app.frizzleapp.lesson;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatTextView;
@@ -261,11 +262,14 @@ public class PracticeSlideFragment extends Fragment {
 
     private void moveToNextFragment() {
         // Change to next fragment onClick
-        ViewPager viewPager = getActivity().findViewById(R.id.pager);
-        int i = viewPager.getCurrentItem() + 1;
-        viewPager.setCurrentItem(i);
-        RoundCornerProgressBar progressBar = getActivity().findViewById(R.id.progressBar);
-        progressBar.setProgress(i);
+        FragmentActivity activity = getActivity();
+        if (activity != null) {
+            ViewPager viewPager = activity.findViewById(R.id.pager);
+            int i = viewPager.getCurrentItem() + 1;
+            viewPager.setCurrentItem(i);
+            RoundCornerProgressBar progressBar = activity.findViewById(R.id.progressBar);
+            progressBar.setProgress(i);
+        }
     }
 
     public void enableCTAButton(boolean enabled){
