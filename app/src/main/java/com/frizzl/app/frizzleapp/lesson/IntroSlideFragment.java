@@ -162,4 +162,10 @@ public class IntroSlideFragment extends Fragment {
             progressBar.setProgress(i);
         }
     }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        tts.shutdown();
+    }
 }

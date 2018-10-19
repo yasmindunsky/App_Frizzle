@@ -148,4 +148,10 @@ public class DesignSection extends RelativeLayout {
         // need to pass relevant arguments related to the event triggered
         void onDisplayError();
     }
+
+    @Override
+    protected void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
+        tts.shutdown();
+    }
 }
