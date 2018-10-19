@@ -16,6 +16,7 @@ import com.frizzl.app.frizzleapp.UserProfile;
 import com.frizzl.app.frizzleapp.appBuilder.AppBuilderActivity;
 import com.frizzl.app.frizzleapp.lesson.AppContentParser;
 import com.frizzl.app.frizzleapp.lesson.AppTasks;
+import com.frizzl.app.frizzleapp.lesson.IntroActivity;
 import com.frizzl.app.frizzleapp.lesson.PracticeActivity;
 import com.google.firebase.analytics.FirebaseAnalytics;
 
@@ -102,6 +103,14 @@ public class MapActivity extends AppCompatActivity {
             mFirebaseAnalytics.logEvent("STARTED_PRACTICE", bundle);
             mapPresenter.onClickedPractice(practiceLevelID);
         };
+        View.OnClickListener onClickedIntro = v -> {
+            IntroMapButton introMapButton = (IntroMapButton)v;
+            int levelID = introMapButton.getLevelID();
+            Bundle bundle = new Bundle();
+            bundle.putInt("LEVEL_ID", levelID);
+            mFirebaseAnalytics.logEvent("STARTED_INTRO", bundle);
+            mapPresenter.onClickedIntro(levelID);
+        };
 //        tutorialAppButton.setOnClickListener(onClickedApp);
         pollyAppButton.setOnClickListener(onClickedApp);
         friendshipTestAppButton.setOnClickListener(onClickedApp);
@@ -110,6 +119,7 @@ public class MapActivity extends AppCompatActivity {
         onClickPracticeButton.setOnClickListener(onClickedPractice);
         viewsPracticeButton.setOnClickListener(onClickedPractice);
         variablesPracticeButton.setOnClickListener(onClickedPractice);
+        pollyIntroButton.setOnClickListener(onClickedIntro);
 
         // Set scroll position.
         scrollView.post(() -> scrollView.fullScroll(View.FOCUS_DOWN));
@@ -164,5 +174,11 @@ public class MapActivity extends AppCompatActivity {
         Support.presentPopup(popupWindow, startPractice, constraintLayout, constraintLayout, applicationContext);
 
 
+    }
+
+    public void goToIntro(int levelID) {
+        Intent introIntent = new Intent(getApplicationContext(), IntroActivity.class);
+        introIntent.putExtra("levelID", levelID);
+        startActivity(introIntent);
     }
 }

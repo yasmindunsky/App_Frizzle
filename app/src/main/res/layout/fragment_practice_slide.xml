@@ -1,9 +1,9 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/relativeLayout"
+    android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center_horizontal"
     android:orientation="vertical"
     tools:context="com.frizzl.app.frizzleapp.lesson.PracticeActivity">
 
@@ -14,4 +14,4 @@
         android:layout_height="1dp"
         android:background="@android:color/transparent"
         android:text="" />
-</RelativeLayout>
+</LinearLayout>

@@ -12,8 +12,8 @@ import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.IOException;
 
-public class PracticeActivity extends FragmentActivity {
-    private  PracticeSwipeAdapter swipeAdapter;
+public class IntroActivity extends FragmentActivity {
+    private  IntroSwipeAdapter swipeAdapter;
     private  Practice currentPractice;
     private  CustomViewPager viewPager;
 
@@ -23,12 +23,11 @@ public class PracticeActivity extends FragmentActivity {
         setContentView(R.layout.activity_practice);
 
         // parse practice & update user profile
-        int practiceID = getIntent().getIntExtra("practiceID", 1);
+        int levelID = getIntent().getIntExtra("levelID", 1);
         PracticeContentParser practiceContentParser;
         try {
             practiceContentParser = new PracticeContentParser();
-            String lessonXmlName = "practice_" + practiceID;
-            currentPractice = practiceContentParser.parsePractice(this, practiceID, lessonXmlName);
+            currentPractice = practiceContentParser.parsePractice(this, levelID, "intro");
         } catch (XmlPullParserException | IOException e) {
             e.printStackTrace();
         }
@@ -44,7 +43,7 @@ public class PracticeActivity extends FragmentActivity {
 
         // Create SwipeAdapter.
         viewPager = findViewById(R.id.pager);
-        swipeAdapter = new PracticeSwipeAdapter(getSupportFragmentManager(), currentPractice);
+        swipeAdapter = new IntroSwipeAdapter(getSupportFragmentManager(), currentPractice);
         viewPager.setAdapter(swipeAdapter);
         viewPager.setPagingEnabled(false);
         // Rotation for RTL swiping.

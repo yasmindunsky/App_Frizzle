@@ -1,0 +1,43 @@
+<!--\\u000A--><!--’-->
+
+<practice xmlns:tools="http://schemas.android.com/tools"
+    tools:keep="@xml/practice_1">
+    <slide>
+        <info_text>You'll now learn everything you need to build a Talking Parrot App!</info_text>
+        <task_text></task_text>
+        <reminder_text />
+        <code mutable="false" shows="false" runnable ="false" waitForCTA="false"/>
+        <design shows="false" runnable="false"/>
+        <call_to_action>Got it</call_to_action>
+    </slide>
+
+    <slide>
+        <info_text>It would look like this:</info_text>
+        <task_text/>
+        <reminder_text />
+        <code mutable="false" shows="false" runnable ="false" waitForCTA="false"/>
+        <design shows="true" runnable="false"  withOnClickSet="false"/>
+        <!--Design shows here represents if to present the Polly app-->
+        <call_to_action>Got it</call_to_action>
+    </slide>
+
+    <slide>
+        <info_text></info_text>
+        <task_text>Try and use it.</task_text>
+        <reminder_text/>
+        <code mutable="false" shows="false" runnable ="false" waitForCTA="false"/>
+        <design shows="true" runnable="false" withOnClickSet="false"/>
+        <!--Design shows here represents if to present the Polly app-->
+        <call_to_action>Got it</call_to_action>
+    </slide>
+
+    <slide>
+        <info_text>You'll be able to decide what will be written on the buttons and what the parrot will say.</info_text>
+        <task_text/>
+        <reminder_text/>
+        <code mutable="false" shows="false" runnable ="true" waitForCTA="false"/>
+        <design shows="false" runnable="false" withOnClickSet="false"/>
+        <call_to_action>Got it</call_to_action>
+    </slide>
+
+</practice>

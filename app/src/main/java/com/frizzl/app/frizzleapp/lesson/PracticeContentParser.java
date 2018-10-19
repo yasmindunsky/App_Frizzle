@@ -26,9 +26,8 @@ class PracticeContentParser {
     PracticeContentParser() throws XmlPullParserException {
     }
 
-    Practice parsePractice(Context context, int practiceID) throws XmlPullParserException, IOException {
+    Practice parsePractice(Context context, int practiceID, String lessonXmlName) throws XmlPullParserException, IOException {
         currentPractice = new Practice(practiceID);
-        String lessonXmlName = "practice_" + practiceID;
         xmlResourceParser = context.getResources().getXml(getResId(lessonXmlName, R.xml.class));
         ArrayList<PracticeSlide> slides = new ArrayList<>();
 

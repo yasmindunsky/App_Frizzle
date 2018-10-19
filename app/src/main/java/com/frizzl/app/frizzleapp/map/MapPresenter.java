@@ -26,7 +26,6 @@ public class MapPresenter {
     public void onClickedPractice(int levelID){
         UserProfile.user.setCurrentLevel(levelID);
         mapActivity.goToPractice(levelID);
-
     }
 
     public int getCurrentLevel() {
@@ -48,5 +47,10 @@ public class MapPresenter {
             explanationText = mapActivity.getApplicationContext().getResources().getString(R.string.first_practice_explanation_text);
         }
         return new PrePracticePopupWindow(mapActivity, explanationText);
+    }
+
+    public void onClickedIntro(int levelID) {
+        UserProfile.user.setCurrentLevel(levelID);
+        mapActivity.goToIntro(levelID);
     }
 }
