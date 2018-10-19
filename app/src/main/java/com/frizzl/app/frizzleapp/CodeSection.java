@@ -57,11 +57,10 @@ public class CodeSection extends RelativeLayout {
         codeEditor.setBackground(getResources().getDrawable(R.drawable.code_bg));
         codeEditor.setGravity(Gravity.START);
         this.getViewTreeObserver().addOnGlobalLayoutListener(() -> {
-           codeEditor.setWidth(getWidth());
-LayoutParams codeEditorLayoutParams = new LayoutParams(
-LayoutParams.MATCH_PARENT,
-LayoutParams.WRAP_CONTENT);
-codeEditor.setLayoutParams(codeEditorLayoutParams);
+            codeEditor.setWidth(getWidth());
+            LayoutParams codeEditorLayoutParams =
+                    new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
+            codeEditor.setLayoutParams(codeEditorLayoutParams);
         });
         addView(codeEditor);
 
