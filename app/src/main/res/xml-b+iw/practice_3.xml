@@ -88,7 +88,7 @@
 
     <slide>
         <info_text/>
-        <task_text>הוסף את פקודת $orange$ה-speakOut("Hello")$orange$ בתוך $light_blue$הפונקציה$light_blue$</task_text>
+        <task_text>הוסיפו את פקודת $orange$ה-speakOut("Hello")$orange$ בתוך $light_blue$הפונקציה$light_blue$</task_text>
         <reminder_text/>
         <code show="true" mutable="true" runnable="false" waitForCTA="false">
             public void myFunction(View view){
@@ -101,7 +101,7 @@
 
     <slide>
         <info_text/>
-        <task_text>כתוב את שם $light_blue$הפונקציה$light_blue$ בשדה ה-onClick של הכפתור.</task_text>
+        <task_text>כתבו את שם $light_blue$הפונקציה$light_blue$ בשדה ה-onClick של הכפתור.</task_text>
         <reminder_text/>
         <code show="true" mutable="false" runnable="false" waitForCTA="false">
             public void myFunction(View view){
@@ -114,7 +114,7 @@
 
     <slide>
         <info_text/>
-        <task_text>נסה להריץ את הכפתור וללחוץ עליו</task_text>
+        <task_text>נסו להריץ את הכפתור וללחוץ עליו</task_text>
         <reminder_text/>
         <code show="true" mutable="false" runnable="false" waitForCTA="false">
             public void myFunction(View view){\n\tspeakOut("Hello");\n}

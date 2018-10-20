@@ -14,7 +14,7 @@
 
     <slide>
         <info_text/>
-        <task_text>שנה את הפקודה כך שתקריא את שמך (באנגלית).</task_text>
+        <task_text>שנו את הפקודה כך שתקריא את שמך (באנגלית).</task_text>
         <reminder_text />
         <code show = "true" mutable="true" runnable="true" waitForCTA="true">speakOut("Hello");</code>
         <design show = "false" runnable = "false" withOnClickSet="false"></design>
@@ -23,7 +23,7 @@
 
     <slide>
         <info_text></info_text>
-        <task_text>כתוב את הפקודה כך שתקריא את הטקסט 'this is so cool'.</task_text>
+        <task_text>כתבו את הפקודה כך שתקריא את הטקסט 'this is so cool'.</task_text>
         <reminder_text>תזכורת: speakOut("Hello"); </reminder_text>
         <code show = "true" mutable="true" runnable="true" waitForCTA="false">\n</code>
         <design show = "false" runnable = "false" withOnClickSet="false"></design>
@@ -33,7 +33,7 @@
 
     <slide>
         <info_text/>
-        <task_text>            מחקי את סימן הנקודה-פסיק בסוף הפקודה והריצי את הקוד.</task_text>
+        <task_text>מחקו את סימן הנקודה-פסיק בסוף הפקודה והריצו את הקוד.</task_text>
         <reminder_text/>
         <code show ="true" mutable="true" runnable="true" waitForCTA="true">speakOut("Hello");</code>
         <design show = "false" runnable = "false" withOnClickSet="false"></design>
@@ -42,7 +42,7 @@
 
     <slide>
         <info_text/>
-        <task_text>הקלידי את התו רווח בין ה-’speak’ וה-’out’ בשם הפקודה והריצי את הקוד.</task_text>
+        <task_text>הקלידו את התו רווח בין ה-’speak’ וה-’out’ בשם הפקודה והריצו את הקוד.</task_text>
         <reminder_text/>
         <code show="true" mutable="true" runnable="true" waitForCTA="true"> speakOut("Hello");</code>
         <design show = "false" runnable = "false" withOnClickSet="false"></design>

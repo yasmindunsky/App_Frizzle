@@ -4,7 +4,7 @@
     tools:keep="@xml/practice_1">
     <slide>
         <info_text>עכשיו נלמד כל מה שצריך בשביל לבנות אפליקציה של תוכי מדבר.</info_text>
-        <task_text></task_text>
+        <task_text />
         <reminder_text />
         <code mutable="false" shows="false" runnable ="false" waitForCTA="false"/>
         <design shows="false" runnable="false"/>
@@ -32,7 +32,7 @@
     </slide>
 
     <slide>
-        <info_text>אתם תוכלו לבחור בעצמכם מה יהיה כתוב על הכפתורים ומה התוכי יגיד.</info_text>
+        <info_text>תוכלו לבחור בעצמכם מה יהיה כתוב על הכפתורים ומה התוכי יגיד.</info_text>
         <task_text/>
         <reminder_text/>
         <code mutable="false" shows="false" runnable ="true" waitForCTA="false"/>
