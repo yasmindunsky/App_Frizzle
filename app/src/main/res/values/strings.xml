@@ -182,6 +182,7 @@ public class MainActivity extends AppCompatActivity implements   TextToSpeech.On
     <string name="our_button_does_nothing">Our button does nothing yet.</string>
     <string name="whats_your_name">What\'s your name?</string>
     <string name="tell_me_a_joke">Tell me a joke</string>
+    <string name="my_button">My Button</string>
 
     <string-array name="fonts">
         <item>sans-serif</item>

@@ -68,6 +68,7 @@ Use "'" for special chars.
     <string name="our_button_does_nothing">הכפתור שלנו עדיין לא עושה שום דבר</string>
     <string name="whats_your_name">מה שמך?</string>
     <string name="tell_me_a_joke">ספר לי בדיחה</string>
+    <string name="my_button">הכפתור שלי</string>
 
     <string-array name="fonts">
         <item>sans-serif</item>
