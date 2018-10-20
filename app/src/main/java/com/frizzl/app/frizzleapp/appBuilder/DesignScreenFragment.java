@@ -25,6 +25,8 @@ import com.fangxu.allangleexpandablebutton.ButtonData;
 import com.fangxu.allangleexpandablebutton.ButtonEventListener;
 import com.frizzl.app.frizzleapp.AnnotationUserCreatedViewType;
 import com.frizzl.app.frizzleapp.R;
+import com.frizzl.app.frizzleapp.Support;
+import com.frizzl.app.frizzleapp.UserProfile;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -140,6 +142,23 @@ public class DesignScreenFragment extends Fragment {
             switch (userCreatedView.getViewType()) {
                 case AnnotationUserCreatedViewType.BUTTON:
                     final UserCreatedButton userCreatedButton = (UserCreatedButton) userCreatedView;
+                    userCreatedButton.setChangedTextListener(new UserCreatedButton.ChangedTextListener() {
+                        @Override
+                        public void onChangedText() {
+                            if (UserProfile.user.getCurrentLevel() == Support.POLLY_APP_LEVEL_ID && UserProfile.user.getCurrentTaskNum()== 1) {
+                                appBuilderActivity.taskCompleted();
+                            }
+                        }
+
+                        @Override
+                        public void onChangedOnClick(String onClickFuncName) {
+                            if (UserProfile.user.getCurrentLevel() == Support.POLLY_APP_LEVEL_ID && UserProfile.user.getCurrentTaskNum()== 4
+                                    &&  !onClickFuncName.equals("")) {
+                                AppBuilderActivity appBuilderActivity = (AppBuilderActivity) getActivity();
+                                appBuilderActivity.taskCompleted();
+                            }
+                        }
+                    });
                     setButtonOnClicks(userCreatedButton);
                     break;
                 case AnnotationUserCreatedViewType.TEXT_VIEW:

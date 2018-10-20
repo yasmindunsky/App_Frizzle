@@ -35,7 +35,8 @@ import petrov.kristiyan.colorpicker.ColorPicker;
  */
 
 public class UserCreatedButton extends UserCreatedView {
-    Button thisView;
+    private Button thisView;
+    private ChangedTextListener changedTextListener;
 
     public UserCreatedButton(Context context, Map<String, String> properties, int index){
         this.context = context;
@@ -262,10 +263,7 @@ public class UserCreatedButton extends UserCreatedView {
                 properties.put("android:text", text);
 
                 // For temp testing
-                if (UserProfile.user.getCurrentLevel() == Support.POLLY_APP_LEVEL_ID && UserProfile.user.getCurrentTaskNum()== 1) {
-                    AppBuilderActivity appBuilderActivity = (AppBuilderActivity) getActivity();
-                    appBuilderActivity.taskCompleted();
-                }
+                if (changedTextListener != null) changedTextListener.onChangedText();
             }
         }
     };
@@ -276,15 +274,11 @@ public class UserCreatedButton extends UserCreatedView {
             properties.put("android:onClick", onclickFuncName);
 
             // For temp testing
-            if (UserProfile.user.getCurrentLevel() == Support.POLLY_APP_LEVEL_ID && UserProfile.user.getCurrentTaskNum()== 4
-                    && !onclickFuncName.equals("")) {
-                AppBuilderActivity appBuilderActivity = (AppBuilderActivity) getActivity();
-                appBuilderActivity.taskCompleted();
-            }
+            if (changedTextListener != null) changedTextListener.onChangedOnClick(onclickFuncName);
         }
     };
 
-    AdapterView.OnItemSelectedListener onFontPicked = new AdapterView.OnItemSelectedListener() {
+    private AdapterView.OnItemSelectedListener onFontPicked = new AdapterView.OnItemSelectedListener() {
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
             String fontFamily = parent.getItemAtPosition(position).toString();
@@ -366,5 +360,18 @@ public class UserCreatedButton extends UserCreatedView {
 
     public void setOnClick(String function) {
         properties.put("android:onClick", function);
+    }
+
+    public void setChangedTextListener(ChangedTextListener changedTextListener) {
+        this.changedTextListener = changedTextListener;
+    }
+
+    // This interface defines the type of messages I want to communicate to my owner
+    public interface ChangedTextListener {
+        // These methods are the different events and
+        // need to pass relevant arguments related to the event triggered
+        void onChangedText();
+
+        void onChangedOnClick(String onClickFuncName);
     }
 }

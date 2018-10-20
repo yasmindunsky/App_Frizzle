@@ -3,7 +3,7 @@
 <practice xmlns:tools="http://schemas.android.com/tools"
     tools:keep="@xml/practice_1">
     <slide>
-        <info_text>הפקודה הזאת פוקדת לפלאפון להקריא את הטקסט</info_text>
+        <info_text>הפקודה הזאת פוקדת לפלאפון להקריא את הטקסט.</info_text>
         <task_text/>
         <reminder_text />
         <code show = "true" mutable="false" runnable="true" waitForCTA="false">speakOut("Hello");</code>
@@ -14,7 +14,7 @@
 
     <slide>
         <info_text/>
-        <task_text>שנה את הפקודה כך שתקריא את שמך (באנגלית)</task_text>
+        <task_text>שנה את הפקודה כך שתקריא את שמך (באנגלית).</task_text>
         <reminder_text />
         <code show = "true" mutable="true" runnable="true" waitForCTA="true">speakOut("Hello");</code>
         <design show = "false" runnable = "false" withOnClickSet="false"></design>
@@ -22,9 +22,8 @@
     </slide>
 
     <slide>
-        <info_text>כתוב את הפקודה כך שתקריא את הטקסט:
-            'this is so cool' </info_text>
-        <task_text/>
+        <info_text></info_text>
+        <task_text>כתוב את הפקודה כך שתקריא את הטקסט 'this is so cool'.</task_text>
         <reminder_text>תזכורת: speakOut("Hello"); </reminder_text>
         <code show = "true" mutable="true" runnable="true" waitForCTA="false">\n</code>
         <design show = "false" runnable = "false" withOnClickSet="false"></design>
