@@ -131,7 +131,7 @@ public class UserCreatedViewsModel extends ViewModel {
                 String paddingSideString = properties.get("android:paddingStart");
                 int paddingSide = Support.dpStringToPixel(paddingSideString, context);
 
-                userCreatedView.getThisView().setPadding(paddingSide,padding,paddingSide,padding);
+                if (userCreatedView != null) userCreatedView.getThisView().setPadding(paddingSide,padding,paddingSide,padding);
 
                 views.put(index, userCreatedView);
             }

@@ -23,6 +23,7 @@ public class PrePracticePopupWindow extends PopupWindow {
     public PrePracticePopupWindow(MapActivity activity, String explanationText){
         LayoutInflater inflater = (LayoutInflater)
                 activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        assert inflater != null;
         popupView = inflater.inflate(R.layout.popup_pre_practice, null);
         setContentView(popupView);
         setWidth(width);

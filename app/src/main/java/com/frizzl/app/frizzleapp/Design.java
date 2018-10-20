@@ -7,7 +7,7 @@ import java.io.Serializable;
  */
 
 public class Design implements Serializable{
-    boolean runnable;
+    private boolean runnable;
     private boolean withOnClickSet;
 
     public Design(boolean runnable, boolean withOnClickSet){

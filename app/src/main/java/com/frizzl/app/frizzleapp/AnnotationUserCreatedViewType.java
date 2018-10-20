@@ -14,7 +14,7 @@ public class AnnotationUserCreatedViewType {
     public static final String BUTTON = "Button";
     public static final String IMAGE_VIEW = "ImageView";
 
-    public AnnotationUserCreatedViewType(@UserCreatedViewType String userCreatedViewType) {
+    private AnnotationUserCreatedViewType(@UserCreatedViewType String userCreatedViewType) {
         System.out.println("UserCreatedViewType :" + userCreatedViewType);
     }
 

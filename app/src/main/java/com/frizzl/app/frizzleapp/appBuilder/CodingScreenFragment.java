@@ -88,7 +88,7 @@ public class CodingScreenFragment extends Fragment {
                     }
                     if (taskCompleted){
                         AppBuilderActivity appBuilderActivity = (AppBuilderActivity) getActivity();
-                        appBuilderActivity.taskCompleted();
+                        if (appBuilderActivity != null) appBuilderActivity.taskCompleted();
                     }
                 }
             }
@@ -123,7 +123,7 @@ public class CodingScreenFragment extends Fragment {
 
     public String getCode() {
         String code = "";
-        if (codeEditor != null){
+        if (codeEditor != null && codeEditor.getText() != null){
             code = codeEditor.getText().toString();
         }
         return code;

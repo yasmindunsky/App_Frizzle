@@ -25,6 +25,7 @@ public class HelpPopupWindow extends PopupWindow {
     public HelpPopupWindow(MapActivity activity){
         LayoutInflater inflater = (LayoutInflater)
                 activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        assert inflater != null;
         popupView = inflater.inflate(R.layout.popup_help, null);
         setContentView(popupView);
         setWidth(width);

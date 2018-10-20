@@ -2,9 +2,11 @@ package com.frizzl.app.frizzleapp.appBuilder;
 
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.ClipData;
+import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.DragEvent;
 import android.view.Gravity;
@@ -47,6 +49,7 @@ public class DesignScreenFragment extends Fragment {
     private Tutorial tutorial;
     private AllAngleExpandableButton plusButton;
     private AppBuilderActivity appBuilderActivity;
+    private Context context;
     private UserCreatedViewsModel userCreatedViewsModel;
 
     public DesignScreenFragment() {
@@ -58,7 +61,9 @@ public class DesignScreenFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_design, container, false);
 
-        appBuilderActivity = (AppBuilderActivity) getActivity();
+        FragmentActivity activity = getActivity();
+        appBuilderActivity = (AppBuilderActivity) activity;
+        context = appBuilderActivity.getApplicationContext();
         gridLayout = view.findViewById(R.id.gridLayout);
         appNameTitle = view.findViewById(R.id.app_name_title);
         appIcon = view.findViewById(R.id.app_icon);
@@ -71,8 +76,8 @@ public class DesignScreenFragment extends Fragment {
 
         // Create a ViewModel the first time the system calls an activity's onCreate() method.
         // Re-created activities receive the same MyViewModel instance created by the first activity.
-
-        userCreatedViewsModel = ViewModelProviders.of(getActivity()).get(UserCreatedViewsModel.class);
+        assert activity != null;
+        userCreatedViewsModel = ViewModelProviders.of(activity).get(UserCreatedViewsModel.class);
 
         if (designScreenPresenter != null) {
             setAppName(designScreenPresenter.getAppName());
@@ -154,8 +159,7 @@ public class DesignScreenFragment extends Fragment {
                         public void onChangedOnClick(String onClickFuncName) {
                             if (UserProfile.user.getCurrentLevel() == Support.POLLY_APP_LEVEL_ID && UserProfile.user.getCurrentTaskNum()== 4
                                     &&  !onClickFuncName.equals("")) {
-                                AppBuilderActivity appBuilderActivity = (AppBuilderActivity) getActivity();
-                                appBuilderActivity.taskCompleted();
+                                if (appBuilderActivity != null) appBuilderActivity.taskCompleted();
                             }
                         }
                     });
@@ -199,8 +203,7 @@ public class DesignScreenFragment extends Fragment {
     }
 
     public void presentPopup(PopupWindow popupWindow) {
-        AppBuilderActivity activity = (AppBuilderActivity)getActivity();
-        activity.presentPopup(popupWindow, null);
+        if (appBuilderActivity != null) appBuilderActivity.presentPopup(popupWindow, null);
     }
 
     private void setTextOnClicks(final UserCreatedTextView userCreatedTextView){
@@ -260,7 +263,7 @@ public class DesignScreenFragment extends Fragment {
     }
 
     public void showError(String errorMessage) {
-        Toast.makeText(getActivity(), errorMessage, Toast.LENGTH_LONG).show();
+        Toast.makeText(appBuilderActivity, errorMessage, Toast.LENGTH_LONG).show();
     }
 
     public void getViewsAndPresent() {
@@ -292,13 +295,15 @@ public class DesignScreenFragment extends Fragment {
     }
 
     public void setAppIcon(String iconDrawable) {
-        if (!iconDrawable.equals("") && iconDrawable != null) {
+        if (iconDrawable != null && !iconDrawable.equals("")) {
             LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT);
             layoutParams.weight = 1;
-            int iconIdentifier = getResources().getIdentifier(iconDrawable, "drawable", getActivity().getPackageName());
-            Drawable drawable = getResources().getDrawable(iconIdentifier);
-            appIcon.setImageDrawable(drawable);
-            appIcon.setLayoutParams(layoutParams);
+            if (appBuilderActivity != null) {
+                int iconIdentifier = getResources().getIdentifier(iconDrawable, "drawable", appBuilderActivity.getPackageName());
+                Drawable drawable = getResources().getDrawable(iconIdentifier);
+                appIcon.setImageDrawable(drawable);
+                appIcon.setLayoutParams(layoutParams);
+            }
         }
     }
 
@@ -339,15 +344,15 @@ public class DesignScreenFragment extends Fragment {
     }
 
     public void addNewUserCreatedTextView() {
-        userCreatedViewsModel.addNewUserCreatedTextView(getActivity().getApplicationContext());
+        userCreatedViewsModel.addNewUserCreatedTextView(context);
     }
 
     public void addNewUserCreatedButton() {
-        userCreatedViewsModel.addNewUserCreatedButton(getActivity().getApplicationContext());
+        userCreatedViewsModel.addNewUserCreatedButton(context);
     }
 
     public void addNewUserCreatedImageView() {
-        userCreatedViewsModel.addNewUserCreatedImageView(getActivity().getApplicationContext());
+        userCreatedViewsModel.addNewUserCreatedImageView(context);
     }
 
     class LongPressListener implements View.OnLongClickListener {

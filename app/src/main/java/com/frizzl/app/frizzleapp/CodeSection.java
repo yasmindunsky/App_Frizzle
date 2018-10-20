@@ -76,7 +76,7 @@ public class CodeSection extends RelativeLayout {
                     speakOut();
                 }
                 else {
-                    displayErrorPopup(v, "Uh oh, there is some problem with the code");
+                    displayErrorPopup(v, getResources().getString(R.string.problem_with_code_error));
                 }
             };
             playButton.setOnClickListener(runCode);
@@ -96,6 +96,7 @@ public class CodeSection extends RelativeLayout {
         Context context = getContext();
         LayoutInflater inflater = (LayoutInflater)
                 context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        assert inflater != null;
         View popupView = inflater.inflate(R.layout.popup_code_section_run_error, null);
         TextView errorText = popupView.findViewById(R.id.errorText);
         errorText.setText(errorMessage);

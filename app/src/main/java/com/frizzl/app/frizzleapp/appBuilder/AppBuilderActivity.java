@@ -249,7 +249,7 @@ public class AppBuilderActivity extends AppCompatActivity {
         };
     }
 
-    public void openTaskSuccessPopup() {
+    private void openTaskSuccessPopup() {
         PopupWindow successPopupWindow = new TaskSuccessPopupWindow(getApplicationContext());
         presentPopup(successPopupWindow, afterSuccessPopupClosed());
     }
@@ -258,11 +258,11 @@ public class AppBuilderActivity extends AppCompatActivity {
         presentPopup(startAppPopupWindow, null);
     }
 
-    public void undimAppBuilderActivity() {
+    private void undimAppBuilderActivity() {
         relativeLayout.getForeground().setAlpha(0);
     }
 
-    public void dimAppBuilderActivity() {
+    private void dimAppBuilderActivity() {
         relativeLayout.getForeground().setAlpha(220);
     }
 
@@ -313,11 +313,11 @@ public class AppBuilderActivity extends AppCompatActivity {
         }
     }
 
-    public String getXml() {
+    private String getXml() {
         return designFragment.getXml();
     }
 
-    public void setProgressBarVisibility(int visible) {
+    private void setProgressBarVisibility(int visible) {
         progressBar.setVisibility(visible);
     }
 
@@ -392,7 +392,7 @@ public class AppBuilderActivity extends AppCompatActivity {
         }
     }
 
-    public void presentNextTutorialMessage() {
+    private void presentNextTutorialMessage() {
         OnDismissListener listener = () -> designFragment.presentTutorialMessage();
         tutorial.presentTooltip(viewPager, getString(R.string.tooltip_see_task), listener, Gravity.BOTTOM);
     }
@@ -408,7 +408,7 @@ public class AppBuilderActivity extends AppCompatActivity {
         nextButton.setImageDrawable(drawable);
     }
 
-    public void enableNextArrow(){
+    private void enableNextArrow(){
         Drawable drawable = getResources().getDrawable(R.drawable.task_arrow_animated);
         nextButton.setEnabled(true);
         nextButton.setImageDrawable(drawable);
@@ -420,7 +420,7 @@ public class AppBuilderActivity extends AppCompatActivity {
         }
     }
 
-    public String getCode() {
+    private String getCode() {
         return codingFragment.getCode();
     }
 

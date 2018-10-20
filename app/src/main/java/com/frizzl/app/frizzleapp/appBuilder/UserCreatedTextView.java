@@ -125,13 +125,13 @@ public class UserCreatedTextView extends UserCreatedView {
         // inflate the layout of the popup window
         LayoutInflater inflater = (LayoutInflater)
                 context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        assert inflater != null;
         View popupView = inflater.inflate(layout, null);
 
         // create the popup window
         int width = GridLayout.LayoutParams.WRAP_CONTENT;
         int height = GridLayout.LayoutParams.WRAP_CONTENT;
-        boolean focusable = true; // lets taps outside the popup also dismiss it
-        final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
+        final PopupWindow popupWindow = new PopupWindow(popupView, width, height, true);
         popupWindow.setOutsideTouchable(true);
         popupWindow.setFocusable(true);
 
@@ -185,7 +185,7 @@ public class UserCreatedTextView extends UserCreatedView {
 
                         int originalValueDrawableRes = R.drawable.table_color_circle;
                         Drawable valueDrawable = ContextCompat.getDrawable(context, originalValueDrawableRes);
-                        valueDrawable.setColorFilter(color, PorterDuff.Mode.DARKEN);
+                        if (valueDrawable != null) valueDrawable.setColorFilter(color, PorterDuff.Mode.DARKEN);
                         chooseFontColor.setBackground(valueDrawable);
                     }
                 }

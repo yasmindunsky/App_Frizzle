@@ -64,10 +64,12 @@ public class IntroSlideFragment extends Fragment {
         tts = new TextToSpeech(getContext(), onInitListener, "com.google.android.tts");
 
         Bundle bundle = getArguments();
-        index = bundle.getInt("index");
-        levelID = bundle.getInt("lesson");
-        numOfSlides = bundle.getInt("numOfSlides");
-        practiceSlide = (PracticeSlide) bundle.getSerializable("intro_slide");
+        if (bundle != null) {
+            index = bundle.getInt("index");
+            levelID = bundle.getInt("lesson");
+            numOfSlides = bundle.getInt("numOfSlides");
+            practiceSlide = (PracticeSlide) bundle.getSerializable("intro_slide");
+        }
 
         // Create elements by what's needed
         Context context = getContext();
@@ -111,8 +113,8 @@ public class IntroSlideFragment extends Fragment {
         }
 
         View.OnClickListener speak = v -> {
-            String textTosay = (String) v.getTag();
-            tts.speak(textTosay, TextToSpeech.QUEUE_ADD, null);
+            String textToSay = (String) v.getTag();
+            tts.speak(textToSay, TextToSpeech.QUEUE_ADD, null);
         };
 
         if (practiceSlide.hasDesign()){

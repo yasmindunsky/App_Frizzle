@@ -95,12 +95,13 @@ public class DesignSection extends RelativeLayout {
             addView(playButton);
         }
     }
-    OnClickListener runDesign = new OnClickListener() {
+    private OnClickListener runDesign = new OnClickListener() {
         @Override
         public void onClick(View v) {
             Context context = getContext();
             LayoutInflater inflater = (LayoutInflater)
                     context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            assert inflater != null;
             View popupView = inflater.inflate(R.layout.popup_design_section_run, null);
 
             Button button = popupView.findViewById(R.id.button);
@@ -110,8 +111,10 @@ public class DesignSection extends RelativeLayout {
             button.setTypeface(thisView.getTypeface());
             int originalButtonDrawableRes = R.drawable.user_button_background;
             Drawable buttonDrawable = ContextCompat.getDrawable(context, originalButtonDrawableRes);
-            buttonDrawable.setColorFilter(Color.parseColor(userCreatedButton.getProperties().get("android:backgroundTint")), PorterDuff.Mode.DARKEN);
-            button.setBackground(buttonDrawable);
+            if (buttonDrawable != null) {
+                buttonDrawable.setColorFilter(Color.parseColor(userCreatedButton.getProperties().get("android:backgroundTint")), PorterDuff.Mode.DARKEN);
+                button.setBackground(buttonDrawable);
+            }
 
             button.setOnClickListener(v1 -> {
                 boolean onClickSet = userCreatedButton.getOnClick().equals("myFunction");

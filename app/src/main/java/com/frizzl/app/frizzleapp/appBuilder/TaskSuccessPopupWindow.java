@@ -20,6 +20,7 @@ public class TaskSuccessPopupWindow extends PopupWindow {
     public TaskSuccessPopupWindow(Context context){
         LayoutInflater inflater = (LayoutInflater)
                 context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        assert inflater != null;
         View popupView = inflater.inflate(R.layout.popup_task_success, null);
         setContentView(popupView);
         setWidth(width);

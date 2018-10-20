@@ -56,9 +56,11 @@ public class PracticeSlideFragment extends Fragment {
         linearLayout.setFocusableInTouchMode(true);
 
         Bundle bundle = getArguments();
-        index = bundle.getInt("index");
-        lessonNum = bundle.getInt("lesson");
-        practiceSlide = (PracticeSlide) bundle.getSerializable("practice_slide");
+        if (bundle != null) {
+            index = bundle.getInt("index");
+            lessonNum = bundle.getInt("lesson");
+            practiceSlide = (PracticeSlide) bundle.getSerializable("practice_slide");
+        }
 
         // Create elements by what's needed
         Context context = getContext();
@@ -246,7 +248,7 @@ public class PracticeSlideFragment extends Fragment {
                 // Check if 'myFunction' was written as the onClick value.
                 DesignSection designSection = linearLayout.findViewById(R.id.designSection);
                 UserCreatedButton userCreatedButton = designSection.getUserCreatedButton();
-                correct &= userCreatedButton.getOnClick().trim().equals("myFunction");
+                correct = userCreatedButton.getOnClick().trim().equals("myFunction");
             }
         }
         return correct;
@@ -268,7 +270,7 @@ public class PracticeSlideFragment extends Fragment {
         boolean correct;
         string = string.trim().toLowerCase();
         boolean containsString = code.toLowerCase().contains(string);
-        correct = shouldContain ? containsString : !containsString;
+        correct = (shouldContain == containsString);
         // Contains 'speakOut'
         correct &= code.contains("speakOut");
         // Contains '("'

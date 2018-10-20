@@ -1,6 +1,7 @@
 package com.frizzl.app.frizzleapp.lesson;
 
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,11 +28,12 @@ public class PracticeLastSlideFragment extends android.support.v4.app.Fragment {
         View view = inflater.inflate(R.layout.fragment_practice_end, container, false);
 
         Bundle bundle = getArguments();
-        this.levelID = bundle.getInt("lesson");
+        if (bundle != null) this.levelID = bundle.getInt("lesson");
 
         Button thanksButton = view.findViewById(R.id.thanksButton);
         thanksButton.setOnClickListener(v -> {
-            getActivity().onBackPressed();
+            FragmentActivity activity = getActivity();
+            if (activity != null) activity.onBackPressed();
             UserProfile.user.finishedPractice(levelID);
         });
         return view;

@@ -71,13 +71,11 @@ public class Support {
     public static SpannableStringBuilder markWithColorBetweenTwoSymbols(Spannable s, String symbol, int color, boolean removeSymbol) {
         SpannableStringBuilder ssb = new SpannableStringBuilder(s);
         int symbolLength = symbol.length();
-        int currentPosition = 0;
         int startPosition = 0;
         int firstSymbol = ssb.toString().indexOf(symbol, startPosition);
         int secondSymbol;
         while (firstSymbol >= 0) {
             secondSymbol = (ssb.toString()).indexOf(symbol, firstSymbol + 1);
-            currentPosition++;
             if (secondSymbol > 0) {
                 ssb.setSpan(new ForegroundColorSpan(color), firstSymbol, secondSymbol + 1,
                         Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
@@ -91,7 +89,6 @@ public class Support {
             } else {
                 startPosition = firstSymbol + 1;
             }
-            currentPosition = 0;
             firstSymbol = ssb.toString().indexOf(symbol, startPosition);
         }
         return ssb;

@@ -25,6 +25,7 @@ public class ChooseImagePopupWindow extends PopupWindow {
     public ChooseImagePopupWindow(Context context, int index, UserCreatedImageView userCreatedImageView){
         LayoutInflater inflater = (LayoutInflater)
                 context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        assert inflater != null;
         popupView = inflater.inflate(R.layout.popup_choose_image, null);
         setContentView(popupView);
 

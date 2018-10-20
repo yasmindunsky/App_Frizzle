@@ -23,7 +23,6 @@ import android.widget.Spinner;
 
 import com.frizzl.app.frizzleapp.R;
 import com.frizzl.app.frizzleapp.Support;
-import com.frizzl.app.frizzleapp.UserProfile;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -129,13 +128,13 @@ public class UserCreatedButton extends UserCreatedView {
         // inflate the layout of the popup window
         LayoutInflater inflater = (LayoutInflater)
                 context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        assert inflater != null;
         final View popupView = inflater.inflate(layout, null);
 
         // create the popup window
         int width = GridLayout.LayoutParams.WRAP_CONTENT;
         int height = GridLayout.LayoutParams.WRAP_CONTENT;
-        boolean focusable = true; // lets taps outside the popup also dismiss it
-        final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
+        final PopupWindow popupWindow = new PopupWindow(popupView, width, height, true);
         popupWindow.setOutsideTouchable(true);
         popupWindow.setFocusable(true);
 
@@ -187,7 +186,7 @@ public class UserCreatedButton extends UserCreatedView {
 
                             int originalValueDrawableRes = R.drawable.table_color_circle;
                             Drawable valueDrawable = ContextCompat.getDrawable(context, originalValueDrawableRes);
-                            valueDrawable.setColorFilter(color, PorterDuff.Mode.DARKEN);
+                            if (valueDrawable != null) valueDrawable.setColorFilter(color, PorterDuff.Mode.DARKEN);
                             chooseFontColor.setBackground(valueDrawable);
                         }
                     }
@@ -212,12 +211,13 @@ public class UserCreatedButton extends UserCreatedView {
                     if (position != -1) {
                         int originalButtonDrawableRes = R.drawable.user_button_background;
                         Drawable buttonDrawable = ContextCompat.getDrawable(context, originalButtonDrawableRes);
-                        buttonDrawable.setColorFilter(color, PorterDuff.Mode.DARKEN);
+                        if (buttonDrawable != null) buttonDrawable.setColorFilter(color, PorterDuff.Mode.DARKEN);
                         thisView.setBackground(buttonDrawable);
 
                         int originalValueDrawableRes = R.drawable.table_color_circle;
                         Drawable valueDrawable = ContextCompat.getDrawable(context, originalValueDrawableRes);
-                        valueDrawable.setColorFilter(color, PorterDuff.Mode.DARKEN);
+
+                         if (valueDrawable != null) valueDrawable.setColorFilter(color, PorterDuff.Mode.DARKEN);
                         chooseBgColor.setBackground(valueDrawable);
 
                         properties.put("android:backgroundTint", Support.colorsHexList.get(position));
@@ -300,7 +300,7 @@ public class UserCreatedButton extends UserCreatedView {
             int colorIdentifier = context.getResources().getColor(context.getResources().getIdentifier(fullColorName, "color", context.getPackageName()));
             int originalDrawable = R.drawable.user_button_background;
             Drawable drawable = ContextCompat.getDrawable(context, originalDrawable);
-            drawable.setColorFilter(colorIdentifier, PorterDuff.Mode.DARKEN);
+            if (drawable != null) drawable.setColorFilter(colorIdentifier, PorterDuff.Mode.DARKEN);
             thisView.setBackground(drawable);
             properties.put("android:backgroundTint", fullColorName);
 
@@ -329,7 +329,7 @@ public class UserCreatedButton extends UserCreatedView {
     public void setBackgroundColor(String hex) {
         int originalButtonDrawableRes = R.drawable.user_button_background;
         Drawable buttonDrawable = ContextCompat.getDrawable(context, originalButtonDrawableRes);
-        buttonDrawable.setColorFilter(Color.parseColor(hex), PorterDuff.Mode.DARKEN);
+        if (buttonDrawable != null) buttonDrawable.setColorFilter(Color.parseColor(hex), PorterDuff.Mode.DARKEN);
         thisView.setBackground(buttonDrawable);
     }
 

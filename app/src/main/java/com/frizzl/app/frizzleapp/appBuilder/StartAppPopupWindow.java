@@ -27,6 +27,7 @@ public class StartAppPopupWindow extends PopupWindow {
     public StartAppPopupWindow(AppBuilderActivity activity){
         LayoutInflater inflater = (LayoutInflater)
                 activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        assert inflater != null;
         popupView = inflater.inflate(R.layout.popup_start_app, null);
         setContentView(popupView);
 

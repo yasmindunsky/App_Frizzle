@@ -70,8 +70,10 @@ public class CodeEditor extends android.support.v7.widget.AppCompatEditText {
                 if (hasFocus) {
                     v.post(()->
                     {
-                        imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
-                        imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+                        if (imm != null) {
+                            imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
+                            imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+                        }
                     });
 
                 }
@@ -187,7 +189,8 @@ public class CodeEditor extends android.support.v7.widget.AppCompatEditText {
 
     public void setText(String text){
         super.setText(text);
-        setSelection(getText().length());
+        Editable editableText = getText();
+        if (editableText != null) setSelection(editableText.length());
     }
 
 }

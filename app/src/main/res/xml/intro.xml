@@ -4,7 +4,7 @@
     tools:keep="@xml/practice_1">
     <slide>
         <info_text>You'll now learn everything you need to build a Talking Parrot App!</info_text>
-        <task_text></task_text>
+        <task_text />
         <reminder_text />
         <code mutable="false" shows="false" runnable ="false" waitForCTA="false"/>
         <design shows="false" runnable="false"/>
