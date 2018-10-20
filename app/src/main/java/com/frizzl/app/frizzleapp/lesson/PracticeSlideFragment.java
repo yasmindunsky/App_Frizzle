@@ -212,20 +212,19 @@ public class PracticeSlideFragment extends Fragment {
 
         int currentLevel = UserProfile.user.getCurrentLevel();
         if (currentLevel == Support.SPEAKOUT_PRACTICE_LEVEL_ID) {
-            if (currentSlide == 2) {
+            if (currentSlide == 1) {
                 // Check if speakOut was added and written 'this is so cool'.
                 CodeSection codeSection = linearLayout.findViewById(R.id.codeSection);
                 String code = codeSection.getCode();
-                correct = checkIfContainsSpeakOutAndString(code, "this is so cool");
-            }
-        } else if (currentLevel == Support.ONCLICK_PRACTICE_LEVEL_ID){
-            if (currentSlide == 2){
-                //
+                correct = checkIfContainsSpeakOutAndString(code, "Hello", false);
+            } else if (currentSlide == 2) {
+                // Check if speakOut was added and written 'this is so cool'.
                 CodeSection codeSection = linearLayout.findViewById(R.id.codeSection);
                 String code = codeSection.getCode();
-                correct = checkIfContainsSpeakOutAndString(code, "goodbye");
+                correct = checkIfContainsSpeakOutAndString(code, "this is so cool", true);
             }
-            else if (currentSlide == 5){
+        } else if (currentLevel == Support.ONCLICK_PRACTICE_LEVEL_ID){
+            if (currentSlide == 5){
                 // Check if new function was added.
                 CodeSection codeSection = linearLayout.findViewById(R.id.codeSection);
                 String code = codeSection.getCode();
@@ -241,7 +240,7 @@ public class PracticeSlideFragment extends Fragment {
                 // Check if speakOut was written inside function.
                 CodeSection codeSection = linearLayout.findViewById(R.id.codeSection);
                 String code = codeSection.getCode();
-                correct = checkIfContainsSpeakOutAndString(code, "Hello");
+                correct = checkIfContainsSpeakOutAndString(code, "Hello", true);
             }
             else if (currentSlide == 9){
                 // Check if 'myFunction' was written as the onClick value.
@@ -259,16 +258,17 @@ public class PracticeSlideFragment extends Fragment {
     }
 
     private boolean checkIfContainsFunctionWithName(String code, String functionName) {
-        boolean correct = true;
-        correct &= code.contains(functionName.trim());
+        boolean correct = code.contains(functionName.trim());
         // Contains 'speakOut'
         correct &= code.contains("public void");
         return correct;
     }
 
-    private boolean checkIfContainsSpeakOutAndString(String code, String expectedString) {
-        boolean correct = true;
-        correct &= code.toLowerCase().contains(expectedString.trim().toLowerCase());
+    private boolean checkIfContainsSpeakOutAndString(String code, String string, boolean shouldContain) {
+        boolean correct;
+        string = string.trim().toLowerCase();
+        boolean containsString = code.toLowerCase().contains(string);
+        correct = shouldContain ? containsString : !containsString;
         // Contains 'speakOut'
         correct &= code.contains("speakOut");
         // Contains '("'
