@@ -154,7 +154,12 @@ public class DesignSection extends RelativeLayout {
 
     @Override
     protected void onDetachedFromWindow() {
+        //Close the Text to Speech Library
+        if(tts != null) {
+            tts.stop();
+            tts.shutdown();
+            Log.d("tts", "TTS Destroyed");
+        }
         super.onDetachedFromWindow();
-        tts.shutdown();
     }
 }

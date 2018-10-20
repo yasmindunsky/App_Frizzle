@@ -166,7 +166,12 @@ public class IntroSlideFragment extends Fragment {
 
     @Override
     public void onDestroy() {
+        //Close the Text to Speech Library
+        if(tts != null) {
+            tts.stop();
+            tts.shutdown();
+            Log.d("tts", "TTS Destroyed");
+        }
         super.onDestroy();
-        tts.shutdown();
     }
 }
