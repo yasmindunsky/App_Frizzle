@@ -15,7 +15,7 @@ import com.frizzl.app.frizzleapp.UserProfile;
 
 public class PracticeLastSlideFragment extends android.support.v4.app.Fragment {
 
-    private int practiceID;
+    private int levelID;
 
     public PracticeLastSlideFragment(){
 
@@ -27,12 +27,12 @@ public class PracticeLastSlideFragment extends android.support.v4.app.Fragment {
         View view = inflater.inflate(R.layout.fragment_practice_end, container, false);
 
         Bundle bundle = getArguments();
-        this.practiceID = bundle.getInt("lesson");
+        this.levelID = bundle.getInt("lesson");
 
         Button thanksButton = view.findViewById(R.id.thanksButton);
         thanksButton.setOnClickListener(v -> {
             getActivity().onBackPressed();
-            UserProfile.user.finishedPractice(practiceID);
+            UserProfile.user.finishedPractice(levelID);
         });
         return view;
     }

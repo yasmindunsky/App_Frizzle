@@ -3,7 +3,7 @@
 <practice xmlns:tools="http://schemas.android.com/tools"
     tools:keep="@xml/practice_1">
     <slide>
-        <info_text>Building apps has two aspects: designing the app and writing code, for example:</info_text>
+        <info_text>Building apps has two aspects: designing the app and writing code.</info_text>
         <task_text></task_text>
         <reminder_text />
         <code mutable="false" show="false" runnable ="false" waitForCTA="false"/>
@@ -30,8 +30,8 @@
     </slide>
 
     <slide>
-        <info_text>With code we define the computer how to behave.</info_text>
-        <task_text/>
+        <info_text>With code we define the computer how to behave, for example:</info_text>
+        <task_text>Run the code.</task_text>
         <reminder_text/>
         <code mutable="false" show="true" runnable ="true" waitForCTA="true">speakOut("hello");</code>
         <design show="false" runnable="false" withOnClickSet="false"></design>

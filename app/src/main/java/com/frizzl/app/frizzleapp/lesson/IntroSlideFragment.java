@@ -12,7 +12,6 @@ import android.support.v7.widget.AppCompatTextView;
 import android.text.SpannableStringBuilder;
 import android.util.Log;
 import android.view.ContextThemeWrapper;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,7 +30,7 @@ import java.util.Locale;
  */
 public class IntroSlideFragment extends Fragment {
     private int index;
-    private int lessonNum;
+    private int levelID;
     private PracticeSlide practiceSlide;
     private LinearLayout linearLayout;
     private static final int SIDES_MARGIN = 50;
@@ -66,7 +65,7 @@ public class IntroSlideFragment extends Fragment {
 
         Bundle bundle = getArguments();
         index = bundle.getInt("index");
-        lessonNum = bundle.getInt("lesson");
+        levelID = bundle.getInt("lesson");
         numOfSlides = bundle.getInt("numOfSlides");
         practiceSlide = (PracticeSlide) bundle.getSerializable("intro_slide");
 
@@ -154,8 +153,8 @@ public class IntroSlideFragment extends Fragment {
 
             // If last slide
             if (index == numOfSlides - 1){
+                UserProfile.user.finishedPractice(levelID);
                 getActivity().onBackPressed();
-                UserProfile.user.finishedPractice(index);
             }
             viewPager.setCurrentItem(i);
             RoundCornerProgressBar progressBar = activity.findViewById(R.id.progressBar);

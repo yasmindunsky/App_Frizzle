@@ -91,8 +91,8 @@ public class UserProfile implements Serializable {
         }
     }
 
-    public void finishedPractice(int practiceID) {
-        if (practiceID == topLevel) {
+    public void finishedPractice(int levelID) {
+        if (levelID == topLevel) {
             topLevel++;
         }
         if (currentLevel < topLevel){
