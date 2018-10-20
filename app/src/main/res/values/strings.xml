@@ -136,7 +136,7 @@ public class MainActivity extends AppCompatActivity implements   TextToSpeech.On
     <string name="function_keyboard">Add function</string>
     <string name="error_text">Error text</string>
     <string name="lets_move_on_from_app">let\'s move on</string>
-    <string name="friendship_test_app">Friendship Test App</string>
+    <string name="friendship_test_app">Friendship\nTest App</string>
     <string name="variables_practice">Practice 2</string>
     <string name="views_practice">Practice 1</string>
     <string name="polly_app">Polly App</string>
@@ -177,7 +177,7 @@ public class MainActivity extends AppCompatActivity implements   TextToSpeech.On
     <string name="first_practice_explanation_text">learn first lesson</string>
     <string name="check">Check</string>
     <string name="polly_intro">Polly Intro</string>
-    <string name="friendship_intro">Friendship Test\nIntro</string>
+    <string name="friendship_intro">Friendship\nTest Intro</string>
     <string name="onboarding_text">Let\'s start building apps.</string>
     <string name="our_button_does_nothing">Our button does nothing yet.</string>
     <string name="whats_your_name">What\'s your name?</string>

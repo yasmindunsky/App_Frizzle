@@ -68,12 +68,12 @@
     </style>
 
     <style name="Button.MapApp" parent="@android:style/Widget.Material.Button.Borderless">
-        <item name="android:layout_height">140dp</item>
-        <item name="android:layout_width">140dp</item>
+        <item name="android:layout_height">135dp</item>
+        <item name="android:layout_width">135dp</item>
         <item name="android:background">@drawable/map_app_circle</item>
         <item name="android:gravity">center</item>
         <item name="android:layout_margin">30dp</item>
-        <item name="android:padding">15dp</item>
+        <item name="android:padding">10dp</item>
         <item name="android:enabled">false</item>
     </style>
 
@@ -82,14 +82,10 @@
         <item name="android:layout_width">90dp</item>
         <item name="android:background">@drawable/map_practice_circle</item>
         <item name="android:gravity">center</item>
-        <item name="android:layout_margin">20dp</item>
         <item name="android:enabled">false</item>
     </style>
 
     <style name="Button.MapIntro" parent="Button.MapPractice">
-        <item name="android:layout_margin">40dp</item>
-        <item name="android:layout_marginTop">10dp</item>
-        <item name="android:layout_marginStart">10dp</item>
     </style>
 
     <style name="Text.Basic" parent="@android:style/TextAppearance.Medium">

@@ -33,10 +33,10 @@ public class UserProfile implements Serializable {
         init();
     }
 
-    public void init(){
+    private void init(){
         tutorialUserApp = null;
         pollyUserApp = null;
-        topLevel = 4; // TODO: change before release
+        topLevel = 0; // TODO: change before release
         currentLevel = 0;
     }
 

@@ -67,7 +67,7 @@
         android:id="@+id/nextButton"
         style="@style/Button.Hollow.Blue"
         android:layout_marginBottom="24dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="24dp"
         android:text="@string/next"
         android:textAppearance="@style/Text.Title.Blue"
         android:textColor="@color/frizzle_light_blue"
