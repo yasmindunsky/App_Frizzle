@@ -5,6 +5,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/UnselectedLightGrey"
+        android:layoutDirection="ltr"
         android:orientation="horizontal">
 
         <Button
@@ -15,19 +16,19 @@
             android:layout_weight="1"
             android:background="@drawable/keyboard_key"
             android:text="@string/speakout_keyboard"
-            android:textColor="@color/frizzle_orange"
-            android:textAppearance="@style/Text.KeyBoardsKeys" />
+            android:textAppearance="@style/Text.KeyBoardsKeys"
+            android:textColor="@color/frizzle_orange" />
 
         <Button
             android:id="@+id/button_function"
-            android:textAppearance="@style/Text.KeyBoardsKeys"
-            android:textColor="@color/frizzle_light_blue"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:layout_weight="1"
             android:background="@drawable/keyboard_key"
-            android:text="@string/function_keyboard" />
+            android:text="@string/function_keyboard"
+            android:textAppearance="@style/Text.KeyBoardsKeys"
+            android:textColor="@color/frizzle_light_blue" />
 
     </LinearLayout>
 
@@ -35,6 +36,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/UnselectedLightGrey"
+        android:layoutDirection="ltr"
         android:orientation="horizontal">
 
         <ImageButton

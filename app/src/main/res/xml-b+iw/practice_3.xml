@@ -16,7 +16,7 @@
 
     <slide>
         <info_text/>
-        <task_text>.תריץ ותראה מה קורה בלחיצה על הכפתור</task_text>
+        <task_text>.הריצו וראו מה קורה בלחיצה על הכפתור</task_text>
         <reminder_text />
         <code show="false" mutable="false" runnable="false" waitForCTA="false"></code>
         <design show="true" runnable="true" withOnClickSet="false"></design>
@@ -33,7 +33,7 @@
     </slide>
 
     <slide>
-        <info_text>.לשם כך נוסיף לקוד שלנו מבנה שנקרא $light_blue$פונקציה$light_blue$</info_text>
+        <info_text>לשם כך נוסיף לקוד שלנו מבנה שנקרא $light_blue$פונקציה$light_blue$.</info_text>
         <task_text/>
         <reminder_text/>
         <code show="false" mutable="false" runnable="false" waitForCTA="false"></code>
@@ -42,8 +42,7 @@
     </slide>
 
     <slide>
-        <info_text>$light_blue$פונקציה$light_blue$ זה מבנה מיוחד שעוטף פקודות ואנחנו נותנים לו שם. מיד נלמד איך נראית $light_blue$פונקציה$light_blue$.
-        </info_text>
+        <info_text>$light_blue$פונקציה$light_blue$ זה מבנה מיוחד שעוטף פקודות ואנחנו נותנים לו שם. מיד נלמד איך נראית $light_blue$פונקציה$light_blue$.</info_text>
         <task_text/>
         <reminder_text/>
         <code show="false" mutable="false" runnable="false" waitForCTA="false"></code>
@@ -53,7 +52,7 @@
 
     <slide>
         <info_text/>
-        <task_text>הוסף לקוד $light_blue$פונקציה$light_blue$ בעזרת המקלדת.</task_text>
+        <task_text>הוסיפו לקוד $light_blue$פונקציה$light_blue$ בעזרת המקלדת.</task_text>
         <reminder_text/>
         <code show="true" mutable="true" runnable="false" waitForCTA="false"></code>
         <design show="false" runnable="false" withOnClickSet="false"></design>
@@ -61,7 +60,7 @@
     </slide>
 
     <slide>
-        <info_text>נלמד מה משמעות הטקסט שכתוב בלבן בהמשך, בשלב זה נשאיר אותו קבוע</info_text>
+        <info_text>נלמד מה משמעות הטקסט שכתוב בלבן בהמשך, בשלב זה נשאיר אותו קבוע.</info_text>
         <task_text/>
         <reminder_text/>
         <code show="true" mutable="false" runnable="false" waitForCTA="false">
@@ -75,7 +74,7 @@
 
     <slide>
         <info_text/>
-        <task_text>שנה את שם $light_blue$הפונקציה$light_blue$ לשם myFunction</task_text>
+        <task_text>שנו את שם $light_blue$הפונקציה$light_blue$ לשם myFunction.</task_text>
         <reminder_text/>
         <code show="true" mutable="true" runnable="false" waitForCTA="false">
             public void nameYouChoose(View view){
@@ -88,7 +87,7 @@
 
     <slide>
         <info_text/>
-        <task_text>הוסיפו את פקודת $orange$ה-speakOut("Hello")$orange$ בתוך $light_blue$הפונקציה$light_blue$</task_text>
+        <task_text>הוסיפו את פקודת $orange$ה-speakOut("Hello")$orange$ בתוך $light_blue$הפונקציה$light_blue$.</task_text>
         <reminder_text/>
         <code show="true" mutable="true" runnable="false" waitForCTA="false">
             public void myFunction(View view){
@@ -114,7 +113,7 @@
 
     <slide>
         <info_text/>
-        <task_text>נסו להריץ את הכפתור וללחוץ עליו</task_text>
+        <task_text>נסו להריץ את הכפתור וללחוץ עליו.</task_text>
         <reminder_text/>
         <code show="true" mutable="false" runnable="false" waitForCTA="false">
             public void myFunction(View view){\n\tspeakOut("Hello");\n}

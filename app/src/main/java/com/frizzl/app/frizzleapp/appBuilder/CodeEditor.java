@@ -36,6 +36,7 @@ public class CodeEditor extends android.support.v7.widget.AppCompatEditText {
         this.setTypeface(ResourcesCompat.getFont(context, R.font.calibri_regular));
         this.setPadding(36,36,36,36);
         this.setBackgroundResource(android.R.color.transparent);
+        this.setLayoutDirection(LAYOUT_DIRECTION_LTR);
 
         this.keyboard = keyboard;
 

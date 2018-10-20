@@ -12,7 +12,7 @@
     </slide>
 
     <slide>
-        <info_text>.כשנעצב את האפליקציה נוכל להוסיף בקלות אלמנטים כמו טקסט, כפתור ותמונה</info_text>
+        <info_text>כשנעצב את האפליקציה נוכל להוסיף בקלות אלמנטים כמו טקסט, כפתור ותמונה.</info_text>
         <task_text/>
         <reminder_text />
         <code mutable = "false" show = "false" runnable ="false" waitForCTA="false"></code>
@@ -21,8 +21,7 @@
     </slide>
 
     <slide>
-        <info_text>.בשביל לגרום לאלמנטים האלה להיות פעילים נלמד לכתוב קוד בשפת תכנות שנקראת ג'אווה
-        </info_text>
+        <info_text>בשביל לגרום לאלמנטים האלה להיות פעילים נלמד לכתוב קוד בשפת תכנות שנקראת ג'אווה.</info_text>
         <task_text/>
         <reminder_text/>
         <code mutable = "false" show = "true" runnable ="false" waitForCTA="false">\n// כאן תוכלו לכתוב בהמשך קוד למחשב בשפת ג'אווה\n</code>
@@ -40,7 +39,7 @@
     </slide>
 
     <slide>
-        <info_text>.פקודת ה-speakOut היא $orange$הפקודה$orange$ הראשונה שנלמד, באמצעותה נפקוד על המחשב לדבר</info_text>
+        <info_text>פקודת ה-speakOut היא $orange$הפקודה$orange$ הראשונה שנלמד, באמצעותה נפקוד על המחשב לדבר.</info_text>
         <task_text/>
         <reminder_text/>
         <code mutable = "false" show = "true" runnable ="true" waitForCTA="false">speakOut("my first command!");</code>
