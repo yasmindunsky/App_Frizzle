@@ -21,16 +21,16 @@
     </slide>
 
     <slide>
-        <info_text>To make those elements active, we will learn to write code in a language called Java.</info_text>
+        <info_text>To make those elements active, we will learn to write code in a programming language called Java.</info_text>
         <task_text/>
         <reminder_text/>
-        <code mutable="false" show="true" runnable ="false" waitForCTA="false">// Here you will write code in Java </code>
+        <code mutable="false" show="true" runnable ="false" waitForCTA="false">// Here you will later write code in Java </code>
         <design show="false" runnable="false" withOnClickSet="false"></design>
         <call_to_action>Got it</call_to_action>
     </slide>
 
     <slide>
-        <info_text>With code we define the computer how to behave, for example:</info_text>
+        <info_text>With code we instruct the computer how to behave, for example:</info_text>
         <task_text>Run the code.</task_text>
         <reminder_text/>
         <code mutable="false" show="true" runnable ="true" waitForCTA="true">speakOut("hello");</code>
@@ -40,7 +40,7 @@
 
     <slide>
         <info_text>The first $orange$command$orange$ we will learn is the $orange$speakOut command$orange$.
-It commands the computer to speak out text.</info_text>
+It commands the computer to read text aloud.</info_text>
         <task_text/>
         <reminder_text/>
         <code mutable="false" show="true" runnable ="true" waitForCTA="false">speakOut("my first command!");</code>

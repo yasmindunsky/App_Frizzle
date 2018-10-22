@@ -14,6 +14,7 @@ Use "'" for special chars.
     <string name="propertiesTableTextColor">צבע טקסט</string>
     <string name="save">שמירה</string>
     <string name="welcome">ברוכים הבאים</string>
+    <string name="app_explanation_text" translatable="false">מזל טוב! השלמתם את כל התרגולים, עכשיו תוכלו לבנות את האפליקציה הראשונה שלכם.</string>
     <string name="start">קדימה</string>
     <string name="wow">וואו!</string>
     <string name="thanks">תודה</string>
@@ -59,11 +60,11 @@ Use "'" for special chars.
     <string name="practice">תרגול</string>
     <string name="practice_explanation_text" >בתרגול הזה נלמד להשתמש בפקודות</string>
     <string name="cool">יאללה</string>
-    <string name="onclick_practice_explanation_text" >"נלמד איך מחברים כפתור לפקודה"</string>
+    <string name="onclick_practice_explanation_text" >לסיום נלמד איך גורמים לכפתור באפליקציה שלנו להקריא טקסט בקול.</string>
     <string name="first_practice">תרגול 1</string>
-    <string name="first_practice_explanation_text">נתחיל ללמוד איך בונים אפליקציה</string>
+    <string name="first_practice_explanation_text">בתור התחלה, נלמד מה הם שני החלקים המרכזיים בבניית אפליקציה.</string>
     <string name="check">בדיקה</string>
-    <string name="speakout_practice_explanation_text">נלמד את הפקודה הראשונה שלנו</string>
+    <string name="speakout_practice_explanation_text">כעת נלמד את הפקודה הראשונה שלנו, הפוקדת על המחשב להקריא טקסט בקול.</string>
     <string name="polly_intro">מבוא</string>
     <string name="friendship_intro">מבוא</string>
     <string name="onboarding_text">בואו נתחיל לבנות אפליקציות</string>
