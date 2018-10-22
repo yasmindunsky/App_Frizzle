@@ -64,7 +64,7 @@
         <task_text/>
         <reminder_text/>
         <code show="true" mutable="false" runnable="false" waitForCTA="false">
-            public void nameYouChoose(View view){\n\t// // You will later write commands here\n\n}
+            public void nameYouChoose(View view){\n\t// You will later write commands here\n\n}
         </code>
         <design show="false" runnable="false" withOnClickSet="false"></design>
         <call_to_action>הבנתי</call_to_action>

@@ -70,14 +70,17 @@ public class CodeSection extends RelativeLayout {
             playButton.setBackground(getResources().getDrawable(R.drawable.run_button_background));
             playButton.setScaleType(ImageView.ScaleType.FIT_CENTER);
             playButton.setAdjustViewBounds(false);
+            playButton.setCropToPadding(false);
+            playButton.setScaleType(ImageView.ScaleType.FIT_CENTER);
             playButton.setImageDrawable(getResources().getDrawable(R.drawable.ic_play_run_icon));
+            playButton.setPadding(24,12,12,12);
             OnClickListener runCode = v -> {
                 if (waitForCTA && readyForCTAListener != null) readyForCTAListener.onReadyForCTA();
                 if (codeIsValid()) {
                     speakOut();
                 }
                 else {
-                    displayErrorPopup(v, getResources().getString(R.string.problem_with_code_error));
+                    displayErrorPopup(v, getResources().getString(R.string.problem_with_syntax));
                 }
             };
             playButton.setOnClickListener(runCode);
@@ -85,7 +88,7 @@ public class CodeSection extends RelativeLayout {
             RelativeLayout.LayoutParams playButtonLayoutParams = new RelativeLayout.LayoutParams(80, 80);
             playButtonLayoutParams.addRule(RelativeLayout.CENTER_VERTICAL);
             playButtonLayoutParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
-            playButtonLayoutParams.setMarginEnd(20);
+            playButtonLayoutParams.rightMargin = 20;
             playButton.setLayoutParams(playButtonLayoutParams);
             addView(playButton);
         }

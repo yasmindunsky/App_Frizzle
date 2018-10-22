@@ -4,6 +4,8 @@ package com.frizzl.app.frizzleapp.lesson;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
+import android.support.constraint.ConstraintSet;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
@@ -39,9 +41,9 @@ public class PracticeSlideFragment extends Fragment {
     private int index;
     private int lessonNum;
     private PracticeSlide practiceSlide;
-    private LinearLayout linearLayout;
+    private ConstraintLayout constraintLayout;
     private static final int SIDES_MARGIN = 50;
-    private static final int TOP_DOWN_MARGIN = 25;
+    private static final int TOP_DOWN_MARGIN = 30;
     private AppCompatButton callToActionButton;
     private boolean waitForCTA = false;
 
@@ -53,8 +55,9 @@ public class PracticeSlideFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_practice_slide, container, false);
-        linearLayout = view.findViewById(R.id.linearLayout);
-        linearLayout.setFocusableInTouchMode(true);
+        constraintLayout = view.findViewById(R.id.constraintLayout);
+        constraintLayout.setFocusableInTouchMode(true);
+        int constraintLayoutId = constraintLayout.getId();
 
         Bundle bundle = getArguments();
         if (bundle != null) {
@@ -65,6 +68,8 @@ public class PracticeSlideFragment extends Fragment {
 
         // Create elements by what's needed
         Context context = getContext();
+        Button holder = constraintLayout.findViewById(R.id.holder);
+        int prevId = holder.getId();
 
         if (practiceSlide.hasInfoText()){
             int infoTextStyle = R.style.Text_PracticeSlide_infoText;
@@ -78,11 +83,13 @@ public class PracticeSlideFragment extends Fragment {
                     "$orange$", getResources().getColor(R.color.frizzle_orange), true);
             infoText.setText(spannableInfoText);
 
-            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+            ConstraintLayout.LayoutParams layoutParams = new ConstraintLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT);
             layoutParams.setMargins(SIDES_MARGIN,TOP_DOWN_MARGIN,SIDES_MARGIN,TOP_DOWN_MARGIN);
+            layoutParams.topToBottom = prevId;
+            prevId = infoText.getId();
             infoText.setLayoutParams(layoutParams);
-            linearLayout.addView(infoText);
+            constraintLayout.addView(infoText);
         }
 
         if (practiceSlide.hasTaskText()){
@@ -97,11 +104,13 @@ public class PracticeSlideFragment extends Fragment {
                     "$orange$", getResources().getColor(R.color.frizzle_orange), true);
             taskText.setText(spannableTaskText);
 
-            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+            ConstraintLayout.LayoutParams layoutParams = new ConstraintLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT);
             layoutParams.setMargins(SIDES_MARGIN,TOP_DOWN_MARGIN,SIDES_MARGIN,TOP_DOWN_MARGIN);
             taskText.setLayoutParams(layoutParams);
-            linearLayout.addView(taskText);
+            layoutParams.topToBottom = prevId;
+            prevId = taskText.getId();
+            constraintLayout.addView(taskText);
         }
 
         if (practiceSlide.hasReminderText()){
@@ -109,11 +118,13 @@ public class PracticeSlideFragment extends Fragment {
             AppCompatTextView reminderText = new AppCompatTextView(new ContextThemeWrapper(context, reminderTextStyle));
             reminderText.setId(R.id.reminderText);
             reminderText.setText(practiceSlide.getReminderText());
-            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+            ConstraintLayout.LayoutParams layoutParams = new ConstraintLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT);
             layoutParams.setMargins(SIDES_MARGIN,TOP_DOWN_MARGIN,SIDES_MARGIN,TOP_DOWN_MARGIN);
+            layoutParams.topToBottom = prevId;
+            prevId = reminderText.getId();
             reminderText.setLayoutParams(layoutParams);
-            linearLayout.addView(reminderText);
+            constraintLayout.addView(reminderText);
         }
 
         CodeKeyboard codeKeyboard = null;
@@ -125,19 +136,22 @@ public class PracticeSlideFragment extends Fragment {
                 codeKeyboard = new CodeKeyboard(context);
                 codeKeyboard.setId(R.id.codeKeyboard);
                 codeKeyboard.setOrientation(LinearLayout.VERTICAL);
-                LinearLayout.LayoutParams keyboardLayoutParams = new
-                        LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                ConstraintLayout.LayoutParams keyboardLayoutParams = new
+                        ConstraintLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                         ViewGroup.LayoutParams.WRAP_CONTENT);
                 keyboardLayoutParams.setMargins(0,TOP_DOWN_MARGIN,0,0);
+                keyboardLayoutParams.bottomToBottom = constraintLayoutId;
                 codeKeyboard.setLayoutParams(keyboardLayoutParams);
             }
             CodeSection codeSection = new CodeSection(context, code.getCode(), code.getRunnable(), mutable, code.getWaitForCTA(), codeKeyboard);
             codeSection.setId(R.id.codeSection);
-            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+            ConstraintLayout.LayoutParams layoutParams = new ConstraintLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT);
             layoutParams.setMargins(SIDES_MARGIN,TOP_DOWN_MARGIN,SIDES_MARGIN,TOP_DOWN_MARGIN);
+            layoutParams.topToBottom = prevId;
+            prevId = codeSection.getId();
             codeSection.setLayoutParams(layoutParams);
-            linearLayout.addView(codeSection);
+            constraintLayout.addView(codeSection);
             codeSection.setReadyForCTAListener(() -> enableCTAButton(true));
         }
 
@@ -146,14 +160,16 @@ public class PracticeSlideFragment extends Fragment {
             boolean runnable = design.getRunnable();
             boolean withOnClickSet = design.getWithOnClickSet();
             DesignSection designSection = new DesignSection(context, runnable, withOnClickSet);
-            designSection.setBackgroundLayout(linearLayout);
+            designSection.setBackgroundLayout(constraintLayout);
             designSection.setId(R.id.designSection);
             designSection.setPadding(SIDES_MARGIN, TOP_DOWN_MARGIN, SIDES_MARGIN, TOP_DOWN_MARGIN);
-            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+            ConstraintLayout.LayoutParams layoutParams = new ConstraintLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT);
             layoutParams.setMargins(SIDES_MARGIN, TOP_DOWN_MARGIN, SIDES_MARGIN, TOP_DOWN_MARGIN);
+            layoutParams.topToBottom = prevId;
+            prevId = designSection.getId();
             designSection.setLayoutParams(layoutParams);
-            linearLayout.addView(designSection);
+            constraintLayout.addView(designSection);
             designSection.setDisplayErrorListener(() -> {
                 if (UserProfile.user.getCurrentLevel() == Support.ONCLICK_PRACTICE_LEVEL_ID
                         && getCurrentSlide() == 1) {
@@ -176,9 +192,13 @@ public class PracticeSlideFragment extends Fragment {
         callToActionButton = new AppCompatButton(new ContextThemeWrapper(context, ctaButtonStyle));
         callToActionButton.setText(practiceSlide.getCallToActionText());
         callToActionButton.setBackground(getResources().getDrawable(R.drawable.check_button_background));
-        LinearLayout.LayoutParams layoutParams =
-                new LinearLayout.LayoutParams(550, ViewGroup.LayoutParams.WRAP_CONTENT);
+        ConstraintLayout.LayoutParams layoutParams =
+                new ConstraintLayout.LayoutParams(550, ViewGroup.LayoutParams.WRAP_CONTENT);
         layoutParams.setMargins(0,TOP_DOWN_MARGIN * 2,0,TOP_DOWN_MARGIN*4);
+        layoutParams.topToBottom = prevId;
+        layoutParams.startToStart = constraintLayoutId;
+        layoutParams.endToEnd = constraintLayoutId;
+        prevId = callToActionButton.getId();
         callToActionButton.setLayoutParams(layoutParams);
         callToActionButton.setOnClickListener(v -> {
             Button button = (Button) v;
@@ -197,10 +217,10 @@ public class PracticeSlideFragment extends Fragment {
                 else button.setText(tryAgainText);
             }
         });
-        linearLayout.addView(callToActionButton);
+        constraintLayout.addView(callToActionButton);
 
         if (codeKeyboard != null) {
-            linearLayout.addView(codeKeyboard);
+            constraintLayout.addView(codeKeyboard);
         }
 
         if (waitForCTA) enableCTAButton(false);
@@ -218,37 +238,37 @@ public class PracticeSlideFragment extends Fragment {
         if (currentLevel == Support.SPEAKOUT_PRACTICE_LEVEL_ID) {
             if (currentSlide == 1) {
                 // Check if speakOut was added and written 'this is so cool'.
-                CodeSection codeSection = linearLayout.findViewById(R.id.codeSection);
+                CodeSection codeSection = constraintLayout.findViewById(R.id.codeSection);
                 String code = codeSection.getCode();
                 correct = checkIfContainsSpeakOutAndString(code, "Hello", false);
             } else if (currentSlide == 2) {
                 // Check if speakOut was added and written 'this is so cool'.
-                CodeSection codeSection = linearLayout.findViewById(R.id.codeSection);
+                CodeSection codeSection = constraintLayout.findViewById(R.id.codeSection);
                 String code = codeSection.getCode();
                 correct = checkIfContainsSpeakOutAndString(code, "this is so cool", true);
             }
         } else if (currentLevel == Support.ONCLICK_PRACTICE_LEVEL_ID){
             if (currentSlide == 5){
                 // Check if new function was added.
-                CodeSection codeSection = linearLayout.findViewById(R.id.codeSection);
+                CodeSection codeSection = constraintLayout.findViewById(R.id.codeSection);
                 String code = codeSection.getCode();
                 correct = checkIfContainsFunctionWithName(code, "");
             }
             else if (currentSlide == 7){
                 // Check function name changed to 'myFunction'.
-                CodeSection codeSection = linearLayout.findViewById(R.id.codeSection);
+                CodeSection codeSection = constraintLayout.findViewById(R.id.codeSection);
                 String code = codeSection.getCode();
                 correct = checkIfContainsFunctionWithName(code, "myFunction");
             }
             else if (currentSlide == 8){
                 // Check if speakOut was written inside function.
-                CodeSection codeSection = linearLayout.findViewById(R.id.codeSection);
+                CodeSection codeSection = constraintLayout.findViewById(R.id.codeSection);
                 String code = codeSection.getCode();
                 correct = checkIfContainsSpeakOutAndString(code, "Hello", true);
             }
             else if (currentSlide == 9){
                 // Check if 'myFunction' was written as the onClick value.
-                DesignSection designSection = linearLayout.findViewById(R.id.designSection);
+                DesignSection designSection = constraintLayout.findViewById(R.id.designSection);
                 UserCreatedButton userCreatedButton = designSection.getUserCreatedButton();
                 correct = userCreatedButton.getOnClick().trim().equals("myFunction");
             }

@@ -1,10 +1,11 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/linearLayout"
+    android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
-    android:orientation="vertical"
+    android:paddingEnd="16dp"
+    android:paddingStart="16dp"
     tools:context="com.frizzl.app.frizzleapp.lesson.PracticeActivity">
 
 
@@ -13,5 +14,6 @@
         android:layout_width="wrap_content"
         android:layout_height="1dp"
         android:background="@android:color/transparent"
+        android:gravity="center_vertical|center_horizontal"
         android:text="" />
-</LinearLayout>
+</android.support.constraint.ConstraintLayout>

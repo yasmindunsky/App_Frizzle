@@ -62,7 +62,7 @@
         android:ems="10"
         android:hint="@string/email_hint"
         android:inputType="textEmailAddress"
-        android:maxLength="17"
+        android:maxLength="60"
         android:padding="10dp"
         android:paddingEnd="20dp"
         android:paddingStart="20dp"

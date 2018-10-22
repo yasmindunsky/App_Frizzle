@@ -60,7 +60,7 @@
 
         <activity android:name="com.frizzl.app.frizzleapp.appBuilder.AppBuilderActivity"
             android:screenOrientation="nosensor" android:configChanges="keyboardHidden|orientation"
-            android:windowSoftInputMode="stateAlwaysHidden"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan"
             android:exported="true"
             >
 

@@ -4,6 +4,7 @@ package com.frizzl.app.frizzleapp.lesson;
 import android.content.Context;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
+import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
@@ -32,7 +33,7 @@ public class IntroSlideFragment extends Fragment {
     private int index;
     private int levelID;
     private PracticeSlide practiceSlide;
-    private LinearLayout linearLayout;
+    private ConstraintLayout constraintLayout;
     private static final int SIDES_MARGIN = 50;
     private static final int TOP_DOWN_MARGIN = 25;
     private AppCompatButton callToActionButton;
@@ -47,8 +48,9 @@ public class IntroSlideFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_practice_slide, container, false);
-        linearLayout = view.findViewById(R.id.linearLayout);
-        linearLayout.setFocusableInTouchMode(true);
+        constraintLayout = view.findViewById(R.id.constraintLayout);
+        constraintLayout.setFocusableInTouchMode(true);
+        int constraintLayoutId = constraintLayout.getId();
 
         TextToSpeech.OnInitListener onInitListener = status -> {
             if (status == TextToSpeech.SUCCESS) {
@@ -73,6 +75,8 @@ public class IntroSlideFragment extends Fragment {
 
         // Create elements by what's needed
         Context context = getContext();
+        Button holder = constraintLayout.findViewById(R.id.holder);
+        int prevId = holder.getId();
 
         if (practiceSlide.hasInfoText()){
             int infoTextStyle = R.style.Text_PracticeSlide_infoText;
@@ -86,11 +90,13 @@ public class IntroSlideFragment extends Fragment {
                     "$orange$", getResources().getColor(R.color.frizzle_orange), true);
             infoText.setText(spannableInfoText);
 
-            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+            ConstraintLayout.LayoutParams layoutParams = new ConstraintLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT);
             layoutParams.setMargins(SIDES_MARGIN,TOP_DOWN_MARGIN,SIDES_MARGIN,TOP_DOWN_MARGIN);
+            layoutParams.topToBottom = prevId;
+            prevId = infoText.getId();
             infoText.setLayoutParams(layoutParams);
-            linearLayout.addView(infoText);
+            constraintLayout.addView(infoText);
         }
 
         if (practiceSlide.hasTaskText()){
@@ -105,11 +111,13 @@ public class IntroSlideFragment extends Fragment {
                     "$orange$", getResources().getColor(R.color.frizzle_orange), true);
             taskText.setText(spannableTaskText);
 
-            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+            ConstraintLayout.LayoutParams layoutParams = new ConstraintLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT);
             layoutParams.setMargins(SIDES_MARGIN,TOP_DOWN_MARGIN,SIDES_MARGIN,TOP_DOWN_MARGIN);
+            layoutParams.topToBottom = prevId;
+            prevId = taskText.getId();
             taskText.setLayoutParams(layoutParams);
-            linearLayout.addView(taskText);
+            constraintLayout.addView(taskText);
         }
 
         View.OnClickListener speak = v -> {
@@ -119,30 +127,38 @@ public class IntroSlideFragment extends Fragment {
 
         if (practiceSlide.hasDesign()){
             View pollyApp = getLayoutInflater().inflate(R.layout.polly_app_demo, null);
-            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
+            ConstraintLayout.LayoutParams layoutParams = new ConstraintLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT);
             layoutParams.setMargins(SIDES_MARGIN*3,TOP_DOWN_MARGIN,SIDES_MARGIN*3,TOP_DOWN_MARGIN);
+            layoutParams.startToStart = constraintLayoutId;
+            layoutParams.endToEnd = constraintLayoutId;
+            layoutParams.topToBottom = prevId;
             pollyApp.setLayoutParams(layoutParams);
             AppCompatButton nameButton = pollyApp.findViewById(R.id.nameButton);
             AppCompatButton jokeButton = pollyApp.findViewById(R.id.jokeButton);
             nameButton.setOnClickListener(speak);
             jokeButton.setOnClickListener(speak);
-            linearLayout.addView(pollyApp);
+            constraintLayout.addView(pollyApp);
+            prevId = pollyApp.getId();
         }
 
         int ctaButtonStyle = R.style.Button_PracticeCTA;
         callToActionButton = new AppCompatButton(new ContextThemeWrapper(context, ctaButtonStyle));
         callToActionButton.setText(practiceSlide.getCallToActionText());
         callToActionButton.setBackground(getResources().getDrawable(R.drawable.check_button_background));
-        LinearLayout.LayoutParams layoutParams =
-                new LinearLayout.LayoutParams(550, ViewGroup.LayoutParams.WRAP_CONTENT);
+        ConstraintLayout.LayoutParams layoutParams =
+                new ConstraintLayout.LayoutParams(550, ViewGroup.LayoutParams.WRAP_CONTENT);
         layoutParams.setMargins(0,TOP_DOWN_MARGIN * 2,0,TOP_DOWN_MARGIN);
+        layoutParams.startToStart = constraintLayoutId;
+        layoutParams.endToEnd = constraintLayoutId;
+        layoutParams.topToBottom = prevId;
+        prevId = callToActionButton.getId();
         callToActionButton.setLayoutParams(layoutParams);
         callToActionButton.setOnClickListener(v -> {
             Button button = (Button) v;
             moveToNextFragment();
         });
-        linearLayout.addView(callToActionButton);
+        constraintLayout.addView(callToActionButton);
         return view;
     }
 
