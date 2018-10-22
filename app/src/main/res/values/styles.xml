@@ -242,9 +242,9 @@
     <style name="Text.PracticeSlide" parent="Theme.AppCompat">
         <item name="android:textColor">@color/TextGrey</item>
         <item name="android:fontFamily">@font/calibri_light</item>
-        <item name="android:textSize">18sp</item>
+        <item name="android:textSize">20sp</item>
         <item name="android:textAlignment">viewStart</item>
-        <item name="android:lineSpacingExtra">4sp</item>
+        <item name="android:lineSpacingExtra">6sp</item>
     </style>
 
     <style name="Text.PracticeSlide.infoText" parent="Text.PracticeSlide">
