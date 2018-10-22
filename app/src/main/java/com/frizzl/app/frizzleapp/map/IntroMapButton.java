@@ -5,6 +5,7 @@ import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
+import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -38,13 +39,13 @@ public class IntroMapButton extends LinearLayout implements MapButton{
         }
     }
 
-    private void setAppIconAlpha() {
-        ImageButton appIcon = (ImageButton) getChildAt(0);
-        appIcon.setAlpha(isEnabled() ? 1 : .2f);
+    private void setIconAlpha() {
+        ImageButton icon = (ImageButton) getChildAt(0);
+        icon.setAlpha(isEnabled() ? 1 : .2f);
     }
 
     private void setIntroNameColor() {
-        TextView appName = (TextView) getChildAt(1);
+        TextView name = (TextView) getChildAt(1);
         boolean enabled = isEnabled();
         int color = Color.WHITE;
         if (!enabled){
@@ -53,14 +54,14 @@ public class IntroMapButton extends LinearLayout implements MapButton{
         else if (enabled && !completed) {
             color = enabledColor;
         }
-        appName.setTextColor(color);
+        name.setTextColor(color);
     }
 
     @Override
     public void setEnabled(boolean enabled) {
         super.setEnabled(enabled);
         setIntroNameColor();
-        setAppIconAlpha();
+        setIconAlpha();
     }
 
     public int getEnabledColor() {
@@ -94,5 +95,20 @@ public class IntroMapButton extends LinearLayout implements MapButton{
 
     public int getLevelID() {
         return levelID;
+    }
+
+    public void setOnClickListeners(OnClickListener onClickListener) {
+        setOnClickListener(onClickListener);
+        IntroMapButton parentLayout = this;
+        OnClickListener childrenListener = new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                parentLayout.callOnClick();
+            }
+        };
+        ImageButton icon = (ImageButton) getChildAt(0);
+        icon.setOnClickListener(childrenListener);
+        TextView name = (TextView) getChildAt(1);
+        name.setOnClickListener(childrenListener);
     }
 }

@@ -64,9 +64,7 @@
         <task_text/>
         <reminder_text/>
         <code show="true" mutable="false" runnable="false" waitForCTA="false">
-            public void nameYouChoose(View view){
-            \t// Here you will write commands
-            \n}
+            public void nameYouChoose(View view){\n\t// // You will later write commands here\n\n}
         </code>
         <design show="false" runnable="false" withOnClickSet="false"></design>
         <call_to_action>הבנתי</call_to_action>
@@ -77,9 +75,7 @@
         <task_text>שנו את שם $light_blue$הפונקציה$light_blue$ לשם myFunction.</task_text>
         <reminder_text/>
         <code show="true" mutable="true" runnable="false" waitForCTA="false">
-            public void nameYouChoose(View view){
-            \t// Here you will write commands
-            \n}
+            public void nameYouChoose(View view){\n\t// You will later write commands here\n\n}
         </code>
         <design show="false" runnable="false" withOnClickSet="false"></design>
         <call_to_action>בדיקה</call_to_action>
@@ -90,9 +86,7 @@
         <task_text>הוסיפו את פקודת $orange$ה-speakOut("Hello")$orange$ בתוך $light_blue$הפונקציה$light_blue$.</task_text>
         <reminder_text/>
         <code show="true" mutable="true" runnable="false" waitForCTA="false">
-            public void myFunction(View view){
-            \t// Here you will write commands
-            \n}
+            public void myFunction(View view){\n\t// You will later write commands here\n\n}
         </code>
         <design show="false" runnable="false" withOnClickSet="false"></design>
         <call_to_action>בדיקה</call_to_action>
@@ -103,9 +97,7 @@
         <task_text>כתבו את שם $light_blue$הפונקציה$light_blue$ בשדה ה-onClick של הכפתור.</task_text>
         <reminder_text/>
         <code show="true" mutable="false" runnable="false" waitForCTA="false">
-            public void myFunction(View view){
-            \tspeakOut("Hello");
-            }
+public void myFunction(View view){\n\tspeakOut("Hello");\n}
         </code>
         <design show="true" runnable="false" withOnClickSet="false">myButton</design>
         <call_to_action>בדיקה</call_to_action>
@@ -118,7 +110,7 @@
         <code show="true" mutable="false" runnable="false" waitForCTA="false">
             public void myFunction(View view){\n\tspeakOut("Hello");\n}
         </code>
-        <design show="true" runnable="true" withOnClickSet="false">myButton</design>
+        <design show="true" runnable="true" withOnClickSet="true">myButton</design>
         <call_to_action>הבנתי</call_to_action>
     </slide>
 

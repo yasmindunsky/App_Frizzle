@@ -5,6 +5,7 @@ import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
+import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -94,5 +95,20 @@ public class AppMapButton extends LinearLayout implements MapButton{
 
     public int getLevelID() {
         return levelID;
+    }
+
+    public void setOnClickListeners(OnClickListener onClickListener) {
+        setOnClickListener(onClickListener);
+        AppMapButton parentLayout = this;
+        OnClickListener childrenListener = new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                parentLayout.callOnClick();
+            }
+        };
+        ImageButton icon = (ImageButton) getChildAt(0);
+        icon.setOnClickListener(childrenListener);
+        TextView name = (TextView) getChildAt(1);
+        name.setOnClickListener(childrenListener);
     }
 }

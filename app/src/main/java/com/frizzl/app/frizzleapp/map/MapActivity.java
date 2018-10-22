@@ -1,5 +1,6 @@
 package com.frizzl.app.frizzleapp.map;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -112,14 +113,16 @@ public class MapActivity extends AppCompatActivity {
             mapPresenter.onClickedIntro(levelID);
         };
 //        tutorialAppButton.setOnClickListener(onClickedApp);
-        pollyAppButton.setOnClickListener(onClickedApp);
         friendshipTestAppButton.setOnClickListener(onClickedApp);
         firstPracticeButton.setOnClickListener(onClickedPractice);
         speakOutPracticeButton.setOnClickListener(onClickedPractice);
         onClickPracticeButton.setOnClickListener(onClickedPractice);
         viewsPracticeButton.setOnClickListener(onClickedPractice);
         variablesPracticeButton.setOnClickListener(onClickedPractice);
-        pollyIntroButton.setOnClickListener(onClickedIntro);
+        
+        pollyAppButton.setOnClickListeners(onClickedApp);
+        pollyIntroButton.setOnClickListeners(onClickedIntro);
+
 
         // Set scroll position.
         scrollView.post(() -> scrollView.fullScroll(View.FOCUS_DOWN));
@@ -171,6 +174,8 @@ public class MapActivity extends AppCompatActivity {
             practiceIntent.putExtra("practiceID", practiceID);
             startActivity(practiceIntent);
         };
+
+        if(isFinishing()) startPractice.run();
         Support.presentPopup(popupWindow, startPractice, constraintLayout, constraintLayout, this);
 
 

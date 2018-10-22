@@ -29,7 +29,7 @@ Use "'" for special chars.
     <string name="onclick_practice">תרגול 3</string>
     <string name="speakout_practice">תרגול 2</string>
     <string name="friendship_test_app">אפליקציית מבחן חברות</string>
-    <string name="polly_app">אפליקציית פולי</string>
+    <string name="polly_app">אפליקציית\nתוכי מדבר</string>
     <string name="tutorial_app">Tutorial אפליקציית</string>
     <string name="yay">יאי!</string>
     <string name="my_first_app">האפליקציה הראשונה שלי</string>
@@ -52,9 +52,10 @@ Use "'" for special chars.
     <string name="here_you_can_see_an_example_for_a_two_lines_task">כאן אפשר לראות דוגמה למשימה באורך שתי שורות.</string>
     <string name="feedback_hint">נשמח לשמוע מה דעתך ולענות על כל שאלה…</string>
     <string name="email_hint">האימייל שלך</string>
-    <string name="contact_us">תרגישו חופשי ליצור איתנו קשר, לשתף חוויות או לשאול שאלות</string>
-    <string name="next">המשיכו הלאה</string>
-    <string name="welcome_to_our_beta">ברוכים הבאים לגרסת הבטא שלנו</string>
+    <string name="contact_us">תרגישו חופשי ליצור איתנו קשר,\nלשתף חוויות או לשאול שאלות</string>
+    <string name="lets_go">קדימה</string>
+    <string name="next">בואו נמשיך</string>
+    <string name="welcome_to_our_beta">ברוכים הבאים\nלגרסת הבטא שלנו</string>
     <string name="practice">תרגול</string>
     <string name="practice_explanation_text" >בתרגול הזה נלמד להשתמש בפקודות</string>
     <string name="cool">יאללה</string>
