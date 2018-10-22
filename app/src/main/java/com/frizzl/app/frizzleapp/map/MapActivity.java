@@ -85,7 +85,7 @@ public class MapActivity extends AppCompatActivity {
 
         PopupWindow helpPopupWindow = new HelpPopupWindow(this);
         toolbarIcon.setOnClickListener(v -> Support.presentPopup(helpPopupWindow, null, mainLayout, mainLayout,
-                getApplicationContext()));
+                this));
 
         View.OnClickListener onClickedApp = v -> {
             AppMapButton appMapButton = (AppMapButton) v;
@@ -171,7 +171,7 @@ public class MapActivity extends AppCompatActivity {
             practiceIntent.putExtra("practiceID", practiceID);
             startActivity(practiceIntent);
         };
-        Support.presentPopup(popupWindow, startPractice, constraintLayout, constraintLayout, applicationContext);
+        Support.presentPopup(popupWindow, startPractice, constraintLayout, constraintLayout, this);
 
 
     }

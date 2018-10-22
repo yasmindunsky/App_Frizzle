@@ -1,12 +1,15 @@
 package com.frizzl.app.frizzleapp;
 
+import android.app.Activity;
 import android.content.Context;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.style.ForegroundColorSpan;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.PopupWindow;
 
 import java.util.ArrayList;
@@ -47,6 +50,8 @@ public class Support {
 
     public static void presentPopup(PopupWindow popupWindow, Runnable runOnDismiss, View viewToPopOn,
                              View viewToDim, Context context){
+        if(((Activity) context).isFinishing()) return;
+
         if (viewToDim != null) dimView(viewToDim, context);
         popupWindow.setOnDismissListener(() -> {
             if (viewToDim != null) undimView(viewToDim, context);
@@ -55,7 +60,14 @@ public class Support {
             }
         });
         // In order to show popUp after activity has been created
-        viewToPopOn.post(() -> popupWindow.showAtLocation(viewToPopOn, Gravity.CENTER, 0, 0));
+        viewToPopOn.post(() -> {
+            try {
+                popupWindow.showAtLocation(viewToPopOn, Gravity.CENTER, 0, 0);
+            }
+            catch (WindowManager.BadTokenException e) {
+                Log.d("POPUP", "BadTokenException: " + e);
+            }
+        });
     }
 
     public static void dimView(View view, Context context) {

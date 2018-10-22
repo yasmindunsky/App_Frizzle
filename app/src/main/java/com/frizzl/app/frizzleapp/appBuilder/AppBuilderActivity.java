@@ -1,6 +1,7 @@
 package com.frizzl.app.frizzleapp.appBuilder;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -230,6 +231,7 @@ public class AppBuilderActivity extends AppCompatActivity {
     }
 
     public void presentPopup(PopupWindow popupWindow, Runnable runOnDismiss){
+        if(isFinishing()) return;
         dimAppBuilderActivity();
         popupWindow.setOnDismissListener(() -> {
             undimAppBuilderActivity();

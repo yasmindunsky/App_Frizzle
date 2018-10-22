@@ -64,7 +64,7 @@ Use "'" for special chars.
     <string name="speakout_practice_explanation_text">נלמד את הפקודה הראשונה שלנו</string>
     <string name="polly_intro">מבוא</string>
     <string name="friendship_intro">מבוא</string>
-    <string name="onboarding_text">בואו נתחיל לבנות אפליקציות!</string>
+    <string name="onboarding_text">בואו נתחיל לבנות אפליקציות</string>
     <string name="our_button_does_nothing">הכפתור שלנו עדיין לא עושה שום דבר</string>
     <string name="whats_your_name">מה שמך?</string>
     <string name="tell_me_a_joke">ספר לי בדיחה</string>

@@ -1,5 +1,6 @@
 package com.frizzl.app.frizzleapp;
 
+import android.app.Activity;
 import android.content.Context;
 import android.speech.tts.TextToSpeech;
 import android.util.Log;
@@ -102,6 +103,7 @@ public class CodeSection extends RelativeLayout {
         errorText.setText(errorMessage);
         PopupWindow popupWindow = new PopupWindow(popupView, ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT, true);
+        if(((Activity) context).isFinishing()) return;
         popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
         ImageButton closeButton = popupView.findViewById(R.id.close);
         closeButton.setOnClickListener(v -> popupWindow.dismiss());

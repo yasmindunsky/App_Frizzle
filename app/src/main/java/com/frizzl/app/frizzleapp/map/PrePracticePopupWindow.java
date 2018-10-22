@@ -34,7 +34,9 @@ public class PrePracticePopupWindow extends PopupWindow {
         textView = popupView.findViewById(R.id.practiceExplanationText);
         textView.setText(explanationText);
         Button okButton = popupView.findViewById(R.id.okButton);
-        okButton.setOnClickListener(v -> dismiss());
+        okButton.setOnClickListener(v -> {
+            dismiss();
+        });
     }
 
 }
