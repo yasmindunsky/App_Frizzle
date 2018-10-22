@@ -166,8 +166,8 @@ public class MainActivity extends AppCompatActivity implements   TextToSpeech.On
     <string name="feedback_hint">We\'d love to hear your thoughts or answer any questions…</string>
     <string name="email_hint">Your E-mail</string>
     <string name="contact_us"><![CDATA[Feel free to contact\nus for feedback & support]]></string>
-    <string name="lets_go">next</string>
     <string name="next">next</string>
+    <string name="lets_go">next</string>
     <string name="welcome_to_our_beta">welcome\n to our beta</string>
     <string name="practice">practice</string>
     <string name="practice_explanation_text">In this next practice we\'ll learn to use commands.</string>
