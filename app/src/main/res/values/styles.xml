@@ -257,4 +257,10 @@
     <style name="Text.PracticeSlide.taskText" parent="Text.PracticeSlide">
         <item name="android:textStyle">bold</item>
     </style>
+
+    <style name="Text.PrePractice" parent="Text.Basic">
+        <item name="android:fontFamily">@font/calibri_light</item>
+        <item name="android:lineSpacingExtra">6sp</item>
+        <item name="android:textSize">20sp</item>
+    </style>
 </resources>
