@@ -51,7 +51,8 @@ Use "'" for special chars.
     <string name="here_you_can_see_an_example_for_a_two_lines_task">כאן אפשר לראות דוגמה למשימה באורך שתי שורות.</string>
     <string name="feedback_hint">נשמח לשמוע מה דעתך ולענות על כל שאלה…</string>
     <string name="email_hint">האימייל שלך</string>
-    <string name="contact_us">תרגישו חופשי ליצור איתנו קשר,\nלשתף חוויות או לשאול שאלות</string>
+    <string name="contact_us">תרגישו חופשי ליצור\nאיתנו קשר ולשאול שאלות</string>
+    <string name="app_explanation_text" translatable="false">Let"'"s start with a tutorial and\n build a simple text displaying app.</string>
     <string name="lets_go">קדימה</string>
     <string name="next">בואו נמשיך</string>
     <string name="welcome_to_our_beta">ברוכים הבאים\nלגרסת הבטא שלנו</string>
