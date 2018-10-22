@@ -40,7 +40,7 @@ public class PracticeActivity extends FragmentActivity {
         RoundCornerProgressBar progressBar = findViewById(R.id.progressBar);
         int numOfSlides = currentPractice.getNumOfSlides();
         progressBar.setMax(numOfSlides);
-        progressBar.setProgress(1f);
+        progressBar.setProgress(0f);
 
         // Create SwipeAdapter.
         viewPager = findViewById(R.id.pager);
