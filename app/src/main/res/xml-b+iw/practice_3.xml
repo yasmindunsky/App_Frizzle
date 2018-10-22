@@ -5,7 +5,7 @@
     tools:keep="@xml/practice_2">
 
     <slide>
-        <info_text>אנחנו יכולים להוסיף כפתורים לאפליקציה שלנו.</info_text>
+        <info_text>כשאנחנו בונים אפליקציה, אנחנו יכולים להוסיף לה כפתורים.</info_text>
         <task_text/>
         <reminder_text />
         <code show="false" mutable="false" runnable="false" waitForCTA="false"></code>
@@ -16,7 +16,7 @@
 
     <slide>
         <info_text/>
-        <task_text>.הריצו וראו מה קורה בלחיצה על הכפתור</task_text>
+        <task_text>נסו להריץ ולראות מה קורה כשלוחצים על הכפתור.</task_text>
         <reminder_text />
         <code show="false" mutable="false" runnable="false" waitForCTA="false"></code>
         <design show="true" runnable="true" withOnClickSet="false"></design>
@@ -24,7 +24,7 @@
     </slide>
 
     <slide>
-        <info_text>.נוסיף פונקציונאליות לכפתור: נלמד להגדיר לכפתור להקריא טקסט כשלוחצים עליו</info_text>
+        <info_text>עכשיו נלמד איך מגדירים לכפתור להקריא טקסט כשלוחצים עליו.</info_text>
         <task_text/>
         <reminder_text/>
         <code show="false" mutable="false" runnable="false" waitForCTA="false"></code>
@@ -33,7 +33,7 @@
     </slide>
 
     <slide>
-        <info_text>לשם כך נוסיף לקוד שלנו מבנה שנקרא $light_blue$פונקציה$light_blue$.</info_text>
+        <info_text>בשביל להוסיף את הפונקציונאליות הזאת לכפתור, נוסיף לקוד שלנו מבנה שנקרא $light_blue$פונקציה$light_blue$.</info_text>
         <task_text/>
         <reminder_text/>
         <code show="false" mutable="false" runnable="false" waitForCTA="false"></code>
@@ -112,8 +112,8 @@
     </slide>
 
     <slide>
-        <info_text/>
-        <task_text>נסו להריץ את הכפתור וללחוץ עליו.</task_text>
+        <info_text>כעת לכפתור יש פונקציונאליות: הכפתור מקריא טקסט כשלוחצים עליו.</info_text>
+        <task_text>נסו להריץ וללחוץ על הכפתור.</task_text>
         <reminder_text/>
         <code show="true" mutable="false" runnable="false" waitForCTA="false">
             public void myFunction(View view){\n\tspeakOut("Hello");\n}

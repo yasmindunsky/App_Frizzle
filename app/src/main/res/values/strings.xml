@@ -125,7 +125,7 @@ public class MainActivity extends AppCompatActivity implements   TextToSpeech.On
     <string name="facebook_app_id" translatable="false">178438059643086</string>
     <string name="main_notification_channel_name" translatable="false">notification_channel</string>
     <string name="welcome">welcome</string>
-    <string name="app_explanation_text" translatable="false">Let"'"s start with a tutorial and\n build a simple text displaying app.</string>
+    <string name="app_explanation_text" translatable="false">Congratulations! You completed all the practice and you are now ready to build your first app.</string>
     <string name="start">start</string>
     <string name="wow">wow!</string>
     <string name="thanks">thanks</string>
@@ -171,10 +171,10 @@ public class MainActivity extends AppCompatActivity implements   TextToSpeech.On
     <string name="practice">practice</string>
     <string name="practice_explanation_text">In this next practice we\'ll learn to use commands.</string>
     <string name="cool">cool</string>
-    <string name="onclick_practice_explanation_text">Learn onclick</string>
-    <string name="speakout_practice_explanation_text">Learn speakOut</string>
+    <string name="onclick_practice_explanation_text">Finally, we will learn how to make our button read text aloud.</string>
+    <string name="speakout_practice_explanation_text">We will now learn our first command that instructs the computer to read text aloud.</string>
     <string name="first_practice">Practice 1</string>
-    <string name="first_practice_explanation_text">learn first lesson</string>
+    <string name="first_practice_explanation_text">As a start, we will learn about the two main aspects of building apps.</string>
     <string name="check">Check</string>
     <string name="polly_intro">Polly Intro</string>
     <string name="friendship_intro">Friendship\nTest Intro</string>

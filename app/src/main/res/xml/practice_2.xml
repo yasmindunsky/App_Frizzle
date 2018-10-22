@@ -4,7 +4,7 @@
 <practice xmlns:tools="http://schemas.android.com/tools"
 tools:keep="@xml/practice_1">
     <slide>
-        <info_text>The speakOut command commands the computer to speak out text.</info_text>
+        <info_text>The speakOut command instructs the computer to read text aloud.</info_text>
         <task_text/>
         <reminder_text />
         <code show="true" mutable="false" runnable="true" waitForCTA="false">speakOut("Hello");</code>
@@ -23,7 +23,7 @@ tools:keep="@xml/practice_1">
     </slide>
 
     <slide>
-        <info_text>Write the command so it will speak out:
+        <info_text>Rewrite the command to speak out:
 'this is so cool'. </info_text>
         <task_text/>
         <reminder_text>Reminder: speakOut("Hello"); </reminder_text>
