@@ -18,19 +18,12 @@ public class CodingScreenPresenter {
         this.codingScreenFragment = codingScreenFragment;
     }
 
-    public String prepareCodeForPresenting(String currentCode) {
-        currentCode = currentCode.replaceAll(";", ";\n");
-        currentCode = currentCode.replaceAll("\\{", "{\n");
-        return currentCode;
-    }
-
     public void getAndPresentCode() {
         String currentCode = UserProfile.user.getCurrentUserApp().getCode();
         if (currentCode.equals("")) {
             codingScreenFragment.showEmptyCode();
         } else {
-            String codeForPresenting = prepareCodeForPresenting(currentCode);
-            codingScreenFragment.showCode(codeForPresenting);
+            codingScreenFragment.showCode(currentCode);
         }
     }
 
