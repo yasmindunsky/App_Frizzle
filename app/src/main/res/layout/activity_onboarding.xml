@@ -69,7 +69,7 @@
         style="@style/Button.Hollow.Blue"
         android:layout_marginBottom="24dp"
         android:layout_marginTop="24dp"
-        android:text="@string/next"
+        android:text="@string/lets_go"
         android:textAppearance="@style/Text.Title.Blue"
         android:textColor="@color/frizzle_light_blue"
         app:layout_constraintBottom_toBottomOf="parent"
