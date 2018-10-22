@@ -60,14 +60,9 @@ public class Support {
             }
         });
         // In order to show popUp after activity has been created
-        viewToPopOn.post(() -> {
-            try {
-                popupWindow.showAtLocation(viewToPopOn, Gravity.CENTER, 0, 0);
-            }
-            catch (WindowManager.BadTokenException e) {
-                Log.d("POPUP", "BadTokenException: " + e);
-            }
-        });
+        if (viewToPopOn != null && !((Activity)context).isFinishing()) {
+            popupWindow.showAtLocation(viewToPopOn, Gravity.CENTER, 0, 0);
+        }
     }
 
     public static void dimView(View view, Context context) {

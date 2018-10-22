@@ -177,8 +177,6 @@ public class MapActivity extends AppCompatActivity {
 
         if(isFinishing()) startPractice.run();
         Support.presentPopup(popupWindow, startPractice, constraintLayout, constraintLayout, this);
-
-
     }
 
     public void goToIntro(int levelID) {
