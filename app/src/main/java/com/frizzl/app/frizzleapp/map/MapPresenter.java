@@ -18,7 +18,6 @@ public class MapPresenter {
     }
 
     public void onClickedApp(int levelID){
-//        int level = (appID == 0) ? 0 : 3; // TODO change
         UserProfile.user.setCurrentLevel(levelID);
         mapActivity.goToApp(levelID);
     }

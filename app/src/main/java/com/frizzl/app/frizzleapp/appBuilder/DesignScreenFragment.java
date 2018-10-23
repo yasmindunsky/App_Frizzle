@@ -157,9 +157,15 @@ public class DesignScreenFragment extends Fragment {
 
                         @Override
                         public void onChangedOnClick(String onClickFuncName) {
-                            if (UserProfile.user.getCurrentLevel() == Support.POLLY_APP_LEVEL_ID && UserProfile.user.getCurrentTaskNum()== 4
-                                    &&  !onClickFuncName.equals("")) {
-                                if (appBuilderActivity != null) appBuilderActivity.taskCompleted();
+                            if (UserProfile.user.getCurrentLevel() == Support.POLLY_APP_LEVEL_ID
+                                    && !onClickFuncName.equals("")) {
+                                if (UserProfile.user.getCurrentTaskNum() == 4) {
+                                    if (appBuilderActivity != null)
+                                        appBuilderActivity.taskCompleted();
+                                } else if (UserProfile.user.getCurrentTaskNum() == 5) {
+                                    if (appBuilderActivity != null)
+                                        appBuilderActivity.taskCompleted();
+                                }
                             }
                         }
                     });

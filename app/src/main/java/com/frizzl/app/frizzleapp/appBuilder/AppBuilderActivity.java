@@ -34,6 +34,7 @@ import android.widget.TextView;
 import com.frizzl.app.frizzleapp.AppTasksSwipeAdapter;
 import com.frizzl.app.frizzleapp.CustomViewPager;
 import com.frizzl.app.frizzleapp.R;
+import com.frizzl.app.frizzleapp.Support;
 import com.frizzl.app.frizzleapp.UserApp;
 import com.frizzl.app.frizzleapp.UserProfile;
 import com.frizzl.app.frizzleapp.map.MapActivity;
@@ -205,8 +206,6 @@ public class AppBuilderActivity extends AppCompatActivity {
         tabLayout.addTab(codingTab);
         graphicEditTab.select();
 
-
-
         tutorial = new Tutorial(getApplicationContext());
         activityCreated = true;
     }
@@ -253,7 +252,7 @@ public class AppBuilderActivity extends AppCompatActivity {
 
     private void openTaskSuccessPopup() {
         PopupWindow successPopupWindow = new TaskSuccessPopupWindow(getApplicationContext());
-        presentPopup(successPopupWindow, afterSuccessPopupClosed());
+        Support.presentPopup(successPopupWindow, afterSuccessPopupClosed(), relativeLayout, relativeLayout, this);
     }
 
     public void openStartAppPopup() {
