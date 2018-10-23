@@ -16,6 +16,7 @@ public class IntroActivity extends FragmentActivity {
     private  IntroSwipeAdapter swipeAdapter;
     private  Practice currentPractice;
     private  CustomViewPager viewPager;
+    private RoundCornerProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +37,7 @@ public class IntroActivity extends FragmentActivity {
         ImageButton mapButton = findViewById(R.id.home);
         mapButton.setOnClickListener(v -> onBackPressed());
 
-        RoundCornerProgressBar progressBar = findViewById(R.id.progressBar);
+        progressBar = findViewById(R.id.progressBar);
         int numOfSlides = currentPractice.getNumOfSlides();
         progressBar.setMax(numOfSlides);
         progressBar.setProgress(0f);
@@ -50,6 +51,19 @@ public class IntroActivity extends FragmentActivity {
 //        if (Support.isRTL()) {
 //            viewPager.setRotationY(180);
 //        }
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        int count = viewPager.getCurrentItem();
+        if (count == 0) {
+            super.onBackPressed();
+        } else {
+            viewPager.setCurrentItem(count - 1);
+            progressBar.setProgress(count - 1);
+        }
+
     }
 }
 

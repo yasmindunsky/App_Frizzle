@@ -2,6 +2,7 @@ package com.frizzl.app.frizzleapp.lesson;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.view.ViewPager;
 import android.widget.ImageButton;
 
 import com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar;
@@ -15,6 +16,7 @@ import java.io.IOException;
 public class PracticeActivity extends FragmentActivity {
     private  PracticeSwipeAdapter swipeAdapter;
     private  Practice currentPractice;
+    private RoundCornerProgressBar progressBar;
     private  CustomViewPager viewPager;
 
     @Override
@@ -37,7 +39,7 @@ public class PracticeActivity extends FragmentActivity {
         ImageButton mapButton = findViewById(R.id.home);
         mapButton.setOnClickListener(v -> onBackPressed());
 
-        RoundCornerProgressBar progressBar = findViewById(R.id.progressBar);
+        progressBar = findViewById(R.id.progressBar);
         int numOfSlides = currentPractice.getNumOfSlides();
         progressBar.setMax(numOfSlides);
         progressBar.setProgress(0f);
@@ -51,6 +53,18 @@ public class PracticeActivity extends FragmentActivity {
 //        if (Support.isRTL()) {
 //            viewPager.setRotationY(180);
 //        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        int count = viewPager.getCurrentItem();
+        if (count == 0) {
+            super.onBackPressed();
+        } else {
+            viewPager.setCurrentItem(count - 1);
+            progressBar.setProgress(count - 1);
+        }
+
     }
 }
 
