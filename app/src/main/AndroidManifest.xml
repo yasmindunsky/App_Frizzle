@@ -37,6 +37,7 @@
         <activity android:name="com.frizzl.app.frizzleapp.SplashActivity"
             android:screenOrientation="nosensor" android:configChanges="keyboardHidden|orientation"
             android:theme="@style/AppTheme.NoActionBar"
+            android:noHistory="true"
             >
             <intent-filter>
                 <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE"/>
