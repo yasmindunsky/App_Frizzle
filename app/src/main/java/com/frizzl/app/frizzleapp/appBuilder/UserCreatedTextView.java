@@ -63,7 +63,6 @@ public class UserCreatedTextView extends UserCreatedView {
         layoutParams.setMargins(margin,margin,margin,margin);
         thisView.setLayoutParams(layoutParams);
 
-        // TODO: load font.
 
         thisView.setTag(R.id.usersViewId, index);
         thisView.setTag(R.id.usersViewRow, row);
@@ -152,20 +151,6 @@ public class UserCreatedTextView extends UserCreatedView {
         EditText viewText = popupView.findViewById(R.id.viewTextValue);
         viewText.setOnFocusChangeListener(finishedEditingText);
         viewText.setText(properties.get("android:text"));
-
-
-
-        // FONT
-        Spinner fontSpinner = popupView.findViewById(R.id.viewFontValue);
-        // Create an ArrayAdapter using the string array and a default spinner layout.
-        ArrayAdapter<CharSequence> fontAdapter = ArrayAdapter.createFromResource(context,
-                R.array.fonts, android.R.layout.simple_spinner_item);
-        // Specify the layout to use when the list of choices appears
-        fontAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        // Apply the adapter to the spinner
-        fontSpinner.setAdapter(fontAdapter);
-//        fontSpinner.setTag(v.getTag());
-        fontSpinner.setOnItemSelectedListener(onFontPicked);
 
         // FONT COLOR
         final Button chooseFontColor = popupView.findViewById(R.id.viewFontColorValue);
@@ -261,20 +246,6 @@ public class UserCreatedTextView extends UserCreatedView {
                     appBuilderActivity.taskCompleted();
                 }
             }
-        }
-    };
-
-    private AdapterView.OnItemSelectedListener onFontPicked = new AdapterView.OnItemSelectedListener() {
-        @Override
-        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-            String fontFamily = parent.getItemAtPosition(position).toString();
-            thisView.setTypeface(Typeface.create(fontFamily, Typeface.NORMAL));
-            properties.put("android:fontFamily", fontFamily);
-        }
-
-        @Override
-        public void onNothingSelected(AdapterView<?> parent) {
-
         }
     };
 

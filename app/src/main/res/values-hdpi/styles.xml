@@ -64,7 +64,7 @@
 
         <!--Graphic Edit-->
 
-    <style name="propertiesTableKey" parent="@android:style/TextAppearance.Medium">
+    <style name="Text.TableKey" parent="@android:style/TextAppearance.Medium">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:fontFamily">@font/alef</item>
@@ -72,7 +72,7 @@
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="propertiesTableValue" parent="@style/propertiesTableKey">
+    <style name="Text.TableValue" parent="@style/Text.TableKey">
         <item name="android:fontFamily">@font/alef</item>
         <item name="android:textSize">16sp</item>
         <item name="android:textStyle">normal</item>
@@ -81,7 +81,7 @@
     <style name="Text.Title.PropertiesTable" parent="@android:style/TextAppearance.DeviceDefault.Medium">
         <item name="android:layout_height">@dimen/app_bar_height</item>
         <item name="android:fontFamily">@font/rubik</item>
-        <item name="android:background">@drawable/table_text_edit_background</item>
+        <item name="android:background">@drawable/popup_title_background</item>
         <item name="android:padding">10dp</item>
         <item name="android:text">@string/propertiesTableTitle</item>
         <item name="android:textAlignment">center</item>

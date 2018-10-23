@@ -37,7 +37,7 @@ public class UserCreatedButton extends UserCreatedView {
     private Button thisView;
     private ChangedTextListener changedTextListener;
 
-    public UserCreatedButton(Context context, Map<String, String> properties, int index){
+    UserCreatedButton(Context context, Map<String, String> properties, int index){
         this.context = context;
         this.index = index;
         this.layout = R.layout.popup_properties_button;
@@ -62,22 +62,15 @@ public class UserCreatedButton extends UserCreatedView {
                 GridLayout.spec(column));
         layoutParams.width = (int) context.getResources().getDimension(R.dimen.user_created_button_width);
         String marginString = properties.get("android:layout_margin");
-        int margin = dpStringToPixel(marginString);
+        int margin = Support.dpStringToPixel(context, marginString);
         layoutParams.setMargins(margin,margin,margin,margin);
         thisView.setLayoutParams(layoutParams);
-
-        // TODO: load font.
 
         thisView.setTag(R.id.usersViewId, index);
         thisView.setTag(R.id.usersViewRow, row);
         thisView.setTag(R.id.usersViewCol, column);
 
         this.properties = properties;
-    }
-
-    private int dpStringToPixel(String dp) {
-        dp = dp.replaceAll("[^\\d.]", "");
-        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,  Integer.parseInt(dp), context.getResources().getDisplayMetrics());
     }
 
     public UserCreatedButton(Context context, int nextViewIndex, int numOfButtons) {
@@ -146,27 +139,11 @@ public class UserCreatedButton extends UserCreatedView {
         android.support.v7.widget.AppCompatButton saveButton = popupView.findViewById(R.id.saveButton);
         saveButton.setOnClickListener(v -> popupWindow.dismiss());
 
-        // ID
-//        EditText viewId = popupView.findViewById(R.id.viewIdValue);
-//        viewId.setOnFocusChangeListener(finishedEditingId);
-//        viewId.setText(properties.get("android:id"));
-
         // TEXT
         EditText viewText = popupView.findViewById(R.id.viewTextValue);
         viewText.setOnFocusChangeListener(finishedEditingText);
         viewText.setText(properties.get("android:text"));
-
-        // FONT
-        Spinner fontSpinner = popupView.findViewById(R.id.viewFontValue);
-        // Create an ArrayAdapter using the string array and a default spinner layout.
-        ArrayAdapter<CharSequence> fontAdapter = ArrayAdapter.createFromResource(context,
-                R.array.fonts, android.R.layout.simple_spinner_item);
-        // Specify the layout to use when the list of choices appears
-        fontAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        // Apply the adapter to the spinner
-        fontSpinner.setAdapter(fontAdapter);
-//        fontSpinner.setTag(v.getTag());
-        fontSpinner.setOnItemSelectedListener(onFontPicked);
+        viewText.setSelection(viewText.length());
 
         // FONT COLOR
         final Button chooseFontColor = popupView.findViewById(R.id.viewFontColorValue);
@@ -254,7 +231,7 @@ public class UserCreatedButton extends UserCreatedView {
         return thisView;
     }
 
-    EditText.OnFocusChangeListener finishedEditingText = new View.OnFocusChangeListener() {
+    private EditText.OnFocusChangeListener finishedEditingText = new View.OnFocusChangeListener() {
         @Override
         public void onFocusChange(View v, boolean hasFocus) {
             if (!hasFocus) {
@@ -268,27 +245,13 @@ public class UserCreatedButton extends UserCreatedView {
         }
     };
 
-    EditText.OnFocusChangeListener finishedOnClick = (v, hasFocus) -> {
+    private EditText.OnFocusChangeListener finishedOnClick = (v, hasFocus) -> {
         if (!hasFocus) {
             String onclickFuncName = String.valueOf(((EditText)v).getText());
             properties.put("android:onClick", onclickFuncName);
 
             // For temp testing
             if (changedTextListener != null) changedTextListener.onChangedOnClick(onclickFuncName);
-        }
-    };
-
-    private AdapterView.OnItemSelectedListener onFontPicked = new AdapterView.OnItemSelectedListener() {
-        @Override
-        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-            String fontFamily = parent.getItemAtPosition(position).toString();
-            thisView.setTypeface(Typeface.create(fontFamily, Typeface.NORMAL));
-            properties.put("android:fontFamily", fontFamily);
-        }
-
-        @Override
-        public void onNothingSelected(AdapterView<?> parent) {
-
         }
     };
 
@@ -303,7 +266,6 @@ public class UserCreatedButton extends UserCreatedView {
             if (drawable != null) drawable.setColorFilter(colorIdentifier, PorterDuff.Mode.DARKEN);
             thisView.setBackground(drawable);
             properties.put("android:backgroundTint", fullColorName);
-
         }
 
         @Override
@@ -311,8 +273,6 @@ public class UserCreatedButton extends UserCreatedView {
 
         }
     };
-
-
 
     private String getColorFromString(String color) {
         Map<String, String> colorNamesMap =  new HashMap<>();
@@ -362,7 +322,7 @@ public class UserCreatedButton extends UserCreatedView {
         properties.put("android:onClick", function);
     }
 
-    public void setChangedTextListener(ChangedTextListener changedTextListener) {
+    void setChangedTextListener(ChangedTextListener changedTextListener) {
         this.changedTextListener = changedTextListener;
     }
 

@@ -71,32 +71,17 @@ app:srcCompat="@drawable/ic_trash" />
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/propertiesTableText"
-                android:textAppearance="@style/propertiesTableKey" />
+                android:textAppearance="@style/Text.TableKey" />
 
             <EditText
                 android:id="@+id/viewTextValue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/edit_text_background_round"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:textAppearance="@style/propertiesTableValue" />
+                android:textAppearance="@style/Text.TableValue" />
 
-        </TableRow>
-
-        <TableRow style="@style/propertiesTableRow">
-
-            <android.support.v7.widget.AppCompatTextView
-                android:id="@+id/viewFontKey"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/propertiesTableFont"
-                android:textAppearance="@style/propertiesTableKey" />
-
-            <Spinner
-                android:id="@+id/viewFontValue"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:spinnerMode="dialog" />
         </TableRow>
 
 
@@ -107,7 +92,7 @@ app:srcCompat="@drawable/ic_trash" />
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/propertiesTableTextColor"
-                android:textAppearance="@style/propertiesTableKey" />
+                android:textAppearance="@style/Text.TableKey" />
 
             <Button
                 android:id="@+id/viewFontColorValue"
@@ -166,7 +151,7 @@ app:srcCompat="@drawable/ic_trash" />
 
     <android.support.v7.widget.AppCompatButton
         android:id="@+id/saveButton"
-        style="@style/Button.SavePropertiesTable"
+        style="@style/Button.LightBlue"
         android:layout_below="@+id/tableLayout"
         android:layout_centerHorizontal="true"
         android:layout_centerInParent="false"

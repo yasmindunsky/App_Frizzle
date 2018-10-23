@@ -22,9 +22,9 @@
         <item name="android:layout_margin">20dp</item>
         <item name="android:paddingStart">30sp</item>
         <item name="android:paddingEnd">30sp</item>
-        <item name="android:background">@drawable/save_button_background</item>
+        <item name="android:background">@drawable/button_background_light_blue</item>
         <item name="android:text">@string/save</item>
-        <item name="android:textAppearance">@style/ActivityTitle</item>
+        <item name="android:textAppearance">@style/Button.PracticeCTA</item>
     </style>
 
     <style name="Button.PracticeCTA" parent="@android:style/Widget.Button">
@@ -160,17 +160,15 @@
 
     <style name="Text.Title.PropertiesTable" parent="@android:style/TextAppearance.DeviceDefault.Medium">
         <item name="android:layout_height">@dimen/app_bar_height</item>
-        <item name="android:fontFamily">@font/hero_regular</item>
-        <item name="android:background">@drawable/table_text_edit_background</item>
+        <item name="android:background">@drawable/popup_title_background</item>
         <item name="android:padding">10dp</item>
         <item name="android:text">@string/propertiesTableTitle</item>
-        <item name="android:textAlignment">center</item>
-        <item name="android:textSize">22sp</item>
+        <item name="android:textAppearance">@style/Text.Title.Popup</item>
     </style>
 
     <style name="Text.Title.Popup" parent="Text.Title">
         <item name="android:layout_height">@dimen/app_bar_height</item>
-        <item name="android:background">@drawable/table_text_edit_background</item>
+        <item name="android:background">@drawable/popup_title_background</item>
         <item name="android:padding">10dp</item>
         <item name="android:textAlignment">center</item>
         <item name="android:textAllCaps">true</item>
@@ -211,16 +209,15 @@
         <item name="android:layout_margin">10dp</item>
     </style>
 
-    <style name="propertiesTableKey" parent="@style/Text.Basic">
+    <style name="Text.TableKey" parent="@style/Text.Basic">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <!--<item name="android:fontFamily">@font/calibri_bold</item>-->
         <item name="android:textStyle">bold</item>
         <item name="android:padding">10dp</item>
         <item name="android:textSize">18sp</item>
     </style>
 
-    <style name="propertiesTableValue" parent="@style/propertiesTableKey">
+    <style name="Text.TableValue" parent="@style/Text.TableKey">
         <item name="android:fontFamily">@font/calibri_light</item>
         <item name="android:textSize">16sp</item>
         <item name="android:padding">12dp</item>

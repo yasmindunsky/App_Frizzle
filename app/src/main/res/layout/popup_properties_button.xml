@@ -10,23 +10,23 @@
 
     <android.support.v7.widget.AppCompatTextView
         android:id="@+id/propertiesTableTitle"
-        style="@style/Text.Title.PropertiesTable"
+        style="@style/Text.Title.Popup"
         android:layout_width="300dp"
         android:layout_alignParentTop="true"
-        android:background="@drawable/table_title_background"
         android:gravity="center"
-        app:fontFamily="@font/hero_regular"
+        android:text="@string/propertiesTableTitle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
         android:id="@+id/close"
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/app_bar_height"
         android:layout_height="@dimen/app_bar_height"
         android:layout_alignParentEnd="true"
         android:backgroundTint="@android:color/transparent"
-        android:padding="18dp"
+        android:paddingBottom="15dp"
+        android:paddingTop="18dp"
         android:scaleType="fitCenter"
         app:layout_constraintEnd_toEndOf="@+id/propertiesTableTitle"
         app:srcCompat="@drawable/ic_x" />
@@ -64,48 +64,37 @@
         android:gravity="center_vertical|start"
         android:padding="12dp"
         android:text="@string/propertiesTableText"
-        android:textAppearance="@style/propertiesTableKey"
+        android:textAppearance="@style/Text.TableKey"
 
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
     <android.support.v7.widget.AppCompatTextView
-        android:id="@+id/viewFontKey"
+        android:id="@+id/viewFontColorKey"
         android:layout_width="0dp"
         android:layout_height="50dp"
+
+        android:layout_marginTop="8dp"
         android:gravity="center_vertical|start"
         android:padding="12dp"
-        android:text="@string/propertiesTableFont"
 
-        android:textAppearance="@style/propertiesTableKey"
+        android:text="@string/propertiesTableTextColor"
+        android:textAppearance="@style/Text.TableKey"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/viewTextKey" />
 
     <android.support.v7.widget.AppCompatTextView
-        android:id="@+id/viewFontColorKey"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-
-        android:gravity="center_vertical|start"
-        android:padding="12dp"
-        android:text="@string/propertiesTableTextColor"
-
-        android:textAppearance="@style/propertiesTableKey"
-        app:layout_constraintEnd_toStartOf="@+id/guideline2"
-        app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/viewFontKey" />
-
-    <android.support.v7.widget.AppCompatTextView
         android:id="@+id/viewBgColorKey"
         android:layout_width="0dp"
         android:layout_height="50dp"
+        android:layout_marginTop="8dp"
         android:gravity="center_vertical|start"
         android:padding="12dp"
         android:text="@string/propertiesTableBgColor"
-        android:textAppearance="@style/propertiesTableKey"
 
+        android:textAppearance="@style/Text.TableKey"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/viewFontColorKey" />
@@ -114,11 +103,13 @@
         android:id="@+id/viewOnClickKey"
         android:layout_width="0dp"
         android:layout_height="50dp"
+        android:layout_marginTop="8dp"
         android:gravity="center_vertical|start"
         android:padding="12dp"
-        android:text="@string/propertiesTableOnClick"
 
-        android:textAppearance="@style/propertiesTableKey"
+        android:text="@string/propertiesTableOnClick"
+        android:textAlignment="viewStart"
+        android:textAppearance="@style/Text.TableKey"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/viewBgColorKey" />
@@ -127,23 +118,16 @@
         android:id="@+id/viewTextValue"
         android:layout_width="0dp"
         android:layout_height="50dp"
+        android:background="@drawable/edit_text_background_round"
         android:ems="10"
         android:gravity="center_vertical|start"
         android:inputType="textPersonName"
-        android:textAppearance="@style/propertiesTableValue"
+        android:paddingEnd="16dp"
+        android:paddingStart="16dp"
+        android:textAppearance="@style/Text.TableValue"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toTopOf="@id/viewTextKey"
-        />
-
-    <Spinner
-        android:id="@+id/viewFontValue"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:spinnerMode="dialog"
-        app:layout_constraintEnd_toStartOf="@+id/guideline3"
-        app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toTopOf="@id/viewFontKey" />
+        app:layout_constraintTop_toTopOf="@id/viewTextKey" />
 
     <Button
         android:id="@+id/viewFontColorValue"
@@ -168,22 +152,27 @@
         android:id="@+id/viewOnClickValue"
         android:layout_width="0dp"
         android:layout_height="50dp"
+        android:background="@drawable/edit_text_background_round"
         android:ems="10"
         android:inputType="textPersonName"
-        android:textAppearance="@style/propertiesTableValue"
-
+        android:paddingEnd="16dp"
+        android:paddingStart="16dp"
+        android:textAppearance="@style/Text.TableValue"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toTopOf="@id/viewOnClickKey" />
 
     <android.support.v7.widget.AppCompatButton
         android:id="@+id/saveButton"
-        style="@style/Button.SavePropertiesTable"
+        style="@style/Button.LightBlue"
+        android:text="@string/save"
+        android:textAppearance="@style/Text.Title.Light"
+        android:textColor="@color/white"
         android:layout_below="@+id/viewOnClickKey"
         android:layout_centerHorizontal="true"
         android:layout_centerInParent="false"
         android:layout_marginBottom="24dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="36dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -111,14 +111,14 @@ public class MainActivity extends AppCompatActivity implements   TextToSpeech.On
 }
     </string>
 
-    <string name="new_button_text">NEW BUTTON</string>
-    <string name="new_text_view_text">NEW TEXT</string>
+    <string name="new_button_text">New Button</string>
+    <string name="new_text_view_text">New Text</string>
     <string name="code">Code</string>
     <string name="design">Design</string>
     <string name="propertiesTableTitle">Edit Element</string>
     <string name="propertiesTableText">Text</string>
     <string name="propertiesTableFont">Font</string>
-    <string name="propertiesTableBgColor">Color</string>
+    <string name="propertiesTableBgColor">Background</string>
     <string name="propertiesTableTextColor" >Text Color</string>
     <string name="propertiesTableOnClick" translatable="false">OnClick</string>
     <string name="save">save</string>

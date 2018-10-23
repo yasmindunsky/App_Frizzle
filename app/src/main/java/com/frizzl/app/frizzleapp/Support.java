@@ -65,12 +65,17 @@ public class Support {
         }
     }
 
-    public static void dimView(View view, Context context) {
+    public static int dpStringToPixel(Context context, String dp) {
+        dp = dp.replaceAll("[^\\d.]", "");
+        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,  Integer.parseInt(dp), context.getResources().getDisplayMetrics());
+    }
+
+    private static void dimView(View view, Context context) {
         view.setForeground(context.getResources().getDrawable(R.drawable.shade));
         view.getForeground().setAlpha(220);
     }
 
-    public static void undimView(View view, Context context) {
+    private static void undimView(View view, Context context) {
         view.setForeground(context.getResources().getDrawable(R.drawable.shade));
         view.getForeground().setAlpha(0);
     }

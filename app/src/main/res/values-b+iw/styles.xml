@@ -74,4 +74,18 @@
         <item name="android:lineSpacingExtra">6sp</item>
         <item name="android:textSize">18sp</item>
     </style>
+
+    <style name="Text.TableKey" parent="@style/Text.Basic">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="Text.TableValue" parent="@style/Text.TableKey">
+        <item name="android:fontFamily">@font/rubik_light</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:padding">12dp</item>
+    </style>
 </resources>
