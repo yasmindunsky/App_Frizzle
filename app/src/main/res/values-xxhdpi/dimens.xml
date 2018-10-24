@@ -4,6 +4,5 @@
     <dimen name="app_bar_height">53dp</dimen>
     <dimen name="slide_height">500dp</dimen>
     <dimen name="start_margin">32dp</dimen>
-    <dimen name="user_created_button_width">100dp</dimen>
 
 </resources>

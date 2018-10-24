@@ -56,8 +56,8 @@ public class UserCreatedImageView extends UserCreatedView {
         int column = nextViewIndex % 2;
         GridLayout.LayoutParams layoutParams =
                 new GridLayout.LayoutParams(GridLayout.spec(row), GridLayout.spec(column));
-        layoutParams.width = 300;
-        layoutParams.height = 300;
+        layoutParams.width = (int) context.getResources().getDimension(R.dimen.user_created_image_view_width);
+        layoutParams.height = (int) context.getResources().getDimension(R.dimen.user_created_image_view_width);
         layoutParams.setMargins(10,10,10,10);
         thisView.setLayoutParams(layoutParams);
 
