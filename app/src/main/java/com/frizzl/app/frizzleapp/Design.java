@@ -8,10 +8,12 @@ import java.io.Serializable;
 
 public class Design implements Serializable{
     private boolean runnable;
+    private String onClickFunction;
     private boolean withOnClickSet;
 
-    public Design(boolean runnable, boolean withOnClickSet){
+    public Design(boolean runnable, boolean withOnClickSet, String onClickFunction){
         this.runnable = runnable;
+        this.onClickFunction = onClickFunction;
         this.withOnClickSet = withOnClickSet;
     }
 
@@ -21,5 +23,9 @@ public class Design implements Serializable{
 
     public boolean getWithOnClickSet() {
         return withOnClickSet;
+    }
+
+    public String getOnClickFunction() {
+        return onClickFunction;
     }
 }

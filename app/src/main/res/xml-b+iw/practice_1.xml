@@ -6,8 +6,8 @@
         <info_text>בניית אפליקציות מורכבת משני חלקים: עיצוב האפליקציה וכתיבת קוד למחשב.</info_text>
         <task_text />
         <reminder_text />
-        <code mutable = "false" show = "false" runnable ="false" waitForCTA="false"></code>
-        <design show = "false" runnable = "false" withOnClickSet="false"></design>
+        <code mutable="false" show="false" runnable ="false" waitForCTA="false"></code>
+        <design show="false" runnable="false" withOnClickSet="false"></design>
         <call_to_action>הבנתי</call_to_action>
     </slide>
 
@@ -15,8 +15,8 @@
         <info_text>כשנעצב את האפליקציה נוכל להוסיף בקלות אלמנטים כמו טקסט, כפתור ותמונה.</info_text>
         <task_text/>
         <reminder_text />
-        <code mutable = "false" show = "false" runnable ="false" waitForCTA="false"></code>
-        <design show = "true" runnable = "false">My button</design>
+        <code mutable="false" show="false" runnable ="false" waitForCTA="false"></code>
+        <design show="true" runnable="false">My button</design>
         <call_to_action>הבנתי</call_to_action>
     </slide>
 
@@ -24,8 +24,8 @@
         <info_text>בשביל לגרום לאלמנטים האלה להיות פעילים נלמד לכתוב קוד בשפת תכנות שנקראת ג'אווה.</info_text>
         <task_text/>
         <reminder_text/>
-        <code mutable = "false" show = "true" runnable ="false" waitForCTA="false">\n\\כאן תוכלו לכתוב בהמשך קוד למחשב בשפת ג'אווה</code>
-        <design show = "false" runnable = "false" withOnClickSet="false"></design>
+        <code mutable="false" show="true" runnable ="false" waitForCTA="false">//כאן תוכלו לכתוב בהמשך קוד למחשב בשפת ג'אווה</code>
+        <design show="false" runnable="false" withOnClickSet="false"></design>
         <call_to_action>הבנתי</call_to_action>
     </slide>
 
@@ -33,8 +33,8 @@
         <info_text>באמצעות קוד אנחנו מגדירים למחשב איך להתנהג, למשל:</info_text>
         <task_text>הריצו את הקוד.</task_text>
         <reminder_text/>
-        <code mutable = "false" show = "true" runnable ="true" waitForCTA="true">speakOut("hello");</code>
-        <design show = "false" runnable = "false" withOnClickSet="false"></design>
+        <code mutable="false" show="true" runnable ="true" waitForCTA="true">speakOut("hello");</code>
+        <design show="false" runnable="false" withOnClickSet="false"></design>
         <call_to_action>הבנתי</call_to_action>
     </slide>
 
@@ -42,8 +42,8 @@
         <info_text>פקודת ה-speakOut היא $orange$הפקודה$orange$ הראשונה שנלמד, באמצעותה נפקוד על המחשב לדבר.</info_text>
         <task_text/>
         <reminder_text/>
-        <code mutable = "false" show = "true" runnable ="true" waitForCTA="false">speakOut("my first command!");</code>
-        <design show = "false" runnable = "false" withOnClickSet="false"></design>
+        <code mutable="false" show="true" runnable ="true" waitForCTA="false">speakOut("my first command!");</code>
+        <design show="false" runnable="false" withOnClickSet="false"></design>
         <call_to_action>הבנתי</call_to_action>
     </slide>
 

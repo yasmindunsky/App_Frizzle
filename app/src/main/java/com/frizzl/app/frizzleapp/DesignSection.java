@@ -1,10 +1,12 @@
 package com.frizzl.app.frizzleapp;
 
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.speech.tts.TextToSpeech;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,9 +18,12 @@ import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 
+import com.frizzl.app.frizzleapp.appBuilder.DefinedFunctionsViewModel;
 import com.frizzl.app.frizzleapp.appBuilder.UserCreatedButton;
 
+import java.util.HashSet;
 import java.util.Locale;
+import java.util.Set;
 
 /**
  * Created by Noga on 12/09/2018.
@@ -31,8 +36,9 @@ public class DesignSection extends RelativeLayout {
     private ViewGroup layout;
     private DisplayErrorListener displayErrorListener;
 
-    public DesignSection(Context context, boolean runnable, boolean withOnClickSet) {
+    public DesignSection(Context context, boolean runnable, boolean withOnClickSet, String onClickFunction, FragmentActivity activity) {
         super(context);
+
         TextToSpeech.OnInitListener onInitListener = status -> {
             if (status == TextToSpeech.SUCCESS) {
                 int result = tts.setLanguage(Locale.US);
@@ -66,6 +72,9 @@ public class DesignSection extends RelativeLayout {
         Button buttonView = userCreatedButton.getThisView();
         buttonView.setOnClickListener(v -> {
             // show the popup window
+            Set<String> functions = new HashSet<>();
+            if (onClickFunction != "false") functions.add(onClickFunction);
+            userCreatedButton.setFunctions(functions);
             PopupWindow popupWindow = userCreatedButton.getPropertiesTablePopupWindow(getContext());
             v.post(() ->
                     Support.presentPopup(popupWindow, null, v, layout, context));

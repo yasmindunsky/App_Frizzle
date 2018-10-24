@@ -159,7 +159,8 @@ public class PracticeSlideFragment extends Fragment {
             Design design = practiceSlide.getDesign();
             boolean runnable = design.getRunnable();
             boolean withOnClickSet = design.getWithOnClickSet();
-            DesignSection designSection = new DesignSection(context, runnable, withOnClickSet);
+            String onClickFunction = design.getOnClickFunction();
+            DesignSection designSection = new DesignSection(context, runnable, withOnClickSet, onClickFunction, getActivity());
             designSection.setBackgroundLayout(constraintLayout);
             designSection.setId(R.id.designSection);
             designSection.setPadding(SIDES_MARGIN, TOP_DOWN_MARGIN, SIDES_MARGIN, TOP_DOWN_MARGIN);

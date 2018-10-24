@@ -8,8 +8,8 @@
         <info_text>כשאנחנו בונים אפליקציה, אנחנו יכולים להוסיף לה כפתורים.</info_text>
         <task_text/>
         <reminder_text />
-        <code show="false" mutable="false" runnable="false" waitForCTA="false"></code>
-        <design show="true" runnable="false" withOnClickSet="false"></design>
+        <code show="false" mutable="false" runnable="false" waitForCTA="false"/>
+        <design show="true" runnable="false" withOnClickSet="false"/>
         <call_to_action>הבנתי</call_to_action>
     </slide>
 
@@ -18,8 +18,8 @@
         <info_text/>
         <task_text>נסו להריץ ולראות מה קורה כשלוחצים על הכפתור.</task_text>
         <reminder_text />
-        <code show="false" mutable="false" runnable="false" waitForCTA="false"></code>
-        <design show="true" runnable="true" withOnClickSet="false"></design>
+        <code show="false" mutable="false" runnable="false" waitForCTA="false"/>
+        <design show="true" runnable="true" withOnClickSet="false"/>
         <call_to_action>הבנתי</call_to_action>
     </slide>
 
@@ -27,8 +27,8 @@
         <info_text>עכשיו נלמד איך מגדירים לכפתור להקריא טקסט כשלוחצים עליו.</info_text>
         <task_text/>
         <reminder_text/>
-        <code show="false" mutable="false" runnable="false" waitForCTA="false"></code>
-        <design show="false" runnable="false" withOnClickSet="false"></design>
+        <code show="false" mutable="false" runnable="false" waitForCTA="false"/>
+        <design show="false" runnable="false" withOnClickSet="false"/>
         <call_to_action>הבנתי</call_to_action>
     </slide>
 
@@ -36,8 +36,8 @@
         <info_text>בשביל להוסיף את הפונקציונאליות הזאת לכפתור, נוסיף לקוד שלנו מבנה שנקרא $light_blue$פונקציה$light_blue$.</info_text>
         <task_text/>
         <reminder_text/>
-        <code show="false" mutable="false" runnable="false" waitForCTA="false"></code>
-        <design show="false" runnable="false" withOnClickSet="false"></design>
+        <code show="false" mutable="false" runnable="false" waitForCTA="false"/>
+        <design show="false" runnable="false" withOnClickSet="false"/>
         <call_to_action>הבנתי</call_to_action>
     </slide>
 
@@ -45,8 +45,8 @@
         <info_text>$light_blue$פונקציה$light_blue$ זה מבנה מיוחד שעוטף פקודות ואנחנו נותנים לו שם. מיד נלמד איך נראית $light_blue$פונקציה$light_blue$.</info_text>
         <task_text/>
         <reminder_text/>
-        <code show="false" mutable="false" runnable="false" waitForCTA="false"></code>
-        <design show="false" runnable="false" withOnClickSet="false"></design>
+        <code show="false" mutable="false" runnable="false" waitForCTA="false"/>
+        <design show="false" runnable="false" withOnClickSet="false"/>
         <call_to_action>הבנתי</call_to_action>
     </slide>
 
@@ -54,8 +54,8 @@
         <info_text/>
         <task_text>הוסיפו לקוד $light_blue$פונקציה$light_blue$ בעזרת המקלדת.</task_text>
         <reminder_text/>
-        <code show="true" mutable="true" runnable="false" waitForCTA="false"></code>
-        <design show="false" runnable="false" withOnClickSet="false"></design>
+        <code show="true" mutable="true" runnable="false" waitForCTA="false"/>
+        <design show="false" runnable="false" withOnClickSet="false"/>
         <call_to_action>בדיקה</call_to_action>
     </slide>
 
@@ -66,7 +66,7 @@
         <code show="true" mutable="false" runnable="false" waitForCTA="false">
             public void nameYouChoose(View view){\n\t// You will later write commands here\n\n}
         </code>
-        <design show="false" runnable="false" withOnClickSet="false"></design>
+        <design show="false" runnable="false" withOnClickSet="false"/>
         <call_to_action>הבנתי</call_to_action>
     </slide>
 
@@ -77,7 +77,7 @@
         <code show="true" mutable="true" runnable="false" waitForCTA="false">
             public void nameYouChoose(View view){\n\t// You will later write commands here\n\n}
         </code>
-        <design show="false" runnable="false" withOnClickSet="false"></design>
+        <design show="false" runnable="false" withOnClickSet="false"/>
         <call_to_action>בדיקה</call_to_action>
     </slide>
 
@@ -88,7 +88,7 @@
         <code show="true" mutable="true" runnable="false" waitForCTA="false">
             public void myFunction(View view){\n\t// You will later write commands here\n\n}
         </code>
-        <design show="false" runnable="false" withOnClickSet="false"></design>
+        <design show="false" runnable="false" withOnClickSet="false"/>
         <call_to_action>בדיקה</call_to_action>
     </slide>
 
@@ -99,7 +99,7 @@
         <code show="true" mutable="false" runnable="false" waitForCTA="false">
 public void myFunction(View view){\n\tspeakOut("Hello");\n}
         </code>
-        <design show="true" runnable="false" withOnClickSet="false">myButton</design>
+        <design show="true" runnable="false" withOnClickFunction="myFunction" withOnClickSet="false"/>
         <call_to_action>בדיקה</call_to_action>
     </slide>
 
@@ -110,7 +110,7 @@ public void myFunction(View view){\n\tspeakOut("Hello");\n}
         <code show="true" mutable="false" runnable="false" waitForCTA="false">
             public void myFunction(View view){\n\tspeakOut("Hello");\n}
         </code>
-        <design show="true" runnable="true" withOnClickSet="true">myButton</design>
+        <design show="true" runnable="true" withOnClickFunction="myFunction" withOnClickSet="true"/>
         <call_to_action>הבנתי</call_to_action>
     </slide>
 
