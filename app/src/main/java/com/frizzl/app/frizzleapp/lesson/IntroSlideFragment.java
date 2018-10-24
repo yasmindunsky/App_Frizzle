@@ -39,6 +39,7 @@ public class IntroSlideFragment extends Fragment {
     private AppCompatButton callToActionButton;
     private TextToSpeech tts;
     private int numOfSlides;
+    private boolean waitForCTA = false;
 
     public IntroSlideFragment() {
         // Required empty public constructor
@@ -123,9 +124,12 @@ public class IntroSlideFragment extends Fragment {
         View.OnClickListener speak = v -> {
             String textToSay = (String) v.getTag();
             tts.speak(textToSay, TextToSpeech.QUEUE_ADD, null);
+            enableCTAButton(true);
+
         };
 
         if (practiceSlide.hasDesign()){
+            waitForCTA = practiceSlide.getDesign().getRunnable();
             View pollyApp = getLayoutInflater().inflate(R.layout.polly_app_demo, null);
             ConstraintLayout.LayoutParams layoutParams = new ConstraintLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -159,7 +163,17 @@ public class IntroSlideFragment extends Fragment {
             moveToNextFragment();
         });
         constraintLayout.addView(callToActionButton);
+        if (waitForCTA) enableCTAButton(false);
+
         return view;
+    }
+
+    public void enableCTAButton(boolean enabled){
+        int alpha = enabled ? 255 : 220;
+        if (callToActionButton != null){
+            callToActionButton.getBackground().setAlpha(alpha);
+            callToActionButton.setEnabled(enabled);
+        }
     }
 
     private void moveToNextFragment() {
