@@ -1,6 +1,7 @@
 package com.frizzl.app.frizzleapp.appBuilder;
 
 
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
@@ -26,6 +27,8 @@ import com.frizzl.app.frizzleapp.UserProfile;
 public class CodingScreenFragment extends Fragment {
 
     private CodingScreenPresenter codingScreenPresenter;
+    private DefinedFunctionsViewModel definedFunctionsViewModel;
+
     private CodeEditor codeEditor;
     private CodeKeyboard codeKeyboard;
     private ScrollView scrollView;
@@ -106,6 +109,8 @@ public class CodingScreenFragment extends Fragment {
             Log.e("APP_BUILDER", "codingScreenPresenter was not set.");
         }
 
+        definedFunctionsViewModel = ViewModelProviders.of(getActivity()).get(DefinedFunctionsViewModel.class);
+
         return view;
     }
 
@@ -133,5 +138,26 @@ public class CodingScreenFragment extends Fragment {
     public void onPause() {
         super.onPause();
         codingScreenPresenter.onPause();
+        extractDefinedFunctionsAndUpdateViewModel();
+    }
+
+    private void extractDefinedFunctionsAndUpdateViewModel() {
+        String code = getCode();
+        definedFunctionsViewModel.clearFunctions();
+
+        String functionIdentification = "public void";
+        int index = code.indexOf(functionIdentification);
+        while (index >= 0) {
+            String substring = code.substring(index, code.length());
+            int functionNameEnd = substring.indexOf("(");
+            if (functionNameEnd > 0) {
+                String function = code.substring(
+                        index + functionIdentification.length() + 1,
+                        index + functionNameEnd);
+                definedFunctionsViewModel.addFunction(function.trim());
+            }
+            index = code.indexOf(functionIdentification, index + 1);
+        }
+
     }
 }

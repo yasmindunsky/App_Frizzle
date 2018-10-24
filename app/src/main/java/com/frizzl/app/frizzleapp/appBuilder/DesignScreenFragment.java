@@ -43,14 +43,16 @@ public class DesignScreenFragment extends Fragment {
     private GridLayout gridLayout;
     private PopupWindow popupWindow;
     private Map<Integer, UserCreatedView> views;
-    private DesignScreenPresenter designScreenPresenter;
     private TextView appNameTitle;
     private ImageView appIcon;
     private Tutorial tutorial;
     private AllAngleExpandableButton plusButton;
-    private AppBuilderActivity appBuilderActivity;
     private Context context;
+
+    private DesignScreenPresenter designScreenPresenter;
+    private AppBuilderActivity appBuilderActivity;
     private UserCreatedViewsModel userCreatedViewsModel;
+    private DefinedFunctionsViewModel definedFunctionsViewModel;
 
     public DesignScreenFragment() {
         // Required empty public constructor
@@ -63,7 +65,7 @@ public class DesignScreenFragment extends Fragment {
 
         FragmentActivity activity = getActivity();
         appBuilderActivity = (AppBuilderActivity) activity;
-        context = appBuilderActivity.getApplicationContext();
+        context = appBuilderActivity;
         gridLayout = view.findViewById(R.id.gridLayout);
         appNameTitle = view.findViewById(R.id.app_name_title);
         appIcon = view.findViewById(R.id.app_icon);
@@ -91,6 +93,8 @@ public class DesignScreenFragment extends Fragment {
         } else {
             Log.e("APP_BUILDER", "designScreenPresenter was not set.");
         }
+
+        definedFunctionsViewModel = ViewModelProviders.of(getActivity()).get(DefinedFunctionsViewModel.class);
 
         return view;
     }
@@ -198,7 +202,8 @@ public class DesignScreenFragment extends Fragment {
 
         button.setOnClickListener(v -> {
             // show the popup window
-            popupWindow = userCreatedButton.getPropertiesTablePopupWindow(getContext());
+            userCreatedButton.setFunctions(definedFunctionsViewModel.getFunctions());
+            popupWindow = userCreatedButton.getPropertiesTablePopupWindow(appBuilderActivity);
 
             ImageButton deleteButton = popupWindow.getContentView().findViewById(R.id.delete);
             // To know what view to delete
@@ -354,7 +359,7 @@ public class DesignScreenFragment extends Fragment {
     }
 
     public void addNewUserCreatedButton() {
-        userCreatedViewsModel.addNewUserCreatedButton(context);
+        userCreatedViewsModel.addNewUserCreatedButton(appBuilderActivity);
     }
 
     public void addNewUserCreatedImageView() {

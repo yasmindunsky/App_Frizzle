@@ -206,7 +206,7 @@ public class AppBuilderActivity extends AppCompatActivity {
         tabLayout.addTab(codingTab);
         graphicEditTab.select();
 
-        tutorial = new Tutorial(getApplicationContext());
+        tutorial = new Tutorial(AppBuilderActivity.this);
         activityCreated = true;
     }
 
@@ -230,16 +230,18 @@ public class AppBuilderActivity extends AppCompatActivity {
     }
 
     public void presentPopup(PopupWindow popupWindow, Runnable runOnDismiss){
-        if(isFinishing()) return;
-        dimAppBuilderActivity();
-        popupWindow.setOnDismissListener(() -> {
-            undimAppBuilderActivity();
-            if (runOnDismiss != null) {
-                runOnDismiss.run();
-            }
-        });
-        // In order to show popUp after activity has been created
-        toolbar.post(() -> popupWindow.showAtLocation(toolbar, Gravity.CENTER, 0, 0));
+        Support.presentPopup(popupWindow, runOnDismiss, relativeLayout, relativeLayout, this);
+
+//        if(isFinishing()) return;
+//        dimAppBuilderActivity();
+//        popupWindow.setOnDismissListener(() -> {
+//            undimAppBuilderActivity();
+//            if (runOnDismiss != null) {
+//                runOnDismiss.run();
+//            }
+//        });
+//        // In order to show popUp after activity has been created
+//        toolbar.post(() -> popupWindow.showAtLocation(toolbar, Gravity.CENTER, 0, 0));
     }
 
     private Runnable afterSuccessPopupClosed (){
@@ -251,12 +253,12 @@ public class AppBuilderActivity extends AppCompatActivity {
     }
 
     private void openTaskSuccessPopup() {
-        PopupWindow successPopupWindow = new TaskSuccessPopupWindow(getApplicationContext());
+        PopupWindow successPopupWindow = new TaskSuccessPopupWindow(AppBuilderActivity.this);
         Support.presentPopup(successPopupWindow, afterSuccessPopupClosed(), relativeLayout, relativeLayout, this);
     }
 
     public void openStartAppPopup() {
-        presentPopup(startAppPopupWindow, null);
+        relativeLayout.post(()-> presentPopup(startAppPopupWindow, null));
     }
 
     private void undimAppBuilderActivity() {

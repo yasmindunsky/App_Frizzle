@@ -185,6 +185,8 @@ public class MainActivity extends AppCompatActivity implements   TextToSpeech.On
     <string name="whats_your_name">What\'s your name?</string>
     <string name="tell_me_a_joke">Tell me a joke</string>
     <string name="my_button">My Button</string>
+    <string name="no_functions">No function was defined yet</string>
+    <string name="choose_function">Choose a function to connect to the button</string>
 
     <string-array name="fonts">
         <item>sans-serif</item>

@@ -25,7 +25,10 @@ import com.frizzl.app.frizzleapp.R;
 import com.frizzl.app.frizzleapp.Support;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
 
 import petrov.kristiyan.colorpicker.ColorPicker;
 
@@ -36,6 +39,7 @@ import petrov.kristiyan.colorpicker.ColorPicker;
 public class UserCreatedButton extends UserCreatedView {
     private Button thisView;
     private ChangedTextListener changedTextListener;
+    private Set<String> functions;
 
     UserCreatedButton(Context context, Map<String, String> properties, int index){
         this.context = context;
@@ -43,6 +47,7 @@ public class UserCreatedButton extends UserCreatedView {
         this.layout = R.layout.popup_properties_button;
         int buttonStyle = R.style.Button_UserCreated;
         this.viewType = "Button";
+        this.functions = new HashSet<>();
 
         this.thisView = new Button(new ContextThemeWrapper(context, buttonStyle), null, buttonStyle);
         thisView.setText(properties.get("android:text"));
@@ -208,10 +213,25 @@ public class UserCreatedButton extends UserCreatedView {
         });
 
         // ONCLICK
-        EditText onClickFuncName = popupView.findViewById(R.id.viewOnClickValue);
-        onClickFuncName.setOnFocusChangeListener(finishedOnClick);
-        onClickFuncName.setHint(R.string.function_name);
-        onClickFuncName.setText(properties.get("android:onClick"));
+        Spinner onClickFuncName = popupView.findViewById(R.id.viewOnClickValue);
+        ArrayAdapter<String> onClickAdapter = new ArrayAdapter<>(context, R.layout.simple_spinner_item);
+        if (!functions.isEmpty()) {
+            onClickAdapter.add("None");
+            onClickFuncName.setPrompt(context.getString(R.string.choose_function));
+            for (String function : functions) {
+                onClickAdapter.add(function);
+            }
+        }
+        else {
+            onClickFuncName.setPrompt(context.getString(R.string.no_functions));
+        }
+        onClickFuncName.setAdapter(onClickAdapter);
+        onClickFuncName.setOnItemSelectedListener(onOnClickPicked);
+
+        String currentOnclick = properties.get("android:onClick");
+        currentOnclick = (Objects.equals(currentOnclick, "")) ? "None" : currentOnclick;
+        int positionOfCurrentOnclick = onClickAdapter.getPosition(currentOnclick);
+        onClickFuncName.setSelection(positionOfCurrentOnclick);
 
         // DELETE
         ImageButton deleteButton = popupView.findViewById(R.id.delete);
@@ -245,15 +265,22 @@ public class UserCreatedButton extends UserCreatedView {
         }
     };
 
-    private EditText.OnFocusChangeListener finishedOnClick = (v, hasFocus) -> {
-        if (!hasFocus) {
-            String onclickFuncName = String.valueOf(((EditText)v).getText());
-            properties.put("android:onClick", onclickFuncName);
+    private AdapterView.OnItemSelectedListener onOnClickPicked = new AdapterView.OnItemSelectedListener() {
+        @Override
+        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+            String function = parent.getItemAtPosition(position).toString();
+            properties.put("android:onClick", function);
 
             // For temp testing
-            if (changedTextListener != null) changedTextListener.onChangedOnClick(onclickFuncName);
+            if (changedTextListener != null) changedTextListener.onChangedOnClick(function);
+        }
+
+        @Override
+        public void onNothingSelected(AdapterView<?> parent) {
+
         }
     };
+
 
     AdapterView.OnItemSelectedListener onColorPicked = new AdapterView.OnItemSelectedListener() {
         @Override
@@ -324,6 +351,10 @@ public class UserCreatedButton extends UserCreatedView {
 
     void setChangedTextListener(ChangedTextListener changedTextListener) {
         this.changedTextListener = changedTextListener;
+    }
+
+    public void setFunctions(Set<String> functions) {
+        this.functions = functions;
     }
 
     // This interface defines the type of messages I want to communicate to my owner
