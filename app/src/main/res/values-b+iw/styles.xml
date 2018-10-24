@@ -1,4 +1,9 @@
 <resources>
+    <style name="Button.Basic" parent="@android:style/Widget.Button">
+        <item name="android:fontFamily">@font/rubik_bold</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
     <style name="Text.Basic" parent="@android:style/TextAppearance.Medium">
         <item name="android:textSize">18sp</item>
         <item name="android:fontFamily">@font/rubik_light</item>
