@@ -177,12 +177,13 @@ public class UserCreatedViewsModel extends ViewModel {
         return views;
     }
 
-    public void setViews(Map<Integer, UserCreatedView> newViews) {
-        views = newViews;
-        numOfButtons = 0;
-        numOfTextViews = 0;
-        numOfImageViews = 0;
-        nextViewIndex = 0;
+    public void setViews(Map<Integer, UserCreatedView> newViews, int numOfButtons,
+                         int numOfTextViews, int numOfImageViews, int nextViewIndex) {
+        this.views = newViews;
+        this.numOfButtons = numOfButtons;
+        this.numOfTextViews = numOfTextViews;
+        this.numOfImageViews = numOfImageViews;
+        this.nextViewIndex = nextViewIndex;
     }
 
     public int getNumOfButtons() {

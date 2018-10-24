@@ -86,8 +86,12 @@ public class DesignScreenFragment extends Fragment {
             setAppIcon(designScreenPresenter.getIcon());
             views = userCreatedViewsModel.getViews();
             if (views == null) {
-                views = designScreenPresenter.getViewsFromUserProfile();
-                userCreatedViewsModel.setViews(views);
+                views = UserProfile.user.getCurrentUserApp().getViews();
+                userCreatedViewsModel.setViews(views,
+                        UserProfile.user.getCurrentUserApp().getNumOfButtons(),
+                        UserProfile.user.getCurrentUserApp().getNumOfTextViews(),
+                        UserProfile.user.getCurrentUserApp().getNumOfImageViews(),
+                        UserProfile.user.getCurrentUserApp().getNextIndex());
             }
             presentViewsOnGridLayout();
         } else {
