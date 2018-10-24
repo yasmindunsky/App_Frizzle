@@ -7,7 +7,7 @@ tools:keep="@xml/practice_2">
         <info_text>When we're building an app, we can add buttons to it.</info_text>
         <task_text/>
         <reminder_text />
-        <code show="false" mutable="false" runnable="false" waitForCTA="false"></code>
+        <code show="false" mutable="false" runnable="false" waitForCTA="false"/>
         <design show="true" runnable="false" withOnClickSet="false"></design>
         <call_to_action>Got it</call_to_action>
     </slide>
@@ -17,7 +17,7 @@ tools:keep="@xml/practice_2">
         <info_text/>
         <task_text>Run and see what happens when you click the button.</task_text>
         <reminder_text />
-        <code show="false" mutable="false" runnable="false" waitForCTA="false"></code>
+        <code show="false" mutable="false" runnable="false" waitForCTA="false"/>
         <design show="true" runnable="true" withOnClickSet="false"></design>
         <call_to_action>Got it</call_to_action>
     </slide>
@@ -26,7 +26,7 @@ tools:keep="@xml/practice_2">
         <info_text>We'll now learn how to set up the button to speak out text when it is clicked.</info_text>
         <task_text/>
         <reminder_text/>
-        <code show="false" mutable="false" runnable="false" waitForCTA="false"></code>
+        <code show="false" mutable="false" runnable="false" waitForCTA="false"/>
         <design show="false" runnable="false" withOnClickSet="false"></design>
         <call_to_action>Got it</call_to_action>
     </slide>
@@ -35,7 +35,7 @@ tools:keep="@xml/practice_2">
         <info_text>To add functionality to our button, we will add a structure to our code called $light_blue$function$light_blue$.</info_text>
         <task_text/>
         <reminder_text/>
-        <code show="false" mutable="false" runnable="false" waitForCTA="false"></code>
+        <code show="false" mutable="false" runnable="false" waitForCTA="false"/>
         <design show="false" runnable="false"></design>
         <call_to_action>Got it</call_to_action>
     </slide>
@@ -44,8 +44,8 @@ tools:keep="@xml/practice_2">
         <info_text>A $light_blue$function$light_blue$ is a structure that wraps $orange$commands$orange$ and has a name. We'll now see how a $light_blue$function$light_blue$ looks like.</info_text>
         <task_text/>
         <reminder_text/>
-        <code show="false" mutable="false" runnable="false" waitForCTA="false"></code>
-        <design show="false" runnable="false"></design>
+        <code show="false" mutable="false" runnable="false" waitForCTA="false"/>
+        <design show="false" runnable="false"/>
         <call_to_action>Got it</call_to_action>
     </slide>
 
@@ -53,8 +53,14 @@ tools:keep="@xml/practice_2">
         <info_text/>
         <task_text>Use the keyboard to add a $light_blue$function$light_blue$ to the code.</task_text>
         <reminder_text/>
-        <code show="true" mutable="true" runnable="false" waitForCTA="false"></code>
-        <design show="false" runnable="false"></design>
+        <code
+            show="true"
+            mutable="true"
+            runnable="false"
+            waitForCTA="false" />
+        <design
+            show="false"
+            runnable="false" />
         <call_to_action>Check</call_to_action>
     </slide>
 
@@ -67,7 +73,7 @@ public void nameYouChoose(View view){
 \t// You will later write commands here
 }
         </code>
-        <design show="false" runnable="false"></design>
+        <design show="false" runnable="false"/>
         <call_to_action>Got it</call_to_action>
     </slide>
 
@@ -80,7 +86,7 @@ public void nameYouChoose(View view){
 \t// You will later write commands here
 }
         </code>
-        <design show="false" runnable="false"></design>
+        <design show="false" runnable="false"/>
         <call_to_action>Check</call_to_action>
     </slide>
 
@@ -93,7 +99,7 @@ public void myFunction(View view){
 \t// You will later write commands here
 }
         </code>
-        <design show="false" runnable="false"></design>
+        <design show="false" runnable="false"/>
         <call_to_action>Check</call_to_action>
     </slide>
 
@@ -106,7 +112,7 @@ public void myFunction(View view){
 \tspeakOut("Hello");
 }
         </code>
-        <design show="true" runnable="false" withOnClickSet="false">myButton</design>
+        <design show="true" runnable="false"  withOnClickFunction="myFunction" withOnClickSet="false">myButton</design>
         <call_to_action>Check</call_to_action>
     </slide>
 
@@ -116,7 +122,7 @@ public void myFunction(View view){
         <reminder_text/>
         <code show="true" mutable="false" runnable="false" waitForCTA="false">public void myFunction(View view){\n\tspeakOut("Hello");\n}
         </code>
-        <design show="true" runnable="true" withOnClickSet="true">myButton</design>
+        <design show="true" runnable="true"  withOnClickFunction="myFunction" withOnClickSet="true">myButton</design>
         <call_to_action>Got it</call_to_action>
     </slide>
 </practice>
