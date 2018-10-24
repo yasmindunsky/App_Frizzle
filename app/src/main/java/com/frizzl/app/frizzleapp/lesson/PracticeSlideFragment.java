@@ -109,6 +109,7 @@ public class PracticeSlideFragment extends Fragment {
             layoutParams.setMargins(SIDES_MARGIN,TOP_DOWN_MARGIN,SIDES_MARGIN,TOP_DOWN_MARGIN);
             taskText.setLayoutParams(layoutParams);
             layoutParams.topToBottom = prevId;
+            layoutParams.startToStart = constraintLayoutId;
             prevId = taskText.getId();
             constraintLayout.addView(taskText);
         }

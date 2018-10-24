@@ -116,6 +116,7 @@ public class IntroSlideFragment extends Fragment {
                     ViewGroup.LayoutParams.WRAP_CONTENT);
             layoutParams.setMargins(SIDES_MARGIN,TOP_DOWN_MARGIN,SIDES_MARGIN,TOP_DOWN_MARGIN);
             layoutParams.topToBottom = prevId;
+            layoutParams.startToStart = constraintLayoutId;
             prevId = taskText.getId();
             taskText.setLayoutParams(layoutParams);
             constraintLayout.addView(taskText);
