@@ -16,7 +16,7 @@
         <task_text/>
         <reminder_text />
         <code mutable="false" shows="false" runnable ="false" waitForCTA="false"/>
-        <design shows="true" runnable="false"  withOnClickSet="false"/>
+        <design shows="true" runnable="false"  withOnClickFunction="false" withOnClickSet="false"/>
         <!--Design shows here represents if to present the Polly app-->
         <call_to_action>Got it</call_to_action>
     </slide>
@@ -26,7 +26,7 @@
         <task_text>Try and use it.</task_text>
         <reminder_text/>
         <code mutable="false" shows="false" runnable ="false" waitForCTA="true"/>
-        <design shows="true" runnable="true" withOnClickSet="false"/>
+        <design shows="true" runnable="true" withOnClickFunction="false" withOnClickSet="false"/>
         <!--Design shows here represents if to present the Polly app-->
         <!--And runnable is waitForCTA-->
         <call_to_action>Got it</call_to_action>
@@ -37,7 +37,7 @@
         <task_text/>
         <reminder_text/>
         <code mutable="false" shows="false" runnable ="true" waitForCTA="false"/>
-        <design shows="false" runnable="false" withOnClickSet="false"/>
+        <design shows="false" runnable="false" withOnClickFunction="false" withOnClickSet="false"/>
         <call_to_action>Got it</call_to_action>
     </slide>
 

@@ -7,7 +7,7 @@
         <task_text/>
         <reminder_text />
         <code show = "true" mutable="false" runnable="true" waitForCTA="false">speakOut("Hello");</code>
-        <design show = "false" runnable = "false" withOnClickSet="false"></design>
+        <design show = "false" runnable = "false" withOnClickFunction="false" withOnClickSet="false"></design>
         <call_to_action>הבנתי</call_to_action>
     </slide>
 
@@ -17,7 +17,7 @@
         <task_text>שנו את הפקודה כך שתקריא את שמך (באנגלית).</task_text>
         <reminder_text />
         <code show = "true" mutable="true" runnable="true" waitForCTA="true">speakOut("Hello");</code>
-        <design show = "false" runnable = "false" withOnClickSet="false"></design>
+        <design show = "false" runnable = "false" withOnClickFunction="false" withOnClickSet="false"></design>
         <call_to_action>בדיקה</call_to_action>
     </slide>
 
@@ -26,7 +26,7 @@
         <task_text>כתבו את הפקודה כך שתקריא את הטקסט 'this is so cool'.</task_text>
         <reminder_text>תזכורת: speakOut("Hello"); </reminder_text>
         <code show = "true" mutable="true" runnable="true" waitForCTA="false">\n</code>
-        <design show = "false" runnable = "false" withOnClickSet="false"></design>
+        <design show = "false" runnable = "false" withOnClickFunction="false" withOnClickSet="false"></design>
         <call_to_action>בדיקה</call_to_action>
         <solution>speakOut("this is so cool");</solution>
     </slide>
@@ -36,7 +36,7 @@
         <task_text>מחקו את סימן הנקודה-פסיק בסוף הפקודה והריצו את הקוד.</task_text>
         <reminder_text/>
         <code show ="true" mutable="true" runnable="true" waitForCTA="true">speakOut("Hello");</code>
-        <design show = "false" runnable = "false" withOnClickSet="false"></design>
+        <design show = "false" runnable = "false" withOnClickFunction="false" withOnClickSet="false"></design>
         <call_to_action>הבנתי</call_to_action>
     </slide>
 
@@ -45,7 +45,7 @@
         <task_text>הקלידו את התו רווח בין ה-’speak’ וה-’out’ בשם הפקודה והריצו את הקוד.</task_text>
         <reminder_text/>
         <code show="true" mutable="true" runnable="true" waitForCTA="true"> speakOut("Hello");</code>
-        <design show = "false" runnable = "false" withOnClickSet="false"></design>
+        <design show = "false" runnable = "false" withOnClickFunction="false" withOnClickSet="false"></design>
         <call_to_action>הבנתי</call_to_action>
     </slide>
 

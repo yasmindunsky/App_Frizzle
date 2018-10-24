@@ -35,7 +35,7 @@ public class IntroActivity extends FragmentActivity {
 
         // Set home button.
         ImageButton mapButton = findViewById(R.id.home);
-        mapButton.setOnClickListener(v -> onBackPressed());
+        mapButton.setOnClickListener(v -> goBack());
 
         progressBar = findViewById(R.id.progressBar);
         int numOfSlides = currentPractice.getNumOfSlides();
@@ -65,6 +65,11 @@ public class IntroActivity extends FragmentActivity {
         }
 
     }
+
+    public void goBack() {
+        super.onBackPressed();
+    }
+
 }
 
 
