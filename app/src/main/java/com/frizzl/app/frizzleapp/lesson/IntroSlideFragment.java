@@ -186,7 +186,7 @@ public class IntroSlideFragment extends Fragment {
             // If last slide
             if (index == numOfSlides - 1){
                 UserProfile.user.finishedPractice(levelID);
-                getActivity().onBackPressed();
+                ((IntroActivity)getActivity()).goBack();
             }
             viewPager.setCurrentItem(i);
             RoundCornerProgressBar progressBar = activity.findViewById(R.id.progressBar);
