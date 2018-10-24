@@ -32,8 +32,8 @@ public class PracticeLastSlideFragment extends android.support.v4.app.Fragment {
 
         Button thanksButton = view.findViewById(R.id.thanksButton);
         thanksButton.setOnClickListener(v -> {
-            FragmentActivity activity = getActivity();
-            if (activity != null) activity.onBackPressed();
+            PracticeActivity activity = (PracticeActivity) getActivity();
+            if (activity != null) activity.goBack();
             UserProfile.user.finishedPractice(levelID);
         });
         return view;
