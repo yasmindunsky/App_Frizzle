@@ -35,7 +35,7 @@ public class MapPresenter {
         return UserProfile.user.getTopLevel();
     }
 
-    public PopupWindow getPrePracticePopup() {
+    public PopupWindow getPrePracticePopup(Runnable startPractice) {
         String explanationText = "";
         int currentLevel = UserProfile.user.getCurrentLevel();
         if (currentLevel == Support.ONCLICK_PRACTICE_LEVEL_ID){
@@ -45,7 +45,7 @@ public class MapPresenter {
         } else if (currentLevel == Support.FIRST_PRACTICE_LEVEL_ID) {
             explanationText = mapActivity.getApplicationContext().getResources().getString(R.string.first_practice_explanation_text);
         }
-        return new PrePracticePopupWindow(mapActivity, explanationText);
+        return new PrePracticePopupWindow(mapActivity, explanationText, startPractice);
     }
 
     public void onClickedIntro(int levelID) {

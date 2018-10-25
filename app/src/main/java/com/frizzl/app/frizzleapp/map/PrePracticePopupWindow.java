@@ -20,7 +20,7 @@ public class PrePracticePopupWindow extends PopupWindow {
     private View popupView;
     private AppCompatTextView textView;
 
-    public PrePracticePopupWindow(MapActivity activity, String explanationText){
+    public PrePracticePopupWindow(MapActivity activity, String explanationText, Runnable startPractice){
         LayoutInflater inflater = (LayoutInflater)
                 activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         assert inflater != null;
@@ -35,6 +35,7 @@ public class PrePracticePopupWindow extends PopupWindow {
         textView.setText(explanationText);
         Button okButton = popupView.findViewById(R.id.okButton);
         okButton.setOnClickListener(v -> {
+            startPractice.run();
             dismiss();
         });
     }

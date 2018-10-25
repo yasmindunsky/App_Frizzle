@@ -167,16 +167,16 @@ public class MapActivity extends AppCompatActivity {
     public void goToPractice(int practiceID) {
         // Present pre-practice pop-up
         final Context applicationContext = getApplicationContext();
-        PopupWindow popupWindow = mapPresenter.getPrePracticePopup();
         Runnable startPractice = () -> {
             // go to practice
             Intent practiceIntent = new Intent(applicationContext, PracticeActivity.class);
             practiceIntent.putExtra("practiceID", practiceID);
             startActivity(practiceIntent);
         };
+        PopupWindow popupWindow = mapPresenter.getPrePracticePopup(startPractice);
 
         if(isFinishing()) startPractice.run();
-        Support.presentPopup(popupWindow, startPractice, constraintLayout, constraintLayout, this);
+        Support.presentPopup(popupWindow, null, constraintLayout, constraintLayout, this);
     }
 
     public void goToIntro(int levelID) {
