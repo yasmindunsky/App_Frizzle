@@ -45,7 +45,7 @@ public class DesignScreenPresenter {
                 case AnnotationUserCreatedViewType.TEXT_VIEW:
 
                     // For temp testing
-                    if (UserProfile.user.getCurrentLevel() == 0 && UserProfile.user.getCurrentTaskNum() == 0) {
+                    if (UserProfile.user.getCurrentLevel() == 0 && UserProfile.user.getCurrentAppTaskNum() == 0) {
                         designScreenFragment.taskCompleted();
                     }
 
@@ -61,7 +61,7 @@ public class DesignScreenPresenter {
                     PopupWindow propertiesTablePopupWindow = userCreatedView.getPropertiesTablePopupWindow(context);
                     designScreenFragment.presentPopup(propertiesTablePopupWindow);
                     // For temp testing
-                    if (UserProfile.user.getCurrentLevel() == Support.POLLY_APP_LEVEL_ID && UserProfile.user.getCurrentTaskNum() == 0) {
+                    if (UserProfile.user.getCurrentLevel() == Support.POLLY_APP_LEVEL_ID && UserProfile.user.getCurrentAppTaskNum() == 0) {
                         designScreenFragment.taskCompleted();
                     }
             }

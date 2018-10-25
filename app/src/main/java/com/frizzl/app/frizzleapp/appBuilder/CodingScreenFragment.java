@@ -76,13 +76,13 @@ public class CodingScreenFragment extends Fragment {
                 if (UserProfile.user.getCurrentLevel() == Support.POLLY_APP_LEVEL_ID) {
                     String code = s.toString();
                     boolean taskCompleted = false;
-                    if (UserProfile.user.getCurrentTaskNum() == 2) {
+                    if (UserProfile.user.getCurrentAppTaskNum() == 2) {
                         int beforeName = code.indexOf("public void") + String.valueOf("public void").length();
                         int afterName = code.indexOf("(View view)");
                         if (afterName - beforeName > 2) {
                             taskCompleted = true;
                         }
-                    } else if (UserProfile.user.getCurrentTaskNum() == 3) {
+                    } else if (UserProfile.user.getCurrentAppTaskNum() == 3) {
                         int beforeTextToSay = code.indexOf("speakOut\"") + String.valueOf("speakOut\"").length();
                         int afterTextToSay = code.indexOf("\");");
                         if (afterTextToSay - beforeTextToSay > 0){

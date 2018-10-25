@@ -51,11 +51,13 @@ public class PracticeActivity extends FragmentActivity {
         viewPager.setAdapter(swipeAdapter);
         viewPager.setPagingEnabled(false);
 
-//        int currentSlide = UserProfile.user.getCurrentSlideInLevel();
-//        if (currentSlide != 0) {
-//            viewPager.setCurrentItem(currentSlide);
-//            progressBar.setProgress(currentSlide);
-//        }
+        if (currentPractice.getID() == UserProfile.user.getTopLevel()) {
+            int currentSlide = UserProfile.user.getCurrentSlideInLevel();
+            if (currentSlide != 0) {
+                viewPager.setCurrentItem(currentSlide);
+                progressBar.setProgress(currentSlide);
+            }
+        }
         // Rotation for RTL swiping.
 //        if (Support.isRTL()) {
 //            viewPager.setRotationY(180);
@@ -71,12 +73,13 @@ public class PracticeActivity extends FragmentActivity {
             viewPager.setCurrentItem(count - 1);
             progressBar.setProgress(count - 1);
         }
-
     }
 
     public void goBack() {
         super.onBackPressed();
-//        UserProfile.user.setCurrentSlideInLevel(viewPager.getCurrentItem());
+        if (currentPractice.getID() == UserProfile.user.getTopLevel()) {
+            UserProfile.user.setCurrentSlideInLevel(viewPager.getCurrentItem());
+        }
     }
 }
 

@@ -158,7 +158,7 @@ public class DesignScreenFragment extends Fragment {
                     userCreatedButton.setChangedTextListener(new UserCreatedButton.ChangedTextListener() {
                         @Override
                         public void onChangedText() {
-                            if (UserProfile.user.getCurrentLevel() == Support.POLLY_APP_LEVEL_ID && UserProfile.user.getCurrentTaskNum()== 1) {
+                            if (UserProfile.user.getCurrentLevel() == Support.POLLY_APP_LEVEL_ID && UserProfile.user.getCurrentAppTaskNum()== 1) {
                                 taskCompleted();
                             }
                         }
@@ -167,10 +167,10 @@ public class DesignScreenFragment extends Fragment {
                         public void onChangedOnClick(String onClickFuncName) {
                             if (UserProfile.user.getCurrentLevel() == Support.POLLY_APP_LEVEL_ID
                                     && !onClickFuncName.equals("None")) {
-                                if (UserProfile.user.getCurrentTaskNum() == 4) {
+                                if (UserProfile.user.getCurrentAppTaskNum() == 4) {
                                     if (appBuilderActivity != null)
                                         taskCompleted();
-                                } else if (UserProfile.user.getCurrentTaskNum() == 5) {
+                                } else if (UserProfile.user.getCurrentAppTaskNum() == 5) {
                                     if (appBuilderActivity != null)
                                         taskCompleted();
                                 }

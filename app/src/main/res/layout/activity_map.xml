@@ -124,7 +124,6 @@
                     android:singleLine="false"
                     android:text="@string/friendship_intro"
                     android:textAppearance="@style/Text.Map"
-                    android:textSize="11sp"
                     tools:layout_editor_absoluteX="10dp"
                     tools:layout_editor_absoluteY="50dp" />
             </com.frizzl.app.frizzleapp.map.IntroMapButton>
@@ -240,7 +239,6 @@
                     android:layout_margin="3dp"
                     android:gravity="top|center"
                     android:text="@string/polly_intro"
-                    android:textSize="11sp"
                     android:textAppearance="@style/Text.Map"
                     tools:layout_editor_absoluteX="16dp"
                     tools:layout_editor_absoluteY="61dp" />

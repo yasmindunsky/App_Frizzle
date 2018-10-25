@@ -1,7 +1,6 @@
 package com.frizzl.app.frizzleapp.appBuilder;
 
 import android.Manifest;
-import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -418,7 +417,7 @@ public class AppBuilderActivity extends AppCompatActivity {
         if (drawable instanceof Animatable) {
             ((Animatable) drawable).start();
         }
-        if (UserProfile.user.getCurrentTaskNum() == 0 && UserProfile.user.getCurrentLevel() == 0) {
+        if (UserProfile.user.getCurrentAppTaskNum() == 0 && UserProfile.user.getCurrentLevel() == 0) {
             tutorial.presentTooltip(nextButton, getString(R.string.tooltip_move_on), null, Gravity.BOTTOM);
         }
     }
@@ -428,7 +427,7 @@ public class AppBuilderActivity extends AppCompatActivity {
     }
 
     public void taskCompleted() {
-        int currentTaskNum = UserProfile.user.getCurrentTaskNum();
+        int currentTaskNum = UserProfile.user.getCurrentAppTaskNum();
         int currentLevel = UserProfile.user.getCurrentLevel();
         Bundle bundle = new Bundle();
         bundle.putString("TASK_ID", currentLevel + "_" + currentTaskNum);
@@ -436,7 +435,7 @@ public class AppBuilderActivity extends AppCompatActivity {
         // If not the last task
         if (currentTaskNum < UserProfile.user.getCurrentAppTasks().getTasksNum() - 1){
             enableNextArrow();
-            UserProfile.user.setCurrentTaskNum(currentTaskNum + 1);
+            UserProfile.user.setCurrentAppTaskNum(currentTaskNum + 1);
         }
         else {
             openTaskSuccessPopup();

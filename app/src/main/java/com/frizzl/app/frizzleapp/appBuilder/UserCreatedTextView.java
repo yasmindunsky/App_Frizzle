@@ -5,20 +5,16 @@ import android.content.Context;
 import android.content.ContextWrapper;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
-import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.support.v4.content.ContextCompat;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridLayout;
 import android.widget.ImageButton;
 import android.widget.PopupWindow;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.frizzl.app.frizzleapp.R;
@@ -241,7 +237,7 @@ public class UserCreatedTextView extends UserCreatedView {
                 properties.put("android:text", text);
 
                 // For temp testing
-                if (UserProfile.user.getCurrentLevel() == 0 && UserProfile.user.getCurrentTaskNum()==1 &&
+                if (UserProfile.user.getCurrentLevel() == 0 && UserProfile.user.getCurrentAppTaskNum()==1 &&
                         text.trim().toLowerCase().equals("hello world")) {
                     AppBuilderActivity appBuilderActivity = (AppBuilderActivity) getActivity();
                     appBuilderActivity.taskCompleted();

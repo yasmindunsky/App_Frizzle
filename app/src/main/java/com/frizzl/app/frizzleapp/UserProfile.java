@@ -18,7 +18,7 @@ import java.io.Serializable;
 public class UserProfile implements Serializable {
 
     private AppTasks currentAppTasks;
-    private int currentTaskNum;
+    private int currentAppTaskNum;
     private UserApp tutorialUserApp;
     private UserApp pollyUserApp;
     private int currentUserAppLevelID;
@@ -26,7 +26,7 @@ public class UserProfile implements Serializable {
     // level is of apps and practices combined
     private int currentLevel;
     private int topLevel;
-//    private int currentSlideInLevel;
+    private int currentSlideInLevel;
 
     public static UserProfile user = new UserProfile();
 
@@ -37,9 +37,9 @@ public class UserProfile implements Serializable {
     private void init(){
         tutorialUserApp = null;
         pollyUserApp = null;
-        topLevel = 4; // TODO: change before release
+        topLevel = 1; // TODO: change before release
         currentLevel = 0;
-//        currentSlideInLevel = 0;
+        currentSlideInLevel = 0;
     }
 
     public AppTasks getCurrentAppTasks() {
@@ -48,7 +48,7 @@ public class UserProfile implements Serializable {
 
     public void setCurrentAppTasks(AppTasks currentAppTasks) {
         this.currentAppTasks = currentAppTasks;
-        this.currentTaskNum = 0;
+        this.currentAppTaskNum = 0;
     }
 
     public UserApp getCurrentUserApp() {
@@ -99,7 +99,7 @@ public class UserProfile implements Serializable {
         }
         if (currentLevel < topLevel){
             currentLevel++;
-            currentTaskNum = 0;
+            currentSlideInLevel = 0;
         }
     }
 
@@ -112,12 +112,12 @@ public class UserProfile implements Serializable {
         }
     }
 
-    public int getCurrentTaskNum() {
-        return currentTaskNum;
+    public int getCurrentAppTaskNum() {
+        return currentAppTaskNum;
     }
 
-    public void setCurrentTaskNum(int num){
-        this.currentTaskNum = num;
+    public void setCurrentAppTaskNum(int num){
+        this.currentAppTaskNum = num;
     }
 
     public int getTopLevel() {
@@ -132,11 +132,11 @@ public class UserProfile implements Serializable {
         currentUserAppLevelID = appLevelID;
     }
 
-//    public int getCurrentSlideInLevel() {
-//        return currentSlideInLevel;
-//    }
-//
-//    public void setCurrentSlideInLevel(int currentSlideInLevel) {
-//        this.currentSlideInLevel = currentSlideInLevel;
-//    }
+    public int getCurrentSlideInLevel() {
+        return currentSlideInLevel;
+    }
+
+    public void setCurrentSlideInLevel(int currentSlideInLevel) {
+        this.currentSlideInLevel = currentSlideInLevel;
+    }
 }
