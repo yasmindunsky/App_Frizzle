@@ -123,6 +123,7 @@ public class PracticeSlideFragment extends Fragment {
                     ViewGroup.LayoutParams.WRAP_CONTENT);
             layoutParams.setMargins(SIDES_MARGIN,TOP_DOWN_MARGIN,SIDES_MARGIN,TOP_DOWN_MARGIN);
             layoutParams.topToBottom = prevId;
+            layoutParams.startToStart = constraintLayoutId;
             prevId = reminderText.getId();
             reminderText.setLayoutParams(layoutParams);
             constraintLayout.addView(reminderText);
