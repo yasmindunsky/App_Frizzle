@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="feedback_support_title_margins">80dp</dimen>
-    <dimen name="properties_button_guideline">0.92</dimen>
+    <dimen name="properties_button_guideline">0.98</dimen>
     <dimen name="properties_button_guideline2">.6</dimen>
     <dimen name="properties_button_guideline3">.08</dimen>
 </resources>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources >
     <dimen name="feedback_support_title_margins">40dp</dimen>
-    <dimen name="properties_button_guideline">.08</dimen>
+    <dimen name="properties_button_guideline">.02</dimen>
     <dimen name="properties_button_guideline2">.4</dimen>
     <dimen name="properties_button_guideline3">.92</dimen>
     <dimen name="user_created_button_width">150dp</dimen>
