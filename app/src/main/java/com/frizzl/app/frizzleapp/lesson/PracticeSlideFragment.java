@@ -27,10 +27,12 @@ import com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar;
 import com.frizzl.app.frizzleapp.Code;
 import com.frizzl.app.frizzleapp.CodeKeyboard;
 import com.frizzl.app.frizzleapp.CodeSection;
+import com.frizzl.app.frizzleapp.CustomViewPager;
 import com.frizzl.app.frizzleapp.Design;
 import com.frizzl.app.frizzleapp.DesignSection;
 import com.frizzl.app.frizzleapp.R;
 import com.frizzl.app.frizzleapp.Support;
+import com.frizzl.app.frizzleapp.SwipeDirection;
 import com.frizzl.app.frizzleapp.UserProfile;
 import com.frizzl.app.frizzleapp.appBuilder.UserCreatedButton;
 
@@ -46,6 +48,7 @@ public class PracticeSlideFragment extends Fragment {
     private static final int TOP_DOWN_MARGIN = 30;
     private AppCompatButton callToActionButton;
     private boolean waitForCTA = false;
+    private CustomViewPager viewPager;
 
     public PracticeSlideFragment() {
         // Required empty public constructor
@@ -58,6 +61,11 @@ public class PracticeSlideFragment extends Fragment {
         constraintLayout = view.findViewById(R.id.constraintLayout);
         constraintLayout.setFocusableInTouchMode(true);
         int constraintLayoutId = constraintLayout.getId();
+        viewPager = getActivity().findViewById(R.id.pager);
+
+        if (Support.isRTL()) {
+            view.setRotationY(180);
+        }
 
         Bundle bundle = getArguments();
         if (bundle != null) {
@@ -65,6 +73,7 @@ public class PracticeSlideFragment extends Fragment {
             lessonNum = bundle.getInt("lesson");
             practiceSlide = (PracticeSlide) bundle.getSerializable("practice_slide");
         }
+
 
         // Create elements by what's needed
         Context context = getContext();
@@ -213,6 +222,7 @@ public class PracticeSlideFragment extends Fragment {
                 moveOn = checkPractice();
             }
             if (moveOn) {
+                UserProfile.user.finishedCurrentSlideInLevel();
                 moveToNextFragment();
             }
             else {
@@ -280,7 +290,6 @@ public class PracticeSlideFragment extends Fragment {
     }
 
     private int getCurrentSlide() {
-        ViewPager viewPager = getActivity().findViewById(R.id.pager);
         return viewPager.getCurrentItem();
     }
 
@@ -310,7 +319,6 @@ public class PracticeSlideFragment extends Fragment {
         // Change to next fragment onClick
         FragmentActivity activity = getActivity();
         if (activity != null) {
-            ViewPager viewPager = activity.findViewById(R.id.pager);
             int i = viewPager.getCurrentItem() + 1;
             viewPager.setCurrentItem(i);
             RoundCornerProgressBar progressBar = activity.findViewById(R.id.progressBar);

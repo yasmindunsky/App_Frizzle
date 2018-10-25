@@ -5,6 +5,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
+import com.frizzl.app.frizzleapp.UserProfile;
+
 /**
  * Created by yasmin.dunsky on 19-Nov-17.
  */

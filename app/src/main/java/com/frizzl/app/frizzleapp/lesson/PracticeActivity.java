@@ -8,6 +8,8 @@ import android.widget.ImageButton;
 import com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar;
 import com.frizzl.app.frizzleapp.CustomViewPager;
 import com.frizzl.app.frizzleapp.R;
+import com.frizzl.app.frizzleapp.Support;
+import com.frizzl.app.frizzleapp.SwipeDirection;
 import com.frizzl.app.frizzleapp.UserProfile;
 
 import org.xmlpull.v1.XmlPullParserException;
@@ -49,7 +51,27 @@ public class PracticeActivity extends FragmentActivity {
         viewPager = findViewById(R.id.pager);
         swipeAdapter = new PracticeSwipeAdapter(getSupportFragmentManager(), currentPractice);
         viewPager.setAdapter(swipeAdapter);
-        viewPager.setPagingEnabled(false);
+        viewPager.setAllowedSwipeDirection(SwipeDirection.none);
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {}
+
+            @Override
+            public void onPageSelected(int position) {
+                progressBar.setProgress(position);
+                SwipeDirection swipeDirection;
+                if (position < UserProfile.user.getTopSlideInLevel()) {
+                    swipeDirection = SwipeDirection.all;
+                }
+                else {
+                    swipeDirection = SwipeDirection.left; // This is the setting also for RTL
+                }
+                viewPager.setAllowedSwipeDirection(swipeDirection);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {}
+        });
 
         if (currentPractice.getID() == UserProfile.user.getTopLevel()) {
             int currentSlide = UserProfile.user.getCurrentSlideInLevel();
@@ -59,9 +81,9 @@ public class PracticeActivity extends FragmentActivity {
             }
         }
         // Rotation for RTL swiping.
-//        if (Support.isRTL()) {
-//            viewPager.setRotationY(180);
-//        }
+        if (Support.isRTL()) {
+            viewPager.setRotationY(180);
+        }
     }
 
     @Override

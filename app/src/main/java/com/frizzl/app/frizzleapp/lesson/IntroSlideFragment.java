@@ -53,6 +53,10 @@ public class IntroSlideFragment extends Fragment {
         constraintLayout.setFocusableInTouchMode(true);
         int constraintLayoutId = constraintLayout.getId();
 
+        if (Support.isRTL()) {
+            view.setRotationY(180);
+        }
+
         TextToSpeech.OnInitListener onInitListener = status -> {
             if (status == TextToSpeech.SUCCESS) {
                 int result = tts.setLanguage(Locale.US);
@@ -161,6 +165,7 @@ public class IntroSlideFragment extends Fragment {
         callToActionButton.setLayoutParams(layoutParams);
         callToActionButton.setOnClickListener(v -> {
             Button button = (Button) v;
+            UserProfile.user.finishedCurrentSlideInLevel();
             moveToNextFragment();
         });
         constraintLayout.addView(callToActionButton);

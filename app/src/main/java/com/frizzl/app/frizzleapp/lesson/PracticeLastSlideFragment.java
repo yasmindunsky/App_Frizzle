@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.frizzl.app.frizzleapp.R;
+import com.frizzl.app.frizzleapp.Support;
 import com.frizzl.app.frizzleapp.UserProfile;
 
 /**
@@ -26,6 +27,10 @@ public class PracticeLastSlideFragment extends android.support.v4.app.Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_practice_end, container, false);
+
+        if (Support.isRTL()) {
+            view.setRotationY(180);
+        }
 
         Bundle bundle = getArguments();
         if (bundle != null) this.levelID = bundle.getInt("lesson");

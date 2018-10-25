@@ -27,6 +27,7 @@ public class UserProfile implements Serializable {
     private int currentLevel;
     private int topLevel;
     private int currentSlideInLevel;
+    private int topSlideInLevel;
 
     public static UserProfile user = new UserProfile();
 
@@ -40,6 +41,7 @@ public class UserProfile implements Serializable {
         topLevel = 1; // TODO: change before release
         currentLevel = 0;
         currentSlideInLevel = 0;
+        topSlideInLevel = 0;
     }
 
     public AppTasks getCurrentAppTasks() {
@@ -100,6 +102,7 @@ public class UserProfile implements Serializable {
         if (currentLevel < topLevel){
             currentLevel++;
             currentSlideInLevel = 0;
+            topSlideInLevel = 0;
         }
     }
 
@@ -138,5 +141,22 @@ public class UserProfile implements Serializable {
 
     public void setCurrentSlideInLevel(int currentSlideInLevel) {
         this.currentSlideInLevel = currentSlideInLevel;
+    }
+
+    public int getTopSlideInLevel() {
+        return topSlideInLevel;
+    }
+
+    public void setTopSlideInLevel(int topSlideInLevel) {
+        this.topSlideInLevel = topSlideInLevel;
+    }
+
+    public void finishedCurrentSlideInLevel() {
+        if (currentSlideInLevel == topSlideInLevel) {
+            topSlideInLevel++;
+        }
+        if (currentSlideInLevel < topSlideInLevel){
+            currentSlideInLevel++;
+        }
     }
 }

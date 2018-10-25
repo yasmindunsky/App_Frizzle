@@ -75,6 +75,7 @@
             android:padding="15dp"
             android:scaleType="centerInside"
             android:src="@drawable/ic_backspace"
+            
             android:text="@string/keyboard_delete" />
 
     </LinearLayout>
