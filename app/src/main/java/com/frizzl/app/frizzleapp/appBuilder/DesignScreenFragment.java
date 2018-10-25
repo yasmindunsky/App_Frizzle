@@ -207,6 +207,7 @@ public class DesignScreenFragment extends Fragment {
         button.setOnClickListener(v -> {
             // show the popup window
             userCreatedButton.setFunctions(definedFunctionsViewModel.getFunctions());
+            userCreatedButton.setDisplayOnClick(true);
             popupWindow = userCreatedButton.getPropertiesTablePopupWindow(appBuilderActivity);
 
             ImageButton deleteButton = popupWindow.getContentView().findViewById(R.id.delete);

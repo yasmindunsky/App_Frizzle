@@ -5,10 +5,8 @@ import android.content.Context;
 import android.content.ContextWrapper;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
-import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.support.v4.content.ContextCompat;
-import android.util.TypedValue;
 import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +18,7 @@ import android.widget.GridLayout;
 import android.widget.ImageButton;
 import android.widget.PopupWindow;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.frizzl.app.frizzleapp.R;
 import com.frizzl.app.frizzleapp.Support;
@@ -40,6 +39,7 @@ public class UserCreatedButton extends UserCreatedView {
     private Button thisView;
     private ChangedTextListener changedTextListener;
     private Set<String> functions;
+    private boolean displayOnClick = false;
 
     UserCreatedButton(Context context, Map<String, String> properties, int index){
         this.context = context;
@@ -215,24 +215,29 @@ public class UserCreatedButton extends UserCreatedView {
 
         // ONCLICK
         Spinner onClickFuncName = popupView.findViewById(R.id.viewOnClickValue);
-        ArrayAdapter<String> onClickAdapter = new ArrayAdapter<>(context, R.layout.simple_spinner_item);
-        if (!functions.isEmpty()) {
-            onClickAdapter.add("None");
-            onClickFuncName.setPrompt(context.getString(R.string.choose_function));
-            for (String function : functions) {
-                onClickAdapter.add(function);
+        if (!displayOnClick){
+            onClickFuncName.setVisibility(View.GONE);
+            TextView onClickKey = popupView.findViewById(R.id.viewOnClickKey);
+            onClickKey.setVisibility(View.GONE);
+        } else {
+            ArrayAdapter<String> onClickAdapter = new ArrayAdapter<>(context, R.layout.simple_spinner_item);
+            if (!functions.isEmpty()) {
+                onClickAdapter.add("None");
+                onClickFuncName.setPrompt(context.getString(R.string.choose_function));
+                for (String function : functions) {
+                    onClickAdapter.add(function);
+                }
+            } else {
+                onClickFuncName.setPrompt(context.getString(R.string.no_functions));
             }
-        }
-        else {
-            onClickFuncName.setPrompt(context.getString(R.string.no_functions));
-        }
-        onClickFuncName.setAdapter(onClickAdapter);
-        onClickFuncName.setOnItemSelectedListener(onOnClickPicked);
+            onClickFuncName.setAdapter(onClickAdapter);
+            onClickFuncName.setOnItemSelectedListener(onOnClickPicked);
 
-        String currentOnclick = properties.get("android:onClick");
-        currentOnclick = (Objects.equals(currentOnclick, "")) ? "None" : currentOnclick;
-        int positionOfCurrentOnclick = onClickAdapter.getPosition(currentOnclick);
-        onClickFuncName.setSelection(positionOfCurrentOnclick);
+            String currentOnclick = properties.get("android:onClick");
+            currentOnclick = (Objects.equals(currentOnclick, "")) ? "None" : currentOnclick;
+            int positionOfCurrentOnclick = onClickAdapter.getPosition(currentOnclick);
+            onClickFuncName.setSelection(positionOfCurrentOnclick);
+        }
 
         // DELETE
         ImageButton deleteButton = popupView.findViewById(R.id.delete);
@@ -356,6 +361,10 @@ public class UserCreatedButton extends UserCreatedView {
 
     public void setFunctions(Set<String> functions) {
         this.functions = functions;
+    }
+
+    public void setDisplayOnClick(boolean displayOnClick) {
+        this.displayOnClick = displayOnClick;
     }
 
     // This interface defines the type of messages I want to communicate to my owner

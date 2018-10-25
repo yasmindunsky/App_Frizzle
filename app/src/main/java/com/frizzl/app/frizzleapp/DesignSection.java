@@ -23,6 +23,7 @@ import com.frizzl.app.frizzleapp.appBuilder.UserCreatedButton;
 
 import java.util.HashSet;
 import java.util.Locale;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -73,8 +74,10 @@ public class DesignSection extends RelativeLayout {
         buttonView.setOnClickListener(v -> {
             // show the popup window
             Set<String> functions = new HashSet<>();
-            if (onClickFunction != "false") functions.add(onClickFunction);
+            boolean hasOnClickFunction = !onClickFunction.equals("false");
+            if (hasOnClickFunction) functions.add(onClickFunction);
             userCreatedButton.setFunctions(functions);
+            userCreatedButton.setDisplayOnClick(hasOnClickFunction);
             PopupWindow popupWindow = userCreatedButton.getPropertiesTablePopupWindow(getContext());
             v.post(() ->
                     Support.presentPopup(popupWindow, null, v, layout, context));
