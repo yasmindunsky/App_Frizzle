@@ -54,7 +54,7 @@ public class CodeKeyboard extends LinearLayout implements View.OnClickListener {
         buttonEnter.setOnClickListener(this);
 
         keyValues.put(R.id.button_speakout, "speakOut(\"\");");
-        keyValues.put(R.id.button_function, "public void nameYouChoose(View view) {\n\t//Here you'll write commands\n    \n}");
+        keyValues.put(R.id.button_function, "public void nameYouChoose(View view) {\n\t\n}");
         keyValues.put(R.id.button_enter, "\n");
     }
 
