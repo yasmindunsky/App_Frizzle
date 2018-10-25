@@ -26,6 +26,7 @@ public class UserProfile implements Serializable {
     // level is of apps and practices combined
     private int currentLevel;
     private int topLevel;
+//    private int currentSlideInLevel;
 
     public static UserProfile user = new UserProfile();
 
@@ -38,6 +39,7 @@ public class UserProfile implements Serializable {
         pollyUserApp = null;
         topLevel = 4; // TODO: change before release
         currentLevel = 0;
+//        currentSlideInLevel = 0;
     }
 
     public AppTasks getCurrentAppTasks() {
@@ -130,4 +132,11 @@ public class UserProfile implements Serializable {
         currentUserAppLevelID = appLevelID;
     }
 
+//    public int getCurrentSlideInLevel() {
+//        return currentSlideInLevel;
+//    }
+//
+//    public void setCurrentSlideInLevel(int currentSlideInLevel) {
+//        this.currentSlideInLevel = currentSlideInLevel;
+//    }
 }

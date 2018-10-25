@@ -8,16 +8,17 @@ import android.widget.ImageButton;
 import com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar;
 import com.frizzl.app.frizzleapp.CustomViewPager;
 import com.frizzl.app.frizzleapp.R;
+import com.frizzl.app.frizzleapp.UserProfile;
 
 import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.IOException;
 
 public class PracticeActivity extends FragmentActivity {
-    private  PracticeSwipeAdapter swipeAdapter;
-    private  Practice currentPractice;
+    private PracticeSwipeAdapter swipeAdapter;
+    private Practice currentPractice;
     private RoundCornerProgressBar progressBar;
-    private  CustomViewPager viewPager;
+    private CustomViewPager viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +50,12 @@ public class PracticeActivity extends FragmentActivity {
         swipeAdapter = new PracticeSwipeAdapter(getSupportFragmentManager(), currentPractice);
         viewPager.setAdapter(swipeAdapter);
         viewPager.setPagingEnabled(false);
+
+//        int currentSlide = UserProfile.user.getCurrentSlideInLevel();
+//        if (currentSlide != 0) {
+//            viewPager.setCurrentItem(currentSlide);
+//            progressBar.setProgress(currentSlide);
+//        }
         // Rotation for RTL swiping.
 //        if (Support.isRTL()) {
 //            viewPager.setRotationY(180);
@@ -59,7 +66,7 @@ public class PracticeActivity extends FragmentActivity {
     public void onBackPressed() {
         int count = viewPager.getCurrentItem();
         if (count == 0) {
-            super.onBackPressed();
+            goBack();
         } else {
             viewPager.setCurrentItem(count - 1);
             progressBar.setProgress(count - 1);
@@ -69,6 +76,7 @@ public class PracticeActivity extends FragmentActivity {
 
     public void goBack() {
         super.onBackPressed();
+//        UserProfile.user.setCurrentSlideInLevel(viewPager.getCurrentItem());
     }
 }
 
