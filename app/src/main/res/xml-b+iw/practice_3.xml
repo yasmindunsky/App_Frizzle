@@ -64,7 +64,7 @@
         <task_text/>
         <reminder_text/>
         <code show="true" mutable="false" runnable="false" waitForCTA="false">
-            public void nameYouChoose(View view){\n\t// You will later write commands here\n\n}
+public void nameYouChoose(View view){\n\n}
         </code>
         <design show="false" runnable="false" withOnClickSet="false"/>
         <call_to_action>הבנתי</call_to_action>
@@ -75,18 +75,18 @@
         <task_text>שנו את שם $light_blue$הפונקציה$light_blue$ לשם myFunction.</task_text>
         <reminder_text/>
         <code show="true" mutable="true" runnable="false" waitForCTA="false">
-            public void nameYouChoose(View view){\n\t// You will later write commands here\n\n}
+public void nameYouChoose(View view){\n\n}
         </code>
         <design show="false" runnable="false" withOnClickSet="false"/>
         <call_to_action>בדיקה</call_to_action>
     </slide>
 
     <slide>
-        <info_text/>
-        <task_text>הוסיפו את פקודת $orange$ה-speakOut("Hello")$orange$ בתוך $light_blue$הפונקציה$light_blue$.</task_text>
+        <info_text>כשנוסיף פקודות לפונקציה, נכתוב את הפקודה בין הסוגרים המסולסלים.</info_text>
+        <task_text>הוסיפו לפונקציה את הפקודה: ;speakOut("Hello")</task_text>
         <reminder_text/>
         <code show="true" mutable="true" runnable="false" waitForCTA="false">
-            public void myFunction(View view){\n\t// You will later write commands here\n\n}
+public void myFunction(View view){\n\n}
         </code>
         <design show="false" runnable="false" withOnClickSet="false"/>
         <call_to_action>בדיקה</call_to_action>
@@ -108,7 +108,7 @@ public void myFunction(View view){\n\tspeakOut("Hello");\n}
         <task_text>נסו להריץ וללחוץ על הכפתור.</task_text>
         <reminder_text/>
         <code show="true" mutable="false" runnable="false" waitForCTA="false">
-            public void myFunction(View view){\n\tspeakOut("Hello");\n}
+public void myFunction(View view){\n\tspeakOut("Hello");\n}
         </code>
         <design show="true" runnable="true" withOnClickFunction="myFunction" withOnClickSet="true"/>
         <call_to_action>הבנתי</call_to_action>

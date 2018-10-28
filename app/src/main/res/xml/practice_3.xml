@@ -70,7 +70,7 @@ tools:keep="@xml/practice_2">
         <reminder_text/>
         <code show="true" mutable="false" runnable="false" waitForCTA="false">
 public void nameYouChoose(View view){
-\t// You will later write commands here
+
 }
         </code>
         <design show="false" runnable="false"/>
@@ -83,7 +83,7 @@ public void nameYouChoose(View view){
         <reminder_text/>
         <code show="true" mutable="true" runnable="false" waitForCTA="false">
 public void nameYouChoose(View view){
-\t// You will later write commands here
+
 }
         </code>
         <design show="false" runnable="false"/>
@@ -92,11 +92,11 @@ public void nameYouChoose(View view){
 
     <slide>
         <info_text/>
-        <task_text>Write the $orange$speakOut("Hello") command$orange$ inside the $light_blue$function$light_blue$.</task_text>
+        <task_text>Write the $orange$speakOut("Hello") command$orange$ inside the $light_blue$function$light_blue$, between the curly brackets.</task_text>
         <reminder_text/>
         <code show="true" mutable="true" runnable="false" waitForCTA="false">
 public void myFunction(View view){
-\t// You will later write commands here
+
 }
         </code>
         <design show="false" runnable="false"/>
