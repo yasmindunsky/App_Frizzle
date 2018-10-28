@@ -12,6 +12,7 @@ import com.google.firebase.iid.InstanceIdResult;
 import com.squareup.leakcanary.LeakCanary;
 
 import java.util.Locale;
+import java.util.UUID;
 
 import static io.fabric.sdk.android.Fabric.isDebuggable;
 
@@ -48,6 +49,7 @@ public class FrizzlApplication extends Application {
                 language = Locale.getDefault().getLanguage();
             }
             Crashlytics.setString("language", language);
+            Crashlytics.setUserIdentifier(UUID.randomUUID().toString());
         }
 
 ////        // Set to English and LTR
