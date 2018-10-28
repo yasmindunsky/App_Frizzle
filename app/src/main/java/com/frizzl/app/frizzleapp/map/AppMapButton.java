@@ -60,6 +60,10 @@ public class AppMapButton extends LinearLayout implements MapButton{
     @Override
     public void setEnabled(boolean enabled) {
         super.setEnabled(enabled);
+        TextView appName = (TextView) getChildAt(1);
+        ImageButton appIcon = (ImageButton) getChildAt(0);
+        appName.setEnabled(enabled);
+        appIcon.setEnabled(enabled);
         setAppNameColor();
         setAppIconAlpha();
     }

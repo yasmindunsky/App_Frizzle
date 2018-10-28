@@ -29,7 +29,7 @@ public class FrizzlApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
-        if(BuildConfig.DEBUG) { // TODO: change before release
+        if(BuildConfig.DEBUG) { // TODO: change before sending out APK
             if (LeakCanary.isInAnalyzerProcess(this)) {
                 // This process is dedicated to LeakCanary for heap analysis.
                 // You should not init your app in this process.
