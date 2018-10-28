@@ -75,6 +75,7 @@ public class CodeSection extends RelativeLayout {
             playButton.setImageDrawable(getResources().getDrawable(R.drawable.ic_play_run_icon));
             playButton.setPadding(24,12,12,12);
             OnClickListener runCode = v -> {
+                if (Support.volumeIsLow(context)) Support.presentVolumeToast(context);
                 if (waitForCTA && readyForCTAListener != null) readyForCTAListener.onReadyForCTA();
                 if (codeIsValid()) {
                     speakOut();

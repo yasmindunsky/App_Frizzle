@@ -2,6 +2,7 @@ package com.frizzl.app.frizzleapp;
 
 import android.app.Activity;
 import android.content.Context;
+import android.media.AudioManager;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.style.ForegroundColorSpan;
@@ -11,9 +12,13 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.PopupWindow;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Locale;
+
+import static android.content.Context.AUDIO_SERVICE;
+import static android.support.v4.content.ContextCompat.getSystemService;
 
 /**
  * Created by Noga on 13/02/2018.
@@ -104,5 +109,17 @@ public class Support {
             firstSymbol = ssb.toString().indexOf(symbol, startPosition);
         }
         return ssb;
+    }
+
+    public static boolean volumeIsLow(Context context) {
+        AudioManager audioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
+        int currentVolume = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
+        int maxVolume = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
+        int currentVolumePercentage = 100 * currentVolume/maxVolume;
+        return currentVolumePercentage < 20;
+    }
+
+    public static void presentVolumeToast(Context context) {
+        Toast.makeText(context, R.string.turn_volume_up, Toast.LENGTH_LONG).show();
     }
 }

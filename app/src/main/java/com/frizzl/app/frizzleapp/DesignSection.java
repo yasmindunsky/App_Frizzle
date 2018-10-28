@@ -131,6 +131,7 @@ public class DesignSection extends RelativeLayout {
             button.setOnClickListener(v1 -> {
                 boolean onClickSet = userCreatedButton.getOnClick().equals("myFunction");
                 if (onClickSet) {
+                    if (Support.volumeIsLow(context)) Support.presentVolumeToast(context);
                     tts.speak("Hello", TextToSpeech.QUEUE_ADD, null);
                 }
                 if (displayErrorListener != null) displayErrorListener.onDisplayError();

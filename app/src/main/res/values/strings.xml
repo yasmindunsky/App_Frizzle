@@ -187,6 +187,7 @@ public class MainActivity extends AppCompatActivity implements   TextToSpeech.On
     <string name="my_button">My Button</string>
     <string name="no_functions">No function was defined yet</string>
     <string name="choose_function">Choose a function to connect to the button</string>
+    <string name="turn_volume_up">Turn up the volume to hear Polly speak</string>
 
     <string-array name="fonts">
         <item>sans-serif</item>

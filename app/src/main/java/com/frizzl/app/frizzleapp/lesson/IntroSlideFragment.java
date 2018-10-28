@@ -127,6 +127,7 @@ public class IntroSlideFragment extends Fragment {
         }
 
         View.OnClickListener speak = v -> {
+            if (Support.volumeIsLow(context)) Support.presentVolumeToast(context);
             String textToSay = (String) v.getTag();
             tts.speak(textToSay, TextToSpeech.QUEUE_ADD, null);
             enableCTAButton(true);

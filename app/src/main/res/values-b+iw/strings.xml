@@ -74,6 +74,7 @@ Use "'" for special chars.
     <string name="my_button">הכפתור שלי</string>
     <string name="no_functions">אף פונקציה לא הוגדרה עדיין</string>
     <string name="choose_function">בחרו פונקציה לחבר לכפתור</string>
+    <string name="turn_volume_up">הגבירו את הווליום כדי לשמוע את פולי מדבר</string>
 
     <string-array name="fonts">
         <item>sans-serif</item>
