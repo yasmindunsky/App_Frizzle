@@ -92,17 +92,17 @@ public class DesignSection extends RelativeLayout {
 
         if (runnable) {
             playButton = new ImageButton(context);
+            playButton.setOnClickListener(runDesign);
             playButton.setBackground(getResources().getDrawable(R.drawable.run_button_background));
             playButton.setScaleType(ImageView.ScaleType.FIT_CENTER);
             playButton.setAdjustViewBounds(false);
+            playButton.setCropToPadding(false);
             playButton.setImageDrawable(getResources().getDrawable(R.drawable.ic_play_run_icon));
-
-            playButton.setOnClickListener(runDesign);
-
+            playButton.setPadding(24,12,12,12);
             LayoutParams playButtonLayoutParams = new LayoutParams(80, 80);
             playButtonLayoutParams.addRule(RelativeLayout.CENTER_VERTICAL);
-            playButtonLayoutParams.addRule(RelativeLayout.ALIGN_PARENT_END);
-            playButtonLayoutParams.setMarginEnd(20);
+            playButtonLayoutParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
+            playButtonLayoutParams.rightMargin = 20;
             playButton.setLayoutParams(playButtonLayoutParams);
             addView(playButton);
         }
