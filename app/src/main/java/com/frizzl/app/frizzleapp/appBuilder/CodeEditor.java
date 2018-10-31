@@ -1,5 +1,6 @@
 package com.frizzl.app.frizzleapp.appBuilder;
 
+import android.app.Activity;
 import android.content.Context;
 import android.support.v4.content.res.ResourcesCompat;
 import android.text.Editable;
@@ -7,6 +8,8 @@ import android.text.InputType;
 import android.text.Spannable;
 import android.text.TextWatcher;
 import android.text.style.ForegroundColorSpan;
+import android.view.View;
+import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
 import android.view.inputmethod.InputMethodManager;
@@ -26,6 +29,7 @@ public class CodeEditor extends android.support.v7.widget.AppCompatEditText {
     private List<String> savedWords;
     private List<String> importantCommands;
     private int currentPosition = 0;
+    private InputMethodManager imm;
 
     public CodeEditor(Context context, CodeKeyboard keyboard) {
         super(context);
@@ -37,6 +41,7 @@ public class CodeEditor extends android.support.v7.widget.AppCompatEditText {
         this.setPadding(36,36,36,36);
         this.setBackgroundResource(android.R.color.transparent);
         this.setLayoutDirection(LAYOUT_DIRECTION_LTR);
+        setShowSoftInputOnFocus(false);
 
         this.keyboard = keyboard;
 
@@ -63,21 +68,11 @@ public class CodeEditor extends android.support.v7.widget.AppCompatEditText {
             this.setTextIsSelectable(true);
             InputConnection ic = this.onCreateInputConnection(new EditorInfo());
             keyboard.setInputConnection(ic);
-            InputMethodManager imm = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
             keyboard.setInputMethodManager(imm);
             setKeyboardVisibility(INVISIBLE);
             setOnFocusChangeListener((v, hasFocus) -> {
                 setKeyboardVisibility(hasFocus ? VISIBLE : INVISIBLE);
-                if (hasFocus) {
-                    v.post(()->
-                    {
-                        if (imm != null) {
-                            imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
-                            imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
-                        }
-                    });
-
-                }
             });
         }
 

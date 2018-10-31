@@ -91,8 +91,6 @@ public class CodeSection extends RelativeLayout {
             playButton.setLayoutParams(playButtonLayoutParams);
             addView(playButton);
         }
-
-
     }
 
     private void displayErrorPopup(View view, String errorMessage) {
@@ -156,8 +154,6 @@ public class CodeSection extends RelativeLayout {
         }
         super.onDetachedFromWindow();
     }
-
-
 
     public void setReadyForCTAListener(CodeSection.readyForCTAListener readyForCTAListener) {
         this.readyForCTAListener = readyForCTAListener;
