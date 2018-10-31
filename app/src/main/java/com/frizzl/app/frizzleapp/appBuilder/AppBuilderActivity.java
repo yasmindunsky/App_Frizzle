@@ -18,6 +18,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.content.FileProvider;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Gravity;
@@ -31,9 +32,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.frizzl.app.frizzleapp.AppTasksSwipeAdapter;
-import com.frizzl.app.frizzleapp.CustomViewPager;
 import com.frizzl.app.frizzleapp.R;
 import com.frizzl.app.frizzleapp.Support;
+import com.frizzl.app.frizzleapp.SwipeDirection;
+import com.frizzl.app.frizzleapp.TaskViewPager;
 import com.frizzl.app.frizzleapp.UserApp;
 import com.frizzl.app.frizzleapp.UserProfile;
 import com.frizzl.app.frizzleapp.map.MapActivity;
@@ -65,9 +67,13 @@ public class AppBuilderActivity extends AppCompatActivity {
     private Button moveOnButton;
     private android.support.v7.widget.Toolbar toolbar;
     private ImageButton clickToExpandError;
+    private ir.neo.stepbarview.StepBarView stepBarView;
 //    private ImageButton clickToExpandTask;
 //    private TextView taskTextView;
 //    private AppTasks currentApp;
+
+    private Drawable nextDrawable;
+    private Drawable prevDrawable;
 
     private Tutorial tutorial;
 
@@ -77,7 +83,7 @@ public class AppBuilderActivity extends AppCompatActivity {
     private static final int MAX_NICKNAME_LENGTH = 10;
 
     private boolean activityCreated = false;
-    private CustomViewPager viewPager;
+    private TaskViewPager viewPager;
     private AppTasksSwipeAdapter swipeAdapter;
     private int currentAppLevelID;
     private static boolean showMovedOn = false;
@@ -107,6 +113,7 @@ public class AppBuilderActivity extends AppCompatActivity {
         prevButton = findViewById(R.id.prevTask);
         tabLayout = findViewById(R.id.tabLayout);
         toolbar = findViewById(R.id.builderToolbar);
+        stepBarView = findViewById(R.id.stepBarView);
 
         designFragment = new DesignScreenFragment();
         designScreenPresenter = new DesignScreenPresenter(designFragment);
@@ -132,7 +139,7 @@ public class AppBuilderActivity extends AppCompatActivity {
             onBackPressed();
         });
 
-        // Disable dim
+        // Undim
         relativeLayout.setForeground(getResources().getDrawable(R.drawable.shade));
         relativeLayout.getForeground().setAlpha(0);
 
@@ -160,18 +167,46 @@ public class AppBuilderActivity extends AppCompatActivity {
         viewPager = findViewById(R.id.viewPager);
         swipeAdapter = new AppTasksSwipeAdapter(getSupportFragmentManager(), UserProfile.user.getCurrentAppTasks());
         viewPager.setAdapter(swipeAdapter);
-        // Prevent swiping.
-        viewPager.setPagingEnabled(false);
+        viewPager.setAllowedSwipeDirection(SwipeDirection.none);
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {}
+
+            @Override
+            public void onPageSelected(int position) {
+                stepBarView.setReachedStep(stepBarView.getMaxCount()-position);
+                SwipeDirection swipeDirection;
+                if (position < UserProfile.user.getCurrentAppTaskNum()) {
+                    swipeDirection = SwipeDirection.all;
+                }
+                else {
+                    swipeDirection = SwipeDirection.left; // This is the setting also for RTL
+                }
+                viewPager.setAllowedSwipeDirection(swipeDirection);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {}
+        });
 
         nextButton.setOnClickListener(v -> {
+            stepBarView.setReachedStep(stepBarView.getReachedStep()-1);
             viewPager.setCurrentItem(getItem(1), true);
             disableNextArrow();
         });
         prevButton.setOnClickListener(v -> viewPager.setCurrentItem(getItem(-1),true));
-        // Rotation for RTL swiping.
-//        if (Support.isRTL()) {
-//            viewPager.setRotationY(180);
-//        }
+        nextDrawable = getResources().getDrawable(R.drawable.ic_task_arrow_icon_right);
+        prevDrawable = getResources().getDrawable(R.drawable.ic_task_arrow_icon_left);;
+
+//         Rotation for RTL swiping.
+        if (Support.isRTL()) {
+            viewPager.setRotationY(180);
+            nextDrawable = getResources().getDrawable(R.drawable.ic_task_arrow_icon_left);
+            prevDrawable = getResources().getDrawable(R.drawable.ic_task_arrow_icon_right);
+        }
+
+        nextButton.setImageDrawable(nextDrawable);
+        prevButton.setImageDrawable(prevDrawable);
 
 //        // Connecting TabLayout with ViewPager to show swipe position in dots.
 //        final TabLayout tabLayout = findViewById(R.id.tabLayout);
@@ -204,6 +239,13 @@ public class AppBuilderActivity extends AppCompatActivity {
         tabLayout.addTab(graphicEditTab, true);
         tabLayout.addTab(codingTab);
         graphicEditTab.select();
+
+        // Set stepBarView
+        stepBarView.setRtl(!Support.isRTL());
+        int tasksNum = UserProfile.user.getCurrentAppTasks().getTasksNum();
+        stepBarView.setMaxCount(tasksNum);
+        stepBarView.setReachedStep(tasksNum);
+        stepBarView.setAllowTouchStepTo(0);
 
         tutorial = new Tutorial(AppBuilderActivity.this);
         activityCreated = true;
@@ -405,17 +447,17 @@ public class AppBuilderActivity extends AppCompatActivity {
     }
 
     private void disableNextArrow(){
-        Drawable drawable = getResources().getDrawable(R.drawable.ic_task_arrow_icon_forward);
+        Drawable drawable = getResources().getDrawable(R.drawable.ic_task_arrow_icon_right);
         nextButton.setEnabled(false);
-        nextButton.setImageDrawable(drawable);
+        nextButton.setImageDrawable(nextDrawable);
     }
 
     private void enableNextArrow(){
-        Drawable drawable = getResources().getDrawable(R.drawable.task_arrow_animated);
+        Drawable animationDrawable = getResources().getDrawable(R.drawable.task_arrow_animated);
         nextButton.setEnabled(true);
-        nextButton.setImageDrawable(drawable);
-        if (drawable instanceof Animatable) {
-            ((Animatable) drawable).start();
+        nextButton.setImageDrawable(animationDrawable);
+        if (animationDrawable instanceof Animatable) {
+            ((Animatable) animationDrawable).start();
         }
         if (UserProfile.user.getCurrentAppTaskNum() == 0 && UserProfile.user.getCurrentLevel() == 0) {
             tutorial.presentTooltip(nextButton, getString(R.string.tooltip_move_on), null, Gravity.BOTTOM);

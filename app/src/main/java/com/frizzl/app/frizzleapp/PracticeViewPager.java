@@ -7,12 +7,12 @@ import android.view.MotionEvent;
 
 import com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar;
 
-public class CustomViewPager extends ViewPager {
+public class PracticeViewPager extends ViewPager {
     private SwipeDirection direction;
     private boolean enabled;
     private float initialXValue;
 
-    public CustomViewPager(Context context, AttributeSet attrs) {
+    public PracticeViewPager(Context context, AttributeSet attrs) {
         super(context, attrs);
         this.enabled = true;
         this.direction = SwipeDirection.all;

@@ -75,6 +75,10 @@ Use "'" for special chars.
     <string name="no_functions">אף פונקציה לא הוגדרה עדיין</string>
     <string name="choose_function">בחרו פונקציה לחבר לכפתור</string>
     <string name="turn_volume_up">הגבירו את הווליום כדי לשמוע את פולי מדבר</string>
+    <string name="task">משימה</string>
+    <string name="arrow_next">הבא</string>
+    <string name="arrow_prev">הקודם</string>
+
 
     <string-array name="fonts">
         <item>sans-serif</item>

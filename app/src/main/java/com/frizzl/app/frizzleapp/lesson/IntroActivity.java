@@ -6,7 +6,7 @@ import android.support.v4.view.ViewPager;
 import android.widget.ImageButton;
 
 import com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar;
-import com.frizzl.app.frizzleapp.CustomViewPager;
+import com.frizzl.app.frizzleapp.PracticeViewPager;
 import com.frizzl.app.frizzleapp.R;
 import com.frizzl.app.frizzleapp.Support;
 import com.frizzl.app.frizzleapp.SwipeDirection;
@@ -19,7 +19,7 @@ import java.io.IOException;
 public class IntroActivity extends FragmentActivity {
     private  IntroSwipeAdapter swipeAdapter;
     private  Practice currentPractice;
-    private  CustomViewPager viewPager;
+    private PracticeViewPager viewPager;
     private RoundCornerProgressBar progressBar;
 
     @Override

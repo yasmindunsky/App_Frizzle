@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.frizzl.app.frizzleapp.R;
+import com.frizzl.app.frizzleapp.Support;
 import com.frizzl.app.frizzleapp.UserProfile;
 import com.google.firebase.analytics.FirebaseAnalytics;
 
@@ -35,14 +36,18 @@ public class TaskFragment extends Fragment {
         view.setPadding(60,50,60,50);
 
         // Rotation for RTL swiping.
-//        if (Support.isRTL()) {
-//            view.setRotationY(180);
-//        }
+        if (Support.isRTL()) {
+            view.setRotationY(180);
+            view.setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
+        }
 
-        fragmentText = view.findViewById(R.id.textView2);
+        fragmentText = view.findViewById(R.id.taskText);
         Bundle bundle = getArguments();
         index = bundle.getInt("index");
         appLevelId = bundle.getInt("lesson");
+        TextView taskNum = view.findViewById(R.id.taskNum);
+        int taskNumToDisplay = index + 1;
+        taskNum.setText(getString(R.string.task) + " " + taskNumToDisplay + ":");
 
         Task task = UserProfile.user.getCurrentAppTasks().getTasks().get(index);
 

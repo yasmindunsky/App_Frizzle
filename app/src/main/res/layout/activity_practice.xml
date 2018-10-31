@@ -41,7 +41,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/home">
 
-        <com.frizzl.app.frizzleapp.CustomViewPager
+        <com.frizzl.app.frizzleapp.PracticeViewPager
             android:id="@+id/pager"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />

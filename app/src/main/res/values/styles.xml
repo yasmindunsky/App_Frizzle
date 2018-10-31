@@ -115,7 +115,11 @@
         <item name="android:breakStrategy">simple</item>
     </style>
 
-
+    <style name="Text.Task.Num" parent="@style/Text.Task">
+        <item name="android:fontFamily">@font/calibri_bold</item>
+        <item name="android:textColor">@color/frizzl_medium_light_blue</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
 
     <style name="Text.Map" parent="@style/Text.Task">
         <item name="android:fontFamily">@font/calibri_bold</item>
@@ -235,6 +239,7 @@
         <item name="android:textColor">@color/TextLightGrey</item>
         <item name="android:textColorHighlight">@color/frizzle_light_blue</item>
         <item name="android:fontFamily">@font/calibri_regular</item>
+        <item name="android:textAllCaps">false</item>
     </style>
 
     <style name="Text.KeyBoardsKeys" parent="@style/Text.Task">
@@ -265,5 +270,15 @@
         <item name="android:fontFamily">@font/calibri_light</item>
         <item name="android:lineSpacingExtra">6sp</item>
         <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="Text.Build.Tasks.Navigation" parent="Text.Basic">
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">@color/frizzl_medium_light_blue</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:layout_marginBottom">0dp</item>
+        <item name="android:layout_marginTop">0dp</item>
+        <item name="android:layout_marginStart">0dp</item>
+        <item name="android:layout_marginEnd">0dp</item>
     </style>
 </resources>

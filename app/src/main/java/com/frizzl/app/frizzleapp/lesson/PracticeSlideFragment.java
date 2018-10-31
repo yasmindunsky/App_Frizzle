@@ -5,10 +5,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
-import android.support.constraint.ConstraintSet;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.view.ViewPager;
 import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatTextView;
 import android.text.SpannableStringBuilder;
@@ -27,12 +25,11 @@ import com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar;
 import com.frizzl.app.frizzleapp.Code;
 import com.frizzl.app.frizzleapp.CodeKeyboard;
 import com.frizzl.app.frizzleapp.CodeSection;
-import com.frizzl.app.frizzleapp.CustomViewPager;
+import com.frizzl.app.frizzleapp.PracticeViewPager;
 import com.frizzl.app.frizzleapp.Design;
 import com.frizzl.app.frizzleapp.DesignSection;
 import com.frizzl.app.frizzleapp.R;
 import com.frizzl.app.frizzleapp.Support;
-import com.frizzl.app.frizzleapp.SwipeDirection;
 import com.frizzl.app.frizzleapp.UserProfile;
 import com.frizzl.app.frizzleapp.appBuilder.UserCreatedButton;
 
@@ -48,7 +45,7 @@ public class PracticeSlideFragment extends Fragment {
     private static final int TOP_DOWN_MARGIN = 30;
     private AppCompatButton callToActionButton;
     private boolean waitForCTA = false;
-    private CustomViewPager viewPager;
+    private PracticeViewPager viewPager;
 
     public PracticeSlideFragment() {
         // Required empty public constructor
