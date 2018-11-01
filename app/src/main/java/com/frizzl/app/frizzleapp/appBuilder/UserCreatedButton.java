@@ -190,7 +190,7 @@ public class UserCreatedButton extends UserCreatedView {
             colorPicker.show();
             colorPicker.setOnChooseColorListener(new ColorPicker.OnChooseColorListener() {
                 @Override
-                public void onChooseColor(int position,int color) {
+                public void onChooseColor(int position, int color) {
                     if (position != -1) {
                         int originalButtonDrawableRes = R.drawable.user_button_background;
                         Drawable buttonDrawable = ContextCompat.getDrawable(context, originalButtonDrawableRes);

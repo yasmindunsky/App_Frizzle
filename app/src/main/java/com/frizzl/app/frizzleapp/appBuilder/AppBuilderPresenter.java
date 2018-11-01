@@ -56,14 +56,15 @@ public class AppBuilderPresenter {
     }
 
     public void compileAndDownloadApp() {
+        appBuilderActivity.getWritePermission();
+        appBuilderActivity.hideError();
+
         saveProject();
         UserApp currentUserApp = UserProfile.user.getCurrentUserApp();
         String code = codeStart + currentUserApp.getCode() + codeEnd;
         String xml = currentUserApp.getXml();
         String manifest = currentUserApp.getManifest();
 
-        appBuilderActivity.getWritePermission();
-        appBuilderActivity.hideError();
 
         // send java and xml to server for build
         // if succeeded ask user for writing permission and download the apk

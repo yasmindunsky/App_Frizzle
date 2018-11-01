@@ -262,12 +262,11 @@ public class AppBuilderActivity extends AppCompatActivity {
     }
 
     public void onPlay(final View view) {
+        openRequestPermissionPopup();
         Bundle bundle = new Bundle();
         mFirebaseAnalytics.logEvent("RUN_APP", bundle);
         designScreenPresenter.saveState();
         codingScreenPresenter.saveState();
-        appBuilderPresenter.compileAndDownloadApp();
-        setProgressBarVisibility(View.VISIBLE);
     }
 
     public void presentPopup(PopupWindow popupWindow, Runnable runOnDismiss){
@@ -296,6 +295,18 @@ public class AppBuilderActivity extends AppCompatActivity {
     private void openTaskSuccessPopup() {
         PopupWindow successPopupWindow = new TaskSuccessPopupWindow(AppBuilderActivity.this);
         Support.presentPopup(successPopupWindow, afterSuccessPopupClosed(), relativeLayout, relativeLayout, this);
+    }
+
+    private void openRequestPermissionPopup() {
+        Runnable requestPermission = new Runnable() {
+            @Override
+            public void run() {
+                appBuilderPresenter.compileAndDownloadApp();
+                setProgressBarVisibility(View.VISIBLE);
+            }
+        };
+        PopupWindow permissionPopupWindow = new RequestPermissionPopupWindow(AppBuilderActivity.this, requestPermission);
+        Support.presentPopup(permissionPopupWindow, null, relativeLayout, relativeLayout, this);
     }
 
     public void openStartAppPopup() {
