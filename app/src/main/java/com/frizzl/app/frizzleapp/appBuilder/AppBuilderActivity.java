@@ -45,6 +45,8 @@ import com.tooltip.OnDismissListener;
 import net.cachapa.expandablelayout.ExpandableLayout;
 
 import java.io.File;
+import com.google.firebase.perf.FirebasePerformance;
+import com.google.firebase.perf.metrics.Trace;
 
 public class AppBuilderActivity extends AppCompatActivity {
     private static final int INSTALLED_APP_ABOVE_N = 1;
@@ -87,6 +89,8 @@ public class AppBuilderActivity extends AppCompatActivity {
     private AppTasksSwipeAdapter swipeAdapter;
     private int currentAppLevelID;
     private static boolean showMovedOn = false;
+
+    private Trace myTrace;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -301,6 +305,8 @@ public class AppBuilderActivity extends AppCompatActivity {
         Runnable requestPermission = new Runnable() {
             @Override
             public void run() {
+                myTrace = FirebasePerformance.getInstance().newTrace("download_app_trace");
+                myTrace.start();
                 appBuilderPresenter.compileAndDownloadApp();
                 setProgressBarVisibility(View.VISIBLE);
             }
@@ -377,7 +383,11 @@ public class AppBuilderActivity extends AppCompatActivity {
     }
 
     public void installUsersApp() {
+        myTrace.stop();
+        myTrace = FirebasePerformance.getInstance().newTrace("install_app_trace");
+        myTrace.start();
         setProgressBarVisibility(View.GONE);
+
 
         String destination =
                 Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
@@ -409,6 +419,7 @@ public class AppBuilderActivity extends AppCompatActivity {
                     .putExtra(Intent.EXTRA_RETURN_RESULT, true);
             startActivityForResult(intent, INSTALLED_APP_BELOW_N);
         }
+        myTrace.stop();
     }
 
     @Override
