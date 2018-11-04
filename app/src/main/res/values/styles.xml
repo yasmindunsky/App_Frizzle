@@ -256,6 +256,7 @@
     </style>
 
     <style name="Text.PracticeSlide.infoText" parent="Text.PracticeSlide">
+
     </style>
 
     <style name="Text.PracticeSlide.reminderText" parent="Text.PracticeSlide">

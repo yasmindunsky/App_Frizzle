@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
+import android.support.constraint.ConstraintSet;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.AppCompatButton;
@@ -87,6 +88,8 @@ public class PracticeSlideFragment extends Fragment {
         Context context = getContext();
         Button holder = constraintLayout.findViewById(R.id.holder);
         int prevId = holder.getId();
+        ConstraintSet set = new ConstraintSet();
+        set.clone(constraintLayout);
 
         if (practiceSlide.hasInfoText()) {
             int infoTextStyle = R.style.Text_PracticeSlide_infoText;
@@ -100,13 +103,9 @@ public class PracticeSlideFragment extends Fragment {
                     "$orange$", getResources().getColor(R.color.frizzle_orange), true);
             infoText.setText(spannableInfoText);
 
-            ConstraintLayout.LayoutParams layoutParams = new ConstraintLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                    ViewGroup.LayoutParams.WRAP_CONTENT);
-            layoutParams.setMargins(SIDES_MARGIN, TOP_DOWN_MARGIN, SIDES_MARGIN, TOP_DOWN_MARGIN);
-            layoutParams.topToBottom = prevId;
-            prevId = infoText.getId();
-            infoText.setLayoutParams(layoutParams);
             constraintLayout.addView(infoText);
+            setConstraints(set, infoText.getId(), prevId, SIDES_MARGIN);
+            prevId = infoText.getId();
         }
 
         if (practiceSlide.hasTaskText()) {
@@ -121,14 +120,9 @@ public class PracticeSlideFragment extends Fragment {
                     "$orange$", getResources().getColor(R.color.frizzle_orange), true);
             taskText.setText(spannableTaskText);
 
-            ConstraintLayout.LayoutParams layoutParams = new ConstraintLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                    ViewGroup.LayoutParams.WRAP_CONTENT);
-            layoutParams.setMargins(SIDES_MARGIN, TOP_DOWN_MARGIN, SIDES_MARGIN, TOP_DOWN_MARGIN);
-            taskText.setLayoutParams(layoutParams);
-            layoutParams.topToBottom = prevId;
-            layoutParams.startToStart = constraintLayoutId;
-            prevId = taskText.getId();
             constraintLayout.addView(taskText);
+            setConstraints(set, taskText.getId(), prevId, SIDES_MARGIN);
+            prevId = taskText.getId();
         }
 
         if (practiceSlide.hasReminderText()) {
@@ -136,14 +130,11 @@ public class PracticeSlideFragment extends Fragment {
             AppCompatTextView reminderText = new AppCompatTextView(new ContextThemeWrapper(context, reminderTextStyle));
             reminderText.setId(R.id.reminderText);
             reminderText.setText(practiceSlide.getReminderText());
-            ConstraintLayout.LayoutParams layoutParams = new ConstraintLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                    ViewGroup.LayoutParams.WRAP_CONTENT);
-            layoutParams.setMargins(SIDES_MARGIN, TOP_DOWN_MARGIN, SIDES_MARGIN, TOP_DOWN_MARGIN);
-            layoutParams.topToBottom = prevId;
-            layoutParams.startToStart = constraintLayoutId;
-            prevId = reminderText.getId();
-            reminderText.setLayoutParams(layoutParams);
+
             constraintLayout.addView(reminderText);
+            setConstraints(set, reminderText.getId(), prevId, SIDES_MARGIN);
+            prevId = reminderText.getId();
+
         }
 
         CodeKeyboard codeKeyboard = null;
@@ -167,11 +158,10 @@ public class PracticeSlideFragment extends Fragment {
             codeSection.setId(R.id.codeSection);
             ConstraintLayout.LayoutParams layoutParams = new ConstraintLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT);
-            layoutParams.setMargins(SIDES_MARGIN, TOP_DOWN_MARGIN, SIDES_MARGIN, TOP_DOWN_MARGIN);
-            layoutParams.topToBottom = prevId;
-            prevId = codeSection.getId();
             codeSection.setLayoutParams(layoutParams);
             constraintLayout.addView(codeSection);
+            setConstraints(set, codeSection.getId(), prevId, SIDES_MARGIN);
+            prevId = codeSection.getId();
             codeSection.setReadyForCTAListener(() -> enableCTAButton(true));
         }
 
@@ -186,11 +176,12 @@ public class PracticeSlideFragment extends Fragment {
             designSection.setPadding(SIDES_MARGIN, TOP_DOWN_MARGIN, SIDES_MARGIN, TOP_DOWN_MARGIN);
             ConstraintLayout.LayoutParams layoutParams = new ConstraintLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT);
-            layoutParams.setMargins(SIDES_MARGIN, TOP_DOWN_MARGIN, SIDES_MARGIN, TOP_DOWN_MARGIN);
-            layoutParams.topToBottom = prevId;
-            prevId = designSection.getId();
             designSection.setLayoutParams(layoutParams);
+
             constraintLayout.addView(designSection);
+            setConstraints(set, designSection.getId(), prevId, SIDES_MARGIN);
+            prevId = designSection.getId();
+
             designSection.setDisplayErrorListener(() -> {
                 if (UserProfile.user.getCurrentLevel() == Support.ONCLICK_PRACTICE_LEVEL_ID
                         && getCurrentSlide() == 1) {
@@ -213,28 +204,17 @@ public class PracticeSlideFragment extends Fragment {
         int errorTextStyle = R.style.Text_PracticeSlide_error;
         errorTextView = new AppCompatTextView(new ContextThemeWrapper(context, errorTextStyle));
         errorTextView.setId(R.id.errorTextView);
-        ConstraintLayout.LayoutParams errorLayoutParams =
-                new ConstraintLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                        ViewGroup.LayoutParams.WRAP_CONTENT);
-        errorLayoutParams.setMargins(SIDES_MARGIN, TOP_DOWN_MARGIN, SIDES_MARGIN, TOP_DOWN_MARGIN);
-        errorLayoutParams.topToBottom = prevId;
         errorTextView.setVisibility(View.GONE);
-        errorTextView.setLayoutParams(errorLayoutParams);
-        prevId = errorTextView.getId();
         constraintLayout.addView(errorTextView);
+        setConstraints(set, errorTextView.getId(), prevId, SIDES_MARGIN);
+        prevId = errorTextView.getId();
+
 
         // Add CTA button.
         int ctaButtonStyle = R.style.Button_PracticeCTA;
         callToActionButton = new AppCompatButton(new ContextThemeWrapper(context, ctaButtonStyle));
         callToActionButton.setText(practiceSlide.getCallToActionText());
         callToActionButton.setBackground(getResources().getDrawable(R.drawable.check_button_background));
-        ConstraintLayout.LayoutParams layoutParams =
-                new ConstraintLayout.LayoutParams(550, ViewGroup.LayoutParams.WRAP_CONTENT);
-        layoutParams.setMargins(0, TOP_DOWN_MARGIN * 2, 0, TOP_DOWN_MARGIN * 4);
-        layoutParams.topToBottom = prevId;
-        layoutParams.startToStart = constraintLayoutId;
-        layoutParams.endToEnd = constraintLayoutId;
-        callToActionButton.setLayoutParams(layoutParams);
         callToActionButton.setOnClickListener(v -> {
             Button button = (Button) v;
             boolean moveOn = true;
@@ -270,10 +250,12 @@ public class PracticeSlideFragment extends Fragment {
             }
         });
         constraintLayout.addView(callToActionButton);
+        setConstraints(set, callToActionButton.getId(), prevId, SIDES_MARGIN * 4);
+
         lottieAnimationView = new LottieAnimationView(getContext());
         lottieAnimationView.setAnimation(R.raw.stars);
         lottieAnimationView.setSpeed(1.5f);
-        layoutParams =
+        ConstraintLayout.LayoutParams layoutParams =
                 new ConstraintLayout.LayoutParams(ConstraintLayout.LayoutParams.MATCH_CONSTRAINT, ViewGroup.LayoutParams.WRAP_CONTENT);
         layoutParams.setMargins(0, TOP_DOWN_MARGIN * 2, 0, TOP_DOWN_MARGIN * 4);
         int CTAid = callToActionButton.getId();
@@ -309,6 +291,15 @@ public class PracticeSlideFragment extends Fragment {
         if (waitForCTA) enableCTAButton(false);
 
         return view;
+    }
+
+    private void setConstraints(ConstraintSet set, int thisID, int prevID, int sidesMargins) {
+        set.constrainWidth(thisID, ConstraintSet.MATCH_CONSTRAINT);
+        set.constrainHeight(thisID, ConstraintSet.WRAP_CONTENT);
+        set.connect(thisID, ConstraintSet.START, constraintLayout.getId(), ConstraintSet.START, sidesMargins);
+        set.connect(thisID, ConstraintSet.END, constraintLayout.getId(), ConstraintSet.END, sidesMargins);
+        set.connect(thisID, ConstraintSet.TOP, prevID, ConstraintSet.BOTTOM, TOP_DOWN_MARGIN);
+        constraintLayout.setConstraintSet(set);
     }
 
     private void presentError(String error) {
