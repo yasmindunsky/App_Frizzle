@@ -1,6 +1,5 @@
 package com.frizzl.app.frizzleapp.map;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,10 +14,10 @@ import com.frizzl.app.frizzleapp.R;
 import com.frizzl.app.frizzleapp.Support;
 import com.frizzl.app.frizzleapp.UserProfile;
 import com.frizzl.app.frizzleapp.appBuilder.AppBuilderActivity;
-import com.frizzl.app.frizzleapp.lesson.AppContentParser;
-import com.frizzl.app.frizzleapp.lesson.AppTasks;
-import com.frizzl.app.frizzleapp.lesson.IntroActivity;
-import com.frizzl.app.frizzleapp.lesson.PracticeActivity;
+import com.frizzl.app.frizzleapp.practice.AppContentParser;
+import com.frizzl.app.frizzleapp.practice.AppTasks;
+import com.frizzl.app.frizzleapp.practice.IntroActivity;
+import com.frizzl.app.frizzleapp.practice.PracticeActivity;
 import com.google.firebase.analytics.FirebaseAnalytics;
 
 import org.xmlpull.v1.XmlPullParserException;
@@ -184,4 +183,5 @@ public class MapActivity extends AppCompatActivity {
         introIntent.putExtra("levelID", levelID);
         startActivity(introIntent);
     }
+
 }

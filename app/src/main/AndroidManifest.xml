@@ -28,7 +28,7 @@
         </activity>
 
         <activity
-            android:name="com.frizzl.app.frizzleapp.intro.OnboardingActivity"
+            android:name="com.frizzl.app.frizzleapp.onboarding.OnboardingActivity"
             android:screenOrientation="nosensor" android:configChanges="keyboardHidden|orientation"
             android:theme="@style/AppTheme.NoActionBar"
             >
@@ -47,13 +47,13 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.frizzl.app.frizzleapp.lesson.PracticeActivity"
+        <activity android:name="com.frizzl.app.frizzleapp.practice.PracticeActivity"
             android:screenOrientation="nosensor"
             android:configChanges="keyboardHidden|orientation"
             android:windowSoftInputMode="stateAlwaysHidden"
             />
 
-        <activity android:name="com.frizzl.app.frizzleapp.lesson.IntroActivity"
+        <activity android:name="com.frizzl.app.frizzleapp.practice.IntroActivity"
             android:screenOrientation="nosensor"
             android:configChanges="keyboardHidden|orientation"
             android:windowSoftInputMode="stateAlwaysHidden"

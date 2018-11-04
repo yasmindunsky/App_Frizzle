@@ -32,7 +32,7 @@ tools:keep="@xml/practice_2">
     </slide>
 
     <slide>
-        <info_text>To add functionality to our button, we will add a structure to our code called $light_blue$function$light_blue$.</info_text>
+        <info_text>To add functionality to our button, we will add a structure to our code called $green$function$green$.</info_text>
         <task_text/>
         <reminder_text/>
         <code show="false" mutable="false" runnable="false" waitForCTA="false"/>
@@ -41,7 +41,7 @@ tools:keep="@xml/practice_2">
     </slide>
 
     <slide>
-        <info_text>A $light_blue$function$light_blue$ is a structure that wraps $orange$commands$orange$ and has a name. We'll now see how a $light_blue$function$light_blue$ looks like.</info_text>
+        <info_text>A $green$function$green$ is a structure that wraps $orange$commands$orange$ and has a name. We'll now see how a $green$function$green$ looks like.</info_text>
         <task_text/>
         <reminder_text/>
         <code show="false" mutable="false" runnable="false" waitForCTA="false"/>
@@ -51,7 +51,7 @@ tools:keep="@xml/practice_2">
 
     <slide>
         <info_text/>
-        <task_text>Use the keyboard to add a $light_blue$function$light_blue$ to the code.</task_text>
+        <task_text>Use the keyboard to add a $green$function$green$ to the code.</task_text>
         <reminder_text/>
         <code
             show="true"
@@ -79,7 +79,7 @@ public void nameYouChoose(View view){
 
     <slide>
         <info_text/>
-        <task_text>Change the $light_blue$function$light_blue$ name to 'myFunction'.</task_text>
+        <task_text>Change the $green$function$green$ name to 'myFunction'.</task_text>
         <reminder_text/>
         <code show="true" mutable="true" runnable="false" waitForCTA="false">
 public void nameYouChoose(View view){
@@ -92,7 +92,7 @@ public void nameYouChoose(View view){
 
     <slide>
         <info_text/>
-        <task_text>Write the $orange$speakOut("Hello") command$orange$ inside the $light_blue$function$light_blue$.</task_text>
+        <task_text>Write the $orange$speakOut("Hello") command$orange$ inside the $green$function$green$.</task_text>
         <reminder_text/>
         <code show="true" mutable="true" runnable="false" waitForCTA="false">
 public void myFunction(View view){
@@ -105,7 +105,7 @@ public void myFunction(View view){
 
     <slide>
         <info_text/>
-        <task_text>Write the $light_blue$function$light_blue$ name in the onClick field of the button.</task_text>
+        <task_text>Write the $green$function$green$ name in the onClick field of the button.</task_text>
         <reminder_text/>
         <code show="true" mutable="false" runnable="false" waitForCTA="false">
 public void myFunction(View view){

@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements   TextToSpeech.On
         presentTooltip(context);
         backToFrizzlLayout.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view){
                 Intent intent = new Intent(Intent.ACTION_MAIN, null);
                 intent.addCategory(Intent.CATEGORY_LAUNCHER);
                 final ComponentName cn = new ComponentName(\"com.frizzl.app.frizzleapp\",
@@ -191,6 +191,13 @@ public class MainActivity extends AppCompatActivity implements   TextToSpeech.On
     <string name="task">Task</string>
     <string name="arrow_next">next</string>
     <string name="arrow_prev">prev</string>
+    <string name="got_it">Got it</string>
+    <string name="error_read_instructions">Read the instructions again.</string>
+    <string name="error_add_speakout">Try to add the speakOut command using the keyboard.</string>
+    <string name="error_delete_speakout_add_function">Delete the speakOut command and use the \'Add Function\' button on the keyboard.</string>
+    <string name="error_dont_change_function">We\'ll now leave the white parts of the code as they were. Use the \'Add Function\' button on the keyboard.</string>
+    <string name="error_speakout_brackets">The speakOut command should be written between the curly brackets.</string>
+    <string name="error_set_onclick">Try to click the button and fill in the OnClick property.</string>
 
     <string-array name="fonts">
         <item>sans-serif</item>

@@ -13,4 +13,5 @@
     <item name="designSection" type="id" />
     <item name="codeSection" type="id" />
     <item name="codeKeyboard" type="id" />
+    <item name="errorTextView" type="id" />
 </resources>

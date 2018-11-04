@@ -5,8 +5,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
-import com.frizzl.app.frizzleapp.lesson.AppTasks;
-import com.frizzl.app.frizzleapp.lesson.TaskFragment;
+import com.frizzl.app.frizzleapp.practice.AppTasks;
+import com.frizzl.app.frizzleapp.practice.TaskFragment;
 
 /**
  * Created by yasmin.dunsky on 19-Nov-17.

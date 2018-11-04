@@ -1,4 +1,4 @@
-package com.frizzl.app.frizzleapp.lesson;
+package com.frizzl.app.frizzleapp.practice;
 
 
 import android.content.Context;
@@ -17,7 +17,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.LinearLayout;
 
 import com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar;
 import com.frizzl.app.frizzleapp.R;
@@ -90,7 +89,7 @@ public class IntroSlideFragment extends Fragment {
 
             SpannableStringBuilder spannableInfoText = new SpannableStringBuilder(practiceSlide.getInfoText());
             spannableInfoText = Support.markWithColorBetweenTwoSymbols(spannableInfoText,
-                    "$light_blue$", getResources().getColor(R.color.frizzle_light_blue), true);
+                    "$green$", getResources().getColor(R.color.frizzle_green), true);
             spannableInfoText = Support.markWithColorBetweenTwoSymbols(spannableInfoText,
                     "$orange$", getResources().getColor(R.color.frizzle_orange), true);
             infoText.setText(spannableInfoText);
@@ -111,7 +110,7 @@ public class IntroSlideFragment extends Fragment {
 
             SpannableStringBuilder spannableTaskText = new SpannableStringBuilder(practiceSlide.getTaskText());
             spannableTaskText = Support.markWithColorBetweenTwoSymbols(spannableTaskText,
-                    "$light_blue$", getResources().getColor(R.color.frizzle_light_blue), true);
+                    "$green$", getResources().getColor(R.color.frizzle_green), true);
             spannableTaskText = Support.markWithColorBetweenTwoSymbols(spannableTaskText,
                     "$orange$", getResources().getColor(R.color.frizzle_orange), true);
             taskText.setText(spannableTaskText);

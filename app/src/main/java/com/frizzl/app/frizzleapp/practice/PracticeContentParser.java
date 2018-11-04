@@ -1,4 +1,4 @@
-package com.frizzl.app.frizzleapp.lesson;
+package com.frizzl.app.frizzleapp.practice;
 
 import android.content.Context;
 import android.content.res.XmlResourceParser;

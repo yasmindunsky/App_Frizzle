@@ -2,6 +2,7 @@ package com.frizzl.app.frizzleapp;
 
 import android.app.Application;
 import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Build;
 import android.os.LocaleList;
 
@@ -22,12 +23,15 @@ import static io.fabric.sdk.android.Fabric.isDebuggable;
 
 public class FrizzlApplication extends Application {
     private Locale locale = null;
+    public static Resources resources;
 
     // Called when the application is starting, before any other application objects have been created.
     // Overriding this method is totally optional!
     @Override
     public void onCreate() {
         super.onCreate();
+
+        resources = getResources();
 
         if(BuildConfig.DEBUG) { // TODO: change before sending out APK
             if (LeakCanary.isInAnalyzerProcess(this)) {

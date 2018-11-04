@@ -1,11 +1,9 @@
-package com.frizzl.app.frizzleapp.lesson;
+package com.frizzl.app.frizzleapp.practice;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
-
-import com.frizzl.app.frizzleapp.UserProfile;
 
 /**
  * Created by yasmin.dunsky on 19-Nov-17.

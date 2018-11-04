@@ -1,6 +1,7 @@
-package com.frizzl.app.frizzleapp.lesson;
+package com.frizzl.app.frizzleapp.practice;
 
 
+import android.animation.Animator;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
@@ -21,10 +22,13 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar;
 import com.frizzl.app.frizzleapp.Code;
+import com.frizzl.app.frizzleapp.CodeCheckUtils;
 import com.frizzl.app.frizzleapp.CodeKeyboard;
 import com.frizzl.app.frizzleapp.CodeSection;
+import com.frizzl.app.frizzleapp.FrizzlApplication;
 import com.frizzl.app.frizzleapp.PracticeViewPager;
 import com.frizzl.app.frizzleapp.Design;
 import com.frizzl.app.frizzleapp.DesignSection;
@@ -46,6 +50,11 @@ public class PracticeSlideFragment extends Fragment {
     private AppCompatButton callToActionButton;
     private boolean waitForCTA = false;
     private PracticeViewPager viewPager;
+    private com.airbnb.lottie.LottieAnimationView lottieAnimationView;
+    private AppCompatTextView errorTextView;
+    private int currentLevel;
+    private int currentSlide;
+    private String originalCode;
 
     public PracticeSlideFragment() {
         // Required empty public constructor
@@ -59,6 +68,8 @@ public class PracticeSlideFragment extends Fragment {
         constraintLayout.setFocusableInTouchMode(true);
         int constraintLayoutId = constraintLayout.getId();
         viewPager = getActivity().findViewById(R.id.pager);
+        currentLevel = UserProfile.user.getCurrentLevel();
+        currentSlide = getCurrentSlide();
 
         if (Support.isRTL()) {
             view.setRotationY(180);
@@ -77,42 +88,42 @@ public class PracticeSlideFragment extends Fragment {
         Button holder = constraintLayout.findViewById(R.id.holder);
         int prevId = holder.getId();
 
-        if (practiceSlide.hasInfoText()){
+        if (practiceSlide.hasInfoText()) {
             int infoTextStyle = R.style.Text_PracticeSlide_infoText;
             AppCompatTextView infoText = new AppCompatTextView(new ContextThemeWrapper(context, infoTextStyle));
             infoText.setId(R.id.infoText);
 
             SpannableStringBuilder spannableInfoText = new SpannableStringBuilder(practiceSlide.getInfoText());
             spannableInfoText = Support.markWithColorBetweenTwoSymbols(spannableInfoText,
-                    "$light_blue$", getResources().getColor(R.color.frizzle_light_blue), true);
+                    "$green$", getResources().getColor(R.color.frizzle_green), true);
             spannableInfoText = Support.markWithColorBetweenTwoSymbols(spannableInfoText,
                     "$orange$", getResources().getColor(R.color.frizzle_orange), true);
             infoText.setText(spannableInfoText);
 
             ConstraintLayout.LayoutParams layoutParams = new ConstraintLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT);
-            layoutParams.setMargins(SIDES_MARGIN,TOP_DOWN_MARGIN,SIDES_MARGIN,TOP_DOWN_MARGIN);
+            layoutParams.setMargins(SIDES_MARGIN, TOP_DOWN_MARGIN, SIDES_MARGIN, TOP_DOWN_MARGIN);
             layoutParams.topToBottom = prevId;
             prevId = infoText.getId();
             infoText.setLayoutParams(layoutParams);
             constraintLayout.addView(infoText);
         }
 
-        if (practiceSlide.hasTaskText()){
+        if (practiceSlide.hasTaskText()) {
             int taskTextStyle = R.style.Text_PracticeSlide_taskText;
             AppCompatTextView taskText = new AppCompatTextView(new ContextThemeWrapper(context, taskTextStyle));
             taskText.setId(R.id.taskText);
 
             SpannableStringBuilder spannableTaskText = new SpannableStringBuilder(practiceSlide.getTaskText());
             spannableTaskText = Support.markWithColorBetweenTwoSymbols(spannableTaskText,
-                    "$light_blue$", getResources().getColor(R.color.frizzle_light_blue), true);
+                    "$green$", getResources().getColor(R.color.frizzle_green), true);
             spannableTaskText = Support.markWithColorBetweenTwoSymbols(spannableTaskText,
                     "$orange$", getResources().getColor(R.color.frizzle_orange), true);
             taskText.setText(spannableTaskText);
 
             ConstraintLayout.LayoutParams layoutParams = new ConstraintLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT);
-            layoutParams.setMargins(SIDES_MARGIN,TOP_DOWN_MARGIN,SIDES_MARGIN,TOP_DOWN_MARGIN);
+            layoutParams.setMargins(SIDES_MARGIN, TOP_DOWN_MARGIN, SIDES_MARGIN, TOP_DOWN_MARGIN);
             taskText.setLayoutParams(layoutParams);
             layoutParams.topToBottom = prevId;
             layoutParams.startToStart = constraintLayoutId;
@@ -120,14 +131,14 @@ public class PracticeSlideFragment extends Fragment {
             constraintLayout.addView(taskText);
         }
 
-        if (practiceSlide.hasReminderText()){
+        if (practiceSlide.hasReminderText()) {
             int reminderTextStyle = R.style.Text_PracticeSlide_reminderText;
             AppCompatTextView reminderText = new AppCompatTextView(new ContextThemeWrapper(context, reminderTextStyle));
             reminderText.setId(R.id.reminderText);
             reminderText.setText(practiceSlide.getReminderText());
             ConstraintLayout.LayoutParams layoutParams = new ConstraintLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT);
-            layoutParams.setMargins(SIDES_MARGIN,TOP_DOWN_MARGIN,SIDES_MARGIN,TOP_DOWN_MARGIN);
+            layoutParams.setMargins(SIDES_MARGIN, TOP_DOWN_MARGIN, SIDES_MARGIN, TOP_DOWN_MARGIN);
             layoutParams.topToBottom = prevId;
             layoutParams.startToStart = constraintLayoutId;
             prevId = reminderText.getId();
@@ -136,26 +147,27 @@ public class PracticeSlideFragment extends Fragment {
         }
 
         CodeKeyboard codeKeyboard = null;
-        if (practiceSlide.hasCode()){
+        if (practiceSlide.hasCode()) {
             Code code = practiceSlide.getCode();
             waitForCTA = code.getWaitForCTA();
             boolean mutable = code.getMutable();
-            if (mutable){
+            if (mutable) {
                 codeKeyboard = new CodeKeyboard(context);
                 codeKeyboard.setId(R.id.codeKeyboard);
                 codeKeyboard.setOrientation(LinearLayout.VERTICAL);
                 ConstraintLayout.LayoutParams keyboardLayoutParams = new
                         ConstraintLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                         ViewGroup.LayoutParams.WRAP_CONTENT);
-                keyboardLayoutParams.setMargins(0,TOP_DOWN_MARGIN,0,0);
+                keyboardLayoutParams.setMargins(0, TOP_DOWN_MARGIN, 0, 0);
                 keyboardLayoutParams.bottomToBottom = constraintLayoutId;
                 codeKeyboard.setLayoutParams(keyboardLayoutParams);
             }
-            CodeSection codeSection = new CodeSection(context, code.getCode(), code.getRunnable(), mutable, code.getWaitForCTA(), codeKeyboard);
+            originalCode = code.getCode();
+            CodeSection codeSection = new CodeSection(context, originalCode, code.getRunnable(), mutable, code.getWaitForCTA(), codeKeyboard);
             codeSection.setId(R.id.codeSection);
             ConstraintLayout.LayoutParams layoutParams = new ConstraintLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT);
-            layoutParams.setMargins(SIDES_MARGIN,TOP_DOWN_MARGIN,SIDES_MARGIN,TOP_DOWN_MARGIN);
+            layoutParams.setMargins(SIDES_MARGIN, TOP_DOWN_MARGIN, SIDES_MARGIN, TOP_DOWN_MARGIN);
             layoutParams.topToBottom = prevId;
             prevId = codeSection.getId();
             codeSection.setLayoutParams(layoutParams);
@@ -189,7 +201,7 @@ public class PracticeSlideFragment extends Fragment {
                     errorText.setText(R.string.our_button_does_nothing);
                     PopupWindow popupWindow = new PopupWindow(popupView, ViewGroup.LayoutParams.WRAP_CONTENT,
                             ViewGroup.LayoutParams.WRAP_CONTENT, true);
-                    if(((Activity) context).isFinishing()) return;
+                    if (((Activity) context).isFinishing()) return;
                     popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
                     ImageButton closeButton = popupView.findViewById(R.id.close);
                     closeButton.setOnClickListener(v -> popupWindow.dismiss());
@@ -197,37 +209,98 @@ public class PracticeSlideFragment extends Fragment {
             });
         }
 
+        // Add error place
+        int errorTextStyle = R.style.Text_PracticeSlide_error;
+        errorTextView = new AppCompatTextView(new ContextThemeWrapper(context, errorTextStyle));
+        errorTextView.setId(R.id.errorTextView);
+        ConstraintLayout.LayoutParams errorLayoutParams =
+                new ConstraintLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                        ViewGroup.LayoutParams.WRAP_CONTENT);
+        errorLayoutParams.setMargins(SIDES_MARGIN, TOP_DOWN_MARGIN, SIDES_MARGIN, TOP_DOWN_MARGIN);
+        errorLayoutParams.topToBottom = prevId;
+        errorTextView.setVisibility(View.GONE);
+        errorTextView.setLayoutParams(errorLayoutParams);
+        prevId = errorTextView.getId();
+        constraintLayout.addView(errorTextView);
+
+        // Add CTA button.
         int ctaButtonStyle = R.style.Button_PracticeCTA;
         callToActionButton = new AppCompatButton(new ContextThemeWrapper(context, ctaButtonStyle));
         callToActionButton.setText(practiceSlide.getCallToActionText());
         callToActionButton.setBackground(getResources().getDrawable(R.drawable.check_button_background));
         ConstraintLayout.LayoutParams layoutParams =
                 new ConstraintLayout.LayoutParams(550, ViewGroup.LayoutParams.WRAP_CONTENT);
-        layoutParams.setMargins(0,TOP_DOWN_MARGIN * 2,0,TOP_DOWN_MARGIN*4);
+        layoutParams.setMargins(0, TOP_DOWN_MARGIN * 2, 0, TOP_DOWN_MARGIN * 4);
         layoutParams.topToBottom = prevId;
         layoutParams.startToStart = constraintLayoutId;
         layoutParams.endToEnd = constraintLayoutId;
-        prevId = callToActionButton.getId();
         callToActionButton.setLayoutParams(layoutParams);
         callToActionButton.setOnClickListener(v -> {
             Button button = (Button) v;
             boolean moveOn = true;
             String buttonText = button.getText().toString().trim();
-            String checkText = getActivity().getApplicationContext().getResources().getString(R.string.check);
-            String tryAgainText = getActivity().getApplicationContext().getResources().getString(R.string.try_again);
-            if (buttonText.equals(checkText) || buttonText.equals(tryAgainText)){
-                moveOn = checkPractice();
-            }
-            if (moveOn) {
-                UserProfile.user.finishedCurrentSlideInLevel();
+            final String checkText = getActivity().getApplicationContext().getResources().getString(R.string.check);
+            final String tryAgainText = getActivity().getApplicationContext().getResources().getString(R.string.try_again);
+            final String gotItText = getActivity().getApplicationContext().getResources().getString(R.string.got_it);
+            final String nextText = getActivity().getApplicationContext().getResources().getString(R.string.next);
+            if (buttonText.equals(gotItText) || buttonText.equals(nextText)) {
                 moveToNextFragment();
             }
-            else {
-                if (buttonText.equals(tryAgainText)) button.setText(R.string.next);
-                else button.setText(tryAgainText);
+            if (buttonText.equals(checkText) || buttonText.equals(tryAgainText)) {
+                if (practiceCorrect()) {
+                    changeButtonToGreenAndShowAnimation(button);
+                } else {
+                    // Special case of checking design and not code. Wrong result from
+                    // practiceCorrect is enough here, no additional test required.
+                    if (currentLevel == Support.ONCLICK_PRACTICE_LEVEL_ID  &&
+                            getCurrentSlide() == 9){
+                        presentError(FrizzlApplication.resources.getString(R.string.error_set_onclick));
+                    }
+                    // Checking code.
+                    else {
+                        String error = PracticeErrorManager.check(currentLevel, getCurrentSlide(),
+                                getOriginalCode(), getCurrentCode());
+                        presentError(error);
+                        if (buttonText.equals(tryAgainText)) button.setText(R.string.next);
+                        else {
+                            button.setText(tryAgainText);
+                        }
+                    }
+                }
             }
         });
         constraintLayout.addView(callToActionButton);
+        lottieAnimationView = new LottieAnimationView(getContext());
+        lottieAnimationView.setAnimation(R.raw.stars);
+        lottieAnimationView.setSpeed(1.5f);
+        layoutParams =
+                new ConstraintLayout.LayoutParams(ConstraintLayout.LayoutParams.MATCH_CONSTRAINT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        layoutParams.setMargins(0, TOP_DOWN_MARGIN * 2, 0, TOP_DOWN_MARGIN * 4);
+        int CTAid = callToActionButton.getId();
+        layoutParams.topToTop = CTAid;
+        layoutParams.bottomToBottom = CTAid;
+        layoutParams.startToStart = constraintLayoutId;
+        layoutParams.endToEnd = constraintLayoutId;
+        lottieAnimationView.setLayoutParams(layoutParams);
+        lottieAnimationView.addAnimatorListener(new Animator.AnimatorListener() {
+            @Override
+            public void onAnimationStart(Animator animation) {
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                moveToNextFragment();
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animation) {
+            }
+
+            @Override
+            public void onAnimationRepeat(Animator animation) {
+            }
+        });
+        constraintLayout.addView(lottieAnimationView);
 
         if (codeKeyboard != null) {
             constraintLayout.addView(codeKeyboard);
@@ -238,7 +311,17 @@ public class PracticeSlideFragment extends Fragment {
         return view;
     }
 
-    private boolean checkPractice() {
+    private void presentError(String error) {
+        errorTextView.setVisibility(View.VISIBLE);
+        errorTextView.setText(error);
+    }
+
+    private void changeButtonToGreenAndShowAnimation(Button button) {
+                button.setBackground(getResources().getDrawable(R.drawable.button_background_green));
+                lottieAnimationView.playAnimation();
+    }
+
+    private boolean practiceCorrect() {
         boolean correct = true;
 
         // What slide are we at
@@ -250,31 +333,31 @@ public class PracticeSlideFragment extends Fragment {
                 // Check if speakOut was added and written 'this is so cool'.
                 CodeSection codeSection = constraintLayout.findViewById(R.id.codeSection);
                 String code = codeSection.getCode();
-                correct = checkIfContainsSpeakOutAndString(code, "Hello", false);
+                correct = CodeCheckUtils.checkIfContainsSpeakOutAndString(code, "Hello", false);
             } else if (currentSlide == 2) {
                 // Check if speakOut was added and written 'this is so cool'.
                 CodeSection codeSection = constraintLayout.findViewById(R.id.codeSection);
                 String code = codeSection.getCode();
-                correct = checkIfContainsSpeakOutAndString(code, "this is so cool", true);
+                correct = CodeCheckUtils.checkIfContainsSpeakOutAndString(code, "this is so cool", true);
             }
         } else if (currentLevel == Support.ONCLICK_PRACTICE_LEVEL_ID){
             if (currentSlide == 5){
                 // Check if new function was added.
                 CodeSection codeSection = constraintLayout.findViewById(R.id.codeSection);
                 String code = codeSection.getCode();
-                correct = checkIfContainsFunctionWithName(code, "");
+                correct = CodeCheckUtils.checkIfContainsFunctionWithName(code, "");
             }
             else if (currentSlide == 7){
                 // Check function name changed to 'myFunction'.
                 CodeSection codeSection = constraintLayout.findViewById(R.id.codeSection);
                 String code = codeSection.getCode();
-                correct = checkIfContainsFunctionWithName(code, "myFunction");
+                correct = CodeCheckUtils.checkIfContainsFunctionWithName(code, "myFunction");
             }
             else if (currentSlide == 8){
                 // Check if speakOut was written inside function.
                 CodeSection codeSection = constraintLayout.findViewById(R.id.codeSection);
                 String code = codeSection.getCode();
-                correct = checkIfContainsSpeakOutAndString(code, "Hello", true);
+                correct = CodeCheckUtils.checkIfContainsSpeakOutAndString(code, "Hello", true);
             }
             else if (currentSlide == 9){
                 // Check if 'myFunction' was written as the onClick value.
@@ -290,29 +373,9 @@ public class PracticeSlideFragment extends Fragment {
         return viewPager.getCurrentItem();
     }
 
-    private boolean checkIfContainsFunctionWithName(String code, String functionName) {
-        boolean correct = code.contains(functionName.trim());
-        // Contains 'speakOut'
-        correct &= code.contains("public void");
-        return correct;
-    }
-
-    private boolean checkIfContainsSpeakOutAndString(String code, String string, boolean shouldContain) {
-        boolean correct;
-        string = string.trim().toLowerCase();
-        boolean containsString = code.toLowerCase().contains(string);
-        correct = (shouldContain == containsString);
-        // Contains 'speakOut'
-        correct &= code.contains("speakOut");
-        // Contains '("'
-        code = code.replaceAll("\\s+", "");
-        correct &= code.contains("(\"");
-        // Contains '");'
-        correct &= code.contains("\");");
-        return correct;
-    }
 
     private void moveToNextFragment() {
+        UserProfile.user.finishedCurrentSlideInLevel();
         // Change to next fragment onClick
         FragmentActivity activity = getActivity();
         if (activity != null) {
@@ -331,4 +394,14 @@ public class PracticeSlideFragment extends Fragment {
         }
     }
 
+    public String getOriginalCode() {
+        if (originalCode == null) return "";
+        return originalCode;
+    }
+
+    public String getCurrentCode() {
+        CodeSection codeSection = constraintLayout.findViewById(R.id.codeSection);
+        if (codeSection == null) return null;
+        return codeSection.getCode();
+    }
 }

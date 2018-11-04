@@ -2,7 +2,7 @@ package com.frizzl.app.frizzleapp;
 
 import android.content.Context;
 
-import com.frizzl.app.frizzleapp.lesson.AppTasks;
+import com.frizzl.app.frizzleapp.practice.AppTasks;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;

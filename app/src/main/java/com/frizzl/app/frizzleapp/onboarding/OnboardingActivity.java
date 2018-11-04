@@ -1,4 +1,4 @@
-package com.frizzl.app.frizzleapp.intro;
+package com.frizzl.app.frizzleapp.onboarding;
 
 import android.content.Intent;
 import android.os.Bundle;

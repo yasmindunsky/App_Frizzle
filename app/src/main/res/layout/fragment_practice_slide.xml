@@ -1,12 +1,13 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
     android:paddingEnd="16dp"
     android:paddingStart="16dp"
-    tools:context="com.frizzl.app.frizzleapp.lesson.PracticeActivity">
+    tools:context="com.frizzl.app.frizzleapp.practice.PracticeActivity">
 
 
     <Button
@@ -16,4 +17,5 @@
         android:background="@android:color/transparent"
         android:gravity="center_vertical|center_horizontal"
         android:text="" />
+
 </android.support.constraint.ConstraintLayout>

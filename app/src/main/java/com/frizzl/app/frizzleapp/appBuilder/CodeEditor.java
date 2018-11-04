@@ -130,7 +130,7 @@ public class CodeEditor extends android.support.v7.widget.AppCompatEditText {
             String subSequence = s.subSequence(index, s.length()).toString();
             int functionNameEnd = subSequence.indexOf("(");
             if (functionNameEnd > 0) {
-                s.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.frizzle_light_blue)),
+                s.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.frizzle_green)),
                         index + functionIdentification.length(),
                         index + functionNameEnd,
                         Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);

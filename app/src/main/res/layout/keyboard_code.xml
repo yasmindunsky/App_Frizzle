@@ -28,7 +28,7 @@
             android:background="@drawable/keyboard_key"
             android:text="@string/function_keyboard"
             android:textAppearance="@style/Text.KeyBoardsKeys"
-            android:textColor="@color/frizzle_light_blue" />
+            android:textColor="@color/frizzle_green" />
 
     </LinearLayout>
 

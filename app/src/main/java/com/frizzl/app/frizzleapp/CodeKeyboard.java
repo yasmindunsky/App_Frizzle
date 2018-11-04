@@ -19,7 +19,7 @@ public class CodeKeyboard extends LinearLayout implements View.OnClickListener {
 
     private static final int NUM_OF_CHARS_TO_BACK_AFTER_SPEAKOUT = 3;
     private static final String FUNCTION_PART_1 = "public void nameYouChoose";
-    private static final String FUNCTION_PART_2 = "(View view) {\n\t//Here you'll write commands\n    \n}";
+    private static final String FUNCTION_PART_2 = "(View view){\n\t//Here you'll write commands\n    \n}";
     private static final int NUM_OF_CHARS_TO_BACK_AFTER_FUNCTION = FUNCTION_PART_2.length();
 
     private SparseArray<String> keyValues = new SparseArray<>();
@@ -54,7 +54,7 @@ public class CodeKeyboard extends LinearLayout implements View.OnClickListener {
         buttonEnter.setOnClickListener(this);
 
         keyValues.put(R.id.button_speakout, "speakOut(\"\");");
-        keyValues.put(R.id.button_function, "public void nameYouChoose(View view) {\n\t\n}");
+        keyValues.put(R.id.button_function, "public void nameYouChoose(View view){\n\t\n}");
         keyValues.put(R.id.button_enter, "\n");
     }
 

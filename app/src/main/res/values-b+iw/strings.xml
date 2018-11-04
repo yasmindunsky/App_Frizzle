@@ -78,6 +78,12 @@ Use "'" for special chars.
     <string name="task">משימה</string>
     <string name="arrow_next">הבא</string>
     <string name="arrow_prev">הקודם</string>
+    <string name="got_it">הבנתי</string>
+    <string name="error_add_speakout">נסה להוסיף את פקודת ה-speakOut באמצעות המקלדת.</string>
+    <string name="error_delete_speakout_add_function">מחק את פקודת ה-speakout והשתמש בכפתור "'"הוספת פונקציה"'" במקלדת.</string>
+    <string name="error_dont_change_function">בשלב זה נשאיר את הטקסט שכתוב בלבן קבוע. היעזר בכפתור "'"הוספת פונקציה"'" במקלדת.</string>
+    <string name="error_speakout_brackets">שים לב, פקודת ה-speakout צריכה להיכתב בין הסוגריים המסולסלים.</string>
+    <string name="error_set_onclick">נסה ללחוץ על הכפתור ולמלא את שדה ה-onClick.</string>
 
 
     <string-array name="fonts">

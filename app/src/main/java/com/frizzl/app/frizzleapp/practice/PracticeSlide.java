@@ -1,4 +1,4 @@
-package com.frizzl.app.frizzleapp.lesson;
+package com.frizzl.app.frizzleapp.practice;
 
 import com.frizzl.app.frizzleapp.Code;
 import com.frizzl.app.frizzleapp.Design;

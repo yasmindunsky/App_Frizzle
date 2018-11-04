@@ -36,7 +36,6 @@
 
     <style name="Text.Info.Bold" parent="@style/Text.Info">
         <item name="android:fontFamily">@font/rubik_bold</item>
-        <item name="android:textStyle">bold</item>
     </style>
 
     <style name="Text.Title" parent="@android:style/TextAppearance.Medium">

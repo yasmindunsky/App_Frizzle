@@ -1,4 +1,4 @@
-package com.frizzl.app.frizzleapp.lesson;
+package com.frizzl.app.frizzleapp.practice;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -16,11 +16,11 @@ import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.IOException;
 
-public class IntroActivity extends FragmentActivity {
-    private  IntroSwipeAdapter swipeAdapter;
-    private  Practice currentPractice;
-    private PracticeViewPager viewPager;
+public class PracticeActivity extends FragmentActivity {
+    private PracticeSwipeAdapter swipeAdapter;
+    private Practice currentPractice;
     private RoundCornerProgressBar progressBar;
+    private PracticeViewPager viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,11 +28,12 @@ public class IntroActivity extends FragmentActivity {
         setContentView(R.layout.activity_practice);
 
         // parse practice & update user profile
-        int levelID = getIntent().getIntExtra("levelID", 1);
+        int practiceID = getIntent().getIntExtra("practiceID", 1);
         PracticeContentParser practiceContentParser;
         try {
             practiceContentParser = new PracticeContentParser();
-            currentPractice = practiceContentParser.parsePractice(this, levelID, "intro");
+            String lessonXmlName = "practice_" + practiceID;
+            currentPractice = practiceContentParser.parsePractice(this, practiceID, lessonXmlName);
         } catch (XmlPullParserException | IOException e) {
             e.printStackTrace();
         }
@@ -48,7 +49,7 @@ public class IntroActivity extends FragmentActivity {
 
         // Create SwipeAdapter.
         viewPager = findViewById(R.id.pager);
-        swipeAdapter = new IntroSwipeAdapter(getSupportFragmentManager(), currentPractice);
+        swipeAdapter = new PracticeSwipeAdapter(getSupportFragmentManager(), currentPractice);
         viewPager.setAdapter(swipeAdapter);
         viewPager.setAllowedSwipeDirection(SwipeDirection.none);
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -79,30 +80,29 @@ public class IntroActivity extends FragmentActivity {
                 progressBar.setProgress(currentSlide);
             }
         }
-
         // Rotation for RTL swiping.
         if (Support.isRTL()) {
             viewPager.setRotationY(180);
         }
     }
 
-
     @Override
     public void onBackPressed() {
         int count = viewPager.getCurrentItem();
         if (count == 0) {
-            super.onBackPressed();
+            goBack();
         } else {
             viewPager.setCurrentItem(count - 1);
             progressBar.setProgress(count - 1);
         }
-
     }
 
     public void goBack() {
         super.onBackPressed();
+        if (currentPractice.getID() == UserProfile.user.getTopLevel()) {
+            UserProfile.user.setCurrentSlideInLevel(viewPager.getCurrentItem());
+        }
     }
-
 }
 
 

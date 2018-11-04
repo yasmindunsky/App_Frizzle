@@ -5,17 +5,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.Settings;
-import android.util.ArraySet;
-import android.widget.Toast;
 
-import com.frizzl.app.frizzleapp.intro.OnboardingActivity;
+import com.frizzl.app.frizzleapp.onboarding.OnboardingActivity;
 import com.frizzl.app.frizzleapp.map.MapActivity;
 import com.frizzl.app.frizzleapp.preferences.SaveSharedPreference;
 import com.google.firebase.analytics.FirebaseAnalytics;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
 
 public class SplashActivity extends Activity{
