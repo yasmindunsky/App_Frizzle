@@ -234,6 +234,7 @@ public class PracticeSlideFragment extends Fragment {
                         presentError(context, error, set);
                         if (buttonText.equals(tryAgainText)) button.setText(R.string.next);
                         else {
+                            button.setBackground(getResources().getDrawable(R.drawable.button_background_pink));
                             button.setText(tryAgainText);
                         }
                     }
