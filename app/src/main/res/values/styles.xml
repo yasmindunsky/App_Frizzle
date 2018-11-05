@@ -287,4 +287,8 @@
         <item name="android:textColor">@color/frizzle_pink</item>
         <item name="android:fontFamily">@font/calibri_bold</item>
     </style>
+
+    <style name="Text.PracticeSlide.notice" parent="Text.PracticeSlide.error">
+        <item name="android:textColor">@color/frizzle_light_blue</item>
+    </style>
 </resources>

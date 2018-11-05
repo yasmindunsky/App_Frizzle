@@ -1,15 +1,12 @@
 package com.frizzl.app.frizzleapp.practice;
 
 import android.content.Context;
-import android.content.res.TypedArray;
 import android.support.v7.view.ContextThemeWrapper;
 import android.support.v7.widget.AppCompatTextView;
-import android.util.AttributeSet;
-import android.view.View;
+import android.view.Gravity;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.frizzl.app.frizzleapp.R;
 import com.frizzl.app.frizzleapp.Support;
@@ -18,11 +15,12 @@ import com.frizzl.app.frizzleapp.Support;
  * Created by Noga on 13/09/2018.
  */
 
-public class PracticeErrorView extends LinearLayout{
-   private AppCompatTextView errorTextView;
+public class PracticeNotificationView extends LinearLayout{
+   private AppCompatTextView notificationTextView;
    private ImageView iconImageView;
+   private boolean isError; // If false it is a 'please notice'.
 
-    public PracticeErrorView(Context context){
+    public PracticeNotificationView(Context context, boolean isError){
         super(context);
         this.setOrientation(HORIZONTAL);
         this.setLayoutDirection(LAYOUT_DIRECTION_INHERIT);
@@ -31,30 +29,27 @@ public class PracticeErrorView extends LinearLayout{
                 ViewGroup.LayoutParams.WRAP_CONTENT));
         int px = Support.dpStringToPixel(context, "15dp");
         this.setPadding(px, px, px, px);
+        this.setGravity(Gravity.CENTER_VERTICAL);
+        this.isError = isError;
 
         iconImageView = new ImageView(context);
-        iconImageView.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_try_again));
+        int drawableResource = isError ? R.drawable.ic_try_again : R.drawable.ic_notification;
+        iconImageView.setImageDrawable(context.getResources().getDrawable(drawableResource));
         iconImageView.setLayoutParams(new ViewGroup.LayoutParams( Support.dpStringToPixel(context, "40dp"),
                 Support.dpStringToPixel(context, "40dp")));
         iconImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
         this.addView(iconImageView);
 
-        int errorTextStyle = R.style.Text_PracticeSlide_error;
-        errorTextView = new AppCompatTextView(new ContextThemeWrapper(context, errorTextStyle));
+        int textStyle = isError ? R.style.Text_PracticeSlide_error : R.style.Text_PracticeSlide_notice;
+        notificationTextView = new AppCompatTextView(new ContextThemeWrapper(context, textStyle));
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT);
         layoutParams.setMarginStart(Support.dpStringToPixel(context, "10dp"));
-        errorTextView.setLayoutParams(layoutParams);
-        this.addView(errorTextView);
+        notificationTextView.setLayoutParams(layoutParams);
+        this.addView(notificationTextView);
     }
 
     public void setText(String error) {
-        if (this.errorTextView != null) this.errorTextView.setText(error);
+        if (this.notificationTextView != null) this.notificationTextView.setText(error);
     }
-
-//    public void setVisibility(int visibility){
-//        super.setVisibility(visibility);
-//        if (this.errorTextView != null) this.errorTextView.setVisibility(visibility);
-//        if (this.iconImageView != null) this.iconImageView.setVisibility(visibility);
-//    }
 }

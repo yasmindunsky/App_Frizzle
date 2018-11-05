@@ -2,7 +2,6 @@ package com.frizzl.app.frizzleapp.practice;
 
 
 import android.animation.Animator;
-import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
@@ -13,15 +12,12 @@ import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatTextView;
 import android.text.SpannableStringBuilder;
 import android.view.ContextThemeWrapper;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
-import android.widget.TextView;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar;
@@ -52,7 +48,8 @@ public class PracticeSlideFragment extends Fragment {
     private boolean waitForCTA = false;
     private PracticeViewPager viewPager;
     private com.airbnb.lottie.LottieAnimationView lottieAnimationView;
-    private PracticeErrorView errorView;
+    private PracticeNotificationView errorView;
+    private PracticeNotificationView notificationView;
     private int currentLevel;
     private int currentSlide;
     private String originalCode;
@@ -156,6 +153,10 @@ public class PracticeSlideFragment extends Fragment {
             }
             originalCode = code.getCode();
             CodeSection codeSection = new CodeSection(context, originalCode, code.getRunnable(), mutable, code.getWaitForCTA(), codeKeyboard);
+            if (!mutable) {
+                codeSection.setEditorOnClickListener(v ->
+                        presentNotification(context, "Here we'll write code after we'll learn how.", set));
+            }
             codeSection.setId(R.id.codeSection);
             ConstraintLayout.LayoutParams layoutParams = new ConstraintLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -183,20 +184,11 @@ public class PracticeSlideFragment extends Fragment {
             setConstraints(set, designSection.getId(), prevID, SIDES_MARGIN);
             prevID = designSection.getId();
 
-            designSection.setDisplayErrorListener(() -> {
+            designSection.setDisplayNotificationListener((PopupWindow popupWindow) -> {
                 if (UserProfile.user.getCurrentLevel() == Support.ONCLICK_PRACTICE_LEVEL_ID
                         && getCurrentSlide() == 1) {
-                    LayoutInflater errorInflater = (LayoutInflater)
-                            context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                    View popupView = errorInflater.inflate(R.layout.popup_code_section_run_error, null);
-                    TextView errorText = popupView.findViewById(R.id.errorText);
-                    errorText.setText(R.string.our_button_does_nothing);
-                    PopupWindow popupWindow = new PopupWindow(popupView, ViewGroup.LayoutParams.WRAP_CONTENT,
-                            ViewGroup.LayoutParams.WRAP_CONTENT, true);
-                    if (((Activity) context).isFinishing()) return;
-                    popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
-                    ImageButton closeButton = popupView.findViewById(R.id.close);
-                    closeButton.setOnClickListener(v -> popupWindow.dismiss());
+                    popupWindow.dismiss();
+                    presentNotification(context, context.getResources().getString(R.string.our_button_does_nothing) , set);
                 }
             });
         }
@@ -300,7 +292,7 @@ public class PracticeSlideFragment extends Fragment {
     private void presentError(Context context, String error, ConstraintSet set) {
         // Add error place
         if (errorView == null) {
-            errorView = new PracticeErrorView(context);
+            errorView = new PracticeNotificationView(context, true);
             errorView.setId(R.id.errorView);
             constraintLayout.addView(errorView);
             int thisID = errorView.getId();
@@ -313,6 +305,24 @@ public class PracticeSlideFragment extends Fragment {
             constraintLayout.setConstraintSet(set);
         }
         errorView.setText(error);
+    }
+
+    private void presentNotification(Context context, String notification, ConstraintSet set) {
+        // Add error place
+        if (notificationView == null) {
+            notificationView = new PracticeNotificationView(context, false);
+            notificationView.setId(R.id.notificationView);
+            constraintLayout.addView(notificationView);
+            int thisID = notificationView.getId();
+            set.constrainWidth(thisID, ConstraintSet.MATCH_CONSTRAINT);
+            set.constrainHeight(thisID, ConstraintSet.WRAP_CONTENT);
+            set.connect(thisID, ConstraintSet.START, constraintLayout.getId(), ConstraintSet.START, SIDES_MARGIN);
+            set.connect(thisID, ConstraintSet.END, constraintLayout.getId(), ConstraintSet.END, SIDES_MARGIN);
+            set.connect(callToActionButton.getId(), ConstraintSet.TOP, thisID, ConstraintSet.BOTTOM, TOP_DOWN_MARGIN);
+            set.connect(thisID, ConstraintSet.TOP, lastIDbeforeCTA, ConstraintSet.BOTTOM, TOP_DOWN_MARGIN);
+            constraintLayout.setConstraintSet(set);
+        }
+        notificationView.setText(notification);
     }
 
     private void changeButtonToGreenAndShowAnimation(Button button) {

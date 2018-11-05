@@ -1,6 +1,5 @@
 package com.frizzl.app.frizzleapp;
 
-import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
@@ -18,12 +17,10 @@ import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 
-import com.frizzl.app.frizzleapp.appBuilder.DefinedFunctionsViewModel;
 import com.frizzl.app.frizzleapp.appBuilder.UserCreatedButton;
 
 import java.util.HashSet;
 import java.util.Locale;
-import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -35,7 +32,7 @@ public class DesignSection extends RelativeLayout {
     private TextToSpeech tts;
     private UserCreatedButton userCreatedButton;
     private ViewGroup layout;
-    private DisplayErrorListener displayErrorListener;
+    private DisplayNotificationListener displayNotificationListener;
 
     public DesignSection(Context context, boolean runnable, boolean withOnClickSet, String onClickFunction, FragmentActivity activity) {
         super(context);
@@ -114,9 +111,8 @@ public class DesignSection extends RelativeLayout {
             LayoutInflater inflater = (LayoutInflater)
                     context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             assert inflater != null;
-            View popupView = inflater.inflate(R.layout.popup_design_section_run, null);
-
-            Button button = popupView.findViewById(R.id.button);
+            View runPopupView = inflater.inflate(R.layout.popup_design_section_run, null);
+            Button button = runPopupView.findViewById(R.id.button);
             Button thisView = userCreatedButton.getThisView();
             button.setText(thisView.getText());
             button.setTextColor(thisView.getCurrentTextColor());
@@ -127,22 +123,20 @@ public class DesignSection extends RelativeLayout {
                 buttonDrawable.setColorFilter(Color.parseColor(userCreatedButton.getProperties().get("android:backgroundTint")), PorterDuff.Mode.DARKEN);
                 button.setBackground(buttonDrawable);
             }
-
+            PopupWindow runPopupWindow = new PopupWindow(runPopupView, ViewGroup.LayoutParams.WRAP_CONTENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT, true);
+            Support.presentPopup(runPopupWindow, null, v, layout, context);
+            ImageButton closeButton = runPopupView.findViewById(R.id.close);
+            closeButton.setOnClickListener(v12 -> runPopupWindow.dismiss());
             button.setOnClickListener(v1 -> {
                 boolean onClickSet = userCreatedButton.getOnClick().equals("myFunction");
                 if (onClickSet) {
                     if (Support.volumeIsLow(context)) Support.presentVolumeToast(context);
                     tts.speak("Hello", TextToSpeech.QUEUE_ADD, null);
                 }
-                if (displayErrorListener != null) displayErrorListener.onDisplayError();
+                if (displayNotificationListener != null) displayNotificationListener.onDisplayNotification(runPopupWindow);
 
             });
-
-            PopupWindow popupWindow = new PopupWindow(popupView, ViewGroup.LayoutParams.WRAP_CONTENT,
-                    ViewGroup.LayoutParams.WRAP_CONTENT, true);
-            Support.presentPopup(popupWindow, null, v, layout, context);
-            ImageButton closeButton = popupView.findViewById(R.id.close);
-            closeButton.setOnClickListener(v12 -> popupWindow.dismiss());
         }
     };
 
@@ -154,15 +148,15 @@ public class DesignSection extends RelativeLayout {
         this.layout = layout;
     }
 
-    public void setDisplayErrorListener(DisplayErrorListener displayErrorListener) {
-        this.displayErrorListener = displayErrorListener;
+    public void setDisplayNotificationListener(DisplayNotificationListener displayNotificationListener) {
+        this.displayNotificationListener = displayNotificationListener;
     }
 
     // This interface defines the type of messages I want to communicate to my owner
-    public interface DisplayErrorListener {
+    public interface DisplayNotificationListener {
         // These methods are the different events and
         // need to pass relevant arguments related to the event triggered
-        void onDisplayError();
+        void onDisplayNotification(PopupWindow popupWindow);
     }
 
     @Override

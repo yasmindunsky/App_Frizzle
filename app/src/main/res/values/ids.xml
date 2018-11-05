@@ -15,4 +15,5 @@
     <item name="codeKeyboard" type="id" />
     <item name="errorView" type="id" />
     <item name="animation" type="id" />
+    <item name="notificationView" type="id" />
 </resources>

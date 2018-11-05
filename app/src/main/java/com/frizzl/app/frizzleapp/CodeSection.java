@@ -3,6 +3,7 @@ package com.frizzl.app.frizzleapp;
 import android.app.Activity;
 import android.content.Context;
 import android.speech.tts.TextToSpeech;
+import android.text.InputType;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -30,7 +31,7 @@ public class CodeSection extends RelativeLayout {
     // The listener must implement the events interface and passes messages up to the parent.
     private readyForCTAListener readyForCTAListener;
 
-    public CodeSection(Context context, String code, boolean runnable, boolean editable, boolean waitForCTA, CodeKeyboard codeKeyboard) {
+    public CodeSection(Context context, String code, boolean runnable, boolean mutable, boolean waitForCTA, CodeKeyboard codeKeyboard) {
         super(context);
         setId(R.id.relativeLayout);
         this.readyForCTAListener = null;
@@ -53,7 +54,7 @@ public class CodeSection extends RelativeLayout {
 
         codeEditor = new CodeEditor(context, codeKeyboard);
         codeEditor.setText(code);
-        codeEditor.setEnabled(editable);
+        codeEditor.setEnabled(mutable);
         codeEditor.clearFocus();
         codeEditor.setBackground(getResources().getDrawable(R.drawable.code_bg));
         codeEditor.setGravity(Gravity.START);
@@ -157,6 +158,16 @@ public class CodeSection extends RelativeLayout {
 
     public void setReadyForCTAListener(CodeSection.readyForCTAListener readyForCTAListener) {
         this.readyForCTAListener = readyForCTAListener;
+    }
+
+    public void setEditorOnClickListener(OnClickListener onClickListener) {
+        if(codeEditor != null){
+            codeEditor.setEnabled(true);
+            codeEditor.setClickable(true);
+            codeEditor.setLongClickable(false);
+            codeEditor.setFocusable(false);
+            codeEditor.setOnClickListener(onClickListener);
+        }
     }
 
     // This interface defines the type of messages I want to communicate to my owner
