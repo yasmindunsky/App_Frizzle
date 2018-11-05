@@ -13,5 +13,6 @@
     <item name="designSection" type="id" />
     <item name="codeSection" type="id" />
     <item name="codeKeyboard" type="id" />
-    <item name="errorTextView" type="id" />
+    <item name="errorView" type="id" />
+    <item name="animation" type="id" />
 </resources>

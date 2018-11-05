@@ -285,5 +285,6 @@
 
     <style name="Text.PracticeSlide.error"  parent="Text.PracticeSlide">
         <item name="android:textColor">@color/frizzle_pink</item>
+        <item name="android:fontFamily">@font/calibri_bold</item>
     </style>
 </resources>

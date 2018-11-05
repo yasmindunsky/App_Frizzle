@@ -52,10 +52,11 @@ public class PracticeSlideFragment extends Fragment {
     private boolean waitForCTA = false;
     private PracticeViewPager viewPager;
     private com.airbnb.lottie.LottieAnimationView lottieAnimationView;
-    private AppCompatTextView errorTextView;
+    private PracticeErrorView errorView;
     private int currentLevel;
     private int currentSlide;
     private String originalCode;
+    private int lastIDbeforeCTA;
 
     public PracticeSlideFragment() {
         // Required empty public constructor
@@ -87,7 +88,7 @@ public class PracticeSlideFragment extends Fragment {
         // Create elements by what's needed
         Context context = getContext();
         Button holder = constraintLayout.findViewById(R.id.holder);
-        int prevId = holder.getId();
+        int prevID = holder.getId();
         ConstraintSet set = new ConstraintSet();
         set.clone(constraintLayout);
 
@@ -104,8 +105,8 @@ public class PracticeSlideFragment extends Fragment {
             infoText.setText(spannableInfoText);
 
             constraintLayout.addView(infoText);
-            setConstraints(set, infoText.getId(), prevId, SIDES_MARGIN);
-            prevId = infoText.getId();
+            setConstraints(set, infoText.getId(), prevID, SIDES_MARGIN);
+            prevID = infoText.getId();
         }
 
         if (practiceSlide.hasTaskText()) {
@@ -121,8 +122,8 @@ public class PracticeSlideFragment extends Fragment {
             taskText.setText(spannableTaskText);
 
             constraintLayout.addView(taskText);
-            setConstraints(set, taskText.getId(), prevId, SIDES_MARGIN);
-            prevId = taskText.getId();
+            setConstraints(set, taskText.getId(), prevID, SIDES_MARGIN);
+            prevID = taskText.getId();
         }
 
         if (practiceSlide.hasReminderText()) {
@@ -132,8 +133,8 @@ public class PracticeSlideFragment extends Fragment {
             reminderText.setText(practiceSlide.getReminderText());
 
             constraintLayout.addView(reminderText);
-            setConstraints(set, reminderText.getId(), prevId, SIDES_MARGIN);
-            prevId = reminderText.getId();
+            setConstraints(set, reminderText.getId(), prevID, SIDES_MARGIN);
+            prevID = reminderText.getId();
 
         }
 
@@ -160,8 +161,8 @@ public class PracticeSlideFragment extends Fragment {
                     ViewGroup.LayoutParams.WRAP_CONTENT);
             codeSection.setLayoutParams(layoutParams);
             constraintLayout.addView(codeSection);
-            setConstraints(set, codeSection.getId(), prevId, SIDES_MARGIN);
-            prevId = codeSection.getId();
+            setConstraints(set, codeSection.getId(), prevID, SIDES_MARGIN);
+            prevID = codeSection.getId();
             codeSection.setReadyForCTAListener(() -> enableCTAButton(true));
         }
 
@@ -179,8 +180,8 @@ public class PracticeSlideFragment extends Fragment {
             designSection.setLayoutParams(layoutParams);
 
             constraintLayout.addView(designSection);
-            setConstraints(set, designSection.getId(), prevId, SIDES_MARGIN);
-            prevId = designSection.getId();
+            setConstraints(set, designSection.getId(), prevID, SIDES_MARGIN);
+            prevID = designSection.getId();
 
             designSection.setDisplayErrorListener(() -> {
                 if (UserProfile.user.getCurrentLevel() == Support.ONCLICK_PRACTICE_LEVEL_ID
@@ -199,16 +200,6 @@ public class PracticeSlideFragment extends Fragment {
                 }
             });
         }
-
-        // Add error place
-        int errorTextStyle = R.style.Text_PracticeSlide_error;
-        errorTextView = new AppCompatTextView(new ContextThemeWrapper(context, errorTextStyle));
-        errorTextView.setId(R.id.errorTextView);
-        errorTextView.setVisibility(View.GONE);
-        constraintLayout.addView(errorTextView);
-        setConstraints(set, errorTextView.getId(), prevId, SIDES_MARGIN);
-        prevId = errorTextView.getId();
-
 
         // Add CTA button.
         int ctaButtonStyle = R.style.Button_PracticeCTA;
@@ -234,13 +225,13 @@ public class PracticeSlideFragment extends Fragment {
                     // practiceCorrect is enough here, no additional test required.
                     if (currentLevel == Support.ONCLICK_PRACTICE_LEVEL_ID  &&
                             getCurrentSlide() == 9){
-                        presentError(FrizzlApplication.resources.getString(R.string.error_set_onclick));
+                        presentError(context, FrizzlApplication.resources.getString(R.string.error_set_onclick), set);
                     }
                     // Checking code.
                     else {
                         String error = PracticeErrorManager.check(currentLevel, getCurrentSlide(),
                                 getOriginalCode(), getCurrentCode());
-                        presentError(error);
+                        presentError(context, error, set);
                         if (buttonText.equals(tryAgainText)) button.setText(R.string.next);
                         else {
                             button.setText(tryAgainText);
@@ -250,20 +241,23 @@ public class PracticeSlideFragment extends Fragment {
             }
         });
         constraintLayout.addView(callToActionButton);
-        setConstraints(set, callToActionButton.getId(), prevId, SIDES_MARGIN * 4);
+        setConstraints(set, callToActionButton.getId(), prevID, SIDES_MARGIN * 4);
 
         lottieAnimationView = new LottieAnimationView(getContext());
+        lottieAnimationView.setId(R.id.animation);
         lottieAnimationView.setAnimation(R.raw.stars);
-        lottieAnimationView.setSpeed(1.5f);
-        ConstraintLayout.LayoutParams layoutParams =
-                new ConstraintLayout.LayoutParams(ConstraintLayout.LayoutParams.MATCH_CONSTRAINT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        layoutParams.setMargins(0, TOP_DOWN_MARGIN * 2, 0, TOP_DOWN_MARGIN * 4);
+        lottieAnimationView.setSpeed(1.6f);
+
+        lastIDbeforeCTA = prevID;
         int CTAid = callToActionButton.getId();
-        layoutParams.topToTop = CTAid;
-        layoutParams.bottomToBottom = CTAid;
-        layoutParams.startToStart = constraintLayoutId;
-        layoutParams.endToEnd = constraintLayoutId;
-        lottieAnimationView.setLayoutParams(layoutParams);
+        int thisID = lottieAnimationView.getId();
+        set.constrainWidth(thisID, ConstraintSet.MATCH_CONSTRAINT);
+        set.constrainHeight(thisID, ConstraintSet.WRAP_CONTENT);
+        set.connect(thisID, ConstraintSet.START, CTAid, ConstraintSet.START, SIDES_MARGIN * 2);
+        set.connect(thisID, ConstraintSet.END, CTAid, ConstraintSet.END, SIDES_MARGIN * 2);
+        set.connect(thisID, ConstraintSet.TOP, prevID, ConstraintSet.BOTTOM, TOP_DOWN_MARGIN);
+        constraintLayout.setConstraintSet(set);
+
         lottieAnimationView.addAnimatorListener(new Animator.AnimatorListener() {
             @Override
             public void onAnimationStart(Animator animation) {
@@ -302,9 +296,22 @@ public class PracticeSlideFragment extends Fragment {
         constraintLayout.setConstraintSet(set);
     }
 
-    private void presentError(String error) {
-        errorTextView.setVisibility(View.VISIBLE);
-        errorTextView.setText(error);
+    private void presentError(Context context, String error, ConstraintSet set) {
+        // Add error place
+        if (errorView == null) {
+            errorView = new PracticeErrorView(context);
+            errorView.setId(R.id.errorView);
+            constraintLayout.addView(errorView);
+            int thisID = errorView.getId();
+            set.constrainWidth(thisID, ConstraintSet.MATCH_CONSTRAINT);
+            set.constrainHeight(thisID, ConstraintSet.WRAP_CONTENT);
+            set.connect(thisID, ConstraintSet.START, constraintLayout.getId(), ConstraintSet.START, SIDES_MARGIN);
+            set.connect(thisID, ConstraintSet.END, constraintLayout.getId(), ConstraintSet.END, SIDES_MARGIN);
+            set.connect(callToActionButton.getId(), ConstraintSet.TOP, thisID, ConstraintSet.BOTTOM, TOP_DOWN_MARGIN);
+            set.connect(thisID, ConstraintSet.TOP, lastIDbeforeCTA, ConstraintSet.BOTTOM, TOP_DOWN_MARGIN);
+            constraintLayout.setConstraintSet(set);
+        }
+        errorView.setText(error);
     }
 
     private void changeButtonToGreenAndShowAnimation(Button button) {
