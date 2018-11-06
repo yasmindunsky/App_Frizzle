@@ -70,6 +70,7 @@
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
+
     <android.support.v7.widget.AppCompatTextView
         android:id="@+id/viewFontColorKey"
         android:layout_width="0dp"
@@ -129,24 +130,150 @@
         app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toTopOf="@id/viewTextKey" />
 
-    <Button
+    <!--<Button-->
+        <!--android:id="@+id/viewFontColorValue"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="50dp"-->
+
+        <!--android:background="@color/TextGrey"-->
+        <!--app:layout_constraintEnd_toStartOf="@+id/guideline3"-->
+        <!--app:layout_constraintStart_toStartOf="@+id/guideline2"-->
+        <!--app:layout_constraintTop_toTopOf="@id/viewFontColorKey" />-->
+
+    <RadioGroup
         android:id="@+id/viewFontColorValue"
         android:layout_width="0dp"
         android:layout_height="50dp"
-
-        android:background="@color/TextGrey"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingStart="10dp"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toTopOf="@id/viewFontColorKey" />
+        app:layout_constraintTop_toTopOf="@id/viewFontColorKey">
 
-    <Button
+        <RadioButton
+            android:id="@+id/color1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="-10dp"
+            android:layout_weight="1"
+            android:button="@drawable/color_circle_faded_yellow_selector"
+            android:shadowColor="@color/frizzle_faded_yellow"
+            android:scaleX=".5"
+            android:scaleY=".5" />
+
+        <RadioButton
+            android:id="@+id/color2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="-10dp"
+            android:layout_weight="1"
+            android:button="@drawable/color_circle_faded_pink_selector"
+            android:shadowColor="@color/frizzle_faded_pink"
+            android:scaleX=".5"
+            android:scaleY=".5" />
+
+        <RadioButton
+            android:id="@+id/color3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="-10dp"
+            android:layout_weight="1"
+            android:button="@drawable/color_circle_faded_light_blue_selector"
+            android:shadowColor="@color/frizzle_faded_light_blue"
+            android:scaleX=".5"
+            android:scaleY=".5" />
+
+        <RadioButton
+            android:id="@+id/color4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="-10dp"
+            android:layout_weight="1"
+            android:button="@drawable/color_circle_faded_green_selector"
+            android:shadowColor="@color/frizzle_faded_green"
+            android:scaleX=".5"
+            android:scaleY=".5" />
+
+        <RadioButton
+            android:id="@+id/color5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="-10dp"
+            android:layout_weight="1"
+            android:button="@drawable/color_circle_white_selector"
+            android:shadowColor="@color/white"
+            android:scaleX=".5"
+            android:scaleY=".5" />
+    </RadioGroup>
+
+    <RadioGroup
         android:id="@+id/viewBgColorValue"
         android:layout_width="0dp"
         android:layout_height="50dp"
-        android:background="@color/UnselectedLightGrey"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toTopOf="@id/viewBgColorKey" />
+        app:layout_constraintTop_toTopOf="@id/viewBgColorKey"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingStart="10dp"
+        >
+
+        <RadioButton
+            android:id="@+id/bgColor1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="-10dp"
+            android:layout_weight="1"
+            android:button="@drawable/color_circle_pink_selector"
+            android:scaleX=".5"
+            android:scaleY=".5"
+            android:shadowColor="@color/frizzle_pink" />
+
+        <RadioButton
+            android:id="@+id/bgColor2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="-10dp"
+            android:layout_weight="1"
+            android:button="@drawable/color_circle_purple_selector"
+            android:shadowColor="@color/frizzle_purple"
+            android:scaleX=".5"
+            android:scaleY=".5" />
+
+        <RadioButton
+            android:id="@+id/bgColor3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="-10dp"
+            android:layout_weight="1"
+            android:button="@drawable/color_circle_green_selector"
+            android:shadowColor="@color/frizzle_green"
+            android:scaleX=".5"
+            android:scaleY=".5" />
+
+        <RadioButton
+            android:id="@+id/bgColor4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="-10dp"
+            android:layout_weight="1"
+            android:button="@drawable/color_circle_light_blue_selector"
+            android:shadowColor="@color/frizzle_light_blue"
+            android:scaleX=".5"
+            android:scaleY=".5" />
+
+        <RadioButton
+            android:id="@+id/bgColor5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="-10dp"
+            android:layout_weight="1"
+            android:button="@drawable/color_circle_black_selector"
+            android:shadowColor="@color/black"
+            android:scaleX=".5"
+            android:scaleY=".5" />
+    </RadioGroup>
 
     <Spinner
         android:id="@+id/viewOnClickValue"

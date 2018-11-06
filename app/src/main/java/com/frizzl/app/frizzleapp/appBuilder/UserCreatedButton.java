@@ -13,18 +13,25 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.GridLayout;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.PopupWindow;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.frizzl.app.frizzleapp.R;
 import com.frizzl.app.frizzleapp.Support;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -40,6 +47,8 @@ public class UserCreatedButton extends UserCreatedView {
     private ChangedTextListener changedTextListener;
     private Set<String> functions;
     private boolean displayOnClick = false;
+    private int selectedTextColorButtonID = R.id.color1;
+    private int selectedBGColorButtonID = R.id.bgColor1;
 
     UserCreatedButton(Context context, Map<String, String> properties, int index){
         this.context = context;
@@ -50,6 +59,10 @@ public class UserCreatedButton extends UserCreatedView {
         this.functions = new HashSet<>();
 
         this.thisView = new Button(new ContextThemeWrapper(context, buttonStyle), null, buttonStyle);
+        Drawable buttonDrawable = ContextCompat.getDrawable(context, R.drawable.user_button_background);
+        buttonDrawable.setColorFilter(context.getResources().getColor(R.color.frizzle_pink), PorterDuff.Mode.MULTIPLY);
+        thisView.setBackground(buttonDrawable);
+
         thisView.setText(properties.get("android:text"));
 //        thisView.setId(Integer.parseInt(properties.get("android:id")));
 
@@ -84,6 +97,10 @@ public class UserCreatedButton extends UserCreatedView {
         this.layout = R.layout.popup_properties_button;
         this.viewType = "Button";
         this.thisView = new Button(new ContextThemeWrapper(context, buttonStyle), null, buttonStyle);
+        Drawable buttonDrawable = ContextCompat.getDrawable(context, R.drawable.user_button_background);
+        buttonDrawable.setColorFilter(context.getResources().getColor(R.color.frizzle_pink), PorterDuff.Mode.MULTIPLY);
+        thisView.setBackground(buttonDrawable);
+        
         thisView.setText(R.string.new_button_text);
 
         // index in views map in DesignScreenFragment.
@@ -152,66 +169,38 @@ public class UserCreatedButton extends UserCreatedView {
         viewText.setSelection(viewText.length());
 
         // FONT COLOR
-        final Button chooseFontColor = popupView.findViewById(R.id.viewFontColorValue);
-        chooseFontColor.setBackgroundColor(Color.parseColor(properties.get("android:textColor")));
-        chooseFontColor.setOnClickListener(v -> {
-                ColorPicker colorPicker = new ColorPicker((Activity)popupView.getContext());
-                colorPicker.setRoundColorButton(true);
-                colorPicker.setColors(Support.colorsHexList);
-                colorPicker.show();
-                colorPicker.setOnChooseColorListener(new ColorPicker.OnChooseColorListener() {
-                    @Override
-                    public void onChooseColor(int position,int color) {
-                        if (position != -1) {
-
-                            thisView.setTextColor(color);
-                            properties.put("android:textColor", Support.colorsHexList.get(position));
-
-                            int originalValueDrawableRes = R.drawable.table_color_circle;
-                            Drawable valueDrawable = ContextCompat.getDrawable(context, originalValueDrawableRes);
-                            if (valueDrawable != null) valueDrawable.setColorFilter(color, PorterDuff.Mode.DARKEN);
-                            chooseFontColor.setBackground(valueDrawable);
-                        }
-                    }
-
-                    @Override
-                    public void onCancel(){
-                    }
-                });
-            });
+        RadioGroup radioGroup = popupView.findViewById(R.id.viewFontColorValue);
+        ((RadioButton)popupView.findViewById(selectedTextColorButtonID)).setChecked(true);
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                selectedTextColorButtonID = checkedId;
+                RadioButton selectedColorButton = group.findViewById(checkedId);
+                if (selectedColorButton == null) return;
+                int selectedColor = selectedColorButton.getShadowColor();
+                thisView.setTextColor(selectedColor);
+                properties.put("android:textColor", Support.hexFromColorInt(selectedColor));
+            }
+        });
 
         // BG COLOR
-        final Button chooseBgColor = popupView.findViewById(R.id.viewBgColorValue);
-        chooseBgColor.setBackgroundColor(Color.parseColor(properties.get("android:backgroundTint")));
-        chooseBgColor.setOnClickListener(v -> {
-            ColorPicker colorPicker = new ColorPicker((Activity)context);
-            colorPicker.setRoundColorButton(true);
-            colorPicker.setColors(Support.colorsHexList);
-            colorPicker.show();
-            colorPicker.setOnChooseColorListener(new ColorPicker.OnChooseColorListener() {
-                @Override
-                public void onChooseColor(int position, int color) {
-                    if (position != -1) {
-                        int originalButtonDrawableRes = R.drawable.user_button_background;
-                        Drawable buttonDrawable = ContextCompat.getDrawable(context, originalButtonDrawableRes);
-                        if (buttonDrawable != null) buttonDrawable.setColorFilter(color, PorterDuff.Mode.DARKEN);
-                        thisView.setBackground(buttonDrawable);
-
-                        int originalValueDrawableRes = R.drawable.table_color_circle;
-                        Drawable valueDrawable = ContextCompat.getDrawable(context, originalValueDrawableRes);
-
-                         if (valueDrawable != null) valueDrawable.setColorFilter(color, PorterDuff.Mode.DARKEN);
-                        chooseBgColor.setBackground(valueDrawable);
-
-                        properties.put("android:backgroundTint", Support.colorsHexList.get(position));
-                    }
-                }
-
-                @Override
-                public void onCancel(){
-                }
-            });
+        RadioGroup BGradioGroup = popupView.findViewById(R.id.viewBgColorValue);
+        ((RadioButton)popupView.findViewById(selectedBGColorButtonID)).setChecked(true);
+        BGradioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                selectedBGColorButtonID = checkedId;
+                RadioButton selectedColorButton = group.findViewById(checkedId);
+                if (selectedColorButton == null) return;
+                int selectedColor = selectedColorButton.getShadowColor();
+                int originalButtonDrawableRes = R.drawable.user_button_background;
+                Drawable buttonDrawable = ContextCompat.getDrawable(context, originalButtonDrawableRes);
+                if (buttonDrawable != null) buttonDrawable.setColorFilter(selectedColor, PorterDuff.Mode.MULTIPLY);
+                thisView.setBackground(buttonDrawable);
+                properties.put("android:backgroundTint", Support.hexFromColorInt(selectedColor));
+            }
         });
+
 
         // ONCLICK
         Spinner onClickFuncName = popupView.findViewById(R.id.viewOnClickValue);

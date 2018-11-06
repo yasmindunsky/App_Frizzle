@@ -45,6 +45,10 @@ public class Support {
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,  Integer.parseInt(dp), context.getResources().getDisplayMetrics());
     }
 
+    public static String hexFromColorInt(int colorInt){
+        return String.format("#%06X", (0xFFFFFF & colorInt));
+    }
+
     public static ArrayList<String> colorsHexList = new ArrayList<String>() {{
         add("#39a085");
         add("#f07a00");
