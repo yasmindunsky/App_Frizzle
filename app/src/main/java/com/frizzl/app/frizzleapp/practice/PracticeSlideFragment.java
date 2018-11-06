@@ -165,6 +165,8 @@ public class PracticeSlideFragment extends Fragment {
             setConstraints(set, codeSection.getId(), prevID, SIDES_MARGIN);
             prevID = codeSection.getId();
             codeSection.setReadyForCTAListener(() -> enableCTAButton(true));
+            codeSection.setPresentNotificationListener((notification) ->
+                    presentNotification(context, notification, set));
         }
 
         if (practiceSlide.hasDesign()) {

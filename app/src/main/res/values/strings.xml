@@ -201,6 +201,8 @@ public class MainActivity extends AppCompatActivity implements   TextToSpeech.On
     <string name="done">done</string>
     <string name="your_message_successfully_sent">Your message was successfully sent.</string>
     <string name="feedback_thank_you">thank you</string>
+    <string name="notification_semicolon">Every command must end with a semicolon.</string>
+    <string name="notification_space">Commands must be written exactly as presented.</string>
 
     <string-array name="fonts">
         <item>sans-serif</item>

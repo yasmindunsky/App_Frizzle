@@ -1,9 +1,7 @@
 package com.frizzl.app.frizzleapp;
 
-import android.app.Activity;
 import android.content.Context;
 import android.speech.tts.TextToSpeech;
-import android.text.InputType;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -29,12 +27,14 @@ public class CodeSection extends RelativeLayout {
     private TextToSpeech tts;
     // This variable represents the listener passed in by the owning object
     // The listener must implement the events interface and passes messages up to the parent.
-    private readyForCTAListener readyForCTAListener;
+    private ReadyForCTAListener readyForCTAListener;
+    private PresentNotificationListener presentNotificationListener;
 
     public CodeSection(Context context, String code, boolean runnable, boolean mutable, boolean waitForCTA, CodeKeyboard codeKeyboard, ViewGroup layout) {
         super(context);
         setId(R.id.relativeLayout);
         this.readyForCTAListener = null;
+        this.presentNotificationListener = null;
 
         TextToSpeech.OnInitListener onInitListener = status -> {
             if (status == TextToSpeech.SUCCESS) {
@@ -71,11 +71,17 @@ public class CodeSection extends RelativeLayout {
             OnClickListener runCode = v -> {
                 if (Support.volumeIsLow(context)) Support.presentVolumeToast(context);
                 if (waitForCTA && readyForCTAListener != null) readyForCTAListener.onReadyForCTA();
-                if (codeIsValid()) {
-                    speakOut();
-                }
+                if (codeIsValid()) speakOut();
                 else {
-                    displayErrorPopup(v, getResources().getString(R.string.problem_with_syntax), layout);
+                    int currentSlide = UserProfile.user.getCurrentSlideInLevel();
+                    if (UserProfile.user.getCurrentLevel() == Support.SPEAKOUT_PRACTICE_LEVEL_ID
+                            && presentNotificationListener != null && ((currentSlide == 4) || (currentSlide == 3))) {
+                        if (currentSlide == 3)
+                            presentNotificationListener.onPresentNotification(getResources().getString(R.string.notification_semicolon));
+                        else if (currentSlide == 4)
+                            presentNotificationListener.onPresentNotification(getResources().getString(R.string.notification_space));
+                            }
+                    else displayErrorPopup(v, getResources().getString(R.string.problem_with_syntax), layout);
                 }
             };
             playButton.setOnClickListener(runCode);
@@ -156,8 +162,12 @@ public class CodeSection extends RelativeLayout {
         super.onDetachedFromWindow();
     }
 
-    public void setReadyForCTAListener(CodeSection.readyForCTAListener readyForCTAListener) {
+    public void setReadyForCTAListener(ReadyForCTAListener readyForCTAListener) {
         this.readyForCTAListener = readyForCTAListener;
+    }
+    
+    public void setPresentNotificationListener(PresentNotificationListener presentNotificationListener){
+        this.presentNotificationListener = presentNotificationListener;
     }
 
     public void setEditorOnClickListener(OnClickListener onClickListener) {
@@ -171,9 +181,16 @@ public class CodeSection extends RelativeLayout {
     }
 
     // This interface defines the type of messages I want to communicate to my owner
-    public interface readyForCTAListener {
+    public interface ReadyForCTAListener {
         // These methods are the different events and
         // need to pass relevant arguments related to the event triggered
         void onReadyForCTA();
+    }
+
+    // This interface defines the type of messages I want to communicate to my owner
+    public interface PresentNotificationListener {
+        // These methods are the different events and
+        // need to pass relevant arguments related to the event triggered
+        void onPresentNotification(String notification);
     }
 }
