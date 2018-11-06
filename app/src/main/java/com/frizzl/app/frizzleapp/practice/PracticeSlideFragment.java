@@ -152,7 +152,7 @@ public class PracticeSlideFragment extends Fragment {
                 codeKeyboard.setLayoutParams(keyboardLayoutParams);
             }
             originalCode = code.getCode();
-            CodeSection codeSection = new CodeSection(context, originalCode, code.getRunnable(), mutable, code.getWaitForCTA(), codeKeyboard);
+            CodeSection codeSection = new CodeSection(context, originalCode, code.getRunnable(), mutable, code.getWaitForCTA(), codeKeyboard, ((PracticeActivity)getActivity()).getMainLayout());
             if (!mutable) {
                 codeSection.setEditorOnClickListener(v ->
                         presentNotification(context, "Here we'll write code after we'll learn how.", set));

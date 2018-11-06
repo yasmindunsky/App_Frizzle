@@ -39,7 +39,7 @@ Use "'" for special chars.
     <string name="keyboard_enter">ירידת שורה</string>
     <string name="keyboard_delete">מחיקה</string>
     <string name="problem_with_code_error">אוי, יש איזשהי בעיה בקוד</string>
-    <string name="problem_with_syntax">אוי, את הפקודות צריך לכתוב בדיוק כמו שראינו</string>
+    <string name="problem_with_syntax">אוי, יש איזשהי בעיה בקוד.</string>
     <string name="button">כפתור</string>
     <string name="all_tasks_completed">השלמת את כל המשימות.</string>
     <string name="amazing_work">עבודה מעולה!</string>

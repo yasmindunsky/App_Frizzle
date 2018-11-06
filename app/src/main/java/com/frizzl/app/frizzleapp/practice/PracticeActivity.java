@@ -1,8 +1,10 @@
 package com.frizzl.app.frizzleapp.practice;
 
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
+import android.view.ViewGroup;
 import android.widget.ImageButton;
 
 import com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar;
@@ -102,6 +104,10 @@ public class PracticeActivity extends FragmentActivity {
         if (currentPractice.getID() == UserProfile.user.getTopLevel()) {
             UserProfile.user.setCurrentSlideInLevel(viewPager.getCurrentItem());
         }
+    }
+
+    public ViewGroup getMainLayout() {
+        return findViewById(R.id.constraintLayout);
     }
 }
 

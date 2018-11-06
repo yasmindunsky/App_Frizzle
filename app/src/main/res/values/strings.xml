@@ -152,7 +152,7 @@ public class MainActivity extends AppCompatActivity implements   TextToSpeech.On
     <string name="keyboard_enter">Enter</string>
     <string name="keyboard_delete">Delete</string>
     <string name="problem_with_code_error">Uh oh, there is some problem with the code</string>
-    <string name="problem_with_syntax">Uh oh, the command must be written exactly as presented</string>
+    <string name="problem_with_syntax">Uh oh, there is some problem with the code.</string>
     <string name="button">Button</string>
     <string name="all_tasks_completed">You\'ve completed all your tasks.</string>
     <string name="amazing_work">Amazing work!</string>

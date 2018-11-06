@@ -31,7 +31,7 @@ public class CodeSection extends RelativeLayout {
     // The listener must implement the events interface and passes messages up to the parent.
     private readyForCTAListener readyForCTAListener;
 
-    public CodeSection(Context context, String code, boolean runnable, boolean mutable, boolean waitForCTA, CodeKeyboard codeKeyboard) {
+    public CodeSection(Context context, String code, boolean runnable, boolean mutable, boolean waitForCTA, CodeKeyboard codeKeyboard, ViewGroup layout) {
         super(context);
         setId(R.id.relativeLayout);
         this.readyForCTAListener = null;
@@ -75,7 +75,7 @@ public class CodeSection extends RelativeLayout {
                     speakOut();
                 }
                 else {
-                    displayErrorPopup(v, getResources().getString(R.string.problem_with_syntax));
+                    displayErrorPopup(v, getResources().getString(R.string.problem_with_syntax), layout);
                 }
             };
             playButton.setOnClickListener(runCode);
@@ -94,7 +94,7 @@ public class CodeSection extends RelativeLayout {
         }
     }
 
-    private void displayErrorPopup(View view, String errorMessage) {
+    private void displayErrorPopup(View view, String errorMessage, ViewGroup layout) {
         Context context = getContext();
         LayoutInflater inflater = (LayoutInflater)
                 context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -104,8 +104,8 @@ public class CodeSection extends RelativeLayout {
         errorText.setText(errorMessage);
         PopupWindow popupWindow = new PopupWindow(popupView, ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT, true);
-        if(((Activity) context).isFinishing()) return;
-        popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
+        PopupWindow errorPopup;
+        Support.presentPopup(popupWindow, null, codeEditor, layout, context);
         ImageButton closeButton = popupView.findViewById(R.id.close);
         closeButton.setOnClickListener(v -> popupWindow.dismiss());
     }
