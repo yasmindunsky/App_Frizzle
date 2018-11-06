@@ -39,7 +39,7 @@ public class HelpPopupWindow extends PopupWindow {
         EditText emailEditText = popupView.findViewById(R.id.email);
         EditText feedbackEditText = popupView.findViewById(R.id.feedback_box);
         Button sendButton = popupView.findViewById(R.id.sendButton);
-        sendButton.setOnClickListener(v -> {
+        sendButton.setOnClickListener((View v) -> {
             String email = emailEditText.getText().toString();
             String feedback = feedbackEditText.getText().toString();
 
@@ -48,8 +48,26 @@ public class HelpPopupWindow extends PopupWindow {
             bundle.putString("FEEDBACK_EMAIL", email);
             bundle.putString("FEEDBACK_CONTENT", feedback);
             mFirebaseAnalytics.logEvent("FEEDBACK", bundle);
-            dismiss();
+
+            Button doneButton = popupView.findViewById(R.id.doneButton);
+            doneButton.setOnClickListener((view)->dismiss());
+
+            switchFormVisibility(View.GONE);
         });
+    }
+
+    public void switchFormVisibility(int formVisibility) {
+        int sentVisibility = formVisibility == View.GONE ? View.VISIBLE : View.GONE;
+
+        popupView.findViewById(R.id.image).setVisibility(sentVisibility);
+        popupView.findViewById(R.id.sent).setVisibility(sentVisibility);
+        popupView.findViewById(R.id.thankYou).setVisibility(sentVisibility);
+        popupView.findViewById(R.id.doneButton).setVisibility(sentVisibility);
+
+        popupView.findViewById(R.id.feedbackTitle).setVisibility(formVisibility);
+        popupView.findViewById(R.id.feedback_box).setVisibility(formVisibility);
+        popupView.findViewById(R.id.email).setVisibility(formVisibility);
+        popupView.findViewById(R.id.sendButton).setVisibility(formVisibility);
     }
 
 }

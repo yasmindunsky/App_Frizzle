@@ -83,9 +83,15 @@ public class MapActivity extends AppCompatActivity {
                 variablesPracticeButton,
                 friendshipTestAppButton));
 
-        PopupWindow helpPopupWindow = new HelpPopupWindow(this);
-        toolbarIcon.setOnClickListener(v -> Support.presentPopup(helpPopupWindow, null, mainLayout, mainLayout,
-                this));
+        HelpPopupWindow helpPopupWindow = new HelpPopupWindow(this);
+
+        toolbarIcon.setOnClickListener(v -> {
+            Support.presentPopup(helpPopupWindow, null, mainLayout, mainLayout,
+                    this);
+            helpPopupWindow.switchFormVisibility(View.VISIBLE);
+
+        });
+
 
         View.OnClickListener onClickedApp = v -> {
             AppMapButton appMapButton = (AppMapButton) v;

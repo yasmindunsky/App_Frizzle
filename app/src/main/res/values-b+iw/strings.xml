@@ -84,6 +84,9 @@ Use "'" for special chars.
     <string name="error_dont_change_function">בשלב זה נשאיר את הטקסט שכתוב בלבן קבוע. היעזר בכפתור "'"הוספת פונקציה"'" במקלדת.</string>
     <string name="error_speakout_brackets">שים לב, פקודת ה-speakout צריכה להיכתב בין הסוגריים המסולסלים.</string>
     <string name="error_set_onclick">נסה ללחוץ על הכפתור ולמלא את שדה ה-onClick.</string>
+    <string name="done">חזרה</string>
+    <string name="your_message_successfully_sent">ההודעה נשלחה בהצלחה.</string>
+    <string name="feedback_thank_you">תודה שפנית אלינו</string>
 
 
     <string-array name="fonts">

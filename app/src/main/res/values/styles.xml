@@ -182,8 +182,8 @@
         <item name="android:textColor">@color/frizzle_light_blue</item>
     </style>
 
-    <style name="Text.Title.Wow" parent="@style/Text.Title">
-        <item name="android:textColor">@color/colorPrimary</item>
+    <style name="Text.Title.Pink" parent="@style/Text.Title">
+        <item name="android:textColor">@color/frizzle_pink</item>
         <item name="android:textSize">36sp</item>
     </style>
 
