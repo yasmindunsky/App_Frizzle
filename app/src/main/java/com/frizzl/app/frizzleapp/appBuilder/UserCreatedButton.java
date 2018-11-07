@@ -100,7 +100,7 @@ public class UserCreatedButton extends UserCreatedView {
         Drawable buttonDrawable = ContextCompat.getDrawable(context, R.drawable.user_button_background);
         buttonDrawable.setColorFilter(context.getResources().getColor(R.color.frizzle_pink), PorterDuff.Mode.MULTIPLY);
         thisView.setBackground(buttonDrawable);
-        
+
         thisView.setText(R.string.new_button_text);
 
         // index in views map in DesignScreenFragment.

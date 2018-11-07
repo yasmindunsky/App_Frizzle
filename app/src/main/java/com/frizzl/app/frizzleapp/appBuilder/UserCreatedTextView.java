@@ -15,6 +15,8 @@ import android.widget.EditText;
 import android.widget.GridLayout;
 import android.widget.ImageButton;
 import android.widget.PopupWindow;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.frizzl.app.frizzleapp.R;
@@ -32,6 +34,7 @@ import petrov.kristiyan.colorpicker.ColorPicker;
 
 public class UserCreatedTextView extends UserCreatedView {
     TextView thisView;
+    private int selectedTextColorButtonID = R.id.color1;
 
     public UserCreatedTextView(Context context, Map<String, String> properties, int index){
         this.context = context;
@@ -104,7 +107,7 @@ public class UserCreatedTextView extends UserCreatedView {
         properties.put("android:text", (String) thisView.getText());
         properties.put("android:fontFamily", "@font/rubik_medium");
         properties.put("android:textAllCaps", "false");
-        properties.put("android:textColor", "#535264");
+        properties.put("android:textColor", "#b93660");
         properties.put("android:textSize", "18sp");
         properties.put("android:background", "@drawable/user_text_view_background");
         properties.put("android:padding", "10dp");
@@ -150,38 +153,19 @@ public class UserCreatedTextView extends UserCreatedView {
         viewText.setText(properties.get("android:text"));
 
         // FONT COLOR
-        final Button chooseFontColor = popupView.findViewById(R.id.viewFontColorValue);
-        chooseFontColor.setBackgroundColor(Color.parseColor(properties.get("android:textColor")));
-        chooseFontColor.setOnClickListener(v -> {
-            ColorPicker colorPicker = new ColorPicker((Activity)context);
-            colorPicker.setRoundColorButton(true);
-            colorPicker.setColors(Support.colorsHexList);
-            colorPicker.show();
-            colorPicker.setOnChooseColorListener(new ColorPicker.OnChooseColorListener() {
-                @Override
-                public void onChooseColor(int position,int color) {
-                    if (position != -1) {
-
-                        thisView.setTextColor(color);
-                        properties.put("android:textColor", Support.colorsHexList.get(position));
-
-                        int originalValueDrawableRes = R.drawable.table_color_circle;
-                        Drawable valueDrawable = ContextCompat.getDrawable(context, originalValueDrawableRes);
-                        if (valueDrawable != null) valueDrawable.setColorFilter(color, PorterDuff.Mode.DARKEN);
-                        chooseFontColor.setBackground(valueDrawable);
-                    }
-                }
-
-                @Override
-                public void onCancel(){
-                }
-            });
+        RadioGroup radioGroup = popupView.findViewById(R.id.viewFontColorValue);
+        ((RadioButton)popupView.findViewById(selectedTextColorButtonID)).setChecked(true);
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                selectedTextColorButtonID = checkedId;
+                RadioButton selectedColorButton = group.findViewById(checkedId);
+                if (selectedColorButton == null) return;
+                int selectedColor = selectedColorButton.getShadowColor();
+                thisView.setTextColor(selectedColor);
+                properties.put("android:textColor", Support.hexFromColorInt(selectedColor));
+            }
         });
-//
-//        // ALIGNMENT
-//        popupView.findViewById(R.id.viewTextAlignValueLeft).setOnClickListener(onAlignmentClicked);
-//        popupView.findViewById(R.id.viewTextAlignValueCenter).setOnClickListener(onAlignmentClicked);
-//        popupView.findViewById(R.id.viewTextAlignValueRight).setOnClickListener(onAlignmentClicked);
 
         //DELETE
         ImageButton deleteButton = popupView.findViewById(R.id.delete);

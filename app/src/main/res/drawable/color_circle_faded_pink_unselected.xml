@@ -1,8 +1,16 @@
-<shape xmlns:android="http://schemas.android.com/apk/res/android"
-    android:shape="oval">
+<?xml version="1.0" encoding="UTF-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <solid android:color="@color/frizzle_faded_pink" />
-    <size
-        android:width="35dp"
-        android:height="35dp" />
-</shape>
+    <item
+        android:width="20dp"
+        android:height="20dp"
+        android:bottom="4dp"
+        android:left="4dp"
+        android:right="4dp"
+        android:top="4dp">
+        <shape android:shape="oval">
+            <solid android:color="@color/frizzle_faded_pink"></solid>
+        </shape>
+    </item>
+
+</layer-list>

@@ -154,57 +154,47 @@
         <RadioButton
             android:id="@+id/color1"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="-10dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:button="@drawable/color_circle_faded_yellow_selector"
-            android:shadowColor="@color/frizzle_faded_yellow"
-            android:scaleX=".5"
-            android:scaleY=".5" />
+            android:shadowColor="@color/frizzle_faded_yellow"/>
 
         <RadioButton
             android:id="@+id/color2"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="-10dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
+            android:layout_marginLeft="-10dp"
             android:button="@drawable/color_circle_faded_pink_selector"
-            android:shadowColor="@color/frizzle_faded_pink"
-            android:scaleX=".5"
-            android:scaleY=".5" />
+            android:shadowColor="@color/frizzle_faded_pink"/>
 
         <RadioButton
             android:id="@+id/color3"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="-10dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
+            android:layout_marginLeft="-10dp"
             android:button="@drawable/color_circle_faded_light_blue_selector"
-            android:shadowColor="@color/frizzle_faded_light_blue"
-            android:scaleX=".5"
-            android:scaleY=".5" />
+            android:shadowColor="@color/frizzle_faded_light_blue"/>
 
         <RadioButton
             android:id="@+id/color4"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="-10dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
+            android:layout_marginLeft="-10dp"
             android:button="@drawable/color_circle_faded_green_selector"
-            android:shadowColor="@color/frizzle_faded_green"
-            android:scaleX=".5"
-            android:scaleY=".5" />
+            android:shadowColor="@color/frizzle_faded_green" />
 
         <RadioButton
             android:id="@+id/color5"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="-10dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
+            android:layout_marginLeft="-10dp"
             android:button="@drawable/color_circle_white_selector"
             android:shadowColor="@color/white"
-            android:scaleX=".5"
-            android:scaleY=".5" />
+            />
     </RadioGroup>
 
     <RadioGroup
@@ -222,57 +212,54 @@
         <RadioButton
             android:id="@+id/bgColor1"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="-10dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:button="@drawable/color_circle_pink_selector"
-            android:scaleX=".5"
-            android:scaleY=".5"
+            android:checked="false"
             android:shadowColor="@color/frizzle_pink" />
 
         <RadioButton
             android:id="@+id/bgColor2"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="-10dp"
+            android:layout_height="match_parent"
+            
             android:layout_weight="1"
+            android:layout_marginLeft="-10dp"
             android:button="@drawable/color_circle_purple_selector"
             android:shadowColor="@color/frizzle_purple"
-            android:scaleX=".5"
-            android:scaleY=".5" />
+             />
 
         <RadioButton
             android:id="@+id/bgColor3"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="-10dp"
+            android:layout_height="match_parent"
+            
             android:layout_weight="1"
+            android:layout_marginLeft="-10dp"
             android:button="@drawable/color_circle_green_selector"
             android:shadowColor="@color/frizzle_green"
-            android:scaleX=".5"
-            android:scaleY=".5" />
+             />
 
         <RadioButton
             android:id="@+id/bgColor4"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="-10dp"
+            android:layout_height="match_parent"
+            
             android:layout_weight="1"
+            android:layout_marginLeft="-10dp"
             android:button="@drawable/color_circle_light_blue_selector"
             android:shadowColor="@color/frizzle_light_blue"
-            android:scaleX=".5"
-            android:scaleY=".5" />
+             />
 
         <RadioButton
             android:id="@+id/bgColor5"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginLeft="-10dp"
-            android:layout_weight="1"
             android:button="@drawable/color_circle_black_selector"
-            android:shadowColor="@color/black"
-            android:scaleX=".5"
-            android:scaleY=".5" />
+            android:layout_weight="1"
+            android:checked="false"
+            android:shadowColor="@color/black" />
     </RadioGroup>
 
     <Spinner

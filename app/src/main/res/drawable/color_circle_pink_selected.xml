@@ -1,10 +1,31 @@
-<shape xmlns:android="http://schemas.android.com/apk/res/android"
-    android:shape="oval">
-    <solid android:color="@color/frizzle_pink" />
-    <size
-        android:width="35dp"
-        android:height="35dp" />
-    <stroke
-        android:width="2dp"
-        android:color="@color/codeComment" />
-</shape>
+<?xml version="1.0" encoding="UTF-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:width="20dp"
+        android:height="20dp"
+        android:bottom="4dp"
+        android:left="4dp"
+        android:right="4dp"
+        android:top="4dp">
+        <shape android:shape="oval">
+            <solid android:color="@color/frizzle_pink"></solid>
+        </shape>
+    </item>
+
+    <item
+        android:bottom="0.00001dip"
+        android:left="0.00001dip"
+        android:right="0.00001dip"
+        android:top="0.00001dip">
+        <shape xmlns:android="http://schemas.android.com/apk/res/android"
+            android:innerRadius="12dp"
+            android:shape="ring"
+            android:thickness="1dp"
+            android:useLevel="false">
+            <solid android:color="@color/TextGrey" />
+        </shape>
+
+    </item>
+
+</layer-list>

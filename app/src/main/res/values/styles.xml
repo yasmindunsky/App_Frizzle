@@ -206,7 +206,7 @@
 
     <style name="TextView.UserCreated" parent="@android:style/TextAppearance.DeviceDefault.Medium">
         <item name="android:background">@drawable/user_text_view_background</item>
-        <item name="android:textColor">@color/TextGrey</item>
+        <item name="android:textColor">@color/frizzle_pink</item>
         <item name="android:fontFamily">@font/calibri_bold</item>
         <item name="android:textSize">14sp</item>
         <item name="android:padding">10dp</item>

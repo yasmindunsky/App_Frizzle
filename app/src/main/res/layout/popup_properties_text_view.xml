@@ -1,159 +1,207 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/table_background">
+    android:background="@drawable/table_background"
+    tools:layout_editor_absoluteY="25dp">
 
     <android.support.v7.widget.AppCompatTextView
         android:id="@+id/propertiesTableTitle"
-        style="@style/Text.Title.PropertiesTable"
-        android:layout_width="match_parent"
+        style="@style/Text.Title.Popup"
+        android:layout_width="300dp"
         android:layout_alignParentTop="true"
-        android:background="@drawable/table_title_background"
-        android:gravity="center" />
+        android:gravity="center"
+        android:text="@string/propertiesTableTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-<ImageButton
-android:id="@+id/close"
-android:layout_width="wrap_content"
-android:layout_height="@dimen/app_bar_height"
-android:layout_alignParentEnd="true"
-android:backgroundTint="@android:color/transparent"
-android:padding="18dp"
-android:scaleType="fitCenter"
-app:srcCompat="@drawable/ic_x" />
+    <ImageButton
+        android:id="@+id/close"
+        android:layout_width="@dimen/app_bar_height"
+        android:layout_height="@dimen/app_bar_height"
+        android:layout_alignParentEnd="true"
+        android:backgroundTint="@android:color/transparent"
+        android:paddingBottom="15dp"
+        android:paddingTop="18dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toEndOf="@+id/propertiesTableTitle"
+        app:srcCompat="@drawable/ic_x" />
 
-<ImageButton
-android:id="@+id/delete"
-android:layout_width="@dimen/app_bar_height"
-android:layout_height="@dimen/app_bar_height"
-android:layout_alignParentStart="true"
-android:backgroundTint="@android:color/transparent"
-android:padding="15dp"
-android:scaleType="fitCenter"
-app:srcCompat="@drawable/ic_trash" />
+    <ImageButton
+        android:id="@+id/delete"
+        android:layout_width="@dimen/app_bar_height"
+        android:layout_height="@dimen/app_bar_height"
+        android:layout_alignParentStart="true"
+        android:backgroundTint="@android:color/transparent"
+        android:padding="15dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintStart_toStartOf="@+id/propertiesTableTitle"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_trash" />
 
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/propertiesTableTitle"
+        app:srcCompat="@drawable/grid" />
 
-    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/tableLayout"
-        android:layout_width="match_parent"
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/viewTextKey"
+
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/propertiesTableTitle"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/table_background">
+        android:layout_marginTop="8dp"
 
-        <!--<TableRow style="@style/propertiesTableRow">-->
+        android:gravity="center_vertical|start"
+        android:padding="12dp"
+        android:text="@string/propertiesTableText"
+        android:textAppearance="@style/Text.TableKey"
 
-            <!--<android.support.v7.widget.AppCompatTextView-->
-                <!--android:id="@+id/viewIdKey"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:text="@string/propertiesTableId"-->
-                <!--android:textAppearance="@style/propertiesTableKey" />-->
-
-            <!--<EditText-->
-                <!--android:id="@+id/viewIdValue"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:ems="10"-->
-                <!--android:inputType="textPersonName"-->
-                <!--android:singleLine="false"-->
-                <!--android:text=""-->
-                <!--android:textAppearance="@style/propertiesTableValue" />-->
-        <!--</TableRow>-->
-
-        <TableRow style="@style/propertiesTableRow">
-
-            <android.support.v7.widget.AppCompatTextView
-                android:id="@+id/viewTextKey"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/propertiesTableText"
-                android:textAppearance="@style/Text.TableKey" />
-
-            <EditText
-                android:id="@+id/viewTextValue"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/edit_text_background_round"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:textAppearance="@style/Text.TableValue" />
-
-        </TableRow>
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
 
-        <TableRow style="@style/propertiesTableRow">
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/viewFontColorKey"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
 
-            <android.support.v7.widget.AppCompatTextView
-                android:id="@+id/viewFontColorKey"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/propertiesTableTextColor"
-                android:textAppearance="@style/Text.TableKey" />
+        android:layout_marginTop="8dp"
+        android:gravity="center_vertical|start"
+        android:padding="12dp"
 
-            <Button
-                android:id="@+id/viewFontColorValue"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_marginEnd="70dp"
-                android:layout_marginStart="50dp"
-                android:background="@color/TextGrey" />
+        android:text="@string/propertiesTableTextColor"
+        android:textAppearance="@style/Text.TableKey"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/viewTextKey" />
 
+    <EditText
+        android:id="@+id/viewTextValue"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:background="@drawable/edit_text_background_round"
+        android:ems="10"
+        android:gravity="center_vertical|start"
+        android:inputType="textPersonName"
+        android:paddingEnd="16dp"
+        android:paddingStart="16dp"
+        android:textAppearance="@style/Text.TableValue"
+        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toTopOf="@id/viewTextKey" />
 
-        </TableRow>
+    <!--<Button-->
+    <!--android:id="@+id/viewFontColorValue"-->
+    <!--android:layout_width="0dp"-->
+    <!--android:layout_height="50dp"-->
 
-        <!--<TableRow-->
-        <!--style="@style/propertiesTableRow"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content">-->
+    <!--android:background="@color/TextGrey"-->
+    <!--app:layout_constraintEnd_toStartOf="@+id/guideline3"-->
+    <!--app:layout_constraintStart_toStartOf="@+id/guideline2"-->
+    <!--app:layout_constraintTop_toTopOf="@id/viewFontColorKey" />-->
 
-        <!--<TextView-->
-        <!--android:id="@+id/viewTextAlignKey"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="@string/propertiesTableTextAlign"-->
-        <!--android:textAppearance="@style/propertiesTableKey" />-->
+    <RadioGroup
+        android:id="@+id/viewFontColorValue"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toTopOf="@id/viewFontColorKey">
 
-        <!--<LinearLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:orientation="horizontal">-->
+        <RadioButton
+            android:id="@+id/color1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@drawable/color_circle_pink_selector"
+            android:shadowColor="@color/frizzle_pink" />
 
-        <!--<Button-->
-        <!--android:id="@+id/viewTextAlignValueLeft"-->
-        <!--android:layout_width="70dp"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:layout_weight="1"-->
-        <!--android:text="שמאל" />-->
+        <RadioButton
+            android:id="@+id/color2"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginLeft="-10dp"
+            android:button="@drawable/color_circle_purple_selector"
+            android:shadowColor="@color/frizzle_purple" />
 
-        <!--<Button-->
-        <!--android:id="@+id/viewTextAlignValueCenter"-->
-        <!--android:layout_width="70dp"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:layout_weight="1"-->
-        <!--android:text="מרכז" />-->
+        <RadioButton
+            android:id="@+id/color3"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginLeft="-10dp"
+            android:button="@drawable/color_circle_green_selector"
+            android:shadowColor="@color/frizzle_green" />
 
-        <!--<Button-->
-        <!--android:id="@+id/viewTextAlignValueRight"-->
-        <!--android:layout_width="70dp"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:layout_weight="1"-->
-        <!--android:text="ימין" />-->
-        <!--</LinearLayout>-->
+        <RadioButton
+            android:id="@+id/color4"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginLeft="-10dp"
+            android:button="@drawable/color_circle_light_blue_selector"
+            android:shadowColor="@color/frizzle_light_blue" />
 
-
-        <!--</TableRow>-->
-
-    </TableLayout>
+        <RadioButton
+            android:id="@+id/color5"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginLeft="-10dp"
+            android:button="@drawable/color_circle_black_selector"
+            android:shadowColor="@color/black" />
+    </RadioGroup>
 
     <android.support.v7.widget.AppCompatButton
         android:id="@+id/saveButton"
         style="@style/Button.LightBlue"
-        android:layout_below="@+id/tableLayout"
         android:layout_centerHorizontal="true"
         android:layout_centerInParent="false"
+        android:layout_marginBottom="24dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/save"
+        android:textAppearance="@style/Text.Title.Light"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewFontColorValue" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="@dimen/properties_button_guideline" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="@dimen/properties_button_guideline2" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+
+        app:layout_constraintGuide_percent="@dimen/properties_button_guideline3"
+
         />
-</RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>
