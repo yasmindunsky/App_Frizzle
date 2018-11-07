@@ -17,19 +17,18 @@ import java.util.ArrayList;
  */
 
 public class ChooseImagePopupWindow extends PopupWindow {
-    private int width = GridLayout.LayoutParams.WRAP_CONTENT;
-    private int height = GridLayout.LayoutParams.WRAP_CONTENT;
     private RadioButton selectedButton;
-    private View popupView;
 
     public ChooseImagePopupWindow(Context context, int index, UserCreatedImageView userCreatedImageView){
         LayoutInflater inflater = (LayoutInflater)
                 context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         assert inflater != null;
-        popupView = inflater.inflate(R.layout.popup_choose_image, null);
+        View popupView = inflater.inflate(R.layout.popup_choose_image, null);
         setContentView(popupView);
 
+        int width = GridLayout.LayoutParams.WRAP_CONTENT;
         setWidth(width);
+        int height = GridLayout.LayoutParams.WRAP_CONTENT;
         setHeight(height);
         this.setOutsideTouchable(true);
         this.setFocusable(true);

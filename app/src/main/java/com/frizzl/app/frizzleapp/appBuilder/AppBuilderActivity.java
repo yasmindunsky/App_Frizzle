@@ -58,11 +58,8 @@ public class AppBuilderActivity extends AppCompatActivity {
     private ProgressBar progressBar;
     private RelativeLayout relativeLayout;
     private ExpandableLayout errorExpandableLayout;
-    private TabLayout tabLayout;
     private ImageButton playButton;
     private Button moveOnButton;
-    private android.support.v7.widget.Toolbar toolbar;
-    private ImageButton clickToExpandError;
     private ir.neo.stepbarview.StepBarView stepBarView;
     private com.airbnb.lottie.LottieAnimationView checkMark;
 
@@ -71,9 +68,7 @@ public class AppBuilderActivity extends AppCompatActivity {
     final private static int WRITE_PERMISSION = 1;
     private static final int MAX_NICKNAME_LENGTH = 10;
 
-    private boolean activityCreated = false;
     private TaskViewPager viewPager;
-    private AppTasksSwipeAdapter swipeAdapter;
     private int currentAppLevelID;
     private static boolean showMovedOn = false;
 
@@ -87,13 +82,13 @@ public class AppBuilderActivity extends AppCompatActivity {
         setContentView(mainLayout);
 
         errorExpandableLayout = findViewById(R.id.errorExpandableLayout);
-        clickToExpandError = findViewById(R.id.clickToExpandError);
+        ImageButton clickToExpandError = findViewById(R.id.clickToExpandError);
         relativeLayout = findViewById(R.id.appBuilderLayout);
         progressBar = findViewById(R.id.progressBar);
         playButton = findViewById(R.id.play);
         moveOnButton = findViewById(R.id.moveOnButton);
-        tabLayout = findViewById(R.id.tabLayout);
-        toolbar = findViewById(R.id.builderToolbar);
+        TabLayout tabLayout = findViewById(R.id.tabLayout);
+        android.support.v7.widget.Toolbar toolbar = findViewById(R.id.builderToolbar);
         stepBarView = findViewById(R.id.stepBarView);
         checkMark = findViewById(R.id.checkMark);
 
@@ -170,7 +165,7 @@ public class AppBuilderActivity extends AppCompatActivity {
         // Set Task text.
         // Create SwipeAdapter.
         viewPager = findViewById(R.id.viewPager);
-        swipeAdapter = new AppTasksSwipeAdapter(getSupportFragmentManager(), UserProfile.user.getCurrentAppTasks());
+        AppTasksSwipeAdapter swipeAdapter = new AppTasksSwipeAdapter(getSupportFragmentManager(), UserProfile.user.getCurrentAppTasks());
         viewPager.setAdapter(swipeAdapter);
         viewPager.setAllowedSwipeDirection(SwipeDirection.none);
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -240,7 +235,7 @@ public class AppBuilderActivity extends AppCompatActivity {
         stepBarView.setAllowTouchStepTo(0);
 
         tutorial = new Tutorial(AppBuilderActivity.this);
-        activityCreated = true;
+        boolean activityCreated = true;
     }
 
     private int getItem(int i) {
@@ -453,7 +448,7 @@ public class AppBuilderActivity extends AppCompatActivity {
     }
 
     public void taskCompleted() {
-        // Will mive to next Task when animation finishes.
+        // Will move to next Task when animation finishes.
         final Handler handler = new Handler();
         handler.postDelayed(() -> {
             checkMark.setVisibility(View.VISIBLE);

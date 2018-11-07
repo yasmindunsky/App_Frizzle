@@ -37,8 +37,6 @@ import com.frizzl.app.frizzleapp.appBuilder.UserCreatedButton;
  * A simple {@link Fragment} subclass.
  */
 public class PracticeSlideFragment extends Fragment {
-    private int index;
-    private int lessonNum;
     private PracticeSlide practiceSlide;
     private ConstraintLayout constraintLayout;
     private static final int SIDES_MARGIN = 50;
@@ -50,9 +48,8 @@ public class PracticeSlideFragment extends Fragment {
     private PracticeNotificationView errorView;
     private PracticeNotificationView notificationView;
     private int currentLevel;
-    private int currentSlide;
     private String originalCode;
-    private int lastIDbeforeCTA;
+    private int lastIDBeforeCTA;
 
     public PracticeSlideFragment() {
         // Required empty public constructor
@@ -67,7 +64,7 @@ public class PracticeSlideFragment extends Fragment {
         int constraintLayoutId = constraintLayout.getId();
         viewPager = getActivity().findViewById(R.id.pager);
         currentLevel = UserProfile.user.getCurrentLevel();
-        currentSlide = getCurrentSlide();
+        int currentSlide = getCurrentSlide();
 
         if (Utils.isRTL()) {
             view.setRotationY(180);
@@ -75,8 +72,8 @@ public class PracticeSlideFragment extends Fragment {
 
         Bundle bundle = getArguments();
         if (bundle != null) {
-            index = bundle.getInt("index");
-            lessonNum = bundle.getInt("lesson");
+            int index = bundle.getInt("index");
+            int lessonNum = bundle.getInt("lesson");
             practiceSlide = (PracticeSlide) bundle.getSerializable("practice_slide");
         }
 
@@ -173,7 +170,7 @@ public class PracticeSlideFragment extends Fragment {
             boolean runnable = design.getRunnable();
             boolean withOnClickSet = design.getWithOnClickSet();
             String onClickFunction = design.getOnClickFunction();
-            DesignSection designSection = new DesignSection(context, runnable, withOnClickSet, onClickFunction, getActivity());
+            DesignSection designSection = new DesignSection(context, runnable, withOnClickSet, onClickFunction);
             designSection.setBackgroundLayout(constraintLayout);
             designSection.setId(R.id.designSection);
             designSection.setPadding(SIDES_MARGIN, TOP_DOWN_MARGIN, SIDES_MARGIN, TOP_DOWN_MARGIN);
@@ -242,7 +239,7 @@ public class PracticeSlideFragment extends Fragment {
         lottieAnimationView.setAnimation(R.raw.stars);
         lottieAnimationView.setSpeed(1.6f);
 
-        lastIDbeforeCTA = prevID;
+        lastIDBeforeCTA = prevID;
         int CTAid = callToActionButton.getId();
         int thisID = lottieAnimationView.getId();
         set.constrainWidth(thisID, ConstraintSet.MATCH_CONSTRAINT);
@@ -302,7 +299,7 @@ public class PracticeSlideFragment extends Fragment {
             set.connect(thisID, ConstraintSet.START, constraintLayout.getId(), ConstraintSet.START, SIDES_MARGIN);
             set.connect(thisID, ConstraintSet.END, constraintLayout.getId(), ConstraintSet.END, SIDES_MARGIN);
             set.connect(callToActionButton.getId(), ConstraintSet.TOP, thisID, ConstraintSet.BOTTOM, TOP_DOWN_MARGIN);
-            set.connect(thisID, ConstraintSet.TOP, lastIDbeforeCTA, ConstraintSet.BOTTOM, TOP_DOWN_MARGIN);
+            set.connect(thisID, ConstraintSet.TOP, lastIDBeforeCTA, ConstraintSet.BOTTOM, TOP_DOWN_MARGIN);
             constraintLayout.setConstraintSet(set);
         }
         errorView.setText(error);
@@ -320,7 +317,7 @@ public class PracticeSlideFragment extends Fragment {
             set.connect(thisID, ConstraintSet.START, constraintLayout.getId(), ConstraintSet.START, SIDES_MARGIN);
             set.connect(thisID, ConstraintSet.END, constraintLayout.getId(), ConstraintSet.END, SIDES_MARGIN);
             set.connect(callToActionButton.getId(), ConstraintSet.TOP, thisID, ConstraintSet.BOTTOM, TOP_DOWN_MARGIN);
-            set.connect(thisID, ConstraintSet.TOP, lastIDbeforeCTA, ConstraintSet.BOTTOM, TOP_DOWN_MARGIN);
+            set.connect(thisID, ConstraintSet.TOP, lastIDBeforeCTA, ConstraintSet.BOTTOM, TOP_DOWN_MARGIN);
             constraintLayout.setConstraintSet(set);
         }
         notificationView.setText(notification);

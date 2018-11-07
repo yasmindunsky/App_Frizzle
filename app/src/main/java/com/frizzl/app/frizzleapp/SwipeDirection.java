@@ -5,5 +5,5 @@ package com.frizzl.app.frizzleapp;
  */
 
 public enum SwipeDirection {
-    all, left, right, none ;
+    all, left, right, none
 }

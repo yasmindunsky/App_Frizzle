@@ -53,6 +53,7 @@ public class UserCreatedButton extends UserCreatedView {
 
         this.thisView = new Button(new ContextThemeWrapper(context, buttonStyle), null, buttonStyle);
         Drawable buttonDrawable = ContextCompat.getDrawable(context, R.drawable.user_button_background);
+        assert buttonDrawable != null;
         buttonDrawable.setColorFilter(context.getResources().getColor(R.color.frizzle_pink), PorterDuff.Mode.MULTIPLY);
         thisView.setBackground(buttonDrawable);
 
@@ -91,6 +92,7 @@ public class UserCreatedButton extends UserCreatedView {
         this.viewType = "Button";
         this.thisView = new Button(new ContextThemeWrapper(context, buttonStyle), null, buttonStyle);
         Drawable buttonDrawable = ContextCompat.getDrawable(context, R.drawable.user_button_background);
+        assert buttonDrawable != null;
         buttonDrawable.setColorFilter(context.getResources().getColor(R.color.frizzle_pink), PorterDuff.Mode.MULTIPLY);
         thisView.setBackground(buttonDrawable);
 
@@ -164,34 +166,28 @@ public class UserCreatedButton extends UserCreatedView {
         // FONT COLOR
         RadioGroup radioGroup = popupView.findViewById(R.id.viewFontColorValue);
         ((RadioButton)popupView.findViewById(selectedTextColorButtonID)).setChecked(true);
-        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                selectedTextColorButtonID = checkedId;
-                RadioButton selectedColorButton = group.findViewById(checkedId);
-                if (selectedColorButton == null) return;
-                int selectedColor = selectedColorButton.getShadowColor();
-                thisView.setTextColor(selectedColor);
-                properties.put("android:textColor", Utils.hexFromColorInt(selectedColor));
-            }
+        radioGroup.setOnCheckedChangeListener((group, checkedId) -> {
+            selectedTextColorButtonID = checkedId;
+            RadioButton selectedColorButton = group.findViewById(checkedId);
+            if (selectedColorButton == null) return;
+            int selectedColor = selectedColorButton.getShadowColor();
+            thisView.setTextColor(selectedColor);
+            properties.put("android:textColor", Utils.hexFromColorInt(selectedColor));
         });
 
         // BG COLOR
-        RadioGroup BGradioGroup = popupView.findViewById(R.id.viewBgColorValue);
+        RadioGroup BGRadioGroup = popupView.findViewById(R.id.viewBgColorValue);
         ((RadioButton)popupView.findViewById(selectedBGColorButtonID)).setChecked(true);
-        BGradioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                selectedBGColorButtonID = checkedId;
-                RadioButton selectedColorButton = group.findViewById(checkedId);
-                if (selectedColorButton == null) return;
-                int selectedColor = selectedColorButton.getShadowColor();
-                int originalButtonDrawableRes = R.drawable.user_button_background;
-                Drawable buttonDrawable = ContextCompat.getDrawable(context, originalButtonDrawableRes);
-                if (buttonDrawable != null) buttonDrawable.setColorFilter(selectedColor, PorterDuff.Mode.MULTIPLY);
-                thisView.setBackground(buttonDrawable);
-                properties.put("android:backgroundTint", Utils.hexFromColorInt(selectedColor));
-            }
+        BGRadioGroup.setOnCheckedChangeListener((group, checkedId) -> {
+            selectedBGColorButtonID = checkedId;
+            RadioButton selectedColorButton = group.findViewById(checkedId);
+            if (selectedColorButton == null) return;
+            int selectedColor = selectedColorButton.getShadowColor();
+            int originalButtonDrawableRes = R.drawable.user_button_background;
+            Drawable buttonDrawable = ContextCompat.getDrawable(context, originalButtonDrawableRes);
+            if (buttonDrawable != null) buttonDrawable.setColorFilter(selectedColor, PorterDuff.Mode.MULTIPLY);
+            thisView.setBackground(buttonDrawable);
+            properties.put("android:backgroundTint", Utils.hexFromColorInt(selectedColor));
         });
 
 

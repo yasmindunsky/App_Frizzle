@@ -5,8 +5,8 @@ import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.speech.tts.TextToSpeech;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.content.res.ResourcesCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,13 +28,12 @@ import java.util.Set;
  */
 
 public class DesignSection extends RelativeLayout {
-    private ImageButton playButton;
     private TextToSpeech tts;
     private UserCreatedButton userCreatedButton;
     private ViewGroup layout;
     private DisplayNotificationListener displayNotificationListener;
 
-    public DesignSection(Context context, boolean runnable, boolean withOnClickSet, String onClickFunction, FragmentActivity activity) {
+    public DesignSection(Context context, boolean runnable, boolean withOnClickSet, String onClickFunction) {
         super(context);
 
         TextToSpeech.OnInitListener onInitListener = status -> {
@@ -53,7 +52,7 @@ public class DesignSection extends RelativeLayout {
         setId(R.id.constraintLayout);
 
         ImageView imageView = new ImageView(context);
-        imageView.setImageDrawable(getResources().getDrawable(R.drawable.design_element_bg));
+        imageView.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.design_element_bg, null));
         RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT,
                 LayoutParams.WRAP_CONTENT);
         imageView.setLayoutParams(layoutParams);
@@ -88,13 +87,49 @@ public class DesignSection extends RelativeLayout {
         addView(buttonView);
 
         if (runnable) {
-            playButton = new ImageButton(context);
+            ImageButton playButton = new ImageButton(context);
+            OnClickListener runDesign = new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Context context = getContext();
+                    LayoutInflater inflater = (LayoutInflater)
+                            context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                    assert inflater != null;
+                    View runPopupView = inflater.inflate(R.layout.popup_design_section_run, null);
+                    Button button = runPopupView.findViewById(R.id.button);
+                    Button thisView = userCreatedButton.getThisView();
+                    button.setText(thisView.getText());
+                    button.setTextColor(thisView.getCurrentTextColor());
+                    button.setTypeface(thisView.getTypeface());
+                    int originalButtonDrawableRes = R.drawable.user_button_background;
+                    Drawable buttonDrawable = ContextCompat.getDrawable(context, originalButtonDrawableRes);
+                    if (buttonDrawable != null) {
+                        buttonDrawable.setColorFilter(Color.parseColor(userCreatedButton.getProperties().get("android:backgroundTint")), PorterDuff.Mode.DARKEN);
+                        button.setBackground(buttonDrawable);
+                    }
+                    PopupWindow runPopupWindow = new PopupWindow(runPopupView, ViewGroup.LayoutParams.WRAP_CONTENT,
+                            ViewGroup.LayoutParams.WRAP_CONTENT, true);
+                    Utils.presentPopup(runPopupWindow, null, v, layout, context);
+                    ImageButton closeButton = runPopupView.findViewById(R.id.close);
+                    closeButton.setOnClickListener(v12 -> runPopupWindow.dismiss());
+                    button.setOnClickListener(v1 -> {
+                        boolean onClickSet = userCreatedButton.getOnClick().equals("myFunction");
+                        if (onClickSet) {
+                            if (Utils.volumeIsLow(context)) Utils.presentVolumeToast(context);
+                            tts.speak("Hello", TextToSpeech.QUEUE_ADD, null);
+                        }
+                        if (displayNotificationListener != null)
+                            displayNotificationListener.onDisplayNotification(runPopupWindow);
+
+                    });
+                }
+            };
             playButton.setOnClickListener(runDesign);
-            playButton.setBackground(getResources().getDrawable(R.drawable.run_button_background));
+            playButton.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.run_button_background, null));
             playButton.setScaleType(ImageView.ScaleType.FIT_CENTER);
             playButton.setAdjustViewBounds(false);
             playButton.setCropToPadding(false);
-            playButton.setImageDrawable(getResources().getDrawable(R.drawable.ic_play_run_icon));
+            playButton.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.ic_play_run_icon, null));
             playButton.setPadding(24,12,12,12);
             LayoutParams playButtonLayoutParams = new LayoutParams(80, 80);
             playButtonLayoutParams.addRule(RelativeLayout.CENTER_VERTICAL);
@@ -104,41 +139,6 @@ public class DesignSection extends RelativeLayout {
             addView(playButton);
         }
     }
-    private OnClickListener runDesign = new OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            Context context = getContext();
-            LayoutInflater inflater = (LayoutInflater)
-                    context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            assert inflater != null;
-            View runPopupView = inflater.inflate(R.layout.popup_design_section_run, null);
-            Button button = runPopupView.findViewById(R.id.button);
-            Button thisView = userCreatedButton.getThisView();
-            button.setText(thisView.getText());
-            button.setTextColor(thisView.getCurrentTextColor());
-            button.setTypeface(thisView.getTypeface());
-            int originalButtonDrawableRes = R.drawable.user_button_background;
-            Drawable buttonDrawable = ContextCompat.getDrawable(context, originalButtonDrawableRes);
-            if (buttonDrawable != null) {
-                buttonDrawable.setColorFilter(Color.parseColor(userCreatedButton.getProperties().get("android:backgroundTint")), PorterDuff.Mode.DARKEN);
-                button.setBackground(buttonDrawable);
-            }
-            PopupWindow runPopupWindow = new PopupWindow(runPopupView, ViewGroup.LayoutParams.WRAP_CONTENT,
-                    ViewGroup.LayoutParams.WRAP_CONTENT, true);
-            Utils.presentPopup(runPopupWindow, null, v, layout, context);
-            ImageButton closeButton = runPopupView.findViewById(R.id.close);
-            closeButton.setOnClickListener(v12 -> runPopupWindow.dismiss());
-            button.setOnClickListener(v1 -> {
-                boolean onClickSet = userCreatedButton.getOnClick().equals("myFunction");
-                if (onClickSet) {
-                    if (Utils.volumeIsLow(context)) Utils.presentVolumeToast(context);
-                    tts.speak("Hello", TextToSpeech.QUEUE_ADD, null);
-                }
-                if (displayNotificationListener != null) displayNotificationListener.onDisplayNotification(runPopupWindow);
-
-            });
-        }
-    };
 
     public UserCreatedButton getUserCreatedButton() {
         return userCreatedButton;

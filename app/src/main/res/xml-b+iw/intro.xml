@@ -22,7 +22,7 @@
     </slide>
 
     <slide>
-        <info_text></info_text>
+        <info_text />
         <task_text>נסו להשתמש בה.</task_text>
         <reminder_text/>
         <code mutable="false" shows="false" runnable ="false" waitForCTA="false"/>

@@ -15,23 +15,21 @@ import com.frizzl.app.frizzleapp.R;
  */
 
 public class PrePracticePopupWindow extends PopupWindow {
-    private final int width = GridLayout.LayoutParams.WRAP_CONTENT;
-    private final int height = GridLayout.LayoutParams.WRAP_CONTENT;
-    private View popupView;
-    private AppCompatTextView textView;
 
     public PrePracticePopupWindow(MapActivity activity, String explanationText, Runnable startPractice){
         LayoutInflater inflater = (LayoutInflater)
                 activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         assert inflater != null;
-        popupView = inflater.inflate(R.layout.popup_pre_practice, null);
+        View popupView = inflater.inflate(R.layout.popup_pre_practice, null);
         setContentView(popupView);
+        int width = GridLayout.LayoutParams.WRAP_CONTENT;
         setWidth(width);
+        int height = GridLayout.LayoutParams.WRAP_CONTENT;
         setHeight(height);
         this.setOutsideTouchable(true);
         this.setFocusable(true);
 
-        textView = popupView.findViewById(R.id.practiceExplanationText);
+        AppCompatTextView textView = popupView.findViewById(R.id.practiceExplanationText);
         textView.setText(explanationText);
         Button okButton = popupView.findViewById(R.id.okButton);
         okButton.setOnClickListener(v -> {

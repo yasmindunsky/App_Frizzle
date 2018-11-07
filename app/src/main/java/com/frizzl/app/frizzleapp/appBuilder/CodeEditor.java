@@ -1,6 +1,5 @@
 package com.frizzl.app.frizzleapp.appBuilder;
 
-import android.app.Activity;
 import android.content.Context;
 import android.support.v4.content.res.ResourcesCompat;
 import android.text.Editable;
@@ -8,8 +7,6 @@ import android.text.InputType;
 import android.text.Spannable;
 import android.text.TextWatcher;
 import android.text.style.ForegroundColorSpan;
-import android.view.View;
-import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
 import android.view.inputmethod.InputMethodManager;
@@ -29,7 +26,6 @@ public class CodeEditor extends android.support.v7.widget.AppCompatEditText {
     private List<String> savedWords;
     private List<String> importantCommands;
     private int currentPosition = 0;
-    private InputMethodManager imm;
 
     public CodeEditor(Context context, CodeKeyboard keyboard) {
         super(context);
@@ -68,12 +64,10 @@ public class CodeEditor extends android.support.v7.widget.AppCompatEditText {
             this.setTextIsSelectable(true);
             InputConnection ic = this.onCreateInputConnection(new EditorInfo());
             keyboard.setInputConnection(ic);
-            imm = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+            InputMethodManager imm = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
             keyboard.setInputMethodManager(imm);
             setKeyboardVisibility(INVISIBLE);
-            setOnFocusChangeListener((v, hasFocus) -> {
-                setKeyboardVisibility(hasFocus ? VISIBLE : INVISIBLE);
-            });
+            setOnFocusChangeListener((v, hasFocus) -> setKeyboardVisibility(hasFocus ? VISIBLE : INVISIBLE));
         }
 
         // Set coloring

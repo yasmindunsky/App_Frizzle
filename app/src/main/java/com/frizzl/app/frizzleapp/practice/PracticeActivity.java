@@ -17,7 +17,6 @@ import org.xmlpull.v1.XmlPullParserException;
 import java.io.IOException;
 
 public class PracticeActivity extends FragmentActivity {
-    private PracticeSwipeAdapter swipeAdapter;
     private Practice currentPractice;
     private RoundCornerProgressBar progressBar;
     private PracticeViewPager viewPager;
@@ -49,7 +48,7 @@ public class PracticeActivity extends FragmentActivity {
 
         // Create SwipeAdapter.
         viewPager = findViewById(R.id.pager);
-        swipeAdapter = new PracticeSwipeAdapter(getSupportFragmentManager(), currentPractice);
+        PracticeSwipeAdapter swipeAdapter = new PracticeSwipeAdapter(getSupportFragmentManager(), currentPractice);
         viewPager.setAdapter(swipeAdapter);
         viewPager.setAllowedSwipeDirection(SwipeDirection.none);
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {

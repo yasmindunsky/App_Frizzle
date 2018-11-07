@@ -8,8 +8,6 @@ import com.frizzl.app.frizzleapp.UserProfile;
 public class AppBuilderPresenter {
 
     private AppBuilderActivity appBuilderActivity;
-    private CodingScreenPresenter codingScreenPresenter;
-    private DesignScreenPresenter designScreenPresenter;
     private String codeStart;
     private String codeEnd;
     private int currentAppLevelID;
@@ -19,8 +17,8 @@ public class AppBuilderPresenter {
                                DesignScreenPresenter designScreenPresenter,
                                String codeStart, String codeEnd, int currentAppLevelID){
         this.appBuilderActivity = appBuilderActivity;
-        this.codingScreenPresenter = codingScreenPresenter;
-        this.designScreenPresenter = designScreenPresenter;
+        CodingScreenPresenter codingScreenPresenter1 = codingScreenPresenter;
+        DesignScreenPresenter designScreenPresenter1 = designScreenPresenter;
         this.codeStart = codeStart;
         this.codeEnd = codeEnd;
         this.currentAppLevelID = currentAppLevelID;

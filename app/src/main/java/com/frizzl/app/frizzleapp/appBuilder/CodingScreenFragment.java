@@ -30,9 +30,6 @@ public class CodingScreenFragment extends Fragment {
     private DefinedFunctionsViewModel definedFunctionsViewModel;
 
     private CodeEditor codeEditor;
-    private CodeKeyboard codeKeyboard;
-    private ScrollView scrollView;
-    private ConstraintLayout constraintLayout;
 
     public CodingScreenFragment() {
         // Required empty public constructor
@@ -45,11 +42,11 @@ public class CodingScreenFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_code, container, false);
 
-        scrollView = view.findViewById(R.id.code_scroll);
-        constraintLayout = view.findViewById(R.id.code_constraint_layout);
+        ScrollView scrollView = view.findViewById(R.id.code_scroll);
+        ConstraintLayout constraintLayout = view.findViewById(R.id.code_constraint_layout);
 
         Context context = getContext();
-        codeKeyboard = new CodeKeyboard(context);
+        CodeKeyboard codeKeyboard = new CodeKeyboard(context);
         ConstraintLayout.LayoutParams keyboardLayoutParams = new
                 ConstraintLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT);

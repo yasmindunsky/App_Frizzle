@@ -24,7 +24,6 @@ public class UserApp implements Serializable {
     private String name;
     private String icon;
     private int appLevelID;
-    private Object nextIndex;
 
     public UserApp(int appLevelID){
         this.appLevelID = appLevelID;

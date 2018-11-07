@@ -21,13 +21,12 @@ import java.util.List;
 class PracticeContentParser {
 
     private XmlResourceParser xmlResourceParser;
-    private Practice currentPractice;
 
     PracticeContentParser() throws XmlPullParserException {
     }
 
     Practice parsePractice(Context context, int practiceID, String lessonXmlName) throws XmlPullParserException, IOException {
-        currentPractice = new Practice(practiceID);
+        Practice currentPractice = new Practice(practiceID);
         xmlResourceParser = context.getResources().getXml(getResId(lessonXmlName, R.xml.class));
         ArrayList<PracticeSlide> slides = new ArrayList<>();
 

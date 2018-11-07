@@ -4,12 +4,8 @@ import android.content.Context;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
-import android.view.View;
-import android.widget.TextView;
 
 import com.frizzl.app.frizzleapp.SwipeDirection;
-
-import ir.neo.stepbarview.StepBarView;
 
 public class TaskViewPager extends ViewPager {
     private SwipeDirection direction;
@@ -24,11 +20,8 @@ public class TaskViewPager extends ViewPager {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        if (this.IsSwipeAllowed(event)) {
-            return super.onTouchEvent(event);
-        }
+        return this.IsSwipeAllowed(event) && super.onTouchEvent(event);
 
-        return false;
     }
 
     private boolean IsSwipeAllowed(MotionEvent event) {
@@ -66,18 +59,9 @@ public class TaskViewPager extends ViewPager {
 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent event) {
-        if (this.IsSwipeAllowed(event)) {
-            return super.onInterceptTouchEvent(event);
-        }
+        return this.IsSwipeAllowed(event) && super.onInterceptTouchEvent(event);
 
-        return false;
     }
-
-    @Override
-    public void setCurrentItem(int item, boolean smoothScroll) {
-        super.setCurrentItem(item, smoothScroll);
-    }
-
 
     public void setPagingEnabled(boolean enabled) {
         this.enabled = enabled;

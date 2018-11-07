@@ -17,8 +17,6 @@ import com.frizzl.app.frizzleapp.Utils;
 
 public class PracticeNotificationView extends LinearLayout{
    private AppCompatTextView notificationTextView;
-   private ImageView iconImageView;
-   private boolean isError; // If false it is a 'please notice'.
 
     public PracticeNotificationView(Context context, boolean isError){
         super(context);
@@ -30,9 +28,9 @@ public class PracticeNotificationView extends LinearLayout{
         int px = Utils.dpStringToPixel(context, "15dp");
         this.setPadding(px, px, px, px);
         this.setGravity(Gravity.CENTER_VERTICAL);
-        this.isError = isError;
+        boolean isError1 = isError;
 
-        iconImageView = new ImageView(context);
+        ImageView iconImageView = new ImageView(context);
         int drawableResource = isError ? R.drawable.ic_try_again : R.drawable.ic_notification;
         iconImageView.setImageDrawable(context.getResources().getDrawable(drawableResource));
         iconImageView.setLayoutParams(new ViewGroup.LayoutParams( Utils.dpStringToPixel(context, "40dp"),

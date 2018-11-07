@@ -3,22 +3,18 @@ package com.frizzl.app.frizzleapp;
 import android.app.Activity;
 import android.content.Context;
 import android.media.AudioManager;
+import android.support.v4.content.res.ResourcesCompat;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.style.ForegroundColorSpan;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.PopupWindow;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Locale;
-
-import static android.content.Context.AUDIO_SERVICE;
-import static android.support.v4.content.ContextCompat.getSystemService;
 
 /**
  * Created by Noga on 13/02/2018.
@@ -80,12 +76,12 @@ public class Utils {
     }
 
     private static void dimView(View view, Context context) {
-        view.setForeground(context.getResources().getDrawable(R.drawable.shade));
+        view.setForeground(ResourcesCompat.getDrawable(context.getResources(), R.drawable.shade, null));
         view.getForeground().setAlpha(220);
     }
 
     private static void undimView(View view, Context context) {
-        view.setForeground(context.getResources().getDrawable(R.drawable.shade));
+        view.setForeground(ResourcesCompat.getDrawable(context.getResources(), R.drawable.shade, null));
         view.getForeground().setAlpha(0);
     }
 
@@ -117,6 +113,7 @@ public class Utils {
 
     public static boolean volumeIsLow(Context context) {
         AudioManager audioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
+        assert audioManager != null;
         int currentVolume = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
         int maxVolume = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
         int currentVolumePercentage = 100 * currentVolume/maxVolume;

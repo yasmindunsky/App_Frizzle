@@ -133,7 +133,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:layout_marginLeft="-10dp"
+            android:layout_marginStart="-10dp"
             android:button="@drawable/color_circle_purple_selector"
             android:shadowColor="@color/frizzle_purple" />
 
@@ -142,7 +142,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:layout_marginLeft="-10dp"
+            android:layout_marginStart="-10dp"
             android:button="@drawable/color_circle_green_selector"
             android:shadowColor="@color/frizzle_green" />
 
@@ -151,7 +151,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:layout_marginLeft="-10dp"
+            android:layout_marginStart="-10dp"
             android:button="@drawable/color_circle_light_blue_selector"
             android:shadowColor="@color/frizzle_light_blue" />
 
@@ -160,7 +160,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:layout_marginLeft="-10dp"
+            android:layout_marginStart="-10dp"
             android:button="@drawable/color_circle_black_selector"
             android:shadowColor="@color/black" />
     </RadioGroup>

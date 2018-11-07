@@ -32,7 +32,6 @@ public class IntroSlideFragment extends Fragment {
     private int index;
     private int levelID;
     private PracticeSlide practiceSlide;
-    private ConstraintLayout constraintLayout;
     private static final int SIDES_MARGIN = 50;
     private static final int TOP_DOWN_MARGIN = 25;
     private AppCompatButton callToActionButton;
@@ -48,7 +47,7 @@ public class IntroSlideFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_practice_slide, container, false);
-        constraintLayout = view.findViewById(R.id.constraintLayout);
+        ConstraintLayout constraintLayout = view.findViewById(R.id.constraintLayout);
         constraintLayout.setFocusableInTouchMode(true);
         int constraintLayoutId = constraintLayout.getId();
 

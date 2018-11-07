@@ -104,12 +104,7 @@ public class AppMapButton extends LinearLayout implements MapButton{
     public void setOnClickListeners(OnClickListener onClickListener) {
         setOnClickListener(onClickListener);
         AppMapButton parentLayout = this;
-        OnClickListener childrenListener = new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                parentLayout.callOnClick();
-            }
-        };
+        OnClickListener childrenListener = v -> parentLayout.callOnClick();
         ImageButton icon = (ImageButton) getChildAt(0);
         icon.setOnClickListener(childrenListener);
         TextView name = (TextView) getChildAt(1);

@@ -11,7 +11,6 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
-import com.squareup.leakcanary.LeakCanary;
 
 import java.util.Locale;
 import java.util.UUID;
@@ -23,7 +22,6 @@ import static io.fabric.sdk.android.Fabric.isDebuggable;
  */
 
 public class FrizzlApplication extends Application {
-    private Locale locale = null;
     public static Resources resources;
 
     // Called when the application is starting, before any other application objects have been created.
@@ -80,18 +78,4 @@ public class FrizzlApplication extends Application {
         Task<InstanceIdResult> instanceId = FirebaseInstanceId.getInstance().getInstanceId();
     }
 
-    // Called by the system when the device configuration changes while your component is running.
-    // Overriding this method is totally optional!
-    @Override
-    public void onConfigurationChanged(Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
-    }
-
-    // This is called when the overall system is running low on memory,
-    // and would like actively running processes to tighten their belts.
-    // Overriding this method is totally optional!
-    @Override
-    public void onLowMemory() {
-        super.onLowMemory();
-    }
 }

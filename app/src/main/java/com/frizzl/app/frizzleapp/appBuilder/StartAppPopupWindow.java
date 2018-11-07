@@ -18,22 +18,20 @@ import java.util.ArrayList;
  */
 
 public class StartAppPopupWindow extends PopupWindow {
-    private int width = GridLayout.LayoutParams.WRAP_CONTENT;
-    private int height = GridLayout.LayoutParams.WRAP_CONTENT;
     private RadioButton selectedButton;
-    private AppBuilderActivity activityCalled;
-    private View popupView;
 
     public StartAppPopupWindow(AppBuilderActivity activity){
         LayoutInflater inflater = (LayoutInflater)
                 activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         assert inflater != null;
-        popupView = inflater.inflate(R.layout.popup_start_app, null);
+        View popupView = inflater.inflate(R.layout.popup_start_app, null);
         setContentView(popupView);
 
-        this.activityCalled = activity;
+        AppBuilderActivity activityCalled = activity;
 
+        int width = GridLayout.LayoutParams.WRAP_CONTENT;
         setWidth(width);
+        int height = GridLayout.LayoutParams.WRAP_CONTENT;
         setHeight(height);
         this.setOutsideTouchable(true);
         this.setFocusable(true);

@@ -30,19 +30,7 @@ public class MapActivity extends AppCompatActivity {
 
     private MapPresenter mapPresenter;
     private ArrayList<MapButton> levelButtons = new ArrayList<>();
-    private android.support.v7.widget.Toolbar toolbar;
-    private ImageView toolbarIcon;
     private ScrollView scrollView;
-//    private AppMapButton tutorialAppButton;
-    private IntroMapButton pollyIntroButton;
-    private IntroMapButton friendshipIntroButton;
-    private AppMapButton pollyAppButton;
-    private AppMapButton friendshipTestAppButton;
-    private PracticeMapButton firstPracticeButton;
-    private PracticeMapButton speakOutPracticeButton;
-    private PracticeMapButton onClickPracticeButton;
-    private PracticeMapButton viewsPracticeButton;
-    private PracticeMapButton variablesPracticeButton;
     private ConstraintLayout constraintLayout;
 
     @Override
@@ -54,19 +42,19 @@ public class MapActivity extends AppCompatActivity {
         mapPresenter = new MapPresenter(this);
 
         constraintLayout = findViewById(R.id.constraintLayout);
-        toolbar = findViewById(R.id.mapToolbar);
-        toolbarIcon = findViewById(R.id.support_icon);
+        android.support.v7.widget.Toolbar toolbar = findViewById(R.id.mapToolbar);
+        ImageView toolbarIcon = findViewById(R.id.support_icon);
         scrollView = findViewById(R.id.map_scroll_view);
 //        tutorialAppButton = findViewById(R.id.tutorial_app);
-        pollyIntroButton = findViewById(R.id.polly_intro);
-        friendshipIntroButton = findViewById(R.id.friendship_intro);
-        pollyAppButton = findViewById(R.id.polly_app);
-        friendshipTestAppButton = findViewById(R.id.friendship_app);
-        firstPracticeButton = findViewById(R.id.first_practice);
-        speakOutPracticeButton = findViewById(R.id.speakout_practice);
-        onClickPracticeButton = findViewById(R.id.onclick_practice);
-        viewsPracticeButton = findViewById(R.id.views_practice);
-        variablesPracticeButton = findViewById(R.id.variables_practice);
+        IntroMapButton pollyIntroButton = findViewById(R.id.polly_intro);
+        IntroMapButton friendshipIntroButton = findViewById(R.id.friendship_intro);
+        AppMapButton pollyAppButton = findViewById(R.id.polly_app);
+        AppMapButton friendshipTestAppButton = findViewById(R.id.friendship_app);
+        PracticeMapButton firstPracticeButton = findViewById(R.id.first_practice);
+        PracticeMapButton speakOutPracticeButton = findViewById(R.id.speakout_practice);
+        PracticeMapButton onClickPracticeButton = findViewById(R.id.onclick_practice);
+        PracticeMapButton viewsPracticeButton = findViewById(R.id.views_practice);
+        PracticeMapButton variablesPracticeButton = findViewById(R.id.variables_practice);
         // Notice: Should be in order of appearance!
         levelButtons.addAll(Arrays.asList(
                 pollyIntroButton,

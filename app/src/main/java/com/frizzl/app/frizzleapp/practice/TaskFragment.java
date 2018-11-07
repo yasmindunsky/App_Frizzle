@@ -39,11 +39,12 @@ public class TaskFragment extends Fragment {
 
         fragmentText = view.findViewById(R.id.taskText);
         Bundle bundle = getArguments();
+        assert bundle != null;
         index = bundle.getInt("index");
         appLevelId = bundle.getInt("lesson");
         TextView taskNum = view.findViewById(R.id.taskNum);
         int taskNumToDisplay = index + 1;
-        taskNum.setText(getString(R.string.task) + " " + taskNumToDisplay + ":");
+        taskNum.setText(String.format("%s %d:", getString(R.string.task), taskNumToDisplay));
 
         Task task = UserProfile.user.getCurrentAppTasks().getTasks().get(index);
 

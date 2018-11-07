@@ -16,8 +16,6 @@ import com.frizzl.app.frizzleapp.R;
  */
 
 public class HelpPopupWindow extends PopupWindow {
-    private final int width = GridLayout.LayoutParams.WRAP_CONTENT;
-    private final int height = GridLayout.LayoutParams.WRAP_CONTENT;
     private View popupView;
 
     public HelpPopupWindow(MapActivity activity){
@@ -26,7 +24,9 @@ public class HelpPopupWindow extends PopupWindow {
         assert inflater != null;
         popupView = inflater.inflate(R.layout.popup_help, null);
         setContentView(popupView);
+        int width = GridLayout.LayoutParams.WRAP_CONTENT;
         setWidth(width);
+        int height = GridLayout.LayoutParams.WRAP_CONTENT;
         setHeight(height);
         this.setOutsideTouchable(true);
         this.setFocusable(true);

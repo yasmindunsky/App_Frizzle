@@ -2,9 +2,7 @@ package com.frizzl.app.frizzleapp.appBuilder;
 
 import android.arch.lifecycle.ViewModel;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 /**

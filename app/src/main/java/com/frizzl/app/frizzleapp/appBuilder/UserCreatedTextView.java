@@ -150,16 +150,13 @@ public class UserCreatedTextView extends UserCreatedView {
         // FONT COLOR
         RadioGroup radioGroup = popupView.findViewById(R.id.viewFontColorValue);
         ((RadioButton)popupView.findViewById(selectedTextColorButtonID)).setChecked(true);
-        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                selectedTextColorButtonID = checkedId;
-                RadioButton selectedColorButton = group.findViewById(checkedId);
-                if (selectedColorButton == null) return;
-                int selectedColor = selectedColorButton.getShadowColor();
-                thisView.setTextColor(selectedColor);
-                properties.put("android:textColor", Utils.hexFromColorInt(selectedColor));
-            }
+        radioGroup.setOnCheckedChangeListener((group, checkedId) -> {
+            selectedTextColorButtonID = checkedId;
+            RadioButton selectedColorButton = group.findViewById(checkedId);
+            if (selectedColorButton == null) return;
+            int selectedColor = selectedColorButton.getShadowColor();
+            thisView.setTextColor(selectedColor);
+            properties.put("android:textColor", Utils.hexFromColorInt(selectedColor));
         });
 
         //DELETE
@@ -169,26 +166,6 @@ public class UserCreatedTextView extends UserCreatedView {
 
         return popupWindow;
     }
-
-    View.OnClickListener onAlignmentClicked = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            Button buttonClicked  = (Button) v;
-            String direction = (String) buttonClicked.getText();
-            switch (direction.toLowerCase()) {
-                case "left":
-                    thisView.setGravity(Gravity.LEFT);
-                    break;
-                case "right":
-                    thisView.setGravity(Gravity.RIGHT);
-                    break;
-                case "center":
-                    thisView.setGravity(Gravity.CENTER);
-                    break;
-            }
-            properties.put("android:gravity", direction);
-        }
-    };
 
     @Override
     public void updateProperties() {

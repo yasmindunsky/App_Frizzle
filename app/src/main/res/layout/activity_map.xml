@@ -257,7 +257,7 @@
         android:background="@color/white"
         android:elevation="4dp"
         android:gravity="center"
-        android:theme="?attr/actionBarTheme">
+        android:theme="?android:attr/actionBarTheme">
 
         <ImageView
             android:id="@+id/support_icon"

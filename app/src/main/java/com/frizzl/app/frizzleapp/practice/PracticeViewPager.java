@@ -5,7 +5,6 @@ import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 
-import com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar;
 import com.frizzl.app.frizzleapp.SwipeDirection;
 
 public class PracticeViewPager extends ViewPager {
@@ -21,11 +20,8 @@ public class PracticeViewPager extends ViewPager {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        if (this.IsSwipeAllowed(event)) {
-            return super.onTouchEvent(event);
-        }
+        return this.IsSwipeAllowed(event) && super.onTouchEvent(event);
 
-        return false;
     }
 
     private boolean IsSwipeAllowed(MotionEvent event) {
@@ -63,11 +59,8 @@ public class PracticeViewPager extends ViewPager {
 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent event) {
-        if (this.IsSwipeAllowed(event)) {
-            return super.onInterceptTouchEvent(event);
-        }
+        return this.IsSwipeAllowed(event) && super.onInterceptTouchEvent(event);
 
-        return false;
     }
 
     public void setPagingEnabled(boolean enabled) {

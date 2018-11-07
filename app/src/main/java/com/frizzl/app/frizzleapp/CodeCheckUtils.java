@@ -1,7 +1,5 @@
 package com.frizzl.app.frizzleapp;
 
-import android.text.TextUtils;
-
 /**
  * Created by Noga on 04/11/2018.
  */

@@ -14,7 +14,7 @@ Use "'" for special chars.
     <string name="propertiesTableTextColor">צבע טקסט</string>
     <string name="save">שמירה</string>
     <string name="welcome">ברוכים הבאים</string>
-    <string name="app_explanation_text" translatable="false">מזל טוב! השלמתם את כל התרגולים, עכשיו תוכלו לבנות את האפליקציה הראשונה שלכם.</string>
+    <string name="app_explanation_text">מזל טוב! השלמתם את כל התרגולים, עכשיו תוכלו לבנות את האפליקציה הראשונה שלכם.</string>
     <string name="start">קדימה</string>
     <string name="wow">וואו!</string>
     <string name="thanks">תודה</string>
@@ -87,8 +87,11 @@ Use "'" for special chars.
     <string name="done">חזרה</string>
     <string name="your_message_successfully_sent">ההודעה נשלחה בהצלחה.</string>
     <string name="feedback_thank_you">תודה שפנית אלינו</string>
-    <string name="notification_semicolon">Every command must end with a semicolon.</string>
-    <string name="notification_space">Commands must be written exactly as presented.</string>
+    <string name="notification_semicolon">כל פקודה חייבת להסתיים בנקודה פסיק.</string>
+    <string name="notification_space">חייבים לכתוב פקודות בדיוק כמו שהן מוצגות לנו.</string>
+    <string name="install_permission_request">מיד נתקין את האפליקציה שלך, אנחנו רק זקוקים לאישור הרשאה ממך</string>
+    <string name="ok">בסדר</string>
+    <string name="cancel">ביטול</string>
 
 
     <string-array name="fonts">

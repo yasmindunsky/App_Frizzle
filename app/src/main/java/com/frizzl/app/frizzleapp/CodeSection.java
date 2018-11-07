@@ -2,6 +2,7 @@ package com.frizzl.app.frizzleapp;
 
 import android.content.Context;
 import android.speech.tts.TextToSpeech;
+import android.support.v4.content.res.ResourcesCompat;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -56,7 +57,8 @@ public class CodeSection extends RelativeLayout {
         codeEditor.setText(code);
         codeEditor.setEnabled(mutable);
         codeEditor.clearFocus();
-        codeEditor.setBackground(getResources().getDrawable(R.drawable.code_bg));
+
+        codeEditor.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.code_bg, null));
         codeEditor.setGravity(Gravity.START);
         this.getViewTreeObserver().addOnGlobalLayoutListener(() -> {
             codeEditor.setWidth(getWidth());
@@ -78,18 +80,17 @@ public class CodeSection extends RelativeLayout {
                             && presentNotificationListener != null && ((currentSlide == 4) || (currentSlide == 3))) {
                         if (currentSlide == 3)
                             presentNotificationListener.onPresentNotification(getResources().getString(R.string.notification_semicolon));
-                        else if (currentSlide == 4)
-                            presentNotificationListener.onPresentNotification(getResources().getString(R.string.notification_space));
+                        else presentNotificationListener.onPresentNotification(getResources().getString(R.string.notification_space));
                             }
-                    else displayErrorPopup(v, getResources().getString(R.string.problem_with_syntax), layout);
+                    else displayErrorPopup(getResources().getString(R.string.problem_with_syntax), layout);
                 }
             };
             playButton.setOnClickListener(runCode);
-            playButton.setBackground(getResources().getDrawable(R.drawable.run_button_background));
+            playButton.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.run_button_background, null));
             playButton.setScaleType(ImageView.ScaleType.FIT_CENTER);
             playButton.setAdjustViewBounds(false);
             playButton.setCropToPadding(false);
-            playButton.setImageDrawable(getResources().getDrawable(R.drawable.ic_play_run_icon));
+            playButton.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.ic_play_run_icon, null));
             playButton.setPadding(24,12,12,12);
             RelativeLayout.LayoutParams playButtonLayoutParams = new RelativeLayout.LayoutParams(80, 80);
             playButtonLayoutParams.addRule(RelativeLayout.CENTER_VERTICAL);
@@ -100,7 +101,7 @@ public class CodeSection extends RelativeLayout {
         }
     }
 
-    private void displayErrorPopup(View view, String errorMessage, ViewGroup layout) {
+    private void displayErrorPopup(String errorMessage, ViewGroup layout) {
         Context context = getContext();
         LayoutInflater inflater = (LayoutInflater)
                 context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -110,7 +111,6 @@ public class CodeSection extends RelativeLayout {
         errorText.setText(errorMessage);
         PopupWindow popupWindow = new PopupWindow(popupView, ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT, true);
-        PopupWindow errorPopup;
         Utils.presentPopup(popupWindow, null, codeEditor, layout, context);
         ImageButton closeButton = popupView.findViewById(R.id.close);
         closeButton.setOnClickListener(v -> popupWindow.dismiss());
