@@ -12,6 +12,14 @@
     <color name="backgroundDarkGrey">#525163</color>
     <color name="lightDarkGrey">#605f71</color>
 
+    <!--App Builder-->
+    <color name="appBuilderBG">#2b2c36</color>
+    <color name="appBuilderHeaderAndTabs">#3a3a45</color>
+    <color name="appBuilderUnselectedCircles">#51515c</color>
+    <color name="appBuilderHomeIcon">#9696a0</color>
+    <color name="appBuilderUnselectedWordInTab">#9696a0</color>
+    <color name="appBuilderPlayPlusButtons">#008faf</color>
+
     <color name="codeGrey">#c5c4c3</color>
     <color name="codeComment">#727272</color>
 

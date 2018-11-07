@@ -117,7 +117,7 @@ public class DesignScreenFragment extends Fragment {
         buttonsData.add(buttonData);
         for (int i = 1; i < drawable.length; i++) {
             buttonData = ButtonData.buildIconButton(getContext(), drawable[i], 5);
-            buttonData.setBackgroundColor(getResources().getColor(R.color.frizzle_blue));
+            buttonData.setBackgroundColor(getResources().getColor(R.color.appBuilderPlayPlusButtons));
             buttonsData.add(buttonData);
         }
         plusButton.setButtonDatas(buttonsData);

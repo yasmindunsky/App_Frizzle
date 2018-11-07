@@ -53,6 +53,9 @@ public class TaskFragment extends Fragment {
 
         String taskText  = task.getText();
         fragmentText.setText(taskText);
+
+//        com.airbnb.lottie.LottieAnimationView animationView = view.findViewById(R.id.checkMark);
+//        animationView.animate();
         return view;
     }
 

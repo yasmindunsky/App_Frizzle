@@ -11,7 +11,7 @@
         android:padding="10dp">
 
         <ImageView
-            android:id="@+id/image"
+            android:id="@+id/checkMark"
             android:layout_width="0dp"
             android:layout_height="200dp"
             android:layout_marginTop="24dp"
@@ -35,7 +35,7 @@
             android:textAppearance="@style/Text.Info"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/image" />
+            app:layout_constraintTop_toBottomOf="@+id/checkMark" />
 
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/okButton"

@@ -3,14 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="80dp"
     android:layout_gravity="top"
-    android:background="@color/black"
-    android:paddingBottom="12dp"
     android:paddingEnd="24dp"
-    android:paddingStart="24dp"
-    android:paddingTop="6dp"
-    tools:layout_editor_absoluteY="25dp">
+    android:paddingStart="24dp">
 
     <TextView
         android:id="@+id/taskNum"
@@ -19,24 +15,22 @@
         android:layout_marginStart="4dp"
         android:text="Task 1:"
         android:textAppearance="@style/Text.Task.Num"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.029" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/taskText"
         style="@style/Text.Task"
         android:layout_width="0dp"
-        android:layout_height="0dp"
         android:layout_marginStart="8dp"
         android:gravity="top"
         android:lineSpacingExtra="5sp"
         android:text="@string/here_you_can_see_an_example_for_a_two_lines_task"
         android:textAlignment="gravity"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/taskNum"
         app:layout_constraintTop_toTopOf="@+id/taskNum" />
+
+
 </android.support.constraint.ConstraintLayout>

@@ -59,7 +59,7 @@ public class HelpPopupWindow extends PopupWindow {
     public void switchFormVisibility(int formVisibility) {
         int sentVisibility = formVisibility == View.GONE ? View.VISIBLE : View.GONE;
 
-        popupView.findViewById(R.id.image).setVisibility(sentVisibility);
+        popupView.findViewById(R.id.checkMark).setVisibility(sentVisibility);
         popupView.findViewById(R.id.sent).setVisibility(sentVisibility);
         popupView.findViewById(R.id.thankYou).setVisibility(sentVisibility);
         popupView.findViewById(R.id.doneButton).setVisibility(sentVisibility);

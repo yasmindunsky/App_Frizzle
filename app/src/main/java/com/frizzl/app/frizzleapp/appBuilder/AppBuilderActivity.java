@@ -1,6 +1,7 @@
 package com.frizzl.app.frizzleapp.appBuilder;
 
 import android.Manifest;
+import android.animation.Animator;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -11,6 +12,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
 import android.provider.Settings;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.ActivityCompat;
@@ -59,21 +61,13 @@ public class AppBuilderActivity extends AppCompatActivity {
     private ProgressBar progressBar;
     private RelativeLayout relativeLayout;
     private ExpandableLayout errorExpandableLayout;
-//    private ExpandableLayout taskExpandableLayout;
     private TabLayout tabLayout;
-    private ImageButton nextButton;
-    private ImageButton prevButton;
     private ImageButton playButton;
     private Button moveOnButton;
     private android.support.v7.widget.Toolbar toolbar;
     private ImageButton clickToExpandError;
     private ir.neo.stepbarview.StepBarView stepBarView;
-//    private ImageButton clickToExpandTask;
-//    private TextView taskTextView;
-//    private AppTasks currentApp;
-
-    private Drawable nextDrawable;
-    private Drawable prevDrawable;
+    private com.airbnb.lottie.LottieAnimationView checkMark;
 
     private Tutorial tutorial;
 
@@ -100,20 +94,16 @@ public class AppBuilderActivity extends AppCompatActivity {
         RelativeLayout mainLayout = (RelativeLayout) this.getLayoutInflater().inflate(R.layout.activity_app_builder, null);
         setContentView(mainLayout);
 
-
-
         errorExpandableLayout = findViewById(R.id.errorExpandableLayout);
-//        taskExpandableLayout = findViewById(R.id.taskExpandableLayout);
         clickToExpandError = findViewById(R.id.clickToExpandError);
         relativeLayout = findViewById(R.id.appBuilderLayout);
         progressBar = findViewById(R.id.progressBar);
         playButton = findViewById(R.id.play);
         moveOnButton = findViewById(R.id.moveOnButton);
-        nextButton = findViewById(R.id.nextTask);
-        prevButton = findViewById(R.id.prevTask);
         tabLayout = findViewById(R.id.tabLayout);
         toolbar = findViewById(R.id.builderToolbar);
         stepBarView = findViewById(R.id.stepBarView);
+        checkMark = findViewById(R.id.checkMark);
 
         designFragment = new DesignScreenFragment();
         designScreenPresenter = new DesignScreenPresenter(designFragment);
@@ -122,6 +112,32 @@ public class AppBuilderActivity extends AppCompatActivity {
         codingScreenPresenter = new CodingScreenPresenter(codingFragment);
         codingFragment.setPresenter(codingScreenPresenter);
 
+        checkMark.setSpeed(0.8f);
+        checkMark.addAnimatorListener(new Animator.AnimatorListener() {
+            @Override
+            public void onAnimationStart(Animator animation) {
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                final Handler handler = new Handler();
+                handler.postDelayed(() -> {
+                    moveToNextTask();
+                    checkMark.setVisibility(View.INVISIBLE);
+                }, 500); // 1s
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animator animation) {
+
+            }
+        });
+
         appBuilderPresenter = new AppBuilderPresenter(this,
                 codingScreenPresenter, designScreenPresenter,
                 getApplicationContext().getResources().getString(R.string.code_start),
@@ -129,8 +145,6 @@ public class AppBuilderActivity extends AppCompatActivity {
         appBuilderPresenter.onCreate();
 
         startAppPopupWindow = new StartAppPopupWindow(this);
-
-        disableNextArrow();
 
         moveOnButton.setVisibility(showMovedOn ? View.VISIBLE : View.INVISIBLE);
         moveOnButton.setOnClickListener(v -> {
@@ -162,7 +176,6 @@ public class AppBuilderActivity extends AppCompatActivity {
         });
 
         // Set Task text.
-
         // Create SwipeAdapter.
         viewPager = findViewById(R.id.viewPager);
         swipeAdapter = new AppTasksSwipeAdapter(getSupportFragmentManager(), UserProfile.user.getCurrentAppTasks());
@@ -175,6 +188,7 @@ public class AppBuilderActivity extends AppCompatActivity {
             @Override
             public void onPageSelected(int position) {
                 stepBarView.setReachedStep(stepBarView.getMaxCount()-position);
+
                 SwipeDirection swipeDirection;
                 if (position < UserProfile.user.getCurrentAppTaskNum()) {
                     swipeDirection = SwipeDirection.all;
@@ -189,24 +203,10 @@ public class AppBuilderActivity extends AppCompatActivity {
             public void onPageScrollStateChanged(int state) {}
         });
 
-        nextButton.setOnClickListener(v -> {
-            stepBarView.setReachedStep(stepBarView.getReachedStep()-1);
-            viewPager.setCurrentItem(getItem(1), true);
-            disableNextArrow();
-        });
-        prevButton.setOnClickListener(v -> viewPager.setCurrentItem(getItem(-1),true));
-        nextDrawable = getResources().getDrawable(R.drawable.ic_task_arrow_icon_right);
-        prevDrawable = getResources().getDrawable(R.drawable.ic_task_arrow_icon_left);;
-
 //         Rotation for RTL swiping.
         if (Support.isRTL()) {
             viewPager.setRotationY(180);
-            nextDrawable = getResources().getDrawable(R.drawable.ic_task_arrow_icon_left);
-            prevDrawable = getResources().getDrawable(R.drawable.ic_task_arrow_icon_right);
         }
-
-        nextButton.setImageDrawable(nextDrawable);
-        prevButton.setImageDrawable(prevDrawable);
 
 //        // Connecting TabLayout with ViewPager to show swipe position in dots.
 //        final TabLayout tabLayout = findViewById(R.id.tabLayout);
@@ -271,17 +271,6 @@ public class AppBuilderActivity extends AppCompatActivity {
 
     public void presentPopup(PopupWindow popupWindow, Runnable runOnDismiss){
         Support.presentPopup(popupWindow, runOnDismiss, relativeLayout, relativeLayout, this);
-
-//        if(isFinishing()) return;
-//        dimAppBuilderActivity();
-//        popupWindow.setOnDismissListener(() -> {
-//            undimAppBuilderActivity();
-//            if (runOnDismiss != null) {
-//                runOnDismiss.run();
-//            }
-//        });
-//        // In order to show popUp after activity has been created
-//        toolbar.post(() -> popupWindow.showAtLocation(toolbar, Gravity.CENTER, 0, 0));
     }
 
     private Runnable afterSuccessPopupClosed (){
@@ -458,29 +447,17 @@ public class AppBuilderActivity extends AppCompatActivity {
         designFragment.setAppIcon(iconDrawable);
     }
 
-    private void disableNextArrow(){
-        Drawable drawable = getResources().getDrawable(R.drawable.ic_task_arrow_icon_right);
-        nextButton.setEnabled(false);
-        nextButton.setImageDrawable(nextDrawable);
-    }
-
-    private void enableNextArrow(){
-        Drawable animationDrawable = getResources().getDrawable(R.drawable.task_arrow_animated);
-        nextButton.setEnabled(true);
-        nextButton.setImageDrawable(animationDrawable);
-        if (animationDrawable instanceof Animatable) {
-            ((Animatable) animationDrawable).start();
-        }
-        if (UserProfile.user.getCurrentAppTaskNum() == 0 && UserProfile.user.getCurrentLevel() == 0) {
-            tutorial.presentTooltip(nextButton, getString(R.string.tooltip_move_on), null, Gravity.BOTTOM);
-        }
-    }
-
     private String getCode() {
         return codingFragment.getCode();
     }
 
     public void taskCompleted() {
+        // Will mive to next Task when animation finishes.
+        final Handler handler = new Handler();
+        handler.postDelayed(() -> {
+            checkMark.setVisibility(View.VISIBLE);
+            checkMark.playAnimation();
+        }, 1000); // 1s
         int currentTaskNum = UserProfile.user.getCurrentAppTaskNum();
         int currentLevel = UserProfile.user.getCurrentLevel();
         Bundle bundle = new Bundle();
@@ -488,14 +465,13 @@ public class AppBuilderActivity extends AppCompatActivity {
         mFirebaseAnalytics.logEvent("COMPLETED_TASK", bundle);
         // If not the last task
         if (currentTaskNum < UserProfile.user.getCurrentAppTasks().getTasksNum() - 1){
-            enableNextArrow();
+//            moveToNextTask();
             UserProfile.user.setCurrentAppTaskNum(currentTaskNum + 1);
         }
         else {
             openTaskSuccessPopup();
         }
     }
-
 
     public void saveProject() {
         // update user profile from activity
@@ -514,5 +490,14 @@ public class AppBuilderActivity extends AppCompatActivity {
 
     private String getManifest() {
         return designFragment.getManifest();
+    }
+
+    private void moveToNextTask(){
+//        stepBarView.setReachedStep(stepBarView.getReachedStep()-1);
+        viewPager.setCurrentItem(getItem(1), true);
+    }
+
+    private void moveToPrevTask(){
+        viewPager.setCurrentItem(getItem(-1),true);
     }
 }

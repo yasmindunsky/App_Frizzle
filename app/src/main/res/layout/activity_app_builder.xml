@@ -6,7 +6,7 @@
     android:id="@+id/appBuilderLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
+    android:background="@color/appBuilderBG"
     android:layoutDirection="ltr"
     tools:context="com.frizzl.app.frizzleapp.appBuilder.AppBuilderActivity"
     tools:layout_editor_absoluteY="25dp">
@@ -16,174 +16,85 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/app_bar_height"
         android:layout_alignParentTop="true"
-        android:background="#555562"
+        android:background="@color/appBuilderHeaderAndTabs"
         android:gravity="center"
         android:theme="?attr/actionBarTheme"
         app:navigationIcon="@drawable/ic_home">
 
     </android.support.v7.widget.Toolbar>
 
-    <net.cachapa.expandablelayout.ExpandableLayout
-        android:id="@+id/taskExpandableLayout"
+    <FrameLayout
+        android:id="@+id/frameLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/builderToolbar"
-        app:el_duration="1000"
-        app:el_expanded="true"
-        app:el_parallax="0.5">
+        android:layout_height="80dp"
+        android:layout_below="@+id/builderToolbar">
 
-        <FrameLayout
+        <com.frizzl.app.frizzleapp.TaskViewPager
+            android:id="@+id/viewPager"
             android:layout_width="match_parent"
-            android:layout_height="80dp">
+            android:layout_height="match_parent" />
+    </FrameLayout>
 
-            <com.frizzl.app.frizzleapp.TaskViewPager
-                android:id="@+id/viewPager"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </FrameLayout>
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/checkMark"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/builderToolbar"
+        android:layout_marginTop="10dp"
+        android:scaleType="fitCenter"
+        android:visibility="invisible"
+        app:lottie_autoPlay="false"
+        app:lottie_loop="false"
+        app:lottie_rawRes="@raw/checked_done" />
 
-        <!-- <RelativeLayout
-             android:layout_width="match_parent"
-             android:layout_height="match_parent">
-
-             <ImageButton
-                 android:id="@+id/nextTask"
-                 android:layout_width="30dp"
-                 android:layout_height="30dp"
-                 android:layout_alignParentStart="true"
-                 android:layout_marginStart="@dimen/default_margin"
-                 android:layout_marginTop="@dimen/default_margin"
-                 android:layout_weight="1"
-                 android:scaleType="fitCenter" />
-
-             <TextView
-                 android:id="@+id/task"
-                 android:layout_width="wrap_content"
-                 android:layout_height="wrap_content"
-                 android:layout_toEndOf="@+id/nextTask"
-                 android:paddingEnd="16dp"
-                 android:paddingStart="@dimen/default_margin"
-                 android:paddingTop="5dp"
-                 android:text="Do something."
-                 android:textAppearance="@style/taskInAppBuilderText" />
-
-         </RelativeLayout>-->
-
-    </net.cachapa.expandablelayout.ExpandableLayout>
-
-    <!--<ImageButton-->
-    <!--android:id="@+id/clickToExpandTask"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="20dp"-->
-    <!--android:layout_below="@+id/taskExpandableLayout"-->
-    <!--android:layout_centerHorizontal="true"-->
-    <!--android:background="@color/frizzl_light_green"-->
-    <!--android:gravity="center_horizontal|center"-->
-    <!--android:paddingBottom="5dp"-->
-    <!--android:paddingTop="5dp"-->
-    <!--android:scaleType="fitCenter"-->
-    <!--android:text="="-->
-    <!--android:textColor="@color/TextLightGrey"-->
-    <!--android:textSize="30sp"-->
-    <!--app:srcCompat="@drawable/ic_expand_grab_icon" />-->
-
-    <LinearLayout
-        android:id="@+id/taskProgress"
+    <ir.neo.stepbarview.StepBarView
+        android:id="@+id/stepBarView"
         android:layout_width="match_parent"
         android:layout_height="25dp"
-        android:layout_below="@+id/taskExpandableLayout"
+        android:layout_below="@+id/frameLayout"
+        android:layout_marginBottom="12dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginStart="60dp"
+
         android:gravity="center_vertical"
         android:layoutDirection="locale"
-        android:orientation="horizontal">
 
-        <ImageButton
-            android:id="@+id/prevTask"
-            style="@style/Widget.AppCompat.ImageButton"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="7dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="5dp"
-            android:layout_weight="1"
-            android:adjustViewBounds="false"
-            android:background="@android:color/transparent"
-            android:baselineAlignBottom="false"
-            android:cropToPadding="false"
-            android:scaleType="fitCenter"
-            android:src="@drawable/ic_task_arrow_icon_left" />
+        android:paddingLeft="14dp"
+        android:paddingRight="14dp"
+        app:sbv_max_count="6"
+        app:sbv_show_step_index="false"
+        app:sbv_show_step_name="false"
 
-        <TextView
-            android:id="@+id/prevText"
-            style="@style/Text.Build.Tasks.Navigation"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:gravity="center_vertical"
-            android:text="@string/arrow_prev" />
+        app:sbv_show_step_stroke="true"
+        app:sbv_steps_line_height="2dp"
+        app:sbv_steps_line_margin_left="0dp"
 
-        <ir.neo.stepbarview.StepBarView
-            android:id="@+id/stepBarView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="3"
-            android:paddingLeft="14dp"
+        app:sbv_steps_line_margin_right="0dp"
+        app:sbv_steps_line_reached_colors="@color/appBuilderUnselectedCircles"
+        app:sbv_steps_line_unreached_colors="@color/frizzl_medium_light_blue"
 
-            android:paddingRight="14dp"
-            app:sbv_max_count="6"
+        app:sbv_steps_reached_colors="@color/appBuilderUnselectedCircles"
+        app:sbv_steps_size="14dp"
+        app:sbv_steps_stroke_current_color="@color/frizzl_medium_light_blue"
 
-            app:sbv_show_step_index="false"
-            app:sbv_show_step_name="false"
-            app:sbv_show_step_stroke="true"
-            app:sbv_steps_line_height="2dp"
-            app:sbv_steps_line_margin_left="0dp"
-
-            app:sbv_steps_line_margin_right="0dp"
-            app:sbv_steps_line_reached_colors="@color/lightDarkGrey"
-            app:sbv_steps_line_unreached_colors="@color/frizzl_medium_light_blue"
-
-            app:sbv_steps_reached_colors="@color/lightDarkGrey"
-            app:sbv_steps_size="14dp"
-            app:sbv_steps_stroke_current_color="@color/frizzl_medium_light_blue"
-
-            app:sbv_steps_stroke_reached_color="@color/lightDarkGrey"
-            app:sbv_steps_stroke_unreached_color="@color/frizzl_medium_light_blue"
-            app:sbv_steps_text_color="@color/white"
-
-            app:sbv_steps_unreached_colors="@color/frizzl_medium_light_blue" />
-
-        <TextView
-            android:id="@+id/nextText"
-            style="@style/Text.Build.Tasks.Navigation"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:text="@string/arrow_next" />
-
-        <ImageButton
-            android:id="@+id/nextTask"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="7dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginTop="5dp"
-            android:layout_weight="1"
-            android:adjustViewBounds="false"
-            android:background="@android:color/transparent"
-            android:scaleType="fitCenter"
-            app:srcCompat="@drawable/ic_task_arrow_icon_right" />
-    </LinearLayout>
+        app:sbv_steps_stroke_reached_color="@color/appBuilderUnselectedCircles"
+        app:sbv_steps_stroke_unreached_color="@color/frizzl_medium_light_blue"
+        app:sbv_steps_text_color="@color/white"
+        app:sbv_steps_unreached_colors="@color/frizzl_medium_light_blue" />
 
     <android.support.design.widget.TabLayout
         android:id="@+id/tabLayout"
         android:layout_width="match_parent"
         android:layout_height="@dimen/app_bar_height"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/taskProgress"
+        android:layout_below="@+id/stepBarView"
         android:layout_marginTop="6dp"
-        android:background="#555562"
-        app:tabIndicatorColor="@color/frizzle_light_blue"
-        app:tabSelectedTextColor="#4db1c7"
+        android:background="@color/appBuilderHeaderAndTabs"
+        app:tabIndicatorColor="@color/frizzl_medium_light_blue"
+        app:tabSelectedTextColor="@color/frizzl_medium_light_blue"
         app:tabTextAppearance="@style/AppBuilderTabTextAppearance"
-        app:tabTextColor="#7f7e8d" />
+        app:tabTextColor="@color/appBuilderUnselectedWordInTab" />
 
 
     <LinearLayout

@@ -240,6 +240,7 @@
         <item name="android:textColorHighlight">@color/frizzle_light_blue</item>
         <item name="android:fontFamily">@font/calibri_regular</item>
         <item name="android:textAllCaps">false</item>
+        <item name="textAllCaps">false</item>
     </style>
 
     <style name="Text.KeyBoardsKeys" parent="@style/Text.Task">
