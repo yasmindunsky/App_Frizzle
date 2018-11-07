@@ -45,12 +45,19 @@ public class AppBuilderPresenter {
         UserProfile.user.storeSerializedObject(appBuilderActivity.getBaseContext());
     }
 
-    public void downloadApk(String code, String xml, String manifest) {
+    public void downloadApk() {
+        saveProject();
+        UserApp currentUserApp = UserProfile.user.getCurrentUserApp();
+        String code = codeStart + currentUserApp.getCode() + codeEnd;
+        String xml = currentUserApp.getXml();
+        String manifest = currentUserApp.getManifest();
+
+        Log.d("INSTALL", "in AppBuilderPresenter, downloadApk()");
         new DownloadApkFromServer(output -> {
             if (output == null || output.equals("")){
                 output = "no output from server";
             }
-            Log.d("INSTALL", "output:" + output);
+            Log.d("INSTALL", "in AppBuilderPresenter, downloadApk(), output:" + output);
             appBuilderActivity.installUsersApp();
         }).execute(code, xml, manifest);
     }
@@ -58,28 +65,6 @@ public class AppBuilderPresenter {
     public void compileAndDownloadApp() {
         appBuilderActivity.getWritePermission();
         appBuilderActivity.hideError();
-
-        saveProject();
-        UserApp currentUserApp = UserProfile.user.getCurrentUserApp();
-        String code = codeStart + currentUserApp.getCode() + codeEnd;
-        String xml = currentUserApp.getXml();
-        String manifest = currentUserApp.getManifest();
-
-
-        // send java and xml to server for build
-        // if succeeded ask user for writing permission and download the apk
-//        new SaveProjectToServer(output -> {
-//            if (output.contains("BUILD SUCCESSFUL")) {
-//                Log.d("INSTALL", "save output: " + output);
-//                downloadApk(code, xml, manifest);
-//            } else {
-//                // Build didn't work.
-//                Toast.makeText(appBuilderActivity, "output", Toast.LENGTH_LONG);
-////                appBuilderActivity.displayError(output);
-//            }
-//        }).execute(code, xml, manifest);
-
-        downloadApk(code, xml, manifest);
     }
 
     public void onResume() {

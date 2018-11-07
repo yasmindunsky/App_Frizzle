@@ -32,6 +32,7 @@ import android.widget.PopupWindow;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.frizzl.app.frizzleapp.AppTasksSwipeAdapter;
 import com.frizzl.app.frizzleapp.R;
@@ -51,6 +52,7 @@ import java.io.File;
 public class AppBuilderActivity extends AppCompatActivity {
     private static final int INSTALLED_APP_ABOVE_N = 1;
     private static final int INSTALLED_APP_BELOW_N = 2;
+    private static final int REQUEST_CODE_WRITE_EXTERNAL_STORAGE_PERMISSION = 2;
     private AppBuilderPresenter appBuilderPresenter;
     private DesignScreenPresenter designScreenPresenter;
     private CodingScreenPresenter codingScreenPresenter;
@@ -262,7 +264,20 @@ public class AppBuilderActivity extends AppCompatActivity {
     }
 
     public void onPlay(final View view) {
-        openRequestPermissionPopup();
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+
+            // Permission from user still isn't granted, ask for permission.
+            openRequestPermissionPopup();
+
+
+        }
+
+        // Permission was already granted, download APK.
+        else {
+            appBuilderPresenter.downloadApk();
+        }
+
         Bundle bundle = new Bundle();
         mFirebaseAnalytics.logEvent("RUN_APP", bundle);
         designScreenPresenter.saveState();
@@ -287,12 +302,10 @@ public class AppBuilderActivity extends AppCompatActivity {
     }
 
     private void openRequestPermissionPopup() {
-        Runnable requestPermission = new Runnable() {
-            @Override
-            public void run() {
-                appBuilderPresenter.compileAndDownloadApp();
-                setProgressBarVisibility(View.VISIBLE);
-            }
+        Runnable requestPermission = () -> {
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, WRITE_PERMISSION);
+            setProgressBarVisibility(View.VISIBLE);
         };
         PopupWindow permissionPopupWindow = new RequestPermissionPopupWindow(AppBuilderActivity.this, requestPermission);
         Support.presentPopup(permissionPopupWindow, null, relativeLayout, relativeLayout, this);
@@ -314,17 +327,18 @@ public class AppBuilderActivity extends AppCompatActivity {
         if (ContextCompat.checkSelfPermission(this,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
 
-//            globalView = view;
-            // permission from user still isn't granted, ask for permission
+            // Permission from user still isn't granted, ask for permission.
             ActivityCompat.requestPermissions(this,
                     new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, WRITE_PERMISSION);
         }
 
-//        else {
-//            // permission was already granted, download apk
-//            appBuilderPresenter.downloadApk();
-//        }
+        // Permission was already granted, download APK.
+        else {
+            appBuilderPresenter.downloadApk();
+        }
     }
+
+
 
     public void hideError() {
         LinearLayout errorLayout = findViewById(R.id.errorDisplay);
@@ -346,12 +360,10 @@ public class AppBuilderActivity extends AppCompatActivity {
             case WRITE_PERMISSION: {
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    // permission granted, download apk from server
-//                    downloadApk();
-
+                    // Permission granted, download APK from server.
+                    appBuilderPresenter.downloadApk();
                 } else {
-                    // permission denied
-
+                    // Permission denied.
                 }
             }
         }

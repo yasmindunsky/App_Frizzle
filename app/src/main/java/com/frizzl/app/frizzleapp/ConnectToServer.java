@@ -2,6 +2,7 @@ package com.frizzl.app.frizzleapp;
 
 import android.os.Environment;
 import android.support.annotation.NonNull;
+import android.util.Log;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -44,6 +45,7 @@ public class ConnectToServer {
             client.setRequestProperty("Content-Length", Integer.toString(postDataLength));
             client.setFixedLengthStreamingMode(postDataLength);
 
+            Log.d("INSTALL", "in ConnectToServer, postToServer()");
             // send the data to the server
             try (OutputStream output = client.getOutputStream()) {
                 output.write(body.getBytes(StandardCharsets.UTF_8));
@@ -103,6 +105,8 @@ public class ConnectToServer {
     }
 
     private void downloadApk(HttpURLConnection client) throws IOException {
+        Log.d("INSTALL", "in ConnectToServer, downloadApk()");
+
         String PATH = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/";
         File file = new File(PATH);
         file.mkdirs();

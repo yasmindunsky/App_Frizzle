@@ -1,6 +1,7 @@
 package com.frizzl.app.frizzleapp.appBuilder;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
 import com.frizzl.app.frizzleapp.AsyncResponse;
 import com.frizzl.app.frizzleapp.ConnectToServer;
@@ -41,7 +42,7 @@ public class DownloadApkFromServer extends AsyncTask<String, Void, String> {
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
-
+        Log.d("INSTALL", "in DownloadApkFromServer, doInBackground(), query: " + query);
         return connectToServer.postToServer("/project/download", query, "GET");
     }
 
