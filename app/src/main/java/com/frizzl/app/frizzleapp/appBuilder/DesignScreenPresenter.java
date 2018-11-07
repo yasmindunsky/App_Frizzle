@@ -3,8 +3,7 @@ package com.frizzl.app.frizzleapp.appBuilder;
 import android.content.Context;
 import android.widget.PopupWindow;
 
-import com.frizzl.app.frizzleapp.AnnotationUserCreatedViewType;
-import com.frizzl.app.frizzleapp.Support;
+import com.frizzl.app.frizzleapp.Utils;
 import com.frizzl.app.frizzleapp.UserApp;
 import com.frizzl.app.frizzleapp.UserProfile;
 
@@ -61,7 +60,7 @@ public class DesignScreenPresenter {
                     PopupWindow propertiesTablePopupWindow = userCreatedView.getPropertiesTablePopupWindow(context);
                     designScreenFragment.presentPopup(propertiesTablePopupWindow);
                     // For temp testing
-                    if (UserProfile.user.getCurrentLevel() == Support.POLLY_APP_LEVEL_ID && UserProfile.user.getCurrentAppTaskNum() == 0) {
+                    if (UserProfile.user.getCurrentLevel() == Utils.POLLY_APP_LEVEL_ID && UserProfile.user.getCurrentAppTaskNum() == 0) {
                         designScreenFragment.taskCompleted();
                     }
             }

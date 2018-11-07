@@ -24,7 +24,7 @@ import static android.support.v4.content.ContextCompat.getSystemService;
  * Created by Noga on 13/02/2018.
  */
 
-public class Support {
+public class Utils {
     public final static int FIRST_PRACTICE_LEVEL_ID = 1;
     public final static int SPEAKOUT_PRACTICE_LEVEL_ID = 2;
     public final static int ONCLICK_PRACTICE_LEVEL_ID = 3;

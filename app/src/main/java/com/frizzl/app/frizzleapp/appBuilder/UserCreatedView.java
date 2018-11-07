@@ -5,7 +5,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.PopupWindow;
 
-import com.frizzl.app.frizzleapp.AnnotationUserCreatedViewType;
 import com.frizzl.app.frizzleapp.R;
 
 import org.xmlpull.v1.XmlSerializer;

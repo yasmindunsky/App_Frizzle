@@ -1,7 +1,6 @@
 package com.frizzl.app.frizzleapp.map;
 
 import android.content.Context;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -9,8 +8,8 @@ import android.widget.EditText;
 import android.widget.GridLayout;
 import android.widget.PopupWindow;
 
+import com.frizzl.app.frizzleapp.AnalyticsUtils;
 import com.frizzl.app.frizzleapp.R;
-import com.google.firebase.analytics.FirebaseAnalytics;
 
 /**
  * Created by Noga on 02/09/2018.
@@ -20,7 +19,6 @@ public class HelpPopupWindow extends PopupWindow {
     private final int width = GridLayout.LayoutParams.WRAP_CONTENT;
     private final int height = GridLayout.LayoutParams.WRAP_CONTENT;
     private View popupView;
-    private FirebaseAnalytics mFirebaseAnalytics;
 
     public HelpPopupWindow(MapActivity activity){
         LayoutInflater inflater = (LayoutInflater)
@@ -33,9 +31,6 @@ public class HelpPopupWindow extends PopupWindow {
         this.setOutsideTouchable(true);
         this.setFocusable(true);
 
-        // Obtain the FirebaseAnalytics instance.
-        mFirebaseAnalytics = FirebaseAnalytics.getInstance(activity);
-
         EditText emailEditText = popupView.findViewById(R.id.email);
         EditText feedbackEditText = popupView.findViewById(R.id.feedback_box);
         Button sendButton = popupView.findViewById(R.id.sendButton);
@@ -43,11 +38,7 @@ public class HelpPopupWindow extends PopupWindow {
             String email = emailEditText.getText().toString();
             String feedback = feedbackEditText.getText().toString();
 
-            // Log feedback message.
-            Bundle bundle = new Bundle();
-            bundle.putString("FEEDBACK_EMAIL", email);
-            bundle.putString("FEEDBACK_CONTENT", feedback);
-            mFirebaseAnalytics.logEvent("FEEDBACK", bundle);
+            AnalyticsUtils.logFeedbackEvent(email, feedback);
 
             Button doneButton = popupView.findViewById(R.id.doneButton);
             doneButton.setOnClickListener((view)->dismiss());

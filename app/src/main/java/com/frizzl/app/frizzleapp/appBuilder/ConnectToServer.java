@@ -1,4 +1,4 @@
-package com.frizzl.app.frizzleapp;
+package com.frizzl.app.frizzleapp.appBuilder;
 
 import android.os.Environment;
 import android.support.annotation.NonNull;

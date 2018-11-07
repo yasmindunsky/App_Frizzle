@@ -10,15 +10,15 @@ import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.ScrollView;
 
+import com.frizzl.app.frizzleapp.AnalyticsUtils;
 import com.frizzl.app.frizzleapp.R;
-import com.frizzl.app.frizzleapp.Support;
 import com.frizzl.app.frizzleapp.UserProfile;
+import com.frizzl.app.frizzleapp.Utils;
 import com.frizzl.app.frizzleapp.appBuilder.AppBuilderActivity;
 import com.frizzl.app.frizzleapp.practice.AppContentParser;
 import com.frizzl.app.frizzleapp.practice.AppTasks;
 import com.frizzl.app.frizzleapp.practice.IntroActivity;
 import com.frizzl.app.frizzleapp.practice.PracticeActivity;
-import com.google.firebase.analytics.FirebaseAnalytics;
 
 import org.xmlpull.v1.XmlPullParserException;
 
@@ -43,7 +43,6 @@ public class MapActivity extends AppCompatActivity {
     private PracticeMapButton onClickPracticeButton;
     private PracticeMapButton viewsPracticeButton;
     private PracticeMapButton variablesPracticeButton;
-    private FirebaseAnalytics mFirebaseAnalytics;
     private ConstraintLayout constraintLayout;
 
     @Override
@@ -51,9 +50,6 @@ public class MapActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         ConstraintLayout mainLayout = (ConstraintLayout ) this.getLayoutInflater().inflate(R.layout.activity_map, null);
         setContentView(mainLayout);
-
-        // Obtain the FirebaseAnalytics instance.
-        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
         mapPresenter = new MapPresenter(this);
 
@@ -86,7 +82,7 @@ public class MapActivity extends AppCompatActivity {
         HelpPopupWindow helpPopupWindow = new HelpPopupWindow(this);
 
         toolbarIcon.setOnClickListener(v -> {
-            Support.presentPopup(helpPopupWindow, null, mainLayout, mainLayout,
+            Utils.presentPopup(helpPopupWindow, null, mainLayout, mainLayout,
                     this);
             helpPopupWindow.switchFormVisibility(View.VISIBLE);
 
@@ -96,25 +92,19 @@ public class MapActivity extends AppCompatActivity {
         View.OnClickListener onClickedApp = v -> {
             AppMapButton appMapButton = (AppMapButton) v;
             int levelID = appMapButton.getLevelID();
-            Bundle bundle = new Bundle();
-            bundle.putInt("LEVEL_ID", levelID);
-            mFirebaseAnalytics.logEvent("STARTED_APP", bundle);
+            AnalyticsUtils.logStartedAppEvent(levelID);
             mapPresenter.onClickedApp(levelID);
         };
         View.OnClickListener onClickedPractice = v -> {
             PracticeMapButton practiceMapButton = (PracticeMapButton)v;
             int practiceLevelID = practiceMapButton.getPracticeID();
-            Bundle bundle = new Bundle();
-            bundle.putInt("LEVEL_ID", practiceLevelID);
-            mFirebaseAnalytics.logEvent("STARTED_PRACTICE", bundle);
+            AnalyticsUtils.logStartedPracticeEvent(practiceLevelID);
             mapPresenter.onClickedPractice(practiceLevelID);
         };
         View.OnClickListener onClickedIntro = v -> {
             IntroMapButton introMapButton = (IntroMapButton)v;
             int levelID = introMapButton.getLevelID();
-            Bundle bundle = new Bundle();
-            bundle.putInt("LEVEL_ID", levelID);
-            mFirebaseAnalytics.logEvent("STARTED_INTRO", bundle);
+            AnalyticsUtils.logStartedIntroEvent(levelID);
             mapPresenter.onClickedIntro(levelID);
         };
 //        tutorialAppButton.setOnClickListener(onClickedApp);
@@ -181,7 +171,7 @@ public class MapActivity extends AppCompatActivity {
         PopupWindow popupWindow = mapPresenter.getPrePracticePopup(startPractice);
 
         if(isFinishing()) startPractice.run();
-        Support.presentPopup(popupWindow, null, constraintLayout, constraintLayout, this);
+        Utils.presentPopup(popupWindow, null, constraintLayout, constraintLayout, this);
     }
 
     public void goToIntro(int levelID) {

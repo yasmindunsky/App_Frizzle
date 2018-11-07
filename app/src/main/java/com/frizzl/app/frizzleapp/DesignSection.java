@@ -77,7 +77,7 @@ public class DesignSection extends RelativeLayout {
             userCreatedButton.setDisplayOnClick(hasOnClickFunction);
             PopupWindow popupWindow = userCreatedButton.getPropertiesTablePopupWindow(getContext());
             v.post(() ->
-                    Support.presentPopup(popupWindow, null, v, layout, context));
+                    Utils.presentPopup(popupWindow, null, v, layout, context));
         });
         layoutParams = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -125,13 +125,13 @@ public class DesignSection extends RelativeLayout {
             }
             PopupWindow runPopupWindow = new PopupWindow(runPopupView, ViewGroup.LayoutParams.WRAP_CONTENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT, true);
-            Support.presentPopup(runPopupWindow, null, v, layout, context);
+            Utils.presentPopup(runPopupWindow, null, v, layout, context);
             ImageButton closeButton = runPopupView.findViewById(R.id.close);
             closeButton.setOnClickListener(v12 -> runPopupWindow.dismiss());
             button.setOnClickListener(v1 -> {
                 boolean onClickSet = userCreatedButton.getOnClick().equals("myFunction");
                 if (onClickSet) {
-                    if (Support.volumeIsLow(context)) Support.presentVolumeToast(context);
+                    if (Utils.volumeIsLow(context)) Utils.presentVolumeToast(context);
                     tts.speak("Hello", TextToSpeech.QUEUE_ADD, null);
                 }
                 if (displayNotificationListener != null) displayNotificationListener.onDisplayNotification(runPopupWindow);

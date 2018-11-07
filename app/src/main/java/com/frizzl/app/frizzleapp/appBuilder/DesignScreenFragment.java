@@ -25,9 +25,8 @@ import android.widget.Toast;
 import com.fangxu.allangleexpandablebutton.AllAngleExpandableButton;
 import com.fangxu.allangleexpandablebutton.ButtonData;
 import com.fangxu.allangleexpandablebutton.ButtonEventListener;
-import com.frizzl.app.frizzleapp.AnnotationUserCreatedViewType;
 import com.frizzl.app.frizzleapp.R;
-import com.frizzl.app.frizzleapp.Support;
+import com.frizzl.app.frizzleapp.Utils;
 import com.frizzl.app.frizzleapp.UserProfile;
 
 import java.util.ArrayList;
@@ -158,14 +157,14 @@ public class DesignScreenFragment extends Fragment {
                     userCreatedButton.setChangedTextListener(new UserCreatedButton.ChangedTextListener() {
                         @Override
                         public void onChangedText() {
-                            if (UserProfile.user.getCurrentLevel() == Support.POLLY_APP_LEVEL_ID && UserProfile.user.getCurrentAppTaskNum()== 1) {
+                            if (UserProfile.user.getCurrentLevel() == Utils.POLLY_APP_LEVEL_ID && UserProfile.user.getCurrentAppTaskNum()== 1) {
                                 taskCompleted();
                             }
                         }
 
                         @Override
                         public void onChangedOnClick(String onClickFuncName) {
-                            if (UserProfile.user.getCurrentLevel() == Support.POLLY_APP_LEVEL_ID
+                            if (UserProfile.user.getCurrentLevel() == Utils.POLLY_APP_LEVEL_ID
                                     && !onClickFuncName.equals("None")) {
                                 if (UserProfile.user.getCurrentAppTaskNum() == 4) {
                                     if (appBuilderActivity != null)

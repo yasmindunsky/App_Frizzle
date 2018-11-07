@@ -13,11 +13,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.GridLayout;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -25,18 +23,13 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.frizzl.app.frizzleapp.R;
-import com.frizzl.app.frizzleapp.Support;
+import com.frizzl.app.frizzleapp.Utils;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
-
-import petrov.kristiyan.colorpicker.ColorPicker;
 
 /**
  * Created by Noga on 19/02/2018.
@@ -80,7 +73,7 @@ public class UserCreatedButton extends UserCreatedView {
                 GridLayout.spec(column));
         layoutParams.width = (int) context.getResources().getDimension(R.dimen.user_created_button_width);
         String marginString = properties.get("android:layout_margin");
-        int margin = Support.dpStringToPixel(context, marginString);
+        int margin = Utils.dpStringToPixel(context, marginString);
         layoutParams.setMargins(margin,margin,margin,margin);
         thisView.setLayoutParams(layoutParams);
 
@@ -179,7 +172,7 @@ public class UserCreatedButton extends UserCreatedView {
                 if (selectedColorButton == null) return;
                 int selectedColor = selectedColorButton.getShadowColor();
                 thisView.setTextColor(selectedColor);
-                properties.put("android:textColor", Support.hexFromColorInt(selectedColor));
+                properties.put("android:textColor", Utils.hexFromColorInt(selectedColor));
             }
         });
 
@@ -197,7 +190,7 @@ public class UserCreatedButton extends UserCreatedView {
                 Drawable buttonDrawable = ContextCompat.getDrawable(context, originalButtonDrawableRes);
                 if (buttonDrawable != null) buttonDrawable.setColorFilter(selectedColor, PorterDuff.Mode.MULTIPLY);
                 thisView.setBackground(buttonDrawable);
-                properties.put("android:backgroundTint", Support.hexFromColorInt(selectedColor));
+                properties.put("android:backgroundTint", Utils.hexFromColorInt(selectedColor));
             }
         });
 

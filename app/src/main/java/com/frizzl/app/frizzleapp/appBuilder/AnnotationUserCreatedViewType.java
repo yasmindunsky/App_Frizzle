@@ -1,4 +1,4 @@
-package com.frizzl.app.frizzleapp;
+package com.frizzl.app.frizzleapp.appBuilder;
 
 import android.support.annotation.StringDef;
 

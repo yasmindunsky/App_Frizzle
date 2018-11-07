@@ -3,7 +3,7 @@ package com.frizzl.app.frizzleapp.map;
 import android.widget.PopupWindow;
 
 import com.frizzl.app.frizzleapp.R;
-import com.frizzl.app.frizzleapp.Support;
+import com.frizzl.app.frizzleapp.Utils;
 import com.frizzl.app.frizzleapp.UserProfile;
 
 /**
@@ -38,11 +38,11 @@ public class MapPresenter {
     public PopupWindow getPrePracticePopup(Runnable startPractice) {
         String explanationText = "";
         int currentLevel = UserProfile.user.getCurrentLevel();
-        if (currentLevel == Support.ONCLICK_PRACTICE_LEVEL_ID){
+        if (currentLevel == Utils.ONCLICK_PRACTICE_LEVEL_ID){
             explanationText = mapActivity.getApplicationContext().getResources().getString(R.string.onclick_practice_explanation_text);
-        } else if (currentLevel == Support.SPEAKOUT_PRACTICE_LEVEL_ID) {
+        } else if (currentLevel == Utils.SPEAKOUT_PRACTICE_LEVEL_ID) {
             explanationText = mapActivity.getApplicationContext().getResources().getString(R.string.speakout_practice_explanation_text);
-        } else if (currentLevel == Support.FIRST_PRACTICE_LEVEL_ID) {
+        } else if (currentLevel == Utils.FIRST_PRACTICE_LEVEL_ID) {
             explanationText = mapActivity.getApplicationContext().getResources().getString(R.string.first_practice_explanation_text);
         }
         return new PrePracticePopupWindow(mapActivity, explanationText, startPractice);

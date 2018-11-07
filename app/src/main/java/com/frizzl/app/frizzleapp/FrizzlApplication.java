@@ -8,6 +8,7 @@ import android.os.LocaleList;
 
 import com.crashlytics.android.Crashlytics;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
 import com.squareup.leakcanary.LeakCanary;
@@ -32,6 +33,7 @@ public class FrizzlApplication extends Application {
         super.onCreate();
 
         resources = getResources();
+        AnalyticsUtils.init(FirebaseAnalytics.getInstance(this), getApplicationContext());
 
 //        if(BuildConfig.DEBUG) { // TODO: change before sending out APK
 //            if (LeakCanary.isInAnalyzerProcess(this)) {

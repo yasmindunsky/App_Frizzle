@@ -8,17 +8,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.frizzl.app.frizzleapp.AnalyticsUtils;
 import com.frizzl.app.frizzleapp.R;
-import com.frizzl.app.frizzleapp.Support;
 import com.frizzl.app.frizzleapp.UserProfile;
-import com.google.firebase.analytics.FirebaseAnalytics;
+import com.frizzl.app.frizzleapp.Utils;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class TaskFragment extends Fragment {
     TextView fragmentText;
-    private FirebaseAnalytics mFirebaseAnalytics;
     int index;
     int appLevelId;
 
@@ -28,15 +27,12 @@ public class TaskFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // Obtain the FirebaseAnalytics instance.
-        mFirebaseAnalytics = FirebaseAnalytics.getInstance(getActivity());
-
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_task, container, false);
         view.setPadding(60,50,60,50);
 
         // Rotation for RTL swiping.
-        if (Support.isRTL()) {
+        if (Utils.isRTL()) {
             view.setRotationY(180);
             view.setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
         }
@@ -62,7 +58,7 @@ public class TaskFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        mFirebaseAnalytics.setCurrentScreen(getActivity(), this.getClass().getSimpleName(),
+        AnalyticsUtils.setCurrentScreen(getActivity(), this.getClass().getSimpleName(),
                 this.getClass().getSimpleName()+ appLevelId + "_" + index);
     }
 }

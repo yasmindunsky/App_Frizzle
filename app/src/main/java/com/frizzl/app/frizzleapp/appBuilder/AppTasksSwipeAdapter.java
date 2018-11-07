@@ -1,4 +1,4 @@
-package com.frizzl.app.frizzleapp;
+package com.frizzl.app.frizzleapp.appBuilder;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

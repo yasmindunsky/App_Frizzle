@@ -1,18 +1,22 @@
-package com.frizzl.app.frizzleapp;
+package com.frizzl.app.frizzleapp.appBuilder;
 
 import android.content.Context;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
+import android.view.View;
+import android.widget.TextView;
 
-import com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar;
+import com.frizzl.app.frizzleapp.SwipeDirection;
 
-public class PracticeViewPager extends ViewPager {
+import ir.neo.stepbarview.StepBarView;
+
+public class TaskViewPager extends ViewPager {
     private SwipeDirection direction;
     private boolean enabled;
     private float initialXValue;
 
-    public PracticeViewPager(Context context, AttributeSet attrs) {
+    public TaskViewPager(Context context, AttributeSet attrs) {
         super(context, attrs);
         this.enabled = true;
         this.direction = SwipeDirection.all;
@@ -69,7 +73,14 @@ public class PracticeViewPager extends ViewPager {
         return false;
     }
 
+    @Override
+    public void setCurrentItem(int item, boolean smoothScroll) {
+        super.setCurrentItem(item, smoothScroll);
+    }
+
+
     public void setPagingEnabled(boolean enabled) {
         this.enabled = enabled;
     }
+
 }

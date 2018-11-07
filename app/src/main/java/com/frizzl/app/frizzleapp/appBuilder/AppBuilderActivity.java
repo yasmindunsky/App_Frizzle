@@ -6,8 +6,6 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.drawable.Animatable;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -32,17 +30,14 @@ import android.widget.PopupWindow;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.frizzl.app.frizzleapp.AppTasksSwipeAdapter;
+import com.frizzl.app.frizzleapp.AnalyticsUtils;
 import com.frizzl.app.frizzleapp.R;
-import com.frizzl.app.frizzleapp.Support;
+import com.frizzl.app.frizzleapp.Utils;
 import com.frizzl.app.frizzleapp.SwipeDirection;
-import com.frizzl.app.frizzleapp.TaskViewPager;
 import com.frizzl.app.frizzleapp.UserApp;
 import com.frizzl.app.frizzleapp.UserProfile;
 import com.frizzl.app.frizzleapp.map.MapActivity;
-import com.google.firebase.analytics.FirebaseAnalytics;
 import com.tooltip.OnDismissListener;
 
 import net.cachapa.expandablelayout.ExpandableLayout;
@@ -73,8 +68,6 @@ public class AppBuilderActivity extends AppCompatActivity {
 
     private Tutorial tutorial;
 
-    private FirebaseAnalytics mFirebaseAnalytics;
-
     final private static int WRITE_PERMISSION = 1;
     private static final int MAX_NICKNAME_LENGTH = 10;
 
@@ -86,9 +79,6 @@ public class AppBuilderActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        // Obtain the FirebaseAnalytics instance.
-        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
-
         super.onCreate(savedInstanceState);
 
         currentAppLevelID = getIntent().getIntExtra("appLevelID", 0);
@@ -206,7 +196,7 @@ public class AppBuilderActivity extends AppCompatActivity {
         });
 
 //         Rotation for RTL swiping.
-        if (Support.isRTL()) {
+        if (Utils.isRTL()) {
             viewPager.setRotationY(180);
         }
 
@@ -243,7 +233,7 @@ public class AppBuilderActivity extends AppCompatActivity {
         graphicEditTab.select();
 
         // Set stepBarView
-        stepBarView.setRtl(!Support.isRTL());
+        stepBarView.setRtl(!Utils.isRTL());
         int tasksNum = UserProfile.user.getCurrentAppTasks().getTasksNum();
         stepBarView.setMaxCount(tasksNum);
         stepBarView.setReachedStep(tasksNum);
@@ -278,14 +268,13 @@ public class AppBuilderActivity extends AppCompatActivity {
             appBuilderPresenter.downloadApk();
         }
 
-        Bundle bundle = new Bundle();
-        mFirebaseAnalytics.logEvent("RUN_APP", bundle);
+        AnalyticsUtils.logRunAppEvent();
         designScreenPresenter.saveState();
         codingScreenPresenter.saveState();
     }
 
     public void presentPopup(PopupWindow popupWindow, Runnable runOnDismiss){
-        Support.presentPopup(popupWindow, runOnDismiss, relativeLayout, relativeLayout, this);
+        Utils.presentPopup(popupWindow, runOnDismiss, relativeLayout, relativeLayout, this);
     }
 
     private Runnable afterSuccessPopupClosed (){
@@ -298,7 +287,7 @@ public class AppBuilderActivity extends AppCompatActivity {
 
     private void openTaskSuccessPopup() {
         PopupWindow successPopupWindow = new TaskSuccessPopupWindow(AppBuilderActivity.this);
-        Support.presentPopup(successPopupWindow, afterSuccessPopupClosed(), relativeLayout, relativeLayout, this);
+        Utils.presentPopup(successPopupWindow, afterSuccessPopupClosed(), relativeLayout, relativeLayout, this);
     }
 
     private void openRequestPermissionPopup() {
@@ -308,7 +297,7 @@ public class AppBuilderActivity extends AppCompatActivity {
             setProgressBarVisibility(View.VISIBLE);
         };
         PopupWindow permissionPopupWindow = new RequestPermissionPopupWindow(AppBuilderActivity.this, requestPermission);
-        Support.presentPopup(permissionPopupWindow, null, relativeLayout, relativeLayout, this);
+        Utils.presentPopup(permissionPopupWindow, null, relativeLayout, relativeLayout, this);
     }
 
     public void openStartAppPopup() {
@@ -472,9 +461,7 @@ public class AppBuilderActivity extends AppCompatActivity {
         }, 1000); // 1s
         int currentTaskNum = UserProfile.user.getCurrentAppTaskNum();
         int currentLevel = UserProfile.user.getCurrentLevel();
-        Bundle bundle = new Bundle();
-        bundle.putString("TASK_ID", currentLevel + "_" + currentTaskNum);
-        mFirebaseAnalytics.logEvent("COMPLETED_TASK", bundle);
+        AnalyticsUtils.logCompletedTaskEvent(currentLevel, currentTaskNum);
         // If not the last task
         if (currentTaskNum < UserProfile.user.getCurrentAppTasks().getTasksNum() - 1){
 //            moveToNextTask();

@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.frizzl.app.frizzleapp.R;
-import com.frizzl.app.frizzleapp.Support;
+import com.frizzl.app.frizzleapp.Utils;
 
 /**
  * Created by Noga on 13/09/2018.
@@ -27,7 +27,7 @@ public class PracticeNotificationView extends LinearLayout{
         this.setBackground(context.getResources().getDrawable(R.drawable.error_background));
         this.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT));
-        int px = Support.dpStringToPixel(context, "15dp");
+        int px = Utils.dpStringToPixel(context, "15dp");
         this.setPadding(px, px, px, px);
         this.setGravity(Gravity.CENTER_VERTICAL);
         this.isError = isError;
@@ -35,8 +35,8 @@ public class PracticeNotificationView extends LinearLayout{
         iconImageView = new ImageView(context);
         int drawableResource = isError ? R.drawable.ic_try_again : R.drawable.ic_notification;
         iconImageView.setImageDrawable(context.getResources().getDrawable(drawableResource));
-        iconImageView.setLayoutParams(new ViewGroup.LayoutParams( Support.dpStringToPixel(context, "40dp"),
-                Support.dpStringToPixel(context, "40dp")));
+        iconImageView.setLayoutParams(new ViewGroup.LayoutParams( Utils.dpStringToPixel(context, "40dp"),
+                Utils.dpStringToPixel(context, "40dp")));
         iconImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
         this.addView(iconImageView);
 
@@ -44,7 +44,7 @@ public class PracticeNotificationView extends LinearLayout{
         notificationTextView = new AppCompatTextView(new ContextThemeWrapper(context, textStyle));
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT);
-        layoutParams.setMarginStart(Support.dpStringToPixel(context, "10dp"));
+        layoutParams.setMarginStart(Utils.dpStringToPixel(context, "10dp"));
         notificationTextView.setLayoutParams(layoutParams);
         this.addView(notificationTextView);
     }

@@ -8,7 +8,7 @@ import android.widget.ImageView;
 import android.widget.PopupWindow;
 
 import com.frizzl.app.frizzleapp.R;
-import com.frizzl.app.frizzleapp.Support;
+import com.frizzl.app.frizzleapp.Utils;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -32,7 +32,7 @@ public class UserCreatedImageView extends UserCreatedView {
         layoutParams.height = (int) context.getResources().getDimension(R.dimen.user_created_image_view_width);
 
         String marginString = properties.get("android:layout_margin");
-        int margin = Support.dpStringToPixel(marginString, context);
+        int margin = Utils.dpStringToPixel(marginString, context);
         layoutParams.setMargins(margin,margin,margin,margin);
         thisView.setLayoutParams(layoutParams);
 

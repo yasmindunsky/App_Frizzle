@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.frizzl.app.frizzleapp.R;
-import com.frizzl.app.frizzleapp.Support;
+import com.frizzl.app.frizzleapp.Utils;
 import com.frizzl.app.frizzleapp.UserProfile;
 
 /**
@@ -27,7 +27,7 @@ public class PracticeLastSlideFragment extends android.support.v4.app.Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_practice_end, container, false);
 
-        if (Support.isRTL()) {
+        if (Utils.isRTL()) {
             view.setRotationY(180);
         }
 
