@@ -191,46 +191,9 @@ public class UserCreatedTextView extends UserCreatedView {
                 String text = String.valueOf(((EditText)v).getText());
                 thisView.setText(text);
                 properties.put("android:text", text);
-
-                // For temp testing
-                if (UserProfile.user.getCurrentLevel() == 0 && UserProfile.user.getCurrentAppTaskNum()==1 &&
-                        text.trim().toLowerCase().equals("hello world")) {
-                    AppBuilderActivity appBuilderActivity = (AppBuilderActivity) getActivity();
-                    appBuilderActivity.taskCompleted();
                 }
             }
-        }
-    };
-
-//    AdapterView.OnItemSelectedListener onColorPicked = new AdapterView.OnItemSelectedListener() {
-//        @Override
-//        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-//            String color = parent.getItemAtPosition(position).toString();
-//            String fullColorName = getColorFromString(color);
-//            int colorIdentifier = context.getResources().getColor(context.getResources().getIdentifier(fullColorName, "color", context.getPackageName()));
-//            thisView.setTextColor(colorIdentifier);
-//            properties.put("android:textColor", fullColorName);
-//        }
-//
-//        @Override
-//        public void onNothingSelected(AdapterView<?> parent) {
-//
-//        }
-//    };
-
-
-//
-//    private String getColorFromString(String color) {
-//        Map<String, String> colorNamesMap =  new HashMap<>();
-//        colorNamesMap.put("white", "white");
-//        colorNamesMap.put("red", "holo_red_light");
-//        colorNamesMap.put("blue", "holo_blue_light");
-//        colorNamesMap.put("orange", "holo_orange_light");
-//        colorNamesMap.put("green", "holo_green_light");
-//
-//        return colorNamesMap.get(color);
-//
-//    }
+        };
 
     public Activity getActivity() {
         Context context = thisView.getContext();

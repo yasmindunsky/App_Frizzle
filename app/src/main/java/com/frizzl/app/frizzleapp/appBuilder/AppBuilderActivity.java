@@ -357,11 +357,12 @@ public class AppBuilderActivity extends AppCompatActivity {
         AnalyticsUtils.logCompletedTaskEvent(currentLevel, currentTaskNum);
         // If not the last task
         if (currentTaskNum < user.getCurrentAppTasks().getTasksNum() - 1){
-//            moveToNextTask();
             user.setCurrentAppTaskNum(currentTaskNum + 1);
         }
         else {
-            openTaskSuccessPopup();
+            handler.postDelayed(() -> {
+                openTaskSuccessPopup();
+            }, 1000); // 1s
         }
     }
 

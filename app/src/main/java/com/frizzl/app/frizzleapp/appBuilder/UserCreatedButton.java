@@ -7,6 +7,8 @@ import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.support.v4.content.ContextCompat;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -42,6 +44,8 @@ public class UserCreatedButton extends UserCreatedView {
     private boolean displayOnClick = false;
     private int selectedTextColorButtonID = R.id.color1;
     private int selectedBGColorButtonID = R.id.bgColor1;
+    private boolean textChanged = false;
+    private boolean onclickChanged = false;
 
     UserCreatedButton(Context context, Map<String, String> properties, int index){
         this.context = context;
@@ -155,11 +159,15 @@ public class UserCreatedButton extends UserCreatedView {
 
         // Set saving button.
         android.support.v7.widget.AppCompatButton saveButton = popupView.findViewById(R.id.saveButton);
-        saveButton.setOnClickListener(v -> popupWindow.dismiss());
+        saveButton.setOnClickListener(v -> {
+            notifyIfTextOrOnclickChanged();
+            popupWindow.dismiss();
+        });
 
         // TEXT
         EditText viewText = popupView.findViewById(R.id.viewTextValue);
-        viewText.setOnFocusChangeListener(finishedEditingText);
+        viewText.addTextChangedListener(textWatcher);
+//        viewText.setOnFocusChangeListener(finishedEditingText);
         viewText.setText(properties.get("android:text"));
         viewText.setSelection(viewText.length());
 
@@ -225,6 +233,18 @@ public class UserCreatedButton extends UserCreatedView {
         return popupWindow;
     }
 
+    private void notifyIfTextOrOnclickChanged() {
+        if (changedTextListener != null && textChanged) {
+            changedTextListener.onChangedText();
+            textChanged = false;
+        }
+        String function = properties.get("android:onClick");
+        if (changedTextListener != null && onclickChanged){
+            changedTextListener.onChangedOnClick(function);
+            onclickChanged = false;
+        }
+    }
+
     @Override
     public void updateProperties() {
 
@@ -235,6 +255,26 @@ public class UserCreatedButton extends UserCreatedView {
         return thisView;
     }
 
+    private TextWatcher textWatcher = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+            String text = String.valueOf(s);
+            thisView.setText(text);
+            properties.put("android:text", text);
+            textChanged = true;
+        }
+    };
+
     private EditText.OnFocusChangeListener finishedEditingText = new View.OnFocusChangeListener() {
         @Override
         public void onFocusChange(View v, boolean hasFocus) {
@@ -242,9 +282,7 @@ public class UserCreatedButton extends UserCreatedView {
                 String text = String.valueOf(((EditText)v).getText());
                 thisView.setText(text);
                 properties.put("android:text", text);
-
-                // For temp testing
-                if (changedTextListener != null) changedTextListener.onChangedText();
+                textChanged = true;
             }
         }
     };
@@ -254,9 +292,7 @@ public class UserCreatedButton extends UserCreatedView {
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
             String function = parent.getItemAtPosition(position).toString();
             properties.put("android:onClick", function);
-
-            // For temp testing
-            if (changedTextListener != null) changedTextListener.onChangedOnClick(function);
+            onclickChanged = true;
         }
 
         @Override
