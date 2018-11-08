@@ -3,21 +3,17 @@ package com.frizzl.app.frizzleapp.appBuilder;
 import android.Manifest;
 import android.animation.Animator;
 import android.content.ComponentName;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
-import android.provider.Settings;
+import android.support.annotation.NonNull;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
-import android.support.v4.content.FileProvider;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -25,29 +21,23 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import com.frizzl.app.frizzleapp.AnalyticsUtils;
 import com.frizzl.app.frizzleapp.R;
-import com.frizzl.app.frizzleapp.Utils;
 import com.frizzl.app.frizzleapp.SwipeDirection;
-import com.frizzl.app.frizzleapp.UserApp;
 import com.frizzl.app.frizzleapp.UserProfile;
+import com.frizzl.app.frizzleapp.Utils;
 import com.frizzl.app.frizzleapp.map.MapActivity;
 import com.tooltip.OnDismissListener;
 
 import net.cachapa.expandablelayout.ExpandableLayout;
 
-import java.io.File;
-
 public class AppBuilderActivity extends AppCompatActivity {
     private static final int INSTALLED_APP_ABOVE_N = 1;
     private static final int INSTALLED_APP_BELOW_N = 2;
-    private static final int REQUEST_CODE_WRITE_EXTERNAL_STORAGE_PERMISSION = 2;
     private AppBuilderPresenter appBuilderPresenter;
     private DesignScreenPresenter designScreenPresenter;
     private CodingScreenPresenter codingScreenPresenter;
@@ -66,7 +56,6 @@ public class AppBuilderActivity extends AppCompatActivity {
     private Tutorial tutorial;
 
     final private static int WRITE_PERMISSION = 1;
-    private static final int MAX_NICKNAME_LENGTH = 10;
 
     private TaskViewPager viewPager;
     private int currentAppLevelID;
@@ -126,7 +115,6 @@ public class AppBuilderActivity extends AppCompatActivity {
         });
 
         appBuilderPresenter = new AppBuilderPresenter(this,
-                codingScreenPresenter, designScreenPresenter,
                 getApplicationContext().getResources().getString(R.string.code_start),
                 getApplicationContext().getResources().getString(R.string.code_end), currentAppLevelID);
         appBuilderPresenter.onCreate();
@@ -141,7 +129,7 @@ public class AppBuilderActivity extends AppCompatActivity {
         });
 
         // Undim
-        relativeLayout.setForeground(getResources().getDrawable(R.drawable.shade));
+        relativeLayout.setForeground(ResourcesCompat.getDrawable(getResources(), R.drawable.shade, null));
         relativeLayout.getForeground().setAlpha(0);
 
         toolbar.setNavigationOnClickListener(v -> {
@@ -195,10 +183,6 @@ public class AppBuilderActivity extends AppCompatActivity {
             viewPager.setRotationY(180);
         }
 
-//        // Connecting TabLayout with ViewPager to show swipe position in dots.
-//        final TabLayout tabLayout = findViewById(R.id.tabLayout);
-//        tabLayout.setupWithViewPager(viewPager, true);
-
         final TabLayout.Tab graphicEditTab = tabLayout.newTab().setText(R.string.design);
         TabLayout.Tab codingTab = tabLayout.newTab().setText(R.string.code);
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -251,25 +235,20 @@ public class AppBuilderActivity extends AppCompatActivity {
     public void onPlay(final View view) {
         if (ContextCompat.checkSelfPermission(this,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-
             // Permission from user still isn't granted, ask for permission.
             openRequestPermissionPopup();
-
-
-        }
-
+       }
         // Permission was already granted, download APK.
         else {
             appBuilderPresenter.downloadApk();
         }
-
         AnalyticsUtils.logRunAppEvent();
         designScreenPresenter.saveState();
         codingScreenPresenter.saveState();
     }
 
-    public void presentPopup(PopupWindow popupWindow, Runnable runOnDismiss){
-        Utils.presentPopup(popupWindow, runOnDismiss, relativeLayout, relativeLayout, this);
+    public void presentPopup(PopupWindow popupWindow){
+        Utils.presentPopup(popupWindow, null, relativeLayout, relativeLayout, this);
     }
 
     private Runnable afterSuccessPopupClosed (){
@@ -296,50 +275,12 @@ public class AppBuilderActivity extends AppCompatActivity {
     }
 
     public void openStartAppPopup() {
-        relativeLayout.post(()-> presentPopup(startAppPopupWindow, null));
-    }
-
-    private void undimAppBuilderActivity() {
-        relativeLayout.getForeground().setAlpha(0);
-    }
-
-    private void dimAppBuilderActivity() {
-        relativeLayout.getForeground().setAlpha(220);
-    }
-
-    public void getWritePermission() {
-        if (ContextCompat.checkSelfPermission(this,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-
-            // Permission from user still isn't granted, ask for permission.
-            ActivityCompat.requestPermissions(this,
-                    new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, WRITE_PERMISSION);
-        }
-
-        // Permission was already granted, download APK.
-        else {
-            appBuilderPresenter.downloadApk();
-        }
-    }
-
-
-
-    public void hideError() {
-        LinearLayout errorLayout = findViewById(R.id.errorDisplay);
-        errorLayout.setVisibility(View.GONE);
-    }
-
-    public void displayError(String output) {
-        TextView error = findViewById(R.id.error);
-        error.setText(output);
-        LinearLayout errorLayout = findViewById(R.id.errorDisplay);
-        errorLayout.setVisibility(View.VISIBLE);
-        errorExpandableLayout.expand();
+        relativeLayout.post(()->Utils.presentPopup(startAppPopupWindow, null, relativeLayout, relativeLayout, this));
     }
 
     @Override
     public void onRequestPermissionsResult(int requestCode,
-                                           String permissions[], int[] grantResults) {
+                                           @NonNull String permissions[], @NonNull int[] grantResults) {
         switch (requestCode) {
             case WRITE_PERMISSION: {
                 if (grantResults.length > 0
@@ -353,48 +294,8 @@ public class AppBuilderActivity extends AppCompatActivity {
         }
     }
 
-    private String getXml() {
-        return designFragment.getXml();
-    }
-
-    private void setProgressBarVisibility(int visible) {
+    public void setProgressBarVisibility(int visible) {
         progressBar.setVisibility(visible);
-    }
-
-    public void installUsersApp() {
-        setProgressBarVisibility(View.GONE);
-
-
-        String destination =
-                Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
-                + "/frizzl_project.apk";
-        File apkFile = new File(destination);
-        Log.e("INSTALL", "apkFile length: " + apkFile.length() / 1024);
-        Context context = getApplicationContext();
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            Uri contentUri = FileProvider.getUriForFile(context,
-                    "com.frizzl.app.frizzlapp.fileprovider", apkFile);
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                if (!getPackageManager().canRequestPackageInstalls()) {
-                    startActivityForResult(new Intent(Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES)
-                            .setData(Uri.parse(String.format("package:%s", getPackageName()))), 1234);
-                }
-            }
-            Intent intent = new Intent(Intent.ACTION_INSTALL_PACKAGE)
-                    .setData(contentUri)
-                    .setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
-                    .putExtra(Intent.EXTRA_RETURN_RESULT, true)
-                    .putExtra(Intent.EXTRA_NOT_UNKNOWN_SOURCE, true);
-            startActivityForResult(intent, INSTALLED_APP_ABOVE_N);
-        } else {
-            Uri contentUri = Uri.fromFile(apkFile);
-            Intent intent = new Intent(Intent.ACTION_VIEW)
-                    .setDataAndType(contentUri, "application/vnd.android.package-archive")
-                    .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                    .putExtra(Intent.EXTRA_RETURN_RESULT, true);
-            startActivityForResult(intent, INSTALLED_APP_BELOW_N);
-        }
     }
 
     @Override
@@ -443,10 +344,6 @@ public class AppBuilderActivity extends AppCompatActivity {
         designFragment.setAppIcon(iconDrawable);
     }
 
-    private String getCode() {
-        return codingFragment.getCode();
-    }
-
     public void taskCompleted() {
         // Will move to next Task when animation finishes.
         final Handler handler = new Handler();
@@ -454,36 +351,30 @@ public class AppBuilderActivity extends AppCompatActivity {
             checkMark.setVisibility(View.VISIBLE);
             checkMark.playAnimation();
         }, 1000); // 1s
-        int currentTaskNum = UserProfile.user.getCurrentAppTaskNum();
-        int currentLevel = UserProfile.user.getCurrentLevel();
+        UserProfile user = UserProfile.user;
+        int currentTaskNum = user.getCurrentAppTaskNum();
+        int currentLevel = user.getCurrentLevel();
         AnalyticsUtils.logCompletedTaskEvent(currentLevel, currentTaskNum);
         // If not the last task
-        if (currentTaskNum < UserProfile.user.getCurrentAppTasks().getTasksNum() - 1){
+        if (currentTaskNum < user.getCurrentAppTasks().getTasksNum() - 1){
 //            moveToNextTask();
-            UserProfile.user.setCurrentAppTaskNum(currentTaskNum + 1);
+            user.setCurrentAppTaskNum(currentTaskNum + 1);
         }
         else {
             openTaskSuccessPopup();
         }
     }
 
-    public void saveProject() {
-        // update user profile from activity
-        String xml = getXml();
-        String code = getCode();
-        String manifest = getManifest();
-        UserApp currentUserApp = UserProfile.user.getCurrentUserApp();
-//        currentUserApp.setViews(designFragment.getViewsFromModel(), designFragment.getNumOfButtons(),
-//                designFragment.getNumOfTextViews(),  designFragment.getNumOfImageViews(),
-//                designFragment.getNextViewIndex());
-        currentUserApp.setXml(xml);
-        currentUserApp.setCode(code);
-        currentUserApp.setManifest(manifest);
-        UserProfile.user.setCurrentUserAppLevelID(currentUserApp);
+    public String getCode() {
+        return codingFragment.getCode();
     }
 
-    private String getManifest() {
+    public String getManifest() {
         return designFragment.getManifest();
+    }
+
+    public String getXml() {
+        return designFragment.getXml();
     }
 
     private void moveToNextTask(){

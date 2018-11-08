@@ -218,7 +218,8 @@ public class DesignScreenFragment extends Fragment {
     }
 
     public void presentPopup(PopupWindow popupWindow) {
-        if (appBuilderActivity != null) appBuilderActivity.presentPopup(popupWindow, null);
+        if (appBuilderActivity != null)
+        appBuilderActivity.presentPopup(popupWindow);
     }
 
     private void setTextOnClicks(final UserCreatedTextView userCreatedTextView){

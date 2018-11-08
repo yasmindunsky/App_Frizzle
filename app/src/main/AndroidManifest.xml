@@ -21,65 +21,67 @@
         tools:replace="android:appComponentFactory"
         android:appComponentFactory="whateverString">
 
-        <activity android:name="com.frizzl.app.frizzleapp.map.MapActivity"
+        <activity
+            android:name="com.frizzl.app.frizzleapp.map.MapActivity"
             android:theme="@style/AppTheme.NoActionBar"
-            android:screenOrientation="nosensor" android:configChanges="keyboardHidden|orientation"
-            >
-        </activity>
+            android:screenOrientation="nosensor"
+            android:configChanges="keyboardHidden|orientation"></activity>
 
         <activity
             android:name="com.frizzl.app.frizzleapp.onboarding.OnboardingActivity"
-            android:screenOrientation="nosensor" android:configChanges="keyboardHidden|orientation"
-            android:theme="@style/AppTheme.NoActionBar"
-            >
-        </activity>
+            android:screenOrientation="nosensor"
+            android:configChanges="keyboardHidden|orientation"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
 
-        <activity android:name="com.frizzl.app.frizzleapp.SplashActivity"
-            android:screenOrientation="nosensor" android:configChanges="keyboardHidden|orientation"
+        <activity
+            android:name="com.frizzl.app.frizzleapp.SplashActivity"
+            android:screenOrientation="nosensor"
+            android:configChanges="keyboardHidden|orientation"
             android:theme="@style/AppTheme.NoActionBar"
-            android:noHistory="true"
-            >
+            android:noHistory="true">
             <intent-filter>
-                <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE"/>
+                <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE" />
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
 
             </intent-filter>
         </activity>
 
-        <activity android:name="com.frizzl.app.frizzleapp.practice.PracticeActivity"
+        <activity
+            android:name="com.frizzl.app.frizzleapp.practice.PracticeActivity"
             android:screenOrientation="nosensor"
             android:configChanges="keyboardHidden|orientation"
-            android:windowSoftInputMode="stateAlwaysHidden"
-            />
+            android:windowSoftInputMode="stateAlwaysHidden" />
 
-        <activity android:name="com.frizzl.app.frizzleapp.practice.IntroActivity"
+        <activity
+            android:name="com.frizzl.app.frizzleapp.practice.IntroActivity"
             android:screenOrientation="nosensor"
             android:configChanges="keyboardHidden|orientation"
-            android:windowSoftInputMode="stateAlwaysHidden"
-            />
+            android:windowSoftInputMode="stateAlwaysHidden" />
 
-        <activity android:name="com.frizzl.app.frizzleapp.appBuilder.AppBuilderActivity"
-            android:screenOrientation="nosensor" android:configChanges="keyboardHidden|orientation"
+        <activity
+            android:name="com.frizzl.app.frizzleapp.appBuilder.AppBuilderActivity"
+            android:screenOrientation="nosensor"
+            android:configChanges="keyboardHidden|orientation"
             android:windowSoftInputMode="stateAlwaysHidden|adjustPan"
-            android:exported="true"
-            >
+            android:exported="true">
 
         </activity>
 
         <!--<service-->
-            <!--android:exported="false"-->
-            <!--android:name=".notifications.ReminderFirebaseJobService">-->
+        <!--android:exported="false"-->
+        <!--android:name=".notifications.ReminderFirebaseJobService">-->
         <!--</service>-->
         <!--<service-->
-            <!--android:name=".notifications.NotificationIntentService"-->
-            <!--android:exported="false" />-->
+        <!--android:name=".notifications.NotificationIntentService"-->
+        <!--android:exported="false" />-->
         <!--<service-->
-            <!--android:name=".MyFirebaseMessagingService">-->
-            <!--<intent-filter>-->
-                <!--<action android:name="com.google.firebase.MESSAGING_EVENT"/>-->
-                <!--<action android:name="com.google.android.c2dm.intent.RECEIVE" />-->
-            <!--</intent-filter>-->
+        <!--android:name=".MyFirebaseMessagingService">-->
+        <!--<intent-filter>-->
+        <!--<action android:name="com.google.firebase.MESSAGING_EVENT"/>-->
+        <!--<action android:name="com.google.android.c2dm.intent.RECEIVE" />-->
+        <!--</intent-filter>-->
         <!--</service>-->
 
         <provider
@@ -98,7 +100,7 @@
             android:resource="@array/preloaded_fonts" />
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
-            android:value="@string/facebook_app_id"/>
+            android:value="@string/facebook_app_id" />
 
 
     </application>
