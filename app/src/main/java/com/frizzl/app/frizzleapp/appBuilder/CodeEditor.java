@@ -60,7 +60,7 @@ public class CodeEditor extends android.support.v7.widget.AppCompatEditText {
     private void init() {
         // Set keyboard.
         if (keyboard != null) {
-            this.setRawInputType(InputType.TYPE_CLASS_TEXT);
+            this.setRawInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
             this.setTextIsSelectable(true);
             InputConnection ic = this.onCreateInputConnection(new EditorInfo());
             keyboard.setInputConnection(ic);
