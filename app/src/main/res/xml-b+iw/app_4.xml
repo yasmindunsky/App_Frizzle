@@ -3,28 +3,28 @@
 <app xmlns:tools="http://schemas.android.com/tools"
     tools:keep="@xml/app_1">
     <task>
-        <text name="text">הוסיפו איור של תוכי על ידי הוספת אלמנט תמונה.
+        <text name="text">משימה 1: הוסיפו איור של תוכי על ידי הוספת אלמנט תמונה.
         </text>
     </task>
 
     <task>
-        <text name="text">הוסיפו כפתור וכתבו עליו שאלה.</text>
+        <text name="text">משימה 2: הוסיפו כפתור וכתבו עליו שאלה.</text>
     </task>
 
     <task>
-        <text name="text">הוסיפו פונקציה ותנו לה שם.</text>
+        <text name="text">משימה 3: הוסיפו פונקציה לקוד ותנו לה שם.</text>
     </task>
 
     <task>
-        <text name="text">כתבו פקודת speakOut בתוך הפונקציה.</text>
+        <text name="text">משימה 4: כתבו פקודת speakOut בתוך הפונקציה.</text>
     </task>
 
     <task>
-        <text name="text">חברו את הפונקציה לכפתור.</text>
+        <text name="text">משימה 5: חברו את הפונקציה לכפתור.</text>
     </task>
 
     <task>
-        <text name="text">חזרו על השלבים האלה והוסיפו לפחות כפתור אחד ופונקציה המחוברת אליו.</text>
+        <text name="text">משימה 6: חזרו על השלבים האלה והוסיפו כפתור אחד ופונקציה המחוברת אליו.</text>
     </task>
 
 </app>

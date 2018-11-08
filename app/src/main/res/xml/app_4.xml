@@ -3,32 +3,32 @@
 <app xmlns:tools="http://schemas.android.com/tools"
     tools:keep="@xml/app_1">
     <task>
-        <text name="text">Add a picture of your parrot by adding an Image Element.
+        <text name="text">TASK 1: Add a picture of your parrot by adding an Image Element.
         </text>
     </task>
 
     <task>
-        <text name="text">Add a button and write a question on it.
+        <text name="text">TASK 2: Add a button and write a question on it.
         </text>
     </task>
 
     <task>
-        <text name="text">Add a function and name it.
+        <text name="text">TASK 3: Add a function to the code and name it.
         </text>
     </task>
 
     <task>
-        <text name="text">Write a speakOut command inside the function.
+        <text name="text">TASK 4: Write a speakOut command inside the function.
         </text>
     </task>
 
     <task>
-        <text name="text">Connect the function to the button.
+        <text name="text">TASK 5: Connect the function to the button.
         </text>
     </task>
 
     <task>
-        <text name="text">Repeat those steps with two more buttons.
+        <text name="text">TASK 6: Repeat those steps with one more button.
         </text>
     </task>
 

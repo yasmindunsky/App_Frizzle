@@ -28,7 +28,7 @@
         <info_text>בשביל לגרום לאלמנטים האלה להיות פעילים נלמד לכתוב קוד בשפת תכנות שנקראת ג'אווה.</info_text>
         <task_text/>
         <reminder_text/>
-        <code mutable="false" show="true" runnable ="false" waitForCTA="false">//כאן תוכלו לכתוב בהמשך קוד למחשב בשפת ג'אווה</code>
+        <code mutable="false" show="true" runnable ="false" waitForCTA="false">// כאן תוכלו לכתוב בהמשך קוד למחשב בשפת ג'אווה</code>
         <design show="false" runnable="false" withOnClickFunction="false" withOnClickSet="false"/>
         <call_to_action>הבנתי</call_to_action>
     </slide>
