@@ -42,6 +42,7 @@ public class UserProfile implements Serializable {
         currentLevel = 0;
         currentSlideInLevel = 0;
         topSlideInLevel = 0;
+        currentAppTaskNum = 0;
     }
 
     public AppTasks getCurrentAppTasks() {
@@ -50,7 +51,6 @@ public class UserProfile implements Serializable {
 
     public void setCurrentAppTasks(AppTasks currentAppTasks) {
         this.currentAppTasks = currentAppTasks;
-        this.currentAppTaskNum = 0;
     }
 
     public UserApp getCurrentUserApp() {

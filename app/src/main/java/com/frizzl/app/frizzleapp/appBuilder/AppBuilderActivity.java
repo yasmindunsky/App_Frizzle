@@ -178,6 +178,9 @@ public class AppBuilderActivity extends AppCompatActivity {
             public void onPageScrollStateChanged(int state) {}
         });
 
+
+
+
 //         Rotation for RTL swiping.
         if (Utils.isRTL()) {
             viewPager.setRotationY(180);
@@ -217,6 +220,12 @@ public class AppBuilderActivity extends AppCompatActivity {
         stepBarView.setMaxCount(tasksNum);
         stepBarView.setReachedStep(tasksNum);
         stepBarView.setAllowTouchStepTo(0);
+
+        int currentTask = UserProfile.user.getCurrentAppTaskNum();
+        if (currentTask != 0) {
+            viewPager.setCurrentItem(currentTask);
+            stepBarView.setReachedStep(stepBarView.getMaxCount()-currentTask);
+        }
 
         tutorial = new Tutorial(AppBuilderActivity.this);
         boolean activityCreated = true;
@@ -357,7 +366,7 @@ public class AppBuilderActivity extends AppCompatActivity {
         AnalyticsUtils.logCompletedTaskEvent(currentLevel, currentTaskNum);
         // If not the last task
         if (currentTaskNum < user.getCurrentAppTasks().getTasksNum() - 1){
-            user.setCurrentAppTaskNum(currentTaskNum + 1);
+            UserProfile.user.setCurrentAppTaskNum(currentTaskNum + 1);
         }
         else {
             handler.postDelayed(() -> {
