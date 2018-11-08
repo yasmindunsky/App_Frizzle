@@ -6,6 +6,7 @@ import android.widget.EditText;
 import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
+import android.widget.RadioButton;
 
 import com.frizzl.app.frizzleapp.R;
 import com.frizzl.app.frizzleapp.Utils;
@@ -19,6 +20,7 @@ import java.util.Map;
 
 public class UserCreatedImageView extends UserCreatedView {
     ImageView thisView;
+    private int selectedImageID = R.id.radioButton1;
 
     public UserCreatedImageView(Context context, Map<String, String> properties, int index){
         init(context);
@@ -96,7 +98,7 @@ public class UserCreatedImageView extends UserCreatedView {
     }
 
     public PopupWindow getPropertiesTablePopupWindow(Context context) {
-        return new ChooseImagePopupWindow(context, index, this);
+        return new ChooseImagePopupWindow(context, index, this, selectedImageID);
     }
 
     @Override
@@ -116,8 +118,9 @@ public class UserCreatedImageView extends UserCreatedView {
         }
     };
 
-    public void setImage(Drawable background, String tag) {
-        thisView.setBackground(background);
+    public void setImage(RadioButton selectedImageButton, String tag) {
+        selectedImageID = selectedImageButton.getId();
+        thisView.setBackground(selectedImageButton.getBackground());
         properties.put("android:background", "@drawable/"+tag);
     }
 }

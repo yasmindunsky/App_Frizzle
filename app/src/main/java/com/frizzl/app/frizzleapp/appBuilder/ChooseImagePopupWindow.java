@@ -19,7 +19,7 @@ import java.util.ArrayList;
 public class ChooseImagePopupWindow extends PopupWindow {
     private RadioButton selectedButton;
 
-    public ChooseImagePopupWindow(Context context, int index, UserCreatedImageView userCreatedImageView){
+    public ChooseImagePopupWindow(Context context, int index, UserCreatedImageView userCreatedImageView, int selectedImageID){
         LayoutInflater inflater = (LayoutInflater)
                 context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         assert inflater != null;
@@ -33,6 +33,9 @@ public class ChooseImagePopupWindow extends PopupWindow {
         this.setOutsideTouchable(true);
         this.setFocusable(true);
 
+        selectedButton = ((RadioButton)popupView.findViewById(selectedImageID));
+        selectedButton.setChecked(true);
+
         android.support.v7.widget.AppCompatButton saveButton = popupView.findViewById(R.id.saveButton);
         ImageButton deleteButton = popupView.findViewById(R.id.delete);
         RadioButton radioButton1 = popupView.findViewById(R.id.radioButton1);
@@ -42,20 +45,17 @@ public class ChooseImagePopupWindow extends PopupWindow {
         RadioButton radioButton5 = popupView.findViewById(R.id.radioButton5);
         RadioButton radioButton6 = popupView.findViewById(R.id.radioButton6);
         RadioButton radioButton7 = popupView.findViewById(R.id.radioButton7);
-        selectedButton = radioButton1;
 
         saveButton.setOnClickListener(v -> {
             Object tag = selectedButton.getTag();
             if (tag != null) {
-                userCreatedImageView.setImage(selectedButton.getBackground(), tag.toString());
+                userCreatedImageView.setImage(selectedButton, tag.toString());
                 dismiss();
             }
         });
 
         //DELETE
         deleteButton.setTag(index);
-//        deleteButton.setOnClickListener(deleteView);
-//
 
         ArrayList<RadioButton> radioButtons = new ArrayList<>();
         radioButtons.add(radioButton1);
