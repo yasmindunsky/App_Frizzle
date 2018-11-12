@@ -206,6 +206,8 @@ public class MainActivity extends AppCompatActivity implements   TextToSpeech.On
     <string name="install_permission_request">We\'re about to install your app, we just need your permission first</string>
     <string name="ok">ok</string>
     <string name="cancel">cancel</string>
+    <string name="downloading_your_app">Downloading your app...</string>
+    <string name="downloading_this_is_so_exciting">This is so exciting!</string>
 
     <string-array name="fonts">
         <item>sans-serif</item>

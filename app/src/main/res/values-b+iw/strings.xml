@@ -92,6 +92,8 @@ Use "'" for special chars.
     <string name="install_permission_request">מיד נתקין את האפליקציה שלך, אנחנו רק זקוקים לאישור הרשאה ממך</string>
     <string name="ok">בסדר</string>
     <string name="cancel">ביטול</string>
+    <string name="downloading_your_app">האפליקציה שלך יורדת...</string>
+    <string name="downloading_this_is_so_exciting">מאד מרגש!</string>
 
 
     <string-array name="fonts">
