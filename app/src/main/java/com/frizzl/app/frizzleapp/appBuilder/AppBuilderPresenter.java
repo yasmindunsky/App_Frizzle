@@ -8,7 +8,6 @@ import android.os.Environment;
 import android.provider.Settings;
 import android.support.v4.content.FileProvider;
 import android.util.Log;
-import android.view.View;
 
 import com.frizzl.app.frizzleapp.UserApp;
 import com.frizzl.app.frizzleapp.UserProfile;
@@ -64,6 +63,7 @@ public class AppBuilderPresenter {
     }
 
     void downloadApk() {
+        appBuilderActivity.showLoaderAnimation(true);
         saveProject();
         UserApp currentUserApp = UserProfile.user.getCurrentUserApp();
         String code = codeStart + currentUserApp.getCode() + codeEnd;
@@ -81,8 +81,6 @@ public class AppBuilderPresenter {
     }
 
     private void installUsersApp() {
-        appBuilderActivity.setProgressBarVisibility(View.GONE);
-
         String destination =
                 Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
                         + "/frizzl_project.apk";
@@ -105,6 +103,7 @@ public class AppBuilderPresenter {
                     .putExtra(Intent.EXTRA_RETURN_RESULT, true)
                     .putExtra(Intent.EXTRA_NOT_UNKNOWN_SOURCE, true);
             appBuilderActivity.startActivityForResult(intent, INSTALLED_APP_ABOVE_N);
+            appBuilderActivity.showLoaderAnimation(false);
         } else {
             Uri contentUri = Uri.fromFile(apkFile);
             Intent intent = new Intent(Intent.ACTION_VIEW)

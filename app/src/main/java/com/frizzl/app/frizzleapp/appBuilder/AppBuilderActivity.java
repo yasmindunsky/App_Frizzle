@@ -3,6 +3,7 @@ package com.frizzl.app.frizzleapp.appBuilder;
 import android.Manifest;
 import android.animation.Animator;
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -18,7 +19,9 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.PopupWindow;
@@ -52,7 +55,7 @@ public class AppBuilderActivity extends AppCompatActivity {
     private Button moveOnButton;
     private ir.neo.stepbarview.StepBarView stepBarView;
     private com.airbnb.lottie.LottieAnimationView checkMark;
-
+    private PopupWindow downloadingAppPopupWindow;
     private Tutorial tutorial;
 
     final private static int WRITE_PERMISSION = 1;
@@ -158,27 +161,26 @@ public class AppBuilderActivity extends AppCompatActivity {
         viewPager.setAllowedSwipeDirection(SwipeDirection.none);
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {}
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            }
 
             @Override
             public void onPageSelected(int position) {
-                stepBarView.setReachedStep(stepBarView.getMaxCount()-position);
+                stepBarView.setReachedStep(stepBarView.getMaxCount() - position);
 
                 SwipeDirection swipeDirection;
                 if (position < UserProfile.user.getCurrentAppTaskNum()) {
                     swipeDirection = SwipeDirection.all;
-                }
-                else {
+                } else {
                     swipeDirection = SwipeDirection.left; // This is the setting also for RTL
                 }
                 viewPager.setAllowedSwipeDirection(swipeDirection);
             }
 
             @Override
-            public void onPageScrollStateChanged(int state) {}
+            public void onPageScrollStateChanged(int state) {
+            }
         });
-
-
 
 
 //         Rotation for RTL swiping.
@@ -224,8 +226,15 @@ public class AppBuilderActivity extends AppCompatActivity {
         int currentTask = UserProfile.user.getCurrentAppTaskNum();
         if (currentTask != 0) {
             viewPager.setCurrentItem(currentTask);
-            stepBarView.setReachedStep(stepBarView.getMaxCount()-currentTask);
+            stepBarView.setReachedStep(stepBarView.getMaxCount() - currentTask);
         }
+
+        LayoutInflater inflater = (LayoutInflater)
+                getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        assert inflater != null;
+        View popupView = inflater.inflate(R.layout.popup_installing, null);
+        downloadingAppPopupWindow = new PopupWindow(popupView, ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT, true);
 
         tutorial = new Tutorial(AppBuilderActivity.this);
         boolean activityCreated = true;
@@ -246,7 +255,7 @@ public class AppBuilderActivity extends AppCompatActivity {
                 Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             // Permission from user still isn't granted, ask for permission.
             openRequestPermissionPopup();
-       }
+        }
         // Permission was already granted, download APK.
         else {
             appBuilderPresenter.downloadApk();
@@ -256,11 +265,11 @@ public class AppBuilderActivity extends AppCompatActivity {
         codingScreenPresenter.saveState();
     }
 
-    public void presentPopup(PopupWindow popupWindow){
+    public void presentPopup(PopupWindow popupWindow) {
         Utils.presentPopup(popupWindow, null, relativeLayout, relativeLayout, this);
     }
 
-    private Runnable afterSuccessPopupClosed (){
+    private Runnable afterSuccessPopupClosed() {
         return () -> {
             tutorial.presentTooltip(playButton, getString(R.string.tooltip_install_app), null, Gravity.BOTTOM);
             showMovedOn = true;
@@ -277,14 +286,13 @@ public class AppBuilderActivity extends AppCompatActivity {
         Runnable requestPermission = () -> {
             ActivityCompat.requestPermissions(this,
                     new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, WRITE_PERMISSION);
-            setProgressBarVisibility(View.VISIBLE);
         };
         PopupWindow permissionPopupWindow = new RequestPermissionPopupWindow(AppBuilderActivity.this, requestPermission);
         Utils.presentPopup(permissionPopupWindow, null, relativeLayout, relativeLayout, this);
     }
 
     public void openStartAppPopup() {
-        relativeLayout.post(()->Utils.presentPopup(startAppPopupWindow, null, relativeLayout, relativeLayout, this));
+        relativeLayout.post(() -> Utils.presentPopup(startAppPopupWindow, null, relativeLayout, relativeLayout, this));
     }
 
     @Override
@@ -308,17 +316,16 @@ public class AppBuilderActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data)
-    {
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
         switch (requestCode) {
             case INSTALLED_APP_ABOVE_N:
                 Log.d("INSTALL", "resultCode: " + resultCode);
-                if(resultCode == RESULT_OK){
+                if (resultCode == RESULT_OK) {
                     Log.d("INSTALL", "Package Installation Success.");
                     startUsersApp();
-                } else if(resultCode == RESULT_FIRST_USER){
+                } else if (resultCode == RESULT_FIRST_USER) {
                     Log.d("INSTALL", "RESULT_FIRST_USER, Installation Failed");
-                } else if (resultCode == RESULT_CANCELED){
+                } else if (resultCode == RESULT_CANCELED) {
                     Log.d("INSTALL", "Installation Cancelled.");
                 }
                 break;
@@ -365,10 +372,9 @@ public class AppBuilderActivity extends AppCompatActivity {
         int currentLevel = user.getCurrentLevel();
         AnalyticsUtils.logCompletedTaskEvent(currentLevel, currentTaskNum);
         // If not the last task
-        if (currentTaskNum < user.getCurrentAppTasks().getTasksNum() - 1){
+        if (currentTaskNum < user.getCurrentAppTasks().getTasksNum() - 1) {
             UserProfile.user.setCurrentAppTaskNum(currentTaskNum + 1);
-        }
-        else {
+        } else {
             handler.postDelayed(() -> {
                 openTaskSuccessPopup();
             }, 1000); // 1s
@@ -387,12 +393,20 @@ public class AppBuilderActivity extends AppCompatActivity {
         return designFragment.getXml();
     }
 
-    private void moveToNextTask(){
+    private void moveToNextTask() {
 //        stepBarView.setReachedStep(stepBarView.getReachedStep()-1);
         viewPager.setCurrentItem(getItem(1), true);
     }
 
-    private void moveToPrevTask(){
-        viewPager.setCurrentItem(getItem(-1),true);
+    private void moveToPrevTask() {
+        viewPager.setCurrentItem(getItem(-1), true);
+    }
+
+    public void showLoaderAnimation(boolean show) {
+        if (show)
+            Utils.presentPopup(downloadingAppPopupWindow,
+                    null, relativeLayout, relativeLayout, this);
+        else if (downloadingAppPopupWindow != null)
+            downloadingAppPopupWindow.dismiss();
     }
 }
