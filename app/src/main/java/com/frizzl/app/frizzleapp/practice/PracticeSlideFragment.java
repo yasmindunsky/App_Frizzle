@@ -245,16 +245,16 @@ public class PracticeSlideFragment extends Fragment {
         lottieAnimationView = new LottieAnimationView(getContext());
         lottieAnimationView.setId(R.id.animation);
         lottieAnimationView.setAnimation(R.raw.stars);
-        lottieAnimationView.setSpeed(1.6f);
-
+        lottieAnimationView.setSpeed(1.8f);
+        lottieAnimationView.setScale(0.5f);
         lastIDBeforeCTA = prevID;
         int CTAid = callToActionButton.getId();
         int thisID = lottieAnimationView.getId();
         set.constrainWidth(thisID, ConstraintSet.MATCH_CONSTRAINT);
         set.constrainHeight(thisID, ConstraintSet.WRAP_CONTENT);
-        set.connect(thisID, ConstraintSet.START, CTAid, ConstraintSet.START, SIDES_MARGIN * 2);
-        set.connect(thisID, ConstraintSet.END, CTAid, ConstraintSet.END, SIDES_MARGIN * 2);
-        set.connect(thisID, ConstraintSet.TOP, prevID, ConstraintSet.BOTTOM, TOP_DOWN_MARGIN);
+        set.connect(thisID, ConstraintSet.START, constraintLayoutId, ConstraintSet.START, SIDES_MARGIN * 2);
+        set.connect(thisID, ConstraintSet.END, constraintLayoutId, ConstraintSet.END, SIDES_MARGIN * 2);
+        set.connect(thisID, ConstraintSet.TOP, CTAid, ConstraintSet.TOP, TOP_DOWN_MARGIN);
         constraintLayout.setConstraintSet(set);
 
         lottieAnimationView.addAnimatorListener(new Animator.AnimatorListener() {

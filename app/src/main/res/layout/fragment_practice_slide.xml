@@ -7,7 +7,6 @@
     android:gravity="center_horizontal"
     tools:context="com.frizzl.app.frizzleapp.practice.PracticeActivity">
 
-
     <Button
         android:id="@+id/holder"
         android:layout_width="wrap_content"
@@ -16,4 +15,24 @@
         android:gravity="center_vertical|center_horizontal"
         android:text="" />
 
+    <!--<Button-->
+        <!--android:id="@+id/button2"-->
+        <!--style="@style/Button.PracticeCTA"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="Button"-->
+        <!--app:layout_constraintEnd_toEndOf="parent"-->
+        <!--app:layout_constraintStart_toStartOf="parent"-->
+        <!--app:layout_constraintTop_toBottomOf="@+id/holder" />-->
+
+    <!--<com.airbnb.lottie.LottieAnimationView-->
+        <!--android:id="@+id/checkMark"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="0dp"-->
+        <!--app:layout_constraintEnd_toEndOf="parent"-->
+        <!--app:layout_constraintStart_toStartOf="parent"-->
+        <!--app:layout_constraintTop_toTopOf="@+id/button2"-->
+        <!--app:lottie_autoPlay="true"-->
+        <!--app:lottie_loop="true"-->
+        <!--app:lottie_rawRes="@raw/trophy" />-->
 </android.support.constraint.ConstraintLayout>
