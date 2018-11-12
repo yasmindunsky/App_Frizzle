@@ -4,6 +4,7 @@ package com.frizzl.app.frizzleapp.practice;
 import android.content.Context;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
+import android.speech.tts.Voice;
 import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -67,6 +68,8 @@ public class IntroSlideFragment extends Fragment {
             }
         };
         tts = new TextToSpeech(getContext(), onInitListener, "com.google.android.tts");
+//        Voice voice = new Voice();
+//        tts.setVoice(voice);
 
         Bundle bundle = getArguments();
         if (bundle != null) {

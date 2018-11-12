@@ -18,6 +18,7 @@ import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 
 import com.frizzl.app.frizzleapp.appBuilder.UserCreatedButton;
+import com.frizzl.app.frizzleapp.practice.PracticeSlideFragment;
 
 import java.util.HashSet;
 import java.util.Locale;
@@ -33,7 +34,7 @@ public class DesignSection extends RelativeLayout {
     private ViewGroup layout;
     private DisplayNotificationListener displayNotificationListener;
 
-    public DesignSection(Context context, boolean runnable, boolean withOnClickSet, String onClickFunction) {
+    public DesignSection(Context context, boolean runnable, boolean withOnClickSet, String onClickFunction, PracticeSlideFragment practiceSlideFragment) {
         super(context);
 
         TextToSpeech.OnInitListener onInitListener = status -> {
@@ -76,7 +77,8 @@ public class DesignSection extends RelativeLayout {
             userCreatedButton.setDisplayOnClick(hasOnClickFunction);
             PopupWindow popupWindow = userCreatedButton.getPropertiesTablePopupWindow(getContext());
             v.post(() ->
-                    Utils.presentPopup(popupWindow, null, v, layout, context));
+            Utils.presentPopup(popupWindow, null, v, layout, context));
+
         });
         layoutParams = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -109,7 +111,16 @@ public class DesignSection extends RelativeLayout {
                     }
                     PopupWindow runPopupWindow = new PopupWindow(runPopupView, ViewGroup.LayoutParams.WRAP_CONTENT,
                             ViewGroup.LayoutParams.WRAP_CONTENT, true);
-                    Utils.presentPopup(runPopupWindow, null, v, layout, context);
+                    Runnable displayNotification = new Runnable() {
+                        @Override
+                        public void run() {
+                            if (UserProfile.user.getCurrentLevel() == Utils.ONCLICK_PRACTICE_LEVEL_ID
+                                    && practiceSlideFragment.getCurrentSlide() == 1) {
+                                practiceSlideFragment.presentNotificationFromSection(context.getResources().getString(R.string.our_button_does_nothing));
+                            }
+                        }
+                    };
+                    Utils.presentPopup(runPopupWindow, displayNotification, v, layout, context);
                     ImageButton closeButton = runPopupView.findViewById(R.id.close);
                     closeButton.setOnClickListener(v12 -> runPopupWindow.dismiss());
                     button.setOnClickListener(v1 -> {

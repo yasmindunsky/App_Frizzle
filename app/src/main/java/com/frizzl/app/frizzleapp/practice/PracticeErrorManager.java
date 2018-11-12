@@ -23,7 +23,7 @@ public class PracticeErrorManager {
     // Returns null if error1 was not found, or Error to display.
     private static ErrorCheck errorCheck0 = (originalCode, currentCode) -> "0";
 
-    // Returns null if error1 was not found, or Error to display.
+    // Returns null if error was not found, or Error to display.
     // Checks if the currentCode is identical to the originalCode
     private static ErrorCheck errorCheck1 = (originalCode, currentCode) -> {
         if (originalCode.equals(currentCode)) {
@@ -32,7 +32,7 @@ public class PracticeErrorManager {
         return null;
     };
 
-    // Returns null if error1 was not found, or Error to display.
+    // Returns null if error was not found, or Error to display.
     // Checks if the user deleted the speakOut command and left only the text inside
     private static ErrorCheck errorCheck2 = (originalCode, currentCode) -> {
         if (!CodeCheckUtils.checkIfContainsSpeakOutAndString(currentCode, "", true))
@@ -42,7 +42,7 @@ public class PracticeErrorManager {
         return null;
     };
 
-    // Returns null if error1 was not found, or Error to display.
+    // Returns null if error was not found, or Error to display.
     // Checks if a semicolon is missing
     private static ErrorCheck errorCheck3 = (originalCode, currentCode) -> {
         if (!currentCode.contains(";"))
@@ -52,7 +52,7 @@ public class PracticeErrorManager {
         return null;
     };
 
-    // Returns null if error1 was not found, or Error to display.
+    // Returns null if error was not found, or Error to display.
     // Checks if an unnecessary speakOut is there
     private static ErrorCheck errorCheck4 = (originalCode, currentCode) -> {
         if (CodeCheckUtils.checkIfContainsSpeakOutAndString(currentCode, "", true))
@@ -62,7 +62,7 @@ public class PracticeErrorManager {
         return null;
     };
 
-    // Returns null if error1 was not found, or Error to display.
+    // Returns null if error was not found, or Error to display.
     // Checks if the user changed the white parts of the function
     private static ErrorCheck errorCheck5 = (originalCode, currentCode) -> {
         if (!CodeCheckUtils.checkIfFunctionSignatureIsValid(currentCode))
@@ -72,7 +72,7 @@ public class PracticeErrorManager {
         return null;
     };
 
-    // Returns null if error1 was not found, or Error to display.
+    // Returns null if error was not found, or Error to display.
     // Checks if the speakOut command is not in the right place
     private static ErrorCheck errorCheck6 = (originalCode, currentCode) -> {
         if (!CodeCheckUtils.checkIfSpeakOutIsInsideCurlyBrackets(currentCode))
@@ -100,7 +100,7 @@ public class PracticeErrorManager {
         levelAndSlideToChecks.put(Utils.SPEAKOUT_PRACTICE_LEVEL_ID + "_2", new int[]{1, 2, 3});
         levelAndSlideToChecks.put(Utils.ONCLICK_PRACTICE_LEVEL_ID + "_5", new int[]{1, 4, 5});
         levelAndSlideToChecks.put(Utils.ONCLICK_PRACTICE_LEVEL_ID + "_7", new int[]{1, 4, 5});
-        levelAndSlideToChecks.put(Utils.ONCLICK_PRACTICE_LEVEL_ID + "_8", new int[]{1, 5, 2, 6});
+        levelAndSlideToChecks.put(Utils.ONCLICK_PRACTICE_LEVEL_ID + "_8", new int[]{1, 6, 5, 2});
         levelAndSlideToChecks.put(Utils.ONCLICK_PRACTICE_LEVEL_ID + "_9", new int[]{});
     }
 

@@ -15,6 +15,7 @@ import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
@@ -50,6 +51,7 @@ public class PracticeSlideFragment extends Fragment {
     private int currentLevel;
     private String originalCode;
     private int lastIDBeforeCTA;
+    private ConstraintSet set;
 
     public PracticeSlideFragment() {
         // Required empty public constructor
@@ -62,9 +64,14 @@ public class PracticeSlideFragment extends Fragment {
         constraintLayout = view.findViewById(R.id.constraintLayout);
         constraintLayout.setFocusableInTouchMode(true);
         int constraintLayoutId = constraintLayout.getId();
-        viewPager = getActivity().findViewById(R.id.pager);
+        FragmentActivity activity = getActivity();
+        viewPager = activity.findViewById(R.id.pager);
         currentLevel = UserProfile.user.getCurrentLevel();
         int currentSlide = getCurrentSlide();
+
+        InputMethodManager inputManager = (InputMethodManager)
+                activity.getSystemService(Context.INPUT_METHOD_SERVICE);
+        inputManager.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
 
         if (Utils.isRTL()) {
             view.setRotationY(180);
@@ -82,7 +89,7 @@ public class PracticeSlideFragment extends Fragment {
         Context context = getContext();
         Button holder = constraintLayout.findViewById(R.id.holder);
         int prevID = holder.getId();
-        ConstraintSet set = new ConstraintSet();
+        set = new ConstraintSet();
         set.clone(constraintLayout);
 
         if (practiceSlide.hasInfoText()) {
@@ -148,8 +155,9 @@ public class PracticeSlideFragment extends Fragment {
                 codeKeyboard.setLayoutParams(keyboardLayoutParams);
             }
             originalCode = code.getCode();
-            CodeSection codeSection = new CodeSection(context, originalCode, code.getRunnable(), mutable, code.getWaitForCTA(), codeKeyboard, ((PracticeActivity)getActivity()).getMainLayout());
-            if (!mutable) {
+            CodeSection codeSection = new CodeSection(context, originalCode, code.getRunnable(), mutable, code.getWaitForCTA(), codeKeyboard, ((PracticeActivity) activity).getMainLayout());
+            if (Utils.SPEAKOUT_PRACTICE_LEVEL_ID == currentLevel &&
+                    0 == currentSlide) {
                 codeSection.setEditorOnClickListener(v ->
                         presentNotification(context, "Here we'll write code after we'll learn how.", set));
             }
@@ -170,7 +178,7 @@ public class PracticeSlideFragment extends Fragment {
             boolean runnable = design.getRunnable();
             boolean withOnClickSet = design.getWithOnClickSet();
             String onClickFunction = design.getOnClickFunction();
-            DesignSection designSection = new DesignSection(context, runnable, withOnClickSet, onClickFunction);
+            DesignSection designSection = new DesignSection(context, runnable, withOnClickSet, onClickFunction, this);
             designSection.setBackgroundLayout(constraintLayout);
             designSection.setId(R.id.designSection);
             designSection.setPadding(SIDES_MARGIN, TOP_DOWN_MARGIN, SIDES_MARGIN, TOP_DOWN_MARGIN);
@@ -200,10 +208,10 @@ public class PracticeSlideFragment extends Fragment {
             Button button = (Button) v;
             boolean moveOn = true;
             String buttonText = button.getText().toString().trim();
-            final String checkText = getActivity().getApplicationContext().getResources().getString(R.string.check);
-            final String tryAgainText = getActivity().getApplicationContext().getResources().getString(R.string.try_again);
-            final String gotItText = getActivity().getApplicationContext().getResources().getString(R.string.got_it);
-            final String nextText = getActivity().getApplicationContext().getResources().getString(R.string.next);
+            final String checkText = activity.getApplicationContext().getResources().getString(R.string.check);
+            final String tryAgainText = activity.getApplicationContext().getResources().getString(R.string.try_again);
+            final String gotItText = activity.getApplicationContext().getResources().getString(R.string.got_it);
+            final String nextText = activity.getApplicationContext().getResources().getString(R.string.next);
             if (buttonText.equals(gotItText) || buttonText.equals(nextText)) {
                 moveToNextFragment();
             }
@@ -221,7 +229,7 @@ public class PracticeSlideFragment extends Fragment {
                     else {
                         String error = PracticeErrorManager.check(currentLevel, getCurrentSlide(),
                                 getOriginalCode(), getCurrentCode());
-                        presentError(context, error, set);
+                        if (error != null) presentError(context, error, set);
                         if (buttonText.equals(tryAgainText)) button.setText(R.string.next);
                         else {
                             button.setBackground(getResources().getDrawable(R.drawable.button_background_pink));
@@ -376,7 +384,7 @@ public class PracticeSlideFragment extends Fragment {
         return correct;
     }
 
-    private int getCurrentSlide() {
+    public int getCurrentSlide() {
         return viewPager.getCurrentItem();
     }
 
@@ -410,5 +418,9 @@ public class PracticeSlideFragment extends Fragment {
         CodeSection codeSection = constraintLayout.findViewById(R.id.codeSection);
         if (codeSection == null) return null;
         return codeSection.getCode();
+    }
+
+    public void presentNotificationFromSection(String string) {
+        presentNotification(getContext(), string, set);
     }
 }

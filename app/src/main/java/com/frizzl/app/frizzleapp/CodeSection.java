@@ -73,17 +73,15 @@ public class CodeSection extends RelativeLayout {
             OnClickListener runCode = v -> {
                 if (Utils.volumeIsLow(context)) Utils.presentVolumeToast(context);
                 if (waitForCTA && readyForCTAListener != null) readyForCTAListener.onReadyForCTA();
+                int currentSlide = UserProfile.user.getCurrentSlideInLevel();
+                if (UserProfile.user.getCurrentLevel() == Utils.SPEAKOUT_PRACTICE_LEVEL_ID
+                        && presentNotificationListener != null && ((currentSlide == 4) || (currentSlide == 3))) {
+                    if (currentSlide == 3)
+                        presentNotificationListener.onPresentNotification(getResources().getString(R.string.notification_semicolon));
+                    else presentNotificationListener.onPresentNotification(getResources().getString(R.string.notification_space));
+                        }
                 if (codeIsValid()) speakOut();
-                else {
-                    int currentSlide = UserProfile.user.getCurrentSlideInLevel();
-                    if (UserProfile.user.getCurrentLevel() == Utils.SPEAKOUT_PRACTICE_LEVEL_ID
-                            && presentNotificationListener != null && ((currentSlide == 4) || (currentSlide == 3))) {
-                        if (currentSlide == 3)
-                            presentNotificationListener.onPresentNotification(getResources().getString(R.string.notification_semicolon));
-                        else presentNotificationListener.onPresentNotification(getResources().getString(R.string.notification_space));
-                            }
-                    else displayErrorPopup(getResources().getString(R.string.problem_with_syntax), layout);
-                }
+                else displayErrorPopup(getResources().getString(R.string.problem_with_syntax), layout);
             };
             playButton.setOnClickListener(runCode);
             playButton.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.run_button_background, null));

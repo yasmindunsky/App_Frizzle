@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 
+import com.frizzl.app.frizzleapp.CodeCheckUtils;
 import com.frizzl.app.frizzleapp.CodeKeyboard;
 import com.frizzl.app.frizzleapp.R;
 import com.frizzl.app.frizzleapp.Utils;
@@ -79,6 +80,7 @@ public class CodingScreenFragment extends Fragment {
                         if (afterName - beforeName > 2) {
                             taskCompleted = true;
                         }
+                        taskCompleted &= !CodeCheckUtils.checkIfContainsFunctionWithName(code, "nameYouChoose");
                     } else if (UserProfile.user.getCurrentAppTaskNum() == 3) {
                         int beforeTextToSay = code.indexOf("speakOut\"") + String.valueOf("speakOut\"").length();
                         int afterTextToSay = code.indexOf("\");");

@@ -34,6 +34,7 @@
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/nameButton"
             style="@style/Button.UserCreated"
+            android:backgroundTint="@color/frizzle_yellow"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="40dp"
@@ -51,6 +52,7 @@
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/jokeButton"
             style="@style/Button.UserCreated"
+            android:backgroundTint="@color/frizzle_yellow"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="32dp"
