@@ -87,6 +87,7 @@ public class CodingScreenFragment extends Fragment {
                         if (afterTextToSay - beforeTextToSay > 0){
                             taskCompleted = true;
                         }
+                        taskCompleted &= !CodeCheckUtils.checkIfSpeakoutIsEmpty(code);
                     }
                     if (taskCompleted){
                         AppBuilderActivity appBuilderActivity = (AppBuilderActivity) getActivity();

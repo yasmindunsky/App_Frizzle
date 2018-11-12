@@ -1,5 +1,7 @@
 package com.frizzl.app.frizzleapp;
 
+import java.util.Objects;
+
 /**
  * Created by Noga on 04/11/2018.
  */
@@ -44,5 +46,13 @@ public class CodeCheckUtils {
         String beforeSpeakOut = code.substring(0, i);
         String afterSpeakOut = code.substring(i + "speakOut".length(), code.length());
         return beforeSpeakOut.contains("{") && afterSpeakOut.contains("}");
+    }
+
+    public static boolean checkIfSpeakoutIsEmpty(String code) {
+        String speakOutPrefix = "speakOut(\"";
+        int i = code.indexOf(speakOutPrefix);
+        int nextCharIndex = i + speakOutPrefix.length();
+        String nextChar = code.substring(nextCharIndex, nextCharIndex+1);
+        return Objects.equals(nextChar, "\"");
     }
 }
