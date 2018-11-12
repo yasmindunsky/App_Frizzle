@@ -52,6 +52,7 @@ public class PracticeSlideFragment extends Fragment {
     private String originalCode;
     private int lastIDBeforeCTA;
     private ConstraintSet set;
+    private int currentSlide;
 
     public PracticeSlideFragment() {
         // Required empty public constructor
@@ -67,7 +68,6 @@ public class PracticeSlideFragment extends Fragment {
         FragmentActivity activity = getActivity();
         viewPager = activity.findViewById(R.id.pager);
         currentLevel = UserProfile.user.getCurrentLevel();
-        int currentSlide = getCurrentSlide();
 
         InputMethodManager inputManager = (InputMethodManager)
                 activity.getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -79,7 +79,7 @@ public class PracticeSlideFragment extends Fragment {
 
         Bundle bundle = getArguments();
         if (bundle != null) {
-            int index = bundle.getInt("index");
+            currentSlide = bundle.getInt("index");
             int lessonNum = bundle.getInt("lesson");
             practiceSlide = (PracticeSlide) bundle.getSerializable("practice_slide");
         }
@@ -333,6 +333,7 @@ public class PracticeSlideFragment extends Fragment {
 
     private void changeButtonToGreenAndShowAnimation(Button button) {
                 button.setBackground(getResources().getDrawable(R.drawable.button_background_green));
+                button.setText("Correct");
                 lottieAnimationView.playAnimation();
     }
 
