@@ -24,7 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/wow"
-            android:textAppearance="@style/Text.Title.Pink"
+            android:textAppearance="@style/Text.Title.Blue"
             app:layout_constraintBottom_toTopOf="@+id/installText"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -61,9 +61,10 @@
 
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/thanksButton"
-            style="@style/Button.Thanks"
+            style="@style/Button.LightBlue"
             android:textAppearance="@style/Text.Title.Light"
             android:textColor="@color/white"
+            android:text="@string/thanks"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
