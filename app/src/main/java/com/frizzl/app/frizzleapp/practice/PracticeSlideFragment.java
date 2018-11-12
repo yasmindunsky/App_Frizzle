@@ -194,7 +194,7 @@ public class PracticeSlideFragment extends Fragment {
                 if (UserProfile.user.getCurrentLevel() == Utils.ONCLICK_PRACTICE_LEVEL_ID
                         && getCurrentSlide() == 1) {
                     popupWindow.dismiss();
-                    presentNotification(context, context.getResources().getString(R.string.our_button_does_nothing) , set);
+                    presentNotification(context, context.getResources().getString(R.string.our_button_does_nothing), set);
                 }
             });
         }
@@ -225,17 +225,17 @@ public class PracticeSlideFragment extends Fragment {
                             getCurrentSlide() == 9){
                         presentError(context, FrizzlApplication.resources.getString(R.string.error_set_onclick), set);
                     }
-                    // Checking code.
                     else {
                         String error = PracticeErrorManager.check(currentLevel, getCurrentSlide(),
                                 getOriginalCode(), getCurrentCode());
                         if (error != null) presentError(context, error, set);
-                        if (buttonText.equals(tryAgainText)) button.setText(R.string.next);
-                        else {
-                            button.setBackground(getResources().getDrawable(R.drawable.button_background_pink));
-                            button.setText(tryAgainText);
-                        }
                     }
+                    if (buttonText.equals(tryAgainText)) button.setText(R.string.next);
+                    else {
+                        button.setBackground(getResources().getDrawable(R.drawable.button_background_pink));
+                        button.setText(tryAgainText);
+                    }
+
                 }
             }
         });
@@ -332,9 +332,9 @@ public class PracticeSlideFragment extends Fragment {
     }
 
     private void changeButtonToGreenAndShowAnimation(Button button) {
-                button.setBackground(getResources().getDrawable(R.drawable.button_background_green));
-                button.setText("Correct");
-                lottieAnimationView.playAnimation();
+        button.setBackground(getResources().getDrawable(R.drawable.button_background_green));
+        button.setText("Correct");
+        lottieAnimationView.playAnimation();
     }
 
     private boolean practiceCorrect() {
@@ -356,26 +356,23 @@ public class PracticeSlideFragment extends Fragment {
                 String code = codeSection.getCode();
                 correct = CodeCheckUtils.checkIfContainsSpeakOutAndString(code, "this is so cool", true);
             }
-        } else if (currentLevel == Utils.ONCLICK_PRACTICE_LEVEL_ID){
-            if (currentSlide == 5){
+        } else if (currentLevel == Utils.ONCLICK_PRACTICE_LEVEL_ID) {
+            if (currentSlide == 5) {
                 // Check if new function was added.
                 CodeSection codeSection = constraintLayout.findViewById(R.id.codeSection);
                 String code = codeSection.getCode();
                 correct = CodeCheckUtils.checkIfContainsFunctionWithName(code, "");
-            }
-            else if (currentSlide == 7){
+            } else if (currentSlide == 7) {
                 // Check function name changed to 'myFunction'.
                 CodeSection codeSection = constraintLayout.findViewById(R.id.codeSection);
                 String code = codeSection.getCode();
                 correct = CodeCheckUtils.checkIfContainsFunctionWithName(code, "myFunction");
-            }
-            else if (currentSlide == 8){
+            } else if (currentSlide == 8) {
                 // Check if speakOut was written inside function.
                 CodeSection codeSection = constraintLayout.findViewById(R.id.codeSection);
                 String code = codeSection.getCode();
                 correct = CodeCheckUtils.checkIfContainsSpeakOutAndString(code, "Hello", true);
-            }
-            else if (currentSlide == 9){
+            } else if (currentSlide == 9) {
                 // Check if 'myFunction' was written as the onClick value.
                 DesignSection designSection = constraintLayout.findViewById(R.id.designSection);
                 UserCreatedButton userCreatedButton = designSection.getUserCreatedButton();
@@ -402,9 +399,9 @@ public class PracticeSlideFragment extends Fragment {
         }
     }
 
-    public void enableCTAButton(boolean enabled){
+    public void enableCTAButton(boolean enabled) {
         int alpha = enabled ? 255 : 220;
-        if (callToActionButton != null){
+        if (callToActionButton != null) {
             callToActionButton.getBackground().setAlpha(alpha);
             callToActionButton.setEnabled(enabled);
         }
