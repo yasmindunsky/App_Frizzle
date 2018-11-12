@@ -213,13 +213,13 @@ public class DesignScreenFragment extends Fragment {
             // To know what view to delete
             deleteButton.setTag(R.id.viewToDelete, v.getTag(R.id.usersViewId));
             deleteButton.setOnClickListener(deleteView);
-            v.post(() -> presentPopup(popupWindow));
+            v.post(() -> presentPopup(popupWindow, null));
         });
     }
 
-    public void presentPopup(PopupWindow popupWindow) {
+    public void presentPopup(PopupWindow popupWindow, Runnable runOnDismiss) {
         if (appBuilderActivity != null)
-        appBuilderActivity.presentPopup(popupWindow);
+        appBuilderActivity.presentPopup(popupWindow, runOnDismiss);
     }
 
     private void setTextOnClicks(final UserCreatedTextView userCreatedTextView){
@@ -235,7 +235,7 @@ public class DesignScreenFragment extends Fragment {
             // To know what view to delete
             deleteButton.setTag(R.id.viewToDelete, v.getId());
             deleteButton.setOnClickListener(deleteView);
-            v.post(() -> presentPopup(popupWindow));
+            v.post(() -> presentPopup(popupWindow, null));
         });
     }
 
@@ -252,7 +252,7 @@ public class DesignScreenFragment extends Fragment {
             // To know what view to delete
             deleteButton.setTag(R.id.viewToDelete, v.getId());
             deleteButton.setOnClickListener(deleteView);
-            v.post(() -> presentPopup(popupWindow));
+            v.post(() -> presentPopup(popupWindow, null));
         });
     }
 

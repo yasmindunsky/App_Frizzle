@@ -42,12 +42,6 @@ public class DesignScreenPresenter {
             // TODO: make UserCreatedViewsFactory
             switch (viewType) {
                 case AnnotationUserCreatedViewType.TEXT_VIEW:
-
-                    // For temp testing
-                    if (UserProfile.user.getCurrentLevel() == 0 && UserProfile.user.getCurrentAppTaskNum() == 0) {
-                        designScreenFragment.taskCompleted();
-                    }
-
                     designScreenFragment.addNewUserCreatedTextView();
                     break;
                 case AnnotationUserCreatedViewType.BUTTON:
@@ -58,11 +52,17 @@ public class DesignScreenPresenter {
                     int thisViewIndex = designScreenFragment.getNextViewIndex() - 1;
                     UserCreatedView userCreatedView = designScreenFragment.getViews().get(thisViewIndex);
                     PopupWindow propertiesTablePopupWindow = userCreatedView.getPropertiesTablePopupWindow(context);
-                    designScreenFragment.presentPopup(propertiesTablePopupWindow);
-                    // For temp testing
-                    if (UserProfile.user.getCurrentLevel() == Utils.POLLY_APP_LEVEL_ID && UserProfile.user.getCurrentAppTaskNum() == 0) {
-                        designScreenFragment.taskCompleted();
-                    }
+
+                    Runnable runOnDismiss = new Runnable() {
+                        @Override
+                        public void run() {
+                            // For temp testing
+                            if (UserProfile.user.getCurrentLevel() == Utils.POLLY_APP_LEVEL_ID && UserProfile.user.getCurrentAppTaskNum() == 0) {
+                                designScreenFragment.taskCompleted();
+                            }
+                        }
+                    };
+                    designScreenFragment.presentPopup(propertiesTablePopupWindow, runOnDismiss);
             }
             designScreenFragment.getViewsAndPresent();
         }

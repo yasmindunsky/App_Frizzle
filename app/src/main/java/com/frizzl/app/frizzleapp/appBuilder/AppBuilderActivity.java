@@ -91,7 +91,7 @@ public class AppBuilderActivity extends AppCompatActivity {
         codingScreenPresenter = new CodingScreenPresenter(codingFragment);
         codingFragment.setPresenter(codingScreenPresenter);
 
-        checkMark.setSpeed(0.8f);
+        checkMark.setSpeed(1f);
         checkMark.addAnimatorListener(new Animator.AnimatorListener() {
             @Override
             public void onAnimationStart(Animator animation) {
@@ -103,7 +103,7 @@ public class AppBuilderActivity extends AppCompatActivity {
                 handler.postDelayed(() -> {
                     moveToNextTask();
                     checkMark.setVisibility(View.INVISIBLE);
-                }, 500); // 1s
+                }, 250);
             }
 
             @Override
@@ -265,8 +265,8 @@ public class AppBuilderActivity extends AppCompatActivity {
         codingScreenPresenter.saveState();
     }
 
-    public void presentPopup(PopupWindow popupWindow) {
-        Utils.presentPopup(popupWindow, null, relativeLayout, relativeLayout, this);
+    public void presentPopup(PopupWindow popupWindow, Runnable runOnDissmiss) {
+        Utils.presentPopup(popupWindow, runOnDissmiss, relativeLayout, relativeLayout, this);
     }
 
     private Runnable afterSuccessPopupClosed() {
