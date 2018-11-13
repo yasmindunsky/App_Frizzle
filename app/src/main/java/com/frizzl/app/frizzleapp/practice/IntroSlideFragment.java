@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.speech.tts.Voice;
 import android.support.constraint.ConstraintLayout;
+import android.support.constraint.ConstraintSet;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
@@ -39,6 +40,8 @@ public class IntroSlideFragment extends Fragment {
     private TextToSpeech tts;
     private int numOfSlides;
     private boolean waitForCTA = false;
+    private ConstraintSet set;
+    private ConstraintLayout constraintLayout;
 
     public IntroSlideFragment() {
         // Required empty public constructor
@@ -48,7 +51,7 @@ public class IntroSlideFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_practice_slide, container, false);
-        ConstraintLayout constraintLayout = view.findViewById(R.id.constraintLayout);
+        constraintLayout = view.findViewById(R.id.constraintLayout);
         constraintLayout.setFocusableInTouchMode(true);
         int constraintLayoutId = constraintLayout.getId();
 
@@ -82,7 +85,9 @@ public class IntroSlideFragment extends Fragment {
         // Create elements by what's needed
         Context context = getContext();
         Button holder = constraintLayout.findViewById(R.id.holder);
-        int prevId = holder.getId();
+        int prevID = holder.getId();
+        set = new ConstraintSet();
+        set.clone(constraintLayout);
 
         if (practiceSlide.hasInfoText()){
             int infoTextStyle = R.style.Text_PracticeSlide_infoText;
@@ -96,13 +101,9 @@ public class IntroSlideFragment extends Fragment {
                     "$orange$", getResources().getColor(R.color.frizzle_orange), true);
             infoText.setText(spannableInfoText);
 
-            ConstraintLayout.LayoutParams layoutParams = new ConstraintLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                    ViewGroup.LayoutParams.WRAP_CONTENT);
-            layoutParams.setMargins(SIDES_MARGIN,TOP_DOWN_MARGIN,SIDES_MARGIN,TOP_DOWN_MARGIN);
-            layoutParams.topToBottom = prevId;
-            prevId = infoText.getId();
-            infoText.setLayoutParams(layoutParams);
             constraintLayout.addView(infoText);
+            setConstraints(set, infoText.getId(), prevID, SIDES_MARGIN);
+            prevID = infoText.getId();
         }
 
         if (practiceSlide.hasTaskText()){
@@ -116,15 +117,10 @@ public class IntroSlideFragment extends Fragment {
             spannableTaskText = Utils.markWithColorBetweenTwoSymbols(spannableTaskText,
                     "$orange$", getResources().getColor(R.color.frizzle_orange), true);
             taskText.setText(spannableTaskText);
-
-            ConstraintLayout.LayoutParams layoutParams = new ConstraintLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                    ViewGroup.LayoutParams.WRAP_CONTENT);
-            layoutParams.setMargins(SIDES_MARGIN,TOP_DOWN_MARGIN,SIDES_MARGIN,TOP_DOWN_MARGIN);
-            layoutParams.topToBottom = prevId;
-            layoutParams.startToStart = constraintLayoutId;
-            prevId = taskText.getId();
-            taskText.setLayoutParams(layoutParams);
             constraintLayout.addView(taskText);
+            setConstraints(set, taskText.getId(), prevID, SIDES_MARGIN);
+            prevID = taskText.getId();
+
         }
 
         View.OnClickListener speak = v -> {
@@ -132,45 +128,34 @@ public class IntroSlideFragment extends Fragment {
             String textToSay = (String) v.getTag();
             tts.speak(textToSay, TextToSpeech.QUEUE_ADD, null);
             enableCTAButton(true);
-
         };
 
         if (practiceSlide.hasDesign()){
             waitForCTA = practiceSlide.getDesign().getRunnable();
             View pollyApp = getLayoutInflater().inflate(R.layout.polly_app_demo, null);
-            ConstraintLayout.LayoutParams layoutParams = new ConstraintLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
-                    ViewGroup.LayoutParams.WRAP_CONTENT);
-            layoutParams.setMargins(SIDES_MARGIN*3,TOP_DOWN_MARGIN,SIDES_MARGIN*3,TOP_DOWN_MARGIN);
-            layoutParams.startToStart = constraintLayoutId;
-            layoutParams.endToEnd = constraintLayoutId;
-            layoutParams.topToBottom = prevId;
-            pollyApp.setLayoutParams(layoutParams);
             AppCompatButton nameButton = pollyApp.findViewById(R.id.nameButton);
             AppCompatButton jokeButton = pollyApp.findViewById(R.id.jokeButton);
             nameButton.setOnClickListener(speak);
             jokeButton.setOnClickListener(speak);
             constraintLayout.addView(pollyApp);
-            prevId = pollyApp.getId();
+            setConstraints(set, pollyApp.getId(), prevID, SIDES_MARGIN*2);
+            prevID = pollyApp.getId();
+
         }
 
         int ctaButtonStyle = R.style.Button_PracticeCTA;
         callToActionButton = new AppCompatButton(new ContextThemeWrapper(context, ctaButtonStyle));
         callToActionButton.setText(practiceSlide.getCallToActionText());
         callToActionButton.setBackground(getResources().getDrawable(R.drawable.check_button_background));
-        ConstraintLayout.LayoutParams layoutParams =
-                new ConstraintLayout.LayoutParams(550, ViewGroup.LayoutParams.WRAP_CONTENT);
-        layoutParams.setMargins(0,TOP_DOWN_MARGIN * 2,0,TOP_DOWN_MARGIN);
-        layoutParams.startToStart = constraintLayoutId;
-        layoutParams.endToEnd = constraintLayoutId;
-        layoutParams.topToBottom = prevId;
-        prevId = callToActionButton.getId();
-        callToActionButton.setLayoutParams(layoutParams);
         callToActionButton.setOnClickListener(v -> {
             Button button = (Button) v;
             UserProfile.user.finishedCurrentSlideInLevel();
             moveToNextFragment();
         });
         constraintLayout.addView(callToActionButton);
+        setConstraints(set, callToActionButton.getId(), prevID, SIDES_MARGIN*4);
+        prevID = callToActionButton.getId();
+
         if (waitForCTA) enableCTAButton(false);
 
         return view;
@@ -211,5 +196,14 @@ public class IntroSlideFragment extends Fragment {
             Log.d("tts", "TTS Destroyed");
         }
         super.onDestroy();
+    }
+
+    private void setConstraints(ConstraintSet set, int thisID, int prevID, int sidesMargins) {
+        set.constrainWidth(thisID, ConstraintSet.MATCH_CONSTRAINT);
+        set.constrainHeight(thisID, ConstraintSet.WRAP_CONTENT);
+        set.connect(thisID, ConstraintSet.START, constraintLayout.getId(), ConstraintSet.START, sidesMargins);
+        set.connect(thisID, ConstraintSet.END, constraintLayout.getId(), ConstraintSet.END, sidesMargins);
+        set.connect(thisID, ConstraintSet.TOP, prevID, ConstraintSet.BOTTOM, TOP_DOWN_MARGIN);
+        constraintLayout.setConstraintSet(set);
     }
 }
