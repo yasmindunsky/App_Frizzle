@@ -38,6 +38,12 @@
         <item name="android:fontFamily">@font/rubik_bold</item>
     </style>
 
+    <style name="Text.ItalicForm" parent="@style/Text.Basic">
+        <item name="android:fontFamily">@font/rubik_light</item>
+        <item name="android:textColor">@color/TextLightGrey</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
     <style name="Text.Title" parent="@android:style/TextAppearance.Medium">
         <item name="android:fontFamily">@font/rubik_medium</item>
         <item name="android:textAlignment">center</item>

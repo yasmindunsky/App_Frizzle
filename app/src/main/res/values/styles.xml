@@ -139,6 +139,7 @@
     </style>
 
     <style name="Text.ItalicForm" parent="@style/Text.Basic">
+        <item name="android:fontFamily">@font/calibri_light_italic</item>
         <item name="android:textColor">@color/TextLightGrey</item>
         <item name="android:textSize">18sp</item>
     </style>
