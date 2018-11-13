@@ -2,6 +2,7 @@ package com.frizzl.app.frizzleapp;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Typeface;
 import android.media.AudioManager;
 import android.support.v4.content.res.ResourcesCompat;
 import android.text.Spannable;
@@ -85,7 +86,7 @@ public class Utils {
         view.getForeground().setAlpha(0);
     }
 
-    public static SpannableStringBuilder markWithColorBetweenTwoSymbols(Spannable s, String symbol, int color, boolean removeSymbol) {
+    public static SpannableStringBuilder markWithColorBetweenTwoSymbols(Spannable s, String symbol, int color, boolean removeSymbol, boolean makeBold, Context context) {
         SpannableStringBuilder ssb = new SpannableStringBuilder(s);
         int symbolLength = symbol.length();
         int startPosition = 0;
@@ -96,6 +97,11 @@ public class Utils {
             if (secondSymbol > 0) {
                 ssb.setSpan(new ForegroundColorSpan(color), firstSymbol, secondSymbol + 1,
                         Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                if (makeBold) {
+                    Typeface font = Utils.getRegularFontByLanguage(context);
+                    ssb.setSpan(new CustomTypefaceSpan("", font), firstSymbol, secondSymbol + 1,
+                            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                }
                 if (removeSymbol) {
                     ssb.replace(firstSymbol, firstSymbol+symbolLength, "");
                     ssb.replace(secondSymbol-symbolLength, secondSymbol, ""); //Indices
@@ -122,5 +128,16 @@ public class Utils {
 
     public static void presentVolumeToast(Context context) {
         Toast.makeText(context, R.string.turn_volume_up, Toast.LENGTH_LONG).show();
+    }
+
+    public static Typeface getRegularFontByLanguage(Context context) {
+        Typeface font = null;
+        String language = Locale.getDefault().getLanguage();
+
+        if (language.equals("en"))
+            font = ResourcesCompat.getFont(context, R.font.calibri_regular);
+        else if (language.equals("iw"))
+            font = ResourcesCompat.getFont(context, R.font.rubik_regular);
+        return font;
     }
 }

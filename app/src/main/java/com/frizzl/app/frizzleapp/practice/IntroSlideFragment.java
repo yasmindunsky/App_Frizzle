@@ -96,9 +96,9 @@ public class IntroSlideFragment extends Fragment {
 
             SpannableStringBuilder spannableInfoText = new SpannableStringBuilder(practiceSlide.getInfoText());
             spannableInfoText = Utils.markWithColorBetweenTwoSymbols(spannableInfoText,
-                    "$green$", getResources().getColor(R.color.frizzle_green), true);
+                    "$green$", getResources().getColor(R.color.frizzle_green), true, true, context);
             spannableInfoText = Utils.markWithColorBetweenTwoSymbols(spannableInfoText,
-                    "$orange$", getResources().getColor(R.color.frizzle_orange), true);
+                    "$orange$", getResources().getColor(R.color.frizzle_orange), true, true, context);
             infoText.setText(spannableInfoText);
 
             constraintLayout.addView(infoText);
@@ -113,9 +113,9 @@ public class IntroSlideFragment extends Fragment {
 
             SpannableStringBuilder spannableTaskText = new SpannableStringBuilder(practiceSlide.getTaskText());
             spannableTaskText = Utils.markWithColorBetweenTwoSymbols(spannableTaskText,
-                    "$green$", getResources().getColor(R.color.frizzle_green), true);
+                    "$green$", getResources().getColor(R.color.frizzle_green), true, false, context);
             spannableTaskText = Utils.markWithColorBetweenTwoSymbols(spannableTaskText,
-                    "$orange$", getResources().getColor(R.color.frizzle_orange), true);
+                    "$orange$", getResources().getColor(R.color.frizzle_orange), true, false, context);
             taskText.setText(spannableTaskText);
             constraintLayout.addView(taskText);
             setConstraints(set, taskText.getId(), prevID, SIDES_MARGIN);
