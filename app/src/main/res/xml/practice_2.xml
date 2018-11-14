@@ -26,7 +26,7 @@ tools:keep="@xml/practice_1">
         <info_text>Rewrite the command to speak out:
 'this is so cool'. </info_text>
         <task_text/>
-        <reminder_text>Reminder: speakOut("Hello"); </reminder_text>
+        <reminder_text>Reminder: speakOut("this is so cool"); </reminder_text>
         <code show="true" mutable="true" runnable="true" waitForCTA="false">\n</code>
         <design show="false" runnable="false"  withOnClickFunction="false" withOnClickSet="false"></design>
         <call_to_action>Check</call_to_action>

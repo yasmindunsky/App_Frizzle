@@ -24,7 +24,7 @@
     <slide>
         <info_text></info_text>
         <task_text>כתבו את הפקודה כך שתקריא את הטקסט 'this is so cool'.</task_text>
-        <reminder_text>תזכורת: ;speakOut("Hello")</reminder_text>
+        <reminder_text>תזכורת: ;speakOut("this is so cool")</reminder_text>
         <code show = "true" mutable="true" runnable="true" waitForCTA="false">\n</code>
         <design show = "false" runnable = "false" withOnClickFunction="false" withOnClickSet="false"></design>
         <call_to_action>בדיקה</call_to_action>

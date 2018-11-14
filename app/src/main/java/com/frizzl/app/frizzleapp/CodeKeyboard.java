@@ -49,7 +49,6 @@ public class CodeKeyboard extends LinearLayout implements View.OnClickListener {
         englishButton.setOnClickListener(view ->
         {
             inputMethodManager.toggleSoftInput(InputMethodManager.SHOW_FORCED,0);
-            FrizzlApplication.setDeviceKeyboardUp(true);
         });
         ImageButton buttonDelete = findViewById(R.id.button_delete);
         buttonDelete.setOnClickListener(this);
