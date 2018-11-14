@@ -64,11 +64,6 @@
 
         <!--Graphic Edit-->
 
-    <style name="Text.TableValue" parent="@style/Text.TableKey">
-        <item name="android:fontFamily">@font/alef</item>
-        <item name="android:textSize">16sp</item>
-        <item name="android:textStyle">normal</item>
-    </style>
 
     <style name="Text.Title.PropertiesTable" parent="@android:style/TextAppearance.DeviceDefault.Medium">
         <item name="android:layout_height">@dimen/app_bar_height</item>
