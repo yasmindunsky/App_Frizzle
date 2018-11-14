@@ -1,9 +1,17 @@
 package com.frizzl.app.frizzleapp.practice;
 
+import android.content.Context;
+import android.graphics.Rect;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
+import android.util.TypedValue;
+import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageButton;
 
 import com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar;
@@ -66,6 +74,7 @@ public class PracticeActivity extends FragmentActivity {
                     swipeDirection = SwipeDirection.left; // This is the setting also for RTL
                 }
                 viewPager.setAllowedSwipeDirection(swipeDirection);
+                hideKeyboardIfNeeded();
             }
 
             @Override
@@ -83,6 +92,13 @@ public class PracticeActivity extends FragmentActivity {
         if (Utils.isRTL()) {
             viewPager.setRotationY(180);
         }
+    }
+
+    private void hideKeyboardIfNeeded() {
+        InputMethodManager inputManager = (InputMethodManager)
+                getSystemService(Context.INPUT_METHOD_SERVICE);
+        View view = getCurrentFocus();
+        inputManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
     @Override
@@ -106,6 +122,8 @@ public class PracticeActivity extends FragmentActivity {
     public ViewGroup getMainLayout() {
         return findViewById(R.id.constraintLayout);
     }
+
+
 }
 
 

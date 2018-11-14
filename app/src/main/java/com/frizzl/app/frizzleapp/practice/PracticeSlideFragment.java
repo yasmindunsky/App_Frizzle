@@ -53,6 +53,7 @@ public class PracticeSlideFragment extends Fragment {
     private int lastIDBeforeCTA;
     private ConstraintSet set;
     private int currentSlide;
+    private FragmentActivity activity;
 
     public PracticeSlideFragment() {
         // Required empty public constructor
@@ -65,13 +66,10 @@ public class PracticeSlideFragment extends Fragment {
         constraintLayout = view.findViewById(R.id.constraintLayout);
         constraintLayout.setFocusableInTouchMode(true);
         int constraintLayoutId = constraintLayout.getId();
-        FragmentActivity activity = getActivity();
+        activity = getActivity();
         viewPager = activity.findViewById(R.id.pager);
         currentLevel = UserProfile.user.getCurrentLevel();
 
-        InputMethodManager inputManager = (InputMethodManager)
-                activity.getSystemService(Context.INPUT_METHOD_SERVICE);
-        inputManager.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
 
         if (Utils.isRTL()) {
             view.setRotationY(180);
@@ -421,4 +419,16 @@ public class PracticeSlideFragment extends Fragment {
     public void presentNotificationFromSection(String string) {
         presentNotification(getContext(), string, set);
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+//            InputMethodManager inputManager = (InputMethodManager)
+//                    activity.getSystemService(Context.INPUT_METHOD_SERVICE);
+////            inputManager.toggleSoftInput(0, InputMethodManager.HIDE_IMPLICIT_ONLY);
+//             View view = activity.getCurrentFocus();
+//            inputManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
+////            FrizzlApplication.setDeviceKeyboardUp(false);
+    }
+
 }
