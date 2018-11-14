@@ -109,10 +109,12 @@ public class CodingScreenFragment extends Fragment {
             Log.e("APP_BUILDER", "codingScreenPresenter was not set.");
         }
 
-        definedFunctionsViewModel = ViewModelProviders.of(getActivity()).get(DefinedFunctionsViewModel.class);
+        definedFunctionsViewModel =
+                ViewModelProviders.of(getActivity()).get(DefinedFunctionsViewModel.class);
 
         return view;
     }
+
 
     public void setPresenter(CodingScreenPresenter codingScreenPresenter){
         this.codingScreenPresenter = codingScreenPresenter;
@@ -141,7 +143,7 @@ public class CodingScreenFragment extends Fragment {
         extractDefinedFunctionsAndUpdateViewModel();
     }
 
-    private void extractDefinedFunctionsAndUpdateViewModel() {
+    public void extractDefinedFunctionsAndUpdateViewModel() {
         String code = getCode();
         definedFunctionsViewModel.clearFunctions();
 

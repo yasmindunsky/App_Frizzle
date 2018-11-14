@@ -5,6 +5,7 @@ import com.frizzl.app.frizzleapp.appBuilder.UserCreatedView;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * Created by Noga on 06/09/2018.
@@ -24,6 +25,7 @@ public class UserApp implements Serializable {
     private String name;
     private String icon;
     private int appLevelID;
+    private Set<String> definedFunctions;
 
     public UserApp(int appLevelID){
         this.appLevelID = appLevelID;
@@ -116,5 +118,13 @@ public class UserApp implements Serializable {
 
     public int getNextIndex() {
         return nextViewIndex;
+    }
+
+    public void setDefinedFunctions(Set<String> definedFunctions) {
+        this.definedFunctions = definedFunctions;
+    }
+
+    public Set<String> getDefinedFunctions() {
+        return definedFunctions;
     }
 }

@@ -37,4 +37,8 @@ public class CodingScreenPresenter {
     public void onPause() {
         saveState();
     }
+
+    public void extractDefinedFunctionsAndUpdateViewModel() {
+        codingScreenFragment.extractDefinedFunctionsAndUpdateViewModel();
+    }
 }

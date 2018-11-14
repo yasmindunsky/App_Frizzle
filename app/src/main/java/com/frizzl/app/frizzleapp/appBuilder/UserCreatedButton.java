@@ -220,7 +220,7 @@ public class UserCreatedButton extends UserCreatedView {
             onClickFuncName.setOnItemSelectedListener(onOnClickPicked);
 
             String currentOnclick = properties.get("android:onClick");
-            currentOnclick = (Objects.equals(currentOnclick, "")) ? "None" : currentOnclick;
+            currentOnclick = (Objects.equals(currentOnclick, "") || currentOnclick == null) ? "None" : currentOnclick;
             int positionOfCurrentOnclick = onClickAdapter.getPosition(currentOnclick);
             onClickFuncName.setSelection(positionOfCurrentOnclick);
         }
