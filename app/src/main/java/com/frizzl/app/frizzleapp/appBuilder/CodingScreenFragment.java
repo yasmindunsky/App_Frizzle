@@ -1,7 +1,6 @@
 package com.frizzl.app.frizzleapp.appBuilder;
 
 
-import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
@@ -15,12 +14,8 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 
-import com.frizzl.app.frizzleapp.CodeCheckUtils;
 import com.frizzl.app.frizzleapp.CodeKeyboard;
-import com.frizzl.app.frizzleapp.ContentUtils;
 import com.frizzl.app.frizzleapp.R;
-import com.frizzl.app.frizzleapp.ViewUtils;
-import com.frizzl.app.frizzleapp.UserProfile;
 
 
 /**
@@ -29,7 +24,6 @@ import com.frizzl.app.frizzleapp.UserProfile;
 public class CodingScreenFragment extends Fragment {
 
     private CodingScreenPresenter codingScreenPresenter;
-    private DefinedFunctionsViewModel definedFunctionsViewModel;
 
     private CodeEditor codeEditor;
 
@@ -72,28 +66,11 @@ public class CodingScreenFragment extends Fragment {
             @Override
             public void afterTextChanged(Editable s) {
                 // For temp testing
-                if (UserProfile.user.getCurrentLevel() == ContentUtils.POLLY_APP_LEVEL_ID) {
-                    String code = s.toString();
-                    boolean taskCompleted = false;
-                    if (UserProfile.user.getCurrentAppTaskNum() == 2) {
-                        int beforeName = code.indexOf("public void") + String.valueOf("public void").length();
-                        int afterName = code.indexOf("(View view)");
-                        if (afterName - beforeName > 2) {
-                            taskCompleted = true;
-                        }
-                        taskCompleted &= !CodeCheckUtils.checkIfContainsFunctionWithName(code, "nameYouChoose");
-                    } else if (UserProfile.user.getCurrentAppTaskNum() == 3) {
-                        int beforeTextToSay = code.indexOf("speakOut\"") + String.valueOf("speakOut\"").length();
-                        int afterTextToSay = code.indexOf("\");");
-                        if (afterTextToSay - beforeTextToSay > 0){
-                            taskCompleted = true;
-                        }
-                        taskCompleted &= !CodeCheckUtils.checkIfSpeakoutIsEmpty(code);
-                    }
-                    if (taskCompleted){
-                        AppBuilderActivity appBuilderActivity = (AppBuilderActivity) getActivity();
-                        if (appBuilderActivity != null) appBuilderActivity.taskCompleted();
-                    }
+                String code = s.toString();
+                boolean taskCompleted = codingScreenPresenter.isTaskCompleted(code);
+                if (taskCompleted){
+                    AppBuilderActivity appBuilderActivity = (AppBuilderActivity) getActivity();
+                    if (appBuilderActivity != null) appBuilderActivity.taskCompleted();
                 }
             }
         });
@@ -110,8 +87,6 @@ public class CodingScreenFragment extends Fragment {
             Log.e("APP_BUILDER", "codingScreenPresenter was not set.");
         }
 
-        definedFunctionsViewModel =
-                ViewModelProviders.of(getActivity()).get(DefinedFunctionsViewModel.class);
 
         return view;
     }
@@ -141,26 +116,13 @@ public class CodingScreenFragment extends Fragment {
     public void onPause() {
         super.onPause();
         codingScreenPresenter.onPause();
-        extractDefinedFunctionsAndUpdateViewModel();
     }
 
-    public void extractDefinedFunctionsAndUpdateViewModel() {
-        String code = getCode();
-        definedFunctionsViewModel.clearFunctions();
-
-        String functionIdentification = "public void";
-        int index = code.indexOf(functionIdentification);
-        while (index >= 0) {
-            String substring = code.substring(index, code.length());
-            int functionNameEnd = substring.indexOf("(");
-            if (functionNameEnd > 0) {
-                String function = code.substring(
-                        index + functionIdentification.length() + 1,
-                        index + functionNameEnd);
-                definedFunctionsViewModel.addFunction(function.trim());
-            }
-            index = code.indexOf(functionIdentification, index + 1);
-        }
-
+    @Override
+    public void onResume(){
+        super.onResume();
+        codingScreenPresenter.onResume();
     }
+
+
 }
