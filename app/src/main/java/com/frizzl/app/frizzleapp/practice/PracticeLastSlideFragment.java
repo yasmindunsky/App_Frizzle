@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.frizzl.app.frizzleapp.R;
 import com.frizzl.app.frizzleapp.Utils;
@@ -32,7 +33,14 @@ public class PracticeLastSlideFragment extends android.support.v4.app.Fragment {
         }
 
         Bundle bundle = getArguments();
-        if (bundle != null) this.levelID = bundle.getInt("lesson");
+        if (bundle != null) {
+            this.levelID = bundle.getInt("lesson");
+        }
+
+        if (levelID == Utils.FIRST_PRACTICE_LEVEL_ID) {
+            ((TextView)view.findViewById(R.id.congratsTitle)).setText(R.string.well_done);
+            ((TextView)view.findViewById(R.id.congratsText)).setText(R.string.completed_first_practice);
+        }
 
         Button thanksButton = view.findViewById(R.id.thanksButton);
         thanksButton.setOnClickListener(v -> {

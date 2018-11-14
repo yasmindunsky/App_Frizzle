@@ -208,6 +208,8 @@ public class MainActivity extends AppCompatActivity implements   TextToSpeech.On
     <string name="cancel">cancel</string>
     <string name="downloading_your_app">Downloading your app...</string>
     <string name="downloading_this_is_so_exciting">This is so exciting!</string>
+    <string name="well_done">Well done</string>
+    <string name="completed_first_practice">You completed your first practice.</string>
 
     <string-array name="fonts">
         <item>sans-serif</item>

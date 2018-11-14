@@ -20,19 +20,19 @@
             app:lottie_rawRes="@raw/trophy" />
 
         <android.support.v7.widget.AppCompatTextView
-            android:id="@+id/textView"
+            android:id="@+id/congratsTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/wow"
             android:textAppearance="@style/Text.Title.Blue"
-            app:layout_constraintBottom_toTopOf="@+id/installText"
+            app:layout_constraintBottom_toTopOf="@+id/congratsText"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/checkMark"
             app:layout_constraintVertical_chainStyle="packed" />
 
         <android.support.v7.widget.AppCompatTextView
-            android:id="@+id/installText"
+            android:id="@+id/congratsText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="false"
@@ -42,7 +42,7 @@
             app:layout_constraintBottom_toTopOf="@+id/amazingWork"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+            app:layout_constraintTop_toBottomOf="@+id/congratsTitle" />
 
         <android.support.v7.widget.AppCompatTextView
             android:id="@+id/amazingWork"
@@ -57,7 +57,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/installText" />
+            app:layout_constraintTop_toBottomOf="@+id/congratsText" />
 
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/thanksButton"
@@ -69,6 +69,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/installText"
+            app:layout_constraintTop_toBottomOf="@+id/congratsText"
             app:layout_constraintVertical_bias="1.0" />
     </android.support.constraint.ConstraintLayout>
