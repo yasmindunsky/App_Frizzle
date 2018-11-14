@@ -32,7 +32,7 @@ import com.frizzl.app.frizzleapp.AnalyticsUtils;
 import com.frizzl.app.frizzleapp.R;
 import com.frizzl.app.frizzleapp.SwipeDirection;
 import com.frizzl.app.frizzleapp.UserProfile;
-import com.frizzl.app.frizzleapp.Utils;
+import com.frizzl.app.frizzleapp.ViewUtils;
 import com.frizzl.app.frizzleapp.map.MapActivity;
 import com.tooltip.OnDismissListener;
 
@@ -184,7 +184,7 @@ public class AppBuilderActivity extends AppCompatActivity {
 
 
 //         Rotation for RTL swiping.
-        if (Utils.isRTL()) {
+        if (ViewUtils.isRTL()) {
             viewPager.setRotationY(180);
         }
 
@@ -217,7 +217,7 @@ public class AppBuilderActivity extends AppCompatActivity {
         graphicEditTab.select();
 
         // Set stepBarView
-        stepBarView.setRtl(!Utils.isRTL());
+        stepBarView.setRtl(!ViewUtils.isRTL());
         int tasksNum = UserProfile.user.getCurrentAppTasks().getTasksNum();
         stepBarView.setMaxCount(tasksNum);
         stepBarView.setReachedStep(tasksNum);
@@ -266,7 +266,7 @@ public class AppBuilderActivity extends AppCompatActivity {
     }
 
     public void presentPopup(PopupWindow popupWindow, Runnable runOnDissmiss) {
-        Utils.presentPopup(popupWindow, runOnDissmiss, relativeLayout, relativeLayout, this);
+        ViewUtils.presentPopup(popupWindow, runOnDissmiss, relativeLayout, relativeLayout, this);
     }
 
     private Runnable afterSuccessPopupClosed() {
@@ -279,7 +279,7 @@ public class AppBuilderActivity extends AppCompatActivity {
 
     private void openTaskSuccessPopup() {
         PopupWindow successPopupWindow = new TaskSuccessPopupWindow(AppBuilderActivity.this);
-        Utils.presentPopup(successPopupWindow, afterSuccessPopupClosed(), relativeLayout, relativeLayout, this);
+        ViewUtils.presentPopup(successPopupWindow, afterSuccessPopupClosed(), relativeLayout, relativeLayout, this);
     }
 
     private void openRequestPermissionPopup() {
@@ -288,11 +288,11 @@ public class AppBuilderActivity extends AppCompatActivity {
                     new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, WRITE_PERMISSION);
         };
         PopupWindow permissionPopupWindow = new RequestPermissionPopupWindow(AppBuilderActivity.this, requestPermission);
-        Utils.presentPopup(permissionPopupWindow, null, relativeLayout, relativeLayout, this);
+        ViewUtils.presentPopup(permissionPopupWindow, null, relativeLayout, relativeLayout, this);
     }
 
     public void openStartAppPopup() {
-        relativeLayout.post(() -> Utils.presentPopup(startAppPopupWindow, null, relativeLayout, relativeLayout, this));
+        relativeLayout.post(() -> ViewUtils.presentPopup(startAppPopupWindow, null, relativeLayout, relativeLayout, this));
     }
 
     @Override
@@ -404,7 +404,7 @@ public class AppBuilderActivity extends AppCompatActivity {
 
     public void showLoaderAnimation(boolean show) {
         if (show)
-            Utils.presentPopup(downloadingAppPopupWindow,
+            ViewUtils.presentPopup(downloadingAppPopupWindow,
                     null, relativeLayout, relativeLayout, this);
         else if (downloadingAppPopupWindow != null)
             downloadingAppPopupWindow.dismiss();

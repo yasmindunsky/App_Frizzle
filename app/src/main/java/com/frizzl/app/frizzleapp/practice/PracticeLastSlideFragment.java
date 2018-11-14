@@ -7,8 +7,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.frizzl.app.frizzleapp.ContentUtils;
 import com.frizzl.app.frizzleapp.R;
-import com.frizzl.app.frizzleapp.Utils;
+import com.frizzl.app.frizzleapp.ViewUtils;
 import com.frizzl.app.frizzleapp.UserProfile;
 
 /**
@@ -28,7 +29,7 @@ public class PracticeLastSlideFragment extends android.support.v4.app.Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_practice_end, container, false);
 
-        if (Utils.isRTL()) {
+        if (ViewUtils.isRTL()) {
             view.setRotationY(180);
         }
 
@@ -37,7 +38,7 @@ public class PracticeLastSlideFragment extends android.support.v4.app.Fragment {
             this.levelID = bundle.getInt("lesson");
         }
 
-        if (levelID == Utils.FIRST_PRACTICE_LEVEL_ID) {
+        if (levelID == ContentUtils.FIRST_PRACTICE_LEVEL_ID) {
             ((TextView)view.findViewById(R.id.congratsTitle)).setText(R.string.well_done);
             ((TextView)view.findViewById(R.id.congratsText)).setText(R.string.completed_first_practice);
         }

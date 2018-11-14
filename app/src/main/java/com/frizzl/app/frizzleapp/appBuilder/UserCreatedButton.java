@@ -25,7 +25,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.frizzl.app.frizzleapp.R;
-import com.frizzl.app.frizzleapp.Utils;
+import com.frizzl.app.frizzleapp.ViewUtils;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -78,7 +78,7 @@ public class UserCreatedButton extends UserCreatedView {
                 GridLayout.spec(column));
         layoutParams.width = (int) context.getResources().getDimension(R.dimen.user_created_button_width);
         String marginString = properties.get("android:layout_margin");
-        int margin = Utils.dpStringToPixel(context, marginString);
+        int margin = ViewUtils.dpStringToPixel(context, marginString);
         layoutParams.setMargins(margin,margin,margin,margin);
         thisView.setLayoutParams(layoutParams);
 
@@ -180,7 +180,7 @@ public class UserCreatedButton extends UserCreatedView {
             if (selectedColorButton == null) return;
             int selectedColor = selectedColorButton.getShadowColor();
             thisView.setTextColor(selectedColor);
-            properties.put("android:textColor", Utils.hexFromColorInt(selectedColor));
+            properties.put("android:textColor", ViewUtils.hexFromColorInt(selectedColor));
         });
 
         // BG COLOR
@@ -195,7 +195,7 @@ public class UserCreatedButton extends UserCreatedView {
             Drawable buttonDrawable = ContextCompat.getDrawable(context, originalButtonDrawableRes);
             if (buttonDrawable != null) buttonDrawable.setColorFilter(selectedColor, PorterDuff.Mode.MULTIPLY);
             thisView.setBackground(buttonDrawable);
-            properties.put("android:backgroundTint", Utils.hexFromColorInt(selectedColor));
+            properties.put("android:backgroundTint", ViewUtils.hexFromColorInt(selectedColor));
         });
 
 

@@ -5,7 +5,7 @@ import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.frizzl.app.frizzleapp.Utils;
+import com.frizzl.app.frizzleapp.ViewUtils;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -126,9 +126,9 @@ public class UserCreatedViewsModel extends ViewModel {
 
                 // Set padding.
                 String paddingString = properties.get("android:padding");
-                int padding = Utils.dpStringToPixel(paddingString, context);
+                int padding = ViewUtils.dpStringToPixel(paddingString, context);
                 String paddingSideString = properties.get("android:paddingStart");
-                int paddingSide = Utils.dpStringToPixel(paddingSideString, context);
+                int paddingSide = ViewUtils.dpStringToPixel(paddingSideString, context);
 
                 if (userCreatedView != null) userCreatedView.getThisView().setPadding(paddingSide,padding,paddingSide,padding);
 

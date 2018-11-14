@@ -11,7 +11,7 @@ import android.widget.TextView;
 import com.frizzl.app.frizzleapp.AnalyticsUtils;
 import com.frizzl.app.frizzleapp.R;
 import com.frizzl.app.frizzleapp.UserProfile;
-import com.frizzl.app.frizzleapp.Utils;
+import com.frizzl.app.frizzleapp.ViewUtils;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -32,7 +32,7 @@ public class TaskFragment extends Fragment {
         view.setPadding(60,50,60,50);
 
         // Rotation for RTL swiping.
-        if (Utils.isRTL()) {
+        if (ViewUtils.isRTL()) {
             view.setRotationY(180);
             view.setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
         }

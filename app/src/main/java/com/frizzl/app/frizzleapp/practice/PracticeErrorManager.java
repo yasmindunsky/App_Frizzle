@@ -1,9 +1,10 @@
 package com.frizzl.app.frizzleapp.practice;
 
 import com.frizzl.app.frizzleapp.CodeCheckUtils;
+import com.frizzl.app.frizzleapp.ContentUtils;
 import com.frizzl.app.frizzleapp.FrizzlApplication;
 import com.frizzl.app.frizzleapp.R;
-import com.frizzl.app.frizzleapp.Utils;
+import com.frizzl.app.frizzleapp.ViewUtils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -96,12 +97,12 @@ public class PracticeErrorManager {
         errorChecksList.add(errorCheck6);
 
         levelAndSlideToChecks = new HashMap<>();
-        levelAndSlideToChecks.put(Utils.SPEAKOUT_PRACTICE_LEVEL_ID + "_1", new int[]{1, 2, 3});
-        levelAndSlideToChecks.put(Utils.SPEAKOUT_PRACTICE_LEVEL_ID + "_2", new int[]{1, 2, 3});
-        levelAndSlideToChecks.put(Utils.ONCLICK_PRACTICE_LEVEL_ID + "_5", new int[]{1, 4, 5});
-        levelAndSlideToChecks.put(Utils.ONCLICK_PRACTICE_LEVEL_ID + "_7", new int[]{1, 4, 5});
-        levelAndSlideToChecks.put(Utils.ONCLICK_PRACTICE_LEVEL_ID + "_8", new int[]{1, 6, 5, 2});
-        levelAndSlideToChecks.put(Utils.ONCLICK_PRACTICE_LEVEL_ID + "_9", new int[]{});
+        levelAndSlideToChecks.put(ContentUtils.SPEAKOUT_PRACTICE_LEVEL_ID + "_2", new int[]{1, 2, 3});
+        levelAndSlideToChecks.put(ContentUtils.ONCLICK_PRACTICE_LEVEL_ID + "_5", new int[]{1, 4, 5});
+        levelAndSlideToChecks.put(ContentUtils.SPEAKOUT_PRACTICE_LEVEL_ID + "_1", new int[]{1, 2, 3});
+        levelAndSlideToChecks.put(ContentUtils.ONCLICK_PRACTICE_LEVEL_ID + "_7", new int[]{1, 4, 5});
+        levelAndSlideToChecks.put(ContentUtils.ONCLICK_PRACTICE_LEVEL_ID + "_8", new int[]{1, 6, 5, 2});
+        levelAndSlideToChecks.put(ContentUtils.ONCLICK_PRACTICE_LEVEL_ID + "_9", new int[]{});
     }
 
     public static String check(int currentLevel, int currentSlide, String originalCode, String currentCode) {

@@ -71,10 +71,10 @@ public class CodeSection extends RelativeLayout {
         if (runnable) {
             playButton = new ImageButton(context);
             OnClickListener runCode = v -> {
-                if (Utils.volumeIsLow(context)) Utils.presentVolumeToast(context);
+                if (ViewUtils.volumeIsLow(context)) ViewUtils.presentVolumeToast(context);
                 if (waitForCTA && readyForCTAListener != null) readyForCTAListener.onReadyForCTA();
                 int currentSlide = UserProfile.user.getCurrentSlideInLevel();
-                if (UserProfile.user.getCurrentLevel() == Utils.SPEAKOUT_PRACTICE_LEVEL_ID
+                if (UserProfile.user.getCurrentLevel() == ContentUtils.SPEAKOUT_PRACTICE_LEVEL_ID
                         && presentNotificationListener != null && ((currentSlide == 4) || (currentSlide == 3))) {
                     if (currentSlide == 3)
                         presentNotificationListener.onPresentNotification(getResources().getString(R.string.notification_semicolon));
@@ -109,7 +109,7 @@ public class CodeSection extends RelativeLayout {
         errorText.setText(errorMessage);
         PopupWindow popupWindow = new PopupWindow(popupView, ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT, true);
-        Utils.presentPopup(popupWindow, null, codeEditor, layout, context);
+        ViewUtils.presentPopup(popupWindow, null, codeEditor, layout, context);
         ImageButton closeButton = popupView.findViewById(R.id.close);
         closeButton.setOnClickListener(v -> popupWindow.dismiss());
     }

@@ -7,7 +7,7 @@ import android.widget.ImageButton;
 
 import com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar;
 import com.frizzl.app.frizzleapp.R;
-import com.frizzl.app.frizzleapp.Utils;
+import com.frizzl.app.frizzleapp.ViewUtils;
 import com.frizzl.app.frizzleapp.SwipeDirection;
 import com.frizzl.app.frizzleapp.UserProfile;
 
@@ -79,7 +79,7 @@ public class IntroActivity extends FragmentActivity {
         }
 
         // Rotation for RTL swiping.
-        if (Utils.isRTL()) {
+        if (ViewUtils.isRTL()) {
             viewPager.setRotationY(180);
         }
     }

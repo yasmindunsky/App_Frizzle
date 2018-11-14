@@ -4,10 +4,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.graphics.Color;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridLayout;
 import android.widget.ImageButton;
@@ -17,8 +15,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.frizzl.app.frizzleapp.R;
-import com.frizzl.app.frizzleapp.Utils;
-import com.frizzl.app.frizzleapp.UserProfile;
+import com.frizzl.app.frizzleapp.ViewUtils;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -53,7 +50,7 @@ public class UserCreatedTextView extends UserCreatedView {
         layoutParams.width = (int) context.getResources().getDimension(R.dimen.user_created_button_width);
 
         String marginString = properties.get("android:layout_margin");
-        int margin = Utils.dpStringToPixel(marginString, context);
+        int margin = ViewUtils.dpStringToPixel(marginString, context);
         layoutParams.setMargins(margin,margin,margin,margin);
         thisView.setLayoutParams(layoutParams);
 
@@ -156,7 +153,7 @@ public class UserCreatedTextView extends UserCreatedView {
             if (selectedColorButton == null) return;
             int selectedColor = selectedColorButton.getShadowColor();
             thisView.setTextColor(selectedColor);
-            properties.put("android:textColor", Utils.hexFromColorInt(selectedColor));
+            properties.put("android:textColor", ViewUtils.hexFromColorInt(selectedColor));
         });
 
         //DELETE

@@ -4,7 +4,6 @@ package com.frizzl.app.frizzleapp.practice;
 import android.content.Context;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
-import android.speech.tts.Voice;
 import android.support.constraint.ConstraintLayout;
 import android.support.constraint.ConstraintSet;
 import android.support.v4.app.Fragment;
@@ -22,7 +21,7 @@ import android.widget.Button;
 
 import com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar;
 import com.frizzl.app.frizzleapp.R;
-import com.frizzl.app.frizzleapp.Utils;
+import com.frizzl.app.frizzleapp.ViewUtils;
 import com.frizzl.app.frizzleapp.UserProfile;
 
 import java.util.Locale;
@@ -55,7 +54,7 @@ public class IntroSlideFragment extends Fragment {
         constraintLayout.setFocusableInTouchMode(true);
         int constraintLayoutId = constraintLayout.getId();
 
-        if (Utils.isRTL()) {
+        if (ViewUtils.isRTL()) {
             view.setRotationY(180);
         }
 
@@ -95,9 +94,9 @@ public class IntroSlideFragment extends Fragment {
             infoText.setId(R.id.infoText);
 
             SpannableStringBuilder spannableInfoText = new SpannableStringBuilder(practiceSlide.getInfoText());
-            spannableInfoText = Utils.markWithColorBetweenTwoSymbols(spannableInfoText,
+            spannableInfoText = ViewUtils.markWithColorBetweenTwoSymbols(spannableInfoText,
                     "$green$", getResources().getColor(R.color.frizzle_green), true, true, context);
-            spannableInfoText = Utils.markWithColorBetweenTwoSymbols(spannableInfoText,
+            spannableInfoText = ViewUtils.markWithColorBetweenTwoSymbols(spannableInfoText,
                     "$orange$", getResources().getColor(R.color.frizzle_orange), true, true, context);
             infoText.setText(spannableInfoText);
 
@@ -112,9 +111,9 @@ public class IntroSlideFragment extends Fragment {
             taskText.setId(R.id.taskText);
 
             SpannableStringBuilder spannableTaskText = new SpannableStringBuilder(practiceSlide.getTaskText());
-            spannableTaskText = Utils.markWithColorBetweenTwoSymbols(spannableTaskText,
+            spannableTaskText = ViewUtils.markWithColorBetweenTwoSymbols(spannableTaskText,
                     "$green$", getResources().getColor(R.color.frizzle_green), true, false, context);
-            spannableTaskText = Utils.markWithColorBetweenTwoSymbols(spannableTaskText,
+            spannableTaskText = ViewUtils.markWithColorBetweenTwoSymbols(spannableTaskText,
                     "$orange$", getResources().getColor(R.color.frizzle_orange), true, false, context);
             taskText.setText(spannableTaskText);
             constraintLayout.addView(taskText);
@@ -124,7 +123,7 @@ public class IntroSlideFragment extends Fragment {
         }
 
         View.OnClickListener speak = v -> {
-            if (Utils.volumeIsLow(context)) Utils.presentVolumeToast(context);
+            if (ViewUtils.volumeIsLow(context)) ViewUtils.presentVolumeToast(context);
             String textToSay = (String) v.getTag();
             tts.speak(textToSay, TextToSpeech.QUEUE_ADD, null);
             enableCTAButton(true);

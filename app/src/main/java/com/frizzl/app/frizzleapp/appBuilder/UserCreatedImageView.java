@@ -1,7 +1,6 @@
 package com.frizzl.app.frizzleapp.appBuilder;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.widget.EditText;
 import android.widget.GridLayout;
 import android.widget.ImageView;
@@ -9,7 +8,7 @@ import android.widget.PopupWindow;
 import android.widget.RadioButton;
 
 import com.frizzl.app.frizzleapp.R;
-import com.frizzl.app.frizzleapp.Utils;
+import com.frizzl.app.frizzleapp.ViewUtils;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -34,7 +33,7 @@ public class UserCreatedImageView extends UserCreatedView {
         layoutParams.height = (int) context.getResources().getDimension(R.dimen.user_created_image_view_width);
 
         String marginString = properties.get("android:layout_margin");
-        int margin = Utils.dpStringToPixel(marginString, context);
+        int margin = ViewUtils.dpStringToPixel(marginString, context);
         layoutParams.setMargins(margin,margin,margin,margin);
         thisView.setLayoutParams(layoutParams);
 

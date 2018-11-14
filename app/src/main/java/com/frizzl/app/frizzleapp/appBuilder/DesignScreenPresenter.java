@@ -3,7 +3,8 @@ package com.frizzl.app.frizzleapp.appBuilder;
 import android.content.Context;
 import android.widget.PopupWindow;
 
-import com.frizzl.app.frizzleapp.Utils;
+import com.frizzl.app.frizzleapp.ContentUtils;
+import com.frizzl.app.frizzleapp.ViewUtils;
 import com.frizzl.app.frizzleapp.UserApp;
 import com.frizzl.app.frizzleapp.UserProfile;
 
@@ -57,7 +58,7 @@ public class DesignScreenPresenter {
                         @Override
                         public void run() {
                             // For temp testing
-                            if (UserProfile.user.getCurrentLevel() == Utils.POLLY_APP_LEVEL_ID && UserProfile.user.getCurrentAppTaskNum() == 0) {
+                            if (UserProfile.user.getCurrentLevel() == ContentUtils.POLLY_APP_LEVEL_ID && UserProfile.user.getCurrentAppTaskNum() == 0) {
                                 designScreenFragment.taskCompleted();
                             }
                         }

@@ -15,7 +15,6 @@ import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
@@ -26,11 +25,12 @@ import com.frizzl.app.frizzleapp.Code;
 import com.frizzl.app.frizzleapp.CodeCheckUtils;
 import com.frizzl.app.frizzleapp.CodeKeyboard;
 import com.frizzl.app.frizzleapp.CodeSection;
+import com.frizzl.app.frizzleapp.ContentUtils;
 import com.frizzl.app.frizzleapp.FrizzlApplication;
 import com.frizzl.app.frizzleapp.Design;
 import com.frizzl.app.frizzleapp.DesignSection;
 import com.frizzl.app.frizzleapp.R;
-import com.frizzl.app.frizzleapp.Utils;
+import com.frizzl.app.frizzleapp.ViewUtils;
 import com.frizzl.app.frizzleapp.UserProfile;
 import com.frizzl.app.frizzleapp.appBuilder.UserCreatedButton;
 
@@ -71,7 +71,7 @@ public class PracticeSlideFragment extends Fragment {
         currentLevel = UserProfile.user.getCurrentLevel();
 
 
-        if (Utils.isRTL()) {
+        if (ViewUtils.isRTL()) {
             view.setRotationY(180);
         }
 
@@ -96,9 +96,9 @@ public class PracticeSlideFragment extends Fragment {
             infoText.setId(R.id.infoText);
 
             SpannableStringBuilder spannableInfoText = new SpannableStringBuilder(practiceSlide.getInfoText());
-            spannableInfoText = Utils.markWithColorBetweenTwoSymbols(spannableInfoText,
+            spannableInfoText = ViewUtils.markWithColorBetweenTwoSymbols(spannableInfoText,
                     "$green$", getResources().getColor(R.color.frizzle_green), true, true, context);
-            spannableInfoText = Utils.markWithColorBetweenTwoSymbols(spannableInfoText,
+            spannableInfoText = ViewUtils.markWithColorBetweenTwoSymbols(spannableInfoText,
                     "$orange$", getResources().getColor(R.color.frizzle_orange), true, true, context);
             infoText.setText(spannableInfoText);
 
@@ -113,9 +113,9 @@ public class PracticeSlideFragment extends Fragment {
             taskText.setId(R.id.taskText);
 
             SpannableStringBuilder spannableTaskText = new SpannableStringBuilder(practiceSlide.getTaskText());
-            spannableTaskText = Utils.markWithColorBetweenTwoSymbols(spannableTaskText,
+            spannableTaskText = ViewUtils.markWithColorBetweenTwoSymbols(spannableTaskText,
                     "$green$", getResources().getColor(R.color.frizzle_green), true, false, context);
-            spannableTaskText = Utils.markWithColorBetweenTwoSymbols(spannableTaskText,
+            spannableTaskText = ViewUtils.markWithColorBetweenTwoSymbols(spannableTaskText,
                     "$orange$", getResources().getColor(R.color.frizzle_orange), true, false, context);
             taskText.setText(spannableTaskText);
 
@@ -154,7 +154,7 @@ public class PracticeSlideFragment extends Fragment {
             }
             originalCode = code.getCode();
             CodeSection codeSection = new CodeSection(context, originalCode, code.getRunnable(), mutable, code.getWaitForCTA(), codeKeyboard, ((PracticeActivity) activity).getMainLayout());
-            if (Utils.SPEAKOUT_PRACTICE_LEVEL_ID == currentLevel &&
+            if (ContentUtils.SPEAKOUT_PRACTICE_LEVEL_ID == currentLevel &&
                     0 == currentSlide) {
                 codeSection.setEditorOnClickListener(v ->
                         presentNotification(context, "Here we'll write code after we'll learn how.", set));
@@ -189,7 +189,7 @@ public class PracticeSlideFragment extends Fragment {
             prevID = designSection.getId();
 
             designSection.setDisplayNotificationListener((PopupWindow popupWindow) -> {
-                if (UserProfile.user.getCurrentLevel() == Utils.ONCLICK_PRACTICE_LEVEL_ID
+                if (UserProfile.user.getCurrentLevel() == ContentUtils.ONCLICK_PRACTICE_LEVEL_ID
                         && getCurrentSlide() == 1) {
                     popupWindow.dismiss();
                     presentNotification(context, context.getResources().getString(R.string.our_button_does_nothing), set);
@@ -219,7 +219,7 @@ public class PracticeSlideFragment extends Fragment {
                 } else {
                     // Special case of checking design and not code. Wrong result from
                     // practiceCorrect is enough here, no additional test required.
-                    if (currentLevel == Utils.ONCLICK_PRACTICE_LEVEL_ID  &&
+                    if (currentLevel == ContentUtils.ONCLICK_PRACTICE_LEVEL_ID  &&
                             getCurrentSlide() == 9){
                         presentError(context, FrizzlApplication.resources.getString(R.string.error_set_onclick), set);
                     }
@@ -342,7 +342,7 @@ public class PracticeSlideFragment extends Fragment {
         int currentSlide = getCurrentSlide();
 
         int currentLevel = UserProfile.user.getCurrentLevel();
-        if (currentLevel == Utils.SPEAKOUT_PRACTICE_LEVEL_ID) {
+        if (currentLevel == ContentUtils.SPEAKOUT_PRACTICE_LEVEL_ID) {
             if (currentSlide == 1) {
                 // Check if speakOut was added and written 'this is so cool'.
                 CodeSection codeSection = constraintLayout.findViewById(R.id.codeSection);
@@ -354,7 +354,7 @@ public class PracticeSlideFragment extends Fragment {
                 String code = codeSection.getCode();
                 correct = CodeCheckUtils.checkIfContainsSpeakOutAndString(code, "this is so cool", true);
             }
-        } else if (currentLevel == Utils.ONCLICK_PRACTICE_LEVEL_ID) {
+        } else if (currentLevel == ContentUtils.ONCLICK_PRACTICE_LEVEL_ID) {
             if (currentSlide == 5) {
                 // Check if new function was added.
                 CodeSection codeSection = constraintLayout.findViewById(R.id.codeSection);

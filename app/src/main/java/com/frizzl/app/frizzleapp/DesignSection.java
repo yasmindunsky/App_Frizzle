@@ -77,7 +77,7 @@ public class DesignSection extends RelativeLayout {
             userCreatedButton.setDisplayOnClick(hasOnClickFunction);
             PopupWindow popupWindow = userCreatedButton.getPropertiesTablePopupWindow(getContext());
             v.post(() ->
-            Utils.presentPopup(popupWindow, null, v, layout, context));
+            ViewUtils.presentPopup(popupWindow, null, v, layout, context));
 
         });
         layoutParams = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
@@ -114,19 +114,19 @@ public class DesignSection extends RelativeLayout {
                     Runnable displayNotification = new Runnable() {
                         @Override
                         public void run() {
-                            if (UserProfile.user.getCurrentLevel() == Utils.ONCLICK_PRACTICE_LEVEL_ID
+                            if (UserProfile.user.getCurrentLevel() == ContentUtils.ONCLICK_PRACTICE_LEVEL_ID
                                     && practiceSlideFragment.getCurrentSlide() == 1) {
                                 practiceSlideFragment.presentNotificationFromSection(context.getResources().getString(R.string.our_button_does_nothing));
                             }
                         }
                     };
-                    Utils.presentPopup(runPopupWindow, displayNotification, v, layout, context);
+                    ViewUtils.presentPopup(runPopupWindow, displayNotification, v, layout, context);
                     ImageButton closeButton = runPopupView.findViewById(R.id.close);
                     closeButton.setOnClickListener(v12 -> runPopupWindow.dismiss());
                     button.setOnClickListener(v1 -> {
                         boolean onClickSet = userCreatedButton.getOnClick().equals("myFunction");
                         if (onClickSet) {
-                            if (Utils.volumeIsLow(context)) Utils.presentVolumeToast(context);
+                            if (ViewUtils.volumeIsLow(context)) ViewUtils.presentVolumeToast(context);
                             tts.speak("Hello", TextToSpeech.QUEUE_ADD, null);
                         }
                         if (displayNotificationListener != null)

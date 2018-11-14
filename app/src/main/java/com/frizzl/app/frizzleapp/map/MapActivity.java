@@ -13,7 +13,7 @@ import android.widget.ScrollView;
 import com.frizzl.app.frizzleapp.AnalyticsUtils;
 import com.frizzl.app.frizzleapp.R;
 import com.frizzl.app.frizzleapp.UserProfile;
-import com.frizzl.app.frizzleapp.Utils;
+import com.frizzl.app.frizzleapp.ViewUtils;
 import com.frizzl.app.frizzleapp.appBuilder.AppBuilderActivity;
 import com.frizzl.app.frizzleapp.practice.AppContentParser;
 import com.frizzl.app.frizzleapp.practice.AppTasks;
@@ -70,7 +70,7 @@ public class MapActivity extends AppCompatActivity {
         HelpPopupWindow helpPopupWindow = new HelpPopupWindow(this);
 
         toolbarIcon.setOnClickListener(v -> {
-            Utils.presentPopup(helpPopupWindow, null, mainLayout, mainLayout,
+            ViewUtils.presentPopup(helpPopupWindow, null, mainLayout, mainLayout,
                     this);
             helpPopupWindow.switchFormVisibility(View.VISIBLE);
 
@@ -159,7 +159,7 @@ public class MapActivity extends AppCompatActivity {
         PopupWindow popupWindow = mapPresenter.getPrePracticePopup(startPractice);
 
         if(isFinishing()) startPractice.run();
-        Utils.presentPopup(popupWindow, null, constraintLayout, constraintLayout, this);
+        ViewUtils.presentPopup(popupWindow, null, constraintLayout, constraintLayout, this);
     }
 
     public void goToIntro(int levelID) {

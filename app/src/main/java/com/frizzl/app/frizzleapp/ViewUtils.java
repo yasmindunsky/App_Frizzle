@@ -21,12 +21,7 @@ import java.util.Locale;
  * Created by Noga on 13/02/2018.
  */
 
-public class Utils {
-    public final static int FIRST_PRACTICE_LEVEL_ID = 1;
-    public final static int SPEAKOUT_PRACTICE_LEVEL_ID = 2;
-    public final static int ONCLICK_PRACTICE_LEVEL_ID = 3;
-    public final static int POLLY_APP_LEVEL_ID = 4;
-
+public class ViewUtils {
     public static boolean isRTL() {
         return isRTL(Locale.getDefault());
     }
@@ -98,7 +93,7 @@ public class Utils {
                 ssb.setSpan(new ForegroundColorSpan(color), firstSymbol, secondSymbol + 1,
                         Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                 if (makeBold) {
-                    Typeface font = Utils.getRegularFontByLanguage(context);
+                    Typeface font = ViewUtils.getRegularFontByLanguage(context);
                     ssb.setSpan(new CustomTypefaceSpan("", font), firstSymbol, secondSymbol + 1,
                             Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                 }

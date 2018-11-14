@@ -17,8 +17,9 @@ import android.widget.ScrollView;
 
 import com.frizzl.app.frizzleapp.CodeCheckUtils;
 import com.frizzl.app.frizzleapp.CodeKeyboard;
+import com.frizzl.app.frizzleapp.ContentUtils;
 import com.frizzl.app.frizzleapp.R;
-import com.frizzl.app.frizzleapp.Utils;
+import com.frizzl.app.frizzleapp.ViewUtils;
 import com.frizzl.app.frizzleapp.UserProfile;
 
 
@@ -71,7 +72,7 @@ public class CodingScreenFragment extends Fragment {
             @Override
             public void afterTextChanged(Editable s) {
                 // For temp testing
-                if (UserProfile.user.getCurrentLevel() == Utils.POLLY_APP_LEVEL_ID) {
+                if (UserProfile.user.getCurrentLevel() == ContentUtils.POLLY_APP_LEVEL_ID) {
                     String code = s.toString();
                     boolean taskCompleted = false;
                     if (UserProfile.user.getCurrentAppTaskNum() == 2) {

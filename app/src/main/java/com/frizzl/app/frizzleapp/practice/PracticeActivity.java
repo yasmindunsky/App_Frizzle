@@ -1,22 +1,17 @@
 package com.frizzl.app.frizzleapp.practice;
 
 import android.content.Context;
-import android.graphics.Rect;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
-import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageButton;
 
 import com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar;
 import com.frizzl.app.frizzleapp.R;
-import com.frizzl.app.frizzleapp.Utils;
+import com.frizzl.app.frizzleapp.ViewUtils;
 import com.frizzl.app.frizzleapp.SwipeDirection;
 import com.frizzl.app.frizzleapp.UserProfile;
 
@@ -89,7 +84,7 @@ public class PracticeActivity extends FragmentActivity {
             }
         }
         // Rotation for RTL swiping.
-        if (Utils.isRTL()) {
+        if (ViewUtils.isRTL()) {
             viewPager.setRotationY(180);
         }
     }
