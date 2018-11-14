@@ -80,7 +80,7 @@ public class CodeSection extends RelativeLayout {
                         presentNotificationListener.onPresentNotification(getResources().getString(R.string.notification_semicolon));
                     else presentNotificationListener.onPresentNotification(getResources().getString(R.string.notification_space));
                         }
-                if (codeIsValid()) speakOut();
+                else if (codeIsValid()) speakOut();
                 else displayErrorPopup(getResources().getString(R.string.problem_with_syntax), layout);
             };
             playButton.setOnClickListener(runCode);
