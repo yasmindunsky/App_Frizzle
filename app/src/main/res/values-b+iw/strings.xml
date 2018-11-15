@@ -96,6 +96,7 @@ Use "'" for special chars.
     <string name="downloading_this_is_so_exciting">מאד מרגש!</string>
     <string name="well_done">יפה מאד</string>
     <string name="completed_first_practice">השלמת את התרגול הראשון.</string>
+    <string name="here_well_write_code">כאן נכתוב קוד אחרי שנלמד איך עושים זאת.</string>
 
 
     <string-array name="fonts">

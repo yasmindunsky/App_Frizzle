@@ -155,10 +155,10 @@ public class PracticeSlideFragment extends Fragment {
             }
             originalCode = code.getCode();
             CodeSection codeSection = new CodeSection(context, originalCode, code.getRunnable(), mutable, code.getWaitForCTA(), codeKeyboard, ((PracticeActivity) activity).getMainLayout());
-            if (ContentUtils.SPEAKOUT_PRACTICE_LEVEL_ID == currentLevel &&
-                    0 == currentSlide) {
+            if (ContentUtils.FIRST_PRACTICE_LEVEL_ID == currentLevel &&
+                    2 == currentSlide) {
                 codeSection.setEditorOnClickListener(v ->
-                        presentNotification(context, "Here we'll write code after we'll learn how.", set));
+                        presentNotification(context, getString(R.string.here_well_write_code), set));
             }
             codeSection.setId(R.id.codeSection);
             ConstraintLayout.LayoutParams layoutParams = new ConstraintLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,

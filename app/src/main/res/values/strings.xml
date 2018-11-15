@@ -210,6 +210,7 @@ public class MainActivity extends AppCompatActivity implements   TextToSpeech.On
     <string name="downloading_this_is_so_exciting">This is so exciting!</string>
     <string name="well_done">Well done</string>
     <string name="completed_first_practice">You completed your first practice.</string>
+    <string name="here_well_write_code">Here we\'ll write code after we\'ll learn how.</string>
 
     <string-array name="fonts">
         <item>sans-serif</item>
