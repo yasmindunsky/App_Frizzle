@@ -4,6 +4,7 @@ import com.frizzl.app.frizzleapp.appBuilder.UserCreatedView;
 
 import java.io.Serializable;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
@@ -35,6 +36,7 @@ public class UserApp implements Serializable {
         this.code = "";
         this.manifest = "";
         this.views = new HashMap<>();
+        this.definedFunctions = new HashSet<>();
     }
 
     public Map<Integer, UserCreatedView> getViews() {

@@ -19,7 +19,6 @@ public class UserProfile implements Serializable {
 
     private AppTasks currentAppTasks;
     private int currentAppTaskNum;
-    private UserApp tutorialUserApp;
     private UserApp pollyUserApp;
     private int currentUserAppLevelID;
 
@@ -36,7 +35,6 @@ public class UserProfile implements Serializable {
     }
 
     private void init(){
-        tutorialUserApp = null;
         pollyUserApp = null;
         topLevel = 4; // TODO: change before release
         currentLevel = 0;
@@ -54,15 +52,11 @@ public class UserProfile implements Serializable {
     }
 
     public UserApp getCurrentUserApp() {
-        return (currentUserAppLevelID == 0) ? tutorialUserApp : pollyUserApp;
+        return pollyUserApp;
     }
 
     public void setCurrentUserAppLevelID(UserApp currentUserApp) {
-        if (currentUserAppLevelID == 0){
-            tutorialUserApp = currentUserApp;
-        } else {
-            pollyUserApp = currentUserApp;
-        }
+        pollyUserApp = currentUserApp;
     }
 
     public int getCurrentLevel() {
