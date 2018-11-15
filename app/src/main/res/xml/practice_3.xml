@@ -50,7 +50,7 @@ tools:keep="@xml/practice_2">
     </slide>
 
     <slide>
-        <info_text/>
+        <info_text>Congratulations, you've earned a $green$function$green$ keyboard key!</info_text>
         <task_text>Use the keyboard to add a $green$function$green$ to the code.</task_text>
         <reminder_text/>
         <code

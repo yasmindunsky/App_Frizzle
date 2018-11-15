@@ -22,7 +22,7 @@
     </slide>
 
     <slide>
-        <info_text></info_text>
+        <info_text>מזל טוב, הרווחת מקש $orange$speakOut$orange$ למקלדת!</info_text>
         <task_text>כתבו את הפקודה כך שתקריא את הטקסט 'this is so cool'.</task_text>
         <reminder_text>תזכורת: ;speakOut("this is so cool")</reminder_text>
         <code show = "true" mutable="true" runnable="true" waitForCTA="false">\n</code>

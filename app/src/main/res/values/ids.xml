@@ -16,4 +16,5 @@
     <item name="errorView" type="id" />
     <item name="animation" type="id" />
     <item name="notificationView" type="id" />
+    <item name="keyboard_animation" type="id" />
 </resources>

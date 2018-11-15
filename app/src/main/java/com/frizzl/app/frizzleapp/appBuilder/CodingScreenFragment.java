@@ -43,6 +43,8 @@ public class CodingScreenFragment extends Fragment {
 
         Context context = getContext();
         CodeKeyboard codeKeyboard = new CodeKeyboard(context);
+        codeKeyboard.enableSpeakOutKey(false);
+        codeKeyboard.enableFunctionKey(false);
         ConstraintLayout.LayoutParams keyboardLayoutParams = new
                 ConstraintLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT);

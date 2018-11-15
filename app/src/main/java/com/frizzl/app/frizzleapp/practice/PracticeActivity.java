@@ -70,6 +70,7 @@ public class PracticeActivity extends FragmentActivity {
                 }
                 viewPager.setAllowedSwipeDirection(swipeDirection);
                 hideKeyboardIfNeeded();
+
             }
 
             @Override

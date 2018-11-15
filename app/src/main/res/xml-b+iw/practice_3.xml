@@ -51,7 +51,7 @@
     </slide>
 
     <slide>
-        <info_text/>
+        <info_text>מזל טוב, הרווחת מקש $green$פונקציה$green$ למקלדת!</info_text>
         <task_text>הוסיפו לקוד $green$פונקציה$green$ בעזרת המקלדת.</task_text>
         <reminder_text/>
         <code show="true" mutable="true" runnable="false" waitForCTA="false"/>

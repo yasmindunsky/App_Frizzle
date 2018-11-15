@@ -23,9 +23,10 @@ tools:keep="@xml/practice_1">
     </slide>
 
     <slide>
-        <info_text>Rewrite the command to speak out:
-'this is so cool'. </info_text>
-        <task_text/>
+        <info_text>Congratulations, you've earned a $orange$speakOut$orange$ keyboard key!</info_text>
+        <task_text>Rewrite the command to speak out:
+'this is so cool'.
+        </task_text>
         <reminder_text>Reminder: speakOut("this is so cool"); </reminder_text>
         <code show="true" mutable="true" runnable="true" waitForCTA="false">\n</code>
         <design show="false" runnable="false"  withOnClickFunction="false" withOnClickSet="false"></design>

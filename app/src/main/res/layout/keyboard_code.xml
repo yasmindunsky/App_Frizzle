@@ -1,34 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge xmlns:android="http://schemas.android.com/apk/res/android">
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
 
     <LinearLayout
+        android:id="@+id/buttons_top_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/UnselectedLightGrey"
         android:layoutDirection="ltr"
         android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/button_speakout"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:layout_weight="1"
-            android:background="@drawable/keyboard_key"
-            android:text="@string/speakout_keyboard"
-            android:textAppearance="@style/Text.KeyBoardsKeys"
-            android:textColor="@color/frizzle_orange" />
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_weight="1">
 
-        <Button
-            android:id="@+id/button_function"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:layout_weight="1"
-            android:background="@drawable/keyboard_key"
-            android:text="@string/function_keyboard"
-            android:textAppearance="@style/Text.KeyBoardsKeys"
-            android:textColor="@color/frizzle_green" />
+            <Button
+                android:id="@+id/button_speakout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/keyboard_key_selector"
+                android:enabled="false"
+                android:textAppearance="@style/Text.KeyBoardsKeys"
+                android:textColor="@color/frizzle_orange" />
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/orange_fireworks"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:elevation="7dp"
+                android:scaleType="fitCenter"
+                app:lottie_autoPlay="false"
+                app:lottie_loop="false"
+                app:lottie_rawRes="@raw/orange_fireworks" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/button_function"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/keyboard_key_selector"
+                android:enabled="false"
+                android:textAppearance="@style/Text.KeyBoardsKeys"
+                android:textColor="@color/frizzle_green" />
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/green_fireworks"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:elevation="7dp"
+                android:scaleType="fitCenter"
+                app:lottie_autoPlay="false"
+                app:lottie_loop="false"
+                app:lottie_rawRes="@raw/green_fireworks" />
+        </FrameLayout>
 
     </LinearLayout>
 
@@ -75,7 +110,7 @@
             android:padding="15dp"
             android:scaleType="centerInside"
             android:src="@drawable/ic_backspace"
-            
+
             android:text="@string/keyboard_delete" />
 
     </LinearLayout>

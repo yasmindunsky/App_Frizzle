@@ -1,11 +1,13 @@
 package com.frizzl.app.frizzleapp;
 
 import android.content.Context;
+import android.os.Handler;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.inputmethod.ExtractedText;
 import android.view.inputmethod.ExtractedTextRequest;
 import android.view.inputmethod.InputConnection;
@@ -13,6 +15,8 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+
+import com.airbnb.lottie.LottieAnimationView;
 
 public class CodeKeyboard extends LinearLayout implements View.OnClickListener {
 
@@ -102,5 +106,35 @@ public class CodeKeyboard extends LinearLayout implements View.OnClickListener {
 
     public void setInputMethodManager(InputMethodManager inputMethodManager) {
         this.inputMethodManager = inputMethodManager;
+    }
+
+    public void enableSpeakOutKey(boolean firstTime){
+        Button speakOutKey = findViewById(R.id.button_speakout);
+        speakOutKey.setEnabled(true);
+        speakOutKey.setText(R.string.speakout_keyboard);
+        if (firstTime){
+            setVisibility(VISIBLE);
+            LottieAnimationView animationView = findViewById(R.id.orange_fireworks);
+            animationView.setRepeatCount(1);
+            final Handler handler = new Handler();
+            handler.postDelayed(() -> {
+                animationView.playAnimation();
+            }, 400); // 1s
+        }
+    }
+
+    public void enableFunctionKey(boolean firstTime){
+        Button functionKey = findViewById(R.id.button_function);
+        functionKey.setEnabled(true);
+        functionKey.setText(R.string.function_keyboard);
+        if (firstTime){
+            setVisibility(VISIBLE);
+            LottieAnimationView animationView = findViewById(R.id.green_fireworks);
+            animationView.setRepeatCount(1);
+            final Handler handler = new Handler();
+            handler.postDelayed(() -> {
+                animationView.playAnimation();
+            }, 400); // 1s
+        }
     }
 }

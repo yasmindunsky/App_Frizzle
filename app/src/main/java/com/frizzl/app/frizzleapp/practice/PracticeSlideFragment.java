@@ -54,6 +54,7 @@ public class PracticeSlideFragment extends Fragment {
     private ConstraintSet set;
     private int currentSlide;
     private FragmentActivity activity;
+    private CodeKeyboard codeKeyboard;
 
     public PracticeSlideFragment() {
         // Required empty public constructor
@@ -136,7 +137,7 @@ public class PracticeSlideFragment extends Fragment {
 
         }
 
-        CodeKeyboard codeKeyboard = null;
+        codeKeyboard = null;
         if (practiceSlide.hasCode()) {
             Code code = practiceSlide.getCode();
             waitForCTA = code.getWaitForCTA();
@@ -284,6 +285,25 @@ public class PracticeSlideFragment extends Fragment {
         return view;
     }
 
+    private void enableNewKeyboardKeys(CodeKeyboard codeKeyboard) {
+        if (currentLevel == ContentUtils.SPEAKOUT_PRACTICE_LEVEL_ID
+                && currentSlide == 2) {
+            codeKeyboard.enableSpeakOutKey(true);
+        }
+        else if ((currentLevel > ContentUtils.SPEAKOUT_PRACTICE_LEVEL_ID) ||
+                ((currentLevel == ContentUtils.SPEAKOUT_PRACTICE_LEVEL_ID) && currentSlide > 2)) {
+            codeKeyboard.enableSpeakOutKey(false);
+        }
+        if (currentLevel == ContentUtils.ONCLICK_PRACTICE_LEVEL_ID
+                && currentSlide == 5) {
+            codeKeyboard.enableFunctionKey(true);
+        }
+        else if ((currentLevel > ContentUtils.ONCLICK_PRACTICE_LEVEL_ID) ||
+                ((currentLevel == ContentUtils.ONCLICK_PRACTICE_LEVEL_ID) && currentSlide > 5)) {
+            codeKeyboard.enableFunctionKey(false);
+        }
+    }
+
     private void setConstraints(ConstraintSet set, int thisID, int prevID, int sidesMargins) {
         set.constrainWidth(thisID, ConstraintSet.MATCH_CONSTRAINT);
         set.constrainHeight(thisID, ConstraintSet.WRAP_CONTENT);
@@ -423,12 +443,15 @@ public class PracticeSlideFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-//            InputMethodManager inputManager = (InputMethodManager)
-//                    activity.getSystemService(Context.INPUT_METHOD_SERVICE);
-////            inputManager.toggleSoftInput(0, InputMethodManager.HIDE_IMPLICIT_ONLY);
-//             View view = activity.getCurrentFocus();
-//            inputManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
-////            FrizzlApplication.setDeviceKeyboardUp(false);
+
+    }
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (codeKeyboard != null) {
+            enableNewKeyboardKeys(codeKeyboard);
+        }
     }
 
 }
