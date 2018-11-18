@@ -39,7 +39,6 @@ public class IntroSlideFragment extends Fragment {
     private TextToSpeech tts;
     private int numOfSlides;
     private boolean waitForCTA = false;
-    private ConstraintSet set;
     private ConstraintLayout constraintLayout;
 
     public IntroSlideFragment() {
@@ -85,7 +84,7 @@ public class IntroSlideFragment extends Fragment {
         Context context = getContext();
         Button holder = constraintLayout.findViewById(R.id.holder);
         int prevID = holder.getId();
-        set = new ConstraintSet();
+        ConstraintSet set = new ConstraintSet();
         set.clone(constraintLayout);
 
         if (practiceSlide.hasInfoText()){
@@ -153,7 +152,6 @@ public class IntroSlideFragment extends Fragment {
         });
         constraintLayout.addView(callToActionButton);
         setConstraints(set, callToActionButton.getId(), prevID, SIDES_MARGIN*4);
-        prevID = callToActionButton.getId();
 
         if (waitForCTA) enableCTAButton(false);
 

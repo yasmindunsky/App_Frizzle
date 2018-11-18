@@ -27,7 +27,6 @@ import com.fangxu.allangleexpandablebutton.ButtonData;
 import com.fangxu.allangleexpandablebutton.ButtonEventListener;
 import com.frizzl.app.frizzleapp.ContentUtils;
 import com.frizzl.app.frizzleapp.R;
-import com.frizzl.app.frizzleapp.ViewUtils;
 import com.frizzl.app.frizzleapp.UserProfile;
 
 import java.util.ArrayList;

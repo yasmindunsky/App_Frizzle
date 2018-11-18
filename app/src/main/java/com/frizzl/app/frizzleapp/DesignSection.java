@@ -111,13 +111,10 @@ public class DesignSection extends RelativeLayout {
                     }
                     PopupWindow runPopupWindow = new PopupWindow(runPopupView, ViewGroup.LayoutParams.WRAP_CONTENT,
                             ViewGroup.LayoutParams.WRAP_CONTENT, true);
-                    Runnable displayNotification = new Runnable() {
-                        @Override
-                        public void run() {
-                            if (UserProfile.user.getCurrentLevel() == ContentUtils.ONCLICK_PRACTICE_LEVEL_ID
-                                    && practiceSlideFragment.getCurrentSlide() == 1) {
-                                practiceSlideFragment.presentNotificationFromSection(context.getResources().getString(R.string.our_button_does_nothing));
-                            }
+                    Runnable displayNotification = () -> {
+                        if (UserProfile.user.getCurrentLevel() == ContentUtils.ONCLICK_PRACTICE_LEVEL_ID
+                                && practiceSlideFragment.getCurrentSlide() == 1) {
+                            practiceSlideFragment.presentNotificationFromSection(context.getResources().getString(R.string.our_button_does_nothing));
                         }
                     };
                     ViewUtils.presentPopup(runPopupWindow, displayNotification, v, layout, context);

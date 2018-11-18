@@ -7,7 +7,6 @@ import android.util.AttributeSet;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.inputmethod.ExtractedText;
 import android.view.inputmethod.ExtractedTextRequest;
 import android.view.inputmethod.InputConnection;
@@ -51,9 +50,7 @@ public class CodeKeyboard extends LinearLayout implements View.OnClickListener {
         functionButton.setOnClickListener(this);
         ImageButton englishButton = findViewById(R.id.button_english);
         englishButton.setOnClickListener(view ->
-        {
-            inputMethodManager.toggleSoftInput(InputMethodManager.SHOW_FORCED,0);
-        });
+                inputMethodManager.toggleSoftInput(InputMethodManager.SHOW_FORCED,0));
         ImageButton buttonDelete = findViewById(R.id.button_delete);
         buttonDelete.setOnClickListener(this);
         ImageButton buttonEnter = findViewById(R.id.button_enter);
@@ -117,9 +114,7 @@ public class CodeKeyboard extends LinearLayout implements View.OnClickListener {
             LottieAnimationView animationView = findViewById(R.id.orange_fireworks);
             animationView.setRepeatCount(1);
             final Handler handler = new Handler();
-            handler.postDelayed(() -> {
-                animationView.playAnimation();
-            }, 400); // 1s
+            handler.postDelayed(animationView::playAnimation, 400); // 1s
         }
     }
 
@@ -132,9 +127,7 @@ public class CodeKeyboard extends LinearLayout implements View.OnClickListener {
             LottieAnimationView animationView = findViewById(R.id.green_fireworks);
             animationView.setRepeatCount(1);
             final Handler handler = new Handler();
-            handler.postDelayed(() -> {
-                animationView.playAnimation();
-            }, 400); // 1s
+            handler.postDelayed(animationView::playAnimation, 400); // 1s
         }
     }
 }

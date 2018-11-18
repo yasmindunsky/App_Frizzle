@@ -22,6 +22,8 @@ import java.util.Locale;
  */
 
 public class ViewUtils {
+    public static final String CONNECTION_FAILED = "15657";
+
     public static boolean isRTL() {
         return isRTL(Locale.getDefault());
     }

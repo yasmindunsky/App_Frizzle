@@ -33,7 +33,7 @@ public class ChooseImagePopupWindow extends PopupWindow {
         this.setOutsideTouchable(true);
         this.setFocusable(true);
 
-        selectedButton = ((RadioButton)popupView.findViewById(selectedImageID));
+        selectedButton = popupView.findViewById(selectedImageID);
         selectedButton.setChecked(true);
 
         android.support.v7.widget.AppCompatButton saveButton = popupView.findViewById(R.id.saveButton);

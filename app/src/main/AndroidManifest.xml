@@ -25,7 +25,7 @@
             android:name="com.frizzl.app.frizzleapp.map.MapActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="nosensor"
-            android:configChanges="keyboardHidden|orientation"></activity>
+            android:configChanges="keyboardHidden|orientation" />
 
         <activity
             android:name="com.frizzl.app.frizzleapp.onboarding.OnboardingActivity"

@@ -4,7 +4,7 @@
     tools:keep="@xml/practice_1">
     <slide>
         <info_text>Building apps has two aspects: designing the app and writing code.</info_text>
-        <task_text></task_text>
+        <task_text />
         <reminder_text />
         <code mutable="false" show="false" runnable ="false" waitForCTA="false"/>
         <design show="false" runnable="false" withOnClickFunction="false" withOnClickSet="false"/>

@@ -4,7 +4,6 @@ import android.content.Context;
 import android.widget.PopupWindow;
 
 import com.frizzl.app.frizzleapp.ContentUtils;
-import com.frizzl.app.frizzleapp.ViewUtils;
 import com.frizzl.app.frizzleapp.UserApp;
 import com.frizzl.app.frizzleapp.UserProfile;
 
@@ -54,13 +53,10 @@ public class DesignScreenPresenter {
                     UserCreatedView userCreatedView = designScreenFragment.getViews().get(thisViewIndex);
                     PopupWindow propertiesTablePopupWindow = userCreatedView.getPropertiesTablePopupWindow(context);
 
-                    Runnable runOnDismiss = new Runnable() {
-                        @Override
-                        public void run() {
-                            // For temp testing
-                            if (UserProfile.user.getCurrentLevel() == ContentUtils.POLLY_APP_LEVEL_ID && UserProfile.user.getCurrentAppTaskNum() == 0) {
-                                designScreenFragment.taskCompleted();
-                            }
+                    Runnable runOnDismiss = () -> {
+                        // For temp testing
+                        if (UserProfile.user.getCurrentLevel() == ContentUtils.POLLY_APP_LEVEL_ID && UserProfile.user.getCurrentAppTaskNum() == 0) {
+                            designScreenFragment.taskCompleted();
                         }
                     };
                     designScreenFragment.presentPopup(propertiesTablePopupWindow, runOnDismiss);

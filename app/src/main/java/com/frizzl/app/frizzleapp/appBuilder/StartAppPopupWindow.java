@@ -27,8 +27,6 @@ public class StartAppPopupWindow extends PopupWindow {
         View popupView = inflater.inflate(R.layout.popup_start_app, null);
         setContentView(popupView);
 
-        AppBuilderActivity activityCalled = activity;
-
         int width = GridLayout.LayoutParams.WRAP_CONTENT;
         setWidth(width);
         int height = GridLayout.LayoutParams.WRAP_CONTENT;

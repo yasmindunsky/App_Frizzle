@@ -265,8 +265,8 @@ public class AppBuilderActivity extends AppCompatActivity {
         codingScreenPresenter.saveState();
     }
 
-    public void presentPopup(PopupWindow popupWindow, Runnable runOnDissmiss) {
-        ViewUtils.presentPopup(popupWindow, runOnDissmiss, relativeLayout, relativeLayout, this);
+    public void presentPopup(PopupWindow popupWindow, Runnable runOnDismiss) {
+        ViewUtils.presentPopup(popupWindow, runOnDismiss, relativeLayout, relativeLayout, this);
     }
 
     private Runnable afterSuccessPopupClosed() {
@@ -304,8 +304,6 @@ public class AppBuilderActivity extends AppCompatActivity {
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     // Permission granted, download APK from server.
                     appBuilderPresenter.downloadApk();
-                } else {
-                    // Permission denied.
                 }
             }
         }
@@ -375,9 +373,7 @@ public class AppBuilderActivity extends AppCompatActivity {
         if (currentTaskNum < user.getCurrentAppTasks().getTasksNum() - 1) {
             UserProfile.user.setCurrentAppTaskNum(currentTaskNum + 1);
         } else {
-            handler.postDelayed(() -> {
-                openTaskSuccessPopup();
-            }, 1000); // 1s
+            handler.postDelayed(this::openTaskSuccessPopup, 1000); // 1s
         }
     }
 
@@ -408,5 +404,11 @@ public class AppBuilderActivity extends AppCompatActivity {
                     null, relativeLayout, relativeLayout, this);
         else if (downloadingAppPopupWindow != null)
             downloadingAppPopupWindow.dismiss();
+    }
+
+    public void presentConnectionNeededPopup() {
+        showLoaderAnimation(false);
+        PopupWindow internetRequiredPopupWindow = new InternetRequiredPopupWindow(AppBuilderActivity.this);
+        ViewUtils.presentPopup(internetRequiredPopupWindow, null, relativeLayout, relativeLayout, this);
     }
 }

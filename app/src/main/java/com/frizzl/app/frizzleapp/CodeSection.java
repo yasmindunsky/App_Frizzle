@@ -24,7 +24,6 @@ import java.util.Locale;
 
 public class CodeSection extends RelativeLayout {
     private CodeEditor codeEditor;
-    private ImageButton playButton;
     private TextToSpeech tts;
     // This variable represents the listener passed in by the owning object
     // The listener must implement the events interface and passes messages up to the parent.
@@ -69,7 +68,7 @@ public class CodeSection extends RelativeLayout {
         addView(codeEditor);
 
         if (runnable) {
-            playButton = new ImageButton(context);
+            ImageButton playButton = new ImageButton(context);
             OnClickListener runCode = v -> {
                 if (ViewUtils.volumeIsLow(context)) ViewUtils.presentVolumeToast(context);
                 if (waitForCTA && readyForCTAListener != null) readyForCTAListener.onReadyForCTA();

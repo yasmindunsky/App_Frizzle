@@ -4,6 +4,8 @@ import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
+import com.frizzl.app.frizzleapp.ViewUtils;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -53,7 +55,7 @@ public class ConnectToServer {
                 output.close();
 //                Log.d("INSTALL", "output: " + output);
             } catch (Exception e) {
-                return "Connection to server failed";
+                return ViewUtils.CONNECTION_FAILED;//"Connection to server failed";
             }
 
             if (path.contains("download")) {

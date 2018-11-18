@@ -4,7 +4,6 @@ import android.widget.PopupWindow;
 
 import com.frizzl.app.frizzleapp.ContentUtils;
 import com.frizzl.app.frizzleapp.R;
-import com.frizzl.app.frizzleapp.ViewUtils;
 import com.frizzl.app.frizzleapp.UserProfile;
 
 /**

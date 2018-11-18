@@ -28,7 +28,6 @@ public class PracticeNotificationView extends LinearLayout{
         int px = ViewUtils.dpStringToPixel(context, "15dp");
         this.setPadding(px, px, px, px);
         this.setGravity(Gravity.CENTER_VERTICAL);
-        boolean isError1 = isError;
 
         ImageView iconImageView = new ImageView(context);
         int drawableResource = isError ? R.drawable.ic_try_again : R.drawable.ic_notification;

@@ -8,9 +8,11 @@ import android.os.Environment;
 import android.provider.Settings;
 import android.support.v4.content.FileProvider;
 import android.util.Log;
+import android.widget.PopupWindow;
 
 import com.frizzl.app.frizzleapp.UserApp;
 import com.frizzl.app.frizzleapp.UserProfile;
+import com.frizzl.app.frizzleapp.ViewUtils;
 
 import java.io.File;
 
@@ -72,11 +74,16 @@ public class AppBuilderPresenter {
 
         Log.d("INSTALL", "in AppBuilderPresenter, downloadApk()");
         new DownloadApkFromServer(output -> {
-            if (output == null || output.equals("")){
+            if (output.equals(ViewUtils.CONNECTION_FAILED)) {
+                appBuilderActivity.presentConnectionNeededPopup();
+            }
+            else if (output == null || output.equals("")){
                 output = "no output from server";
             }
+            else {
+                installUsersApp();
+            }
             Log.d("INSTALL", "in AppBuilderPresenter, downloadApk(), output:" + output);
-            installUsersApp();
         }).execute(code, xml, manifest);
     }
 

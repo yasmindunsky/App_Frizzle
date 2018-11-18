@@ -125,7 +125,7 @@ public class MainActivity extends AppCompatActivity implements   TextToSpeech.On
     <string name="facebook_app_id" translatable="false">178438059643086</string>
     <string name="main_notification_channel_name" translatable="false">notification_channel</string>
     <string name="welcome">welcome</string>
-    <string name="app_explanation_text" translatable="false">Congratulations! You completed all the practices and you are now ready to build your first app.</string>
+    <string name="app_explanation_text">Congratulations! You completed all the practices and you are now ready to build your first app.</string>
     <string name="start">start</string>
     <string name="wow">wow!</string>
     <string name="thanks">thanks</string>

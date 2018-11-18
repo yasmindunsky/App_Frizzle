@@ -7,7 +7,11 @@
         <task_text/>
         <reminder_text />
         <code show = "true" mutable="false" runnable="true" waitForCTA="false">speakOut("Hello");</code>
-        <design show = "false" runnable = "false" withOnClickFunction="false" withOnClickSet="false"></design>
+        <design
+            show="false"
+            runnable="false"
+            withOnClickFunction="false"
+            withOnClickSet="false" />
         <call_to_action>הבנתי</call_to_action>
     </slide>
 

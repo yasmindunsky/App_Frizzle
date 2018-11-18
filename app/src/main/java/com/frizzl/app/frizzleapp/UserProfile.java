@@ -20,7 +20,6 @@ public class UserProfile implements Serializable {
     private AppTasks currentAppTasks;
     private int currentAppTaskNum;
     private UserApp pollyUserApp;
-    private int currentUserAppLevelID;
 
     // level is of apps and practices combined
     private int currentLevel;
@@ -126,7 +125,7 @@ public class UserProfile implements Serializable {
     }
 
     public void setCurrentUserAppLevelID(int appLevelID) {
-        currentUserAppLevelID = appLevelID;
+        int currentUserAppLevelID = appLevelID;
     }
 
     public int getCurrentSlideInLevel() {

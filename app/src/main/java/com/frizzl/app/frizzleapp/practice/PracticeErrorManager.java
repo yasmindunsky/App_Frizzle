@@ -4,7 +4,6 @@ import com.frizzl.app.frizzleapp.CodeCheckUtils;
 import com.frizzl.app.frizzleapp.ContentUtils;
 import com.frizzl.app.frizzleapp.FrizzlApplication;
 import com.frizzl.app.frizzleapp.R;
-import com.frizzl.app.frizzleapp.ViewUtils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
