@@ -19,7 +19,7 @@ public class AppContentParser {
 
     private XmlResourceParser xmlResourceParser;
 
-    public AppTasks parseAppXml(Context context, int currentAppLevelID) throws XmlPullParserException, IOException {
+    public AppTasks parseAppXml(Context context, int currentAppLevelID) throws XmlPullParserException {
         String lessonXmlName = "app_" + Integer.toString(currentAppLevelID);
         xmlResourceParser = context.getResources().getXml(getResId(lessonXmlName, R.xml.class));
         AppTasks currentApp = new AppTasks(currentAppLevelID);

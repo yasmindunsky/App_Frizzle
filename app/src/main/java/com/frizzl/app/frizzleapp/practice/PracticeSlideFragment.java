@@ -221,11 +221,10 @@ public class PracticeSlideFragment extends Fragment {
                 } else {
                     // Special case of checking design and not code. Wrong result from
                     // practiceCorrect is enough here, no additional test required.
-                    if (currentLevel == ContentUtils.ONCLICK_PRACTICE_LEVEL_ID  &&
-                            getCurrentSlide() == 9){
+                    if (currentLevel == ContentUtils.ONCLICK_PRACTICE_LEVEL_ID &&
+                            getCurrentSlide() == 9) {
                         presentError(context, FrizzlApplication.resources.getString(R.string.error_set_onclick), set);
-                    }
-                    else {
+                    } else {
                         String error = PracticeErrorManager.check(currentLevel, getCurrentSlide(),
                                 getOriginalCode(), getCurrentCode());
                         if (error != null) presentError(context, error, set);
@@ -287,16 +286,14 @@ public class PracticeSlideFragment extends Fragment {
         if (currentLevel == ContentUtils.SPEAKOUT_PRACTICE_LEVEL_ID
                 && currentSlide == 2) {
             codeKeyboard.enableSpeakOutKey(true);
-        }
-        else if ((currentLevel > ContentUtils.SPEAKOUT_PRACTICE_LEVEL_ID) ||
+        } else if ((currentLevel > ContentUtils.SPEAKOUT_PRACTICE_LEVEL_ID) ||
                 ((currentLevel == ContentUtils.SPEAKOUT_PRACTICE_LEVEL_ID) && currentSlide > 2)) {
             codeKeyboard.enableSpeakOutKey(false);
         }
         if (currentLevel == ContentUtils.ONCLICK_PRACTICE_LEVEL_ID
                 && currentSlide == 5) {
             codeKeyboard.enableFunctionKey(true);
-        }
-        else if ((currentLevel > ContentUtils.ONCLICK_PRACTICE_LEVEL_ID) ||
+        } else if ((currentLevel > ContentUtils.ONCLICK_PRACTICE_LEVEL_ID) ||
                 ((currentLevel == ContentUtils.ONCLICK_PRACTICE_LEVEL_ID) && currentSlide > 5)) {
             codeKeyboard.enableFunctionKey(false);
         }
@@ -349,7 +346,7 @@ public class PracticeSlideFragment extends Fragment {
 
     private void changeButtonToGreenAndShowAnimation(Button button) {
         button.setBackground(getResources().getDrawable(R.drawable.button_background_green));
-        button.setText("Correct");
+        button.setText(R.string.correct);
         lottieAnimationView.playAnimation();
     }
 
@@ -436,12 +433,6 @@ public class PracticeSlideFragment extends Fragment {
 
     public void presentNotificationFromSection(String string) {
         presentNotification(getContext(), string, set);
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-
     }
 
     @Override

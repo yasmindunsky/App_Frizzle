@@ -211,6 +211,9 @@ public class MainActivity extends AppCompatActivity implements   TextToSpeech.On
     <string name="well_done">Well done</string>
     <string name="completed_first_practice">You completed your first practice.</string>
     <string name="here_well_write_code">Here we\'ll write code after we\'ll learn how.</string>
+    <string name="try_again_when_connected">Try again when you\'re connected.</string>
+    <string name="internet_connection_required">Internet connection is required to install your app.</string>
+    <string name="correct">Correct</string>
 
     <string-array name="fonts">
         <item>sans-serif</item>
