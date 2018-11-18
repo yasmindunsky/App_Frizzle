@@ -202,6 +202,7 @@ public class PracticeSlideFragment extends Fragment {
         int ctaButtonStyle = R.style.Button_PracticeCTA;
         callToActionButton = new AppCompatButton(new ContextThemeWrapper(context, ctaButtonStyle));
         callToActionButton.setText(practiceSlide.getCallToActionText());
+        callToActionButton.setId(R.id.cta_button);
         callToActionButton.setBackground(getResources().getDrawable(R.drawable.check_button_background));
         callToActionButton.setOnClickListener(v -> {
             Button button = (Button) v;
@@ -243,19 +244,17 @@ public class PracticeSlideFragment extends Fragment {
 
         lottieAnimationView = new LottieAnimationView(getContext());
         lottieAnimationView.setId(R.id.animation);
-        lottieAnimationView.setAnimation(R.raw.stars);
+        lottieAnimationView.setAnimation(R.raw.correct_green_confetti);
         lottieAnimationView.setSpeed(1.8f);
-        lottieAnimationView.setScale(0.5f);
+        lottieAnimationView.setFrame(55); //At this frame the animation is not seen
         lastIDBeforeCTA = prevID;
         int CTAid = callToActionButton.getId();
         int thisID = lottieAnimationView.getId();
-        set.constrainWidth(thisID, ConstraintSet.MATCH_CONSTRAINT);
-        set.constrainHeight(thisID, ConstraintSet.WRAP_CONTENT);
-        set.connect(thisID, ConstraintSet.START, constraintLayoutId, ConstraintSet.START, SIDES_MARGIN * 2);
-        set.connect(thisID, ConstraintSet.END, constraintLayoutId, ConstraintSet.END, SIDES_MARGIN * 2);
-        set.connect(thisID, ConstraintSet.TOP, CTAid, ConstraintSet.TOP, TOP_DOWN_MARGIN);
+        set.constrainWidth(thisID, 500);
+        set.constrainHeight(thisID, 500);
+        set.centerVertically(thisID, CTAid);
+        set.centerHorizontally(thisID, CTAid);
         constraintLayout.setConstraintSet(set);
-
         lottieAnimationView.addAnimatorListener(new Animator.AnimatorListener() {
             @Override
             public void onAnimationStart(Animator animation) {
@@ -281,7 +280,6 @@ public class PracticeSlideFragment extends Fragment {
         }
 
         if (waitForCTA) enableCTAButton(false);
-
         return view;
     }
 

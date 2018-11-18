@@ -17,4 +17,5 @@
     <item name="animation" type="id" />
     <item name="notificationView" type="id" />
     <item name="keyboard_animation" type="id" />
+    <item name="cta_button" type="id" />
 </resources>

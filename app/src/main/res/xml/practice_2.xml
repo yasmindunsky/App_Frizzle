@@ -28,7 +28,7 @@ tools:keep="@xml/practice_1">
 'this is so cool'.
         </task_text>
         <reminder_text>Reminder: speakOut("this is so cool"); </reminder_text>
-        <code show="true" mutable="true" runnable="true" waitForCTA="false">\n</code>
+        <code show="true" mutable="true" runnable="true" waitForCTA="false"></code>
         <design show="false" runnable="false"  withOnClickFunction="false" withOnClickSet="false"></design>
         <call_to_action>Check</call_to_action>
         <solution>speakOut("this is so cool");</solution>
