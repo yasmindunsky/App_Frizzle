@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements   TextToSpeech.On
                         \"com.frizzl.app.frizzleapp.appBuilder.AppBuilderActivity\");
                 intent.setComponent(cn);
                 intent.putExtra(\"appLevelID\", 2);
+                intent.putExtra(\"returnedFromUsersApp\", true);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 try
                 {

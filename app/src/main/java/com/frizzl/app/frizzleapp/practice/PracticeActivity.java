@@ -36,7 +36,7 @@ public class PracticeActivity extends FragmentActivity {
             practiceContentParser = new PracticeContentParser();
             String lessonXmlName = "practice_" + practiceID;
             currentPractice = practiceContentParser.parsePractice(this, practiceID, lessonXmlName);
-        } catch (XmlPullParserException | IOException e) {
+        } catch (XmlPullParserException e) {
             e.printStackTrace();
         }
 

@@ -137,7 +137,7 @@ public class MapActivity extends AppCompatActivity {
             UserProfile.user.setCurrentAppTasks(appTasks);
             UserProfile.user.setCurrentUserAppLevelID(levelID);
 
-        } catch (XmlPullParserException | IOException e) {
+        } catch (XmlPullParserException e) {
             e.printStackTrace();
         }
 

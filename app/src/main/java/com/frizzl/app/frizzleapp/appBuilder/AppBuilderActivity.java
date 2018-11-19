@@ -68,7 +68,9 @@ public class AppBuilderActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        currentAppLevelID = getIntent().getIntExtra("appLevelID", 0);
+        Intent intent = getIntent();
+        currentAppLevelID = intent.getIntExtra("appLevelID", 0);
+        showMovedOn = intent.getBooleanExtra("returnedFromUsersApp", false);
 
         RelativeLayout mainLayout = (RelativeLayout) this.getLayoutInflater().inflate(R.layout.activity_app_builder, null);
         setContentView(mainLayout);
@@ -272,8 +274,6 @@ public class AppBuilderActivity extends AppCompatActivity {
     private Runnable afterSuccessPopupClosed() {
         return () -> {
             tutorial.presentTooltip(playButton, getString(R.string.tooltip_install_app), null, Gravity.BOTTOM);
-            showMovedOn = true;
-            moveOnButton.setVisibility(View.VISIBLE);
         };
     }
 
