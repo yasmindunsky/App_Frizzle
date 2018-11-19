@@ -413,4 +413,14 @@ public class AppBuilderActivity extends AppCompatActivity {
         PopupWindow internetRequiredPopupWindow = new InternetRequiredPopupWindow(AppBuilderActivity.this);
         ViewUtils.presentPopup(internetRequiredPopupWindow, null, relativeLayout, relativeLayout, this);
     }
+
+    @Override
+    protected void onStop() {
+        try {
+            super.onStop();
+        } catch (Exception e) {
+            Log.w("", "onStop()", e);
+            super.onStop();
+        }
+    }
 }

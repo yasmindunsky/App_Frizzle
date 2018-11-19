@@ -1,11 +1,14 @@
 package com.frizzl.app.frizzleapp;
 
 import android.content.Context;
+import android.os.AsyncTask;
 import android.os.Handler;
 import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.ExtractedText;
 import android.view.inputmethod.ExtractedTextRequest;
@@ -17,7 +20,7 @@ import android.widget.LinearLayout;
 
 import com.airbnb.lottie.LottieAnimationView;
 
-public class CodeKeyboard extends LinearLayout implements View.OnClickListener {
+public class CodeKeyboard extends LinearLayout implements View.OnClickListener, View.OnTouchListener {
 
     private static final int NUM_OF_CHARS_TO_BACK_AFTER_SPEAKOUT = 3;
     private static final String FUNCTION_PART_1 = "public void nameYouChoose";
@@ -28,6 +31,8 @@ public class CodeKeyboard extends LinearLayout implements View.OnClickListener {
 
     private InputConnection inputConnection;
     private InputMethodManager inputMethodManager;
+
+    boolean pressedDelete = false;
 
     public CodeKeyboard(Context context) {
         this(context, null, 0);
@@ -53,6 +58,7 @@ public class CodeKeyboard extends LinearLayout implements View.OnClickListener {
                 inputMethodManager.toggleSoftInput(InputMethodManager.SHOW_FORCED,0));
         ImageButton buttonDelete = findViewById(R.id.button_delete);
         buttonDelete.setOnClickListener(this);
+        buttonDelete.setOnTouchListener(this);
         ImageButton buttonEnter = findViewById(R.id.button_enter);
         buttonEnter.setOnClickListener(this);
 
@@ -67,18 +73,7 @@ public class CodeKeyboard extends LinearLayout implements View.OnClickListener {
             return;
 
         if (view.getId() == R.id.button_delete) {
-            CharSequence selectedText = inputConnection.getSelectedText(0);
-            if (TextUtils.isEmpty(selectedText)) {
-                // no selection, so delete previous character
-//                inputConnection.deleteSurroundingText(1, 0);
-                ExtractedText extractedText = inputConnection.getExtractedText(new ExtractedTextRequest(), 0);
-                int cursorPosition = extractedText.selectionStart;
-                inputConnection.setSelection(cursorPosition - 1, cursorPosition);
-                inputConnection.commitText("", 1);
-            } else {
-                // delete the selection
-                inputConnection.commitText("", 1);
-            }
+            delete();
         } else {
             String value = keyValues.get(view.getId());
             inputConnection.commitText(value, 1);
@@ -128,6 +123,26 @@ public class CodeKeyboard extends LinearLayout implements View.OnClickListener {
             animationView.setRepeatCount(1);
             final Handler handler = new Handler();
             handler.postDelayed(animationView::playAnimation, 400); // 1s
+        }
+    }
+
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+        delete();
+        return false;
+    }
+
+    private void delete() {
+        CharSequence selectedText = inputConnection.getSelectedText(0);
+        if (TextUtils.isEmpty(selectedText)) {
+            // no selection, so delete previous character
+            ExtractedText extractedText = inputConnection.getExtractedText(new ExtractedTextRequest(), 0);
+            int cursorPosition = extractedText.selectionStart;
+            inputConnection.setSelection(cursorPosition - 1, cursorPosition);
+            inputConnection.commitText("", 1);
+        } else {
+            // delete the selection
+            inputConnection.commitText("", 1);
         }
     }
 }
