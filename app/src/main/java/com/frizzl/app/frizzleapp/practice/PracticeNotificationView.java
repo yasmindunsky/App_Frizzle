@@ -16,7 +16,7 @@ import com.frizzl.app.frizzleapp.ViewUtils;
  */
 
 public class PracticeNotificationView extends LinearLayout{
-   private AppCompatTextView notificationTextView;
+   private final AppCompatTextView notificationTextView;
 
     public PracticeNotificationView(Context context, boolean isError){
         super(context);

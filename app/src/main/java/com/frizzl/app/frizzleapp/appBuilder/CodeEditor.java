@@ -22,9 +22,9 @@ import java.util.List;
  */
 
 public class CodeEditor extends android.support.v7.widget.AppCompatEditText {
-    private CodeKeyboard keyboard;
-    private List<String> savedWords;
-    private List<String> importantCommands;
+    private final CodeKeyboard keyboard;
+    private final List<String> savedWords;
+    private final List<String> importantCommands;
     private int currentPosition = 0;
 
     public CodeEditor(Context context, CodeKeyboard keyboard) {

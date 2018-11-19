@@ -1,28 +1,27 @@
 package com.frizzl.app.frizzleapp.appBuilder;
 
-
 import android.arch.lifecycle.ViewModelProviders;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 
 import com.frizzl.app.frizzleapp.CodeCheckUtils;
 import com.frizzl.app.frizzleapp.ContentUtils;
 import com.frizzl.app.frizzleapp.UserApp;
 import com.frizzl.app.frizzleapp.UserProfile;
 
-
 /**
  * A simple {@link Fragment} subclass.
  */
-public class CodingScreenPresenter {
+class CodingScreenPresenter {
 
-    private CodingScreenFragment codingScreenFragment;
+    private final CodingScreenFragment codingScreenFragment;
     private DefinedFunctionsViewModel definedFunctionsViewModel;
 
-    public CodingScreenPresenter(CodingScreenFragment codingScreenFragment) {
+    CodingScreenPresenter(CodingScreenFragment codingScreenFragment) {
         this.codingScreenFragment = codingScreenFragment;
     }
 
-    public void getAndPresentCode() {
+    void getAndPresentCode() {
         String currentCode = UserProfile.user.getCurrentUserApp().getCode();
         if (currentCode.equals("")) {
             codingScreenFragment.showEmptyCode();
@@ -31,14 +30,14 @@ public class CodingScreenPresenter {
         }
     }
 
-    public void saveState() {
+    void saveState() {
         String currentCode = codingScreenFragment.getCode();
         UserApp currentUserApp = UserProfile.user.getCurrentUserApp();
         currentUserApp.setCode(currentCode);
         UserProfile.user.setCurrentUserAppLevelID(currentUserApp);
     }
 
-    public void onPause() {
+    void onPause() {
         saveState();
         extractDefinedFunctionsAndUpdateViewModel();
     }
@@ -63,12 +62,13 @@ public class CodingScreenPresenter {
 
     }
 
-    public void onResume() {
+    void onResume() {
+        FragmentActivity activity = codingScreenFragment.getActivity();
         definedFunctionsViewModel =
-                ViewModelProviders.of(codingScreenFragment.getActivity()).get(DefinedFunctionsViewModel.class);
+                ViewModelProviders.of(activity).get(DefinedFunctionsViewModel.class);
     }
 
-    public boolean isTaskCompleted(String code) {
+    boolean isTaskCompleted(String code) {
         boolean taskCompleted = false;
         UserProfile user = UserProfile.user;
         int currentAppTaskNum = user.getCurrentAppTaskNum();

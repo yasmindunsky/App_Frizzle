@@ -23,7 +23,7 @@ import java.util.Arrays;
 public class MapActivity extends AppCompatActivity {
 
     private MapPresenter mapPresenter;
-    private ArrayList<MapButton> levelButtons = new ArrayList<>();
+    private final ArrayList<MapButton> levelButtons = new ArrayList<>();
     private ScrollView scrollView;
     private ConstraintLayout constraintLayout;
 

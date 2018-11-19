@@ -25,7 +25,7 @@ public class UserApp implements Serializable {
 
     private String name;
     private String icon;
-    private int appLevelID;
+    private final int appLevelID;
     private Set<String> definedFunctions;
 
     public UserApp(int appLevelID){

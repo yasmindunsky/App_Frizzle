@@ -149,7 +149,8 @@
         android:paddingStart="10dp"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toTopOf="@id/viewFontColorKey">
+        app:layout_constraintTop_toTopOf="@id/viewFontColorKey"
+        tools:ignore="RtlSymmetry">
 
         <RadioButton
             android:id="@+id/color1"
@@ -207,7 +208,7 @@
         android:gravity="center"
         android:orientation="horizontal"
         android:paddingStart="10dp"
-        >
+        tools:ignore="RtlSymmetry">
 
         <RadioButton
             android:id="@+id/bgColor1"

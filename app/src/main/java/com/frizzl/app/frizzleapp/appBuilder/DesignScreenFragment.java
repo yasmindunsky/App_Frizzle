@@ -34,14 +34,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
 /**
  * A simple {@link Fragment} subclass.
  */
 public class DesignScreenFragment extends Fragment {
     private GridLayout gridLayout;
     private PopupWindow popupWindow;
-    private Map<Integer, UserCreatedView> views;
+    private Map < Integer, UserCreatedView > views;
     private TextView appNameTitle;
     private ImageView appIcon;
     private Tutorial tutorial;
@@ -97,26 +96,34 @@ public class DesignScreenFragment extends Fragment {
             Log.e("APP_BUILDER", "designScreenPresenter was not set.");
         }
 
-        definedFunctionsViewModel = ViewModelProviders.of(getActivity()).get(DefinedFunctionsViewModel.class);
+        definedFunctionsViewModel =
+                ViewModelProviders.of(getActivity()).get(DefinedFunctionsViewModel.class);
 
         return view;
     }
 
     private void initAddMenu(View view) {
-        final List<ButtonData> buttonsData = new ArrayList<>();
-        int[] drawable = {R.drawable.ic_add_plus, R.drawable.ic_add_text, R.drawable.ic_add_button, R.drawable.ic_add_image};
+        final List < ButtonData > buttonsData = new ArrayList < > ();
+        int[] drawable = {
+                R.drawable.ic_add_plus,
+                R.drawable.ic_add_text,
+                R.drawable.ic_add_button,
+                R.drawable.ic_add_image
+        };
 
-        Map<Integer, String> indexToViewType = new HashMap<>();
+        Map < Integer, String > indexToViewType = new HashMap < > ();
         indexToViewType.put(1, AnnotationUserCreatedViewType.TEXT_VIEW);
         indexToViewType.put(2, AnnotationUserCreatedViewType.BUTTON);
         indexToViewType.put(3, AnnotationUserCreatedViewType.IMAGE_VIEW);
 
-        ButtonData buttonData = ButtonData.buildIconButton(getContext(), drawable[0], 10);
+        ButtonData buttonData = ButtonData
+                .buildIconButton(getContext(), drawable[0], 10);
         buttonData.setBackgroundColor(getResources().getColor(R.color.frizzle_light_blue));
         buttonsData.add(buttonData);
         for (int i = 1; i < drawable.length; i++) {
             buttonData = ButtonData.buildIconButton(getContext(), drawable[i], 5);
-            buttonData.setBackgroundColor(getResources().getColor(R.color.appBuilderPlayPlusButtons));
+            buttonData.setBackgroundColor(getResources()
+                    .getColor(R.color.appBuilderPlayPlusButtons));
             buttonsData.add(buttonData);
         }
         plusButton.setButtonDatas(buttonsData);
@@ -143,7 +150,7 @@ public class DesignScreenFragment extends Fragment {
 
     private void presentViewsOnGridLayout() {
         gridLayout.removeAllViews();
-        for (final UserCreatedView userCreatedView : views.values()) {
+        for (final UserCreatedView userCreatedView: views.values()) {
             View usersView = userCreatedView.getThisView();
 
             if (usersView.getParent() != null) {
@@ -154,18 +161,22 @@ public class DesignScreenFragment extends Fragment {
             switch (userCreatedView.getViewType()) {
                 case AnnotationUserCreatedViewType.BUTTON:
                     final UserCreatedButton userCreatedButton = (UserCreatedButton) userCreatedView;
-                    userCreatedButton.setChangedTextListener(new UserCreatedButton.ChangedTextListener() {
+                    userCreatedButton.setChangedTextListener(new UserCreatedButton
+                            .ChangedTextListener() {
                         @Override
                         public void onChangedText() {
-                            if (UserProfile.user.getCurrentLevel() == ContentUtils.POLLY_APP_LEVEL_ID && UserProfile.user.getCurrentAppTaskNum()== 1) {
+                            if (UserProfile.user.getCurrentLevel() ==
+                                    ContentUtils.POLLY_APP_LEVEL_ID &&
+                                    UserProfile.user.getCurrentAppTaskNum() == 1) {
                                 taskCompleted();
                             }
                         }
 
                         @Override
                         public void onChangedOnClick(String onClickFuncName) {
-                            if (UserProfile.user.getCurrentLevel() == ContentUtils.POLLY_APP_LEVEL_ID
-                                    && !onClickFuncName.equals("None")) {
+                            if (UserProfile.user.getCurrentLevel() ==
+                                    ContentUtils.POLLY_APP_LEVEL_ID &&
+                                    !onClickFuncName.equals("None")) {
                                 if (UserProfile.user.getCurrentAppTaskNum() == 4) {
                                     if (appBuilderActivity != null)
                                         taskCompleted();
@@ -179,18 +190,20 @@ public class DesignScreenFragment extends Fragment {
                     setButtonOnClicks(userCreatedButton);
                     break;
                 case AnnotationUserCreatedViewType.TEXT_VIEW:
-                    final UserCreatedTextView userCreatedTextView = (UserCreatedTextView) userCreatedView;
+                    final UserCreatedTextView userCreatedTextView =
+                            (UserCreatedTextView) userCreatedView;
                     setTextOnClicks(userCreatedTextView);
                     break;
                 default:
-                    final UserCreatedImageView userCreatedImageView = (UserCreatedImageView) userCreatedView;
+                    final UserCreatedImageView userCreatedImageView =
+                            (UserCreatedImageView) userCreatedView;
                     setImageOnClicks(userCreatedImageView);
                     break;
             }
         }
     }
 
-    View.OnClickListener deleteView = new View.OnClickListener() {
+    private final View.OnClickListener deleteView = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             popupWindow.dismiss();
@@ -199,7 +212,7 @@ public class DesignScreenFragment extends Fragment {
         }
     };
 
-    private void setButtonOnClicks(final UserCreatedButton userCreatedButton){
+    private void setButtonOnClicks(final UserCreatedButton userCreatedButton) {
         Button button = userCreatedButton.getThisView();
         button.setOnLongClickListener(new LongPressListener());
 
@@ -219,10 +232,10 @@ public class DesignScreenFragment extends Fragment {
 
     public void presentPopup(PopupWindow popupWindow, Runnable runOnDismiss) {
         if (appBuilderActivity != null)
-        appBuilderActivity.presentPopup(popupWindow, runOnDismiss);
+            appBuilderActivity.presentPopup(popupWindow, runOnDismiss);
     }
 
-    private void setTextOnClicks(final UserCreatedTextView userCreatedTextView){
+    private void setTextOnClicks(final UserCreatedTextView userCreatedTextView) {
         TextView textView = userCreatedTextView.getThisView();
 
         textView.setOnLongClickListener(new LongPressListener());
@@ -239,7 +252,7 @@ public class DesignScreenFragment extends Fragment {
         });
     }
 
-    private void setImageOnClicks(final UserCreatedImageView userCreatedImageView){
+    private void setImageOnClicks(final UserCreatedImageView userCreatedImageView) {
         ImageView imageView = userCreatedImageView.getThisView();
 
         imageView.setOnLongClickListener(new LongPressListener());
@@ -257,10 +270,9 @@ public class DesignScreenFragment extends Fragment {
     }
 
     @Override
-    public void onDestroy()
-    {
+    public void onDestroy() {
         super.onDestroy();
-        if (popupWindow != null && popupWindow.isShowing()){
+        if (popupWindow != null && popupWindow.isShowing()) {
             popupWindow.dismiss();
         }
     }
@@ -295,7 +307,7 @@ public class DesignScreenFragment extends Fragment {
         return gridLayout.getRowCount();
     }
 
-    public Map<Integer, UserCreatedView> getViews() {
+    public Map < Integer, UserCreatedView > getViews() {
         return views;
     }
 
@@ -312,10 +324,13 @@ public class DesignScreenFragment extends Fragment {
 
     public void setAppIcon(String iconDrawable) {
         if (iconDrawable != null && !iconDrawable.equals("")) {
-            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT);
+            LinearLayout.LayoutParams layoutParams =
+                    new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
+                            ViewGroup.LayoutParams.MATCH_PARENT);
             layoutParams.weight = 1;
             if (appBuilderActivity != null) {
-                int iconIdentifier = getResources().getIdentifier(iconDrawable, "drawable", appBuilderActivity.getPackageName());
+                int iconIdentifier = getResources().getIdentifier(iconDrawable,
+                        "drawable", appBuilderActivity.getPackageName());
                 Drawable drawable = getResources().getDrawable(iconIdentifier);
                 appIcon.setImageDrawable(drawable);
                 appIcon.setLayoutParams(layoutParams);
@@ -395,7 +410,8 @@ public class DesignScreenFragment extends Fragment {
                     // remove the view from the old position
                     gridLayout.removeView(view);
                     // and push to the new
-                    GridLayout.LayoutParams layoutParams = getPostDragLayoutParams(event.getX(), event.getY(), view);
+                    GridLayout.LayoutParams layoutParams =
+                            getPostDragLayoutParams(event.getX(), event.getY(), view);
                     view.setLayoutParams(layoutParams);
                     gridLayout.addView(view);
                     view.setVisibility(View.VISIBLE);
@@ -412,21 +428,22 @@ public class DesignScreenFragment extends Fragment {
         private GridLayout.LayoutParams getPostDragLayoutParams(float x, float y, View view) {
             // calculate which column to move to
             final float cellWidth = gridLayout.getWidth() / gridLayout.getColumnCount();
-            int column = (int) (x / cellWidth);
+            int column = (int)(x / cellWidth);
 
             // calculate which row to move to
             final float cellHeight = gridLayout.getHeight() / gridLayout.getRowCount();
             final int row = (int) Math.floor(y / cellHeight);
 
             // RTL X coordinates are flipped.
-//            if (Support.isRTL()) {
-//                column =  gridLayout.getColumnCount() - column - 1;
-//            }
+            //            if (Support.isRTL()) {
+            //                column =  gridLayout.getColumnCount() - column - 1;
+            //            }
 
-            GridLayout.LayoutParams layoutParams = new GridLayout.LayoutParams(GridLayout.spec(row),  GridLayout.spec(column));
+            GridLayout.LayoutParams layoutParams =
+                    new GridLayout.LayoutParams(GridLayout.spec(row), GridLayout.spec(column));
             layoutParams.setMargins(10, 10, 10, 10);
             layoutParams.width = (int) getResources().getDimension(R.dimen.user_created_button_width);
-            if (view.getClass().equals(ImageView.class)){
+            if (view.getClass().equals(ImageView.class)) {
                 layoutParams.width = (int) getResources().getDimension(R.dimen.user_created_image_view_width);
                 layoutParams.height = (int) getResources().getDimension(R.dimen.user_created_image_view_width);
             }

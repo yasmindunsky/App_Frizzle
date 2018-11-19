@@ -100,6 +100,7 @@ Use "'" for special chars.
     <string name="try_again_when_connected">נסו שוב כשתהיו מחוברים.</string>
     <string name="internet_connection_required">דרוש חיבור אינטרנט פעיל כדי להתקין את האפליקציה.</string>
     <string name="correct">נכון</string>
+    <string name="task_1">משימה 1:</string>
 
 
     <string-array name="fonts">

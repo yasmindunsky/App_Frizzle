@@ -14,18 +14,18 @@ import java.util.Map;
  * Created by Noga on 04/11/2018.
  */
 
-public class PracticeErrorManager {
+class PracticeErrorManager {
 
     interface ErrorCheck {
         String check(String originalCode, String currentCode);
     }
 
     // Returns null if error1 was not found, or Error to display.
-    private static ErrorCheck errorCheck0 = (originalCode, currentCode) -> "0";
+    private static final ErrorCheck errorCheck0 = (originalCode, currentCode) -> "0";
 
     // Returns null if error was not found, or Error to display.
     // Checks if the currentCode is identical to the originalCode
-    private static ErrorCheck errorCheck1 = (originalCode, currentCode) -> {
+    private static final ErrorCheck errorCheck1 = (originalCode, currentCode) -> {
         if (originalCode.equals(currentCode)) {
             return FrizzlApplication.resources.getString(R.string.error_read_instructions);
         }
@@ -34,7 +34,7 @@ public class PracticeErrorManager {
 
     // Returns null if error was not found, or Error to display.
     // Checks if the user deleted the speakOut command and left only the text inside
-    private static ErrorCheck errorCheck2 = (originalCode, currentCode) -> {
+    private static final ErrorCheck errorCheck2 = (originalCode, currentCode) -> {
         if (!CodeCheckUtils.checkIfContainsSpeakOutAndString(currentCode, "", true))
         {
             return FrizzlApplication.resources.getString(R.string.error_add_speakout);
@@ -44,7 +44,7 @@ public class PracticeErrorManager {
 
     // Returns null if error was not found, or Error to display.
     // Checks if a semicolon is missing
-    private static ErrorCheck errorCheck3 = (originalCode, currentCode) -> {
+    private static final ErrorCheck errorCheck3 = (originalCode, currentCode) -> {
         if (!currentCode.contains(";"))
         {
             return FrizzlApplication.resources.getString(R.string.error_add_speakout);
@@ -54,7 +54,7 @@ public class PracticeErrorManager {
 
     // Returns null if error was not found, or Error to display.
     // Checks if an unnecessary speakOut is there
-    private static ErrorCheck errorCheck4 = (originalCode, currentCode) -> {
+    private static final ErrorCheck errorCheck4 = (originalCode, currentCode) -> {
         if (CodeCheckUtils.checkIfContainsSpeakOutAndString(currentCode, "", true))
         {
             return FrizzlApplication.resources.getString(R.string.error_delete_speakout_add_function);
@@ -64,7 +64,7 @@ public class PracticeErrorManager {
 
     // Returns null if error was not found, or Error to display.
     // Checks if the user changed the white parts of the function
-    private static ErrorCheck errorCheck5 = (originalCode, currentCode) -> {
+    private static final ErrorCheck errorCheck5 = (originalCode, currentCode) -> {
         if (!CodeCheckUtils.checkIfFunctionSignatureIsValid(currentCode))
         {
             return FrizzlApplication.resources.getString(R.string.error_dont_change_function);
@@ -74,7 +74,7 @@ public class PracticeErrorManager {
 
     // Returns null if error was not found, or Error to display.
     // Checks if the speakOut command is not in the right place
-    private static ErrorCheck errorCheck6 = (originalCode, currentCode) -> {
+    private static final ErrorCheck errorCheck6 = (originalCode, currentCode) -> {
         if (!CodeCheckUtils.checkIfSpeakOutIsInsideCurlyBrackets(currentCode))
         {
             return FrizzlApplication.resources.getString(R.string.error_speakout_brackets);
@@ -85,7 +85,7 @@ public class PracticeErrorManager {
     private static List<ErrorCheck> errorChecksList;
     private static Map<String, int[]> levelAndSlideToChecks;
 
-    public static void init(){
+    private static void init(){
         errorChecksList = new ArrayList<>();
         errorChecksList.add(errorCheck0);
         errorChecksList.add(errorCheck1);

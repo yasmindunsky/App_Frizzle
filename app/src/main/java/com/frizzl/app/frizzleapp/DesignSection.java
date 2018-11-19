@@ -30,7 +30,7 @@ import java.util.Set;
 
 public class DesignSection extends RelativeLayout {
     private TextToSpeech tts;
-    private UserCreatedButton userCreatedButton;
+    private final UserCreatedButton userCreatedButton;
     private ViewGroup layout;
     private DisplayNotificationListener displayNotificationListener;
 
@@ -90,47 +90,44 @@ public class DesignSection extends RelativeLayout {
 
         if (runnable) {
             ImageButton playButton = new ImageButton(context);
-            OnClickListener runDesign = new OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Context context = getContext();
-                    LayoutInflater inflater = (LayoutInflater)
-                            context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                    assert inflater != null;
-                    View runPopupView = inflater.inflate(R.layout.popup_design_section_run, null);
-                    Button button = runPopupView.findViewById(R.id.button);
-                    Button thisView = userCreatedButton.getThisView();
-                    button.setText(thisView.getText());
-                    button.setTextColor(thisView.getCurrentTextColor());
-                    button.setTypeface(thisView.getTypeface());
-                    int originalButtonDrawableRes = R.drawable.user_button_background;
-                    Drawable buttonDrawable = ContextCompat.getDrawable(context, originalButtonDrawableRes);
-                    if (buttonDrawable != null) {
-                        buttonDrawable.setColorFilter(Color.parseColor(userCreatedButton.getProperties().get("android:backgroundTint")), PorterDuff.Mode.DARKEN);
-                        button.setBackground(buttonDrawable);
-                    }
-                    PopupWindow runPopupWindow = new PopupWindow(runPopupView, ViewGroup.LayoutParams.WRAP_CONTENT,
-                            ViewGroup.LayoutParams.WRAP_CONTENT, true);
-                    Runnable displayNotification = () -> {
-                        if (UserProfile.user.getCurrentLevel() == ContentUtils.ONCLICK_PRACTICE_LEVEL_ID
-                                && practiceSlideFragment.getCurrentSlide() == 1) {
-                            practiceSlideFragment.presentNotificationFromSection(context.getResources().getString(R.string.our_button_does_nothing));
-                        }
-                    };
-                    ViewUtils.presentPopup(runPopupWindow, displayNotification, v, layout, context);
-                    ImageButton closeButton = runPopupView.findViewById(R.id.close);
-                    closeButton.setOnClickListener(v12 -> runPopupWindow.dismiss());
-                    button.setOnClickListener(v1 -> {
-                        boolean onClickSet = userCreatedButton.getOnClick().equals("myFunction");
-                        if (onClickSet) {
-                            if (ViewUtils.volumeIsLow(context)) ViewUtils.presentVolumeToast(context);
-                            tts.speak("Hello", TextToSpeech.QUEUE_ADD, null);
-                        }
-                        if (displayNotificationListener != null)
-                            displayNotificationListener.onDisplayNotification(runPopupWindow);
-
-                    });
+            OnClickListener runDesign = v -> {
+                Context context1 = getContext();
+                LayoutInflater inflater = (LayoutInflater)
+                        context1.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                assert inflater != null;
+                View runPopupView = inflater.inflate(R.layout.popup_design_section_run, null);
+                Button button = runPopupView.findViewById(R.id.button);
+                Button thisView = userCreatedButton.getThisView();
+                button.setText(thisView.getText());
+                button.setTextColor(thisView.getCurrentTextColor());
+                button.setTypeface(thisView.getTypeface());
+                int originalButtonDrawableRes = R.drawable.user_button_background;
+                Drawable buttonDrawable = ContextCompat.getDrawable(context1, originalButtonDrawableRes);
+                if (buttonDrawable != null) {
+                    buttonDrawable.setColorFilter(Color.parseColor(userCreatedButton.getProperties().get("android:backgroundTint")), PorterDuff.Mode.DARKEN);
+                    button.setBackground(buttonDrawable);
                 }
+                PopupWindow runPopupWindow = new PopupWindow(runPopupView, ViewGroup.LayoutParams.WRAP_CONTENT,
+                        ViewGroup.LayoutParams.WRAP_CONTENT, true);
+                Runnable displayNotification = () -> {
+                    if (UserProfile.user.getCurrentLevel() == ContentUtils.ONCLICK_PRACTICE_LEVEL_ID
+                            && practiceSlideFragment.getCurrentSlide() == 1) {
+                        practiceSlideFragment.presentNotificationFromSection(context1.getResources().getString(R.string.our_button_does_nothing));
+                    }
+                };
+                ViewUtils.presentPopup(runPopupWindow, displayNotification, v, layout, context1);
+                ImageButton closeButton = runPopupView.findViewById(R.id.close);
+                closeButton.setOnClickListener(v12 -> runPopupWindow.dismiss());
+                button.setOnClickListener(v1 -> {
+                    boolean onClickSet = userCreatedButton.getOnClick().equals("myFunction");
+                    if (onClickSet) {
+                        if (ViewUtils.volumeIsLow(context1)) ViewUtils.presentVolumeToast(context1);
+                        tts.speak("Hello", TextToSpeech.QUEUE_ADD, null);
+                    }
+                    if (displayNotificationListener != null)
+                        displayNotificationListener.onDisplayNotification(runPopupWindow);
+
+                });
             };
             playButton.setOnClickListener(runDesign);
             playButton.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.run_button_background, null));

@@ -15,9 +15,9 @@ import java.util.List;
  * Created by Noga on 06/09/2018.
  */
 
-public class Tutorial {
+class Tutorial {
     // TODO: make this a normal object
-    private Context context;
+    private final Context context;
     private int nextTutorialMessage;
     private String[] messages;
     private List<View> views;

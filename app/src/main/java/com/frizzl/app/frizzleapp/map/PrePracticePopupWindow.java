@@ -14,7 +14,7 @@ import com.frizzl.app.frizzleapp.R;
  * Created by Noga on 02/09/2018.
  */
 
-public class PrePracticePopupWindow extends PopupWindow {
+class PrePracticePopupWindow extends PopupWindow {
 
     public PrePracticePopupWindow(MapActivity activity, String explanationText, Runnable startPractice){
         LayoutInflater inflater = (LayoutInflater)

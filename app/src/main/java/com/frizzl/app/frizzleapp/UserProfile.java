@@ -124,10 +124,6 @@ public class UserProfile implements Serializable {
         this.currentLevel = currentLevel;
     }
 
-    public void setCurrentUserAppLevelID(int appLevelID) {
-        int currentUserAppLevelID = appLevelID;
-    }
-
     public int getCurrentSlideInLevel() {
         return currentSlideInLevel;
     }

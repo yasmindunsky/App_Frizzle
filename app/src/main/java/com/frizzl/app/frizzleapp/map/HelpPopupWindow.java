@@ -15,7 +15,7 @@ import com.frizzl.app.frizzleapp.R;
  * Created by Noga on 02/09/2018.
  */
 
-public class HelpPopupWindow extends PopupWindow {
+class HelpPopupWindow extends PopupWindow {
     private View popupView;
 
     public HelpPopupWindow(MapActivity activity){

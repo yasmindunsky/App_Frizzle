@@ -14,8 +14,8 @@ public class CustomTypefaceSpan extends TypefaceSpan {
 
     private final Typeface newType;
 
-    public CustomTypefaceSpan(String family, Typeface type) {
-        super(family);
+    public CustomTypefaceSpan(Typeface type) {
+        super("");
         newType = type;
     }
 

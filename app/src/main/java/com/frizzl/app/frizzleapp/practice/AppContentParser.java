@@ -19,7 +19,8 @@ public class AppContentParser {
 
     private XmlResourceParser xmlResourceParser;
 
-    public AppTasks parseAppXml(Context context, int currentAppLevelID) throws XmlPullParserException {
+    public AppTasks parseAppXml(Context context, int currentAppLevelID)
+            throws XmlPullParserException {
         String lessonXmlName = "app_" + Integer.toString(currentAppLevelID);
         xmlResourceParser = context.getResources().getXml(getResId(lessonXmlName, R.xml.class));
         AppTasks currentApp = new AppTasks(currentAppLevelID);
@@ -27,7 +28,8 @@ public class AppContentParser {
         try {
             int eventType = xmlResourceParser.getEventType();
             while (eventType != XmlPullParser.END_DOCUMENT) {
-                if (eventType == XmlPullParser.START_TAG && xmlResourceParser.getName().equals("task")) {
+                if (eventType == XmlPullParser.START_TAG
+                        && xmlResourceParser.getName().equals("task")) {
                     Task newTask = parseTask();
                     tasks.add(newTask);
                 }

@@ -9,7 +9,7 @@ import com.frizzl.app.frizzleapp.R;
 import com.frizzl.app.frizzleapp.UserProfile;
 import com.frizzl.app.frizzleapp.map.MapActivity;
 
-public class OnboardingActivity extends FragmentActivity{
+public class OnboardingActivity extends FragmentActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,16 +20,11 @@ public class OnboardingActivity extends FragmentActivity{
             setContentView(R.layout.activity_onboarding2);
             Button yayButton = findViewById(R.id.yayButton);
             yayButton.setOnClickListener(view -> {
-            UserProfile.user.loadSerializedObject(getBaseContext());
-            Intent mapIntent = new Intent(getBaseContext(), MapActivity.class);
-            startActivity(mapIntent);
+                UserProfile.user.loadSerializedObject(getBaseContext());
+                Intent mapIntent = new Intent(getBaseContext(), MapActivity.class);
+                startActivity(mapIntent);
             });
         });
-
-        // Rotation for RTL swiping.
-//        if (Support.isRTL()) {
-//            viewPager.setRotationY(180);
-//        }
     }
 }
 

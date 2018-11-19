@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class AppTasks implements Serializable{
 
-    private int appLevelID;
+    private final int appLevelID;
     private ArrayList<Task> tasks;
 
     public AppTasks(int appLevelID) {

@@ -9,10 +9,10 @@ import android.support.v4.app.FragmentStatePagerAdapter;
  * Created by yasmin.dunsky on 19-Nov-17.
  */
 
-public class IntroSwipeAdapter extends FragmentStatePagerAdapter {
+class IntroSwipeAdapter extends FragmentStatePagerAdapter {
 
-    private Practice introPractice;
-    private int numOfSlides;
+    private final Practice introPractice;
+    private final int numOfSlides;
 
     public IntroSwipeAdapter(FragmentManager fm, Practice introPractice) {
         super(fm);

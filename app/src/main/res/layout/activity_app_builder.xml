@@ -118,7 +118,8 @@
             android:text="="
             android:textColor="@color/TextLightGrey"
             android:textSize="30sp"
-            app:srcCompat="@drawable/ic_expand_grab_icon" />
+            app:srcCompat="@drawable/ic_expand_grab_icon"
+            tools:ignore="HardcodedText" />
 
         <net.cachapa.expandablelayout.ExpandableLayout
             android:id="@+id/errorExpandableLayout"

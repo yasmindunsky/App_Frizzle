@@ -13,8 +13,6 @@ import com.frizzl.app.frizzleapp.UserProfile;
 
 import org.xmlpull.v1.XmlPullParserException;
 
-import java.io.IOException;
-
 public class IntroActivity extends FragmentActivity {
     private  Practice currentPractice;
     private PracticeViewPager viewPager;
@@ -30,7 +28,9 @@ public class IntroActivity extends FragmentActivity {
         PracticeContentParser practiceContentParser;
         try {
             practiceContentParser = new PracticeContentParser();
-            currentPractice = practiceContentParser.parsePractice(this, levelID, "intro");
+            currentPractice = practiceContentParser.parsePractice(this,
+                    levelID,
+                    "intro");
         } catch (XmlPullParserException e) {
             e.printStackTrace();
         }
@@ -46,12 +46,15 @@ public class IntroActivity extends FragmentActivity {
 
         // Create SwipeAdapter.
         viewPager = findViewById(R.id.pager);
-        IntroSwipeAdapter swipeAdapter = new IntroSwipeAdapter(getSupportFragmentManager(), currentPractice);
+        IntroSwipeAdapter swipeAdapter =
+                new IntroSwipeAdapter(getSupportFragmentManager(), currentPractice);
         viewPager.setAdapter(swipeAdapter);
         viewPager.setAllowedSwipeDirection(SwipeDirection.none);
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {}
+            public void onPageScrolled(int position,
+                                       float positionOffset,
+                                       int positionOffsetPixels) {}
 
             @Override
             public void onPageSelected(int position) {
@@ -61,7 +64,7 @@ public class IntroActivity extends FragmentActivity {
                     swipeDirection = SwipeDirection.all;
                 }
                 else {
-                    swipeDirection = SwipeDirection.left; // This is the setting also for RTL
+                    swipeDirection = SwipeDirection.left; // This is the setting also for RTL.
                 }
                 viewPager.setAllowedSwipeDirection(swipeDirection);
             }
@@ -84,7 +87,6 @@ public class IntroActivity extends FragmentActivity {
         }
     }
 
-
     @Override
     public void onBackPressed() {
         int count = viewPager.getCurrentItem();
@@ -94,13 +96,11 @@ public class IntroActivity extends FragmentActivity {
             viewPager.setCurrentItem(count - 1);
             progressBar.setProgress(count - 1);
         }
-
     }
 
     public void goBack() {
         super.onBackPressed();
     }
-
 }
 
 

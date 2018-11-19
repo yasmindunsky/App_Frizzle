@@ -46,9 +46,12 @@ public class IntroSlideFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater,
+                             ViewGroup container,
+                             Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_practice_slide, container, false);
+        View view =
+                inflater.inflate(R.layout.fragment_practice_slide, container, false);
         constraintLayout = view.findViewById(R.id.constraintLayout);
         constraintLayout.setFocusableInTouchMode(true);
         int constraintLayoutId = constraintLayout.getId();
@@ -60,8 +63,8 @@ public class IntroSlideFragment extends Fragment {
         TextToSpeech.OnInitListener onInitListener = status -> {
             if (status == TextToSpeech.SUCCESS) {
                 int result = tts.setLanguage(Locale.US);
-                if (result == TextToSpeech.LANG_MISSING_DATA
-                        || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+                if (result == TextToSpeech.LANG_MISSING_DATA ||
+                        result == TextToSpeech.LANG_NOT_SUPPORTED) {
                     Log.e("TTS", "This Language is not supported");
                 }
             } else {
@@ -69,8 +72,8 @@ public class IntroSlideFragment extends Fragment {
             }
         };
         tts = new TextToSpeech(getContext(), onInitListener, "com.google.android.tts");
-//        Voice voice = new Voice();
-//        tts.setVoice(voice);
+        //        Voice voice = new Voice();
+        //        tts.setVoice(voice);
 
         Bundle bundle = getArguments();
         if (bundle != null) {
@@ -87,16 +90,24 @@ public class IntroSlideFragment extends Fragment {
         ConstraintSet set = new ConstraintSet();
         set.clone(constraintLayout);
 
-        if (practiceSlide.hasInfoText()){
+        if (practiceSlide.hasInfoText()) {
             int infoTextStyle = R.style.Text_PracticeSlide_infoText;
-            AppCompatTextView infoText = new AppCompatTextView(new ContextThemeWrapper(context, infoTextStyle));
+            AppCompatTextView infoText =
+                    new AppCompatTextView(new ContextThemeWrapper(context, infoTextStyle));
             infoText.setId(R.id.infoText);
 
-            SpannableStringBuilder spannableInfoText = new SpannableStringBuilder(practiceSlide.getInfoText());
+            SpannableStringBuilder spannableInfoText =
+                    new SpannableStringBuilder(practiceSlide.getInfoText());
             spannableInfoText = ViewUtils.markWithColorBetweenTwoSymbols(spannableInfoText,
-                    "$green$", getResources().getColor(R.color.frizzle_green), true, true, context);
+                    "$green$",
+                    getResources().getColor(R.color.frizzle_green),
+                    true,
+                    context);
             spannableInfoText = ViewUtils.markWithColorBetweenTwoSymbols(spannableInfoText,
-                    "$orange$", getResources().getColor(R.color.frizzle_orange), true, true, context);
+                    "$orange$",
+                    getResources().getColor(R.color.frizzle_orange),
+                    true,
+                    context);
             infoText.setText(spannableInfoText);
 
             constraintLayout.addView(infoText);
@@ -104,21 +115,27 @@ public class IntroSlideFragment extends Fragment {
             prevID = infoText.getId();
         }
 
-        if (practiceSlide.hasTaskText()){
+        if (practiceSlide.hasTaskText()) {
             int taskTextStyle = R.style.Text_PracticeSlide_taskText;
-            AppCompatTextView taskText = new AppCompatTextView(new ContextThemeWrapper(context, taskTextStyle));
+            AppCompatTextView taskText =
+                    new AppCompatTextView(new ContextThemeWrapper(context, taskTextStyle));
             taskText.setId(R.id.taskText);
 
-            SpannableStringBuilder spannableTaskText = new SpannableStringBuilder(practiceSlide.getTaskText());
+            SpannableStringBuilder spannableTaskText =
+                    new SpannableStringBuilder(practiceSlide.getTaskText());
             spannableTaskText = ViewUtils.markWithColorBetweenTwoSymbols(spannableTaskText,
-                    "$green$", getResources().getColor(R.color.frizzle_green), true, false, context);
+                    "$green$", getResources().getColor(R.color.frizzle_green),
+                    false,
+                    context);
             spannableTaskText = ViewUtils.markWithColorBetweenTwoSymbols(spannableTaskText,
-                    "$orange$", getResources().getColor(R.color.frizzle_orange), true, false, context);
+                    "$orange$",
+                    getResources().getColor(R.color.frizzle_orange),
+                    false,
+                    context);
             taskText.setText(spannableTaskText);
             constraintLayout.addView(taskText);
             setConstraints(set, taskText.getId(), prevID, SIDES_MARGIN);
             prevID = taskText.getId();
-
         }
 
         View.OnClickListener speak = v -> {
@@ -128,7 +145,7 @@ public class IntroSlideFragment extends Fragment {
             enableCTAButton(true);
         };
 
-        if (practiceSlide.hasDesign()){
+        if (practiceSlide.hasDesign()) {
             waitForCTA = practiceSlide.getDesign().getRunnable();
             View pollyApp = getLayoutInflater().inflate(R.layout.polly_app_demo, null);
             AppCompatButton nameButton = pollyApp.findViewById(R.id.nameButton);
@@ -136,7 +153,7 @@ public class IntroSlideFragment extends Fragment {
             nameButton.setOnClickListener(speak);
             jokeButton.setOnClickListener(speak);
             constraintLayout.addView(pollyApp);
-            setConstraints(set, pollyApp.getId(), prevID, SIDES_MARGIN*2);
+            setConstraints(set, pollyApp.getId(), prevID, SIDES_MARGIN * 2);
             prevID = pollyApp.getId();
 
         }
@@ -151,16 +168,16 @@ public class IntroSlideFragment extends Fragment {
             moveToNextFragment();
         });
         constraintLayout.addView(callToActionButton);
-        setConstraints(set, callToActionButton.getId(), prevID, SIDES_MARGIN*4);
+        setConstraints(set, callToActionButton.getId(), prevID, SIDES_MARGIN * 4);
 
         if (waitForCTA) enableCTAButton(false);
 
         return view;
     }
 
-    public void enableCTAButton(boolean enabled){
+    private void enableCTAButton(boolean enabled) {
         int alpha = enabled ? 255 : 220;
-        if (callToActionButton != null){
+        if (callToActionButton != null) {
             callToActionButton.getBackground().setAlpha(alpha);
             callToActionButton.setEnabled(enabled);
         }
@@ -174,9 +191,9 @@ public class IntroSlideFragment extends Fragment {
             int i = viewPager.getCurrentItem() + 1;
 
             // If last slide
-            if (index == numOfSlides - 1){
+            if (index == numOfSlides - 1) {
                 UserProfile.user.finishedPractice(levelID);
-                ((IntroActivity)getActivity()).goBack();
+                ((IntroActivity) getActivity()).goBack();
             }
             viewPager.setCurrentItem(i);
             RoundCornerProgressBar progressBar = activity.findViewById(R.id.progressBar);
@@ -187,7 +204,7 @@ public class IntroSlideFragment extends Fragment {
     @Override
     public void onDestroy() {
         //Close the Text to Speech Library
-        if(tts != null) {
+        if (tts != null) {
             tts.stop();
             tts.shutdown();
             Log.d("tts", "TTS Destroyed");

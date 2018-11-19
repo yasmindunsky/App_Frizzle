@@ -20,7 +20,7 @@ public class SplashActivity extends Activity{
         boolean firstTime = SaveSharedPreference.getFirstTime(applicationContext);
 //        firstTime = true; // TODO: change before release
         if(firstTime) {
-            SaveSharedPreference.setFirstTime(applicationContext, false);
+            SaveSharedPreference.setFirstTime(applicationContext);
             Intent onboardingIntent = new Intent(getBaseContext(), OnboardingActivity.class);
             startActivity(onboardingIntent);
         }

@@ -98,9 +98,9 @@ public class PracticeSlideFragment extends Fragment {
 
             SpannableStringBuilder spannableInfoText = new SpannableStringBuilder(practiceSlide.getInfoText());
             spannableInfoText = ViewUtils.markWithColorBetweenTwoSymbols(spannableInfoText,
-                    "$green$", getResources().getColor(R.color.frizzle_green), true, true, context);
+                    "$green$", getResources().getColor(R.color.frizzle_green), true, context);
             spannableInfoText = ViewUtils.markWithColorBetweenTwoSymbols(spannableInfoText,
-                    "$orange$", getResources().getColor(R.color.frizzle_orange), true, true, context);
+                    "$orange$", getResources().getColor(R.color.frizzle_orange), true, context);
             infoText.setText(spannableInfoText);
 
             constraintLayout.addView(infoText);
@@ -115,9 +115,9 @@ public class PracticeSlideFragment extends Fragment {
 
             SpannableStringBuilder spannableTaskText = new SpannableStringBuilder(practiceSlide.getTaskText());
             spannableTaskText = ViewUtils.markWithColorBetweenTwoSymbols(spannableTaskText,
-                    "$green$", getResources().getColor(R.color.frizzle_green), true, false, context);
+                    "$green$", getResources().getColor(R.color.frizzle_green), false, context);
             spannableTaskText = ViewUtils.markWithColorBetweenTwoSymbols(spannableTaskText,
-                    "$orange$", getResources().getColor(R.color.frizzle_orange), true, false, context);
+                    "$orange$", getResources().getColor(R.color.frizzle_orange), false, context);
             taskText.setText(spannableTaskText);
 
             constraintLayout.addView(taskText);
@@ -412,7 +412,7 @@ public class PracticeSlideFragment extends Fragment {
         }
     }
 
-    public void enableCTAButton(boolean enabled) {
+    private void enableCTAButton(boolean enabled) {
         int alpha = enabled ? 255 : 220;
         if (callToActionButton != null) {
             callToActionButton.getBackground().setAlpha(alpha);
@@ -420,12 +420,12 @@ public class PracticeSlideFragment extends Fragment {
         }
     }
 
-    public String getOriginalCode() {
+    private String getOriginalCode() {
         if (originalCode == null) return "";
         return originalCode;
     }
 
-    public String getCurrentCode() {
+    private String getCurrentCode() {
         CodeSection codeSection = constraintLayout.findViewById(R.id.codeSection);
         if (codeSection == null) return null;
         return codeSection.getCode();

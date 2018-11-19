@@ -15,7 +15,11 @@
         <info_text>When we design our app we can easily add elements such as text, button and image.</info_text>
         <task_text/>
         <reminder_text />
-        <code mutable="false" show="false" runnable ="false" waitForCTA="false"></code>
+        <code
+            mutable="false"
+            show="false"
+            runnable="false"
+            waitForCTA="false" />
         <design show="true" runnable="false" withOnClickFunction="false" withOnClickSet="false">My Button</design>
         <call_to_action>Got it</call_to_action>
     </slide>
@@ -25,7 +29,11 @@
         <task_text/>
         <reminder_text/>
         <code mutable="false" show="true" runnable ="false" waitForCTA="false">// Here you will later write code in Java </code>
-        <design show="false" runnable="false" withOnClickFunction="false" withOnClickSet="false"></design>
+        <design
+            show="false"
+            runnable="false"
+            withOnClickFunction="false"
+            withOnClickSet="false" />
         <call_to_action>Got it</call_to_action>
     </slide>
 

@@ -8,7 +8,8 @@
     android:ellipsize="marquee"
     android:paddingBottom="10dp"
     android:paddingStart="16dp"
+    android:paddingEnd="16dp"
     android:paddingTop="10dp"
     android:singleLine="true"
-    android:text="myFunction"
+    android:text="@string/myfunction"
     android:textAppearance="@style/Text.TableValue" />

@@ -20,7 +20,7 @@ import java.nio.charset.StandardCharsets;
 /**
  * Created by yasmin.dunsky on 31-Jan-18.
  */
-public class ConnectToServer {
+class ConnectToServer {
 
     public String postToServer(String path, String body, String method) {
         final String SERVER_ADDRESS = "http://server.frizzle.co:8080/frizzleserver";
@@ -103,6 +103,7 @@ public class ConnectToServer {
             stream.write(client.getInputStream().available());
             stream.close();
         } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

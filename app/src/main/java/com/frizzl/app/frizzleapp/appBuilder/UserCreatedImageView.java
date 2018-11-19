@@ -18,7 +18,7 @@ import java.util.Map;
  */
 
 public class UserCreatedImageView extends UserCreatedView {
-    ImageView thisView;
+    private ImageView thisView;
     private int selectedImageID = R.id.radioButton1;
 
     public UserCreatedImageView(Context context, Map<String, String> properties, int index){
@@ -98,11 +98,6 @@ public class UserCreatedImageView extends UserCreatedView {
 
     public PopupWindow getPropertiesTablePopupWindow(Context context) {
         return new ChooseImagePopupWindow(context, index, this, selectedImageID);
-    }
-
-    @Override
-    public void updateProperties() {
-
     }
 
     @Override

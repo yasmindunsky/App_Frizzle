@@ -9,13 +9,13 @@ import java.io.Serializable;
  * Created by yasmin.dunsky on 19-Nov-17.
  */
 
-public class PracticeSlide implements Serializable{
-    private String infoText;
-    private String reminderText;
-    private String taskText;
-    private Code code;
-    private Design design;
-    private String callToActionText;
+class PracticeSlide implements Serializable{
+    private final String infoText;
+    private final String reminderText;
+    private final String taskText;
+    private final Code code;
+    private final Design design;
+    private final String callToActionText;
 
     public PracticeSlide(String infoText, String reminderText, String taskText, Code code, String callToActionText, Design design) {
         this.infoText = infoText;

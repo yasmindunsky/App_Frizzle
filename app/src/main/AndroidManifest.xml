@@ -19,7 +19,8 @@
         android:largeHeap="true"
         android:theme="@style/AppTheme.NoActionBar"
         tools:replace="android:appComponentFactory"
-        android:appComponentFactory="whateverString">
+        android:appComponentFactory="whateverString"
+        android:fullBackupContent="@xml/backup_descriptor">
 
         <activity
             android:name="com.frizzl.app.frizzleapp.map.MapActivity"
@@ -31,7 +32,7 @@
             android:name="com.frizzl.app.frizzleapp.onboarding.OnboardingActivity"
             android:screenOrientation="nosensor"
             android:configChanges="keyboardHidden|orientation"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
             android:name="com.frizzl.app.frizzleapp.SplashActivity"

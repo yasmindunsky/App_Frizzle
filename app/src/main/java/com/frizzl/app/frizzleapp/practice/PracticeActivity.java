@@ -17,8 +17,6 @@ import com.frizzl.app.frizzleapp.UserProfile;
 
 import org.xmlpull.v1.XmlPullParserException;
 
-import java.io.IOException;
-
 public class PracticeActivity extends FragmentActivity {
     private Practice currentPractice;
     private RoundCornerProgressBar progressBar;

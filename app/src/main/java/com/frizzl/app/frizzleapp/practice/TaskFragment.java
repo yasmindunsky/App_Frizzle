@@ -17,9 +17,9 @@ import com.frizzl.app.frizzleapp.ViewUtils;
  * A simple {@link Fragment} subclass.
  */
 public class TaskFragment extends Fragment {
-    TextView fragmentText;
-    int index;
-    int appLevelId;
+    private TextView fragmentText;
+    private int index;
+    private int appLevelId;
 
     public TaskFragment() {
         // Required empty public constructor

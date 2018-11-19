@@ -13,9 +13,9 @@ import com.frizzl.app.frizzleapp.R;
  * Created by Noga on 02/09/2018.
  */
 
-public class TaskSuccessPopupWindow extends PopupWindow {
-    int width = GridLayout.LayoutParams.WRAP_CONTENT;
-    int height = GridLayout.LayoutParams.WRAP_CONTENT;
+class TaskSuccessPopupWindow extends PopupWindow {
+    private final int width = GridLayout.LayoutParams.WRAP_CONTENT;
+    private final int height = GridLayout.LayoutParams.WRAP_CONTENT;
 
     public TaskSuccessPopupWindow(Context context){
         LayoutInflater inflater = (LayoutInflater)

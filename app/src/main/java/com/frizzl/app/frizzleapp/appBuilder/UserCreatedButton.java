@@ -38,7 +38,7 @@ import java.util.Set;
  */
 
 public class UserCreatedButton extends UserCreatedView {
-    private Button thisView;
+    private final Button thisView;
     private ChangedTextListener changedTextListener;
     private Set<String> functions;
     private boolean displayOnClick = false;
@@ -248,16 +248,11 @@ public class UserCreatedButton extends UserCreatedView {
     }
 
     @Override
-    public void updateProperties() {
-
-    }
-
-    @Override
     public Button getThisView() {
         return thisView;
     }
 
-    private TextWatcher textWatcher = new TextWatcher() {
+    private final TextWatcher textWatcher = new TextWatcher() {
         @Override
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -289,7 +284,7 @@ public class UserCreatedButton extends UserCreatedView {
         }
     };
 
-    private AdapterView.OnItemSelectedListener onOnClickPicked = new AdapterView.OnItemSelectedListener() {
+    private final AdapterView.OnItemSelectedListener onOnClickPicked = new AdapterView.OnItemSelectedListener() {
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
             String function = parent.getItemAtPosition(position).toString();

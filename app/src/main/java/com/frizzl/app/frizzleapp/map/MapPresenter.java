@@ -14,8 +14,8 @@ import org.xmlpull.v1.XmlPullParserException;
  * Created by Noga on 14/06/2018.
  */
 
-public class MapPresenter {
-    private MapActivity mapActivity;
+class MapPresenter {
+    private final MapActivity mapActivity;
 
     MapPresenter(MapActivity mapActivity){
         this.mapActivity = mapActivity;
@@ -63,7 +63,7 @@ public class MapPresenter {
             appContentParser = new AppContentParser();
             AppTasks appTasks = appContentParser.parseAppXml(mapActivity, levelID);
             UserProfile.user.setCurrentAppTasks(appTasks);
-            UserProfile.user.setCurrentUserAppLevelID(levelID);
+            UserProfile.user.setCurrentLevel(levelID);
 
         } catch (XmlPullParserException e) {
             e.printStackTrace();

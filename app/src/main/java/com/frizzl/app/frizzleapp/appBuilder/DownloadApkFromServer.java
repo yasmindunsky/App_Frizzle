@@ -13,10 +13,10 @@ import java.nio.charset.StandardCharsets;
  * Created by yasmin.dunsky on 14-Feb-18.
  */
 
-public class DownloadApkFromServer extends AsyncTask<String, Void, String> {
-    public AsyncResponse delegate = null;
+class DownloadApkFromServer extends AsyncTask<String, Void, String> {
+    private AsyncResponse delegate = null;
 
-    public DownloadApkFromServer(AsyncResponse delegate) {
+    DownloadApkFromServer(AsyncResponse delegate) {
         this.delegate = delegate;
     }
 
@@ -49,6 +49,4 @@ public class DownloadApkFromServer extends AsyncTask<String, Void, String> {
     protected void onPostExecute(String result) {
         delegate.processFinish(result);
     }
-
-
 }

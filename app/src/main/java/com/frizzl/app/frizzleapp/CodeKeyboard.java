@@ -1,11 +1,9 @@
 package com.frizzl.app.frizzleapp;
 
 import android.content.Context;
-import android.os.AsyncTask;
 import android.os.Handler;
 import android.text.TextUtils;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -27,7 +25,7 @@ public class CodeKeyboard extends LinearLayout implements View.OnClickListener, 
     private static final String FUNCTION_PART_2 = "(View view){\n\t//Here you'll write commands\n    \n}";
     private static final int NUM_OF_CHARS_TO_BACK_AFTER_FUNCTION = FUNCTION_PART_2.length();
 
-    private SparseArray<String> keyValues = new SparseArray<>();
+    private final SparseArray<String> keyValues = new SparseArray<>();
 
     private InputConnection inputConnection;
     private InputMethodManager inputMethodManager;

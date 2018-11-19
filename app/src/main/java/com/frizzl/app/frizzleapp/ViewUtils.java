@@ -14,7 +14,6 @@ import android.view.View;
 import android.widget.PopupWindow;
 import android.widget.Toast;
 
-import java.util.ArrayList;
 import java.util.Locale;
 
 /**
@@ -28,7 +27,7 @@ public class ViewUtils {
         return isRTL(Locale.getDefault());
     }
 
-    public static boolean isRTL(Locale locale) {
+    private static boolean isRTL(Locale locale) {
         final int directionality = Character.getDirectionality(locale.getDisplayName().charAt(0));
         return directionality == Character.DIRECTIONALITY_RIGHT_TO_LEFT ||
                 directionality == Character.DIRECTIONALITY_RIGHT_TO_LEFT_ARABIC;
@@ -42,14 +41,6 @@ public class ViewUtils {
     public static String hexFromColorInt(int colorInt){
         return String.format("#%06X", (0xFFFFFF & colorInt));
     }
-
-    public static ArrayList<String> colorsHexList = new ArrayList<String>() {{
-        add("#39a085");
-        add("#f07a00");
-        add("#b93660");
-        add("#535264");
-        add("#f8b119");
-    }};
 
     public static void presentPopup(PopupWindow popupWindow, Runnable runOnDismiss, View viewToPopOn,
                              View viewToDim, Context context){
@@ -83,7 +74,7 @@ public class ViewUtils {
         view.getForeground().setAlpha(0);
     }
 
-    public static SpannableStringBuilder markWithColorBetweenTwoSymbols(Spannable s, String symbol, int color, boolean removeSymbol, boolean makeBold, Context context) {
+    public static SpannableStringBuilder markWithColorBetweenTwoSymbols(Spannable s, String symbol, int color, boolean makeBold, Context context) {
         SpannableStringBuilder ssb = new SpannableStringBuilder(s);
         int symbolLength = symbol.length();
         int startPosition = 0;
@@ -96,15 +87,13 @@ public class ViewUtils {
                         Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                 if (makeBold) {
                     Typeface font = ViewUtils.getRegularFontByLanguage(context);
-                    ssb.setSpan(new CustomTypefaceSpan("", font), firstSymbol, secondSymbol + 1,
+                    ssb.setSpan(new CustomTypefaceSpan(font), firstSymbol, secondSymbol + 1,
                             Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                 }
-                if (removeSymbol) {
-                    ssb.replace(firstSymbol, firstSymbol+symbolLength, "");
-                    ssb.replace(secondSymbol-symbolLength, secondSymbol, ""); //Indices
-                    // should have secondSymbol, symbolLength+symbolLength but since first symbol
-                    // was already deleted they changed.
-                }
+                ssb.replace(firstSymbol, firstSymbol+symbolLength, "");
+                ssb.replace(secondSymbol-symbolLength, secondSymbol, ""); //Indices
+                // should have secondSymbol, symbolLength+symbolLength but since first symbol
+                // was already deleted they changed.
                 startPosition = secondSymbol + 1;
             } else {
                 startPosition = firstSymbol + 1;
@@ -127,7 +116,7 @@ public class ViewUtils {
         Toast.makeText(context, R.string.turn_volume_up, Toast.LENGTH_LONG).show();
     }
 
-    public static Typeface getRegularFontByLanguage(Context context) {
+    private static Typeface getRegularFontByLanguage(Context context) {
         Typeface font = null;
         String language = Locale.getDefault().getLanguage();
 

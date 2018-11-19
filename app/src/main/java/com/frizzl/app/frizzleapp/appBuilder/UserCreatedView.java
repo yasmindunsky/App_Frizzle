@@ -63,8 +63,6 @@ public abstract class UserCreatedView {
         properties.put("android:layout_row", updatedRow);
     }
 
-    public abstract void updateProperties();
-
     public abstract View getThisView();
 
     public abstract PopupWindow getPropertiesTablePopupWindow(Context context);

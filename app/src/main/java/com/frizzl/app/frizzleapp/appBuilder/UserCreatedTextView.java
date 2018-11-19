@@ -25,7 +25,7 @@ import java.util.Map;
  */
 
 public class UserCreatedTextView extends UserCreatedView {
-    TextView thisView;
+    private final TextView thisView;
     private int selectedTextColorButtonID = R.id.color1;
 
     public UserCreatedTextView(Context context, Map<String, String> properties, int index){
@@ -165,11 +165,6 @@ public class UserCreatedTextView extends UserCreatedView {
     }
 
     @Override
-    public void updateProperties() {
-
-    }
-
-    @Override
     public TextView getThisView() {
         return thisView;
     }
@@ -181,7 +176,7 @@ public class UserCreatedTextView extends UserCreatedView {
         }
     };
 
-    private EditText.OnFocusChangeListener finishedEditingText = new View.OnFocusChangeListener() {
+    private final EditText.OnFocusChangeListener finishedEditingText = new View.OnFocusChangeListener() {
         @Override
         public void onFocusChange(View v, boolean hasFocus) {
             if (!hasFocus) {

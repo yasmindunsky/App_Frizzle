@@ -12,10 +12,10 @@ import com.frizzl.app.frizzleapp.practice.TaskFragment;
  * Created by yasmin.dunsky on 19-Nov-17.
  */
 
-public class AppTasksSwipeAdapter extends FragmentStatePagerAdapter {
+class AppTasksSwipeAdapter extends FragmentStatePagerAdapter {
 
-    private AppTasks appTasks;
-    private int numOfFragments;
+    private final AppTasks appTasks;
+    private final int numOfFragments;
 
     public AppTasksSwipeAdapter(FragmentManager fm, AppTasks appTasks) {
         super(fm);

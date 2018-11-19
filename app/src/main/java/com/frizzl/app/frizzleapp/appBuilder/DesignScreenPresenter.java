@@ -13,8 +13,8 @@ import java.util.Map;
  * Created by Noga on 09/07/2018.
  */
 
-public class DesignScreenPresenter {
-    private DesignScreenFragment designScreenFragment;
+class DesignScreenPresenter {
+    private final DesignScreenFragment designScreenFragment;
 
     public String getXml(Map<Integer, UserCreatedView> views) {
         UserApp currentUserApp = UserProfile.user.getCurrentUserApp();

@@ -17,14 +17,14 @@ import com.google.firebase.perf.metrics.Trace;
 
 import java.io.File;
 
-public class AppBuilderPresenter {
+class AppBuilderPresenter {
     private static final int INSTALLED_APP_ABOVE_N = 1;
     private static final int INSTALLED_APP_BELOW_N = 2;
 
-    private AppBuilderActivity appBuilderActivity;
-    private String codeStart;
-    private String codeEnd;
-    private int currentAppLevelID;
+    private final AppBuilderActivity appBuilderActivity;
+    private final String codeStart;
+    private final String codeEnd;
+    private final int currentAppLevelID;
     private boolean justOpenedApp;
 
     AppBuilderPresenter(AppBuilderActivity appBuilderActivity,

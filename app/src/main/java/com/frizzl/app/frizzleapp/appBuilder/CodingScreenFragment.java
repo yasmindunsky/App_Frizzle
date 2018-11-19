@@ -1,6 +1,5 @@
 package com.frizzl.app.frizzleapp.appBuilder;
 
-
 import android.content.Context;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
@@ -16,7 +15,6 @@ import android.widget.ScrollView;
 
 import com.frizzl.app.frizzleapp.CodeKeyboard;
 import com.frizzl.app.frizzleapp.R;
-
 
 /**
  * A simple {@link Fragment} subclass.
@@ -78,7 +76,8 @@ public class CodingScreenFragment extends Fragment {
         });
 
         scrollView.addView(codeEditor);
-        ConstraintLayout.LayoutParams scrollViewLayoutParams = (ConstraintLayout.LayoutParams) scrollView.getLayoutParams();
+        ConstraintLayout.LayoutParams scrollViewLayoutParams =
+                (ConstraintLayout.LayoutParams) scrollView.getLayoutParams();
         scrollViewLayoutParams.bottomToTop = codeKeyboard.getId();
         scrollView.setLayoutParams(scrollViewLayoutParams);
         constraintLayout.addView(codeKeyboard);
@@ -89,10 +88,8 @@ public class CodingScreenFragment extends Fragment {
             Log.e("APP_BUILDER", "codingScreenPresenter was not set.");
         }
 
-
         return view;
     }
-
 
     public void setPresenter(CodingScreenPresenter codingScreenPresenter){
         this.codingScreenPresenter = codingScreenPresenter;
@@ -125,6 +122,4 @@ public class CodingScreenFragment extends Fragment {
         super.onResume();
         codingScreenPresenter.onResume();
     }
-
-
 }

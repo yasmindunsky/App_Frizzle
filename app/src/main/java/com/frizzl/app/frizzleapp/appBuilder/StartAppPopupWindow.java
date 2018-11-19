@@ -17,7 +17,7 @@ import java.util.ArrayList;
  * Created by Noga on 02/09/2018.
  */
 
-public class StartAppPopupWindow extends PopupWindow {
+class StartAppPopupWindow extends PopupWindow {
     private RadioButton selectedButton;
 
     public StartAppPopupWindow(AppBuilderActivity activity){

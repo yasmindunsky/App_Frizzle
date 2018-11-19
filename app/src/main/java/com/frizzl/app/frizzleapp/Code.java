@@ -7,10 +7,10 @@ import java.io.Serializable;
  */
 
 public class Code implements Serializable{
-    private boolean mutable;
-    private boolean runnable;
-    private boolean waitForCTA;
-    private String code;
+    private final boolean mutable;
+    private final boolean runnable;
+    private final boolean waitForCTA;
+    private final String code;
 
     public Code(boolean mutable, boolean runnable, boolean waitForCTA, String code){
         this.mutable = mutable;

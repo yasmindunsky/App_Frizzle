@@ -12,33 +12,13 @@ import static com.frizzl.app.frizzleapp.preferences.PreferencesUtility.*;
 
 public class SaveSharedPreference {
 
-    static SharedPreferences getPreferences(Context context) {
+    private static SharedPreferences getPreferences(Context context) {
         return PreferenceManager.getDefaultSharedPreferences(context);
     }
 
-    public static void setLoggedIn(Context context, boolean loggedIn) {
+    public static void setFirstTime(Context context) {
         SharedPreferences.Editor editor = getPreferences(context).edit();
-        editor.putBoolean(LOGGED_IN_PREF, loggedIn);
-        editor.apply();
-    }
-
-    public static boolean getLoggedStatus(Context context) {
-        return getPreferences(context).getBoolean(LOGGED_IN_PREF, false);
-    }
-
-    public static void setUsername(Context context, String username) {
-        SharedPreferences.Editor editor = getPreferences(context).edit();
-        editor.putString(USERNAME_PREF, username);
-        editor.apply();
-    }
-
-    public static String getUserName(Context context) {
-        return getPreferences(context).getString(USERNAME_PREF, "");
-    }
-
-    public static void setFirstTime(Context context, boolean firstTime) {
-        SharedPreferences.Editor editor = getPreferences(context).edit();
-        editor.putBoolean(FIRST_TIME_PREF, firstTime);
+        editor.putBoolean(FIRST_TIME_PREF, false);
         editor.apply();
     }
 

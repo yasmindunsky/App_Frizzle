@@ -23,7 +23,7 @@ import java.util.Locale;
  */
 
 public class CodeSection extends RelativeLayout {
-    private CodeEditor codeEditor;
+    private final CodeEditor codeEditor;
     private TextToSpeech tts;
     // This variable represents the listener passed in by the owning object
     // The listener must implement the events interface and passes messages up to the parent.

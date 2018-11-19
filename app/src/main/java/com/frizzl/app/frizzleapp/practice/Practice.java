@@ -6,9 +6,9 @@ import java.util.ArrayList;
  * Created by yasmin.dunsky on 19-Nov-17.
  */
 
-public class Practice {
+class Practice {
 
-    private int practiceID;
+    private final int practiceID;
     private ArrayList<PracticeSlide> practiceSlides;
 
     public Practice(int practiceID) {

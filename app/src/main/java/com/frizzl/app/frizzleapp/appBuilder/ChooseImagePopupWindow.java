@@ -16,7 +16,7 @@ import java.util.ArrayList;
  * Created by Noga on 02/09/2018.
  */
 
-public class ChooseImagePopupWindow extends PopupWindow {
+class ChooseImagePopupWindow extends PopupWindow {
     private RadioButton selectedButton;
 
     public ChooseImagePopupWindow(Context context, int index, UserCreatedImageView userCreatedImageView, int selectedImageID){
