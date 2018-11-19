@@ -1,6 +1,5 @@
 package com.frizzl.app.frizzleapp.appBuilder;
-import com.google.firebase.perf.FirebasePerformance;
-import com.google.firebase.perf.metrics.Trace;
+
 import android.Manifest;
 import android.animation.Animator;
 import android.content.ComponentName;
@@ -49,11 +48,9 @@ public class AppBuilderActivity extends AppCompatActivity {
     private CodingScreenFragment codingFragment;
 
     private PopupWindow startAppPopupWindow;
-    private ProgressBar progressBar;
     private RelativeLayout relativeLayout;
     private ExpandableLayout errorExpandableLayout;
     private ImageButton playButton;
-    private Button moveOnButton;
     private ir.neo.stepbarview.StepBarView stepBarView;
     private com.airbnb.lottie.LottieAnimationView checkMark;
     private PopupWindow downloadingAppPopupWindow;
@@ -73,15 +70,16 @@ public class AppBuilderActivity extends AppCompatActivity {
         currentAppLevelID = intent.getIntExtra("appLevelID", 0);
         showMovedOn = intent.getBooleanExtra("returnedFromUsersApp", false);
 
-        RelativeLayout mainLayout = (RelativeLayout) this.getLayoutInflater().inflate(R.layout.activity_app_builder, null);
+        RelativeLayout mainLayout =
+                (RelativeLayout) this.getLayoutInflater().inflate(R.layout.activity_app_builder,
+                        null);
         setContentView(mainLayout);
 
         errorExpandableLayout = findViewById(R.id.errorExpandableLayout);
         ImageButton clickToExpandError = findViewById(R.id.clickToExpandError);
         relativeLayout = findViewById(R.id.appBuilderLayout);
-        progressBar = findViewById(R.id.progressBar);
         playButton = findViewById(R.id.play);
-        moveOnButton = findViewById(R.id.moveOnButton);
+        Button moveOnButton = findViewById(R.id.moveOnButton);
         TabLayout tabLayout = findViewById(R.id.tabLayout);
         android.support.v7.widget.Toolbar toolbar = findViewById(R.id.builderToolbar);
         stepBarView = findViewById(R.id.stepBarView);
@@ -135,7 +133,9 @@ public class AppBuilderActivity extends AppCompatActivity {
         });
 
         // Undim
-        relativeLayout.setForeground(ResourcesCompat.getDrawable(getResources(), R.drawable.shade, null));
+        relativeLayout.setForeground(ResourcesCompat.getDrawable(getResources(),
+                R.drawable.shade,
+                null));
         relativeLayout.getForeground().setAlpha(0);
 
         toolbar.setNavigationOnClickListener(v -> {
@@ -159,7 +159,8 @@ public class AppBuilderActivity extends AppCompatActivity {
         // Set Task text.
         // Create SwipeAdapter.
         viewPager = findViewById(R.id.viewPager);
-        AppTasksSwipeAdapter swipeAdapter = new AppTasksSwipeAdapter(getSupportFragmentManager(), UserProfile.user.getCurrentAppTasks());
+        AppTasksSwipeAdapter swipeAdapter = new AppTasksSwipeAdapter(getSupportFragmentManager(),
+                UserProfile.user.getCurrentAppTasks());
         viewPager.setAdapter(swipeAdapter);
         viewPager.setAllowedSwipeDirection(SwipeDirection.none);
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -240,7 +241,6 @@ public class AppBuilderActivity extends AppCompatActivity {
                 ViewGroup.LayoutParams.WRAP_CONTENT, true);
 
         tutorial = new Tutorial(AppBuilderActivity.this);
-        boolean activityCreated = true;
     }
 
     private int getItem(int i) {
@@ -270,36 +270,55 @@ public class AppBuilderActivity extends AppCompatActivity {
     }
 
     public void presentPopup(PopupWindow popupWindow, Runnable runOnDismiss) {
-        ViewUtils.presentPopup(popupWindow, runOnDismiss, relativeLayout, relativeLayout, this);
+        ViewUtils.presentPopup(popupWindow,
+                runOnDismiss,
+                relativeLayout,
+                relativeLayout,
+                this);
     }
 
     private Runnable afterSuccessPopupClosed() {
-        return () -> {
-            tutorial.presentTooltip(playButton, getString(R.string.tooltip_install_app), null, Gravity.BOTTOM);
-        };
+        return () -> tutorial.presentTooltip(playButton,
+                getString(R.string.tooltip_install_app),
+                null,
+                Gravity.BOTTOM);
     }
 
     private void openTaskSuccessPopup() {
-        PopupWindow successPopupWindow = new TaskSuccessPopupWindow(AppBuilderActivity.this);
-        ViewUtils.presentPopup(successPopupWindow, afterSuccessPopupClosed(), relativeLayout, relativeLayout, this);
+        PopupWindow successPopupWindow =
+                new TaskSuccessPopupWindow(AppBuilderActivity.this);
+        ViewUtils.presentPopup(successPopupWindow,
+                afterSuccessPopupClosed(),
+                relativeLayout,
+                relativeLayout,
+                this);
     }
 
     private void openRequestPermissionPopup() {
-        Runnable requestPermission = () -> {
-            ActivityCompat.requestPermissions(this,
-                    new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, WRITE_PERMISSION);
-        };
-        PopupWindow permissionPopupWindow = new RequestPermissionPopupWindow(AppBuilderActivity.this, requestPermission);
-        ViewUtils.presentPopup(permissionPopupWindow, null, relativeLayout, relativeLayout, this);
+        Runnable requestPermission = () -> ActivityCompat.requestPermissions(this,
+                new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, WRITE_PERMISSION);
+        PopupWindow permissionPopupWindow =
+                new RequestPermissionPopupWindow(AppBuilderActivity.this,
+                        requestPermission);
+        ViewUtils.presentPopup(permissionPopupWindow,
+                null,
+                relativeLayout,
+                relativeLayout,
+                this);
     }
 
     public void openStartAppPopup() {
-        relativeLayout.post(() -> ViewUtils.presentPopup(startAppPopupWindow, null, relativeLayout, relativeLayout, this));
+        relativeLayout.post(() -> ViewUtils.presentPopup(startAppPopupWindow,
+                null,
+                relativeLayout,
+                relativeLayout,
+                this));
     }
 
     @Override
     public void onRequestPermissionsResult(int requestCode,
-                                           @NonNull String permissions[], @NonNull int[] grantResults) {
+                                           @NonNull String permissions[],
+                                           @NonNull int[] grantResults) {
         switch (requestCode) {
             case WRITE_PERMISSION: {
                 if (grantResults.length > 0
@@ -310,11 +329,7 @@ public class AppBuilderActivity extends AppCompatActivity {
             }
         }
     }
-
-    public void setProgressBarVisibility(int visible) {
-        progressBar.setVisibility(visible);
-    }
-
+    
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         switch (requestCode) {
@@ -337,7 +352,8 @@ public class AppBuilderActivity extends AppCompatActivity {
     private void startUsersApp() {
         Intent intent = new Intent(Intent.ACTION_MAIN, null);
         intent.addCategory(Intent.CATEGORY_LAUNCHER);
-        final ComponentName cn = new ComponentName("com.frizzl.frizzlproject3", "com.frizzl.frizzlproject3.MainActivity");
+        final ComponentName cn = new ComponentName("com.frizzl.frizzlproject3",
+                "com.frizzl.frizzlproject3.MainActivity");
         intent.setComponent(cn);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
@@ -352,7 +368,10 @@ public class AppBuilderActivity extends AppCompatActivity {
 
     private void presentNextTutorialMessage() {
         OnDismissListener listener = () -> designFragment.presentTutorialMessage();
-        tutorial.presentTooltip(viewPager, getString(R.string.tooltip_see_task), listener, Gravity.BOTTOM);
+        tutorial.presentTooltip(viewPager,
+                getString(R.string.tooltip_see_task),
+                listener,
+                Gravity.BOTTOM);
     }
 
     public void updateAppNameAndIcon(String appName, String iconDrawable) {
@@ -392,7 +411,6 @@ public class AppBuilderActivity extends AppCompatActivity {
     }
 
     private void moveToNextTask() {
-//        stepBarView.setReachedStep(stepBarView.getReachedStep()-1);
         viewPager.setCurrentItem(getItem(1), true);
     }
 
@@ -410,8 +428,13 @@ public class AppBuilderActivity extends AppCompatActivity {
 
     public void presentConnectionNeededPopup() {
         showLoaderAnimation(false);
-        PopupWindow internetRequiredPopupWindow = new InternetRequiredPopupWindow(AppBuilderActivity.this);
-        ViewUtils.presentPopup(internetRequiredPopupWindow, null, relativeLayout, relativeLayout, this);
+        PopupWindow internetRequiredPopupWindow =
+                new InternetRequiredPopupWindow(AppBuilderActivity.this);
+        ViewUtils.presentPopup(internetRequiredPopupWindow,
+                null,
+                relativeLayout,
+                relativeLayout,
+                this);
     }
 
     @Override

@@ -53,8 +53,6 @@ public class CodeEditor extends android.support.v7.widget.AppCompatEditText {
         markQuotationMarks(editableText);
         markFunctionNames(editableText);
         markComments(editableText);
-//        markCommands(editableText);
-//        markSavedWords(editableText);
     }
 
     private void init() {
