@@ -1,6 +1,5 @@
 package com.frizzl.app.frizzleapp.appBuilder;
 
-import android.content.ClipData;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -9,7 +8,6 @@ import android.os.Environment;
 import android.provider.Settings;
 import android.support.v4.content.FileProvider;
 import android.util.Log;
-import android.widget.PopupWindow;
 
 import com.frizzl.app.frizzleapp.UserApp;
 import com.frizzl.app.frizzleapp.UserProfile;
@@ -110,8 +108,13 @@ public class AppBuilderPresenter {
                     "com.frizzl.app.frizzlapp.fileprovider", apkFile);
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 if (!appBuilderActivity.getPackageManager().canRequestPackageInstalls()) {
-                    appBuilderActivity.startActivityForResult(new Intent(Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES)
-                            .setData(Uri.parse(String.format("package:%s", appBuilderActivity.getPackageName()))), 1234);
+                    appBuilderActivity
+                            .startActivityForResult(new Intent(Settings
+                                    .ACTION_MANAGE_UNKNOWN_APP_SOURCES)
+                            .setData(Uri
+                                    .parse(String.format("package:%s",
+                                            appBuilderActivity.getPackageName()))),
+                                    1234);
                 }
             }
             Intent intent = new Intent(Intent.ACTION_INSTALL_PACKAGE)

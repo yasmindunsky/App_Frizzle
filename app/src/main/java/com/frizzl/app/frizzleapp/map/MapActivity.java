@@ -1,6 +1,5 @@
 package com.frizzl.app.frizzleapp.map;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
@@ -13,17 +12,11 @@ import android.widget.ScrollView;
 
 import com.frizzl.app.frizzleapp.AnalyticsUtils;
 import com.frizzl.app.frizzleapp.R;
-import com.frizzl.app.frizzleapp.UserProfile;
 import com.frizzl.app.frizzleapp.ViewUtils;
 import com.frizzl.app.frizzleapp.appBuilder.AppBuilderActivity;
-import com.frizzl.app.frizzleapp.practice.AppContentParser;
-import com.frizzl.app.frizzleapp.practice.AppTasks;
 import com.frizzl.app.frizzleapp.practice.IntroActivity;
 import com.frizzl.app.frizzleapp.practice.PracticeActivity;
 
-import org.xmlpull.v1.XmlPullParserException;
-
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -37,16 +30,16 @@ public class MapActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ConstraintLayout mainLayout = (ConstraintLayout ) this.getLayoutInflater().inflate(R.layout.activity_map, null);
+        ConstraintLayout mainLayout = (ConstraintLayout )
+                this.getLayoutInflater().inflate(R.layout.activity_map, null);
         setContentView(mainLayout);
 
         mapPresenter = new MapPresenter(this);
 
         constraintLayout = findViewById(R.id.constraintLayout);
-        android.support.v7.widget.Toolbar toolbar = findViewById(R.id.mapToolbar);
         ImageView toolbarIcon = findViewById(R.id.support_icon);
         scrollView = findViewById(R.id.map_scroll_view);
-//        tutorialAppButton = findViewById(R.id.tutorial_app);
+
         IntroMapButton pollyIntroButton = findViewById(R.id.polly_intro);
         IntroMapButton friendshipIntroButton = findViewById(R.id.friendship_intro);
         AppMapButton pollyAppButton = findViewById(R.id.polly_app);
@@ -56,6 +49,7 @@ public class MapActivity extends AppCompatActivity {
         PracticeMapButton onClickPracticeButton = findViewById(R.id.onclick_practice);
         PracticeMapButton viewsPracticeButton = findViewById(R.id.views_practice);
         PracticeMapButton variablesPracticeButton = findViewById(R.id.variables_practice);
+
         // Notice: Should be in order of appearance!
         levelButtons.addAll(Arrays.asList(
                 pollyIntroButton,
@@ -77,7 +71,6 @@ public class MapActivity extends AppCompatActivity {
 
         });
 
-
         View.OnClickListener onClickedApp = v -> {
             AppMapButton appMapButton = (AppMapButton) v;
             int levelID = appMapButton.getLevelID();
@@ -96,7 +89,7 @@ public class MapActivity extends AppCompatActivity {
             AnalyticsUtils.logStartedIntroEvent(levelID);
             mapPresenter.onClickedIntro(levelID);
         };
-//        tutorialAppButton.setOnClickListener(onClickedApp);
+
         friendshipTestAppButton.setOnClickListener(onClickedApp);
         firstPracticeButton.setOnClickListener(onClickedPractice);
         speakOutPracticeButton.setOnClickListener(onClickedPractice);
@@ -106,7 +99,6 @@ public class MapActivity extends AppCompatActivity {
         
         pollyAppButton.setOnClickListeners(onClickedApp);
         pollyIntroButton.setOnClickListeners(onClickedIntro);
-
 
         // Set scroll position.
         scrollView.post(() -> scrollView.fullScroll(View.FOCUS_DOWN));
@@ -130,33 +122,23 @@ public class MapActivity extends AppCompatActivity {
     }
 
     public void goToApp(int levelID) {
-        // parse app & update user profile
-        AppContentParser appContentParser;
-        try {
-            appContentParser = new AppContentParser();
-            AppTasks appTasks = appContentParser.parseAppXml(this, levelID);
-            UserProfile.user.setCurrentAppTasks(appTasks);
-            UserProfile.user.setCurrentUserAppLevelID(levelID);
+        mapPresenter.parseAppAndUpdateUserProfile(levelID);
 
-        } catch (XmlPullParserException e) {
-            e.printStackTrace();
-        }
-
-        // go to app builder
+        // Go to app builder.
         Intent appIntent = new Intent(this, AppBuilderActivity.class);
         appIntent.putExtra("appLevelID", levelID);
         startActivity(appIntent);
     }
 
     public void goToPractice(int practiceID) {
-        // Present pre-practice pop-up
-        final Context applicationContext = getApplicationContext();
         Runnable startPractice = () -> {
-            // go to practice
-            Intent practiceIntent = new Intent(applicationContext, PracticeActivity.class);
+            // Go to practice.
+            Intent practiceIntent = new Intent(getApplicationContext(), PracticeActivity.class);
             practiceIntent.putExtra("practiceID", practiceID);
             startActivity(practiceIntent);
         };
+
+        // Present pre-practice pop-up.
         PopupWindow popupWindow = mapPresenter.getPrePracticePopup(startPractice);
 
         if(isFinishing()) startPractice.run();

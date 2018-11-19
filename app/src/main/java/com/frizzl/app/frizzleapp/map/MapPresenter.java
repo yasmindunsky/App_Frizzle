@@ -5,6 +5,10 @@ import android.widget.PopupWindow;
 import com.frizzl.app.frizzleapp.ContentUtils;
 import com.frizzl.app.frizzleapp.R;
 import com.frizzl.app.frizzleapp.UserProfile;
+import com.frizzl.app.frizzleapp.practice.AppContentParser;
+import com.frizzl.app.frizzleapp.practice.AppTasks;
+
+import org.xmlpull.v1.XmlPullParserException;
 
 /**
  * Created by Noga on 14/06/2018.
@@ -13,16 +17,16 @@ import com.frizzl.app.frizzleapp.UserProfile;
 public class MapPresenter {
     private MapActivity mapActivity;
 
-    public MapPresenter(MapActivity mapActivity){
+    MapPresenter(MapActivity mapActivity){
         this.mapActivity = mapActivity;
     }
 
-    public void onClickedApp(int levelID){
+    void onClickedApp(int levelID){
         UserProfile.user.setCurrentLevel(levelID);
         mapActivity.goToApp(levelID);
     }
 
-    public void onClickedPractice(int levelID){
+    void onClickedPractice(int levelID){
         UserProfile.user.setCurrentLevel(levelID);
         mapActivity.goToPractice(levelID);
     }
@@ -31,11 +35,11 @@ public class MapPresenter {
         return UserProfile.user.getCurrentLevel();
     }
 
-    public int getTopLevel() {
+    int getTopLevel() {
         return UserProfile.user.getTopLevel();
     }
 
-    public PopupWindow getPrePracticePopup(Runnable startPractice) {
+    PopupWindow getPrePracticePopup(Runnable startPractice) {
         String explanationText = "";
         int currentLevel = UserProfile.user.getCurrentLevel();
         if (currentLevel == ContentUtils.ONCLICK_PRACTICE_LEVEL_ID){
@@ -48,8 +52,21 @@ public class MapPresenter {
         return new PrePracticePopupWindow(mapActivity, explanationText, startPractice);
     }
 
-    public void onClickedIntro(int levelID) {
+    void onClickedIntro(int levelID) {
         UserProfile.user.setCurrentLevel(levelID);
         mapActivity.goToIntro(levelID);
+    }
+
+    public void parseAppAndUpdateUserProfile(int levelID) {
+        AppContentParser appContentParser;
+        try {
+            appContentParser = new AppContentParser();
+            AppTasks appTasks = appContentParser.parseAppXml(mapActivity, levelID);
+            UserProfile.user.setCurrentAppTasks(appTasks);
+            UserProfile.user.setCurrentUserAppLevelID(levelID);
+
+        } catch (XmlPullParserException e) {
+            e.printStackTrace();
+        }
     }
 }

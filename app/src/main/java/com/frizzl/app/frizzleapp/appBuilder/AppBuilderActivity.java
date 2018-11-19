@@ -329,7 +329,7 @@ public class AppBuilderActivity extends AppCompatActivity {
             }
         }
     }
-    
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         switch (requestCode) {
