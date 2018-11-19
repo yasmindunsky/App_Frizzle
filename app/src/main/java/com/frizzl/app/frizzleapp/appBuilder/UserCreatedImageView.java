@@ -70,8 +70,8 @@ public class UserCreatedImageView extends UserCreatedView {
 
         this.properties = new HashMap<>();
         properties.put("android:id",  "image_view" + numOfTextViews);
-        properties.put("android:layout_width", "70dp");
-        properties.put("android:layout_height", "70dp");
+        properties.put("android:layout_width", "150dp");
+        properties.put("android:layout_height", "150dp");
         properties.put("android:layout_margin", "10dp");
         properties.put("android:background", "@drawable/user_text_view_background");
         properties.put("android:padding", "10dp");

@@ -126,10 +126,10 @@ public class UserCreatedButton extends UserCreatedView {
         properties.put("android:text", (String) thisView.getText());
         properties.put("android:fontFamily", "@font/rubik_medium");
         properties.put("android:textAllCaps", "false");
-        properties.put("android:textColor", "#535264");
+        properties.put("android:textColor", "#fce5c5");
         properties.put("android:textSize", "18sp");
         properties.put("android:background", "@drawable/user_button_background");
-        properties.put("android:backgroundTint", "#f8b119");
+        properties.put("android:backgroundTint", "#b93660");
         properties.put("android:padding", "10dp");
         properties.put("android:paddingStart", "16dp");
         properties.put("android:paddingEnd", "16dp");
