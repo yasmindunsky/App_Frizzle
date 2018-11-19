@@ -1,5 +1,6 @@
 package com.frizzl.app.frizzleapp.appBuilder;
 
+import android.content.ClipData;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -13,6 +14,8 @@ import android.widget.PopupWindow;
 import com.frizzl.app.frizzleapp.UserApp;
 import com.frizzl.app.frizzleapp.UserProfile;
 import com.frizzl.app.frizzleapp.ViewUtils;
+import com.google.firebase.perf.FirebasePerformance;
+import com.google.firebase.perf.metrics.Trace;
 
 import java.io.File;
 
@@ -65,6 +68,9 @@ public class AppBuilderPresenter {
     }
 
     void downloadApk() {
+        Trace myTrace = FirebasePerformance.getInstance().newTrace("app_download");
+        myTrace.start();
+
         appBuilderActivity.showLoaderAnimation(true);
         saveProject();
         UserApp currentUserApp = UserProfile.user.getCurrentUserApp();
@@ -75,15 +81,19 @@ public class AppBuilderPresenter {
         Log.d("INSTALL", "in AppBuilderPresenter, downloadApk()");
         new DownloadApkFromServer(output -> {
             if (output.equals(ViewUtils.CONNECTION_FAILED)) {
+                myTrace.putAttribute("proccess_status", "connection_failed");
                 appBuilderActivity.presentConnectionNeededPopup();
             }
             else if (output == null || output.equals("")){
+                myTrace.putAttribute("proccess_status", "no_output");
                 output = "no output from server";
             }
             else {
+                myTrace.putAttribute("proccess_status", "success");
                 installUsersApp();
             }
             Log.d("INSTALL", "in AppBuilderPresenter, downloadApk(), output:" + output);
+            myTrace.stop();
         }).execute(code, xml, manifest);
     }
 

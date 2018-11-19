@@ -1,5 +1,6 @@
 package com.frizzl.app.frizzleapp.appBuilder;
-
+import com.google.firebase.perf.FirebasePerformance;
+import com.google.firebase.perf.metrics.Trace;
 import android.Manifest;
 import android.animation.Animator;
 import android.content.ComponentName;
@@ -260,6 +261,7 @@ public class AppBuilderActivity extends AppCompatActivity {
         }
         // Permission was already granted, download APK.
         else {
+
             appBuilderPresenter.downloadApk();
         }
         AnalyticsUtils.logRunAppEvent();
