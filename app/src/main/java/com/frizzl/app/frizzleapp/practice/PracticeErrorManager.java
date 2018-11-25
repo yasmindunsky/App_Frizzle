@@ -25,7 +25,7 @@ class PracticeErrorManager {
 
     // Returns null if error was not found, or Error to display.
     // Checks if the currentCode is identical to the originalCode
-    private static final ErrorCheck errorCheck1 = (originalCode, currentCode) -> {
+    private static final ErrorCheck ERROR_GENERAL = (originalCode, currentCode) -> {
         if (originalCode.equals(currentCode)) {
             return FrizzlApplication.resources.getString(R.string.error_read_instructions);
         }
@@ -34,7 +34,7 @@ class PracticeErrorManager {
 
     // Returns null if error was not found, or Error to display.
     // Checks if the user deleted the speakOut command and left only the text inside
-    private static final ErrorCheck errorCheck2 = (originalCode, currentCode) -> {
+    private static final ErrorCheck ERROR_SPEAKOUT_MISSING = (originalCode, currentCode) -> {
         if (!CodeCheckUtils.checkIfContainsSpeakOutAndString(currentCode, "", true))
         {
             return FrizzlApplication.resources.getString(R.string.error_add_speakout);
@@ -44,7 +44,7 @@ class PracticeErrorManager {
 
     // Returns null if error was not found, or Error to display.
     // Checks if a semicolon is missing
-    private static final ErrorCheck errorCheck3 = (originalCode, currentCode) -> {
+    private static final ErrorCheck ERROR_SPEAKOUT_SEMICOLON_MISSING = (originalCode, currentCode) -> {
         if (!currentCode.contains(";"))
         {
             return FrizzlApplication.resources.getString(R.string.error_add_speakout);
@@ -54,7 +54,7 @@ class PracticeErrorManager {
 
     // Returns null if error was not found, or Error to display.
     // Checks if an unnecessary speakOut is there
-    private static final ErrorCheck errorCheck4 = (originalCode, currentCode) -> {
+    private static final ErrorCheck ERROR_FUNCTION_UNNECESSARY_SPEAKOUT = (originalCode, currentCode) -> {
         if (CodeCheckUtils.checkIfContainsSpeakOutAndString(currentCode, "", true))
         {
             return FrizzlApplication.resources.getString(R.string.error_delete_speakout_add_function);
@@ -64,7 +64,7 @@ class PracticeErrorManager {
 
     // Returns null if error was not found, or Error to display.
     // Checks if the user changed the white parts of the function
-    private static final ErrorCheck errorCheck5 = (originalCode, currentCode) -> {
+    private static final ErrorCheck ERROR_FUNCTION_CHANGED_WHITE = (originalCode, currentCode) -> {
         if (!CodeCheckUtils.checkIfFunctionSignatureIsValid(currentCode))
         {
             return FrizzlApplication.resources.getString(R.string.error_dont_change_function);
@@ -74,7 +74,7 @@ class PracticeErrorManager {
 
     // Returns null if error was not found, or Error to display.
     // Checks if the speakOut command is not in the right place
-    private static final ErrorCheck errorCheck6 = (originalCode, currentCode) -> {
+    private static final ErrorCheck ERROR_FUNCTION_SPEAKOUT_IN_WRONG_PLACE = (originalCode, currentCode) -> {
         if (!CodeCheckUtils.checkIfSpeakOutIsInsideCurlyBrackets(currentCode))
         {
             return FrizzlApplication.resources.getString(R.string.error_speakout_brackets);
@@ -82,26 +82,33 @@ class PracticeErrorManager {
         return null;
     };
 
-    private static List<ErrorCheck> errorChecksList;
-    private static Map<String, int[]> levelAndSlideToChecks;
+    private static Map<String, ErrorCheck[]> levelAndSlideToChecks;
 
     private static void init(){
-        errorChecksList = new ArrayList<>();
-        errorChecksList.add(errorCheck0);
-        errorChecksList.add(errorCheck1);
-        errorChecksList.add(errorCheck2);
-        errorChecksList.add(errorCheck3);
-        errorChecksList.add(errorCheck4);
-        errorChecksList.add(errorCheck5);
-        errorChecksList.add(errorCheck6);
-
         levelAndSlideToChecks = new HashMap<>();
-        levelAndSlideToChecks.put(ContentUtils.SPEAKOUT_PRACTICE_LEVEL_ID + "_2", new int[]{1, 2, 3});
-        levelAndSlideToChecks.put(ContentUtils.ONCLICK_PRACTICE_LEVEL_ID + "_5", new int[]{1, 4, 5});
-        levelAndSlideToChecks.put(ContentUtils.SPEAKOUT_PRACTICE_LEVEL_ID + "_1", new int[]{1, 2, 3});
-        levelAndSlideToChecks.put(ContentUtils.ONCLICK_PRACTICE_LEVEL_ID + "_7", new int[]{1, 4, 5});
-        levelAndSlideToChecks.put(ContentUtils.ONCLICK_PRACTICE_LEVEL_ID + "_8", new int[]{1, 6, 5, 2});
-        levelAndSlideToChecks.put(ContentUtils.ONCLICK_PRACTICE_LEVEL_ID + "_9", new int[]{});
+        levelAndSlideToChecks.put(ContentUtils.SPEAKOUT_PRACTICE_LEVEL_ID + "_1",
+                new ErrorCheck[]{ERROR_GENERAL,
+                        ERROR_SPEAKOUT_MISSING,
+                        ERROR_SPEAKOUT_SEMICOLON_MISSING});
+        levelAndSlideToChecks.put(ContentUtils.SPEAKOUT_PRACTICE_LEVEL_ID + "_2",
+                new ErrorCheck[]{ERROR_GENERAL,
+                        ERROR_SPEAKOUT_MISSING,
+                        ERROR_SPEAKOUT_SEMICOLON_MISSING});
+        levelAndSlideToChecks.put(ContentUtils.ONCLICK_PRACTICE_LEVEL_ID + "_5",
+                new ErrorCheck[]{ERROR_GENERAL,
+                        ERROR_FUNCTION_UNNECESSARY_SPEAKOUT,
+                        ERROR_FUNCTION_CHANGED_WHITE});
+        levelAndSlideToChecks.put(ContentUtils.ONCLICK_PRACTICE_LEVEL_ID + "_7",
+                new ErrorCheck[]{ERROR_GENERAL,
+                        ERROR_FUNCTION_UNNECESSARY_SPEAKOUT,
+                        ERROR_FUNCTION_CHANGED_WHITE});
+        levelAndSlideToChecks.put(ContentUtils.ONCLICK_PRACTICE_LEVEL_ID + "_8",
+                new ErrorCheck[]{ERROR_GENERAL,
+                        ERROR_SPEAKOUT_MISSING,
+                        ERROR_FUNCTION_CHANGED_WHITE,
+                        ERROR_FUNCTION_SPEAKOUT_IN_WRONG_PLACE});
+        levelAndSlideToChecks.put(ContentUtils.ONCLICK_PRACTICE_LEVEL_ID + "_9",
+                new ErrorCheck[]{});
     }
 
     public static String check(int currentLevel, int currentSlide, String originalCode, String currentCode) {
@@ -110,13 +117,10 @@ class PracticeErrorManager {
 
         String key = currentLevel + "_" + currentSlide;
         if (!levelAndSlideToChecks.containsKey(key)) return null;
-        int[] checksToPerform = levelAndSlideToChecks.get(key);
-        for (int checkIndex : checksToPerform) {
-            if (checkIndex < errorChecksList.size()) {
-                ErrorCheck errorCheck = errorChecksList.get(checkIndex);
-                String checkResult = errorCheck.check(originalCode, currentCode);
-                if (checkResult != null) return checkResult;
-            }
+        ErrorCheck[] checksToPerform = levelAndSlideToChecks.get(key);
+        for (ErrorCheck errorCheck : checksToPerform) {
+            String checkResult = errorCheck.check(originalCode, currentCode);
+            if (checkResult != null) return checkResult;
         }
         return null;
     }

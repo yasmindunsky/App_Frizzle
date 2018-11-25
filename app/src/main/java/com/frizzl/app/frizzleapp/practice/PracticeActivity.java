@@ -92,7 +92,9 @@ public class PracticeActivity extends FragmentActivity {
         InputMethodManager inputManager = (InputMethodManager)
                 getSystemService(Context.INPUT_METHOD_SERVICE);
         View view = getCurrentFocus();
-        inputManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        if (view != null) {
+            inputManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
     }
 
     @Override
