@@ -12,8 +12,8 @@
     </slide>
 
     <slide>
-        <info_text>When we design our app we can easily add elements such as text, button and image.</info_text>
-        <task_text/>
+        <info_text>When we design our app we can easily add elements such as text, a button or an image.</info_text>
+        <task_text>Try clicking the button.</task_text>
         <reminder_text />
         <code
             mutable="false"

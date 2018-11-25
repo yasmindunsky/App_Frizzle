@@ -41,7 +41,7 @@ tools:keep="@xml/practice_2">
     </slide>
 
     <slide>
-        <info_text>A $green$function$green$ is a structure that wraps $orange$commands$orange$ and has a name. We'll now see how a $green$function$green$ looks like.</info_text>
+        <info_text>A $green$function$green$ is a structure that wraps $orange$commands$orange$ and has a name. We'll now see how a $green$function$green$ looks.</info_text>
         <task_text/>
         <reminder_text/>
         <code show="false" mutable="false" runnable="false" waitForCTA="false"/>

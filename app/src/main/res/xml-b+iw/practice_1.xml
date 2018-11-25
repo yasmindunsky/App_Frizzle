@@ -13,7 +13,7 @@
 
     <slide>
         <info_text>כשנעצב את האפליקציה נוכל להוסיף בקלות אלמנטים כמו טקסט, כפתור ותמונה.</info_text>
-        <task_text/>
+        <task_text>נסו ללחוץ על הכפתור.</task_text>
         <reminder_text />
         <code
             mutable="false"
