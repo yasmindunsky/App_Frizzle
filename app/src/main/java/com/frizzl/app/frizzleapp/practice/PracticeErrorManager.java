@@ -82,6 +82,26 @@ class PracticeErrorManager {
         return null;
     };
 
+    // Returns null if error was not found, or Error to display.
+    // Checks if the speakOut command had a text other than 'this is so cool'
+    private static final ErrorCheck ERROR_SPEAKOUT_NOT_THIS_IS_SO_COOL = (originalCode, currentCode) -> {
+        if (!CodeCheckUtils.checkIfContainsSpeakOutAndString(currentCode, "this is so cool", true))
+        {
+            return FrizzlApplication.resources.getString(R.string.error_speakout_not_this_is_so_cool);
+        }
+        return null;
+    };
+
+    // Returns null if error was not found, or Error to display.
+    // Checks if the speakOut command had a text other than 'this is so cool'
+    private static final ErrorCheck ERROR_FUNCTION_NOT_MYFUNCTION = (originalCode, currentCode) -> {
+        if (!CodeCheckUtils.checkIfContainsFunctionWithName(currentCode, "myFunction"))
+        {
+            return FrizzlApplication.resources.getString(R.string.error_function_not_myfunction);
+        }
+        return null;
+    };
+
     private static Map<String, ErrorCheck[]> levelAndSlideToChecks;
 
     private static void init(){
@@ -93,7 +113,8 @@ class PracticeErrorManager {
         levelAndSlideToChecks.put(ContentUtils.SPEAKOUT_PRACTICE_LEVEL_ID + "_2",
                 new ErrorCheck[]{ERROR_GENERAL,
                         ERROR_SPEAKOUT_MISSING,
-                        ERROR_SPEAKOUT_SEMICOLON_MISSING});
+                        ERROR_SPEAKOUT_SEMICOLON_MISSING,
+                        ERROR_SPEAKOUT_NOT_THIS_IS_SO_COOL});
         levelAndSlideToChecks.put(ContentUtils.ONCLICK_PRACTICE_LEVEL_ID + "_5",
                 new ErrorCheck[]{ERROR_GENERAL,
                         ERROR_FUNCTION_UNNECESSARY_SPEAKOUT,
@@ -101,7 +122,8 @@ class PracticeErrorManager {
         levelAndSlideToChecks.put(ContentUtils.ONCLICK_PRACTICE_LEVEL_ID + "_7",
                 new ErrorCheck[]{ERROR_GENERAL,
                         ERROR_FUNCTION_UNNECESSARY_SPEAKOUT,
-                        ERROR_FUNCTION_CHANGED_WHITE});
+                        ERROR_FUNCTION_CHANGED_WHITE,
+                        ERROR_FUNCTION_NOT_MYFUNCTION});
         levelAndSlideToChecks.put(ContentUtils.ONCLICK_PRACTICE_LEVEL_ID + "_8",
                 new ErrorCheck[]{ERROR_GENERAL,
                         ERROR_SPEAKOUT_MISSING,

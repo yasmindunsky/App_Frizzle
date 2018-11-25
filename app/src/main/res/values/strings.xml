@@ -199,6 +199,8 @@ public class MainActivity extends AppCompatActivity implements   TextToSpeech.On
     <string name="error_dont_change_function">We\'ll now leave the white parts of the code as they were. Use the \'Add Function\' button on the keyboard.</string>
     <string name="error_speakout_brackets">The speakOut command should be written between the curly brackets.</string>
     <string name="error_set_onclick">Try to click the button and fill in the OnClick property.</string>
+    <string name="error_speakout_not_this_is_so_cool">Make sure the text between the parentheses is correct.</string>
+    <string name="error_function_not_myfunction">Make sure the function is named correctly.</string>
     <string name="done">done</string>
     <string name="your_message_successfully_sent">Your message was successfully sent.</string>
     <string name="feedback_thank_you">thank you</string>
