@@ -18,7 +18,7 @@ import android.widget.LinearLayout;
 
 import com.airbnb.lottie.LottieAnimationView;
 
-public class CodeKeyboard extends LinearLayout implements View.OnClickListener, View.OnTouchListener {
+public class CodeKeyboard extends LinearLayout implements View.OnClickListener {
 
     private static final int NUM_OF_CHARS_TO_BACK_AFTER_SPEAKOUT = 3;
     private static final String FUNCTION_PART_1 = "public void nameYouChoose";
@@ -55,8 +55,13 @@ public class CodeKeyboard extends LinearLayout implements View.OnClickListener, 
         englishButton.setOnClickListener(view ->
                 inputMethodManager.toggleSoftInput(InputMethodManager.SHOW_FORCED,0));
         ImageButton buttonDelete = findViewById(R.id.button_delete);
-        buttonDelete.setOnClickListener(this);
-        buttonDelete.setOnTouchListener(this);
+        buttonDelete.setOnTouchListener(new RepeatListener(400, 100, new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // the code to execute repeatedly
+                delete();
+            }
+        }));
         ImageButton buttonEnter = findViewById(R.id.button_enter);
         buttonEnter.setOnClickListener(this);
 
@@ -122,12 +127,6 @@ public class CodeKeyboard extends LinearLayout implements View.OnClickListener, 
             final Handler handler = new Handler();
             handler.postDelayed(animationView::playAnimation, 400); // 1s
         }
-    }
-
-    @Override
-    public boolean onTouch(View v, MotionEvent event) {
-        delete();
-        return false;
     }
 
     private void delete() {
