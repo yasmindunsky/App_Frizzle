@@ -48,40 +48,62 @@
         app:lottie_loop="false"
         app:lottie_rawRes="@raw/checked_done" />
 
+    <ImageButton
+        android:id="@+id/leftArrow"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/frameLayout"
+        android:layout_marginStart="50dp"
+        android:background="@android:color/transparent"
+        android:scaleType="fitCenter"
+        app:srcCompat="@drawable/ic_task_arrow_icon_left" />
+
     <ir.neo.stepbarview.StepBarView
         android:id="@+id/stepBarView"
         android:layout_width="match_parent"
         android:layout_height="25dp"
         android:layout_below="@+id/frameLayout"
         android:layout_marginBottom="12dp"
-        android:layout_marginEnd="60dp"
-        android:layout_marginStart="60dp"
 
+        android:layout_marginTop="5dp"
+        android:layout_toEndOf="@+id/leftArrow"
+        android:layout_toStartOf="@+id/rightArrow"
         android:gravity="center_vertical"
         android:layoutDirection="locale"
 
         android:paddingLeft="14dp"
         android:paddingRight="14dp"
         app:sbv_max_count="6"
+
         app:sbv_show_step_index="false"
         app:sbv_show_step_name="false"
-
         app:sbv_show_step_stroke="true"
+
         app:sbv_steps_line_height="2dp"
         app:sbv_steps_line_margin_left="0dp"
-
         app:sbv_steps_line_margin_right="0dp"
+
         app:sbv_steps_line_reached_colors="@color/appBuilderUnselectedCircles"
         app:sbv_steps_line_unreached_colors="@color/frizzl_medium_light_blue"
-
         app:sbv_steps_reached_colors="@color/appBuilderUnselectedCircles"
         app:sbv_steps_size="14dp"
         app:sbv_steps_stroke_current_color="@color/frizzl_medium_light_blue"
-
         app:sbv_steps_stroke_reached_color="@color/appBuilderUnselectedCircles"
         app:sbv_steps_stroke_unreached_color="@color/frizzl_medium_light_blue"
         app:sbv_steps_text_color="@color/white"
         app:sbv_steps_unreached_colors="@color/frizzl_medium_light_blue" />
+
+    <ImageButton
+        android:id="@+id/rightArrow"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/frameLayout"
+        android:layout_marginEnd="50dp"
+        android:background="@android:color/transparent"
+        android:scaleType="fitCenter"
+        app:srcCompat="@drawable/ic_task_arrow_icon_right" />
 
     <android.support.design.widget.TabLayout
         android:id="@+id/tabLayout"

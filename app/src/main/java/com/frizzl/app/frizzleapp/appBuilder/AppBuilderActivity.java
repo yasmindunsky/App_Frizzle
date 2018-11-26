@@ -83,6 +83,15 @@ public class AppBuilderActivity extends AppCompatActivity {
         android.support.v7.widget.Toolbar toolbar = findViewById(R.id.builderToolbar);
         stepBarView = findViewById(R.id.stepBarView);
         checkMark = findViewById(R.id.checkMark);
+        ImageButton leftArrow = findViewById(R.id.leftArrow);
+        ImageButton rightArrow = findViewById(R.id.rightArrow);
+
+        leftArrow.setOnClickListener((view) -> moveToPrevTask());
+        rightArrow.setOnClickListener((view) -> {
+                UserProfile user = UserProfile.user;
+                if (user.getTopSlideInLevel() > user.getCurrentSlideInLevel())
+                    moveToNextTask();
+        });
 
         designFragment = new DesignScreenFragment();
         designScreenPresenter = new DesignScreenPresenter(designFragment);
@@ -386,13 +395,16 @@ public class AppBuilderActivity extends AppCompatActivity {
             checkMark.playAnimation();
         }, 1000); // 1s
         UserProfile user = UserProfile.user;
-        int currentTaskNum = user.getCurrentAppTaskNum();
+        int currentTask = user.getCurrentSlideInLevel();
         int currentLevel = user.getCurrentLevel();
-        AnalyticsUtils.logCompletedTaskEvent(currentLevel, currentTaskNum);
-        // If not the last task
-        if (currentTaskNum < user.getCurrentAppTasks().getTasksNum() - 1) {
-            UserProfile.user.setCurrentAppTaskNum(currentTaskNum + 1);
-        } else {
+        int topTask = user.getTopSlideInLevel();
+        AnalyticsUtils.logCompletedTaskEvent(currentLevel, currentTask);
+
+        if (currentTask <= topTask)
+            UserProfile.user.setTopSlideInLevel(currentTask + 1);
+
+        // If last task show success popup
+        if (currentTask == user.getCurrentAppTasks().getTasksNum() - 1) {
             handler.postDelayed(this::openTaskSuccessPopup, 1000); // 1s
         }
     }
@@ -410,10 +422,13 @@ public class AppBuilderActivity extends AppCompatActivity {
     }
 
     private void moveToNextTask() {
+        int currentTask = UserProfile.user.getCurrentSlideInLevel();
+        UserProfile.user.setCurrentSlideInLevel(currentTask + 1);
         viewPager.setCurrentItem(getItem(1), true);
     }
 
     private void moveToPrevTask() {
+        UserProfile.user.setCurrentSlideInLevel(UserProfile.user.getCurrentSlideInLevel()-1);
         viewPager.setCurrentItem(getItem(-1), true);
     }
 
