@@ -225,7 +225,7 @@ public class PracticeSlideFragment extends Fragment {
                             getCurrentSlide() == 9) {
                         presentError(context, FrizzlApplication.resources.getString(R.string.error_set_onclick), set);
                     } else {
-                        String error = PracticeErrorManager.check(currentLevel, getCurrentSlide(),
+                        String error = PracticeErrorManager.getError(currentLevel, getCurrentSlide(),
                                 getOriginalCode(), getCurrentCode());
                         if (error != null) presentError(context, error, set);
                     }

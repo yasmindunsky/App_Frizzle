@@ -133,7 +133,7 @@ class PracticeErrorManager {
                 new ErrorCheck[]{});
     }
 
-    public static String check(int currentLevel, int currentSlide, String originalCode, String currentCode) {
+    public static String getError(int currentLevel, int currentSlide, String originalCode, String currentCode) {
         boolean initialized = false;
         if (!initialized) init();
 
@@ -144,6 +144,6 @@ class PracticeErrorManager {
             String checkResult = errorCheck.check(originalCode, currentCode);
             if (checkResult != null) return checkResult;
         }
-        return null;
+        return FrizzlApplication.resources.getString(R.string.error_read_instructions);
     }
 }
