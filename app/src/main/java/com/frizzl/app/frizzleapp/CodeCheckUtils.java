@@ -51,6 +51,7 @@ public class CodeCheckUtils {
     public static boolean checkIfSpeakoutIsEmpty(String code) {
         String speakOutPrefix = "speakOut(\"";
         int i = code.indexOf(speakOutPrefix);
+        if (i < 0) return true;
         int nextCharIndex = i + speakOutPrefix.length();
         String nextChar = code.substring(nextCharIndex, nextCharIndex+1);
         return Objects.equals(nextChar, "\"");

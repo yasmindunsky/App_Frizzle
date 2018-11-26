@@ -99,4 +99,11 @@ public class CodeCheckUtilsTest {
         assertEquals(false, answer);
     }
 
+    @Test
+    public void checkIfSpeakoutIsEmpty_noCode_true() throws Exception {
+        String code = "";
+        boolean answer = CodeCheckUtils.checkIfSpeakoutIsEmpty(code);
+        assertEquals(true, answer);
+    }
+
 }
