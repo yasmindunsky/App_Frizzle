@@ -71,16 +71,16 @@ class CodingScreenPresenter {
     boolean isTaskCompleted(String code) {
         boolean taskCompleted = false;
         UserProfile user = UserProfile.user;
-        int currentAppTaskNum = user.getCurrentAppTaskNum();
+        int currentTask = user.getCurrentSlideInLevel();
         if (user.getCurrentLevel() == ContentUtils.POLLY_APP_LEVEL_ID) {
-            if (currentAppTaskNum == 2) {
+            if (currentTask == 2) {
                 int beforeName = code.indexOf("public void") + String.valueOf("public void").length();
                 int afterName = code.indexOf("(View view)");
                 if (afterName - beforeName > 2) {
                     taskCompleted = true;
                 }
                 taskCompleted &= !CodeCheckUtils.checkIfContainsFunctionWithName(code, "nameYouChoose");
-            } else if (currentAppTaskNum == 3) {
+            } else if (currentTask == 3) {
                 int beforeTextToSay = code.indexOf("speakOut\"") + String.valueOf("speakOut\"").length();
                 int afterTextToSay = code.indexOf("\");");
                 if (afterTextToSay - beforeTextToSay > 0){

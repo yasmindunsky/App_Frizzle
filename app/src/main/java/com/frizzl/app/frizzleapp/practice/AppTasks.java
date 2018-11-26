@@ -28,7 +28,7 @@ public class AppTasks implements Serializable{
         this.tasks = tasks;
     }
 
-    public int getTasksNum() {
+    public int getNumberOfTasks() {
         return tasks.size();
     }
 }

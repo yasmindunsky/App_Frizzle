@@ -167,7 +167,7 @@ public class DesignScreenFragment extends Fragment {
                         public void onChangedText() {
                             if (UserProfile.user.getCurrentLevel() ==
                                     ContentUtils.POLLY_APP_LEVEL_ID &&
-                                    UserProfile.user.getCurrentAppTaskNum() == 1) {
+                                    UserProfile.user.getCurrentSlideInLevel() == 1) {
                                 taskCompleted();
                             }
                         }
@@ -177,10 +177,10 @@ public class DesignScreenFragment extends Fragment {
                             if (UserProfile.user.getCurrentLevel() ==
                                     ContentUtils.POLLY_APP_LEVEL_ID &&
                                     !onClickFuncName.equals("None")) {
-                                if (UserProfile.user.getCurrentAppTaskNum() == 4) {
+                                if (UserProfile.user.getCurrentSlideInLevel() == 4) {
                                     if (appBuilderActivity != null)
                                         taskCompleted();
-                                } else if (UserProfile.user.getCurrentAppTaskNum() == 5) {
+                                } else if (UserProfile.user.getCurrentSlideInLevel() == 5) {
                                     if (appBuilderActivity != null)
                                         taskCompleted();
                                 }

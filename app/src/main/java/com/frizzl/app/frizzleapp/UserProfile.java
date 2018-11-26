@@ -18,12 +18,12 @@ import java.io.Serializable;
 public class UserProfile implements Serializable {
 
     private AppTasks currentAppTasks;
-    private int currentAppTaskNum;
     private UserApp pollyUserApp;
 
-    // level is of apps and practices combined
+    // Level is of apps and practices combined.
     private int currentLevel;
     private int topLevel;
+    // Slide in practice and task in app.
     private int currentSlideInLevel;
     private int topSlideInLevel;
 
@@ -39,7 +39,6 @@ public class UserProfile implements Serializable {
         currentLevel = 0;
         currentSlideInLevel = 0;
         topSlideInLevel = 0;
-        currentAppTaskNum = 0;
     }
 
     public AppTasks getCurrentAppTasks() {
@@ -106,14 +105,6 @@ public class UserProfile implements Serializable {
         if (currentLevel < topLevel){
             currentLevel++;
         }
-    }
-
-    public int getCurrentAppTaskNum() {
-        return currentAppTaskNum;
-    }
-
-    public void setCurrentAppTaskNum(int num){
-        this.currentAppTaskNum = num;
     }
 
     public int getTopLevel() {

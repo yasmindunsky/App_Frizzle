@@ -181,7 +181,7 @@ public class AppBuilderActivity extends AppCompatActivity {
                 stepBarView.setReachedStep(stepBarView.getMaxCount() - position);
 
                 SwipeDirection swipeDirection;
-                if (position < UserProfile.user.getCurrentAppTaskNum()) {
+                if (position < UserProfile.user.getCurrentSlideInLevel()) {
                     swipeDirection = SwipeDirection.all;
                 } else {
                     swipeDirection = SwipeDirection.left; // This is the setting also for RTL
@@ -230,12 +230,12 @@ public class AppBuilderActivity extends AppCompatActivity {
 
         // Set stepBarView
         stepBarView.setRtl(!ViewUtils.isRTL());
-        int tasksNum = UserProfile.user.getCurrentAppTasks().getTasksNum();
-        stepBarView.setMaxCount(tasksNum);
-        stepBarView.setReachedStep(tasksNum);
+        int numberOfTasks = UserProfile.user.getCurrentAppTasks().getNumberOfTasks();
+        stepBarView.setMaxCount(numberOfTasks);
+        stepBarView.setReachedStep(numberOfTasks);
         stepBarView.setAllowTouchStepTo(0);
 
-        int currentTask = UserProfile.user.getCurrentAppTaskNum();
+        int currentTask = UserProfile.user.getCurrentSlideInLevel();
         if (currentTask != 0) {
             viewPager.setCurrentItem(currentTask);
             stepBarView.setReachedStep(stepBarView.getMaxCount() - currentTask);
@@ -404,7 +404,7 @@ public class AppBuilderActivity extends AppCompatActivity {
             UserProfile.user.setTopSlideInLevel(currentTask + 1);
 
         // If last task show success popup
-        if (currentTask == user.getCurrentAppTasks().getTasksNum() - 1) {
+        if (currentTask == user.getCurrentAppTasks().getNumberOfTasks() - 1) {
             handler.postDelayed(this::openTaskSuccessPopup, 1000); // 1s
         }
     }

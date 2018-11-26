@@ -20,7 +20,7 @@ class AppTasksSwipeAdapter extends FragmentStatePagerAdapter {
     public AppTasksSwipeAdapter(FragmentManager fm, AppTasks appTasks) {
         super(fm);
         this.appTasks = appTasks;
-        numOfFragments = appTasks.getTasksNum();
+        numOfFragments = appTasks.getNumberOfTasks();
     }
 
     @Override
