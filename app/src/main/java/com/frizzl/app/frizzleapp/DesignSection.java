@@ -1,6 +1,7 @@
 package com.frizzl.app.frizzleapp;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
@@ -61,8 +62,8 @@ public class DesignSection extends RelativeLayout {
         addView(imageView);
 
         userCreatedButton = new UserCreatedButton(context, 1, 1);
-        userCreatedButton.setBackgroundColor("#f8b119");
-        userCreatedButton.setTextColor("#FFFFFF");
+        userCreatedButton.setBackgroundColor("#b93660");
+        userCreatedButton.setTextColor("#fce5c5");
         userCreatedButton.setText(getContext().getString(R.string.my_button));
         if (withOnClickSet) {
             userCreatedButton.setOnClick("myFunction");
@@ -104,7 +105,7 @@ public class DesignSection extends RelativeLayout {
                 int originalButtonDrawableRes = R.drawable.user_button_background;
                 Drawable buttonDrawable = ContextCompat.getDrawable(context1, originalButtonDrawableRes);
                 if (buttonDrawable != null) {
-                    buttonDrawable.setColorFilter(Color.parseColor(userCreatedButton.getProperties().get("android:backgroundTint")), PorterDuff.Mode.DARKEN);
+                    buttonDrawable.setColorFilter(Color.parseColor(userCreatedButton.getProperties().get("android:backgroundTint")), PorterDuff.Mode.MULTIPLY);
                     button.setBackground(buttonDrawable);
                 }
                 PopupWindow runPopupWindow = new PopupWindow(runPopupView, ViewGroup.LayoutParams.WRAP_CONTENT,
