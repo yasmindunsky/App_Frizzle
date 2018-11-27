@@ -22,6 +22,7 @@ import java.util.Locale;
 
 public class ViewUtils {
     public static final String CONNECTION_FAILED = "15657";
+    public static final int GET_FROM_GALLERY = 23284;
 
     public static boolean isRTL() {
         return isRTL(Locale.getDefault());
@@ -109,7 +110,7 @@ public class ViewUtils {
         int currentVolume = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
         int maxVolume = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
         int currentVolumePercentage = 100 * currentVolume/maxVolume;
-        return currentVolumePercentage < 20;
+        return currentVolumePercentage < 30;
     }
 
     public static void presentVolumeToast(Context context) {
