@@ -69,6 +69,8 @@ public class AppBuilderActivity extends AppCompatActivity {
     private TaskViewPager viewPager;
     private int currentAppLevelID;
     private static boolean showMovedOn = false;
+    private TabLayout.Tab codingTab;
+    private TabLayout.Tab designTab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -124,6 +126,7 @@ public class AppBuilderActivity extends AppCompatActivity {
                 handler.postDelayed(() -> {
                     moveToNextTask();
                     checkMark.setVisibility(View.INVISIBLE);
+                    switchTabsIfNeeded();
                 }, 250);
             }
 
@@ -214,8 +217,8 @@ public class AppBuilderActivity extends AppCompatActivity {
             rightArrow.setOnClickListener(moveToPrevTaskOnClickListener);
         }
 
-        final TabLayout.Tab graphicEditTab = tabLayout.newTab().setText(R.string.design);
-        TabLayout.Tab codingTab = tabLayout.newTab().setText(R.string.code);
+        designTab = tabLayout.newTab().setText(R.string.design);
+        codingTab = tabLayout.newTab().setText(R.string.code);
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             public void onTabReselected(TabLayout.Tab tab) {
             }
@@ -238,9 +241,9 @@ public class AppBuilderActivity extends AppCompatActivity {
             }
         });
 
-        tabLayout.addTab(graphicEditTab, true);
+        tabLayout.addTab(designTab, true);
         tabLayout.addTab(codingTab);
-        graphicEditTab.select();
+        designTab.select();
 
         // Set stepBarView
         stepBarView.setRtl(!ViewUtils.isRTL());
@@ -272,6 +275,17 @@ public class AppBuilderActivity extends AppCompatActivity {
 //            }
 //        });
     }
+
+    private void switchTabsIfNeeded() {
+        int currentTask = UserProfile.user.getCurrentSlideInLevel();
+        if (currentTask == 2) {
+            selectCodingTab();
+        }
+        if (currentTask == 4) {
+            selectDesignTab();
+        }
+    }
+
 
     private int getItem(int i) {
         return viewPager.getCurrentItem() + i;
@@ -395,8 +409,8 @@ public class AppBuilderActivity extends AppCompatActivity {
 //                    Log.e("", "Selecting picture cancelled");
 //                }
 //                break;
-            }
         }
+    }
 
     private void startUsersApp() {
         Intent intent = new Intent(Intent.ACTION_MAIN, null);
@@ -469,7 +483,7 @@ public class AppBuilderActivity extends AppCompatActivity {
     }
 
     private void moveToPrevTask() {
-        UserProfile.user.setCurrentSlideInLevel(UserProfile.user.getCurrentSlideInLevel()-1);
+        UserProfile.user.setCurrentSlideInLevel(UserProfile.user.getCurrentSlideInLevel() - 1);
         viewPager.setCurrentItem(getItem(-1), true);
     }
 
@@ -502,5 +516,11 @@ public class AppBuilderActivity extends AppCompatActivity {
         }
     }
 
+    public void selectCodingTab() {
+        codingTab.select();
+    }
 
+    private void selectDesignTab() {
+        designTab.select();
+    }
 }
