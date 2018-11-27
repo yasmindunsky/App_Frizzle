@@ -1,6 +1,8 @@
 package com.frizzl.app.frizzleapp.appBuilder;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.GridLayout;
@@ -9,8 +11,11 @@ import android.widget.PopupWindow;
 import android.widget.RadioButton;
 
 import com.frizzl.app.frizzleapp.R;
+import com.frizzl.app.frizzleapp.ViewUtils;
 
 import java.util.ArrayList;
+
+import static android.support.v4.app.ActivityCompat.startActivityForResult;
 
 /**
  * Created by Noga on 02/09/2018.

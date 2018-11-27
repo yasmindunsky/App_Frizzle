@@ -375,6 +375,7 @@ public class PracticeSlideFragment extends Fragment {
                 CodeSection codeSection = constraintLayout.findViewById(R.id.codeSection);
                 String code = codeSection.getCode();
                 correct = CodeCheckUtils.checkIfContainsFunctionWithName(code, "");
+                correct &= !CodeCheckUtils.checkIfContainsSpeakOutAndString(code, "", true);
             } else if (currentSlide == 7) {
                 // Check function name changed to 'myFunction'.
                 CodeSection codeSection = constraintLayout.findViewById(R.id.codeSection);

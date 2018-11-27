@@ -2,12 +2,16 @@ package com.frizzl.app.frizzleapp.appBuilder;
 
 import android.Manifest;
 import android.animation.Animator;
+import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.ActivityCompat;
@@ -36,6 +40,11 @@ import com.frizzl.app.frizzleapp.map.MapActivity;
 import com.tooltip.OnDismissListener;
 
 import net.cachapa.expandablelayout.ExpandableLayout;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
+import static android.support.v4.app.ActivityCompat.startActivityForResult;
 
 public class AppBuilderActivity extends AppCompatActivity {
     private static final int INSTALLED_APP_ABOVE_N = 1;
@@ -249,6 +258,14 @@ public class AppBuilderActivity extends AppCompatActivity {
                 ViewGroup.LayoutParams.WRAP_CONTENT, true);
 
         tutorial = new Tutorial(AppBuilderActivity.this);
+
+//        playButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent pickPhoto = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+//                startActivityForResult(pickPhoto , 1);
+//            }
+//        });
     }
 
     private int getItem(int i) {
@@ -354,8 +371,27 @@ public class AppBuilderActivity extends AppCompatActivity {
                 break;
             case INSTALLED_APP_BELOW_N:
                 startUsersApp();
+//            case ViewUtils.GET_FROM_GALLERY:
+//                if (resultCode == Activity.RESULT_OK) {
+//                    //data gives you the image uri. Try to convert that to bitmap
+//                    Uri selectedImage = data.getData();
+//                    Bitmap bitmap = null;
+//                    try {
+//                        bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedImage);
+//                    } catch (FileNotFoundException e) {
+//                        // TODO Auto-generated catch block
+//                        e.printStackTrace();
+//                    } catch (IOException e) {
+//                        // TODO Auto-generated catch block
+//                        e.printStackTrace();
+//                    }
+//                    break;
+//                } else if (resultCode == Activity.RESULT_CANCELED) {
+//                    Log.e("", "Selecting picture cancelled");
+//                }
+//                break;
+            }
         }
-    }
 
     private void startUsersApp() {
         Intent intent = new Intent(Intent.ACTION_MAIN, null);
@@ -460,4 +496,6 @@ public class AppBuilderActivity extends AppCompatActivity {
             super.onStop();
         }
     }
+
+
 }
