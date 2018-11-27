@@ -244,7 +244,7 @@ public class PracticeSlideFragment extends Fragment {
         lottieAnimationView = new LottieAnimationView(getContext());
         lottieAnimationView.setId(R.id.animation);
         lottieAnimationView.setAnimation(R.raw.correct_green_confetti);
-        lottieAnimationView.setSpeed(1.8f);
+        lottieAnimationView.setSpeed(1.9f);
         lottieAnimationView.setFrame(55); //At this frame the animation is not seen
         lastIDBeforeCTA = prevID;
         int CTAid = callToActionButton.getId();
