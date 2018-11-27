@@ -26,13 +26,13 @@
     <FrameLayout
         android:id="@+id/frameLayout"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/builderToolbar">
 
         <com.frizzl.app.frizzleapp.appBuilder.TaskViewPager
             android:id="@+id/viewPager"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="wrap_content" />
     </FrameLayout>
 
     <com.airbnb.lottie.LottieAnimationView
