@@ -95,12 +95,15 @@ public class AppBuilderActivity extends AppCompatActivity {
         ImageButton leftArrow = findViewById(R.id.leftArrow);
         ImageButton rightArrow = findViewById(R.id.rightArrow);
 
-        leftArrow.setOnClickListener((view) -> moveToPrevTask());
-        rightArrow.setOnClickListener((view) -> {
-                UserProfile user = UserProfile.user;
-                if (user.getTopSlideInLevel() > user.getCurrentSlideInLevel())
-                    moveToNextTask();
-        });
+        View.OnClickListener moveToPrevTaskOnClickListener = (view) -> moveToPrevTask();
+        View.OnClickListener moveToNextTaskOnClickListener = (view) -> {
+            UserProfile user = UserProfile.user;
+            if (user.getTopSlideInLevel() > user.getCurrentSlideInLevel())
+                moveToNextTask();
+        };
+
+        leftArrow.setOnClickListener(moveToPrevTaskOnClickListener);
+        rightArrow.setOnClickListener(moveToNextTaskOnClickListener);
 
         designFragment = new DesignScreenFragment();
         designScreenPresenter = new DesignScreenPresenter(designFragment);
@@ -207,6 +210,8 @@ public class AppBuilderActivity extends AppCompatActivity {
 //         Rotation for RTL swiping.
         if (ViewUtils.isRTL()) {
             viewPager.setRotationY(180);
+            leftArrow.setOnClickListener(moveToNextTaskOnClickListener);
+            rightArrow.setOnClickListener(moveToPrevTaskOnClickListener);
         }
 
         final TabLayout.Tab graphicEditTab = tabLayout.newTab().setText(R.string.design);
