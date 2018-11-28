@@ -88,7 +88,8 @@ public class ViewUtils {
                         Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                 if (makeBold) {
                     Typeface font = ViewUtils.getRegularFontByLanguage(context);
-                    ssb.setSpan(new CustomTypefaceSpan(font), firstSymbol, secondSymbol + 1,
+                    if (font != null)
+                        ssb.setSpan(new CustomTypefaceSpan(font), firstSymbol, secondSymbol + 1,
                             Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                 }
                 ssb.replace(firstSymbol, firstSymbol+symbolLength, "");
