@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.frizzl.app.frizzleapp.map.MapActivity;
 import com.frizzl.app.frizzleapp.onboarding.OnboardingActivity;
@@ -29,6 +30,16 @@ public class SplashActivity extends Activity{
             UserProfile.user.loadSerializedObject(applicationContext);
             Intent mapIntent = new Intent(getBaseContext(), MapActivity.class);
             startActivity(mapIntent);
+        }
+    }
+
+    @Override
+    protected void onStop() {
+        try {
+            super.onStop();
+        } catch (Exception e) {
+            Log.w("", "onStop()", e);
+            super.onStop();
         }
     }
 }

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
@@ -117,6 +118,16 @@ public class PracticeActivity extends FragmentActivity {
 
     public ViewGroup getMainLayout() {
         return findViewById(R.id.constraintLayout);
+    }
+
+    @Override
+    protected void onStop() {
+        try {
+            super.onStop();
+        } catch (Exception e) {
+            Log.w("", "onStop()", e);
+            super.onStop();
+        }
     }
 
 

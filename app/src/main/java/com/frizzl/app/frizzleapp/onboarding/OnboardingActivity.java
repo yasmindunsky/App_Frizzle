@@ -3,6 +3,7 @@ package com.frizzl.app.frizzleapp.onboarding;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.widget.Button;
 
 import com.frizzl.app.frizzleapp.R;
@@ -25,6 +26,15 @@ public class OnboardingActivity extends FragmentActivity {
                 startActivity(mapIntent);
             });
         });
+    }
+    @Override
+    protected void onStop() {
+        try {
+            super.onStop();
+        } catch (Exception e) {
+            Log.w("", "onStop()", e);
+            super.onStop();
+        }
     }
 }
 

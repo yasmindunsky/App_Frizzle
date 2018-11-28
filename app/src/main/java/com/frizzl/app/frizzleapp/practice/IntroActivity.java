@@ -3,6 +3,7 @@ package com.frizzl.app.frizzleapp.practice;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.widget.ImageButton;
 
 import com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar;
@@ -95,6 +96,16 @@ public class IntroActivity extends FragmentActivity {
         } else {
             viewPager.setCurrentItem(count - 1);
             progressBar.setProgress(count - 1);
+        }
+    }
+
+    @Override
+    protected void onStop() {
+        try {
+            super.onStop();
+        } catch (Exception e) {
+            Log.w("", "onStop()", e);
+            super.onStop();
         }
     }
 
