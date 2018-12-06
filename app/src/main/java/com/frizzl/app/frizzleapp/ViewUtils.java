@@ -36,7 +36,8 @@ public class ViewUtils {
 
     public static int dpStringToPixel(String dp, Context context) {
         dp = dp.replaceAll("[^\\d.]", "");
-        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,  Integer.parseInt(dp), context.getResources().getDisplayMetrics());
+        double doubleDp = Double.parseDouble(dp);
+        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,  (int)doubleDp, context.getResources().getDisplayMetrics());
     }
 
     public static String hexFromColorInt(int colorInt){
@@ -60,10 +61,7 @@ public class ViewUtils {
         }
     }
 
-    public static int dpStringToPixel(Context context, String dp) {
-        dp = dp.replaceAll("[^\\d.]", "");
-        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,  Integer.parseInt(dp), context.getResources().getDisplayMetrics());
-    }
+
 
     private static void dimView(View view, Context context) {
         view.setForeground(ResourcesCompat.getDrawable(context.getResources(), R.drawable.shade, null));

@@ -59,7 +59,7 @@
 
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/got_it"
-            style="@style/Button.LightBlue"
+            style="@style/Button.Turquoise"
             android:layout_marginBottom="24dp"
             android:layout_marginTop="24dp"
             android:text="@string/got_it"

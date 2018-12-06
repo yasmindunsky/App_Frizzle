@@ -83,7 +83,7 @@ public class CodeSection extends RelativeLayout {
                 else displayErrorPopup(getResources().getString(R.string.problem_with_syntax), layout);
             };
             playButton.setOnClickListener(runCode);
-            playButton.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.run_button_background, null));
+            playButton.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.play_button_practice, null));
             playButton.setScaleType(ImageView.ScaleType.FIT_CENTER);
             playButton.setAdjustViewBounds(false);
             playButton.setCropToPadding(false);

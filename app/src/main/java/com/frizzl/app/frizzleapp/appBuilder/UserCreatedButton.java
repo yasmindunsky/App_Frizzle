@@ -78,7 +78,7 @@ public class UserCreatedButton extends UserCreatedView {
                 GridLayout.spec(column));
         layoutParams.width = (int) context.getResources().getDimension(R.dimen.user_created_button_width);
         String marginString = properties.get("android:layout_margin");
-        int margin = ViewUtils.dpStringToPixel(context, marginString);
+        int margin = ViewUtils.dpStringToPixel(marginString, context);
         layoutParams.setMargins(margin,margin,margin,margin);
         thisView.setLayoutParams(layoutParams);
 

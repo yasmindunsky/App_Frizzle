@@ -25,15 +25,15 @@ public class PracticeNotificationView extends LinearLayout{
         this.setBackground(context.getResources().getDrawable(R.drawable.error_background));
         this.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT));
-        int px = ViewUtils.dpStringToPixel(context, "15dp");
+        int px = ViewUtils.dpStringToPixel("15dp", context);
         this.setPadding(px, px, px, px);
         this.setGravity(Gravity.CENTER_VERTICAL);
 
         ImageView iconImageView = new ImageView(context);
         int drawableResource = isError ? R.drawable.ic_try_again : R.drawable.ic_notification;
         iconImageView.setImageDrawable(context.getResources().getDrawable(drawableResource));
-        iconImageView.setLayoutParams(new ViewGroup.LayoutParams( ViewUtils.dpStringToPixel(context, "40dp"),
-                ViewUtils.dpStringToPixel(context, "40dp")));
+        iconImageView.setLayoutParams(new ViewGroup.LayoutParams( ViewUtils.dpStringToPixel("40dp", context),
+                ViewUtils.dpStringToPixel("40dp", context)));
         iconImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
         this.addView(iconImageView);
 
@@ -41,7 +41,7 @@ public class PracticeNotificationView extends LinearLayout{
         notificationTextView = new AppCompatTextView(new ContextThemeWrapper(context, textStyle));
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT);
-        layoutParams.setMarginStart(ViewUtils.dpStringToPixel(context, "10dp"));
+        layoutParams.setMarginStart(ViewUtils.dpStringToPixel("10dp", context));
         notificationTextView.setLayoutParams(layoutParams);
         this.addView(notificationTextView);
     }

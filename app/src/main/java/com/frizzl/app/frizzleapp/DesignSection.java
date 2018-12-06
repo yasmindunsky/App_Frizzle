@@ -1,7 +1,6 @@
 package com.frizzl.app.frizzleapp;
 
 import android.content.Context;
-import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
@@ -131,7 +130,7 @@ public class DesignSection extends RelativeLayout {
                 });
             };
             playButton.setOnClickListener(runDesign);
-            playButton.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.run_button_background, null));
+            playButton.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.play_button_practice, null));
             playButton.setScaleType(ImageView.ScaleType.FIT_CENTER);
             playButton.setAdjustViewBounds(false);
             playButton.setCropToPadding(false);

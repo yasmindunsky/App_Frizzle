@@ -98,9 +98,9 @@ public class PracticeSlideFragment extends Fragment {
 
             SpannableStringBuilder spannableInfoText = new SpannableStringBuilder(practiceSlide.getInfoText());
             spannableInfoText = ViewUtils.markWithColorBetweenTwoSymbols(spannableInfoText,
-                    "$green$", getResources().getColor(R.color.frizzle_green), true, context);
+                    "$green$", getResources().getColor(R.color.codeFunction), true, context);
             spannableInfoText = ViewUtils.markWithColorBetweenTwoSymbols(spannableInfoText,
-                    "$orange$", getResources().getColor(R.color.frizzle_orange), true, context);
+                    "$orange$", getResources().getColor(R.color.codeSpeakOut), true, context);
             infoText.setText(spannableInfoText);
 
             constraintLayout.addView(infoText);
@@ -115,9 +115,9 @@ public class PracticeSlideFragment extends Fragment {
 
             SpannableStringBuilder spannableTaskText = new SpannableStringBuilder(practiceSlide.getTaskText());
             spannableTaskText = ViewUtils.markWithColorBetweenTwoSymbols(spannableTaskText,
-                    "$green$", getResources().getColor(R.color.frizzle_green), false, context);
+                    "$green$", getResources().getColor(R.color.codeFunction), false, context);
             spannableTaskText = ViewUtils.markWithColorBetweenTwoSymbols(spannableTaskText,
-                    "$orange$", getResources().getColor(R.color.frizzle_orange), false, context);
+                    "$orange$", getResources().getColor(R.color.codeSpeakOut), false, context);
             taskText.setText(spannableTaskText);
 
             constraintLayout.addView(taskText);

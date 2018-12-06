@@ -3,7 +3,7 @@
     <item android:state_enabled="true" >
         <shape android:shape="rectangle"  >
             <corners android:radius="40dip" />
-            <solid android:color="@color/frizzle_pink"/>
+            <solid android:color="@color/practiceError"/>
         </shape>
     </item>
 </selector>

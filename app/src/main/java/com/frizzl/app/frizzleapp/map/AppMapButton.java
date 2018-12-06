@@ -4,23 +4,32 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.support.constraint.ConstraintLayout;
 import android.util.AttributeSet;
+import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.frizzl.app.frizzleapp.R;
+import com.frizzl.app.frizzleapp.ViewUtils;
 
 /**
  * Created by Noga on 13/09/2018.
  */
 
 public class AppMapButton extends LinearLayout implements MapButton{
-    private int enabledColor;
-    private int disabledColor;
     private Drawable completedDrawable;
-    private boolean completed = false;
+    private Drawable disabledDrawable;
+    private Drawable currentDrawable;
+    private Drawable completedIcon;
+    private Drawable disabledIcon;
+    private Drawable currentIcon;
+    int originalSize;
+    int originalPadding;
+
     private int levelID;
+    Status status = Status.disabled;
 
     public AppMapButton(Context context, AttributeSet attrs){
         super(context, attrs);
@@ -29,13 +38,35 @@ public class AppMapButton extends LinearLayout implements MapButton{
                 R.styleable.AppMapButton,
                 0, 0);
         try {
-            enabledColor = a.getColor(R.styleable.AppMapButton_enabledColor, Color.WHITE);
-            disabledColor = a.getColor(R.styleable.AppMapButton_disabledColor, Color.BLACK);
             completedDrawable = a.getDrawable(R.styleable.AppMapButton_completedDrawable);
+            disabledDrawable = a.getDrawable(R.styleable.AppMapButton_disabledDrawable);
+            currentDrawable = a.getDrawable(R.styleable.AppMapButton_currentDrawable);
+
+            completedIcon = a.getDrawable(R.styleable.AppMapButton_completedIcon);
+            disabledIcon = a.getDrawable(R.styleable.AppMapButton_disabledIcon);
+            currentIcon = a.getDrawable(R.styleable.AppMapButton_currentIcon);
+
             levelID = a.getInt(R.styleable.AppMapButton_levelID, 0);
+            originalSize = ViewUtils.dpStringToPixel("170dp", getContext());
+            originalPadding = ViewUtils.dpStringToPixel("15dp", getContext());
         } finally {
             a.recycle();
         }
+    }
+
+    private void setSize(int size, int additionalSidesPadding, int margin) {
+        ConstraintLayout.LayoutParams layoutParams = (ConstraintLayout.LayoutParams) getLayoutParams();
+        layoutParams.width = size;
+        layoutParams.height = size;
+        layoutParams.setMargins(layoutParams.leftMargin,
+                margin,
+                layoutParams.rightMargin,
+                margin);
+        setLayoutParams(layoutParams);
+        setPadding(originalPadding + additionalSidesPadding,
+                originalPadding,
+                originalPadding + additionalSidesPadding,
+                originalPadding);
     }
 
     private void setAppIconAlpha() {
@@ -43,57 +74,55 @@ public class AppMapButton extends LinearLayout implements MapButton{
         appIcon.setAlpha(isEnabled() ? 1 : .2f);
     }
 
-    private void setAppNameColor() {
+    private void setAppNameColor(int color) {
         TextView appName = (TextView) getChildAt(1);
-        boolean enabled = isEnabled();
-        int color = Color.WHITE;
-        if (!enabled){
-            color = disabledColor;
-        }
-        else if (enabled && !completed) {
-            color = enabledColor;
-        }
         appName.setTextColor(color);
     }
 
-    @Override
-    public void setEnabled(boolean enabled) {
-        super.setEnabled(enabled);
-        TextView appName = (TextView) getChildAt(1);
+    private void setIcon(Drawable icon) {
         ImageButton appIcon = (ImageButton) getChildAt(0);
-        appName.setEnabled(enabled);
-        appIcon.setEnabled(enabled);
-        setAppNameColor();
-        setAppIconAlpha();
+        appIcon.setBackground(icon);
     }
 
-    public int getEnabledColor() {
-        return enabledColor;
-    }
-
-    public void setEnabledColor(int enabledColor) {
-        this.enabledColor = enabledColor;
-        invalidate();
-        requestLayout();
-    }
-
-    public int getDisabledColor() {
-        return disabledColor;
-    }
-
-    public void setDisabledColor(int disabledColor) {
-        this.disabledColor = disabledColor;
-        invalidate();
-        requestLayout();
+    private void updateState(Drawable drawable, Drawable icon, int color, int size, int additionalSidesPadding, int margin) {
+        setBackground(drawable);
+        setIcon(icon);
+        setAppNameColor(color);
+        setSize(size,additionalSidesPadding,margin);
     }
 
     @Override
-    public void setCompleted(boolean completed) {
-        this.completed = completed;
-        if (completed) {
-            setBackground(completedDrawable);
-            setAppNameColor();
-        }
+    public void setCurrent() {
+        super.setEnabled(true);
+        status = Status.current;
+        updateState(currentDrawable,
+                currentIcon,
+                getResources().getColor(R.color.glowy_pink),
+                (int) (originalSize * 1.4),
+                100,
+                -50);
+    }
+
+    @Override
+    public void setCompleted() {
+        status = Status.completed;
+        updateState(completedDrawable,
+                completedIcon,
+                getResources().getColor(R.color.dark_blue),
+                (int) (originalSize * 1.05),
+                0,
+                110);
+    }
+
+    @Override
+    public void setDisabled() {
+        status = Status.disabled;
+        updateState(disabledDrawable,
+                disabledIcon
+                , getResources().getColor(R.color.dark_blue),
+                originalSize,
+                0,
+                110);
     }
 
     public int getLevelID() {

@@ -29,7 +29,7 @@ public class CodeEditor extends android.support.v7.widget.AppCompatEditText {
 
     public CodeEditor(Context context, CodeKeyboard keyboard) {
         super(context);
-        this.setTextColor(context.getColor(R.color.codeGrey));
+        this.setTextColor(context.getColor(R.color.codeText));
         this.setTextSize(18f);
         this.setLetterSpacing(0.02f);
         this.setLineSpacing(0,1.5f);
@@ -98,13 +98,13 @@ public class CodeEditor extends android.support.v7.widget.AppCompatEditText {
         while (firstQuotationMark >= 0) {
             secondQuotationMark = (s.toString()).indexOf("\"", firstQuotationMark + 1);
 
-            s.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.frizzle_orange)),
+            s.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.codeSpeakOut)),
                     firstQuotationMark,
                     firstQuotationMark + 1,
                     Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
             currentPosition++;
             if (secondQuotationMark > 0) {
-                s.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.frizzle_orange)), firstQuotationMark, secondQuotationMark + 1,
+                s.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.codeSpeakOut)), firstQuotationMark, secondQuotationMark + 1,
                         Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                 startPosition = secondQuotationMark + 1;
             } else {
@@ -122,7 +122,7 @@ public class CodeEditor extends android.support.v7.widget.AppCompatEditText {
             String subSequence = s.subSequence(index, s.length()).toString();
             int functionNameEnd = subSequence.indexOf("(");
             if (functionNameEnd > 0) {
-                s.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.frizzle_green)),
+                s.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.codeFunction)),
                         index + functionIdentification.length(),
                         index + functionNameEnd,
                         Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
@@ -155,7 +155,7 @@ public class CodeEditor extends android.support.v7.widget.AppCompatEditText {
             int index = s.toString().indexOf(word);
 
             while (index >= 0) {
-                s.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.frizzle_green)), index, index + word.length(),
+                s.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.codeFunction)), index, index + word.length(),
                         Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                 index = s.toString().indexOf(word, index + 1);
             }

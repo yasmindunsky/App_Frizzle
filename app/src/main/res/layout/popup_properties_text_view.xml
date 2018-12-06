@@ -167,7 +167,7 @@
 
     <android.support.v7.widget.AppCompatButton
         android:id="@+id/saveButton"
-        style="@style/Button.LightBlue"
+        style="@style/Button.Turquoise"
         android:layout_centerHorizontal="true"
         android:layout_centerInParent="false"
         android:layout_marginBottom="24dp"

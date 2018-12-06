@@ -41,7 +41,7 @@
         <item name="android:paddingEnd">20sp</item>
     </style>
 
-    <style name="Button.LightBlue" parent="@android:style/Widget.Button">
+    <style name="Button.Turquoise" parent="@android:style/Widget.Button">
         <item name="android:background">@drawable/button_background_light_blue</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">40dp</item>
@@ -68,21 +68,20 @@
     </style>
 
     <style name="Button.MapApp" parent="@android:style/Widget.Material.Button.Borderless">
-        <item name="android:layout_height">135dp</item>
-        <item name="android:layout_width">135dp</item>
-        <item name="android:background">@drawable/map_app_circle</item>
+        <item name="android:layout_height">170dp</item>
+        <item name="android:layout_width">170dp</item>
         <item name="android:gravity">center</item>
-        <item name="android:layout_margin">30dp</item>
-        <item name="android:padding">10dp</item>
-        <item name="android:enabled">false</item>
+        <!--<item name="android:layout_margin">30dp</item>-->
+        <item name="android:paddingStart">15dp</item>
+        <item name="android:paddingEnd">15dp</item>
     </style>
 
     <style name="Button.MapPractice" parent="@android:style/Widget.Material.Button.Borderless">
-        <item name="android:layout_height">90dp</item>
-        <item name="android:layout_width">90dp</item>
-        <item name="android:background">@drawable/map_practice_circle</item>
+        <item name="android:layout_height">80dp</item>
+        <item name="android:layout_width">80dp</item>
         <item name="android:gravity">center</item>
         <item name="android:enabled">false</item>
+        <item name="android:textAllCaps">false</item>
     </style>
 
     <style name="Button.MapIntro" parent="Button.MapPractice">
@@ -117,14 +116,23 @@
 
     <style name="Text.Task.Num" parent="@style/Text.Task">
         <item name="android:fontFamily">@font/calibri_bold</item>
-        <item name="android:textColor">@color/frizzl_medium_light_blue</item>
+        <item name="android:textColor">@color/appBuilderPlayButtonAndMore</item>
         <item name="android:textAllCaps">true</item>
     </style>
 
     <style name="Text.Map" parent="@style/Text.Task">
         <item name="android:fontFamily">@font/calibri_bold</item>
-        <item name="android:textSize">14sp</item>
-        <item name="android:textColor">@color/TextGrey</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">#0C174F</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="Text.Map.Practice" parent="@style/Text.Map">
+
+    </style>
+
+    <style name="Text.Map.App" parent="@style/Text.Map">
+
     </style>
 
     <style name="Text.Info" parent="@style/Text.Task">
@@ -161,6 +169,16 @@
     <style name="Text.Title.Dark" parent="@style/Text.Title">
         <item name="android:textColor">@color/TextGrey</item>
         <item name="android:textSize">23sp</item>
+    </style>
+
+    <style name="Text.ColoredTitle"  parent="@style/Text.Title">
+        <item name="android:fontFamily">@font/calibri_bold</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:letterSpacing">0</item>
+    </style>
+
+    <style name="Text.Title.Torquise"  parent="@style/Text.ColoredTitle">
+        <item name="android:textColor">@color/torquise</item>
     </style>
 
     <style name="Text.Title.PropertiesTable" parent="@android:style/TextAppearance.DeviceDefault.Medium">
@@ -262,7 +280,7 @@
     </style>
 
     <style name="Text.PracticeSlide.reminderText" parent="Text.PracticeSlide">
-        <item name="android:textColor">@color/frizzle_pink</item>
+        <item name="android:textColor">@color/practiceMainColor</item>
     </style>
 
     <style name="Text.PracticeSlide.taskText" parent="Text.PracticeSlide">
@@ -286,11 +304,12 @@
     </style>
 
     <style name="Text.PracticeSlide.error"  parent="Text.PracticeSlide">
-        <item name="android:textColor">@color/frizzle_pink</item>
+        <item name="android:textColor">@color/practiceError</item>
         <item name="android:fontFamily">@font/calibri_bold</item>
     </style>
 
     <style name="Text.PracticeSlide.notice" parent="Text.PracticeSlide.error">
-        <item name="android:textColor">@color/frizzle_light_blue</item>
+        <item name="android:textColor">@color/practiceNotification</item>
     </style>
+
 </resources>

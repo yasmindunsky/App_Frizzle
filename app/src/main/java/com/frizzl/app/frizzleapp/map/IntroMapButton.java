@@ -16,11 +16,9 @@ import com.frizzl.app.frizzleapp.R;
  */
 
 public class IntroMapButton extends LinearLayout implements MapButton{
-    private int enabledColor;
-    private int disabledColor;
     private Drawable completedDrawable;
-    private boolean completed = false;
     private int levelID;
+    Status status = Status.disabled;
 
     public IntroMapButton(Context context, AttributeSet attrs){
         super(context, attrs);
@@ -29,9 +27,6 @@ public class IntroMapButton extends LinearLayout implements MapButton{
                 R.styleable.IntroMapButton,
                 0, 0);
         try {
-            enabledColor = a.getColor(R.styleable.IntroMapButton_enabledColor, Color.WHITE);
-            disabledColor = a.getColor(R.styleable.IntroMapButton_disabledColor, Color.BLACK);
-            completedDrawable = a.getDrawable(R.styleable.IntroMapButton_completedDrawable);
             levelID = a.getInt(R.styleable.IntroMapButton_levelID, 1);
         } finally {
             a.recycle();
@@ -48,48 +43,33 @@ public class IntroMapButton extends LinearLayout implements MapButton{
         boolean enabled = isEnabled();
         int color = Color.WHITE;
         if (!enabled){
-            color = disabledColor;
+            color = disabledTextColor;
         }
-        else if (enabled && !completed) {
-            color = enabledColor;
+        else if (enabled) {
+            color = disabledTextColor;
         }
         name.setTextColor(color);
     }
 
     @Override
-    public void setEnabled(boolean enabled) {
-        super.setEnabled(enabled);
+    public void setCurrent() {
+        super.setEnabled(true);
+        status = Status.current;
+
         setIntroNameColor();
         setIconAlpha();
     }
 
-    public int getEnabledColor() {
-        return enabledColor;
-    }
+    @Override
+    public void setDisabled() {
 
-    public void setEnabledColor(int enabledColor) {
-        this.enabledColor = enabledColor;
-        invalidate();
-        requestLayout();
-    }
-
-    public int getDisabledColor() {
-        return disabledColor;
-    }
-
-    public void setDisabledColor(int disabledColor) {
-        this.disabledColor = disabledColor;
-        invalidate();
-        requestLayout();
     }
 
     @Override
-    public void setCompleted(boolean completed) {
-        this.completed = completed;
-        if (completed) {
-            setBackground(completedDrawable);
-            setIntroNameColor();
-        }
+    public void setCompleted() {
+        status = Status.completed;
+        setBackground(completedDrawable);
+        setIntroNameColor();
     }
 
     public int getLevelID() {

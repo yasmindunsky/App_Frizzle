@@ -15,7 +15,7 @@
         android:layout_margin="16dp"
         android:background="@android:color/transparent"
         android:src="@drawable/ic_home"
-        android:tint="@color/frizzle_light_blue"
+        android:tint="@color/practiceMainColor"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -29,7 +29,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:rcBackgroundColor="@color/UnselectedLightGrey"
         app:rcBackgroundPadding="1dp"
-        app:rcProgressColor="@color/frizzle_light_blue" />
+        app:rcProgressColor="@color/practiceMainColor" />
 
     <FrameLayout
         android:layout_width="match_parent"

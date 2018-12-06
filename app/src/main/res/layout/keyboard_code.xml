@@ -25,7 +25,7 @@
                 android:background="@drawable/keyboard_key_selector"
                 android:enabled="false"
                 android:textAppearance="@style/Text.KeyBoardsKeys"
-                android:textColor="@color/frizzle_orange" />
+                android:textColor="@color/codeSpeakOut" />
 
             <com.airbnb.lottie.LottieAnimationView
                 android:id="@+id/orange_fireworks"
@@ -52,7 +52,7 @@
                 android:background="@drawable/keyboard_key_selector"
                 android:enabled="false"
                 android:textAppearance="@style/Text.KeyBoardsKeys"
-                android:textColor="@color/frizzle_green" />
+                android:textColor="@color/codeFunction" />
 
             <com.airbnb.lottie.LottieAnimationView
                 android:id="@+id/green_fireworks"

@@ -100,12 +100,12 @@ public class IntroSlideFragment extends Fragment {
                     new SpannableStringBuilder(practiceSlide.getInfoText());
             spannableInfoText = ViewUtils.markWithColorBetweenTwoSymbols(spannableInfoText,
                     "$green$",
-                    getResources().getColor(R.color.frizzle_green),
+                    getResources().getColor(R.color.codeFunction),
                     true,
                     context);
             spannableInfoText = ViewUtils.markWithColorBetweenTwoSymbols(spannableInfoText,
                     "$orange$",
-                    getResources().getColor(R.color.frizzle_orange),
+                    getResources().getColor(R.color.codeSpeakOut),
                     true,
                     context);
             infoText.setText(spannableInfoText);
@@ -124,12 +124,12 @@ public class IntroSlideFragment extends Fragment {
             SpannableStringBuilder spannableTaskText =
                     new SpannableStringBuilder(practiceSlide.getTaskText());
             spannableTaskText = ViewUtils.markWithColorBetweenTwoSymbols(spannableTaskText,
-                    "$green$", getResources().getColor(R.color.frizzle_green),
+                    "$green$", getResources().getColor(R.color.codeFunction),
                     false,
                     context);
             spannableTaskText = ViewUtils.markWithColorBetweenTwoSymbols(spannableTaskText,
                     "$orange$",
-                    getResources().getColor(R.color.frizzle_orange),
+                    getResources().getColor(R.color.codeSpeakOut),
                     false,
                     context);
             taskText.setText(spannableTaskText);

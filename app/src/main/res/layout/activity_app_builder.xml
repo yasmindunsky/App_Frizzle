@@ -84,15 +84,15 @@
         app:sbv_steps_line_margin_left="0dp"
         app:sbv_steps_line_margin_right="0dp"
 
-        app:sbv_steps_line_reached_colors="@color/appBuilderUnselectedCircles"
-        app:sbv_steps_line_unreached_colors="@color/frizzl_medium_light_blue"
-        app:sbv_steps_reached_colors="@color/appBuilderUnselectedCircles"
+        app:sbv_steps_line_reached_colors="@color/appBuilderUnselectedCirclesAndMore"
+        app:sbv_steps_line_unreached_colors="@color/appBuilderPlayButtonAndMore"
+        app:sbv_steps_reached_colors="@color/appBuilderUnselectedCirclesAndMore"
         app:sbv_steps_size="14dp"
-        app:sbv_steps_stroke_current_color="@color/frizzl_medium_light_blue"
-        app:sbv_steps_stroke_reached_color="@color/appBuilderUnselectedCircles"
-        app:sbv_steps_stroke_unreached_color="@color/frizzl_medium_light_blue"
+        app:sbv_steps_stroke_current_color="@color/appBuilderPlayButtonAndMore"
+        app:sbv_steps_stroke_reached_color="@color/appBuilderUnselectedCirclesAndMore"
+        app:sbv_steps_stroke_unreached_color="@color/appBuilderPlayButtonAndMore"
         app:sbv_steps_text_color="@color/white"
-        app:sbv_steps_unreached_colors="@color/frizzl_medium_light_blue" />
+        app:sbv_steps_unreached_colors="@color/appBuilderPlayButtonAndMore" />
 
     <ImageButton
         android:id="@+id/rightArrow"
@@ -113,10 +113,10 @@
         android:layout_below="@+id/stepBarView"
         android:layout_marginTop="6dp"
         android:background="@color/appBuilderHeaderAndTabs"
-        app:tabIndicatorColor="@color/frizzl_medium_light_blue"
-        app:tabSelectedTextColor="@color/frizzl_medium_light_blue"
+        app:tabIndicatorColor="@color/appBuilderPlayButtonAndMore"
+        app:tabSelectedTextColor="@color/appBuilderPlayButtonAndMore"
         app:tabTextAppearance="@style/AppBuilderTabTextAppearance"
-        app:tabTextColor="@color/appBuilderUnselectedWordInTab" />
+        app:tabTextColor="@color/appBuilderUnselectedTextInTab" />
 
 
     <LinearLayout
@@ -179,7 +179,7 @@
         android:layout_marginEnd="11dp"
         android:layout_marginTop="8dp"
         android:adjustViewBounds="false"
-        android:background="@drawable/run_button_background"
+        android:background="@drawable/play_button_app_builder"
         android:cropToPadding="false"
         android:elevation="10dp"
         android:onClick="onPlay"

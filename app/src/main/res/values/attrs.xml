@@ -1,23 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="AppMapButton">
-        <attr name="enabledColor" format="color"/>
-        <attr name="disabledColor" format="color"/>
         <attr name="completedDrawable" format="integer"/>
+        <attr name="disabledDrawable" format="integer"/>
+        <attr name="currentDrawable" format="integer"/>
+        <attr name="completedIcon" format="integer"/>
+        <attr name="disabledIcon" format="integer"/>
+        <attr name="currentIcon" format="integer"/>
         <attr name="levelID" format="integer"/>
     </declare-styleable>
 
     <declare-styleable name="PracticeMapButton">
-        <attr name="enabledColor"/>
-        <attr name="disabledColor"/>
-        <attr name="completedDrawable"/>
         <attr name="levelID"/>
     </declare-styleable>
 
     <declare-styleable name="IntroMapButton">
-        <attr name="enabledColor"/>
-        <attr name="disabledColor"/>
-        <attr name="completedDrawable"/>
         <attr name="levelID"/>
     </declare-styleable>
 

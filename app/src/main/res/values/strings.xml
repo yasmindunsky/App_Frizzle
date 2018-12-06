@@ -140,7 +140,7 @@ public class MainActivity extends AppCompatActivity implements   TextToSpeech.On
     <string name="friendship_test_app">Friendship\nTest App</string>
     <string name="variables_practice">Practice 2</string>
     <string name="views_practice">Practice 1</string>
-    <string name="polly_app">Polly App</string>
+    <string name="polly_app">Confession Booth App</string>
     <string name="onclick_practice">Practice 3</string>
     <string name="speakout_practice">Practice 2</string>
     <string name="tutorial_app">Tutorial App</string>
@@ -203,7 +203,7 @@ public class MainActivity extends AppCompatActivity implements   TextToSpeech.On
     <string name="error_function_not_myfunction">Make sure the function is named correctly.</string>
     <string name="done">done</string>
     <string name="your_message_successfully_sent">Your message was successfully sent.</string>
-    <string name="feedback_thank_you">thank you</string>
+    <string name="feedback_thank_you">Thank you!</string>
     <string name="notification_semicolon">Every command must end with a semicolon.</string>
     <string name="notification_space">Commands must be written exactly as presented.</string>
     <string name="install_permission_request">We\'re about to install your app, we just need your permission first</string>

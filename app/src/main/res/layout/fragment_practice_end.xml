@@ -61,7 +61,7 @@
 
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/thanksButton"
-            style="@style/Button.LightBlue"
+            style="@style/Button.Turquoise"
             android:textAppearance="@style/Text.Title.Light"
             android:textColor="@color/white"
             android:text="@string/thanks"

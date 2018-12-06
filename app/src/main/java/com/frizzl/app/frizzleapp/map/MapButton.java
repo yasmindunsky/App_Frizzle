@@ -7,8 +7,8 @@ import android.graphics.Color;
  */
 
 interface MapButton {
-    int enabledColor = Color.BLACK;
-    int disabledColor = Color.BLACK;
-    void setCompleted(boolean completed);
-    void setEnabled(boolean enabled);
+    int disabledTextColor = Color.BLACK;
+    void setCompleted();
+    void setCurrent();
+    void setDisabled();
 }

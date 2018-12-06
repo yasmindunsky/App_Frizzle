@@ -15,15 +15,33 @@
     <color name="selectedColor">#acacac</color>
 
     <!--App Builder-->
-    <color name="appBuilderBG">#2b2c36</color>
-    <color name="appBuilderHeaderAndTabs">#3a3a45</color>
-    <color name="appBuilderUnselectedCircles">#51515c</color>
-    <color name="appBuilderHomeIcon">#9696a0</color>
-    <color name="appBuilderUnselectedWordInTab">#9696a0</color>
-    <color name="appBuilderPlayPlusButtons">#008faf</color>
+    <color name="appBuilderBG">#08103a</color>
+    <color name="appBuilderHeaderAndTabs">#111d5c</color>
+    <!--unselected circles in progress bar, plus button menu items-->
+    <color name="appBuilderUnselectedCirclesAndMore">#111d5c</color>
+    <color name="appBuilderHomeIcon">#8a97dd</color>
+    <!--play button, task text, tab selected text and line, circles in progress bar-->
+    <color name="appBuilderPlayButtonAndMore">#19d1be</color>
+    <color name="appBuilderUnselectedTextInTab">#8a97dd</color>
+    <color name="appBuilderPlusButton">#16bfae</color>
+    <color name="appBuilderUsersAppHeader">#e93c79</color>
 
-    <color name="codeGrey">#c5c4c3</color>
+    <!--Code-->
+    <color name="codeBackground">#111d5c</color>
+    <color name="codeText">#707dc1</color>
     <color name="codeComment">#727272</color>
+    <color name="codeSpeakOut">#fc7924</color>
+    <color name="codeFunction">#16bfae</color>
+
+
+    <!--Practice-->
+    <color name="prePracticePopupButton">#16bfae</color>
+    <color name="practiceNotification">#818ed1</color>
+    <color name="practiceError">#ec4781</color>
+    <color name="practiceCorrectButton">#10ae9e</color>
+    <!--check/next button, play button, house icon, progress bar, notification-->
+    <color name="practiceMainColor">#8a97dd</color>
+    <color name="practiceDisabledCTAButton">#cdd2ee</color>
 
     <color name="white">#ffffff</color>
 
@@ -48,6 +66,12 @@
 
 
     <color name="frizzle_blue_green">#377793</color>
+
+
+    <color name="glowy_pink">#f84785</color>
+    <color name="torquise">#16bfae</color>
+
+    <color name="dark_blue">#0c174f</color>
 
 
 </resources>

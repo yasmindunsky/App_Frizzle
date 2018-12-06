@@ -40,8 +40,8 @@ public class MapActivity extends AppCompatActivity {
         ImageView toolbarIcon = findViewById(R.id.support_icon);
         scrollView = findViewById(R.id.map_scroll_view);
 
-        IntroMapButton pollyIntroButton = findViewById(R.id.polly_intro);
-        IntroMapButton friendshipIntroButton = findViewById(R.id.friendship_intro);
+        PracticeMapButton pollyIntroButton = findViewById(R.id.polly_intro);
+        PracticeMapButton friendshipIntroButton = findViewById(R.id.friendship_intro);
         AppMapButton pollyAppButton = findViewById(R.id.polly_app);
         AppMapButton friendshipTestAppButton = findViewById(R.id.friendship_app);
         PracticeMapButton firstPracticeButton = findViewById(R.id.first_practice);
@@ -72,20 +72,33 @@ public class MapActivity extends AppCompatActivity {
         });
 
         View.OnClickListener onClickedApp = v -> {
-            AppMapButton appMapButton = (AppMapButton) v;
-            int levelID = appMapButton.getLevelID();
+            AppMapButton button = (AppMapButton) v;
+//            if (button.status == Status.disabled)
+//                button.setCurrent();
+//            else if (button.status == Status.current)
+//                button.setCompleted();
+//            else if (button.status == Status.completed)
+//                button.setDisabled();
+            int levelID = button.getLevelID();
             AnalyticsUtils.logStartedAppEvent(levelID);
             mapPresenter.onClickedApp(levelID);
         };
+
         View.OnClickListener onClickedPractice = v -> {
-            PracticeMapButton practiceMapButton = (PracticeMapButton)v;
-            int practiceLevelID = practiceMapButton.getPracticeID();
+            PracticeMapButton button = (PracticeMapButton) v;
+//            if (button.status == Status.disabled)
+//                button.setCurrent();
+//            else if (button.status == Status.current)
+//                button.setCompleted();
+//            else if (button.status == Status.completed)
+//                button.setDisabled();
+            int practiceLevelID = button.getPracticeID();
             AnalyticsUtils.logStartedPracticeEvent(practiceLevelID);
             mapPresenter.onClickedPractice(practiceLevelID);
         };
         View.OnClickListener onClickedIntro = v -> {
-            IntroMapButton introMapButton = (IntroMapButton)v;
-            int levelID = introMapButton.getLevelID();
+            PracticeMapButton introMapButton = (PracticeMapButton)v;
+            int levelID = introMapButton.getPracticeID();
             AnalyticsUtils.logStartedIntroEvent(levelID);
             mapPresenter.onClickedIntro(levelID);
         };
@@ -98,7 +111,7 @@ public class MapActivity extends AppCompatActivity {
         variablesPracticeButton.setOnClickListener(onClickedPractice);
         
         pollyAppButton.setOnClickListeners(onClickedApp);
-        pollyIntroButton.setOnClickListeners(onClickedIntro);
+        pollyIntroButton.setOnClickListener(onClickedIntro);
 
         // Set scroll position.
         scrollView.post(() -> scrollView.fullScroll(View.FOCUS_DOWN));
@@ -111,14 +124,13 @@ public class MapActivity extends AppCompatActivity {
         for (int i = 0; i < levelButtons.size(); i++) {
             MapButton mapButton = levelButtons.get(i);
             if (i >= topLevel) {
-                mapButton.setEnabled(false);
+                mapButton.setDisabled();
             }
             else {
-                mapButton.setEnabled(true);
-                mapButton.setCompleted(true);
+                mapButton.setCompleted();
             }
         }
-        levelButtons.get(topLevel).setEnabled(true);
+        levelButtons.get(topLevel).setCurrent();
     }
 
     public void goToApp(int levelID) {
