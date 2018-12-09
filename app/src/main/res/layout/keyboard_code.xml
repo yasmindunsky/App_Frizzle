@@ -27,15 +27,14 @@
                 android:textAppearance="@style/Text.KeyBoardsKeys"
                 android:textColor="@color/codeSpeakOut" />
 
-            <com.airbnb.lottie.LottieAnimationView
-                android:id="@+id/orange_fireworks"
+            <ImageView
+                android:id="@+id/orange_key"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_margin="5dp"
                 android:elevation="7dp"
                 android:scaleType="fitCenter"
-                app:lottie_autoPlay="false"
-                app:lottie_loop="false"
-                app:lottie_rawRes="@raw/orange_fireworks" />
+                android:src="@drawable/keyboard_key_orange"/>
         </FrameLayout>
 
         <FrameLayout
@@ -54,15 +53,14 @@
                 android:textAppearance="@style/Text.KeyBoardsKeys"
                 android:textColor="@color/codeFunction" />
 
-            <com.airbnb.lottie.LottieAnimationView
-                android:id="@+id/green_fireworks"
+            <ImageView
+                android:id="@+id/green_key"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_margin="5dp"
                 android:elevation="7dp"
                 android:scaleType="fitCenter"
-                app:lottie_autoPlay="false"
-                app:lottie_loop="false"
-                app:lottie_rawRes="@raw/green_fireworks" />
+                android:src="@drawable/keyboard_key_green"/>
         </FrameLayout>
 
     </LinearLayout>

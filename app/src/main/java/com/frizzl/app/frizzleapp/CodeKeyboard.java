@@ -8,12 +8,16 @@ import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.view.inputmethod.ExtractedText;
 import android.view.inputmethod.ExtractedTextRequest;
 import android.view.inputmethod.InputConnection;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.airbnb.lottie.LottieAnimationView;
@@ -29,6 +33,8 @@ public class CodeKeyboard extends LinearLayout implements View.OnClickListener {
 
     private InputConnection inputConnection;
     private InputMethodManager inputMethodManager;
+    private ImageView orangeKeyImage;
+    private ImageView greenKeyImage;
 
     boolean pressedDelete = false;
 
@@ -68,6 +74,11 @@ public class CodeKeyboard extends LinearLayout implements View.OnClickListener {
         keyValues.put(R.id.button_speakout, "speakOut(\"\");");
         keyValues.put(R.id.button_function, "public void nameYouChoose(View view){\n\t\n}");
         keyValues.put(R.id.button_enter, "\n");
+
+        orangeKeyImage = findViewById(R.id.orange_key);
+        orangeKeyImage.setAlpha(0f);
+        greenKeyImage = findViewById(R.id.green_key);
+        greenKeyImage.setAlpha(0f);
     }
 
     @Override
@@ -109,10 +120,14 @@ public class CodeKeyboard extends LinearLayout implements View.OnClickListener {
         speakOutKey.setText(R.string.speakout_keyboard);
         if (firstTime){
             setVisibility(VISIBLE);
-            LottieAnimationView animationView = findViewById(R.id.orange_fireworks);
-            animationView.setRepeatCount(1);
+            orangeKeyImage.setAlpha(1f);
             final Handler handler = new Handler();
-            handler.postDelayed(animationView::playAnimation, 400); // 1s
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    orangeKeyImage.animate().alpha(0f).setDuration(2000);
+                }
+            }, 400);
         }
     }
 
@@ -122,10 +137,14 @@ public class CodeKeyboard extends LinearLayout implements View.OnClickListener {
         functionKey.setText(R.string.function_keyboard);
         if (firstTime){
             setVisibility(VISIBLE);
-            LottieAnimationView animationView = findViewById(R.id.green_fireworks);
-            animationView.setRepeatCount(1);
+            greenKeyImage.setAlpha(1f);
             final Handler handler = new Handler();
-            handler.postDelayed(animationView::playAnimation, 400); // 1s
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    greenKeyImage.animate().alpha(0f).setDuration(2000);
+                }
+            }, 400);
         }
     }
 
