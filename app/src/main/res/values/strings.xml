@@ -183,8 +183,9 @@ public class MainActivity extends AppCompatActivity implements   TextToSpeech.On
     <string name="friendship_intro">Intro</string>
     <string name="onboarding_text">Let\'s start\nbuilding apps.</string>
     <string name="our_button_does_nothing">Our button does nothing yet.</string>
-    <string name="whats_your_name">What\'s your name?</string>
-    <string name="tell_me_a_joke">Tell me a joke</string>
+    <string name="guilty_pleasure">What\'s my guilty pleasure?</string>
+    <string name="celebrity_crush">Who\'s my celebrity crush?</string>
+    <string name="best_friend">Who\'s my best friend?</string>
     <string name="my_button">My Button</string>
     <string name="no_functions">No function was defined yet</string>
     <string name="choose_function">Choose a function</string>

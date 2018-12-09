@@ -147,9 +147,9 @@ public class IntroSlideFragment extends Fragment {
 
         if (practiceSlide.hasDesign()) {
             waitForCTA = practiceSlide.getDesign().getRunnable();
-            View pollyApp = getLayoutInflater().inflate(R.layout.polly_app_demo, null);
-            AppCompatButton nameButton = pollyApp.findViewById(R.id.nameButton);
-            AppCompatButton jokeButton = pollyApp.findViewById(R.id.jokeButton);
+            View pollyApp = getLayoutInflater().inflate(R.layout.app_demo_confession, null);
+            AppCompatButton nameButton = pollyApp.findViewById(R.id.button1);
+            AppCompatButton jokeButton = pollyApp.findViewById(R.id.button2);
             nameButton.setOnClickListener(speak);
             jokeButton.setOnClickListener(speak);
             constraintLayout.addView(pollyApp);
