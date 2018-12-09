@@ -101,4 +101,6 @@
     </style>
 
     <style name="Text.Title.Torquise"></style>
+
+    <style name="Text.Button.UserCreated"></style>
 </resources>

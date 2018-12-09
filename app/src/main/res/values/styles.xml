@@ -224,6 +224,7 @@
     </style>
 
     <style name="TextView.UserCreated" parent="@android:style/TextAppearance.DeviceDefault.Medium">
+        <item name="android:gravity">center</item>
         <item name="android:background">@drawable/user_text_view_background</item>
         <item name="android:textColor">@color/frizzle_pink</item>
         <item name="android:fontFamily">@font/calibri_bold</item>
@@ -311,5 +312,6 @@
     <style name="Text.PracticeSlide.notice" parent="Text.PracticeSlide.error">
         <item name="android:textColor">@color/practiceNotification</item>
     </style>
+
 
 </resources>
