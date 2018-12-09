@@ -9,28 +9,28 @@
         android:layout_height="match_parent"
         android:padding="30dp">
 
-        <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/checkMark"
+        <ImageView
+            android:id="@+id/trophy"
             android:layout_width="0dp"
-            android:layout_height="100dp"
+            android:layout_height="350dp"
+            android:src="@drawable/wow_screen_trophy"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:lottie_autoPlay="true"
-            app:lottie_loop="false"
-            app:lottie_rawRes="@raw/trophy" />
+
+            />
 
         <android.support.v7.widget.AppCompatTextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/wow"
-            android:textAppearance="@style/Text.Title.Pink"
+            android:textAppearance="@style/Text.Title.Torquise"
             app:layout_constraintBottom_toTopOf="@+id/installText"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/checkMark"
+            app:layout_constraintTop_toBottomOf="@+id/trophy"
             app:layout_constraintVertical_chainStyle="packed" />
 
         <android.support.v7.widget.AppCompatTextView
@@ -63,9 +63,10 @@
 
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/thanksButton"
-            style="@style/Button.Thanks"
+            style="@style/Button.Turquoise"
             android:textAppearance="@style/Text.Title.Light"
             android:textColor="@color/white"
+            android:text="@string/thanks"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
