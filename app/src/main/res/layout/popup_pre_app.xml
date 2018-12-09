@@ -91,7 +91,7 @@
                     android:background="@drawable/icon_picker_tutorial_app_1_selector"
                     android:buttonTint="@android:color/transparent"
                     android:checked="false"
-                    android:tag="ic_tutorial_app_1" />
+                    android:tag="ic_diamond" />
 
                 <RadioButton
                     android:id="@+id/radioButton2"
@@ -101,7 +101,7 @@
                     android:layout_marginEnd="10dp"
                     android:background="@drawable/icon_picker_tutorial_app_2_selector"
                     android:buttonTint="@android:color/transparent"
-                    android:tag="ic_tutorial_app_2" />
+                    android:tag="ic_heart_bubble" />
 
                 <RadioButton
                     android:id="@+id/radioButton3"
@@ -111,7 +111,7 @@
                     android:layout_marginEnd="10dp"
                     android:background="@drawable/icon_picker_tutorial_app_3_selector"
                     android:buttonTint="@android:color/transparent"
-                    android:tag="ic_tutorial_app_3" />
+                    android:tag="ic_crown" />
 
             </LinearLayout>
 
@@ -129,7 +129,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/icon_picker_tutorial_app_5_selector"
                     android:buttonTint="@android:color/transparent"
-                    android:tag="ic_tutorial_app_5" />
+                    android:tag="ic_heart_envelope" />
 
                 <RadioButton
                     android:id="@+id/radioButton6"
@@ -139,7 +139,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/icon_picker_tutorial_app_6_selector"
                     android:buttonTint="@android:color/transparent"
-                    android:tag="ic_tutorial_app_6" />
+                    android:tag="ic_loud_speaker" />
 
                 <RadioButton
                     android:id="@+id/radioButton7"
@@ -149,7 +149,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/icon_picker_tutorial_app_7_selector"
                     android:buttonTint="@android:color/transparent"
-                    android:tag="ic_tutorial_app_7" />
+                    android:tag="ic_like" />
 
             </LinearLayout>
 

@@ -28,6 +28,7 @@ import com.fangxu.allangleexpandablebutton.ButtonEventListener;
 import com.frizzl.app.frizzleapp.ContentUtils;
 import com.frizzl.app.frizzleapp.R;
 import com.frizzl.app.frizzleapp.UserProfile;
+import com.frizzl.app.frizzleapp.ViewUtils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -329,7 +330,7 @@ public class DesignScreenFragment extends Fragment {
     public void setAppIcon(String iconDrawable) {
         if (iconDrawable != null && !iconDrawable.equals("")) {
             LinearLayout.LayoutParams layoutParams =
-                    new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
+                    new LinearLayout.LayoutParams(ViewUtils.dpStringToPixel("170p", context),
                             ViewGroup.LayoutParams.MATCH_PARENT);
             layoutParams.weight = 1;
             if (appBuilderActivity != null) {

@@ -31,7 +31,7 @@ public class UserApp implements Serializable {
     public UserApp(int appLevelID){
         this.appLevelID = appLevelID;
         this.name = "My Frizzl App";
-        this.icon = "ic_tutorial_app_5";
+        this.icon = "ic_diamond";
         this.xml = "";
         this.code = "";
         this.manifest = "";
@@ -73,7 +73,7 @@ public class UserApp implements Serializable {
 
     public String getIcon() {
         if (icon.equals("")){
-            icon = "ic_tutorial_app_5";
+            icon = "ic_diamond";
         }
         return icon;
     }
