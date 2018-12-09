@@ -17,6 +17,7 @@ import java.util.Map;
  */
 
 public abstract class UserCreatedView {
+    public static final int NUM_OF_COLS = 1;
 
     String viewType;
     Map<String, String> properties;

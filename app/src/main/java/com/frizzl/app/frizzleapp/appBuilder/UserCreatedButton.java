@@ -109,8 +109,8 @@ public class UserCreatedButton extends UserCreatedView {
         thisView.setTag(R.id.usersViewId, index);
 
         // Set Position in GridLayout and Margins.
-        int row = nextViewIndex / 2;
-        int column = nextViewIndex % 2;
+        int row = nextViewIndex / UserCreatedView.NUM_OF_COLS;
+        int column = nextViewIndex % UserCreatedView.NUM_OF_COLS;
         GridLayout.LayoutParams layoutParams = new GridLayout.LayoutParams(GridLayout.spec(row),
                 GridLayout.spec(column));
         layoutParams.width = (int) context.getResources().getDimension(R.dimen.user_created_button_width);

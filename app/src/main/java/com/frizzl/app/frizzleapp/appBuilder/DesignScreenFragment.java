@@ -7,12 +7,15 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.util.Log;
 import android.view.DragEvent;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.ImageButton;
@@ -30,6 +33,7 @@ import com.frizzl.app.frizzleapp.R;
 import com.frizzl.app.frizzleapp.UserProfile;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -39,6 +43,7 @@ import java.util.Map;
  */
 public class DesignScreenFragment extends Fragment {
     private GridLayout gridLayout;
+
     private PopupWindow popupWindow;
     private Map < Integer, UserCreatedView > views;
     private TextView appNameTitle;
@@ -51,6 +56,7 @@ public class DesignScreenFragment extends Fragment {
     private AppBuilderActivity appBuilderActivity;
     private UserCreatedViewsModel userCreatedViewsModel;
     private DefinedFunctionsViewModel definedFunctionsViewModel;
+    private View[] array;
 
     public DesignScreenFragment() {
         // Required empty public constructor
@@ -65,6 +71,7 @@ public class DesignScreenFragment extends Fragment {
         appBuilderActivity = (AppBuilderActivity) activity;
         context = appBuilderActivity;
         gridLayout = view.findViewById(R.id.gridLayout);
+
         appNameTitle = view.findViewById(R.id.app_name_title);
         appIcon = view.findViewById(R.id.app_icon);
         plusButton = view.findViewById(R.id.button_expandable);
