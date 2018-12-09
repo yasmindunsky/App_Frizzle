@@ -56,6 +56,26 @@ public abstract class UserCreatedView {
         }
     }
 
+    public void createHTMLString(XmlSerializer xmlSerializer) {
+        String name = viewType;
+        updateLatestPosition();
+        if (!viewType.equals( AnnotationUserCreatedViewType.IMAGE_VIEW)) {
+            properties.put("android:textColor", properties.get("android:textColor"));
+        }
+        try {
+            xmlSerializer.startTag("", name);
+            xmlSerializer.attribute("", "android:id", "@+id/" + properties.get("android:id"));
+            for (String key: properties.keySet()) {
+                if (!key.equals("android:id")) {
+                    xmlSerializer.attribute("", key, properties.get(key));
+                }
+            }
+            xmlSerializer.endTag("", name);
+        } catch (IOException e) {
+            Log.e("Exception", "xmlSerializer " + xmlSerializer.toString() + " failed: " + e.toString());
+        }
+    }
+
     private void updateLatestPosition() {
         View view = getThisView();
         String updatedColumn = view.getTag(R.id.usersViewCol).toString();

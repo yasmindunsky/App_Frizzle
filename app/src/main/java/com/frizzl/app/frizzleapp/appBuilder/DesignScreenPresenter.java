@@ -22,6 +22,8 @@ class DesignScreenPresenter {
         String appName = currentUserApp.getName();
         LayoutXmlWriter layoutXmlWriter = new LayoutXmlWriter();
         return layoutXmlWriter.writeXml(views, appIcon, appName);
+//        LayoutHTMLWriter layoutHTMLWriter = new LayoutHTMLWriter();
+//        return layoutHTMLWriter.writeHTML(views, appIcon, appName);
     }
 
     public DesignScreenPresenter(DesignScreenFragment designScreenFragment) {

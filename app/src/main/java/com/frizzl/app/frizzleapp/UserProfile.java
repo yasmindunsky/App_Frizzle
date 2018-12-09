@@ -35,7 +35,7 @@ public class UserProfile implements Serializable {
 
     private void init(){
         pollyUserApp = null;
-        topLevel = 2; // TODO: change before release
+        topLevel = 4; // TODO: change before release
         currentLevel = 0;
         currentSlideInLevel = 0;
         topSlideInLevel = 0;
