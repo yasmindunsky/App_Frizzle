@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.graphics.Color;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
@@ -17,6 +18,9 @@ import android.widget.TextView;
 import com.frizzl.app.frizzleapp.R;
 import com.frizzl.app.frizzleapp.ViewUtils;
 
+import org.xmlpull.v1.XmlSerializer;
+
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -196,6 +200,20 @@ public class UserCreatedTextView extends UserCreatedView {
             context = ((ContextWrapper)context).getBaseContext();
         }
         return null;
+    }
+
+    public void createHTMLString(XmlSerializer xmlSerializer) {
+        String name = "p";
+        try {
+            xmlSerializer.startTag("", name);
+            xmlSerializer.attribute("", "id", properties.get("android:id"));
+            xmlSerializer.attribute("", "style",
+                    "color:" + properties.get("android:textColor"));
+            xmlSerializer.text(properties.get("android:text"));
+            xmlSerializer.endTag("", name);
+        } catch (IOException e) {
+            Log.e("Exception", "xmlSerializer " + xmlSerializer.toString() + " failed: " + e.toString());
+        }
     }
 
 }

@@ -308,9 +308,16 @@ public class AppBuilderActivity extends AppCompatActivity {
 
             appBuilderPresenter.downloadApk();
         }
-        AnalyticsUtils.logRunAppEvent();
-        designScreenPresenter.saveState();
-        codingScreenPresenter.saveState();
+
+//        String html = designFragment.getHTML();
+//        AnalyticsUtils.logRunAppEvent();
+//        designScreenPresenter.saveState();
+//        codingScreenPresenter.saveState();
+//        UploadHTMLToFirebase uploadHTMLToFirebase = new UploadHTMLToFirebase();
+//        String ID = "test";
+//        uploadHTMLToFirebase.upload(ID, html);
+//        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://us-central1-frizzleapp.cloudfunctions.net/getHTMLFromID?id=" + ID));
+//        startActivity(browserIntent);
     }
 
     public void presentPopup(PopupWindow popupWindow, Runnable runOnDismiss) {

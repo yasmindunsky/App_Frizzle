@@ -1,6 +1,7 @@
 package com.frizzl.app.frizzleapp.appBuilder;
 
 import android.content.Context;
+import android.util.Log;
 import android.widget.EditText;
 import android.widget.GridLayout;
 import android.widget.ImageView;
@@ -10,6 +11,9 @@ import android.widget.RadioButton;
 import com.frizzl.app.frizzleapp.R;
 import com.frizzl.app.frizzleapp.ViewUtils;
 
+import org.xmlpull.v1.XmlSerializer;
+
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -116,5 +120,18 @@ public class UserCreatedImageView extends UserCreatedView {
         selectedImageID = selectedImageButton.getId();
         thisView.setBackground(selectedImageButton.getBackground());
         properties.put("android:background", "@drawable/"+tag);
+    }
+
+    public void createHTMLString(XmlSerializer xmlSerializer) {
+        String name = "img";
+        try {
+            xmlSerializer.startTag("", name);
+            xmlSerializer.attribute("", "id", properties.get("android:id"));
+            xmlSerializer.attribute("", "src", properties.get("android:src"));
+            xmlSerializer.text(properties.get("android:text"));
+            xmlSerializer.endTag("", name);
+        } catch (IOException e) {
+            Log.e("Exception", "xmlSerializer " + xmlSerializer.toString() + " failed: " + e.toString());
+        }
     }
 }

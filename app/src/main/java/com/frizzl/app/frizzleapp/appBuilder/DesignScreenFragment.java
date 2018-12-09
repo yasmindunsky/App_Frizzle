@@ -318,6 +318,12 @@ public class DesignScreenFragment extends Fragment {
         return designScreenPresenter.getXml(userCreatedViewsModel.getViews());
     }
 
+    public String getHTML() {
+        LayoutHTMLWriter layoutHTMLWriter = new LayoutHTMLWriter();
+        return layoutHTMLWriter.writeHTML(userCreatedViewsModel.getViews());
+    }
+
+
     public void setAppName(String appName) {
         if (appName.equals("")) {
             appName = "My Frizzl App";

@@ -22,8 +22,6 @@ class DesignScreenPresenter {
         String appName = currentUserApp.getName();
         LayoutXmlWriter layoutXmlWriter = new LayoutXmlWriter();
         return layoutXmlWriter.writeXml(views, appIcon, appName);
-//        LayoutHTMLWriter layoutHTMLWriter = new LayoutHTMLWriter();
-//        return layoutHTMLWriter.writeHTML(views, appIcon, appName);
     }
 
     public DesignScreenPresenter(DesignScreenFragment designScreenFragment) {
@@ -107,6 +105,7 @@ class DesignScreenPresenter {
     public Map<Integer, UserCreatedView> getViewsFromUserProfile() {
         return UserProfile.user.getCurrentUserApp().getViews();
     }
+
 
 //    public void setUserCreatedViewsModel(UserCreatedViewsModel userCreatedViewsModel) {
 //        this.userCreatedViewsModel = userCreatedViewsModel;

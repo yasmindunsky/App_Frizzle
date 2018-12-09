@@ -9,6 +9,7 @@ import android.graphics.drawable.Drawable;
 import android.support.v4.content.ContextCompat;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,6 +28,9 @@ import android.widget.TextView;
 import com.frizzl.app.frizzleapp.R;
 import com.frizzl.app.frizzleapp.ViewUtils;
 
+import org.xmlpull.v1.XmlSerializer;
+
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -385,5 +389,23 @@ public class UserCreatedButton extends UserCreatedView {
         void onChangedText();
 
         void onChangedOnClick(String onClickFuncName);
+    }
+
+    public void createHTMLString(XmlSerializer xmlSerializer) {
+        String name = "button";
+        try {
+            xmlSerializer.startTag("", name);
+            xmlSerializer.attribute("", "id", properties.get("android:id"));
+            xmlSerializer.attribute("", "onclick", properties.get("android:id"));
+
+            xmlSerializer.attribute("", "style",
+                    "color:" + properties.get("android:textColor") +
+            "background-color:" + properties.get("android:backgroundTint"));
+
+            xmlSerializer.text(properties.get("android:text"));
+            xmlSerializer.endTag("", name);
+        } catch (IOException e) {
+            Log.e("Exception", "xmlSerializer " + xmlSerializer.toString() + " failed: " + e.toString());
+        }
     }
 }

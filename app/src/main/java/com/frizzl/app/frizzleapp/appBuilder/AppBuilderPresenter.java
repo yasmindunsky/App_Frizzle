@@ -160,4 +160,5 @@ class AppBuilderPresenter {
             justOpenedApp = true;
         }
     }
+
 }

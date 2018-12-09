@@ -17,7 +17,7 @@ class LayoutHTMLWriter {
     private XmlSerializer xmlSerializer;
     private StringWriter stringWriter;
 
-    public String writeHTML(Map<Integer, UserCreatedView> viewsToWrite, String appIcon, String appName) {
+    public String writeHTML(Map<Integer, UserCreatedView> viewsToWrite) {
         xmlSerializer = Xml.newSerializer();
         stringWriter = new StringWriter();
         try {
@@ -84,6 +84,10 @@ class LayoutHTMLWriter {
                     "\t\t\t  padding-right:220px;\n" +
                     "\t\t\t  padding-top:40px;\n" +
                     "\t\t\t  padding-bottom:40px;\n" +
+                    "\t\t\t}" +
+                    "img {\n" +
+                    "\t\t\twidth:50%;\n" +
+                    "\t\t\tmargin-left: 200px;\n" +
                     "\t\t\t}");
             xmlSerializer.endTag("", "style");
 
