@@ -25,6 +25,7 @@ import java.util.Locale;
 public class CodeSection extends RelativeLayout {
     private final CodeEditor codeEditor;
     private TextToSpeech tts;
+    private  CodeKeyboard codeKeyboard;
     // This variable represents the listener passed in by the owning object
     // The listener must implement the events interface and passes messages up to the parent.
     private ReadyForCTAListener readyForCTAListener;
@@ -52,6 +53,7 @@ public class CodeSection extends RelativeLayout {
         };
         tts = new TextToSpeech(context, onInitListener, "com.google.android.tts");
 
+        codeKeyboard = codeKeyboard;
         codeEditor = new CodeEditor(context, codeKeyboard);
         codeEditor.setText(code);
         codeEditor.setEnabled(mutable);
@@ -175,6 +177,10 @@ public class CodeSection extends RelativeLayout {
             codeEditor.setFocusable(false);
             codeEditor.setOnClickListener(onClickListener);
         }
+    }
+
+    public void focusOnEditor() {
+        codeEditor.requestFocus();
     }
 
     // This interface defines the type of messages I want to communicate to my owner

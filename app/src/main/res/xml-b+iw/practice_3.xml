@@ -85,8 +85,7 @@ public void nameYouChoose(View view){\n\n}
         <info_text>כשנוסיף פקודות לפונקציה, נכתוב את הפקודה בין הסוגרים המסולסלים.</info_text>
         <task_text>הוסיפו לפונקציה את הפקודה: ;speakOut("Hello")</task_text>
         <reminder_text/>
-        <code show="true" mutable="true" runnable="false" waitForCTA="false">
-public void myFunction(View view){\n\n}
+        <code show="true" mutable="true" runnable="false" waitForCTA="false">public void myFunction(View view){\n\n}
         </code>
         <design show="false" runnable="false" withOnClickSet="false"/>
         <call_to_action>בדיקה</call_to_action>

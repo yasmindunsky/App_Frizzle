@@ -25,8 +25,7 @@ import com.airbnb.lottie.LottieAnimationView;
 public class CodeKeyboard extends LinearLayout implements View.OnClickListener {
 
     private static final int NUM_OF_CHARS_TO_BACK_AFTER_SPEAKOUT = 3;
-    private static final String FUNCTION_PART_1 = "public void nameYouChoose";
-    private static final String FUNCTION_PART_2 = "(View view){\n\t//Here you'll write commands\n    \n}";
+    private static final String FUNCTION_PART_2 = "(View view){\n\t\n}";
     private static final int NUM_OF_CHARS_TO_BACK_AFTER_FUNCTION = FUNCTION_PART_2.length();
 
     private final SparseArray<String> keyValues = new SparseArray<>();
@@ -160,5 +159,12 @@ public class CodeKeyboard extends LinearLayout implements View.OnClickListener {
             // delete the selection
             inputConnection.commitText("", 1);
         }
+    }
+
+
+    public void presentKeyboardAndPlaceCursor() {
+        setVisibility(VISIBLE);
+        int length = "public void myFunction(View view){\n".length();
+        inputConnection.setSelection(length, length);
     }
 }

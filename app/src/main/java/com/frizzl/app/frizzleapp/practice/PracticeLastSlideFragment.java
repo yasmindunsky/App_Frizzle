@@ -21,7 +21,6 @@ public class PracticeLastSlideFragment extends android.support.v4.app.Fragment {
     private int levelID;
 
     public PracticeLastSlideFragment(){
-
     }
 
     @Override

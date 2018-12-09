@@ -55,6 +55,7 @@ public class PracticeSlideFragment extends Fragment {
     private int currentSlide;
     private FragmentActivity activity;
     private CodeKeyboard codeKeyboard;
+    private CodeSection codeSection;
 
     public PracticeSlideFragment() {
         // Required empty public constructor
@@ -70,6 +71,7 @@ public class PracticeSlideFragment extends Fragment {
         activity = getActivity();
         viewPager = activity.findViewById(R.id.pager);
         currentLevel = UserProfile.user.getCurrentLevel();
+
 
 
         if (ViewUtils.isRTL()) {
@@ -154,7 +156,7 @@ public class PracticeSlideFragment extends Fragment {
                 codeKeyboard.setLayoutParams(keyboardLayoutParams);
             }
             originalCode = code.getCode();
-            CodeSection codeSection = new CodeSection(context, originalCode, code.getRunnable(), mutable, code.getWaitForCTA(), codeKeyboard, ((PracticeActivity) activity).getMainLayout());
+            codeSection = new CodeSection(context, originalCode, code.getRunnable(), mutable, code.getWaitForCTA(), codeKeyboard, ((PracticeActivity) activity).getMainLayout());
             if (ContentUtils.FIRST_PRACTICE_LEVEL_ID == currentLevel &&
                     2 == currentSlide) {
                 codeSection.setEditorOnClickListener(v ->
@@ -297,6 +299,8 @@ public class PracticeSlideFragment extends Fragment {
                 ((currentLevel == ContentUtils.ONCLICK_PRACTICE_LEVEL_ID) && currentSlide > 5)) {
             codeKeyboard.enableFunctionKey(false);
         }
+
+
     }
 
     private void setConstraints(ConstraintSet set, int thisID, int prevID, int sidesMargins) {
@@ -441,6 +445,10 @@ public class PracticeSlideFragment extends Fragment {
         super.setUserVisibleHint(isVisibleToUser);
         if (codeKeyboard != null) {
             enableNewKeyboardKeys(codeKeyboard);
+        }
+        if (currentLevel == ContentUtils.ONCLICK_PRACTICE_LEVEL_ID && currentSlide == 8) {
+            codeKeyboard.presentKeyboardAndPlaceCursor();
+            codeSection.focusOnEditor();
         }
     }
 

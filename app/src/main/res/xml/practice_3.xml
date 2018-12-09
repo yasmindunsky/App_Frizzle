@@ -94,8 +94,7 @@ public void nameYouChoose(View view){
         <info_text/>
         <task_text>Write the $orange$speakOut("Hello") command$orange$ inside the $green$function$green$, between the curly brackets.</task_text>
         <reminder_text/>
-        <code show="true" mutable="true" runnable="false" waitForCTA="false">
-public void myFunction(View view){
+        <code show="true" mutable="true" runnable="false" waitForCTA="false">public void myFunction(View view){
 
 }
         </code>

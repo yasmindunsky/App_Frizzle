@@ -9,4 +9,5 @@ public class ContentUtils {
     public final static int SPEAKOUT_PRACTICE_LEVEL_ID = 2;
     public final static int ONCLICK_PRACTICE_LEVEL_ID = 3;
     public final static int CONFESSIONS_APP_LEVEL_ID = 4;
+
 }
