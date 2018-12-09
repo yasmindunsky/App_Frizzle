@@ -28,9 +28,18 @@ public class UserProfile implements Serializable {
     private int topSlideInLevel;
 
     public static UserProfile user = new UserProfile();
+    private static String userID;
 
     private UserProfile() {
         init();
+    }
+
+    public static void setUserID(String userID) {
+        UserProfile.userID = userID;
+    }
+
+    public static String getUserID() {
+        return userID;
     }
 
     private void init(){

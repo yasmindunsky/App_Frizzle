@@ -310,17 +310,12 @@ public class DesignScreenFragment extends Fragment {
         return gridLayout.getRowCount();
     }
 
-    public Map < Integer, UserCreatedView > getViews() {
-        return views;
-    }
-
     public String getXml() {
         return designScreenPresenter.getXml(userCreatedViewsModel.getViews());
     }
 
-    public String getHTML() {
-        LayoutHTMLWriter layoutHTMLWriter = new LayoutHTMLWriter();
-        return layoutHTMLWriter.writeHTML(userCreatedViewsModel.getViews());
+    public Map<Integer, UserCreatedView> getViews() {
+        return userCreatedViewsModel.getViews();
     }
 
 

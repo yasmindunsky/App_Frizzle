@@ -17,7 +17,7 @@ class LayoutHTMLWriter {
     private XmlSerializer xmlSerializer;
     private StringWriter stringWriter;
 
-    public String writeHTML(Map<Integer, UserCreatedView> viewsToWrite) {
+    public String writeHTML(Map<Integer, UserCreatedView> viewsToWrite, String jsCode) {
         xmlSerializer = Xml.newSerializer();
         stringWriter = new StringWriter();
         try {
@@ -35,6 +35,11 @@ class LayoutHTMLWriter {
             xmlSerializer.startTag("", "title");
             xmlSerializer.text("Confession Booth");
             xmlSerializer.endTag("", "title");
+
+            // open tag: <style>
+            xmlSerializer.startTag("", "script");
+            xmlSerializer.text(jsCode);
+            xmlSerializer.endTag("", "script");
 
             // open tag: <style>
             xmlSerializer.startTag("", "style");

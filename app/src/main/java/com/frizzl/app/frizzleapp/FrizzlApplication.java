@@ -52,7 +52,8 @@ public class FrizzlApplication extends Application {
                 language = Locale.getDefault().getLanguage();
             }
             Crashlytics.setString("language", language);
-            Crashlytics.setUserIdentifier(UUID.randomUUID().toString());
+            UserProfile.setUserID(UUID.randomUUID().toString());
+            Crashlytics.setUserIdentifier(UserProfile.getUserID());
         }
 
 ////        // Set to English and LTR

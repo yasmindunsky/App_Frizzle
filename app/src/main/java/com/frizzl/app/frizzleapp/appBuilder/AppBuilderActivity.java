@@ -43,6 +43,7 @@ import net.cachapa.expandablelayout.ExpandableLayout;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Map;
 
 import static android.support.v4.app.ActivityCompat.startActivityForResult;
 
@@ -298,26 +299,41 @@ public class AppBuilderActivity extends AppCompatActivity {
     }
 
     public void onPlay(final View view) {
-        if (ContextCompat.checkSelfPermission(this,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            // Permission from user still isn't granted, ask for permission.
-            openRequestPermissionPopup();
-        }
-        // Permission was already granted, download APK.
-        else {
+//        if (ContextCompat.checkSelfPermission(this,
+//                Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+//            // Permission from user still isn't granted, ask for permission.
+//            openRequestPermissionPopup();
+//        }
+//        // Permission was already granted, download APK.
+//        else {
+//
+//            appBuilderPresenter.downloadApk();
+//        }
 
-            appBuilderPresenter.downloadApk();
-        }
+        createAndRunWebApp();
+    }
 
-//        String html = designFragment.getHTML();
-//        AnalyticsUtils.logRunAppEvent();
-//        designScreenPresenter.saveState();
-//        codingScreenPresenter.saveState();
-//        UploadHTMLToFirebase uploadHTMLToFirebase = new UploadHTMLToFirebase();
-//        String ID = "test";
-//        uploadHTMLToFirebase.upload(ID, html);
-//        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://us-central1-frizzleapp.cloudfunctions.net/getHTMLFromID?id=" + ID));
-//        startActivity(browserIntent);
+    private void createAndRunWebApp() {
+        AnalyticsUtils.logRunAppEvent();
+
+        designScreenPresenter.saveState();
+        codingScreenPresenter.saveState();
+
+        Map<Integer, UserCreatedView> views = designFragment.getViews();
+        String jsCode = codingFragment.getCode();
+        LayoutHTMLWriter layoutHTMLWriter = new LayoutHTMLWriter();
+        String html = layoutHTMLWriter.writeHTML(views, jsCode);
+
+        UploadHTMLToFirebase uploadHTMLToFirebase = new UploadHTMLToFirebase();
+        String ID = getAppID();
+        uploadHTMLToFirebase.upload(ID, html);
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://us-central1-frizzleapp.cloudfunctions.net/getHTMLFromID?id=" + ID));
+        startActivity(browserIntent);
+
+    }
+
+    private String getAppID() {
+        return UserProfile.getUserID() + getResources().getString(R.string.confession_booth_app);
     }
 
     public void presentPopup(PopupWindow popupWindow, Runnable runOnDismiss) {
