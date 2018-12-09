@@ -9,7 +9,7 @@
         android:right="4dp"
         android:top="4dp">
         <shape android:shape="oval">
-            <solid android:color="@color/frizzle_faded_light_blue"></solid>
+            <solid android:color="@color/lightYellow"></solid>
         </shape>
     </item>
 

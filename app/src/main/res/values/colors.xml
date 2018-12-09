@@ -43,7 +43,22 @@
     <color name="practiceMainColor">#8a97dd</color>
     <color name="practiceDisabledCTAButton">#cdd2ee</color>
 
+    <!--Properties Table-->
+    <color name="trashIcon">#b9276a</color>
+
+    <color name="yellow">#f7b116</color>
+    <color name="blue">#4687f0</color>
+    <color name="pink">#f84685</color>
+    <color name="green">#16bfae</color>
+    <color name="purple">#9f25c1</color>
+
+    <color name="darkBlue">#08103a</color>
+    <color name="lightBlue">#c6dcff</color>
+    <color name="lightPink">#ffd0e1</color>
+    <color name="lightYellow">#ffe19f</color>
     <color name="white">#ffffff</color>
+
+
 
     <!--Frizzle Colors-->
     <color name="frizzle_light_blue">#0090b1</color>

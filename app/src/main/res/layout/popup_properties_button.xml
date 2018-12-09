@@ -157,8 +157,8 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:button="@drawable/color_circle_faded_yellow_selector"
-            android:shadowColor="@color/frizzle_faded_yellow"/>
+            android:button="@drawable/color_circle_dark_blue_selector"
+            android:shadowColor="@color/darkBlue"/>
 
         <RadioButton
             android:id="@+id/color2"
@@ -166,8 +166,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_marginStart="-10dp"
-            android:button="@drawable/color_circle_faded_pink_selector"
-            android:shadowColor="@color/frizzle_faded_pink"/>
+            android:button="@drawable/color_circle_light_blue_selector"
+            android:shadowColor="@color/lightBlue"/>
 
         <RadioButton
             android:id="@+id/color3"
@@ -175,8 +175,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_marginStart="-10dp"
-            android:button="@drawable/color_circle_faded_light_blue_selector"
-            android:shadowColor="@color/frizzle_faded_light_blue"/>
+            android:button="@drawable/color_circle_light_pink_selector"
+            android:shadowColor="@color/lightPink"/>
 
         <RadioButton
             android:id="@+id/color4"
@@ -184,8 +184,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_marginStart="-10dp"
-            android:button="@drawable/color_circle_faded_green_selector"
-            android:shadowColor="@color/frizzle_faded_green" />
+            android:button="@drawable/color_circle_light_yellow_selector"
+            android:shadowColor="@color/lightYellow" />
 
         <RadioButton
             android:id="@+id/color5"
@@ -215,9 +215,9 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:button="@drawable/color_circle_pink_selector"
+            android:button="@drawable/color_circle_yellow_selector"
             android:checked="false"
-            android:shadowColor="@color/frizzle_pink" />
+            android:shadowColor="@color/yellow" />
 
         <RadioButton
             android:id="@+id/bgColor2"
@@ -226,8 +226,8 @@
             
             android:layout_weight="1"
             android:layout_marginStart="-10dp"
-            android:button="@drawable/color_circle_purple_selector"
-            android:shadowColor="@color/frizzle_purple"
+            android:button="@drawable/color_circle_blue_selector"
+            android:shadowColor="@color/blue"
              />
 
         <RadioButton
@@ -237,8 +237,8 @@
             
             android:layout_weight="1"
             android:layout_marginStart="-10dp"
-            android:button="@drawable/color_circle_green_selector"
-            android:shadowColor="@color/frizzle_green"
+            android:button="@drawable/color_circle_pink_selector"
+            android:shadowColor="@color/pink"
              />
 
         <RadioButton
@@ -248,8 +248,8 @@
             
             android:layout_weight="1"
             android:layout_marginStart="-10dp"
-            android:button="@drawable/color_circle_light_blue_selector"
-            android:shadowColor="@color/frizzle_light_blue"
+            android:button="@drawable/color_circle_green_selector"
+            android:shadowColor="@color/green"
              />
 
         <RadioButton
@@ -257,10 +257,10 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginStart="-10dp"
-            android:button="@drawable/color_circle_black_selector"
+            android:button="@drawable/color_circle_purple_selector"
             android:layout_weight="1"
             android:checked="false"
-            android:shadowColor="@color/black" />
+            android:shadowColor="@color/purple" />
     </RadioGroup>
 
     <Spinner
