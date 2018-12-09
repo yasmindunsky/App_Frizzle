@@ -128,7 +128,7 @@ public class MainActivity extends AppCompatActivity implements   TextToSpeech.On
     <string name="welcome">welcome</string>
     <string name="app_explanation_text">Congratulations! You completed all the practices and you are now ready to build your first app.</string>
     <string name="start">start</string>
-    <string name="wow">wow!</string>
+    <string name="wow">WOW!</string>
     <string name="thanks">thanks</string>
     <string name="your_app_name">App Name</string>
     <string name="function_name">Function name</string>
@@ -212,7 +212,7 @@ public class MainActivity extends AppCompatActivity implements   TextToSpeech.On
     <string name="cancel">cancel</string>
     <string name="downloading_your_app">Downloading your app...</string>
     <string name="downloading_this_is_so_exciting">This is so exciting!</string>
-    <string name="well_done">Well done</string>
+    <string name="well_done">Well Done</string>
     <string name="completed_first_practice">You completed your first practice.</string>
     <string name="here_well_write_code">Here we\'ll write code after we\'ll learn how.</string>
     <string name="try_again_when_connected">Try again when you\'re connected.</string>
