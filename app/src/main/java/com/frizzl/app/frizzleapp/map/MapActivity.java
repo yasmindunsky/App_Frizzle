@@ -40,9 +40,9 @@ public class MapActivity extends AppCompatActivity {
         ImageView toolbarIcon = findViewById(R.id.support_icon);
         scrollView = findViewById(R.id.map_scroll_view);
 
-        PracticeMapButton pollyIntroButton = findViewById(R.id.polly_intro);
+        PracticeMapButton confessionsIntroButton = findViewById(R.id.confession_intro);
         PracticeMapButton friendshipIntroButton = findViewById(R.id.friendship_intro);
-        AppMapButton pollyAppButton = findViewById(R.id.polly_app);
+        AppMapButton confessionsAppButton = findViewById(R.id.confession_app);
         AppMapButton friendshipTestAppButton = findViewById(R.id.friendship_app);
         PracticeMapButton firstPracticeButton = findViewById(R.id.first_practice);
         PracticeMapButton speakOutPracticeButton = findViewById(R.id.speakout_practice);
@@ -52,11 +52,11 @@ public class MapActivity extends AppCompatActivity {
 
         // Notice: Should be in order of appearance!
         levelButtons.addAll(Arrays.asList(
-                pollyIntroButton,
+                confessionsIntroButton,
                 firstPracticeButton,
                 speakOutPracticeButton,
                 onClickPracticeButton,
-                pollyAppButton,
+                confessionsAppButton,
                 friendshipIntroButton,
                 viewsPracticeButton,
                 variablesPracticeButton,
@@ -110,8 +110,8 @@ public class MapActivity extends AppCompatActivity {
         viewsPracticeButton.setOnClickListener(onClickedPractice);
         variablesPracticeButton.setOnClickListener(onClickedPractice);
         
-        pollyAppButton.setOnClickListeners(onClickedApp);
-        pollyIntroButton.setOnClickListener(onClickedIntro);
+        confessionsAppButton.setOnClickListeners(onClickedApp);
+        confessionsIntroButton.setOnClickListener(onClickedIntro);
 
         // Set scroll position.
         scrollView.post(() -> scrollView.fullScroll(View.FOCUS_DOWN));

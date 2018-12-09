@@ -7,15 +7,12 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.helper.ItemTouchHelper;
 import android.util.Log;
 import android.view.DragEvent;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.ImageButton;
@@ -33,7 +30,6 @@ import com.frizzl.app.frizzleapp.R;
 import com.frizzl.app.frizzleapp.UserProfile;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -173,7 +169,7 @@ public class DesignScreenFragment extends Fragment {
                         @Override
                         public void onChangedText() {
                             if (UserProfile.user.getCurrentLevel() ==
-                                    ContentUtils.POLLY_APP_LEVEL_ID &&
+                                    ContentUtils.CONFESSIONS_APP_LEVEL_ID &&
                                     UserProfile.user.getCurrentSlideInLevel() == 1) {
                                 taskCompleted();
                             }
@@ -182,7 +178,7 @@ public class DesignScreenFragment extends Fragment {
                         @Override
                         public void onChangedOnClick(String onClickFuncName) {
                             if (UserProfile.user.getCurrentLevel() ==
-                                    ContentUtils.POLLY_APP_LEVEL_ID &&
+                                    ContentUtils.CONFESSIONS_APP_LEVEL_ID &&
                                     !onClickFuncName.equals("None")) {
                                 if (UserProfile.user.getCurrentSlideInLevel() == 4) {
                                     if (appBuilderActivity != null)

@@ -18,7 +18,7 @@ import java.io.Serializable;
 public class UserProfile implements Serializable {
 
     private AppTasks currentAppTasks;
-    private UserApp pollyUserApp;
+    private UserApp confessionUserApp;
 
     // Level is of apps and practices combined.
     private int currentLevel;
@@ -34,7 +34,7 @@ public class UserProfile implements Serializable {
     }
 
     private void init(){
-        pollyUserApp = null;
+        confessionUserApp = null;
         topLevel = 4; // TODO: change before release
         currentLevel = 0;
         currentSlideInLevel = 0;
@@ -50,11 +50,11 @@ public class UserProfile implements Serializable {
     }
 
     public UserApp getCurrentUserApp() {
-        return pollyUserApp;
+        return confessionUserApp;
     }
 
     public void setCurrentUserAppLevelID(UserApp currentUserApp) {
-        pollyUserApp = currentUserApp;
+        confessionUserApp = currentUserApp;
     }
 
     public int getCurrentLevel() {

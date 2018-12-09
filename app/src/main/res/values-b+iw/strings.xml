@@ -29,7 +29,7 @@ Use "'" for special chars.
     <string name="onclick_practice">תרגול 3</string>
     <string name="speakout_practice">תרגול 2</string>
     <string name="friendship_test_app">אפליקציית מבחן חברות</string>
-    <string name="polly_app">אפליקציית\nתוכי מדבר</string>
+    <string name="confession_booth_app">אפליקציית\nתא וידויים</string>
     <string name="tutorial_app">Tutorial אפליקציית</string>
     <string name="yay">יאי!</string>
     <string name="my_first_app">האפליקציה הראשונה שלי</string>
@@ -65,16 +65,17 @@ Use "'" for special chars.
     <string name="first_practice_explanation_text">בתור התחלה, נלמד מה הם שני החלקים המרכזיים בבניית אפליקציה.</string>
     <string name="check">בדיקה</string>
     <string name="speakout_practice_explanation_text">כעת נלמד את הפקודה הראשונה שלנו, הפוקדת על המחשב להקריא טקסט בקול.</string>
-    <string name="polly_intro">מבוא</string>
+    <string name="intro">מבוא</string>
     <string name="friendship_intro">מבוא</string>
     <string name="onboarding_text">בואו נתחיל לבנות אפליקציות</string>
     <string name="our_button_does_nothing">הכפתור שלנו עדיין לא עושה שום דבר</string>
-    <string name="guilty_pleasure">מה שמך?</string>
-    <string name="celebrity_crush">ספר לי בדיחה</string>
+    <string name="guilty_pleasure">מה הגילטי פלז\'ר שלי?</string>
+    <string name="celebrity_crush">באיזה סלב אני מאוהבת?</string>
+    <string name="best_friend">מי החברה הכי טובה שלי?</string>
     <string name="my_button">הכפתור שלי</string>
     <string name="no_functions">אף פונקציה לא הוגדרה עדיין</string>
     <string name="choose_function">בחרו פונקציה</string>
-    <string name="turn_volume_up">הגבירו את הווליום כדי לשמוע את פולי מדבר</string>
+    <string name="turn_volume_up">הגבירו את הווליום כדי לשמוע</string>
     <string name="task">משימה</string>
     <string name="arrow_next">הבא</string>
     <string name="arrow_prev">הקודם</string>
@@ -103,7 +104,6 @@ Use "'" for special chars.
     <string name="internet_connection_required">דרוש חיבור אינטרנט פעיל כדי להתקין את האפליקציה.</string>
     <string name="correct">נכון</string>
     <string name="task_1">משימה 1:</string>
-    <string name="best_friend" />
 
 
     <string-array name="fonts">

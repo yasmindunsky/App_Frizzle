@@ -72,7 +72,7 @@ class CodingScreenPresenter {
         boolean taskCompleted = false;
         UserProfile user = UserProfile.user;
         int currentTask = user.getCurrentSlideInLevel();
-        if (user.getCurrentLevel() == ContentUtils.POLLY_APP_LEVEL_ID) {
+        if (user.getCurrentLevel() == ContentUtils.CONFESSIONS_APP_LEVEL_ID) {
             if (currentTask == 2) {
                 int beforeName = code.indexOf("public void") + String.valueOf("public void").length();
                 int afterName = code.indexOf("(View view)");

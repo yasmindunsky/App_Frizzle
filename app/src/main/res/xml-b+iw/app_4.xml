@@ -3,7 +3,7 @@
 <app xmlns:tools="http://schemas.android.com/tools"
     tools:keep="@xml/app_1">
     <task>
-        <text name="text">הוסיפו איור של תוכי על ידי הוספת אלמנט תמונה.
+        <text name="text">הוסיפו תמונה על ידי הוספת אלמנט תמונה.
         </text>
     </task>
 

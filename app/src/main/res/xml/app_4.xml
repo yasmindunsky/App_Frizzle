@@ -3,7 +3,7 @@
 <app xmlns:tools="http://schemas.android.com/tools"
     tools:keep="@xml/app_1">
     <task>
-        <text name="text">Add a picture of your parrot by adding an Image Element.
+        <text name="text">Add a picture by adding an Image Element.
         </text>
     </task>
 

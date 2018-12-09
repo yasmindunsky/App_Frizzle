@@ -140,7 +140,7 @@ public class MainActivity extends AppCompatActivity implements   TextToSpeech.On
     <string name="friendship_test_app">Friendship\nTest App</string>
     <string name="variables_practice">Practice 2</string>
     <string name="views_practice">Practice 1</string>
-    <string name="polly_app">Confession Booth App</string>
+    <string name="confession_booth_app">Confession Booth App</string>
     <string name="onclick_practice">Practice 3</string>
     <string name="speakout_practice">Practice 2</string>
     <string name="tutorial_app">Tutorial App</string>
@@ -179,7 +179,7 @@ public class MainActivity extends AppCompatActivity implements   TextToSpeech.On
     <string name="first_practice">Practice 1</string>
     <string name="first_practice_explanation_text">As a start, we will learn about the two main aspects of building apps.</string>
     <string name="check">Check</string>
-    <string name="polly_intro">Intro</string>
+    <string name="intro">Intro</string>
     <string name="friendship_intro">Intro</string>
     <string name="onboarding_text">Let\'s start\nbuilding apps.</string>
     <string name="our_button_does_nothing">Our button does nothing yet.</string>
@@ -189,7 +189,7 @@ public class MainActivity extends AppCompatActivity implements   TextToSpeech.On
     <string name="my_button">My Button</string>
     <string name="no_functions">No function was defined yet</string>
     <string name="choose_function">Choose a function</string>
-    <string name="turn_volume_up">Turn up the volume to hear Polly speak</string>
+    <string name="turn_volume_up">Turn up the volume to hear</string>
     <string name="task">Task</string>
     <string name="arrow_next">next</string>
     <string name="arrow_prev">prev</string>

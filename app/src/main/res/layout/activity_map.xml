@@ -87,7 +87,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/views_practice" />
 
             <com.frizzl.app.frizzleapp.map.AppMapButton
-                android:id="@+id/polly_app"
+                android:id="@+id/confession_app"
                 style="@style/Button.MapApp"
                 android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -112,7 +112,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="@string/polly_app"
+                    android:text="@string/confession_booth_app"
                     android:textAppearance="@style/Text.Map.App" />
             </com.frizzl.app.frizzleapp.map.AppMapButton>
 
@@ -125,7 +125,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.8"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/polly_app"
+                app:layout_constraintTop_toBottomOf="@+id/confession_app"
                 custom:levelID="3" />
 
             <com.frizzl.app.frizzleapp.map.PracticeMapButton
@@ -152,11 +152,11 @@
                 custom:levelID="1" />
 
             <com.frizzl.app.frizzleapp.map.PracticeMapButton
-                android:id="@+id/polly_intro"
+                android:id="@+id/confession_intro"
                 style="@style/Button.MapIntro"
                 android:layout_marginBottom="22dp"
                 android:layout_marginTop="46dp"
-                android:text="@string/polly_intro"
+                android:text="@string/intro"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.06"

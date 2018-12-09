@@ -57,7 +57,7 @@ class DesignScreenPresenter {
 
                     Runnable runOnDismiss = () -> {
                         // For temp testing
-                        if (UserProfile.user.getCurrentLevel() == ContentUtils.POLLY_APP_LEVEL_ID && UserProfile.user.getCurrentSlideInLevel() == 0) {
+                        if (UserProfile.user.getCurrentLevel() == ContentUtils.CONFESSIONS_APP_LEVEL_ID && UserProfile.user.getCurrentSlideInLevel() == 0) {
                             designScreenFragment.taskCompleted();
                         }
                     };

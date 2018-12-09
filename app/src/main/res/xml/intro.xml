@@ -3,7 +3,7 @@
 <practice xmlns:tools="http://schemas.android.com/tools"
     tools:keep="@xml/practice_1">
     <slide>
-        <info_text>You'll now learn everything you need to build a Talking Parrot App!</info_text>
+        <info_text>You'll now learn everything you need to build a Confession Booth App!</info_text>
         <task_text />
         <reminder_text />
         <code mutable="false" shows="false" runnable ="false" waitForCTA="false"/>
@@ -33,7 +33,7 @@
     </slide>
 
     <slide>
-        <info_text>You'll be able to decide what will be written on the buttons and what the parrot will say.</info_text>
+        <info_text>You'll be able to decide what will be written on the buttons and what they will reveal.</info_text>
         <task_text/>
         <reminder_text/>
         <code mutable="false" shows="false" runnable ="true" waitForCTA="false"/>
