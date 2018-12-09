@@ -105,6 +105,7 @@ public class AppMapButton extends LinearLayout implements MapButton{
 
     @Override
     public void setCompleted() {
+        super.setEnabled(true);
         status = Status.completed;
         updateState(completedDrawable,
                 completedIcon,

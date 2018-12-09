@@ -73,6 +73,7 @@ public class PracticeMapButton extends android.support.v7.widget.AppCompatButton
 
     @Override
     public void setCompleted() {
+        super.setEnabled(true);
         status = Status.completed;
         updateState(completedDrawable,
                 (int) (originalSize * 1.2),
