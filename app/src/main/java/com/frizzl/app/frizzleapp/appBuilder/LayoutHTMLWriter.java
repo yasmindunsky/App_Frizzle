@@ -3,6 +3,7 @@ package com.frizzl.app.frizzleapp.appBuilder;
 import android.util.Log;
 import android.util.Xml;
 
+import com.frizzl.app.frizzleapp.ContentUtils;
 import com.frizzl.app.frizzleapp.ViewUtils;
 
 import org.xmlpull.v1.XmlSerializer;
@@ -24,12 +25,14 @@ class LayoutHTMLWriter {
                             String appTitle,
                             String appIcon) {
         String iconURL = ViewUtils.iconNameToAddress(appIcon);
+        jsCode = ContentUtils.codePrefix + jsCode;
         xmlSerializer = Xml.newSerializer();
         stringWriter = new StringWriter();
         try {
             xmlSerializer.setOutput(stringWriter);
             // start DOCUMENT
-            xmlSerializer.startDocument("UTF-8", true);
+//            xmlSerializer.startDocument("UTF-8", true);
+            xmlSerializer.startTag("", "!DOCTYPE html");
 
             // open tag: <html>
             xmlSerializer.startTag("", "html");

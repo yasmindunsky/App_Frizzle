@@ -13,4 +13,9 @@ public class ContentUtils {
     public final static String functionIdentification = "function";
     public final static String functionParams = "()";
     public final static String speakOutIdentification = "speakOut";
+
+    public final static String codePrefix = "function speakOut (value) {\n" +
+            "    var msg = new SpeechSynthesisUtterance(value);\n" +
+            "\twindow.speechSynthesis.speak(msg)\n" +
+            "}";
 }

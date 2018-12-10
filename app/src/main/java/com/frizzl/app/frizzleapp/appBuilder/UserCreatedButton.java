@@ -396,10 +396,10 @@ public class UserCreatedButton extends UserCreatedView {
         try {
             xmlSerializer.startTag("", name);
             xmlSerializer.attribute("", "id", properties.get("android:id"));
-            xmlSerializer.attribute("", "onclick", properties.get("android:id"));
+            xmlSerializer.attribute("", "onclick", properties.get("android:onClick")+"()");
 
             xmlSerializer.attribute("", "style",
-                    "color:" + properties.get("android:textColor") +
+                    "color:" + properties.get("android:textColor") + "; " +
             "background-color:" + properties.get("android:backgroundTint"));
 
             xmlSerializer.text(properties.get("android:text"));
