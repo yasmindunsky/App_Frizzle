@@ -64,7 +64,7 @@
         <task_text/>
         <reminder_text/>
         <code show="true" mutable="false" runnable="false" waitForCTA="false">
-public void nameYouChoose(View view){\n\n}
+public void nameYouChoose(){\n\n}
         </code>
         <design show="false" runnable="false" withOnClickSet="false"/>
         <call_to_action>הבנתי</call_to_action>
@@ -75,7 +75,7 @@ public void nameYouChoose(View view){\n\n}
         <task_text>שנו את שם $green$הפונקציה$green$ לשם myFunction.</task_text>
         <reminder_text/>
         <code show="true" mutable="true" runnable="false" waitForCTA="false">
-public void nameYouChoose(View view){\n\n}
+public void nameYouChoose(){\n\n}
         </code>
         <design show="false" runnable="false" withOnClickSet="false"/>
         <call_to_action>בדיקה</call_to_action>
@@ -85,7 +85,7 @@ public void nameYouChoose(View view){\n\n}
         <info_text>כשנוסיף פקודות לפונקציה, נכתוב את הפקודה בין הסוגרים המסולסלים.</info_text>
         <task_text>הוסיפו לפונקציה את הפקודה: ;speakOut("Hello")</task_text>
         <reminder_text/>
-        <code show="true" mutable="true" runnable="false" waitForCTA="false">public void myFunction(View view){\n\n}
+        <code show="true" mutable="true" runnable="false" waitForCTA="false">public void myFunction(){\n\n}
         </code>
         <design show="false" runnable="false" withOnClickSet="false"/>
         <call_to_action>בדיקה</call_to_action>
@@ -96,7 +96,7 @@ public void nameYouChoose(View view){\n\n}
         <task_text>כתבו את שם $green$הפונקציה$green$ בשדה ה-onClick של הכפתור.</task_text>
         <reminder_text/>
         <code show="true" mutable="false" runnable="false" waitForCTA="false">
-public void myFunction(View view){\n\tspeakOut("Hello");\n}
+function myFunction(){\n\tspeakOut("Hello");\n}
         </code>
         <design show="true" runnable="false" withOnClickFunction="myFunction" withOnClickSet="false"/>
         <call_to_action>בדיקה</call_to_action>
@@ -107,7 +107,7 @@ public void myFunction(View view){\n\tspeakOut("Hello");\n}
         <task_text>נסו להריץ וללחוץ על הכפתור.</task_text>
         <reminder_text/>
         <code show="true" mutable="false" runnable="false" waitForCTA="false">
-public void myFunction(View view){\n\tspeakOut("Hello");\n}
+function myFunction(){\n\tspeakOut("Hello");\n}
         </code>
         <design show="true" runnable="true" withOnClickFunction="myFunction" withOnClickSet="true"/>
         <call_to_action>הבנתי</call_to_action>

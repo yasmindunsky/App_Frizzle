@@ -25,7 +25,7 @@
     </slide>
 
     <slide>
-        <info_text>בשביל לגרום לאלמנטים האלה להיות פעילים נלמד לכתוב קוד בשפת תכנות שנקראת ג'אווה.</info_text>
+        <info_text>בשביל לגרום לאלמנטים האלה להיות פעילים נלמד לכתוב קוד בשפת תכנות שנקראת ג'אווה סקריפט.</info_text>
         <task_text/>
         <reminder_text/>
         <code mutable="false" show="true" runnable ="false" waitForCTA="false">// כאן תוכלו לכתוב בהמשך קוד למחשב בשפת ג'אווה</code>

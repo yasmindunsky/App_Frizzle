@@ -25,7 +25,7 @@
     </slide>
 
     <slide>
-        <info_text>To make those elements active, we will learn to write code in a programming language called Java.</info_text>
+        <info_text>To make those elements active, we will learn to write code in a programming language called Javascript.</info_text>
         <task_text/>
         <reminder_text/>
         <code mutable="false" show="true" runnable ="false" waitForCTA="false">// Here you will later write code in Java </code>
