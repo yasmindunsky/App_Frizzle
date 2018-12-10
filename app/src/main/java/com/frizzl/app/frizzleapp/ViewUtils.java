@@ -14,7 +14,9 @@ import android.view.View;
 import android.widget.PopupWindow;
 import android.widget.Toast;
 
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 
 /**
  * Created by Noga on 13/02/2018.
@@ -23,6 +25,14 @@ import java.util.Locale;
 public class ViewUtils {
     public static final String CONNECTION_FAILED = "15657";
     public static final int GET_FROM_GALLERY = 23284;
+    private static final Map<String, String> iconNameToAddress = new HashMap<String, String>() {{
+        put("ic_crown","https://firebasestorage.googleapis.com/v0/b/frizzleapp.appspot.com/o/ourIcons%2Fic_crown.svg?alt=media&token=ae6ff211-4d1c-42c2-a8ab-dde384a5fe78");
+        put("ic_diamond","https://firebasestorage.googleapis.com/v0/b/frizzleapp.appspot.com/o/ourIcons%2Fic_diamond.svg?alt=media&token=ea8e72fa-5c1b-4c77-8b0b-527eb8efcffb");
+        put("ic_heart_bubble","https://firebasestorage.googleapis.com/v0/b/frizzleapp.appspot.com/o/ourIcons%2Fic_heart_bubble.svg?alt=media&token=07ae0aad-03cc-48fa-be1d-b90b0b0e73b4");
+        put("ic_heart_envelope","https://firebasestorage.googleapis.com/v0/b/frizzleapp.appspot.com/o/ourIcons%2Fic_heart_envelope.svg?alt=media&token=54f054bc-0cfb-4b21-a829-4bb124ad0d76");
+        put("ic_loud_speaker","https://firebasestorage.googleapis.com/v0/b/frizzleapp.appspot.com/o/ourIcons%2Fic_loud_speaker.svg?alt=media&token=34620f3f-aa7c-4e83-841b-20d32df5460f");
+        put("ic_like","https://firebasestorage.googleapis.com/v0/b/frizzleapp.appspot.com/o/ourIcons%2Fic_like.svg?alt=media&token=676faacd-24c5-4da1-9343-66eea7d1674c");
+    }};
 
     public static boolean isRTL() {
         return isRTL(Locale.getDefault());
@@ -125,5 +135,9 @@ public class ViewUtils {
         else if (language.equals("iw"))
             font = ResourcesCompat.getFont(context, R.font.rubik_regular);
         return font;
+    }
+
+    public static String iconNameToAddress(String appIcon) {
+        return iconNameToAddress.get(appIcon);
     }
 }

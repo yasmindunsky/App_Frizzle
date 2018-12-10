@@ -34,6 +34,7 @@ import android.widget.RelativeLayout;
 import com.frizzl.app.frizzleapp.AnalyticsUtils;
 import com.frizzl.app.frizzleapp.R;
 import com.frizzl.app.frizzleapp.SwipeDirection;
+import com.frizzl.app.frizzleapp.UserApp;
 import com.frizzl.app.frizzleapp.UserProfile;
 import com.frizzl.app.frizzleapp.ViewUtils;
 import com.frizzl.app.frizzleapp.map.MapActivity;
@@ -322,7 +323,8 @@ public class AppBuilderActivity extends AppCompatActivity {
         Map<Integer, UserCreatedView> views = designFragment.getViews();
         String jsCode = codingFragment.getCode();
         LayoutHTMLWriter layoutHTMLWriter = new LayoutHTMLWriter();
-        String html = layoutHTMLWriter.writeHTML(views, jsCode);
+        UserApp currentUserApp = UserProfile.user.getCurrentUserApp();
+        String html = layoutHTMLWriter.writeHTML(views, jsCode, currentUserApp.getName(), currentUserApp.getIcon());
 
         UploadHTMLToFirebase uploadHTMLToFirebase = new UploadHTMLToFirebase();
         String ID = getAppID();

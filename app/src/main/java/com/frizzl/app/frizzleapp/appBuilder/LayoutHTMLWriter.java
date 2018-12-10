@@ -3,6 +3,8 @@ package com.frizzl.app.frizzleapp.appBuilder;
 import android.util.Log;
 import android.util.Xml;
 
+import com.frizzl.app.frizzleapp.ViewUtils;
+
 import org.xmlpull.v1.XmlSerializer;
 
 import java.io.IOException;
@@ -17,7 +19,11 @@ class LayoutHTMLWriter {
     private XmlSerializer xmlSerializer;
     private StringWriter stringWriter;
 
-    public String writeHTML(Map<Integer, UserCreatedView> viewsToWrite, String jsCode) {
+    public String writeHTML(Map<Integer, UserCreatedView> viewsToWrite,
+                            String jsCode,
+                            String appTitle,
+                            String appIcon) {
+        String iconURL = ViewUtils.iconNameToAddress(appIcon);
         xmlSerializer = Xml.newSerializer();
         stringWriter = new StringWriter();
         try {
@@ -36,6 +42,7 @@ class LayoutHTMLWriter {
             xmlSerializer.text("Confession Booth");
             xmlSerializer.endTag("", "title");
 
+
             // open tag: <style>
             xmlSerializer.startTag("", "script");
             xmlSerializer.text(jsCode);
@@ -43,57 +50,73 @@ class LayoutHTMLWriter {
 
             // open tag: <style>
             xmlSerializer.startTag("", "style");
-            xmlSerializer.text("@charset \"UTF-8\";\n" +
+            xmlSerializer.text("@charset \"UTF-8\";" +
+                    
+                    "body {" +
+                    "  /* Disable text seection and highlighting. */" +
+                    "  -webkit-user-select: none; " +
+                    "  -webkit-tap-highlight-color: transparent;" +
+                    "  -webkit-touch-callout: none;" +
+                    
+                    "  background: #edf0f1;" +
+                    "  padding: 0 0 0 0;" +
+                    "}" +
+                    
+                    "body, input, button {" +
+                    "  font-family: 'Roboto', sans-serif;" +
+                    "}" +
+                    
+                    "button {\n" +
+                    "  width: 100%;\n" +
+                    "  background-color: #f84685;\n" +
+                    "  border: none;\n" +
+                    "  color: white;\n" +
+                    "  padding: 20px;\n" +
+                    "  text-align: center;\n" +
+                    "  text-decoration: none;\n" +
+                    "  display: inline-block;\n" +
+                    "  font-size: 55px;\n" +
+                    "  font-family: calibri;\n" +
+                    "  margin-top: 5%;\n" +
+                    "  border-radius: 12px;\n" +
+                    "  padding: 40px;\n" +
                     "\n" +
-                    "\t\t\tbody {\n" +
-                    "\t\t\t  /* Disable text seection and highlighting. */\n" +
-                    "\t\t\t  -webkit-user-select: none; \n" +
-                    "\t\t\t  -webkit-tap-highlight-color: transparent;\n" +
-                    "\t\t\t  -webkit-touch-callout: none;\n" +
+                    "}\n" +
+                    "\n" +
+                    "div.title {\n" +
+                    "\t\t\t\tfont-size: 60px;\n" +
+                    "\t\t\t\tbackground-color: #1b2974;\n" +
+                    "\t\t\t\tcolor: #FFFFFF;\n" +
+                    "\t\t\t\tfont-family: hero;\n" +
+                    "\t\t\t\ttext-transform: uppercase;\n" +
+                    "\t\t\t\t\n" +
+                    "\t\t\t\tclear: both;\n" +
+                    "\t\t\t\ttext-align: center;\n" +
+                    "\t\t\t\theight: 150px;\n" +
+                    "\t\t\t\tline-height: 150px;\n" +
+                    "\t\t\t\tmargin-bottom: 50px;\n" +
+                    "\t\t\t\t}\n" +
+                    "\n" +
                     "\t\t\t\n" +
-                    "\t\t\t  background: #edf0f1;\n" +
-                    "\t\t\t  padding: 80px 0 0 0;\n" +
-                    "\t\t\t}\n" +
-                    "\t\t\t\n" +
-                    "\t\t\tbody, input, button {\n" +
-                    "\t\t\t  font-family: 'Roboto', sans-serif;\n" +
-                    "\t\t\t}\n" +
-                    "\t\t\t\n" +
-                    "\t\t\tbutton {\n" +
-                    "\t\t\t  width: 100%;\n" +
-                    "\t\t\t  background-color: #cf4983;\n" +
-                    "\t\t\t  border: none;\n" +
-                    "\t\t\t  color: white;\n" +
-                    "\t\t\t  padding: 20px;\n" +
-                    "\t\t\t  text-align: center;\n" +
-                    "\t\t\t  text-decoration: none;\n" +
-                    "\t\t\t  display: inline-block;\n" +
-                    "\t\t\t  font-size: 48px;\n" +
-                    "\t\t\t  margin-top: 5%;\n" +
-                    "\t\t\t  border-radius: 12px;\n" +
-                    "\t\t\t  padding: 40px;\n" +
-                    "\t\t\t\n" +
-                    "\t\t\t}\n" +
-                    "\t\t\t\n" +
-                    "\t\t\tdiv.title {\n" +
-                    "\t\t\t  color: #cf4983;\n" +
-                    "\t\t\t  font-size: 80px;\n" +
-                    "\t\t\t  text-align: center;\n" +
-                    "\t\t\t}\n" +
-                    "\t\t\t\n" +
-                    "\t\t\tdiv.explain {\n" +
-                    "\t\t\t  font-size: 40px;\n" +
-                    "\t\t\t  text-align: center;\n" +
-                    "\t\t\t\n" +
-                    "\t\t\t  padding-left:220px;\n" +
-                    "\t\t\t  padding-right:220px;\n" +
-                    "\t\t\t  padding-top:40px;\n" +
-                    "\t\t\t  padding-bottom:40px;\n" +
+                    "\t\t\t.icon{\n" +
+                    "\t\t\t\tvertical-align: middle;\n" +
+                    "\t\t\t\tdisplay: inline-block;\n" +
+                    "\t\t\t\theight: 150px;\n" +
                     "\t\t\t}" +
-                    "img {\n" +
-                    "\t\t\twidth:50%;\n" +
-                    "\t\t\tmargin-left: 200px;\n" +
-                    "\t\t\t}");
+                    
+                    "div.explain {" +
+                    "  font-size: 40px;" +
+                    "  text-align: center;" +
+                    
+                    "  padding-left:220px;" +
+                    "  padding-right:220px;" +
+                    "  padding-top:40px;" +
+                    "  padding-bottom:40px;" +
+                    "}" +
+                    "img {" +
+                    "width:50%;" +
+                    "margin-left: 200px;" +
+                    "}");
             xmlSerializer.endTag("", "style");
 
             xmlSerializer.endTag("", "head");
@@ -104,7 +127,15 @@ class LayoutHTMLWriter {
             // open tag: <div class="title">
             xmlSerializer.startTag("", "div");
             xmlSerializer.attribute("", "class", "title");
-            xmlSerializer.text("Confession Booth");
+            // open tag: <div class="span">
+            xmlSerializer.startTag("", "span");
+            // open tag: <div class="img">
+            xmlSerializer.startTag("", "img");
+            xmlSerializer.attribute("", "class", "icon");
+            xmlSerializer.attribute("", "src", iconURL);
+            xmlSerializer.endTag("", "img");
+            xmlSerializer.endTag("", "span");
+            xmlSerializer.text(appTitle);
             xmlSerializer.endTag("", "div");
 
             // open tag: <div style="width:80%; margin:auto;">
