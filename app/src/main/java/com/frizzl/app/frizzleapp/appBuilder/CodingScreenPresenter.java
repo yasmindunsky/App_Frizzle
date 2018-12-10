@@ -16,6 +16,7 @@ class CodingScreenPresenter {
 
     private final CodingScreenFragment codingScreenFragment;
     private DefinedFunctionsViewModel definedFunctionsViewModel;
+    private final String functionIdentification = ContentUtils.functionIdentification;
 
     CodingScreenPresenter(CodingScreenFragment codingScreenFragment) {
         this.codingScreenFragment = codingScreenFragment;
@@ -46,7 +47,6 @@ class CodingScreenPresenter {
         String code = codingScreenFragment.getCode();
         definedFunctionsViewModel.clearFunctions();
 
-        String functionIdentification = "public void";
         int index = code.indexOf(functionIdentification);
         while (index >= 0) {
             String substring = code.substring(index, code.length());
@@ -74,8 +74,8 @@ class CodingScreenPresenter {
         int currentTask = user.getCurrentSlideInLevel();
         if (user.getCurrentLevel() == ContentUtils.CONFESSIONS_APP_LEVEL_ID) {
             if (currentTask == 2) {
-                int beforeName = code.indexOf("public void") + String.valueOf("public void").length();
-                int afterName = code.indexOf("(View view)");
+                int beforeName = code.indexOf(functionIdentification) + String.valueOf(functionIdentification).length();
+                int afterName = code.indexOf("()");
                 if (afterName - beforeName > 2) {
                     taskCompleted = true;
                 }

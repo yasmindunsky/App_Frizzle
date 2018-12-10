@@ -7,10 +7,14 @@ import java.util.Objects;
  */
 
 public class CodeCheckUtils {
+    private static final String functionIdentification = ContentUtils.functionIdentification;
+    private static final String functionParams = ContentUtils.functionParams;
+    private static final String speakOutIdentification = ContentUtils.speakOutIdentification;
+
     public static boolean checkIfContainsFunctionWithName(String code, String functionName) {
         boolean correct = code.contains(functionName.trim());
         // Contains 'speakOut'
-        correct &= code.contains("public void");
+        correct &= code.contains(ContentUtils.functionIdentification);
         return correct;
     }
 
@@ -20,7 +24,7 @@ public class CodeCheckUtils {
         boolean containsString = code.toLowerCase().contains(string);
         correct = (shouldContain == containsString);
         // Contains 'speakOut'
-        correct &= code.contains("speakOut");
+        correct &= code.contains(speakOutIdentification);
         // Contains '("'
         code = code.replaceAll("\\s+", "");
         correct &= code.contains("(\"");
@@ -30,26 +34,26 @@ public class CodeCheckUtils {
     }
 
     public static boolean checkIfFunctionSignatureIsValid(String code) {
-        int i = code.indexOf("public void ");
+        int i = code.indexOf(functionIdentification + " ");
         if (i < 0) return false;
-        code = code.substring(i + "public void ".length(), code.length());
-        i = code.indexOf("(View view){");
+        code = code.substring(i + (functionIdentification + " ").length(), code.length());
+        i = code.indexOf(functionParams + "{");
         if (i < 0) return false;
-        code = code.substring(i + "(View view)".length(), code.length());
+        code = code.substring(i + functionParams.length(), code.length());
         i = code.indexOf("}");
         return i >= 0;
     }
 
     public static boolean checkIfSpeakOutIsInsideCurlyBrackets(String code) {
-        int i = code.indexOf("speakOut");
+        int i = code.indexOf(speakOutIdentification);
         if (i < 0) return false;
         String beforeSpeakOut = code.substring(0, i);
-        String afterSpeakOut = code.substring(i + "speakOut".length(), code.length());
+        String afterSpeakOut = code.substring(i + speakOutIdentification.length(), code.length());
         return beforeSpeakOut.contains("{") && afterSpeakOut.contains("}");
     }
 
     public static boolean checkIfSpeakoutIsEmpty(String code) {
-        String speakOutPrefix = "speakOut(\"";
+        String speakOutPrefix = speakOutIdentification + "(\"";
         int i = code.indexOf(speakOutPrefix);
         if (i < 0) return true;
         int nextCharIndex = i + speakOutPrefix.length();

@@ -127,7 +127,7 @@ public class UserCreatedImageView extends UserCreatedView {
         try {
             xmlSerializer.startTag("", name);
             xmlSerializer.attribute("", "id", properties.get("android:id"));
-            xmlSerializer.attribute("", "src", properties.get("android:src"));
+            xmlSerializer.attribute("", "background", properties.get("android:src"));
             xmlSerializer.text(properties.get("android:text"));
             xmlSerializer.endTag("", name);
         } catch (IOException e) {

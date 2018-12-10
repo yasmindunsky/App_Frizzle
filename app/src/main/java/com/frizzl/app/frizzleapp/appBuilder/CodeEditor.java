@@ -116,7 +116,7 @@ public class CodeEditor extends android.support.v7.widget.AppCompatEditText {
     }
 
     private void markFunctionNames(Editable s) {
-        String functionIdentification = "public void";
+        String functionIdentification = "function";
         int index = s.toString().indexOf(functionIdentification);
         while (index >= 0) {
             String subSequence = s.subSequence(index, s.length()).toString();

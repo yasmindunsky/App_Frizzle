@@ -10,14 +10,14 @@ import static org.junit.Assert.*;
 public class CodeCheckUtilsTest {
     @Test
     public void checkIfContainsFunctionWithName_contains_true() throws Exception {
-        String code = "public void funcName(View view){speakOut(\"hello\");}";
+        String code = "function funcName(){speakOut(\"hello\");}";
         boolean answer = CodeCheckUtils.checkIfContainsFunctionWithName(code, "funcName");
         assertEquals(true, answer);
     }
 
     @Test
     public void checkIfContainsFunctionWithName_doesntContain_false() throws Exception {
-        String code = "public void otherName(View view){speakOut(\"hello\");}";
+        String code = "function otherName(){speakOut(\"hello\");}";
         boolean answer = CodeCheckUtils.checkIfContainsFunctionWithName(code, "funcName");
         assertEquals(false, answer);
     }
@@ -52,35 +52,35 @@ public class CodeCheckUtilsTest {
 
     @Test
     public void checkIfFunctionSignatureIsValid_valid_true() throws Exception {
-        String code = "public void otherName(View view){speakOut(\"hello\");}";
+        String code = "function otherName(){speakOut(\"hello\");}";
         boolean answer = CodeCheckUtils.checkIfFunctionSignatureIsValid(code);
         assertEquals(true, answer);
     }
 
     @Test
     public void checkIfFunctionSignatureIsValid_missingSpace_false() throws Exception {
-        String code = "public voidotherName(View view){speakOut(\"hello\");}";
+        String code = "functionotherName(){speakOut(\"hello\");}";
         boolean answer = CodeCheckUtils.checkIfFunctionSignatureIsValid(code);
         assertEquals(false, answer);
     }
 
     @Test
     public void checkIfSpeakOutIsInsideCurlyBrackets_isInside_true() throws Exception {
-        String code = "public void funcName(View view){speakOut(\"hello\");}";
+        String code = "function funcName(){speakOut(\"hello\");}";
         boolean answer = CodeCheckUtils.checkIfSpeakOutIsInsideCurlyBrackets(code);
         assertEquals(true, answer);
     }
 
     @Test
     public void checkIfSpeakOutIsInsideCurlyBrackets_isAfter_false() throws Exception {
-        String code = "public void funcName(View view){}speakOut(\"hello\");";
+        String code = "function funcName(){}speakOut(\"hello\");";
         boolean answer = CodeCheckUtils.checkIfSpeakOutIsInsideCurlyBrackets(code);
         assertEquals(false, answer);
     }
 
     @Test
     public void checkIfSpeakOutIsInsideCurlyBrackets_isBefore_false() throws Exception {
-        String code = "public void funcNamespeakOut(\"hello\");(View view){}";
+        String code = "function funcNamespeakOut(\"hello\");(){}";
         boolean answer = CodeCheckUtils.checkIfSpeakOutIsInsideCurlyBrackets(code);
         assertEquals(false, answer);
     }
