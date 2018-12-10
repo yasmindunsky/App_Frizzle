@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -17,7 +18,6 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -38,6 +38,7 @@ import com.frizzl.app.frizzleapp.UserApp;
 import com.frizzl.app.frizzleapp.UserProfile;
 import com.frizzl.app.frizzleapp.ViewUtils;
 import com.frizzl.app.frizzleapp.map.MapActivity;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.tooltip.OnDismissListener;
 
 import net.cachapa.expandablelayout.ExpandableLayout;
@@ -45,8 +46,6 @@ import net.cachapa.expandablelayout.ExpandableLayout;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Map;
-
-import static android.support.v4.app.ActivityCompat.startActivityForResult;
 
 public class AppBuilderActivity extends AppCompatActivity {
     private static final int INSTALLED_APP_ABOVE_N = 1;
@@ -73,6 +72,8 @@ public class AppBuilderActivity extends AppCompatActivity {
     private static boolean showMovedOn = false;
     private TabLayout.Tab codingTab;
     private TabLayout.Tab designTab;
+
+    private UserCreatedImageView currentlyEditedUserCreatedImageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -415,27 +416,48 @@ public class AppBuilderActivity extends AppCompatActivity {
                 break;
             case INSTALLED_APP_BELOW_N:
                 startUsersApp();
-//            case ViewUtils.GET_FROM_GALLERY:
-//                if (resultCode == Activity.RESULT_OK) {
-//                    //data gives you the image uri. Try to convert that to bitmap
-//                    Uri selectedImage = data.getData();
-//                    Bitmap bitmap = null;
-//                    try {
-//                        bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedImage);
-//                    } catch (FileNotFoundException e) {
-//                        // TODO Auto-generated catch block
-//                        e.printStackTrace();
-//                    } catch (IOException e) {
-//                        // TODO Auto-generated catch block
-//                        e.printStackTrace();
-//                    }
-//                    break;
-//                } else if (resultCode == Activity.RESULT_CANCELED) {
-//                    Log.e("", "Selecting picture cancelled");
-//                }
-//                break;
+            case ViewUtils.GET_FROM_GALLERY:
+                if (resultCode == Activity.RESULT_OK) {
+                    //data gives you the image uri. Try to convert that to bitmap
+                    Uri selectedImageUri = data.getData();
+//                    uploadUriToFirebase(selectedImageUri);
+                    try {
+                        Bitmap selectedImageBitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), selectedImageUri);
+                        BitmapDrawable bitmapDrawable = new BitmapDrawable(getResources(), selectedImageBitmap);
+                        currentlyEditedUserCreatedImageView.setImage(bitmapDrawable);
+                    } catch (FileNotFoundException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    }
+                    break;
+                } else if (resultCode == Activity.RESULT_CANCELED) {
+                    Log.e("", "Selecting picture cancelled");
+                }
+                break;
         }
     }
+
+//    private void uploadUriToFirebase(Uri selectedImageUri) {
+//        StorageReference storageReference = storageRef.child("images/"+selectedImageUri.getLastPathSegment());
+//        uploadTask = storageReference.putFile(selectedImageUri);
+//
+//// Register observers to listen for when the download is done or if it fails
+//        uploadTask.addOnFailureListener(new OnFailureListener() {
+//            @Override
+//            public void onFailure(@NonNull Exception exception) {
+//                // Handle unsuccessful uploads
+//            }
+//        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+//            @Override
+//            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+//                // taskSnapshot.getMetadata() contains file metadata such as size, content-type, etc.
+//                // ...
+//            }
+//        });
+//    }
 
     private void startUsersApp() {
         Intent intent = new Intent(Intent.ACTION_MAIN, null);
@@ -547,5 +569,11 @@ public class AppBuilderActivity extends AppCompatActivity {
 
     private void selectDesignTab() {
         designTab.select();
+    }
+
+    public void openGallery(UserCreatedImageView userCreatedImageView) {
+        this.currentlyEditedUserCreatedImageView = userCreatedImageView;
+        Intent pickPhoto = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        startActivityForResult(pickPhoto , ViewUtils.GET_FROM_GALLERY);
     }
 }

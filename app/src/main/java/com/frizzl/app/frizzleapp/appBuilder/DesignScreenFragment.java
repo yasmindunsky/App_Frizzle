@@ -3,7 +3,9 @@ package com.frizzl.app.frizzleapp.appBuilder;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.ClipData;
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -263,7 +265,7 @@ public class DesignScreenFragment extends Fragment {
 
         imageView.setOnClickListener(v -> {
             // show the popup window
-            popupWindow = userCreatedImageView.getPropertiesTablePopupWindow(getContext());
+            popupWindow = userCreatedImageView.getPropertiesTablePopupWindow(appBuilderActivity);
 
             ImageButton deleteButton = popupWindow.getContentView().findViewById(R.id.delete);
             // To know what view to delete

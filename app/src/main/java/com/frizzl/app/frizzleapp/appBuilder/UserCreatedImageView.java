@@ -1,6 +1,8 @@
 package com.frizzl.app.frizzleapp.appBuilder;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.util.Log;
 import android.widget.EditText;
 import android.widget.GridLayout;
@@ -40,6 +42,7 @@ public class UserCreatedImageView extends UserCreatedView {
         int margin = ViewUtils.dpStringToPixel(marginString, context);
         layoutParams.setMargins(margin,margin,margin,margin);
         thisView.setLayoutParams(layoutParams);
+        thisView.setScaleType(ImageView.ScaleType.CENTER_CROP);
 
         thisView.setTag(R.id.usersViewId, index);
         thisView.setTag(R.id.usersViewRow, row);
@@ -87,7 +90,7 @@ public class UserCreatedImageView extends UserCreatedView {
         thisView.setTag(R.id.usersViewRow, row);
         thisView.setTag(R.id.usersViewCol, column);
 
-        PopupWindow popupWindow = getPropertiesTablePopupWindow(context);
+//        PopupWindow popupWindow = getPropertiesTablePopupWindow(context);
     }
 
     private void init(Context context) {
@@ -96,12 +99,12 @@ public class UserCreatedImageView extends UserCreatedView {
         this.viewType = "ImageView";
         int textViewStyle = R.style.ImageView_UserCreated;
         this.thisView = new ImageView(context, null, 0, textViewStyle);
-        thisView.setBackground(context.getDrawable(R.drawable.ic_tutorial_app_1));
+        thisView.setBackground(context.getDrawable(R.drawable.blank));
         thisView.setPadding(16,10,16,10);
     }
 
     public PopupWindow getPropertiesTablePopupWindow(Context context) {
-        return new ChooseImagePopupWindow(context, index, this, selectedImageID);
+        return new ChooseImagePopupWindow((AppBuilderActivity) context, index, this, selectedImageID);
     }
 
     @Override
@@ -120,6 +123,11 @@ public class UserCreatedImageView extends UserCreatedView {
         selectedImageID = selectedImageButton.getId();
         thisView.setBackground(selectedImageButton.getBackground());
         properties.put("android:background", "@drawable/"+tag);
+    }
+
+    public void setImage(BitmapDrawable selectedImage) {
+        thisView.setBackground(selectedImage);
+        properties.put("android:background", "@drawable/");
     }
 
     public void createHTMLString(XmlSerializer xmlSerializer) {

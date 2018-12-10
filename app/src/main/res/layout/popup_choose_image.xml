@@ -84,6 +84,16 @@
                     android:tag="polly_3"
                     android:buttonTint="@android:color/transparent" />
 
+                <RadioButton
+                    android:id="@+id/radioButton4"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/polly_3_selector"
+                    android:tag="polly_4"
+                    android:buttonTint="@android:color/transparent" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -120,6 +130,16 @@
                     android:layout_weight="1"
                     android:background="@drawable/polly_7_selector"
                     android:tag="polly_7"
+                    android:buttonTint="@android:color/transparent" />
+
+                <RadioButton
+                    android:id="@+id/radioButton8"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/ic_add_plus"
+                    android:tag="polly_8"
                     android:buttonTint="@android:color/transparent" />
 
             </LinearLayout>
