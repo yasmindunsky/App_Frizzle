@@ -59,9 +59,9 @@
                     android:layout_height="70dp"
                     android:layout_marginBottom="10dp"
                     android:layout_marginEnd="10dp"
-                    android:background="@drawable/polly_1_selector"
+                    android:background="@drawable/img_1_selector"
                     android:buttonTint="@android:color/transparent"
-                    android:tag="polly_1"
+                    android:tag="img_1"
                     android:checked="false" />
 
                 <RadioButton
@@ -70,8 +70,8 @@
                     android:layout_height="70dp"
                     android:layout_marginBottom="10dp"
                     android:layout_marginEnd="10dp"
-                    android:background="@drawable/polly_2_selector"
-                    android:tag="polly_2"
+                    android:background="@drawable/img_2_selector"
+                    android:tag="img_2"
                     android:buttonTint="@android:color/transparent" />
 
                 <RadioButton
@@ -80,8 +80,8 @@
                     android:layout_height="70dp"
                     android:layout_marginBottom="10dp"
                     android:layout_marginEnd="10dp"
-                    android:background="@drawable/polly_3_selector"
-                    android:tag="polly_3"
+                    android:background="@drawable/img_3_selector"
+                    android:tag="img_3"
                     android:buttonTint="@android:color/transparent" />
 
                 <RadioButton
@@ -90,8 +90,8 @@
                     android:layout_height="70dp"
                     android:layout_marginBottom="10dp"
                     android:layout_marginEnd="10dp"
-                    android:background="@drawable/polly_3_selector"
-                    android:tag="polly_4"
+                    android:background="@drawable/img_4_selector"
+                    android:tag="img_4"
                     android:buttonTint="@android:color/transparent" />
 
             </LinearLayout>
@@ -108,8 +108,8 @@
                     android:layout_height="70dp"
                     android:layout_marginEnd="10dp"
                     android:layout_weight="1"
-                    android:background="@drawable/polly_5_selector"
-                    android:tag="polly_5"
+                    android:background="@drawable/img_5_selector"
+                    android:tag="img_5"
                     android:buttonTint="@android:color/transparent" />
 
                 <RadioButton
@@ -118,8 +118,8 @@
                     android:layout_height="70dp"
                     android:layout_marginEnd="10dp"
                     android:layout_weight="1"
-                    android:background="@drawable/polly_6_selector"
-                    android:tag="polly_6"
+                    android:background="@drawable/img_6_selector"
+                    android:tag="img_6"
                     android:buttonTint="@android:color/transparent" />
 
                 <RadioButton
@@ -128,8 +128,8 @@
                     android:layout_height="70dp"
                     android:layout_marginEnd="10dp"
                     android:layout_weight="1"
-                    android:background="@drawable/polly_7_selector"
-                    android:tag="polly_7"
+                    android:background="@drawable/img_7_selector"
+                    android:tag="img_7"
                     android:buttonTint="@android:color/transparent" />
 
                 <RadioButton
@@ -139,7 +139,7 @@
                     android:layout_marginEnd="10dp"
                     android:layout_weight="1"
                     android:background="@drawable/ic_add_plus"
-                    android:tag="polly_8"
+                    android:tag="img_8"
                     android:buttonTint="@android:color/transparent" />
 
             </LinearLayout>

@@ -116,10 +116,14 @@ class LayoutHTMLWriter {
                     "  padding-top:40px;" +
                     "  padding-bottom:40px;" +
                     "}" +
-                    "img {" +
-                    "width:50%;" +
-                    "margin-left: 200px;" +
-                    "}");
+                    ".userImg {\n" +
+                    "\t\t\theight: 550px;\n" +
+                    "\t\t\twidth: 550px;\n" +
+                    "display: block;\n" +
+                    "  margin-left: auto;\n" +
+                    "  margin-right: auto;\n" +
+                    "  object-fit: cover;\n" +
+                    "\t\t\t}");
             xmlSerializer.endTag("", "style");
 
             xmlSerializer.endTag("", "head");

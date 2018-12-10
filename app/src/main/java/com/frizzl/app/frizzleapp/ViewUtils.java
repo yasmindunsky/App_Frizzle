@@ -33,6 +33,15 @@ public class ViewUtils {
         put("ic_loud_speaker","https://firebasestorage.googleapis.com/v0/b/frizzleapp.appspot.com/o/ourIcons%2Fic_loud_speaker.svg?alt=media&token=34620f3f-aa7c-4e83-841b-20d32df5460f");
         put("ic_like","https://firebasestorage.googleapis.com/v0/b/frizzleapp.appspot.com/o/ourIcons%2Fic_like.svg?alt=media&token=676faacd-24c5-4da1-9343-66eea7d1674c");
     }};
+    private static final Map<String, String> imgNameToAddress = new HashMap<String, String>() {{
+        put("img_1","https://firebasestorage.googleapis.com/v0/b/frizzleapp.appspot.com/o/ourImages%2Fimg_1.jpg?alt=media&token=01f3f99d-353a-4113-844c-7f43cd888985");
+        put("img_2","https://firebasestorage.googleapis.com/v0/b/frizzleapp.appspot.com/o/ourImages%2Fimg_2.jpg?alt=media&token=da52b575-3f57-42d8-ad88-259a91b95327");
+        put("img_3","https://firebasestorage.googleapis.com/v0/b/frizzleapp.appspot.com/o/ourImages%2Fimg_3.jpg?alt=media&token=7a2957ea-9cd5-4838-a5e4-9bf24c8d97bf");
+        put("img_4","https://firebasestorage.googleapis.com/v0/b/frizzleapp.appspot.com/o/ourImages%2Fimg_4.jpg?alt=media&token=24e5fb89-1c6e-4615-9d7f-8fc846843caa");
+        put("img_5","https://firebasestorage.googleapis.com/v0/b/frizzleapp.appspot.com/o/ourImages%2Fimg_5.jpg?alt=media&token=26b28482-76b9-495f-a553-a46c9f55a739");
+        put("img_6","https://firebasestorage.googleapis.com/v0/b/frizzleapp.appspot.com/o/ourImages%2Fimg_6.jpg?alt=media&token=3faaa1de-a726-4fb1-a9de-e03baeadebd1");
+        put("img_7","https://firebasestorage.googleapis.com/v0/b/frizzleapp.appspot.com/o/ourImages%2Fimg_7.jpg?alt=media&token=58730e08-5977-4be7-b5ef-2a82b0c9f40b");
+    }};
 
     public static boolean isRTL() {
         return isRTL(Locale.getDefault());
@@ -139,5 +148,9 @@ public class ViewUtils {
 
     public static String iconNameToAddress(String appIcon) {
         return iconNameToAddress.get(appIcon);
+    }
+
+    public static String imgNameToAddress(String imgName) {
+        return imgNameToAddress.get(imgName);
     }
 }

@@ -38,7 +38,14 @@ import com.frizzl.app.frizzleapp.UserApp;
 import com.frizzl.app.frizzleapp.UserProfile;
 import com.frizzl.app.frizzleapp.ViewUtils;
 import com.frizzl.app.frizzleapp.map.MapActivity;
+import com.google.android.gms.tasks.Continuation;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import com.tooltip.OnDismissListener;
 
 import net.cachapa.expandablelayout.ExpandableLayout;
@@ -420,7 +427,7 @@ public class AppBuilderActivity extends AppCompatActivity {
                 if (resultCode == Activity.RESULT_OK) {
                     //data gives you the image uri. Try to convert that to bitmap
                     Uri selectedImageUri = data.getData();
-//                    uploadUriToFirebase(selectedImageUri);
+                    uploadLocalImageToFirebase(selectedImageUri);
                     try {
                         Bitmap selectedImageBitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), selectedImageUri);
                         BitmapDrawable bitmapDrawable = new BitmapDrawable(getResources(), selectedImageBitmap);
@@ -440,24 +447,35 @@ public class AppBuilderActivity extends AppCompatActivity {
         }
     }
 
-//    private void uploadUriToFirebase(Uri selectedImageUri) {
-//        StorageReference storageReference = storageRef.child("images/"+selectedImageUri.getLastPathSegment());
-//        uploadTask = storageReference.putFile(selectedImageUri);
-//
-//// Register observers to listen for when the download is done or if it fails
-//        uploadTask.addOnFailureListener(new OnFailureListener() {
-//            @Override
-//            public void onFailure(@NonNull Exception exception) {
-//                // Handle unsuccessful uploads
-//            }
-//        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-//            @Override
-//            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-//                // taskSnapshot.getMetadata() contains file metadata such as size, content-type, etc.
-//                // ...
-//            }
-//        });
-//    }
+    private void uploadLocalImageToFirebase(Uri selectedImageUri) {
+        FirebaseStorage storage = FirebaseStorage.getInstance();
+        StorageReference storageRef = storage.getReference();
+        StorageReference storageReference = storageRef.child("usersImages/"+selectedImageUri.getLastPathSegment());
+        UploadTask uploadTask = storageReference.putFile(selectedImageUri);
+
+        Task<Uri> urlTask = uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
+            @Override
+            public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
+                if (!task.isSuccessful()) {
+                    throw task.getException();
+                }
+
+                // Continue with the task to get the download URL
+                return storageReference.getDownloadUrl();
+            }
+        }).addOnCompleteListener(new OnCompleteListener<Uri>() {
+            @Override
+            public void onComplete(@NonNull Task<Uri> task) {
+                if (task.isSuccessful()) {
+                    Uri downloadUri = task.getResult();
+                    currentlyEditedUserCreatedImageView.setTag(downloadUri.toString());
+                } else {
+                    // Handle failures
+
+                }
+            }
+        });
+    }
 
     private void startUsersApp() {
         Intent intent = new Intent(Intent.ACTION_MAIN, null);

@@ -3,7 +3,9 @@ package com.frizzl.app.frizzleapp.appBuilder;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
 import android.util.Log;
+import android.view.Gravity;
 import android.widget.EditText;
 import android.widget.GridLayout;
 import android.widget.ImageView;
@@ -43,6 +45,7 @@ public class UserCreatedImageView extends UserCreatedView {
         layoutParams.setMargins(margin,margin,margin,margin);
         thisView.setLayoutParams(layoutParams);
         thisView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+        thisView.setForegroundGravity(Gravity.CENTER);
 
         thisView.setTag(R.id.usersViewId, index);
         thisView.setTag(R.id.usersViewRow, row);
@@ -68,6 +71,8 @@ public class UserCreatedImageView extends UserCreatedView {
         layoutParams.height = (int) context.getResources().getDimension(R.dimen.user_created_image_view_width);
         layoutParams.setMargins(10,10,10,10);
         thisView.setLayoutParams(layoutParams);
+        thisView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+        thisView.setForegroundGravity(Gravity.CENTER);
 
 //        // Set properties.
 //        newText.setTag(nextViewIndex);
@@ -86,7 +91,7 @@ public class UserCreatedImageView extends UserCreatedView {
         properties.put("android:paddingEnd", "16dp");
         properties.put("android:layout_column", String.valueOf(column));
         properties.put("android:layout_row", String.valueOf(row));
-
+        properties.put("android:tag", "https://firebasestorage.googleapis.com/v0/b/frizzleapp.appspot.com/o/usersImages%2Fblank.png?alt=media&token=1e04ba63-a8aa-4868-965b-e25faf2c41b2");
         thisView.setTag(R.id.usersViewRow, row);
         thisView.setTag(R.id.usersViewCol, column);
 
@@ -122,24 +127,29 @@ public class UserCreatedImageView extends UserCreatedView {
     public void setImage(RadioButton selectedImageButton, String tag) {
         selectedImageID = selectedImageButton.getId();
         thisView.setBackground(selectedImageButton.getBackground());
-        properties.put("android:background", "@drawable/"+tag);
+        String imgName = selectedImageButton.getTag().toString();
+        properties.put("android:tag", ViewUtils.imgNameToAddress(imgName));
     }
 
     public void setImage(BitmapDrawable selectedImage) {
         thisView.setBackground(selectedImage);
-        properties.put("android:background", "@drawable/");
     }
 
     public void createHTMLString(XmlSerializer xmlSerializer) {
         String name = "img";
         try {
             xmlSerializer.startTag("", name);
+            xmlSerializer.attribute("", "class", "userImg");
+
             xmlSerializer.attribute("", "id", properties.get("android:id"));
-            xmlSerializer.attribute("", "background", properties.get("android:src"));
-            xmlSerializer.text(properties.get("android:text"));
+            xmlSerializer.attribute("", "src", properties.get("android:tag"));
             xmlSerializer.endTag("", name);
         } catch (IOException e) {
             Log.e("Exception", "xmlSerializer " + xmlSerializer.toString() + " failed: " + e.toString());
         }
+    }
+
+    public void setTag(String imageURL) {
+        properties.put("android:tag", imageURL);
     }
 }
