@@ -138,7 +138,7 @@
                     android:layout_height="70dp"
                     android:layout_marginEnd="10dp"
                     android:layout_weight="1"
-                    android:background="@drawable/ic_add_plus"
+                    android:background="@drawable/ic_plus_add"
                     android:tag="img_8"
                     android:buttonTint="@android:color/transparent" />
 

@@ -103,24 +103,24 @@ function nameYouChoose(){
 
     <slide>
         <info_text/>
-        <task_text>Write the $green$function$green$ name in the onClick field of the button.</task_text>
+        <task_text>Write the $green$function$green$ name in the onClick field of the button, then run and click the button.</task_text>
         <reminder_text/>
         <code show="true" mutable="false" runnable="false" waitForCTA="false">
 function myFunction(){
 \tspeakOut("Hello");
 }
         </code>
-        <design show="true" runnable="false"  withOnClickFunction="myFunction" withOnClickSet="false">myButton</design>
+        <design show="true" runnable="true"  withOnClickFunction="myFunction" withOnClickSet="false">myButton</design>
         <call_to_action>Check</call_to_action>
     </slide>
 
-    <slide>
-        <info_text>Our button now has functionality: it reads text aloud when it is clicked.</info_text>
-        <task_text>Try to run and click the button.</task_text>
-        <reminder_text/>
-        <code show="true" mutable="false" runnable="false" waitForCTA="false">function myFunction(){\n\tspeakOut("Hello");\n}
-        </code>
-        <design show="true" runnable="true"  withOnClickFunction="myFunction" withOnClickSet="true">myButton</design>
-        <call_to_action>Got it</call_to_action>
-    </slide>
+    <!--<slide>-->
+        <!--<info_text>Our button now has functionality: it reads text aloud when it is clicked.</info_text>-->
+        <!--<task_text>Try to run and click the button.</task_text>-->
+        <!--<reminder_text/>-->
+        <!--<code show="true" mutable="false" runnable="false" waitForCTA="false">function myFunction(){\n\tspeakOut("Hello");\n}-->
+        <!--</code>-->
+        <!--<design show="true" runnable="true"  withOnClickFunction="myFunction" withOnClickSet="true">myButton</design>-->
+        <!--<call_to_action>Got it</call_to_action>-->
+    <!--</slide>-->
 </practice>

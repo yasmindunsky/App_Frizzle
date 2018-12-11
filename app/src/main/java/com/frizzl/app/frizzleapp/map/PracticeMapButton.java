@@ -83,6 +83,7 @@ public class PracticeMapButton extends android.support.v7.widget.AppCompatButton
 
     @Override
     public void setDisabled() {
+        setEnabled(false);
         status = Status.disabled;
         updateState(disabledDrawable,
                 (int) (originalSize),

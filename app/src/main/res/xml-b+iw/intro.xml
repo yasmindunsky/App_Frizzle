@@ -3,7 +3,7 @@
 <practice xmlns:tools="http://schemas.android.com/tools"
     tools:keep="@xml/practice_1">
     <slide>
-        <info_text>עכשיו נלמד כל מה שצריך בשביל לבנות אפליקציה של תא וידויים.</info_text>
+        <info_text>עכשיו נלמד כל מה שצריך בשביל לבנות את אפליקצת הידויים.</info_text>
         <task_text />
         <reminder_text />
         <code mutable="false" shows="false" runnable ="false" waitForCTA="false"/>

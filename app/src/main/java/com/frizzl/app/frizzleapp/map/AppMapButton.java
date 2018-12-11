@@ -117,6 +117,7 @@ public class AppMapButton extends LinearLayout implements MapButton{
 
     @Override
     public void setDisabled() {
+        setEnabledForAll(false);
         status = Status.disabled;
         updateState(disabledDrawable,
                 disabledIcon
@@ -126,11 +127,18 @@ public class AppMapButton extends LinearLayout implements MapButton{
                 110);
     }
 
+    private void setEnabledForAll(boolean enabled) {
+        setEnabled(enabled);
+        getChildAt(0).setEnabled(enabled);
+        getChildAt(1).setEnabled(enabled);
+    }
+
     public int getLevelID() {
         return levelID;
     }
 
     public void setOnClickListeners(OnClickListener onClickListener) {
+        setEnabledForAll(true);
         setOnClickListener(onClickListener);
         AppMapButton parentLayout = this;
         OnClickListener childrenListener = v -> parentLayout.callOnClick();
