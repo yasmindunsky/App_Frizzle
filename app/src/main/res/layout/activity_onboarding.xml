@@ -67,12 +67,12 @@
 
     <android.support.v7.widget.AppCompatButton
         android:id="@+id/nextButton"
-        style="@style/Button.Hollow.Torquise"
+        android:textAppearance="@style/Text.Button.Turquise"
+        android:textColor="@color/turquise"
+        style="@style/Button.Hollow.Turquise"
         android:layout_marginBottom="24dp"
         android:layout_marginTop="24dp"
         android:text="@string/lets_go"
-        android:textAppearance="@style/Text.Button.Torquise"
-        android:textColor="@color/frizzle_light_blue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

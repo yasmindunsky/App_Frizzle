@@ -57,6 +57,13 @@
         <item name="android:paddingEnd">35sp</item>p
     </style>
 
+    <style name="Button.Torquise" parent="@android:style/Widget.Button">
+        <item name="android:background">@drawable/button_background_torquise</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:paddingStart">35sp</item>
+        <item name="android:paddingEnd">35sp</item>p
+    </style>
 
     <style name="Button.Thanks" parent="@android:style/Widget.Button">
         <item name="android:background">@drawable/button_background_pink</item>
@@ -76,13 +83,12 @@
         <item name="android:textAppearance">@style/Text.Title.Blue</item>
     </style>
 
-    <style name="Button.Hollow.Torquise" parent="@android:style/Widget.Button">
-        <item name="android:background">@drawable/button_background_hollow_torquise</item>
+    <style name="Button.Hollow.Turquise" parent="@android:style/Widget.Button">
+        <item name="android:background">@drawable/button_background_hollow_turquise</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">40dp</item>
         <item name="android:paddingStart">25sp</item>
         <item name="android:paddingEnd">25sp</item>
-        <item name="android:textAppearance">@style/Text.Title.Blue</item>
     </style>
 
     <style name="Button.MapApp" parent="@android:style/Widget.Material.Button.Borderless">
@@ -190,8 +196,12 @@
         <item name="android:textColor">@color/black</item>
     </style>
 
-    <style name="Text.Button.Torquise" parent="@style/Text.Button">
-        <item name="android:textColor">@color/torquise</item>
+    <style name="Text.Button.Turquise" parent="@style/Text.Button">
+        <item name="android:textColor">@color/turquise</item>
+    </style>
+
+    <style name="Text.Button.DarkBlue" parent="@style/Text.Button">
+        <item name="android:textColor">@color/darkBlue</item>
     </style>
 
     <style name="Text.PageTitle" parent="@android:style/TextAppearance.Medium">
@@ -205,7 +215,7 @@
     </style>
 
     <style name="Text.BigTitle.Torquise" parent="@style/Text.PageTitle">
-        <item name="android:textColor">@color/torquise</item>
+        <item name="android:textColor">@color/turquise</item>
     </style>
 
     <style name="Text.Title.Light" parent="@style/Text.Title">
@@ -224,7 +234,7 @@
     </style>
 
     <style name="Text.Title.Torquise"  parent="@style/Text.ColoredTitle">
-        <item name="android:textColor">@color/torquise</item>
+        <item name="android:textColor">@color/turquise</item>
     </style>
 
     <style name="Text.Title.PropertiesTable" parent="@android:style/TextAppearance.DeviceDefault.Medium">
@@ -360,6 +370,7 @@
     <style name="Text.PracticeSlide.notice" parent="Text.PracticeSlide.error">
         <item name="android:textColor">@color/practiceNotification</item>
     </style>
+
 
 
 </resources>

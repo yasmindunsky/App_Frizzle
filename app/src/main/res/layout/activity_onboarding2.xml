@@ -12,7 +12,7 @@
     <ImageView
         android:id="@+id/checkMark"
         android:layout_width="0dp"
-        android:layout_height="200dp"
+        android:layout_height="270dp"
         android:layout_marginTop="50dp"
         android:src="@drawable/onboarding"
         app:layout_constraintEnd_toEndOf="parent"
@@ -30,6 +30,7 @@
         android:layout_marginBottom="16dp"
         android:text="@string/onboarding_text"
         android:textAlignment="center"
+        android:textColor="@color/white"
         android:textAppearance="@style/Text.Info.Bold"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -39,13 +40,12 @@
 
     <android.support.v7.widget.AppCompatButton
         android:id="@+id/yayButton"
-        style="@style/Button.Thanks"
+        style="@style/Button.Torquise"
         android:layout_marginTop="32dp"
         android:text="@string/yay"
-        android:textAppearance="@style/Text.Title.Light"
-        android:textColor="@color/white"
+        android:textAppearance="@style/Text.Button.DarkBlue"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/letsStart" />
+        app:layout_constraintBottom_toBottomOf="parent" />
 </android.support.constraint.ConstraintLayout>
