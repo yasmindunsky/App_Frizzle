@@ -7,6 +7,7 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
@@ -331,16 +332,11 @@ public class DesignScreenFragment extends Fragment {
 
     public void setAppIcon(String iconDrawable) {
         if (iconDrawable != null && !iconDrawable.equals("")) {
-            LinearLayout.LayoutParams layoutParams =
-                    new LinearLayout.LayoutParams(ViewUtils.dpStringToPixel("170p", context),
-                            ViewGroup.LayoutParams.MATCH_PARENT);
-            layoutParams.weight = 1;
             if (appBuilderActivity != null) {
                 int iconIdentifier = getResources().getIdentifier(iconDrawable,
                         "drawable", appBuilderActivity.getPackageName());
                 Drawable drawable = getResources().getDrawable(iconIdentifier);
                 appIcon.setImageDrawable(drawable);
-                appIcon.setLayoutParams(layoutParams);
             }
         }
     }

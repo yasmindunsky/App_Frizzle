@@ -28,7 +28,7 @@
 
     <!--Code-->
     <color name="codeBackground">#111d5c</color>
-    <color name="codeText">#707dc1</color>
+    <color name="codeText">#acb7f5</color>
     <color name="codeComment">#727272</color>
     <color name="codeSpeakOut">#fc7924</color>
     <color name="codeFunction">#16bfae</color>
