@@ -68,25 +68,23 @@ class CodingScreenPresenter {
                 ViewModelProviders.of(activity).get(DefinedFunctionsViewModel.class);
     }
 
-    boolean isTaskCompleted(String code) {
-        boolean taskCompleted = false;
+    int isTaskCompleted(String code) {
+        int taskCompleted = -1;
         UserProfile user = UserProfile.user;
         int currentTask = user.getCurrentSlideInLevel();
         if (user.getCurrentLevel() == ContentUtils.CONFESSIONS_APP_LEVEL_ID) {
             if (currentTask == 2) {
                 int beforeName = code.indexOf(functionIdentification) + String.valueOf(functionIdentification).length();
                 int afterName = code.indexOf("()");
-                if (afterName - beforeName > 2) {
-                    taskCompleted = true;
+                if (afterName - beforeName > 2 && !CodeCheckUtils.checkIfContainsFunctionWithName(code, "nameYouChoose")) {
+                    taskCompleted = 2;
                 }
-                taskCompleted &= !CodeCheckUtils.checkIfContainsFunctionWithName(code, "nameYouChoose");
             } else if (currentTask == 3) {
                 int beforeTextToSay = code.indexOf("speakOut\"") + String.valueOf("speakOut\"").length();
                 int afterTextToSay = code.indexOf("\");");
-                if (afterTextToSay - beforeTextToSay > 0){
-                    taskCompleted = true;
+                if (afterTextToSay - beforeTextToSay > 0 && !CodeCheckUtils.checkIfSpeakoutIsEmpty(code)){
+                    taskCompleted = 3;
                 }
-                taskCompleted &= !CodeCheckUtils.checkIfSpeakoutIsEmpty(code);
             }
         }
         return taskCompleted;

@@ -67,10 +67,10 @@ public class CodingScreenFragment extends Fragment {
             public void afterTextChanged(Editable s) {
                 // For temp testing
                 String code = s.toString();
-                boolean taskCompleted = codingScreenPresenter.isTaskCompleted(code);
-                if (taskCompleted){
+                int taskCompleted = codingScreenPresenter.isTaskCompleted(code);
+                if (taskCompleted != -1){
                     AppBuilderActivity appBuilderActivity = (AppBuilderActivity) getActivity();
-                    if (appBuilderActivity != null) appBuilderActivity.taskCompleted();
+                    if (appBuilderActivity != null) appBuilderActivity.taskCompleted(taskCompleted);
                 }
             }
         });

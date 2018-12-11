@@ -175,7 +175,7 @@ public class DesignScreenFragment extends Fragment {
                             if (UserProfile.user.getCurrentLevel() ==
                                     ContentUtils.CONFESSIONS_APP_LEVEL_ID &&
                                     UserProfile.user.getCurrentSlideInLevel() == 1) {
-                                taskCompleted();
+                                taskCompleted(1);
                             }
                         }
 
@@ -186,10 +186,10 @@ public class DesignScreenFragment extends Fragment {
                                     !onClickFuncName.equals("None")) {
                                 if (UserProfile.user.getCurrentSlideInLevel() == 4) {
                                     if (appBuilderActivity != null)
-                                        taskCompleted();
+                                        taskCompleted(4);
                                 } else if (UserProfile.user.getCurrentSlideInLevel() == 5) {
                                     if (appBuilderActivity != null)
-                                        taskCompleted();
+                                        taskCompleted(5);
                                 }
                             }
                         }
@@ -345,8 +345,8 @@ public class DesignScreenFragment extends Fragment {
         tutorial.presentTooltip(plusButton, getString(R.string.tooltip_add_elements), null, Gravity.TOP);
     }
 
-    public void taskCompleted() {
-        appBuilderActivity.taskCompleted();
+    public void taskCompleted(int taskCompletedNum) {
+        appBuilderActivity.taskCompleted(taskCompletedNum);
     }
 
     public String getManifest() {

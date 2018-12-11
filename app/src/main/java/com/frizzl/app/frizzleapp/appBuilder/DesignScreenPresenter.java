@@ -55,8 +55,10 @@ class DesignScreenPresenter {
 
                     Runnable runOnDismiss = () -> {
                         // For temp testing
-                        if (UserProfile.user.getCurrentLevel() == ContentUtils.CONFESSIONS_APP_LEVEL_ID && UserProfile.user.getCurrentSlideInLevel() == 0) {
-                            designScreenFragment.taskCompleted();
+                        if (UserProfile.user.getCurrentLevel() ==
+                                ContentUtils.CONFESSIONS_APP_LEVEL_ID &&
+                                UserProfile.user.getCurrentSlideInLevel() == 0) {
+                            designScreenFragment.taskCompleted(0);
                         }
                     };
                     designScreenFragment.presentPopup(propertiesTablePopupWindow, runOnDismiss);

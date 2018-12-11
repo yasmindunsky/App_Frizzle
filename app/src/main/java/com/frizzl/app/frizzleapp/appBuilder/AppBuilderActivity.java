@@ -507,17 +507,22 @@ public class AppBuilderActivity extends AppCompatActivity {
         designFragment.setAppIcon(iconDrawable);
     }
 
-    public void taskCompleted() {
+    public void taskCompleted(int taskCompletedNum) {
+        UserProfile user = UserProfile.user;
+        int currentTask = user.getCurrentSlideInLevel();
+        int currentLevel = user.getCurrentLevel();
+        int topTask = user.getTopSlideInLevel();
+
+        // If this task was already completed
+        if (taskCompletedNum < topTask) {
+            return;
+        }
         // Will move to next Task when animation finishes.
         final Handler handler = new Handler();
         handler.postDelayed(() -> {
             checkMark.setVisibility(View.VISIBLE);
             checkMark.playAnimation();
         }, 1000); // 1s
-        UserProfile user = UserProfile.user;
-        int currentTask = user.getCurrentSlideInLevel();
-        int currentLevel = user.getCurrentLevel();
-        int topTask = user.getTopSlideInLevel();
         AnalyticsUtils.logCompletedTaskEvent(currentLevel, currentTask);
 
         if (currentTask <= topTask)
