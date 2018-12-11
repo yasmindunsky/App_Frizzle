@@ -125,10 +125,10 @@ class PracticeErrorManager {
                         ERROR_FUNCTION_CHANGED_WHITE,
                         ERROR_FUNCTION_NOT_MYFUNCTION});
         levelAndSlideToChecks.put(ContentUtils.ONCLICK_PRACTICE_LEVEL_ID + "_8",
-                new ErrorCheck[]{ERROR_GENERAL,
+                new ErrorCheck[]{ERROR_FUNCTION_SPEAKOUT_IN_WRONG_PLACE,
+                        ERROR_GENERAL,
                         ERROR_SPEAKOUT_MISSING,
-                        ERROR_FUNCTION_CHANGED_WHITE,
-                        ERROR_FUNCTION_SPEAKOUT_IN_WRONG_PLACE});
+                        ERROR_FUNCTION_CHANGED_WHITE});
         levelAndSlideToChecks.put(ContentUtils.ONCLICK_PRACTICE_LEVEL_ID + "_9",
                 new ErrorCheck[]{});
     }

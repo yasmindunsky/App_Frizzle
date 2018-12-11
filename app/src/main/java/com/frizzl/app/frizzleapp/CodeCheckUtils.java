@@ -30,6 +30,9 @@ public class CodeCheckUtils {
         correct &= code.contains("(\"");
         // Contains '");'
         correct &= code.contains("\");");
+        // Contains " twice
+        int numOfParentheses = code.length() - code.replace("\"", "").length();
+        correct &= (numOfParentheses == 2);
         return correct;
     }
 

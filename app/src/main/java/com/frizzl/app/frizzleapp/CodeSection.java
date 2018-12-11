@@ -18,6 +18,8 @@ import com.frizzl.app.frizzleapp.appBuilder.CodeEditor;
 
 import java.util.Locale;
 
+import io.opencensus.internal.StringUtil;
+
 /**
  * Created by Noga on 12/09/2018.
  */
@@ -128,6 +130,9 @@ public class CodeSection extends RelativeLayout {
         valid &= code.contains("(\"");
         // Contains '");'
         valid &= code.contains("\");");
+        // Contains " twice
+        int numOfParentheses = code.length() - code.replace("\"", "").length();
+        valid &= (numOfParentheses == 2);
         return valid;
     }
 
