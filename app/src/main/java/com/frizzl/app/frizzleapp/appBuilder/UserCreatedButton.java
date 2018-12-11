@@ -72,7 +72,7 @@ public class UserCreatedButton extends UserCreatedView {
         thisView.setTextColor(Color.parseColor(textColorHex));
 
         String bgColorHex = properties.get("android:backgroundTint");
-        setBackgroundColor(bgColorHex);
+        setBackgroundColor(Color.parseColor(bgColorHex));
 
         thisView.setPadding(16,10,16,10);
 
@@ -334,15 +334,15 @@ public class UserCreatedButton extends UserCreatedView {
 
     }
 
-    public void setBackgroundColor(String hex) {
+    public void setBackgroundColor(int color) {
         int originalButtonDrawableRes = R.drawable.user_button_background;
         Drawable buttonDrawable = ContextCompat.getDrawable(context, originalButtonDrawableRes);
-        if (buttonDrawable != null) buttonDrawable.setColorFilter(Color.parseColor(hex), PorterDuff.Mode.DARKEN);
+        if (buttonDrawable != null) buttonDrawable.setColorFilter(color, PorterDuff.Mode.DARKEN);
         thisView.setBackground(buttonDrawable);
     }
 
-    public void setTextColor(String hex) {
-        thisView.setTextColor(Color.parseColor(hex));
+    public void setTextColor(int color) {
+        thisView.setTextColor(color);
     }
 
     public String getOnClick() {

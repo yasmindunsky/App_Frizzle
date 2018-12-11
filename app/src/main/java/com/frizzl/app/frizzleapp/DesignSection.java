@@ -61,8 +61,8 @@ public class DesignSection extends RelativeLayout {
         addView(imageView);
 
         userCreatedButton = new UserCreatedButton(context, 1, 1);
-        userCreatedButton.setBackgroundColor("#b93660");
-        userCreatedButton.setTextColor("#fce5c5");
+//        userCreatedButton.setBackgroundColor(getResources().getColor(R.color.yellow));
+//        userCreatedButton.setTextColor(getResources().getColor(R.color.darkBlue));
         userCreatedButton.setText(getContext().getString(R.string.my_button));
         if (withOnClickSet) {
             userCreatedButton.setOnClick("myFunction");
