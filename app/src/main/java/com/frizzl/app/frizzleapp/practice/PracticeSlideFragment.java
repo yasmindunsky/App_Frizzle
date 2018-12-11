@@ -41,7 +41,7 @@ public class PracticeSlideFragment extends Fragment {
     private PracticeSlide practiceSlide;
     private ConstraintLayout constraintLayout;
     private static final int SIDES_MARGIN = 50;
-    private static final int TOP_DOWN_MARGIN = 30;
+    private static final int TOP_DOWN_MARGIN = 35;
     private AppCompatButton callToActionButton;
     private boolean waitForCTA = false;
     private PracticeViewPager viewPager;
@@ -157,6 +157,7 @@ public class PracticeSlideFragment extends Fragment {
             }
             originalCode = code.getCode();
             codeSection = new CodeSection(context, originalCode, code.getRunnable(), mutable, code.getWaitForCTA(), codeKeyboard, ((PracticeActivity) activity).getMainLayout());
+            // Explain the user we cannot edit code section yet, but only later
             if (ContentUtils.FIRST_PRACTICE_LEVEL_ID == currentLevel &&
                     2 == currentSlide) {
                 codeSection.setEditorOnClickListener(v ->
@@ -192,6 +193,7 @@ public class PracticeSlideFragment extends Fragment {
             prevID = designSection.getId();
 
             designSection.setDisplayNotificationListener((PopupWindow popupWindow) -> {
+                // Explain the user that the button does nothing when clicked.
                 if (UserProfile.user.getCurrentLevel() == ContentUtils.ONCLICK_PRACTICE_LEVEL_ID
                         && getCurrentSlide() == 1) {
                     popupWindow.dismiss();
@@ -338,7 +340,7 @@ public class PracticeSlideFragment extends Fragment {
     }
 
     private void presentNotification(Context context, String notification, ConstraintSet set) {
-        // Add error place
+        // Add notification place
         if (notificationView == null) {
             notificationView = new PracticeNotificationView(context, false);
             notificationView.setId(R.id.notificationView);

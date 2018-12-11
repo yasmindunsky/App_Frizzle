@@ -133,7 +133,7 @@ public class UserCreatedButton extends UserCreatedView {
         properties.put("android:textColor", ViewUtils.hexFromColorInt(R.color.yellow));
         properties.put("android:textSize", "18sp");
         properties.put("android:background", "@drawable/user_button_background");
-        properties.put("android:backgroundTint", ViewUtils.hexFromColorInt(R.color.dark_blue));
+        properties.put("android:backgroundTint", ViewUtils.hexFromColorInt(R.color.darkBlue));
         properties.put("android:padding", "10dp");
         properties.put("android:paddingStart", "16dp");
         properties.put("android:paddingEnd", "16dp");

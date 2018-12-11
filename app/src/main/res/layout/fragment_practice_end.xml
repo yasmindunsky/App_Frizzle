@@ -24,7 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/wow"
-            android:textAppearance="@style/Text.Title.Torquise"
+            android:textAppearance="@style/Text.Title.Lilac"
             app:layout_constraintBottom_toTopOf="@+id/congratsText"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

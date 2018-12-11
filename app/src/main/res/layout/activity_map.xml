@@ -79,6 +79,7 @@
             <com.frizzl.app.frizzleapp.map.PracticeMapButton
                 android:id="@+id/friendship_intro"
                 style="@style/Button.MapPractice"
+                android:text="@string/intro"
                 android:layout_marginTop="8dp"
                 android:textAppearance="@style/Text.Map"
                 app:layout_constraintEnd_toEndOf="parent"

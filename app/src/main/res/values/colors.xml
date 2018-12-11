@@ -88,7 +88,8 @@
     <color name="turquise">#16bfae</color>
     <color name="lilac">#8a97dd</color>
 
-    <color name="dark_blue">#0c174f</color>
+    <!--Map-->
+    <color name="mapDarkBlue">#0c174f</color>
 
 
 </resources>

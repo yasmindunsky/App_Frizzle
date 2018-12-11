@@ -112,7 +112,10 @@ public class DesignSection extends RelativeLayout {
                 Runnable displayNotification = () -> {
                     if (UserProfile.user.getCurrentLevel() == ContentUtils.ONCLICK_PRACTICE_LEVEL_ID
                             && practiceSlideFragment.getCurrentSlide() == 1) {
-                        practiceSlideFragment.presentNotificationFromSection(context1.getResources().getString(R.string.our_button_does_nothing));
+                        practiceSlideFragment
+                                .presentNotificationFromSection(context1
+                                        .getResources()
+                                        .getString(R.string.our_button_does_nothing));
                     }
                 };
                 ViewUtils.presentPopup(runPopupWindow, displayNotification, v, layout, context1);

@@ -2,11 +2,9 @@ package com.frizzl.app.frizzleapp.map;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.support.constraint.ConstraintLayout;
 import android.util.AttributeSet;
-import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -109,7 +107,7 @@ public class AppMapButton extends LinearLayout implements MapButton{
         status = Status.completed;
         updateState(completedDrawable,
                 completedIcon,
-                getResources().getColor(R.color.dark_blue),
+                getResources().getColor(R.color.mapDarkBlue),
                 (int) (originalSize * 1.05),
                 0,
                 110);
@@ -121,7 +119,7 @@ public class AppMapButton extends LinearLayout implements MapButton{
         status = Status.disabled;
         updateState(disabledDrawable,
                 disabledIcon
-                , getResources().getColor(R.color.dark_blue),
+                , getResources().getColor(R.color.mapDarkBlue),
                 originalSize,
                 0,
                 110);

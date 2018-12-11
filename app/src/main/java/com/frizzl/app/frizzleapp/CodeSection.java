@@ -74,7 +74,6 @@ public class CodeSection extends RelativeLayout {
         if (runnable) {
             ImageButton playButton = new ImageButton(context);
             OnClickListener runCode = v -> {
-                if (ViewUtils.volumeIsLow(context)) ViewUtils.presentVolumeToast(context);
                 if (waitForCTA && readyForCTAListener != null) readyForCTAListener.onReadyForCTA();
                 int currentSlide = UserProfile.user.getCurrentSlideInLevel();
                 if (UserProfile.user.getCurrentLevel() == ContentUtils.SPEAKOUT_PRACTICE_LEVEL_ID
@@ -83,7 +82,10 @@ public class CodeSection extends RelativeLayout {
                         presentNotificationListener.onPresentNotification(getResources().getString(R.string.notification_semicolon));
                     else presentNotificationListener.onPresentNotification(getResources().getString(R.string.notification_space));
                         }
-                else if (codeIsValid()) speakOut();
+                else if (codeIsValid()){
+                    if (ViewUtils.volumeIsLow(context)) ViewUtils.presentVolumeToast(context);
+                    speakOut();
+                }
                 else displayErrorPopup(getResources().getString(R.string.problem_with_syntax), layout);
             };
             playButton.setOnClickListener(runCode);

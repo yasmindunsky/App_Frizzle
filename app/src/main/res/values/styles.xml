@@ -147,7 +147,7 @@
     <style name="Text.Map" parent="@style/Text.Task">
         <item name="android:fontFamily">@font/calibri_bold</item>
         <item name="android:textSize">16sp</item>
-        <item name="android:textColor">#0C174F</item>
+        <item name="android:textColor">@color/mapDarkBlue</item>
         <item name="android:textAllCaps">false</item>
     </style>
 
@@ -371,6 +371,8 @@
         <item name="android:textColor">@color/practiceNotification</item>
     </style>
 
-
+    <style name="Text.Title.Lilac"  parent="@style/Text.ColoredTitle">
+        <item name="android:textColor">@color/lilac</item>
+    </style>
 
 </resources>
