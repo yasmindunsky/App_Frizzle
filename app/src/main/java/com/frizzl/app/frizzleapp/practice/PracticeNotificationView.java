@@ -1,6 +1,7 @@
 package com.frizzl.app.frizzleapp.practice;
 
 import android.content.Context;
+import android.opengl.Visibility;
 import android.support.v7.view.ContextThemeWrapper;
 import android.support.v7.widget.AppCompatTextView;
 import android.view.Gravity;
@@ -16,7 +17,8 @@ import com.frizzl.app.frizzleapp.ViewUtils;
  */
 
 public class PracticeNotificationView extends LinearLayout{
-   private final AppCompatTextView notificationTextView;
+    private final AppCompatTextView notificationTextView;
+    private ImageView iconImageView;
 
     public PracticeNotificationView(Context context, boolean isError){
         super(context);
@@ -29,7 +31,7 @@ public class PracticeNotificationView extends LinearLayout{
         this.setPadding(px, px, px, px);
         this.setGravity(Gravity.CENTER_VERTICAL);
 
-        ImageView iconImageView = new ImageView(context);
+        iconImageView = new ImageView(context);
         int drawableResource = isError ? R.drawable.ic_try_again : R.drawable.ic_notification;
         iconImageView.setImageDrawable(context.getResources().getDrawable(drawableResource));
         iconImageView.setLayoutParams(new ViewGroup.LayoutParams( ViewUtils.dpStringToPixel("40dp", context),
@@ -48,5 +50,13 @@ public class PracticeNotificationView extends LinearLayout{
 
     public void setText(String error) {
         if (this.notificationTextView != null) this.notificationTextView.setText(error);
+    }
+
+    public void setErrorVisibility(int visibility){
+        super.setVisibility(visibility);
+        iconImageView.setVisibility(visibility);
+        notificationTextView.setVisibility(visibility);
+        setBackground(null);
+        invalidate();
     }
 }

@@ -219,6 +219,7 @@ public class PracticeSlideFragment extends Fragment {
             }
             if (buttonText.equals(checkText) || buttonText.equals(tryAgainText)) {
                 if (practiceCorrect()) {
+                    hideError();
                     changeButtonToGreenAndShowAnimation(button);
                 } else {
                     // Special case of checking design and not code. Wrong result from
@@ -328,6 +329,12 @@ public class PracticeSlideFragment extends Fragment {
             constraintLayout.setConstraintSet(set);
         }
         errorView.setText(error);
+    }
+
+    private void hideError(){
+        if (errorView != null) {
+            errorView.setErrorVisibility(View.GONE);
+        }
     }
 
     private void presentNotification(Context context, String notification, ConstraintSet set) {
