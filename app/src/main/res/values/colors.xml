@@ -33,7 +33,6 @@
     <color name="codeSpeakOut">#fc7924</color>
     <color name="codeFunction">#16bfae</color>
 
-
     <!--Practice-->
     <color name="prePracticePopupButton">#16bfae</color>
     <color name="practiceNotification">#818ed1</color>
@@ -58,7 +57,9 @@
     <color name="lightYellow">#ffe19f</color>
     <color name="white">#ffffff</color>
 
-
+    <!--Onboarding-->
+    <color name="onboardingBackground">#0c174f</color>
+    <color name="onboardingText">#1ad1bf</color>
 
     <!--Frizzle Colors-->
     <color name="frizzle_light_blue">#0090b1</color>

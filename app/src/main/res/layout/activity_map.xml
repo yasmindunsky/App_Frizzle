@@ -175,7 +175,7 @@
         android:layout_gravity="end"
         android:layout_margin="15dp"
         android:scaleType="centerInside"
-        android:src="@drawable/ic_feedback_support"
+        android:src="@drawable/ic_feedback_support_lilac"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
