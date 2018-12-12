@@ -104,7 +104,8 @@ public class DesignSection extends RelativeLayout {
                 int originalButtonDrawableRes = R.drawable.user_button_background;
                 Drawable buttonDrawable = ContextCompat.getDrawable(context1, originalButtonDrawableRes);
                 if (buttonDrawable != null) {
-                    buttonDrawable.setColorFilter(Color.parseColor(userCreatedButton.getProperties().get("android:backgroundTint")), PorterDuff.Mode.MULTIPLY);
+                    String color = userCreatedButton.getProperties().get("android:backgroundTint");
+                    buttonDrawable.setColorFilter(Color.parseColor(color), PorterDuff.Mode.MULTIPLY);
                     button.setBackground(buttonDrawable);
                 }
                 PopupWindow runPopupWindow = new PopupWindow(runPopupView, ViewGroup.LayoutParams.WRAP_CONTENT,

@@ -130,10 +130,10 @@ public class UserCreatedButton extends UserCreatedView {
         properties.put("android:text", (String) thisView.getText());
         properties.put("android:fontFamily", "@font/rubik_medium");
         properties.put("android:textAllCaps", "false");
-        properties.put("android:textColor", ViewUtils.hexFromColorInt(R.color.yellow));
+        properties.put("android:textColor", ViewUtils.hexFromColorResource(R.color.darkBlue, context));
         properties.put("android:textSize", "18sp");
         properties.put("android:background", "@drawable/user_button_background");
-        properties.put("android:backgroundTint", ViewUtils.hexFromColorInt(R.color.darkBlue));
+        properties.put("android:backgroundTint", ViewUtils.hexFromColorResource(R.color.yellow, context));
         properties.put("android:padding", "10dp");
         properties.put("android:paddingStart", "16dp");
         properties.put("android:paddingEnd", "16dp");
@@ -311,7 +311,7 @@ public class UserCreatedButton extends UserCreatedView {
             int colorIdentifier = context.getResources().getColor(context.getResources().getIdentifier(fullColorName, "color", context.getPackageName()));
             int originalDrawable = R.drawable.user_button_background;
             Drawable drawable = ContextCompat.getDrawable(context, originalDrawable);
-            if (drawable != null) drawable.setColorFilter(colorIdentifier, PorterDuff.Mode.DARKEN);
+            if (drawable != null) drawable.setColorFilter(colorIdentifier, PorterDuff.Mode.MULTIPLY);
             thisView.setBackground(drawable);
             properties.put("android:backgroundTint", fullColorName);
         }

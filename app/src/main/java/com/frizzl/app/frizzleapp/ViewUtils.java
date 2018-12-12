@@ -63,6 +63,10 @@ public class ViewUtils {
         return String.format("#%06X", (0xFFFFFF & colorInt));
     }
 
+    public static String hexFromColorResource(int colorResource, Context context){
+        return "#" + Integer.toHexString(context.getResources().getColor(colorResource) & 0x00ffffff);
+    }
+
     public static void presentPopup(PopupWindow popupWindow, Runnable runOnDismiss, View viewToPopOn,
                              View viewToDim, Context context){
         if(((Activity) context).isFinishing()) return;
