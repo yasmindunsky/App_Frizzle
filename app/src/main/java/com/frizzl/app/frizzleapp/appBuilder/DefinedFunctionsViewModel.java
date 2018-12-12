@@ -12,7 +12,7 @@ import java.util.Set;
  */
 
 public class DefinedFunctionsViewModel extends ViewModel {
-    private final Set<String> functions = new HashSet<>();
+    private Set<String> functions = new HashSet<>();
 
     public void addFunction(String function) {
         functions.add(function);
@@ -25,5 +25,10 @@ public class DefinedFunctionsViewModel extends ViewModel {
 
     public void clearFunctions() {
         functions.clear();
+    }
+
+    public void setFunctions(Set<String> functions) {
+        this.functions = functions;
+        UserProfile.user.getCurrentUserApp().setDefinedFunctions(functions);
     }
 }

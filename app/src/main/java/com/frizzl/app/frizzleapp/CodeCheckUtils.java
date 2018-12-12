@@ -1,6 +1,10 @@
 package com.frizzl.app.frizzleapp;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  * Created by Noga on 04/11/2018.
@@ -62,5 +66,35 @@ public class CodeCheckUtils {
         int nextCharIndex = i + speakOutPrefix.length();
         String nextChar = code.substring(nextCharIndex, nextCharIndex+1);
         return Objects.equals(nextChar, "\"");
+    }
+
+    public static boolean checkIfContainsFunctionsWithSameName(String code) {
+        List<String> functionsList = extractDefinedFunctions(code);
+        Set<String> functionsSet = new HashSet<>(functionsList);
+        return functionsSet.size() < functionsList.size();
+    }
+
+    public static List<String> extractDefinedFunctions(String code) {
+        List<String> functions = new ArrayList<>();
+        int index = code.indexOf(functionIdentification);
+        while (index >= 0) {
+            String substring = code.substring(index, code.length());
+            int functionNameEnd = substring.indexOf("(");
+            if (functionNameEnd > 0) {
+                String function = code.substring(
+                        index + functionIdentification.length() + 1,
+                        index + functionNameEnd);
+                functions.add(function.trim());
+            }
+            index = code.indexOf(functionIdentification, index + 1);
+        }
+        return functions;
+    }
+
+    public static boolean checkIfFunctionInsideAFunction(String code) {
+        int firstFunctionStart = code.indexOf(functionIdentification);
+        int firstFunctionEnd = code.indexOf("}");
+        String insideFunction = code.substring(firstFunctionStart + (functionIdentification).length(), firstFunctionEnd);
+        return insideFunction.contains(functionIdentification);
     }
 }

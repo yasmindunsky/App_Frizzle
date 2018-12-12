@@ -9,6 +9,10 @@ import com.frizzl.app.frizzleapp.ContentUtils;
 import com.frizzl.app.frizzleapp.UserApp;
 import com.frizzl.app.frizzleapp.UserProfile;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -45,21 +49,9 @@ class CodingScreenPresenter {
 
     private void extractDefinedFunctionsAndUpdateViewModel() {
         String code = codingScreenFragment.getCode();
+        List<String> functions = CodeCheckUtils.extractDefinedFunctions(code);
         definedFunctionsViewModel.clearFunctions();
-
-        int index = code.indexOf(functionIdentification);
-        while (index >= 0) {
-            String substring = code.substring(index, code.length());
-            int functionNameEnd = substring.indexOf("(");
-            if (functionNameEnd > 0) {
-                String function = code.substring(
-                        index + functionIdentification.length() + 1,
-                        index + functionNameEnd);
-                definedFunctionsViewModel.addFunction(function.trim());
-            }
-            index = code.indexOf(functionIdentification, index + 1);
-        }
-
+        definedFunctionsViewModel.setFunctions(new HashSet<String>(functions));
     }
 
     void onResume() {

@@ -9,6 +9,44 @@ import static org.junit.Assert.*;
  */
 public class CodeCheckUtilsTest {
     @Test
+    public void checkIfFunctionInsideAFunction_contains_true() throws Exception {
+        String code = "function funcName(){function funcName2(){}}";
+        boolean answer = CodeCheckUtils.checkIfFunctionInsideAFunction(code);
+        assertEquals(true, answer);
+
+        code = "function funcName()function funcName2(){}{}";
+        answer = CodeCheckUtils.checkIfFunctionInsideAFunction(code);
+        assertEquals(true, answer);
+
+        code = "function funcName(function funcName2(){}){}";
+        answer = CodeCheckUtils.checkIfFunctionInsideAFunction(code);
+        assertEquals(true, answer);
+
+        code = "function funcName function funcName2(){}(){}";
+        answer = CodeCheckUtils.checkIfFunctionInsideAFunction(code);
+        assertEquals(true, answer);
+
+        code = "functionfunction funcName2(){} funcName (){}";
+        answer = CodeCheckUtils.checkIfFunctionInsideAFunction(code);
+        assertEquals(true, answer);
+    }
+
+    @Test
+    public void checkIfContainsFunctionsWithSameName_contains_true() throws Exception {
+        String code = "function funcName(){speakOut(\"hello\");" +
+                "function funcName(){speakOut(\"hello\");}";
+        boolean answer = CodeCheckUtils.checkIfContainsFunctionsWithSameName(code);
+        assertEquals(true, answer);
+    }
+
+    @Test
+    public void checkIfContainsFunctionsWithSameName_doesntContain_false() throws Exception {
+        String code = "function funcName(){speakOut(\"hello\");";
+        boolean answer = CodeCheckUtils.checkIfContainsFunctionsWithSameName(code);
+        assertEquals(false, answer);
+    }
+
+    @Test
     public void checkIfContainsFunctionWithName_contains_true() throws Exception {
         String code = "function funcName(){speakOut(\"hello\");}";
         boolean answer = CodeCheckUtils.checkIfContainsFunctionWithName(code, "funcName");

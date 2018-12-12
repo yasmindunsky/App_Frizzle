@@ -1,4 +1,4 @@
-package com.frizzl.app.frizzleapp.practice;
+package com.frizzl.app.frizzleapp;
 
 import com.frizzl.app.frizzleapp.CodeCheckUtils;
 import com.frizzl.app.frizzleapp.ContentUtils;
@@ -14,7 +14,7 @@ import java.util.Map;
  * Created by Noga on 04/11/2018.
  */
 
-class PracticeErrorManager {
+public class ErrorManager {
 
     interface ErrorCheck {
         String check(String originalCode, String currentCode);
@@ -93,6 +93,26 @@ class PracticeErrorManager {
     };
 
     // Returns null if error was not found, or Error to display.
+    // Checks if there are two functions with the same name.
+    private static final ErrorCheck ERRORֹֹֹ_FUNCTIONS_WITH_SAME_NAME = (originalCode, currentCode) -> {
+        if (CodeCheckUtils.checkIfContainsFunctionsWithSameName(currentCode))
+        {
+            return FrizzlApplication.resources.getString(R.string.error_functions_with_same_name);
+        }
+        return null;
+    };
+
+    // Returns null if error was not found, or Error to display.
+    // Checks if there are two functions one inside the other.
+    private static final ErrorCheck ERRORֹֹֹ_FUNCTION_INSIDE_FUNCTION = (originalCode, currentCode) -> {
+        if (!CodeCheckUtils.checkIfFunctionInsideAFunction(currentCode))
+        {
+            return FrizzlApplication.resources.getString(R.string.error_function_inside_function);
+        }
+        return null;
+    };
+
+    // Returns null if error was not found, or Error to display.
     // Checks if the speakOut command had a text other than 'this is so cool'
     private static final ErrorCheck ERROR_FUNCTION_NOT_MYFUNCTION = (originalCode, currentCode) -> {
         if (!CodeCheckUtils.checkIfContainsFunctionWithName(currentCode, "myFunction"))
@@ -103,6 +123,7 @@ class PracticeErrorManager {
     };
 
     private static Map<String, ErrorCheck[]> levelAndSlideToChecks;
+    private static Map<String, ErrorCheck[]> buildTaskToChecks;
 
     private static void init(){
         levelAndSlideToChecks = new HashMap<>();
@@ -131,15 +152,55 @@ class PracticeErrorManager {
                         ERROR_FUNCTION_CHANGED_WHITE});
         levelAndSlideToChecks.put(ContentUtils.ONCLICK_PRACTICE_LEVEL_ID + "_9",
                 new ErrorCheck[]{});
+
+        buildTaskToChecks = new HashMap<>();
+        buildTaskToChecks.put(ContentUtils.CONFESSIONS_APP_LEVEL_ID + "_3",
+                new ErrorCheck[]{ERROR_FUNCTION_CHANGED_WHITE,
+                });
+        buildTaskToChecks.put(ContentUtils.CONFESSIONS_APP_LEVEL_ID + "_4",
+                new ErrorCheck[]{ERROR_FUNCTION_CHANGED_WHITE,
+                        ERROR_FUNCTION_SPEAKOUT_IN_WRONG_PLACE,
+                        ERROR_SPEAKOUT_SEMICOLON_MISSING,
+                        ERRORֹֹֹ_FUNCTIONS_WITH_SAME_NAME,
+                        ERRORֹֹֹ_FUNCTION_INSIDE_FUNCTION
+                });
+        buildTaskToChecks.put(ContentUtils.CONFESSIONS_APP_LEVEL_ID + "_5",
+                new ErrorCheck[]{ERROR_FUNCTION_CHANGED_WHITE,
+                        ERROR_FUNCTION_SPEAKOUT_IN_WRONG_PLACE,
+                        ERROR_SPEAKOUT_SEMICOLON_MISSING,
+                        ERRORֹֹֹ_FUNCTIONS_WITH_SAME_NAME,
+                        ERRORֹֹֹ_FUNCTION_INSIDE_FUNCTION
+                });
+        buildTaskToChecks.put(ContentUtils.CONFESSIONS_APP_LEVEL_ID + "_6",
+                new ErrorCheck[]{ERROR_FUNCTION_CHANGED_WHITE,
+                        ERROR_FUNCTION_SPEAKOUT_IN_WRONG_PLACE,
+                        ERROR_SPEAKOUT_SEMICOLON_MISSING,
+                        ERRORֹֹֹ_FUNCTIONS_WITH_SAME_NAME,
+                        ERRORֹֹֹ_FUNCTION_INSIDE_FUNCTION
+                });
     }
 
-    public static String getError(int currentLevel, int currentSlide, String originalCode, String currentCode) {
+    public static String getPracticeError(int currentLevel, int currentSlide, String originalCode, String currentCode) {
         boolean initialized = false;
         if (!initialized) init();
 
         String key = currentLevel + "_" + currentSlide;
         if (!levelAndSlideToChecks.containsKey(key)) return null;
         ErrorCheck[] checksToPerform = levelAndSlideToChecks.get(key);
+        for (ErrorCheck errorCheck : checksToPerform) {
+            String checkResult = errorCheck.check(originalCode, currentCode);
+            if (checkResult != null) return checkResult;
+        }
+        return FrizzlApplication.resources.getString(R.string.error_read_instructions);
+    }
+
+    public static String getBuildError(int currentApp, int currentTask, String originalCode, String currentCode) {
+        boolean initialized = false;
+        if (!initialized) init();
+
+        String key = currentApp + "_" + currentTask;
+        if (!buildTaskToChecks.containsKey(key)) return null;
+        ErrorCheck[] checksToPerform = buildTaskToChecks.get(key);
         for (ErrorCheck errorCheck : checksToPerform) {
             String checkResult = errorCheck.check(originalCode, currentCode);
             if (checkResult != null) return checkResult;

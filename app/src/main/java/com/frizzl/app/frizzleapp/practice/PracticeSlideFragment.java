@@ -29,6 +29,7 @@ import com.frizzl.app.frizzleapp.ContentUtils;
 import com.frizzl.app.frizzleapp.FrizzlApplication;
 import com.frizzl.app.frizzleapp.Design;
 import com.frizzl.app.frizzleapp.DesignSection;
+import com.frizzl.app.frizzleapp.ErrorManager;
 import com.frizzl.app.frizzleapp.R;
 import com.frizzl.app.frizzleapp.ViewUtils;
 import com.frizzl.app.frizzleapp.UserProfile;
@@ -230,7 +231,7 @@ public class PracticeSlideFragment extends Fragment {
                             getCurrentSlide() == 9) {
                         presentError(context, FrizzlApplication.resources.getString(R.string.error_set_onclick), set);
                     } else {
-                        String error = PracticeErrorManager.getError(currentLevel, getCurrentSlide(),
+                        String error = ErrorManager.getPracticeError(currentLevel, getCurrentSlide(),
                                 getOriginalCode(), getCurrentCode());
                         if (error != null) presentError(context, error, set);
                     }

@@ -202,6 +202,8 @@ public class MainActivity extends AppCompatActivity implements   TextToSpeech.On
     <string name="error_set_onclick">Try to click the button and fill in the OnClick property.</string>
     <string name="error_speakout_not_this_is_so_cool">Make sure the text between the parentheses is correct.</string>
     <string name="error_function_not_myfunction">Make sure the function is named correctly.</string>
+    <string name="error_functions_with_same_name">Each function should have a different name.</string>
+    <string name="error_function_inside_function">A new functions should not be written inside an existing one, try to add it after the curly bracket.</string>
     <string name="done">done</string>
     <string name="your_message_successfully_sent">Your message was successfully sent.</string>
     <string name="feedback_thank_you">Thank you!</string>
@@ -220,6 +222,7 @@ public class MainActivity extends AppCompatActivity implements   TextToSpeech.On
     <string name="correct">Correct</string>
     <string name="task_1">Task 1:</string>
     <string name="myfunction" translatable="false">myFunction</string>
+
 
     <string-array name="fonts">
         <item>sans-serif</item>

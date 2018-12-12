@@ -87,6 +87,8 @@ Use "'" for special chars.
     <string name="error_set_onclick">נסו ללחוץ על הכפתור ולמלא את שדה ה-onClick.</string>
     <string name="error_speakout_not_this_is_so_cool">שימו לב מה הטקסט שמופיע בין המרכאות.</string>
     <string name="error_function_not_myfunction">שימו לב לשם הפונקציה.</string>
+    <string name="error_functions_with_same_name" >שימו לב כי לכל פונקציה צריך להיות שם אחר.</string>
+    <string name="error_function_inside_function">שימו לב כי פונקציה חדשה לא יכולה להיכתב בתוך פונקציה קיימת, נסו להוסיף את הפונקציה רק לאחר הסוגר המסולסל.</string>
     <string name="done">חזרה</string>
     <string name="your_message_successfully_sent">ההודעה נשלחה בהצלחה.</string>
     <string name="feedback_thank_you">תודה שפנית אלינו</string>
