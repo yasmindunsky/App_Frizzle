@@ -45,6 +45,40 @@ class LayoutHTMLWriter {
             xmlSerializer.text("Confession Booth");
             xmlSerializer.endTag("", "title");
 
+            // Viewport
+            xmlSerializer.startTag("", "meta");
+            xmlSerializer.attribute("", "name", "viewport");
+            xmlSerializer.attribute("", "content", "width=device-width, initial-scale=1.0");
+            xmlSerializer.endTag("", "meta");
+
+            // Google fonts
+            xmlSerializer.startTag("", "link");
+            xmlSerializer.attribute("", "href", "https://fonts.googleapis.com/css?family=Open+Sans:700|Rubik");
+            xmlSerializer.attribute("", "rel", "stylesheet");
+            xmlSerializer.endTag("", "link");
+
+            // Manifest
+            xmlSerializer.startTag("", "link");
+            xmlSerializer.attribute("", "rel", "manifest");
+            xmlSerializer.attribute("", "href", "data:application/manifest+json,{" +
+                    "\"short_name\": \"Confession Booth\"," +
+                    "\"name\": \"Confession Booth\"," +
+                    "\"icons\": [" +
+            "{" +
+                    "\"src\":" + iconURL +
+                    "\"type\": \"image/png\"," +
+                    "\"sizes\": \"192x192\"" +
+            "},"+
+            "{" +
+                "\"src\":" + iconURL +
+                    "\"type\": \"image/png\","+
+                    "\"sizes\": \"512x512\"" +
+            "}]," +
+            "\"background_color\": \"#1b2974\"," +
+             "\"display\": \"standalone\"," +
+             "\"theme_color\": \"#1b2974\" +" +
+        "}");
+            xmlSerializer.endTag("", "link");
 
             // open tag: <style>
             xmlSerializer.startTag("", "script");
@@ -66,46 +100,44 @@ class LayoutHTMLWriter {
                     "}" +
                     
                     "body, input, button {" +
-                    "  font-family: 'Roboto', sans-serif;" +
+                    "  font-family: 'Open Sans', sans-serif;" +
                     "}" +
                     
-                    "button {\n" +
-                    "  width: 100%;\n" +
-                    "  background-color: #f84685;\n" +
-                    "  border: none;\n" +
-                    "  color: white;\n" +
-                    "  padding: 20px;\n" +
-                    "  text-align: center;\n" +
-                    "  text-decoration: none;\n" +
-                    "  display: inline-block;\n" +
-                    "  font-size: 55px;\n" +
-                    "  font-family: calibri;\n" +
-                    "  margin-top: 5%;\n" +
-                    "  border-radius: 12px;\n" +
-                    "  padding: 40px;\n" +
-                    "\n" +
-                    "}\n" +
-                    "\n" +
-                    "div.title {\n" +
-                    "\t\t\t\tfont-size: 60px;\n" +
-                    "\t\t\t\tbackground-color: #1b2974;\n" +
-                    "\t\t\t\tcolor: #FFFFFF;\n" +
-                    "\t\t\t\tfont-family: hero;\n" +
-                    "\t\t\t\ttext-transform: uppercase;\n" +
-                    "\t\t\t\t\n" +
-                    "\t\t\t\tclear: both;\n" +
-                    "\t\t\t\ttext-align: center;\n" +
-                    "\t\t\t\theight: 150px;\n" +
-                    "\t\t\t\tline-height: 150px;\n" +
-                    "\t\t\t\tmargin-bottom: 50px;\n" +
-                    "\t\t\t\t}\n" +
-                    "\n" +
-                    "\t\t\t\n" +
-                    "\t\t\t.icon{\n" +
-                    "\t\t\t\tvertical-align: middle;\n" +
-                    "\t\t\t\tdisplay: inline-block;\n" +
-                    "\t\t\t\theight: 150px;\n" +
-                    "\t\t\t}" +
+                    "button {" +
+                    "  width: 100%;" +
+                    "  border: none;" +
+                    "  padding: 20px;" +
+                    "  text-align: center;" +
+                    "  text-decoration: none;" +
+                    "  display: inline-block;" +
+                    "  font-size: 55px;" +
+                    "  margin-top: 3%;" +
+                    "  margin-bottom: 3%;" +
+                    "  border-radius: 12px;" +
+                    "  padding: 40px;" +
+                    "" +
+                    "}" +
+                    "" +
+                    "div.title {" +
+                    "font-size: 60px;" +
+                    "background-color: #1b2974;" +
+                    "color: #FFFFFF;" +
+                    "font-family: 'Rubik', sans-serif;" +
+                    "text-transform: uppercase;" +
+                    "" +
+                    "clear: both;" +
+                    "text-align: center;" +
+                    "height: 150px;" +
+                    "line-height: 150px;" +
+                    "margin-bottom: 50px;" +
+                    "}" +
+                    "" +
+                    "" +
+                    ".icon{" +
+                    "vertical-align: middle;" +
+                    "display: inline-block;" +
+                    "height: 150px;" +
+                    "}" +
                     
                     "div.explain {" +
                     "  font-size: 40px;" +
@@ -116,14 +148,20 @@ class LayoutHTMLWriter {
                     "  padding-top:40px;" +
                     "  padding-bottom:40px;" +
                     "}" +
-                    ".userImg {\n" +
-                    "\t\t\theight: 550px;\n" +
-                    "\t\t\twidth: 550px;\n" +
-                    "display: block;\n" +
-                    "  margin-left: auto;\n" +
-                    "  margin-right: auto;\n" +
-                    "  object-fit: cover;\n" +
-                    "\t\t\t}");
+                    ".userImg {" +
+                    "width: 50vw;" +
+                    "height: 50vw;" +
+                    "  margin-top: 3%;" +
+                    "  margin-bottom: 3%;" +
+                    "display: block;" +
+                    "  margin-left: auto;" +
+                    "  margin-right: auto;" +
+                    "  object-fit: cover;" +
+                    "}" +
+                    "p {" +
+                    "font-size: 60px;" +
+                    " }" +
+                    "");
             xmlSerializer.endTag("", "style");
 
             xmlSerializer.endTag("", "head");

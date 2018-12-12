@@ -14,7 +14,18 @@ public class ContentUtils {
     public final static String functionParams = "()";
     public final static String speakOutIdentification = "speakOut";
 
-    public final static String codePrefix = "function speakOut (value) {\n" +
+    public final static String codePrefix = "if ('serviceWorker' in navigator) {\n" +
+            "    navigator.serviceWorker.register('service-worker.js', {\n" +
+            "        scope: '.' // <--- THIS BIT IS REQUIRED\n" +
+            "    }).then(function(registration) {\n" +
+            "        // Registration was successful\n" +
+            "        console.log('ServiceWorker registration successful with scope: ', registration.scope);\n" +
+            "    }, function(err) {\n" +
+            "        // registration failed :(\n" +
+            "        console.log('ServiceWorker registration failed: ', err);\n" +
+            "    });\n" +
+            "}" +
+            "function speakOut (value) {\n" +
             "    var msg = new SpeechSynthesisUtterance(value);\n" +
             "\twindow.speechSynthesis.speak(msg)\n" +
             "}";
