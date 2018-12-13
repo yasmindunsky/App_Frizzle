@@ -26,6 +26,7 @@ public class MapActivity extends AppCompatActivity {
     private final ArrayList<MapButton> levelButtons = new ArrayList<>();
     private ScrollView scrollView;
     private ConstraintLayout constraintLayout;
+    private PracticeMapButton friendshipIntroButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +42,7 @@ public class MapActivity extends AppCompatActivity {
         scrollView = findViewById(R.id.map_scroll_view);
 
         PracticeMapButton confessionsIntroButton = findViewById(R.id.confession_intro);
-        PracticeMapButton friendshipIntroButton = findViewById(R.id.friendship_intro);
+        friendshipIntroButton = findViewById(R.id.friendship_intro);
         AppMapButton confessionsAppButton = findViewById(R.id.confession_app);
         AppMapButton friendshipTestAppButton = findViewById(R.id.friendship_app);
         PracticeMapButton firstPracticeButton = findViewById(R.id.first_practice);
@@ -103,7 +104,12 @@ public class MapActivity extends AppCompatActivity {
             mapPresenter.onClickedIntro(levelID);
         };
 
-        friendshipTestAppButton.setOnClickListener(onClickedApp);
+        View.OnClickListener openNotifyMe = v -> {
+            PopupWindow notifyMePopupWindow =
+                    new NotifyMePopupWindow(this);
+            ViewUtils.presentPopup(notifyMePopupWindow, null, constraintLayout, constraintLayout, this);
+        };
+        friendshipIntroButton.setOnClickListener(openNotifyMe);
         firstPracticeButton.setOnClickListener(onClickedPractice);
         speakOutPracticeButton.setOnClickListener(onClickedPractice);
         onClickPracticeButton.setOnClickListener(onClickedPractice);
@@ -131,6 +137,15 @@ public class MapActivity extends AppCompatActivity {
             }
         }
         levelButtons.get(topLevel).setCurrent();
+        // Focus on new course
+        if (topLevel == 5){
+            constraintLayout.post(new Runnable() {
+                @Override
+                public void run() {
+                    constraintLayout.scrollTo(0, -friendshipIntroButton.getBottom());
+                }
+            });
+        }
     }
 
     public void goToApp(int levelID) {

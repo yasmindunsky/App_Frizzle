@@ -68,4 +68,10 @@ public class AnalyticsUtils {
         bundle.putInt("LEVEL_ID", levelID);
         mFirebaseAnalytics.logEvent("STARTED_INTRO", bundle);
     }
+
+    public static void logNotifyMe(String email) {
+        Bundle bundle = new Bundle();
+        bundle.putString("EMAIL", email);
+        mFirebaseAnalytics.logEvent("NOTIFY_ME", bundle);
+    }
 }

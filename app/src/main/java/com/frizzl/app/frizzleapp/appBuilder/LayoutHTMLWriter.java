@@ -45,11 +45,11 @@ class LayoutHTMLWriter {
             xmlSerializer.text("Confession Booth");
             xmlSerializer.endTag("", "title");
 
-            // Viewport
-            xmlSerializer.startTag("", "meta");
-            xmlSerializer.attribute("", "name", "viewport");
-            xmlSerializer.attribute("", "content", "width=device-width, initial-scale=1.0");
-            xmlSerializer.endTag("", "meta");
+//            // Viewport
+//            xmlSerializer.startTag("", "meta");
+//            xmlSerializer.attribute("", "name", "viewport");
+//            xmlSerializer.attribute("", "content", "width=device-width, initial-scale=1.0");
+//            xmlSerializer.endTag("", "meta");
 
             // Google fonts
             xmlSerializer.startTag("", "link");
