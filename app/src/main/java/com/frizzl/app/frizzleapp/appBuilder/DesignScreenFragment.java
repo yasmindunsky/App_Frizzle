@@ -439,11 +439,15 @@ public class DesignScreenFragment extends Fragment {
 
             GridLayout.LayoutParams layoutParams =
                     new GridLayout.LayoutParams(GridLayout.spec(row), GridLayout.spec(column));
+
             layoutParams.setMargins(10, 10, 10, 10);
             layoutParams.width = (int) getResources().getDimension(R.dimen.user_created_button_width);
             if (view.getClass().equals(ImageView.class)) {
                 layoutParams.width = (int) getResources().getDimension(R.dimen.user_created_image_view_width);
                 layoutParams.height = (int) getResources().getDimension(R.dimen.user_created_image_view_width);
+                int startEndMargins = (int)(context.getResources().getDimension(R.dimen.user_created_button_width) -
+                        context.getResources().getDimension(R.dimen.user_created_image_view_width)) / 2;
+                layoutParams.setMargins(startEndMargins,10,startEndMargins,10);
             }
 
             view.setTag(R.id.usersViewRow, row);
