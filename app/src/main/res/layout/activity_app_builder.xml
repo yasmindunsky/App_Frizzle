@@ -57,7 +57,7 @@
         android:layout_marginStart="50dp"
         android:background="@android:color/transparent"
         android:scaleType="fitCenter"
-        app:srcCompat="@drawable/ic_task_arrow_icon_left" />
+        app:srcCompat="@drawable/ic_task_arrow_left" />
 
     <ir.neo.stepbarview.StepBarView
         android:id="@+id/stepBarView"
@@ -103,7 +103,7 @@
         android:layout_marginEnd="50dp"
         android:background="@android:color/transparent"
         android:scaleType="fitCenter"
-        app:srcCompat="@drawable/ic_task_arrow_icon_right" />
+        app:srcCompat="@drawable/ic_task_arrow_right" />
 
     <android.support.design.widget.TabLayout
         android:id="@+id/tabLayout"
@@ -124,10 +124,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="@color/backgroundDarkGrey"
+        android:background="@color/appBuilderHeaderAndTabs"
         android:elevation="10dp"
-        android:orientation="vertical"
-        android:visibility="invisible">
+        android:orientation="vertical">
 
         <ImageButton
             android:id="@+id/clickToExpandError"
@@ -137,8 +136,6 @@
             android:background="@android:color/transparent"
             android:gravity="center_horizontal|center"
             android:scaleType="fitCenter"
-            android:text="="
-            android:textColor="@color/TextLightGrey"
             android:textSize="30sp"
             app:srcCompat="@drawable/ic_expand_grab_icon"
             tools:ignore="HardcodedText" />
@@ -149,14 +146,31 @@
             android:layout_height="match_parent"
             android:elevation="10dp"
             app:el_duration="1000"
-            app:el_expanded="true"
+            app:el_expanded="false"
             app:el_parallax="0.5">
 
-            <TextView
-                android:id="@+id/error"
-                style="@style/errorText"
-                android:text="@string/error_text" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="15dp">
 
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_marginEnd="20dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/butterfly_net_big" />
+
+                <TextView
+                    android:id="@+id/error"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/error_text"
+                    android:textAppearance="@style/Text.Build.Error" />
+
+            </LinearLayout>
         </net.cachapa.expandablelayout.ExpandableLayout>
     </LinearLayout>
 
@@ -164,8 +178,9 @@
         android:id="@+id/fragmentFrame"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
         android:layout_below="@+id/tabLayout"
-        android:layout_marginTop="6dp"
+        android:layout_above="@id/errorDisplay"
         android:elevation="0dp">
 
     </FrameLayout>
@@ -188,18 +203,35 @@
         android:scaleType="fitCenter"
         app:srcCompat="@drawable/ic_play_run_icon" />
 
-    <Button
-        android:id="@+id/moveOnButton"
-        style="@style/Button.PracticeCTA"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/button_background_pink"
-        android:paddingEnd="30dp"
-        android:paddingStart="30dp"
-        android:text="@string/lets_move_on_from_app"
-        android:textAllCaps="true"
-        android:textColor="@color/white" />
+    <ImageButton
+        android:id="@+id/catchBugs"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignEnd="@id/play"
+        android:layout_marginEnd="50dp"
+        android:layout_marginTop="8dp"
+        android:adjustViewBounds="false"
+        android:background="@android:color/transparent"
+        android:cropToPadding="false"
+        android:elevation="10dp"
+        android:scaleType="fitCenter"
+        app:srcCompat="@drawable/butterfly_net_small" />
+
+    <!--<Button-->
+        <!--android:id="@+id/moveOnButton"-->
+        <!--style="@style/Button.PracticeCTA"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:background="@drawable/button_background_pink"-->
+        <!--android:paddingEnd="30dp"-->
+        <!--android:paddingStart="30dp"-->
+        <!--android:text="@string/lets_move_on_from_app"-->
+        <!--android:textAllCaps="true"-->
+        <!--android:textColor="@color/white" />-->
+
+
 
 </RelativeLayout>

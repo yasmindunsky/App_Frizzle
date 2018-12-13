@@ -25,6 +25,8 @@
     <color name="appBuilderUnselectedTextInTab">#8a97dd</color>
     <color name="appBuilderPlusButton">#16bfae</color>
     <color name="appBuilderUsersAppHeader">#1b2974</color>
+    <color name="appBuilderErrorHandle">#44508f</color>
+
 
     <!--Code-->
     <color name="codeBackground">#111d5c</color>

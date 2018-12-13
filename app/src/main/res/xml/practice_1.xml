@@ -42,7 +42,11 @@
         <task_text>Run the code.</task_text>
         <reminder_text/>
         <code mutable="false" show="true" runnable ="true" waitForCTA="true">speakOut("hello");</code>
-        <design show="false" runnable="false" withOnClickFunction="false" withOnClickSet="false"></design>
+        <design
+            show="false"
+            runnable="false"
+            withOnClickFunction="false"
+            withOnClickSet="false" />
         <call_to_action>Got it</call_to_action>
     </slide>
 

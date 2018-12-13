@@ -6,11 +6,7 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.view.inputmethod.ExtractedText;
 import android.view.inputmethod.ExtractedTextRequest;
 import android.view.inputmethod.InputConnection;
@@ -19,8 +15,6 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-
-import com.airbnb.lottie.LottieAnimationView;
 
 public class CodeKeyboard extends LinearLayout implements View.OnClickListener {
 
@@ -60,12 +54,9 @@ public class CodeKeyboard extends LinearLayout implements View.OnClickListener {
         englishButton.setOnClickListener(view ->
                 inputMethodManager.toggleSoftInput(InputMethodManager.SHOW_FORCED,0));
         ImageButton buttonDelete = findViewById(R.id.button_delete);
-        buttonDelete.setOnTouchListener(new RepeatListener(400, 100, new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // the code to execute repeatedly
-                delete();
-            }
+        buttonDelete.setOnTouchListener(new RepeatListener(400, 100, view -> {
+            // the code to execute repeatedly
+            delete();
         }));
         ImageButton buttonEnter = findViewById(R.id.button_enter);
         buttonEnter.setOnClickListener(this);
@@ -121,12 +112,7 @@ public class CodeKeyboard extends LinearLayout implements View.OnClickListener {
             setVisibility(VISIBLE);
             orangeKeyImage.setAlpha(1f);
             final Handler handler = new Handler();
-            handler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    orangeKeyImage.animate().alpha(0f).setDuration(2000);
-                }
-            }, 400);
+            handler.postDelayed(() -> orangeKeyImage.animate().alpha(0f).setDuration(2000), 400);
         }
     }
 
@@ -138,12 +124,7 @@ public class CodeKeyboard extends LinearLayout implements View.OnClickListener {
             setVisibility(VISIBLE);
             greenKeyImage.setAlpha(1f);
             final Handler handler = new Handler();
-            handler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    greenKeyImage.animate().alpha(0f).setDuration(2000);
-                }
-            }, 400);
+            handler.postDelayed(() -> greenKeyImage.animate().alpha(0f).setDuration(2000), 400);
         }
     }
 

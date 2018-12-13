@@ -101,5 +101,5 @@
         <item name="android:padding">12dp</item>
     </style>
 
-    <style name="Text.Button.UserCreated"></style>
+    <style name="Text.Button.UserCreated" />
 </resources>

@@ -7,5 +7,5 @@ package com.frizzl.app.frizzleapp.map;
 enum Status {
     disabled,
     completed,
-    current;
+    current
 }

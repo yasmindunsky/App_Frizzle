@@ -2,17 +2,9 @@ package com.frizzl.app.frizzleapp.map;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.support.constraint.ConstraintLayout;
 import android.util.AttributeSet;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
 
 import com.frizzl.app.frizzleapp.R;
 import com.frizzl.app.frizzleapp.ViewUtils;
@@ -86,7 +78,7 @@ public class PracticeMapButton extends android.support.v7.widget.AppCompatButton
         setEnabled(false);
         status = Status.disabled;
         updateState(disabledDrawable,
-                (int) (originalSize),
+                originalSize,
                 originalTopMargin,
                 originalBottomMargin);
     }

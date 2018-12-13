@@ -375,4 +375,10 @@
         <item name="android:textColor">@color/lilac</item>
     </style>
 
+    <style name="Text.Build.Error"  parent="@style/Text.Basic">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/calibri_bold</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
 </resources>

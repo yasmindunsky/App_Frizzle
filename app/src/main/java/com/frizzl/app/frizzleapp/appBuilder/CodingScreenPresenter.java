@@ -11,7 +11,6 @@ import com.frizzl.app.frizzleapp.UserProfile;
 
 import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -51,7 +50,7 @@ class CodingScreenPresenter {
         String code = codingScreenFragment.getCode();
         List<String> functions = CodeCheckUtils.extractDefinedFunctions(code);
         definedFunctionsViewModel.clearFunctions();
-        definedFunctionsViewModel.setFunctions(new HashSet<String>(functions));
+        definedFunctionsViewModel.setFunctions(new HashSet<>(functions));
     }
 
     void onResume() {

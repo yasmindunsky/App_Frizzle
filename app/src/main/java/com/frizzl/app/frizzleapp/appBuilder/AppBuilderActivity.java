@@ -30,8 +30,10 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.frizzl.app.frizzleapp.AnalyticsUtils;
+import com.frizzl.app.frizzleapp.ErrorManager;
 import com.frizzl.app.frizzleapp.R;
 import com.frizzl.app.frizzleapp.SwipeDirection;
 import com.frizzl.app.frizzleapp.UserApp;
@@ -40,8 +42,6 @@ import com.frizzl.app.frizzleapp.ViewUtils;
 import com.frizzl.app.frizzleapp.map.MapActivity;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -66,7 +66,9 @@ public class AppBuilderActivity extends AppCompatActivity {
     private PopupWindow startAppPopupWindow;
     private RelativeLayout relativeLayout;
     private ExpandableLayout errorExpandableLayout;
+    private TextView errorTextView;
     private ImageButton playButton;
+    private ImageButton catchBugsButton;
     private ir.neo.stepbarview.StepBarView stepBarView;
     private com.airbnb.lottie.LottieAnimationView checkMark;
     private PopupWindow downloadingAppPopupWindow;
@@ -96,16 +98,28 @@ public class AppBuilderActivity extends AppCompatActivity {
         setContentView(mainLayout);
 
         errorExpandableLayout = findViewById(R.id.errorExpandableLayout);
+        errorTextView = findViewById(R.id.error);
         ImageButton clickToExpandError = findViewById(R.id.clickToExpandError);
         relativeLayout = findViewById(R.id.appBuilderLayout);
         playButton = findViewById(R.id.play);
-        Button moveOnButton = findViewById(R.id.moveOnButton);
+        catchBugsButton = findViewById(R.id.catchBugs);
+//        Button moveOnButton = findViewById(R.id.moveOnButton);
         TabLayout tabLayout = findViewById(R.id.tabLayout);
         android.support.v7.widget.Toolbar toolbar = findViewById(R.id.builderToolbar);
         stepBarView = findViewById(R.id.stepBarView);
         checkMark = findViewById(R.id.checkMark);
         ImageButton leftArrow = findViewById(R.id.leftArrow);
         ImageButton rightArrow = findViewById(R.id.rightArrow);
+
+        View.OnClickListener catchBugs = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String error = ErrorManager.getBuildError(currentAppLevelID, UserProfile.user.getTopSlideInLevel(),
+                        null, codingFragment.getCode());
+                if (error != null) presentError(error);
+            }
+        };
+        catchBugsButton.setOnClickListener(catchBugs);
 
         View.OnClickListener moveToPrevTaskOnClickListener = (view) -> moveToPrevTask();
         View.OnClickListener moveToNextTaskOnClickListener = (view) -> {
@@ -158,12 +172,12 @@ public class AppBuilderActivity extends AppCompatActivity {
 
         startAppPopupWindow = new StartAppPopupWindow(this);
 
-        moveOnButton.setVisibility(showMovedOn ? View.VISIBLE : View.INVISIBLE);
-        moveOnButton.setOnClickListener(v -> {
-            UserProfile.user.finishedApp(currentAppLevelID);
-            showMovedOn = false;
-            onBackPressed();
-        });
+//        moveOnButton.setVisibility(showMovedOn ? View.VISIBLE : View.INVISIBLE);
+//        moveOnButton.setOnClickListener(v -> {
+//            UserProfile.user.finishedApp(currentAppLevelID);
+//            showMovedOn = false;
+//            onBackPressed();
+//        });
 
         // Undim
         relativeLayout.setForeground(ResourcesCompat.getDrawable(getResources(),
@@ -276,14 +290,11 @@ public class AppBuilderActivity extends AppCompatActivity {
                 ViewGroup.LayoutParams.WRAP_CONTENT, true);
 
         tutorial = new Tutorial(AppBuilderActivity.this);
+    }
 
-//        playButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent pickPhoto = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-//                startActivityForResult(pickPhoto , 1);
-//            }
-//        });
+    private void presentError(String error) {
+        errorExpandableLayout.expand();
+        errorTextView.setText(error);
     }
 
     private void switchTabsIfNeeded() {
@@ -432,9 +443,6 @@ public class AppBuilderActivity extends AppCompatActivity {
                         Bitmap selectedImageBitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), selectedImageUri);
                         BitmapDrawable bitmapDrawable = new BitmapDrawable(getResources(), selectedImageBitmap);
                         currentlyEditedUserCreatedImageView.setImage(bitmapDrawable);
-                    } catch (FileNotFoundException e) {
-                        // TODO Auto-generated catch block
-                        e.printStackTrace();
                     } catch (IOException e) {
                         // TODO Auto-generated catch block
                         e.printStackTrace();
@@ -453,26 +461,20 @@ public class AppBuilderActivity extends AppCompatActivity {
         StorageReference storageReference = storageRef.child("usersImages/"+selectedImageUri.getLastPathSegment());
         UploadTask uploadTask = storageReference.putFile(selectedImageUri);
 
-        Task<Uri> urlTask = uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
-            @Override
-            public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
-                if (!task.isSuccessful()) {
-                    throw task.getException();
-                }
-
-                // Continue with the task to get the download URL
-                return storageReference.getDownloadUrl();
+        Task<Uri> urlTask = uploadTask.continueWithTask(task -> {
+            if (!task.isSuccessful()) {
+                throw task.getException();
             }
-        }).addOnCompleteListener(new OnCompleteListener<Uri>() {
-            @Override
-            public void onComplete(@NonNull Task<Uri> task) {
-                if (task.isSuccessful()) {
-                    Uri downloadUri = task.getResult();
-                    currentlyEditedUserCreatedImageView.setTag(downloadUri.toString());
-                } else {
-                    // Handle failures
 
-                }
+            // Continue with the task to get the download URL
+            return storageReference.getDownloadUrl();
+        }).addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                Uri downloadUri = task.getResult();
+                currentlyEditedUserCreatedImageView.setTag(downloadUri.toString());
+            } else {
+                // Handle failures
+
             }
         });
     }

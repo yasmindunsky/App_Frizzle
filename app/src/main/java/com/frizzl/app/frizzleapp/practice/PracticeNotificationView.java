@@ -1,7 +1,6 @@
 package com.frizzl.app.frizzleapp.practice;
 
 import android.content.Context;
-import android.opengl.Visibility;
 import android.support.v7.view.ContextThemeWrapper;
 import android.support.v7.widget.AppCompatTextView;
 import android.view.Gravity;

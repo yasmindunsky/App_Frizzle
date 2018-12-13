@@ -18,8 +18,6 @@ import com.frizzl.app.frizzleapp.appBuilder.CodeEditor;
 
 import java.util.Locale;
 
-import io.opencensus.internal.StringUtil;
-
 /**
  * Created by Noga on 12/09/2018.
  */

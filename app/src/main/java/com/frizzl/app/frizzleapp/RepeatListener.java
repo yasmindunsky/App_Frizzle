@@ -1,9 +1,5 @@
 package com.frizzl.app.frizzleapp;
 
-/**
- * Created by Noga on 26/11/2018.
- */
-
 import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;

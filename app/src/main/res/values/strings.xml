@@ -222,7 +222,12 @@ public class MainActivity extends AppCompatActivity implements   TextToSpeech.On
     <string name="correct">Correct</string>
     <string name="task_1">Task 1:</string>
     <string name="myfunction" translatable="false">myFunction</string>
-
+    <string name="hint_confession_0">Try clicking the plus button.</string>
+    <string name="hint_confession_1">Add a button and click it to edit.</string>
+    <string name="hint_confession_2">Use the keyboard to add a function and change it\'s name.</string>
+    <string name="hint_confession_3">Use the keyboard to add the speakOut command and write text inside it.</string>
+    <string name="hint_confession_4">Click the button and edit the OnClick property.</string>
+    <string name="hint_confession_5">You can swipe back to see the previous tasks.</string>
 
     <string-array name="fonts">
         <item>sans-serif</item>

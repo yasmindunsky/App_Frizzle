@@ -38,7 +38,11 @@
             mutable="true"
             runnable="true"
             waitForCTA="false" />
-        <design show = "false" runnable = "false" withOnClickFunction="false" withOnClickSet="false"></design>
+        <design
+            show="false"
+            runnable="false"
+            withOnClickFunction="false"
+            withOnClickSet="false" />
         <call_to_action>בדיקה</call_to_action>
         <solution>speakOut("this is so cool");</solution>
     </slide>

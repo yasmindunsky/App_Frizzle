@@ -106,7 +106,12 @@ Use "'" for special chars.
     <string name="internet_connection_required">דרוש חיבור אינטרנט פעיל כדי להתקין את האפליקציה.</string>
     <string name="correct">נכון</string>
     <string name="task_1">משימה 1:</string>
-
+    <string name="hint_confession_0">נסו ללחוץ על כפתור הפלוס כדי להוסיף תמונה.</string>
+    <string name="hint_confession_1">הוסיפו כפתור ולחצו עליו כדי לערוך אותו.</string>
+    <string name="hint_confession_2">השתמשו במקלדת כדי להוסיף פונקציה ושנו את שמה.</string>
+    <string name="hint_confession_3">השתמשו במקלדת כדי להוסיף את הפקודה speakOut וכתבו טקסט בתוכה.</string>
+    <string name="hint_confession_4">נסו ללחוץ על הכפתור ולמלא את שדה ה-onClick.</string>
+    <string name="hint_confession_5">ניתן לדפדף אחורה כדי לראות את המשימות הקודמות.</string>
 
     <string-array name="fonts">
         <item>sans-serif</item>

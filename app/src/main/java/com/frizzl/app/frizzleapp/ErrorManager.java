@@ -74,8 +74,9 @@ public class ErrorManager {
 
     // Returns null if error was not found, or Error to display.
     // Checks if the speakOut command is not in the right place
-    private static final ErrorCheck ERROR_FUNCTION_SPEAKOUT_IN_WRONG_PLACE = (originalCode, currentCode) -> {
-        if (!CodeCheckUtils.checkIfSpeakOutIsInsideCurlyBrackets(currentCode))
+    public static final ErrorCheck ERROR_FUNCTION_SPEAKOUT_IN_WRONG_PLACE = (originalCode, currentCode) -> {
+        if (!CodeCheckUtils.checkIfSpeakOutIsInsideCurlyBrackets(currentCode)
+                && CodeCheckUtils.checkIfContainsSpeakOutAndString(currentCode, "", true))
         {
             return FrizzlApplication.resources.getString(R.string.error_speakout_brackets);
         }
@@ -124,6 +125,7 @@ public class ErrorManager {
 
     private static Map<String, ErrorCheck[]> levelAndSlideToChecks;
     private static Map<String, ErrorCheck[]> buildTaskToChecks;
+    private static Map<String, String> taskHints;
 
     private static void init(){
         levelAndSlideToChecks = new HashMap<>();
@@ -154,8 +156,19 @@ public class ErrorManager {
                 new ErrorCheck[]{});
 
         buildTaskToChecks = new HashMap<>();
+        buildTaskToChecks.put(ContentUtils.CONFESSIONS_APP_LEVEL_ID + "_2",
+                new ErrorCheck[]{ERROR_FUNCTION_CHANGED_WHITE,
+                        ERROR_FUNCTION_SPEAKOUT_IN_WRONG_PLACE,
+                        ERROR_SPEAKOUT_SEMICOLON_MISSING,
+                        ERRORֹֹֹ_FUNCTIONS_WITH_SAME_NAME,
+                        ERRORֹֹֹ_FUNCTION_INSIDE_FUNCTION
+                });
         buildTaskToChecks.put(ContentUtils.CONFESSIONS_APP_LEVEL_ID + "_3",
                 new ErrorCheck[]{ERROR_FUNCTION_CHANGED_WHITE,
+                        ERROR_FUNCTION_SPEAKOUT_IN_WRONG_PLACE,
+                        ERROR_SPEAKOUT_SEMICOLON_MISSING,
+                        ERRORֹֹֹ_FUNCTIONS_WITH_SAME_NAME,
+                        ERRORֹֹֹ_FUNCTION_INSIDE_FUNCTION
                 });
         buildTaskToChecks.put(ContentUtils.CONFESSIONS_APP_LEVEL_ID + "_4",
                 new ErrorCheck[]{ERROR_FUNCTION_CHANGED_WHITE,
@@ -171,13 +184,20 @@ public class ErrorManager {
                         ERRORֹֹֹ_FUNCTIONS_WITH_SAME_NAME,
                         ERRORֹֹֹ_FUNCTION_INSIDE_FUNCTION
                 });
-        buildTaskToChecks.put(ContentUtils.CONFESSIONS_APP_LEVEL_ID + "_6",
-                new ErrorCheck[]{ERROR_FUNCTION_CHANGED_WHITE,
-                        ERROR_FUNCTION_SPEAKOUT_IN_WRONG_PLACE,
-                        ERROR_SPEAKOUT_SEMICOLON_MISSING,
-                        ERRORֹֹֹ_FUNCTIONS_WITH_SAME_NAME,
-                        ERRORֹֹֹ_FUNCTION_INSIDE_FUNCTION
-                });
+
+        taskHints = new HashMap<>();
+        taskHints.put(ContentUtils.CONFESSIONS_APP_LEVEL_ID + "_0",
+                FrizzlApplication.resources.getString(R.string.hint_confession_0));
+        taskHints.put(ContentUtils.CONFESSIONS_APP_LEVEL_ID + "_1",
+                FrizzlApplication.resources.getString(R.string.hint_confession_1));
+        taskHints.put(ContentUtils.CONFESSIONS_APP_LEVEL_ID + "_2",
+                FrizzlApplication.resources.getString(R.string.hint_confession_2));
+        taskHints.put(ContentUtils.CONFESSIONS_APP_LEVEL_ID + "_3",
+                FrizzlApplication.resources.getString(R.string.hint_confession_3));
+        taskHints.put(ContentUtils.CONFESSIONS_APP_LEVEL_ID + "_4",
+                FrizzlApplication.resources.getString(R.string.hint_confession_4));
+        taskHints.put(ContentUtils.CONFESSIONS_APP_LEVEL_ID + "_5",
+                FrizzlApplication.resources.getString(R.string.hint_confession_5));
     }
 
     public static String getPracticeError(int currentLevel, int currentSlide, String originalCode, String currentCode) {
@@ -199,12 +219,13 @@ public class ErrorManager {
         if (!initialized) init();
 
         String key = currentApp + "_" + currentTask;
-        if (!buildTaskToChecks.containsKey(key)) return null;
-        ErrorCheck[] checksToPerform = buildTaskToChecks.get(key);
-        for (ErrorCheck errorCheck : checksToPerform) {
-            String checkResult = errorCheck.check(originalCode, currentCode);
-            if (checkResult != null) return checkResult;
+        if (buildTaskToChecks.containsKey(key)) {
+            ErrorCheck[] checksToPerform = buildTaskToChecks.get(key);
+            for (ErrorCheck errorCheck : checksToPerform) {
+                String checkResult = errorCheck.check(originalCode, currentCode);
+                if (checkResult != null) return checkResult;
+            }
         }
-        return FrizzlApplication.resources.getString(R.string.error_read_instructions);
+        return taskHints.get(key);
     }
 }
