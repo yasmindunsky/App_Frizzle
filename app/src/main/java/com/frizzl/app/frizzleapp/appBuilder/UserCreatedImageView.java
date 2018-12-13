@@ -67,7 +67,9 @@ public class UserCreatedImageView extends UserCreatedView {
                 new GridLayout.LayoutParams(GridLayout.spec(row), GridLayout.spec(column));
         layoutParams.width = (int) context.getResources().getDimension(R.dimen.user_created_image_view_width);
         layoutParams.height = (int) context.getResources().getDimension(R.dimen.user_created_image_view_width);
-        layoutParams.setMargins(10,10,10,10);
+        int startEndMargins = (int)(context.getResources().getDimension(R.dimen.user_created_button_width) -
+                context.getResources().getDimension(R.dimen.user_created_image_view_width)) / 2;
+        layoutParams.setMargins(startEndMargins,10,startEndMargins,10);
         thisView.setLayoutParams(layoutParams);
         thisView.setScaleType(ImageView.ScaleType.CENTER_CROP);
         thisView.setForegroundGravity(Gravity.CENTER);
