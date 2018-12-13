@@ -102,7 +102,7 @@ public class UserCreatedImageView extends UserCreatedView {
         this.viewType = "ImageView";
         int textViewStyle = R.style.ImageView_UserCreated;
         this.thisView = new ImageView(context, null, 0, textViewStyle);
-        thisView.setBackground(context.getDrawable(R.drawable.blank));
+        thisView.setImageDrawable(context.getDrawable(R.drawable.blank));
         thisView.setPadding(16,10,16,10);
     }
 
@@ -124,13 +124,13 @@ public class UserCreatedImageView extends UserCreatedView {
 
     public void setImage(RadioButton selectedImageButton, String tag) {
         selectedImageID = selectedImageButton.getId();
-        thisView.setBackground(selectedImageButton.getBackground());
+        thisView.setImageDrawable(selectedImageButton.getBackground());
         String imgName = selectedImageButton.getTag().toString();
         properties.put("android:tag", ViewUtils.imgNameToAddress(imgName));
     }
 
     public void setImage(BitmapDrawable selectedImage) {
-        thisView.setBackground(selectedImage);
+        thisView.setImageDrawable(selectedImage);
     }
 
     public void createHTMLString(XmlSerializer xmlSerializer) {
