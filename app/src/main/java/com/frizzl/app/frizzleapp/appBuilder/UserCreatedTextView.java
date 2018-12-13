@@ -85,7 +85,7 @@ public class UserCreatedTextView extends UserCreatedView {
         int column = nextViewIndex % UserCreatedView.NUM_OF_COLS;
         GridLayout.LayoutParams layoutParams =
                 new GridLayout.LayoutParams(GridLayout.spec(row), GridLayout.spec(column));
-        layoutParams.width = 400;
+        layoutParams.width = (int) context.getResources().getDimension(R.dimen.user_created_button_width);
         layoutParams.setMargins(10,10,10,10);
         thisView.setLayoutParams(layoutParams);
 
@@ -103,7 +103,7 @@ public class UserCreatedTextView extends UserCreatedView {
         properties.put("android:text", (String) thisView.getText());
         properties.put("android:fontFamily", "@font/rubik_medium");
         properties.put("android:textAllCaps", "false");
-        properties.put("android:textColor", "#b93660");
+        properties.put("android:textColor",  ViewUtils.hexFromColorResource(R.color.yellow, context));
         properties.put("android:textSize", "18sp");
         properties.put("android:background", "@drawable/user_text_view_background");
         properties.put("android:padding", "10dp");
