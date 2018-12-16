@@ -34,11 +34,11 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 custom:completedDrawable="@drawable/map_app_button_completed"
-                custom:completedIcon="@drawable/ic_confession_booth_app_blue"
+                custom:completedIcon="@drawable/ic_app_confession_booth_color"
                 custom:currentDrawable="@drawable/map_app_button_current"
-                custom:currentIcon="@drawable/ic_confession_booth_app_blue"
+                custom:currentIcon="@drawable/ic_app_confession_booth_blue"
                 custom:disabledDrawable="@drawable/map_button_disabled"
-                custom:disabledIcon="@drawable/ic_confession_booth_app_blue">
+                custom:disabledIcon="@drawable/ic_app_friendship_test_blue">
                 <ImageButton
                     android:layout_width="74dp"
                     android:layout_height="74dp"
@@ -97,12 +97,13 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/friendship_intro"
                 custom:completedDrawable="@drawable/map_app_button_completed"
-                custom:completedIcon="@drawable/ic_confession_booth_app_blue"
+                custom:completedIcon="@drawable/ic_app_confession_booth_blue"
                 custom:currentDrawable="@drawable/map_app_button_current"
-                custom:currentIcon="@drawable/ic_confession_booth_app_color"
+                custom:currentIcon="@drawable/ic_app_confession_booth_color"
                 custom:disabledDrawable="@drawable/map_button_disabled"
-                custom:disabledIcon="@drawable/ic_confession_booth_app_blue"
-                custom:levelID="4">
+                custom:disabledIcon="@drawable/ic_app_confession_booth_blue"
+                custom:levelID="4"
+               >
 
                 <ImageButton
                     android:layout_marginTop="-10dp"
