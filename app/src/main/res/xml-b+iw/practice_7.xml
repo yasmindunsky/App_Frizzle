@@ -1,0 +1,54 @@
+<!--\\u000A--><!--’-->
+
+<practice xmlns:tools="http://schemas.android.com/tools"
+    tools:keep="@xml/practice_1">
+    <slide>
+        <info_text>בניית אפליקציות מורכבת משני חלקים: עיצוב האפליקציה וכתיבת קוד למחשב.</info_text>
+        <task_text />
+        <reminder_text />
+        <code mutable="false" show="false" runnable ="false" waitForCTA="false"/>
+        <design show="false" runnable="false" withOnClickFunction="false" withOnClickSet="false"/>
+        <call_to_action>הבנתי</call_to_action>
+    </slide>
+
+    <slide>
+        <info_text>כשנעצב את האפליקציה נוכל להוסיף בקלות אלמנטים כמו טקסט, כפתור ותמונה.</info_text>
+        <task_text>נסו ללחוץ על הכפתור.</task_text>
+        <reminder_text />
+        <code
+            mutable="false"
+            show="false"
+            runnable="false"
+            waitForCTA="false" />
+        <design show="true" runnable="false" withOnClickFunction="false" withOnClickSet="false">My button</design>
+        <call_to_action>הבנתי</call_to_action>
+    </slide>
+
+    <slide>
+        <info_text>בשביל לגרום לאלמנטים האלה להיות פעילים נלמד לכתוב קוד בשפת תכנות שנקראת ג'אווה סקריפט.</info_text>
+        <task_text/>
+        <reminder_text/>
+        <code mutable="false" show="true" runnable ="false" waitForCTA="false">// כאן תוכלו לכתוב בהמשך קוד למחשב בשפת ג'אווה</code>
+        <design show="false" runnable="false" withOnClickFunction="false" withOnClickSet="false"/>
+        <call_to_action>הבנתי</call_to_action>
+    </slide>
+
+    <slide>
+        <info_text>באמצעות קוד אנחנו מגדירים למחשב איך להתנהג, למשל:</info_text>
+        <task_text>הריצו את הקוד.</task_text>
+        <reminder_text/>
+        <code mutable="false" show="true" runnable ="true" waitForCTA="true">speakOut("hello");</code>
+        <design show="false" runnable="false" withOnClickFunction="false" withOnClickSet="false"/>
+        <call_to_action>הבנתי</call_to_action>
+    </slide>
+
+    <slide>
+        <info_text>פקודת ה-speakOut היא $orange$הפקודה$orange$ הראשונה שנלמד, באמצעותה נפקוד על המחשב לדבר.</info_text>
+        <task_text/>
+        <reminder_text/>
+        <code mutable="false" show="true" runnable ="true" waitForCTA="false">speakOut("my first command!");</code>
+        <design show="false" runnable="false" withOnClickFunction="false" withOnClickSet="false"/>
+        <call_to_action>הבנתי</call_to_action>
+    </slide>
+
+</practice>

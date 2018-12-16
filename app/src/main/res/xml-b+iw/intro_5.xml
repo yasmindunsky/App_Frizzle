@@ -1,0 +1,44 @@
+<!--\\u000A--><!--’-->
+
+<practice xmlns:tools="http://schemas.android.com/tools"
+    tools:keep="@xml/practice_1">
+    <slide>
+        <info_text>עכשיו נלמד כל מה שצריך בשביל לבנות את אפליקצת הוידויים.</info_text>
+        <task_text />
+        <reminder_text />
+        <code mutable="false" shows="false" runnable ="false" waitForCTA="false"/>
+        <design shows="false" runnable="false"/>
+        <call_to_action>הבנתי</call_to_action>
+    </slide>
+
+    <slide>
+        <info_text>כך תראה האפליקציה שנלמד לבנות:</info_text>
+        <task_text/>
+        <reminder_text />
+        <code mutable="false" shows="false" runnable ="false" waitForCTA="false"/>
+        <design shows="true" runnable="false"  withOnClickSet="false"/>
+        <!--Design shows here represents if to present the Polly app-->
+        <call_to_action>הבנתי</call_to_action>
+    </slide>
+
+    <slide>
+        <info_text />
+        <task_text>נסו להשתמש בה.</task_text>
+        <reminder_text/>
+        <code mutable="false" shows="false" runnable ="false" waitForCTA="false"/>
+        <design shows="true" runnable="true"  withOnClickSet="false"/>
+        <!--Design shows here represents if to present the Polly app-->
+        <!--And runnable is waitForCTA-->
+        <call_to_action>הבנתי</call_to_action>
+    </slide>
+
+    <slide>
+        <info_text>תוכלו לבחור בעצמכם מה יהיה כתוב על הכפתורים ומה הם יחשפו.</info_text>
+        <task_text/>
+        <reminder_text/>
+        <code mutable="false" shows="false" runnable ="true" waitForCTA="false"/>
+        <design shows="false" runnable="false" withOnClickSet="false"/>
+        <call_to_action>הבנתי</call_to_action>
+    </slide>
+
+</practice>

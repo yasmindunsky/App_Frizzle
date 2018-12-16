@@ -1,0 +1,30 @@
+<!--\\u000A-->
+
+<app xmlns:tools="http://schemas.android.com/tools"
+    tools:keep="@xml/app_1">
+    <task>
+        <text name="text">הוסיפו תמונה על ידי הוספת אלמנט תמונה.
+        </text>
+    </task>
+
+    <task>
+        <text name="text">הוסיפו כפתור וכתבו עליו שאלה.</text>
+    </task>
+
+    <task>
+        <text name="text">הוסיפו פונקציה לקוד ותנו לה שם.</text>
+    </task>
+
+    <task>
+        <text name="text">כתבו פקודת speakOut בתוך הפונקציה.</text>
+    </task>
+
+    <task>
+        <text name="text">חברו את הפונקציה לכפתור.</text>
+    </task>
+
+    <task>
+        <text name="text">חזרו על שלבים אלו: הוסיפו כפתור אחד ופונקציה המחוברת אליו.</text>
+    </task>
+
+</app>

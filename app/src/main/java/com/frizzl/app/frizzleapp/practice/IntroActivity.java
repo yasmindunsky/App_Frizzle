@@ -31,7 +31,7 @@ public class IntroActivity extends FragmentActivity {
             practiceContentParser = new PracticeContentParser();
             currentPractice = practiceContentParser.parsePractice(this,
                     levelID,
-                    "intro");
+                    "intro_" + levelID);
         } catch (XmlPullParserException e) {
             e.printStackTrace();
         }

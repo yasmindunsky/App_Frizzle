@@ -8,8 +8,8 @@ android {
         applicationId "com.frizzl.app.frizzleapp"
         minSdkVersion 23
         targetSdkVersion 28
-        versionCode 16
-        versionName "2.0.2"
+        versionCode 17
+        versionName "2.0.3"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {

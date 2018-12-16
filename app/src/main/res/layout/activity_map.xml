@@ -27,12 +27,76 @@
             android:paddingTop="5dp">
 
             <com.frizzl.app.frizzleapp.map.AppMapButton
+                android:id="@+id/gif_app"
+                style="@style/Button.MapApp"
+                android:orientation="vertical"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintHorizontal_bias="0.9"
+                custom:completedDrawable="@drawable/map_app_button_completed"
+                custom:completedIcon="@drawable/ic_app_confession_booth_color"
+                custom:currentDrawable="@drawable/map_app_button_current"
+                custom:currentIcon="@drawable/ic_app_confession_booth_blue"
+                custom:disabledDrawable="@drawable/map_button_disabled"
+                custom:disabledIcon="@drawable/ic_app_friendship_test_blue">
+                <ImageButton
+                    android:layout_width="74dp"
+                    android:layout_height="74dp"
+                    android:scaleType="fitCenter" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textAppearance="@style/Text.Map.App"
+                    android:text="@string/friendship_test_app"
+                    />
+
+            </com.frizzl.app.frizzleapp.map.AppMapButton>
+
+            <com.frizzl.app.frizzleapp.map.PracticeMapButton
+                android:id="@+id/gif_2_practice"
+                style="@style/Button.MapPractice"
+                android:layout_marginTop="22dp"
+                android:text="@string/variables_practice"
+                android:textAppearance="@style/Text.Map"
+                app:layout_constraintHorizontal_bias="0.8"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/gif_app" />
+
+            <com.frizzl.app.frizzleapp.map.PracticeMapButton
+                android:id="@+id/gif_1_practice"
+                style="@style/Button.MapPractice"
+                android:layout_marginTop="16dp"
+                android:text="@string/views_practice"
+                android:textAppearance="@style/Text.Map"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.65"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/gif_2_practice" />
+
+            <com.frizzl.app.frizzleapp.map.PracticeMapButton
+                android:id="@+id/gif_intro"
+                style="@style/Button.MapPractice"
+                android:text="@string/intro"
+                android:layout_marginTop="8dp"
+                android:textAppearance="@style/Text.Map"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.3"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/gif_1_practice"
+                />
+
+
+            <com.frizzl.app.frizzleapp.map.AppMapButton
                 android:id="@+id/friendship_app"
                 style="@style/Button.MapApp"
                 android:background="@drawable/map_app_circle_b_app_selector"
                 android:orientation="vertical"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/gif_intro"
                 custom:completedDrawable="@drawable/map_app_button_completed"
                 custom:completedIcon="@drawable/ic_app_confession_booth_color"
                 custom:currentDrawable="@drawable/map_app_button_current"

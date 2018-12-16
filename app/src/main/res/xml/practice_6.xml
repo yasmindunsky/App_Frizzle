@@ -1,0 +1,67 @@
+<!--\\u000A--><!--’-->
+
+<practice xmlns:tools="http://schemas.android.com/tools"
+    tools:keep="@xml/practice_1">
+    <slide>
+        <info_text>Building apps has two aspects: designing the app and writing code.</info_text>
+        <task_text />
+        <reminder_text />
+        <code mutable="false" show="false" runnable ="false" waitForCTA="false"/>
+        <design show="false" runnable="false" withOnClickFunction="false" withOnClickSet="false"/>
+        <call_to_action>Got it</call_to_action>
+    </slide>
+
+    <slide>
+        <info_text>When we design our app we can easily add elements such as text, a button or an image.</info_text>
+        <task_text>Try clicking the button.</task_text>
+        <reminder_text />
+        <code
+            mutable="false"
+            show="false"
+            runnable="false"
+            waitForCTA="false" />
+        <design show="true" runnable="false" withOnClickFunction="false" withOnClickSet="false">My Button</design>
+        <call_to_action>Got it</call_to_action>
+    </slide>
+
+    <slide>
+        <info_text>To make those elements active, we will learn to write code in a programming language called Javascript.</info_text>
+        <task_text/>
+        <reminder_text/>
+        <code mutable="false" show="true" runnable ="false" waitForCTA="false">// Here you will later write code in Java </code>
+        <design
+            show="false"
+            runnable="false"
+            withOnClickFunction="false"
+            withOnClickSet="false" />
+        <call_to_action>Got it</call_to_action>
+    </slide>
+
+    <slide>
+        <info_text>With code we instruct the computer how to behave, for example:</info_text>
+        <task_text>Run the code.</task_text>
+        <reminder_text/>
+        <code mutable="false" show="true" runnable ="true" waitForCTA="true">speakOut("hello");</code>
+        <design
+            show="false"
+            runnable="false"
+            withOnClickFunction="false"
+            withOnClickSet="false" />
+        <call_to_action>Got it</call_to_action>
+    </slide>
+
+    <slide>
+        <info_text>The first $orange$command$orange$ we will learn is the $orange$speakOut command$orange$.
+It commands the computer to read text aloud.</info_text>
+        <task_text/>
+        <reminder_text/>
+        <code mutable="false" show="true" runnable ="true" waitForCTA="false">speakOut("my first command!");</code>
+        <design
+            show="false"
+            runnable="false"
+            withOnClickFunction="false"
+            withOnClickSet="false" />
+        <call_to_action>Got it</call_to_action>
+    </slide>
+
+</practice>

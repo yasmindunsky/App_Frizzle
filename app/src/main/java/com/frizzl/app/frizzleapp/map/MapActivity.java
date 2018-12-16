@@ -43,25 +43,33 @@ public class MapActivity extends AppCompatActivity {
 
         PracticeMapButton confessionsIntroButton = findViewById(R.id.confession_intro);
         friendshipIntroButton = findViewById(R.id.friendship_intro);
+        PracticeMapButton gifIntroButton = findViewById(R.id.gif_intro);
         AppMapButton confessionsAppButton = findViewById(R.id.confession_app);
         AppMapButton friendshipTestAppButton = findViewById(R.id.friendship_app);
-        PracticeMapButton firstPracticeButton = findViewById(R.id.first_practice);
-        PracticeMapButton speakOutPracticeButton = findViewById(R.id.speakout_practice);
-        PracticeMapButton onClickPracticeButton = findViewById(R.id.onclick_practice);
-        PracticeMapButton viewsPracticeButton = findViewById(R.id.views_practice);
-        PracticeMapButton variablesPracticeButton = findViewById(R.id.variables_practice);
+        AppMapButton gifAppButton = findViewById(R.id.gif_app);
+        PracticeMapButton practice1Button = findViewById(R.id.first_practice);
+        PracticeMapButton practice2Button = findViewById(R.id.speakout_practice);
+        PracticeMapButton practice3Button = findViewById(R.id.onclick_practice);
+        PracticeMapButton practice6Button = findViewById(R.id.views_practice);
+        PracticeMapButton practice7Button = findViewById(R.id.variables_practice);
+        PracticeMapButton practice10Button = findViewById(R.id.gif_1_practice);
+        PracticeMapButton practice11Button = findViewById(R.id.gif_2_practice);
 
         // Notice: Should be in order of appearance!
         levelButtons.addAll(Arrays.asList(
                 confessionsIntroButton,
-                firstPracticeButton,
-                speakOutPracticeButton,
-                onClickPracticeButton,
+                practice1Button,
+                practice2Button,
+                practice3Button,
                 confessionsAppButton,
                 friendshipIntroButton,
-                viewsPracticeButton,
-                variablesPracticeButton,
-                friendshipTestAppButton));
+                practice6Button,
+                practice7Button,
+                friendshipTestAppButton,
+                gifIntroButton,
+                practice10Button,
+                practice11Button,
+                gifAppButton));
 
         HelpPopupWindow helpPopupWindow = new HelpPopupWindow(this);
 
@@ -109,15 +117,18 @@ public class MapActivity extends AppCompatActivity {
                     new NotifyMePopupWindow(this);
             ViewUtils.presentPopup(notifyMePopupWindow, null, constraintLayout, constraintLayout, this);
         };
-        friendshipIntroButton.setOnClickListener(openNotifyMe);
-        firstPracticeButton.setOnClickListener(onClickedPractice);
-        speakOutPracticeButton.setOnClickListener(onClickedPractice);
-        onClickPracticeButton.setOnClickListener(onClickedPractice);
-        viewsPracticeButton.setOnClickListener(onClickedPractice);
-        variablesPracticeButton.setOnClickListener(onClickedPractice);
-        
-        confessionsAppButton.setOnClickListeners(onClickedApp);
+//        friendshipIntroButton.setOnClickListener(openNotifyMe);
         confessionsIntroButton.setOnClickListener(onClickedIntro);
+        friendshipIntroButton.setOnClickListener(onClickedIntro);
+
+        practice1Button.setOnClickListener(onClickedPractice);
+        practice2Button.setOnClickListener(onClickedPractice);
+        practice3Button.setOnClickListener(onClickedPractice);
+        practice6Button.setOnClickListener(onClickedPractice);
+        practice7Button.setOnClickListener(onClickedPractice);
+
+        confessionsAppButton.setOnClickListeners(onClickedApp);
+        friendshipTestAppButton.setOnClickListeners(onClickedApp);
 
         // Set scroll position.
         scrollView.post(() -> scrollView.fullScroll(View.FOCUS_DOWN));
