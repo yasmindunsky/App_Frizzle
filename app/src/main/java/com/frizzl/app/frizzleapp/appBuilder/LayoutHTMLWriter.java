@@ -90,7 +90,7 @@ class LayoutHTMLWriter {
             xmlSerializer.text("@charset \"UTF-8\";" +
                     
                     "body {" +
-                    "  /* Disable text seection and highlighting. */" +
+                    "  /* Disable text selection and highlighting. */" +
                     "  -webkit-user-select: none; " +
                     "  -webkit-tap-highlight-color: transparent;" +
                     "  -webkit-touch-callout: none;" +

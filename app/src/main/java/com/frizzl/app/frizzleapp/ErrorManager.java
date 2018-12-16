@@ -5,9 +5,7 @@ import com.frizzl.app.frizzleapp.ContentUtils;
 import com.frizzl.app.frizzleapp.FrizzlApplication;
 import com.frizzl.app.frizzleapp.R;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -15,6 +13,7 @@ import java.util.Map;
  */
 
 public class ErrorManager {
+    private static boolean initialized = false;
 
     interface ErrorCheck {
         String check(String originalCode, String currentCode);
@@ -124,10 +123,10 @@ public class ErrorManager {
     };
 
     private static Map<String, ErrorCheck[]> levelAndSlideToChecks;
-    private static Map<String, ErrorCheck[]> buildTaskToChecks;
     private static Map<String, String> taskHints;
 
     private static void init(){
+        initialized = true;
         levelAndSlideToChecks = new HashMap<>();
         levelAndSlideToChecks.put(ContentUtils.SPEAKOUT_PRACTICE_LEVEL_ID + "_1",
                 new ErrorCheck[]{ERROR_GENERAL,
@@ -155,7 +154,7 @@ public class ErrorManager {
         levelAndSlideToChecks.put(ContentUtils.ONCLICK_PRACTICE_LEVEL_ID + "_9",
                 new ErrorCheck[]{});
 
-        buildTaskToChecks = new HashMap<>();
+        Map<String, ErrorCheck[]> buildTaskToChecks = new HashMap<>();
         buildTaskToChecks.put(ContentUtils.CONFESSIONS_APP_LEVEL_ID + "_2",
                 new ErrorCheck[]{ERROR_FUNCTION_CHANGED_WHITE,
                         ERROR_FUNCTION_SPEAKOUT_IN_WRONG_PLACE,
@@ -201,7 +200,6 @@ public class ErrorManager {
     }
 
     public static String getPracticeError(int currentLevel, int currentSlide, String originalCode, String currentCode) {
-        boolean initialized = false;
         if (!initialized) init();
 
         String key = currentLevel + "_" + currentSlide;
@@ -215,7 +213,6 @@ public class ErrorManager {
     }
 
     public static String getBuildError(int currentApp, int currentTask, String originalCode, String currentCode) {
-        boolean initialized = false;
         if (!initialized) init();
 
         String key = currentApp + "_" + currentTask;

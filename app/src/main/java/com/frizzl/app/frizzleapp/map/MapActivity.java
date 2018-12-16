@@ -139,12 +139,9 @@ public class MapActivity extends AppCompatActivity {
         levelButtons.get(topLevel).setCurrent();
         // Focus on new course
         if (topLevel == 5){
-            constraintLayout.post(new Runnable() {
-                @Override
-                public void run() {
-                    friendshipIntroButton.getParent().requestChildFocus(friendshipIntroButton,friendshipIntroButton);
+            constraintLayout.post(() -> {
+                friendshipIntroButton.getParent().requestChildFocus(friendshipIntroButton,friendshipIntroButton);
 //                    scrollView.scrollTo(0, friendshipIntroButton.getBottom());
-                }
             });
         }
     }

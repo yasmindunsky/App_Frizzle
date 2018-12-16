@@ -211,9 +211,9 @@ public class MainActivity extends AppCompatActivity implements   TextToSpeech.On
     <string name="notification_semicolon">Every command must end with a semicolon.</string>
     <string name="notification_space">Commands must be written exactly as presented.</string>
     <string name="install_permission_request">We\'re about to install your app, we just need your permission first</string>
-    <string name="ok">ok</string>
-    <string name="cancel">cancel</string>
-    <string name="downloading_your_app">Downloading your app...</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="downloading_your_app">Downloading your app…</string>
     <string name="downloading_this_is_so_exciting">This is so exciting!</string>
     <string name="well_done">Well Done</string>
     <string name="completed_first_practice">You completed your first practice.</string>
@@ -229,6 +229,9 @@ public class MainActivity extends AppCompatActivity implements   TextToSpeech.On
     <string name="hint_confession_3">Use the keyboard to add the speakOut command and write text inside it.</string>
     <string name="hint_confession_4">Click the button and edit the OnClick property.</string>
     <string name="hint_confession_5">You can swipe back to see the previous tasks.</string>
+    <string name="first_course_completed">You completed your first course!</string>
+    <string name="fill_in_email">Fill in your e-mail to be notified when our next course is available.</string>
+    <string name="notify_me">Notify Me</string>
 
     <string-array name="fonts">
         <item>sans-serif</item>

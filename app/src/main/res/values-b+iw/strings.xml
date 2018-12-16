@@ -97,7 +97,7 @@ Use "'" for special chars.
     <string name="install_permission_request">מיד נתקין את האפליקציה שלך, אנחנו רק זקוקים לאישור הרשאה ממך</string>
     <string name="ok">בסדר</string>
     <string name="cancel">ביטול</string>
-    <string name="downloading_your_app">האפליקציה שלך יורדת...</string>
+    <string name="downloading_your_app">האפליקציה שלך יורדת…</string>
     <string name="downloading_this_is_so_exciting">מאד מרגש!</string>
     <string name="well_done">יפה מאד</string>
     <string name="completed_first_practice">השלמת את התרגול הראשון.</string>
@@ -112,6 +112,9 @@ Use "'" for special chars.
     <string name="hint_confession_3">השתמשו במקלדת כדי להוסיף את הפקודה speakOut וכתבו טקסט בתוכה.</string>
     <string name="hint_confession_4">נסו ללחוץ על הכפתור ולמלא את שדה ה-onClick.</string>
     <string name="hint_confession_5">ניתן לדפדף אחורה כדי לראות את המשימות הקודמות.</string>
+    <string name="first_course_completed">השלמת את הקורס הראשון!</string>
+    <string name="fill_in_email">מלאו את המייל שלכם ונודיע לכם כשהקרוס הבא יהיה זמין.</string>
+    <string name="notify_me">עדכנו אותי</string>
 
     <string-array name="fonts">
         <item>sans-serif</item>

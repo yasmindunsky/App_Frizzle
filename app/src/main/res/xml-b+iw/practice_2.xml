@@ -52,7 +52,11 @@
         <task_text>מחקו את סימן הנקודה-פסיק בסוף הפקודה והריצו את הקוד.</task_text>
         <reminder_text/>
         <code show ="true" mutable="true" runnable="true" waitForCTA="true">speakOut("Hello");</code>
-        <design show = "false" runnable = "false" withOnClickFunction="false" withOnClickSet="false"></design>
+        <design
+            show="false"
+            runnable="false"
+            withOnClickFunction="false"
+            withOnClickSet="false" />
         <call_to_action>הבנתי</call_to_action>
     </slide>
 

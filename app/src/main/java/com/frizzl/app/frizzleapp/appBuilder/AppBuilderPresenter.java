@@ -79,15 +79,15 @@ class AppBuilderPresenter {
         Log.d("INSTALL", "in AppBuilderPresenter, downloadApk()");
         new DownloadApkFromServer(output -> {
             if (output.equals(ViewUtils.CONNECTION_FAILED)) {
-                myTrace.putAttribute("proccess_status", "connection_failed");
+                myTrace.putAttribute("process_status", "connection_failed");
                 appBuilderActivity.presentConnectionNeededPopup();
             }
-            else if (output == null || output.equals("")){
-                myTrace.putAttribute("proccess_status", "no_output");
+            else if (output.equals("")){
+                myTrace.putAttribute("process_status", "no_output");
                 output = "no output from server";
             }
             else {
-                myTrace.putAttribute("proccess_status", "success");
+                myTrace.putAttribute("process_status", "success");
                 installUsersApp();
             }
             Log.d("INSTALL", "in AppBuilderPresenter, downloadApk(), output:" + output);

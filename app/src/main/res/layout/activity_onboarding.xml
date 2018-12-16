@@ -68,7 +68,7 @@
     <android.support.v7.widget.AppCompatButton
         android:id="@+id/nextButton"
         android:textAppearance="@style/Text.Button.Turquise"
-        android:textColor="@color/turquise"
+        android:textColor="@color/turquoise"
         style="@style/Button.Hollow.Turquise"
         android:layout_marginBottom="24dp"
         android:layout_marginTop="24dp"

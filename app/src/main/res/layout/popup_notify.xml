@@ -20,7 +20,7 @@
           android:textSize="26sp"
           android:layout_marginTop="36dp"
           app:layout_constraintTop_toTopOf="parent"
-          android:text="You completed your first course!"
+          android:text="@string/first_course_completed"
           />
 
         <ImageView
@@ -41,7 +41,7 @@
             android:layout_height="wrap_content"
             android:textAppearance="@style/Text.Info"
             android:textAlignment="center"
-            android:text="Fill in your e-mail to be notified when our next course is available."
+            android:text="@string/fill_in_email"
             android:layout_marginStart="24dp"
             android:layout_marginEnd="24dp"
             android:layout_marginTop="16dp"
@@ -80,7 +80,7 @@
             style="@style/Button.Turquoise"
             android:layout_marginBottom="36dp"
             android:layout_marginTop="36dp"
-            android:text="Notify Me"
+            android:text="@string/notify_me"
             android:textAppearance="@style/Text.Title.Light"
             android:textColor="@color/white"
             

@@ -6,7 +6,7 @@
         <shape>
             <stroke
                 android:width="2dp"
-                android:color="@color/turquise" />
+                android:color="@color/turquoise" />
             <corners android:radius="5dp">
             </corners>
         </shape>

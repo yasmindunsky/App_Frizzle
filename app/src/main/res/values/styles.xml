@@ -197,7 +197,7 @@
     </style>
 
     <style name="Text.Button.Turquise" parent="@style/Text.Button">
-        <item name="android:textColor">@color/turquise</item>
+        <item name="android:textColor">@color/turquoise</item>
     </style>
 
     <style name="Text.Button.DarkBlue" parent="@style/Text.Button">
@@ -215,7 +215,7 @@
     </style>
 
     <style name="Text.BigTitle.Torquise" parent="@style/Text.PageTitle">
-        <item name="android:textColor">@color/turquise</item>
+        <item name="android:textColor">@color/turquoise</item>
     </style>
 
     <style name="Text.Title.Light" parent="@style/Text.Title">
@@ -233,8 +233,8 @@
         <item name="android:letterSpacing">0</item>
     </style>
 
-    <style name="Text.Title.Torquise"  parent="@style/Text.ColoredTitle">
-        <item name="android:textColor">@color/turquise</item>
+    <style name="Text.Title.Torquoise"  parent="@style/Text.ColoredTitle">
+        <item name="android:textColor">@color/turquoise</item>
     </style>
 
     <style name="Text.Title.PropertiesTable" parent="@android:style/TextAppearance.DeviceDefault.Medium">

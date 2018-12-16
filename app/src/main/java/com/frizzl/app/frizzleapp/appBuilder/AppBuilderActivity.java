@@ -26,7 +26,6 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
@@ -40,8 +39,6 @@ import com.frizzl.app.frizzleapp.UserApp;
 import com.frizzl.app.frizzleapp.UserProfile;
 import com.frizzl.app.frizzleapp.ViewUtils;
 import com.frizzl.app.frizzleapp.map.MapActivity;
-import com.google.android.gms.tasks.Continuation;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -50,7 +47,6 @@ import com.tooltip.OnDismissListener;
 
 import net.cachapa.expandablelayout.ExpandableLayout;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Map;
 
@@ -111,13 +107,10 @@ public class AppBuilderActivity extends AppCompatActivity {
         ImageButton leftArrow = findViewById(R.id.leftArrow);
         ImageButton rightArrow = findViewById(R.id.rightArrow);
 
-        View.OnClickListener catchBugs = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String error = ErrorManager.getBuildError(currentAppLevelID, UserProfile.user.getTopSlideInLevel(),
-                        null, codingFragment.getCode());
-                if (error != null) presentError(error);
-            }
+        View.OnClickListener catchBugs = v -> {
+            String error = ErrorManager.getBuildError(currentAppLevelID, UserProfile.user.getTopSlideInLevel(),
+                    null, codingFragment.getCode());
+            if (error != null) presentError(error);
         };
         catchBugsButton.setOnClickListener(catchBugs);
 
