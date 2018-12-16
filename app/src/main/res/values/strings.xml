@@ -135,7 +135,7 @@ public class MainActivity extends AppCompatActivity implements   TextToSpeech.On
     <string name="choose_image">Choose Image</string>
     <string name="speakout_keyboard" translatable="false">speakOut(\"…\")</string>
     <string name="function_keyboard">Add function</string>
-    <string name="error_text">Error text</string>
+    <string name="error_text">Click the bug catcher icon if you\'re stuck.</string>
     <string name="lets_move_on_from_app">let\'s move on</string>
     <string name="friendship_test_app">Friendship\nTest App</string>
     <string name="variables_practice">Practice 2</string>

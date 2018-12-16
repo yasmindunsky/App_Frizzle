@@ -22,7 +22,7 @@ Use "'" for special chars.
     <string name="function_name">שם הפונקציה</string>
     <string name="choose_image">בחירת תמונה</string>
     <string name="function_keyboard">הוספת פונקציה</string>
-    <string name="error_text">הודעת שגיאה</string>
+    <string name="error_text">לחצו על אייקון לוכד הבאגים אם אתם תקועים</string>
     <string name="lets_move_on_from_app">בואו נמשיך</string>
     <string name="variables_practice">תרגול 2</string>
     <string name="views_practice">תרגול 1</string>
