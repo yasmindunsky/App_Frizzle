@@ -219,13 +219,14 @@ public class ErrorManager {
         if (!initialized) init();
 
         String key = currentApp + "_" + currentTask;
-        if (buildTaskToChecks.containsKey(key)) {
-            ErrorCheck[] checksToPerform = buildTaskToChecks.get(key);
-            for (ErrorCheck errorCheck : checksToPerform) {
-                String checkResult = errorCheck.check(originalCode, currentCode);
-                if (checkResult != null) return checkResult;
-            }
-        }
+//        if (buildTaskToChecks.containsKey(key)) {
+//            ErrorCheck[] checksToPerform = buildTaskToChecks.get(key);
+//            for (ErrorCheck errorCheck : checksToPerform) {
+//                String checkResult = errorCheck.check(originalCode, currentCode);
+//                if (checkResult != null) return checkResult;
+//            }
+//        }
+        // Currently returning only hints.
         return taskHints.get(key);
     }
 }
