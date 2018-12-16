@@ -91,7 +91,7 @@ public class AppMapButton extends LinearLayout implements MapButton{
 
     @Override
     public void setCurrent() {
-        super.setEnabled(true);
+        setEnabledForAll(true);
         status = Status.current;
         updateState(currentDrawable,
                 currentIcon,
@@ -103,7 +103,7 @@ public class AppMapButton extends LinearLayout implements MapButton{
 
     @Override
     public void setCompleted() {
-        super.setEnabled(true);
+        setEnabledForAll(true);
         status = Status.completed;
         updateState(completedDrawable,
                 completedIcon,
@@ -136,7 +136,6 @@ public class AppMapButton extends LinearLayout implements MapButton{
     }
 
     public void setOnClickListeners(OnClickListener onClickListener) {
-        setEnabledForAll(true);
         setOnClickListener(onClickListener);
         AppMapButton parentLayout = this;
         OnClickListener childrenListener = v -> parentLayout.callOnClick();
