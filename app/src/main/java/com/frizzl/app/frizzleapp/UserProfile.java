@@ -19,6 +19,7 @@ public class UserProfile implements Serializable {
 
     private AppTasks currentAppTasks;
     private UserApp confessionUserApp;
+    private UserApp friendshipUserApp;
 
     // Level is of apps and practices combined.
     private int currentLevel;
@@ -44,7 +45,8 @@ public class UserProfile implements Serializable {
 
     private void init(){
         confessionUserApp = null;
-        topLevel = 0; // TODO: change before release
+        friendshipUserApp = null;
+        topLevel = 8; // TODO: change before release
         currentLevel = 0;
         currentSlideInLevel = 0;
         topSlideInLevel = 0;
@@ -59,11 +61,24 @@ public class UserProfile implements Serializable {
     }
 
     public UserApp getCurrentUserApp() {
-        return confessionUserApp;
+        if (ContentUtils.CONFESSIONS_APP_LEVEL_ID == currentLevel) {
+            return confessionUserApp;
+        }
+        else if (ContentUtils.FRIENDSHIP_APP_LEVEL_ID == currentLevel) {
+            return friendshipUserApp;
+        }
+        else {
+            return null;
+        }
     }
 
-    public void setCurrentUserAppLevelID(UserApp currentUserApp) {
-        confessionUserApp = currentUserApp;
+    public void setCurrentUserApp(UserApp currentUserApp) {
+        if (ContentUtils.CONFESSIONS_APP_LEVEL_ID == currentLevel) {
+            confessionUserApp = currentUserApp;
+        }
+        else if (ContentUtils.FRIENDSHIP_APP_LEVEL_ID == currentLevel) {
+            friendshipUserApp = currentUserApp;
+        }
     }
 
     public int getCurrentLevel() {

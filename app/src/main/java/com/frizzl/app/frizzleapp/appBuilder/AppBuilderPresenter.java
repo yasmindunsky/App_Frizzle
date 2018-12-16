@@ -46,7 +46,7 @@ class AppBuilderPresenter {
 //                userCreatedViewsModel.getNextViewIndex());
 //        currentUserApp.setXml(xml);
 //        currentUserApp.setCode(code);
-//        UserProfile.user.setCurrentUserAppLevelID(currentUserApp);
+//        UserProfile.user.setCurrentUserApp(currentUserApp);
 //    }
 
     void saveProject() {
@@ -61,7 +61,7 @@ class AppBuilderPresenter {
         currentUserApp.setXml(xml);
         currentUserApp.setCode(code);
         currentUserApp.setManifest(manifest);
-        UserProfile.user.setCurrentUserAppLevelID(currentUserApp);
+        UserProfile.user.setCurrentUserApp(currentUserApp);
         UserProfile.user.storeSerializedObject(appBuilderActivity.getBaseContext());
     }
 
@@ -148,7 +148,7 @@ class AppBuilderPresenter {
         LayoutXmlWriter layoutXmlWriter = new LayoutXmlWriter();
         String manifest = layoutXmlWriter.writeManifest(icon, appName);
         currentUserApp.setManifest(manifest);
-        UserProfile.user.setCurrentUserAppLevelID(currentUserApp);
+        UserProfile.user.setCurrentUserApp(currentUserApp);
         appBuilderActivity.updateAppNameAndIcon(appName, icon);
     }
 
@@ -156,7 +156,7 @@ class AppBuilderPresenter {
         UserApp currentUserApp = UserProfile.user.getCurrentUserApp();
         if (currentUserApp == null){
             currentUserApp = new UserApp(currentAppLevelID);
-            UserProfile.user.setCurrentUserAppLevelID(currentUserApp);
+            UserProfile.user.setCurrentUserApp(currentUserApp);
             justOpenedApp = true;
         }
     }

@@ -33,7 +33,7 @@ class DesignScreenPresenter {
         currentUserApp.setViews(designScreenFragment.getViews(), designScreenFragment.getNumOfButtons(),
                 designScreenFragment.getNumOfTextViews(),  designScreenFragment.getNumOfImageViews(),
                 designScreenFragment.getNextViewIndex());
-                UserProfile.user.setCurrentUserAppLevelID(currentUserApp);
+                UserProfile.user.setCurrentUserApp(currentUserApp);
     }
 
     public void addNewUserCreatedView(Context context, String viewType) {
