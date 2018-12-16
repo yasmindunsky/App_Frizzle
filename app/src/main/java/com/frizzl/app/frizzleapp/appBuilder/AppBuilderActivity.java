@@ -354,7 +354,7 @@ public class AppBuilderActivity extends AppCompatActivity {
     }
 
     private String getAppID() {
-        return UserProfile.getUserID() + getResources().getString(R.string.confession_booth_app);
+        return UserProfile.getUserID() + getResources().getString(R.string.confession_booth_app_for_url);
     }
 
     public void presentPopup(PopupWindow popupWindow, Runnable runOnDismiss) {

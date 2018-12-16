@@ -22,11 +22,13 @@ class MapPresenter {
     }
 
     void onClickedApp(int levelID){
+        UserProfile.user.storeSerializedObject(mapActivity);
         UserProfile.user.setCurrentLevel(levelID);
         mapActivity.goToApp(levelID);
     }
 
     void onClickedPractice(int levelID){
+        UserProfile.user.storeSerializedObject(mapActivity);
         UserProfile.user.setCurrentLevel(levelID);
         mapActivity.goToPractice(levelID);
     }

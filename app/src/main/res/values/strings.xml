@@ -141,6 +141,7 @@ public class MainActivity extends AppCompatActivity implements   TextToSpeech.On
     <string name="variables_practice">Practice 2</string>
     <string name="views_practice">Practice 1</string>
     <string name="confession_booth_app">Confession Booth App</string>
+    <string name="confession_booth_app_for_url" translatable="false">Confession Booth App</string>
     <string name="onclick_practice">Practice 3</string>
     <string name="speakout_practice">Practice 2</string>
     <string name="tutorial_app">Tutorial App</string>

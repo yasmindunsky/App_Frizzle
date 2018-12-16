@@ -142,7 +142,8 @@ public class MapActivity extends AppCompatActivity {
             constraintLayout.post(new Runnable() {
                 @Override
                 public void run() {
-                    constraintLayout.scrollTo(0, -friendshipIntroButton.getBottom());
+                    friendshipIntroButton.getParent().requestChildFocus(friendshipIntroButton,friendshipIntroButton);
+//                    scrollView.scrollTo(0, friendshipIntroButton.getBottom());
                 }
             });
         }
