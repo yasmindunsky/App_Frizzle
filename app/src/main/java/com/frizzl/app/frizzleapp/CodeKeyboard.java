@@ -19,7 +19,7 @@ import android.widget.LinearLayout;
 public class CodeKeyboard extends LinearLayout implements View.OnClickListener {
 
     private static final int NUM_OF_CHARS_TO_BACK_AFTER_SPEAKOUT = 3;
-    private static final String FUNCTION_PART_2 = "(){\n\t\n}";
+    private static final String FUNCTION_PART_2 = "(element){\n\t\n}";
     private static final int NUM_OF_CHARS_TO_BACK_AFTER_FUNCTION = FUNCTION_PART_2.length();
 
     private final SparseArray<String> keyValues = new SparseArray<>();
@@ -62,7 +62,7 @@ public class CodeKeyboard extends LinearLayout implements View.OnClickListener {
         buttonEnter.setOnClickListener(this);
 
         keyValues.put(R.id.button_speakout, "speakOut(\"\");");
-        keyValues.put(R.id.button_function, "function nameYouChoose(){\n\t\n}");
+        keyValues.put(R.id.button_function, "function nameYouChoose(element){\n\t\n}");
         keyValues.put(R.id.button_enter, "\n");
 
         orangeKeyImage = findViewById(R.id.orange_key);
@@ -145,7 +145,7 @@ public class CodeKeyboard extends LinearLayout implements View.OnClickListener {
 
     public void presentKeyboardAndPlaceCursor() {
         setVisibility(VISIBLE);
-        int length = "function myFunction(){\n".length();
+        int length = "function myFunction(element){\n".length();
         inputConnection.setSelection(length, length);
     }
 }

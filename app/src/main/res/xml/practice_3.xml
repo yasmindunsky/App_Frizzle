@@ -69,7 +69,7 @@ tools:keep="@xml/practice_2">
         <task_text/>
         <reminder_text/>
         <code show="true" mutable="false" runnable="false" waitForCTA="false">
-function nameYouChoose(){
+function nameYouChoose(element){
 
 }
         </code>
@@ -81,7 +81,7 @@ function nameYouChoose(){
         <info_text/>
         <task_text>Change the $green$function$green$ name to 'myFunction'.</task_text>
         <reminder_text/>
-        <code show="true" mutable="true" runnable="false" waitForCTA="false">function nameYouChoose(){
+        <code show="true" mutable="true" runnable="false" waitForCTA="false">function nameYouChoose(element){
 
 }
         </code>
@@ -93,7 +93,7 @@ function nameYouChoose(){
         <info_text/>
         <task_text>Write the $orange$speakOut("Hello") command$orange$ inside the $green$function$green$, between the curly brackets.</task_text>
         <reminder_text/>
-        <code show="true" mutable="true" runnable="false" waitForCTA="false">function myFunction(){
+        <code show="true" mutable="true" runnable="false" waitForCTA="false">function myFunction(element){
 
 }
         </code>
@@ -106,7 +106,7 @@ function nameYouChoose(){
         <task_text>Write the $green$function$green$ name in the onClick field of the button, then run and click the button.</task_text>
         <reminder_text/>
         <code show="true" mutable="false" runnable="false" waitForCTA="false">
-function myFunction(){
+function myFunction(element){
 \tspeakOut("Hello");
 }
         </code>
@@ -118,7 +118,7 @@ function myFunction(){
         <!--<info_text>Our button now has functionality: it reads text aloud when it is clicked.</info_text>-->
         <!--<task_text>Try to run and click the button.</task_text>-->
         <!--<reminder_text/>-->
-        <!--<code show="true" mutable="false" runnable="false" waitForCTA="false">function myFunction(){\n\tspeakOut("Hello");\n}-->
+        <!--<code show="true" mutable="false" runnable="false" waitForCTA="false">function myFunction(element){\n\tspeakOut("Hello");\n}-->
         <!--</code>-->
         <!--<design show="true" runnable="true"  withOnClickFunction="myFunction" withOnClickSet="true">myButton</design>-->
         <!--<call_to_action>Got it</call_to_action>-->

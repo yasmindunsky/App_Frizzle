@@ -10,52 +10,52 @@ import static org.junit.Assert.*;
 public class CodeCheckUtilsTest {
     @Test
     public void checkIfFunctionInsideAFunction_contains_true() throws Exception {
-        String code = "function funcName(){function funcName2(){}}";
+        String code = "function funcName(element){function funcName2(element){}}";
         boolean answer = CodeCheckUtils.checkIfFunctionInsideAFunction(code);
         assertEquals(true, answer);
 
-        code = "function funcName()function funcName2(){}{}";
+        code = "function funcName(element)function funcName2(element){}{}";
         answer = CodeCheckUtils.checkIfFunctionInsideAFunction(code);
         assertEquals(true, answer);
 
-        code = "function funcName(function funcName2(){}){}";
+        code = "function funcName(function funcName2(element){}){}";
         answer = CodeCheckUtils.checkIfFunctionInsideAFunction(code);
         assertEquals(true, answer);
 
-        code = "function funcName function funcName2(){}(){}";
+        code = "function funcName function funcName2(element){}(element){}";
         answer = CodeCheckUtils.checkIfFunctionInsideAFunction(code);
         assertEquals(true, answer);
 
-        code = "functionfunction funcName2(){} funcName (){}";
+        code = "functionfunction funcName2(element){} funcName (element){}";
         answer = CodeCheckUtils.checkIfFunctionInsideAFunction(code);
         assertEquals(true, answer);
     }
 
     @Test
     public void checkIfContainsFunctionsWithSameName_contains_true() throws Exception {
-        String code = "function funcName(){speakOut(\"hello\");" +
-                "function funcName(){speakOut(\"hello\");}";
+        String code = "function funcName(element){speakOut(\"hello\");" +
+                "function funcName(element){speakOut(\"hello\");}";
         boolean answer = CodeCheckUtils.checkIfContainsFunctionsWithSameName(code);
         assertEquals(true, answer);
     }
 
     @Test
     public void checkIfContainsFunctionsWithSameName_doesntContain_false() throws Exception {
-        String code = "function funcName(){speakOut(\"hello\");";
+        String code = "function funcName(element){speakOut(\"hello\");";
         boolean answer = CodeCheckUtils.checkIfContainsFunctionsWithSameName(code);
         assertEquals(false, answer);
     }
 
     @Test
     public void checkIfContainsFunctionWithName_contains_true() throws Exception {
-        String code = "function funcName(){speakOut(\"hello\");}";
+        String code = "function funcName(element){speakOut(\"hello\");}";
         boolean answer = CodeCheckUtils.checkIfContainsFunctionWithName(code, "funcName");
         assertEquals(true, answer);
     }
 
     @Test
     public void checkIfContainsFunctionWithName_doesntContain_false() throws Exception {
-        String code = "function otherName(){speakOut(\"hello\");}";
+        String code = "function otherName(element){speakOut(\"hello\");}";
         boolean answer = CodeCheckUtils.checkIfContainsFunctionWithName(code, "funcName");
         assertEquals(false, answer);
     }
@@ -90,35 +90,35 @@ public class CodeCheckUtilsTest {
 
     @Test
     public void checkIfFunctionSignatureIsValid_valid_true() throws Exception {
-        String code = "function otherName(){speakOut(\"hello\");}";
+        String code = "function otherName(element){speakOut(\"hello\");}";
         boolean answer = CodeCheckUtils.checkIfFunctionSignatureIsValid(code);
         assertEquals(true, answer);
     }
 
     @Test
     public void checkIfFunctionSignatureIsValid_missingSpace_false() throws Exception {
-        String code = "functionotherName(){speakOut(\"hello\");}";
+        String code = "functionotherName(element){speakOut(\"hello\");}";
         boolean answer = CodeCheckUtils.checkIfFunctionSignatureIsValid(code);
         assertEquals(false, answer);
     }
 
     @Test
     public void checkIfSpeakOutIsInsideCurlyBrackets_isInside_true() throws Exception {
-        String code = "function funcName(){speakOut(\"hello\");}";
+        String code = "function funcName(element){speakOut(\"hello\");}";
         boolean answer = CodeCheckUtils.checkIfSpeakOutIsInsideCurlyBrackets(code);
         assertEquals(true, answer);
     }
 
     @Test
     public void checkIfSpeakOutIsInsideCurlyBrackets_isAfter_false() throws Exception {
-        String code = "function funcName(){}speakOut(\"hello\");";
+        String code = "function funcName(element){}speakOut(\"hello\");";
         boolean answer = CodeCheckUtils.checkIfSpeakOutIsInsideCurlyBrackets(code);
         assertEquals(false, answer);
     }
 
     @Test
     public void checkIfSpeakOutIsInsideCurlyBrackets_isBefore_false() throws Exception {
-        String code = "function funcNamespeakOut(\"hello\");(){}";
+        String code = "function funcNamespeakOut(\"hello\");(element){}";
         boolean answer = CodeCheckUtils.checkIfSpeakOutIsInsideCurlyBrackets(code);
         assertEquals(false, answer);
     }

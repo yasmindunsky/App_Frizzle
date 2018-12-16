@@ -12,7 +12,7 @@ public class ContentUtils {
     public final static int FRIENDSHIP_APP_LEVEL_ID = 8;
 
     public final static String functionIdentification = "function";
-    public final static String functionParams = "()";
+    public final static String functionParams = "(element)";
     public final static String speakOutIdentification = "speakOut";
 
     public final static String codePrefix = "if ('serviceWorker' in navigator) {\n" +
