@@ -44,6 +44,12 @@ class LayoutHTMLWriter {
             xmlSerializer.startTag("", "title");
             xmlSerializer.text("Confession Booth");
             xmlSerializer.endTag("", "title");
+            
+            // open tag: <meta>
+            xmlSerializer.startTag("", "meta");
+            xmlSerializer.attribute("", "property", "og:image");
+            xmlSerializer.attribute("", "content", iconURL);
+            xmlSerializer.endTag("", "meta");
 
 //            // Viewport
 //            xmlSerializer.startTag("", "meta");
